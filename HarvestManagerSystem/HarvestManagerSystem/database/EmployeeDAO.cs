@@ -16,17 +16,17 @@ namespace HarvestManagerSystem.database
     class EmployeeDAO:DAO
     {
 
-        public static String TABLE_EMPLOYEE = "employee";
-        public static String COLUMN_EMPLOYEE_ID = "id";
-        public static String COLUMN_EMPLOYEE_STATUS = "status";
-        public static String COLUMN_EMPLOYEE_FIRST_NAME = "first_name";
-        public static String COLUMN_EMPLOYEE_LAST_NAME = "last_name";
-        public static String COLUMN_EMPLOYEE_HIRE_DATE = "hire_date";
-        public static String COLUMN_EMPLOYEE_FIRE_DATE = "fire_date";
-        public static String COLUMN_EMPLOYEE_PERMISSION_DATE = "permission_date";
-        public static String COLUMN_EMPLOYEE_IS_EXIST = "is_exist";
+        public const string TABLE_EMPLOYEE = "employee";
+        public const string COLUMN_EMPLOYEE_ID = "id";
+        public const string COLUMN_EMPLOYEE_STATUS = "status";
+        public const string COLUMN_EMPLOYEE_FIRST_NAME = "first_name";
+        public const string COLUMN_EMPLOYEE_LAST_NAME = "last_name";
+        public const string COLUMN_EMPLOYEE_HIRE_DATE = "hire_date";
+        public const string COLUMN_EMPLOYEE_FIRE_DATE = "fire_date";
+        public const string COLUMN_EMPLOYEE_PERMISSION_DATE = "permission_date";
+        public const string COLUMN_EMPLOYEE_IS_EXIST = "is_exist";
 
-        private static EmployeeDAO sEmployeeDAO = new EmployeeDAO();
+        private static EmployeeDAO instance = new EmployeeDAO();
 
         private EmployeeDAO() : base()
         {
@@ -35,12 +35,11 @@ namespace HarvestManagerSystem.database
 
         public static EmployeeDAO getInstance()
         {
-            if (sEmployeeDAO == null)
+            if (instance == null)
             {
-                sEmployeeDAO = new EmployeeDAO();
-                return sEmployeeDAO;
+                instance = new EmployeeDAO();
             }
-            return sEmployeeDAO;
+            return instance;
         }
 
 
@@ -191,6 +190,10 @@ namespace HarvestManagerSystem.database
             }
         }
 
+
+        //*******************************
+        //Delete employee data
+        //*******************************
         public bool DeleteData(Employee employee)
         {
             String updateStmt = "UPDATE " + TABLE_EMPLOYEE + " SET "
@@ -201,8 +204,6 @@ namespace HarvestManagerSystem.database
             {
                 SQLiteCommand sQLiteCommand = new SQLiteCommand(updateStmt, mSQLiteConnection);
                 OpenConnection();
-                //sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_EMPLOYEE_STATUS, employee.EmployeeStatus));
-
                 sQLiteCommand.ExecuteNonQuery();
                 return true;
             }

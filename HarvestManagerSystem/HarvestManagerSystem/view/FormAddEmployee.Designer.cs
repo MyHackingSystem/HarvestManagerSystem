@@ -253,6 +253,7 @@ namespace HarvestManagerSystem.view
             this.Name = "FormAddEmployee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormAddEmployee";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAddEmployee_FormClosed);
             this.Load += new System.EventHandler(this.FormAddEmployee_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

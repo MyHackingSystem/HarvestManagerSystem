@@ -15,9 +15,44 @@ namespace HarvestManagerSystem.view
         EmployeeDAO emplouyeeDAO = EmployeeDAO.getInstance();
         Employee mEmployee = new Employee();
         bool isEditStatus = false;
-        public FormAddEmployee()
+
+        private HarvestMS harvestMS;
+        private static FormAddEmployee instance;
+
+        private FormAddEmployee(HarvestMS harvestMS)
         {
+            this.harvestMS = harvestMS;
             InitializeComponent();
+        }
+
+        private void FormAddEmployee_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            wipeFields();
+            instance = null;
+        }
+
+
+        public static FormAddEmployee getInstance(HarvestMS harvestMS)
+        {
+            if (instance == null)
+            {
+                instance = new FormAddEmployee(harvestMS);
+            }
+            return instance;
+        }
+
+        public void ShowFormAdd()
+        {
+            if (instance != null)
+            {
+                instance.BringToFront();
+            }
+            else
+            {
+                instance = new FormAddEmployee(harvestMS);
+
+            }
+            instance.Show();
         }
 
         private void handleSaveButton_Click(object sender, EventArgs e)
@@ -34,6 +69,7 @@ namespace HarvestManagerSystem.view
             {
                 SaveEmployeedata();
             }
+            harvestMS.DisplayEmployeeData();
             
         }
 
@@ -139,5 +175,7 @@ namespace HarvestManagerSystem.view
             fxPermissionDate.Value = employee.PermissionDate;
             handleSaveButton.Text = "Update";
         }
+
+
     }
 }

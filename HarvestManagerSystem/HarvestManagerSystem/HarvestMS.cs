@@ -17,21 +17,22 @@ namespace HarvestManagerSystem
     public partial class HarvestMS : Form
     {
         EmployeeDAO employeeDAO = EmployeeDAO.getInstance();
+        ProductDAO productDAO = ProductDAO.getInstance();
+        ProductDetailDAO productDetailDAO = ProductDetailDAO.getInstance();
         private static List<Employee> list = new List<Employee>();
-
 
 
         public HarvestMS()
         {
             InitializeComponent();
+            
         }
 
 
 
         private void HarvestMS_Load(object sender, EventArgs e)
         {
-            
-            
+
         }
 
         private void tabProduction_SelectedIndexChanged(object sender, EventArgs e)
@@ -51,6 +52,15 @@ namespace HarvestManagerSystem
                 case 3:
                     DisplayEmployeeData();
                     break;
+                case 4:
+                    MessageBox.Show(Convert.ToString(tabProduction.SelectedIndex));
+                    break;
+                case 5:
+                    MessageBox.Show(Convert.ToString(tabProduction.SelectedIndex));
+                    break;
+                case 6:
+                    DisplayProductData();
+                    break;
                 default:
                     Console.WriteLine("nothing");
                     break;
@@ -58,37 +68,130 @@ namespace HarvestManagerSystem
         }
 
 
-        #region //ADD PRODUCT CODE
-        FormAddProduct addProduct = new FormAddProduct();
+        #region PRODUCT CODE
+        List<Product> listProduct = new List<Product>();
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
-            addProduct.Show();
+            FormAddProduct formAddProduct = FormAddProduct.getInstance(this);
+            formAddProduct.ShowFormAdd();
+        }
+
+         public void DisplayProductData()
+        {
+            listProduct = productDAO.getData();
+            ProductDataGridView.DataSource = listProduct;
+        }
+
+        private void DisplayProductDetailData(Product product)
+        {
+            ProductDetailDataGridView.DataSource = productDetailDAO.getData(product);
+        }
+
+        private void ProductDataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            int i = ProductDataGridView.CurrentCell.RowIndex;
+            if (i < listProduct.Count)
+            {
+                DisplayProductDetailData(listProduct[i]);
+            }
+            
+        }
+
+        private void ProductContextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            if (e.ClickedItem.Name == EditProductStrip.Name)
+            {
+                ProductContextMenuStrip.Visible = false;
+                HandleEditProductTable();
+            }
+            else if (e.ClickedItem.Name == DeleteProductStrip.Name)
+            {
+                ProductContextMenuStrip.Visible = false;
+                HandleDeleteProductTable();
+            }
+        }
+
+        void HandleEditProductTable()
+        {
+            
+            FormAddProduct formAddProduct = FormAddProduct.getInstance(this);
+            Product product = (Product)ProductDataGridView.CurrentRow.DataBoundItem;
+            if (product == null)
+            {
+                MessageBox.Show("Select Product");
+                return;
+            }
+
+            formAddProduct.InflateUI(product);
+            formAddProduct.ShowFormAdd();
+        }
+
+        void HandleDeleteProductTable()
+        {
+            Product product = (Product)ProductDataGridView.CurrentRow.DataBoundItem;
+            if (product == null)
+            {
+                MessageBox.Show("Select product");
+                return;
+            }
+            DialogResult dr = MessageBox.Show("Are you sure you want to delete: " + product.ProductName, "Delete", MessageBoxButtons.YesNoCancel,
+            MessageBoxIcon.Information);
+            bool deleted = false;
+            if (dr == DialogResult.Yes)
+            {
+                deleted = productDAO.DeleteData(product);
+                DisplayProductData();
+            }
+
+            if (deleted)
+            {
+                MessageBox.Show("Delete");
+                DisplayEmployeeData();
+            }
+            else if (dr == DialogResult.Yes)
+            {
+                MessageBox.Show("Not Delete");
+            }
+
         }
 
         #endregion
 
-        #region //QUANTITY CODE
+        #region //TO DO QUANTITY CODE
         void DisplayQuantityData()
         {
 
         }
+        private void btnSearchQuantityProduction_Click(object sender, EventArgs e)
+        {
+
+            loadDataProgressBar.Visible = true;
+            loadDataProgressBar.Value = 20;
+
+        }
+
+        private void displayQuantityContextMenu_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
         #endregion
 
-        #region //HOURS CODE
+        #region //TO DO HOURS CODE
         void DisplayHoursData()
         {
 
         }
         #endregion
 
-        #region //Credit CODE
+        #region //TO DO Credit CODE
         void DisplayCreditData()
         {
 
         }
         #endregion
 
-        #region //Credit CODE
+        #region //To do Credit CODE
         void DisplayTransportData()
         {
 
@@ -96,13 +199,11 @@ namespace HarvestManagerSystem
         #endregion
 
         #region EMPLOYEE CODE
-        FormAddEmployee addEmployee = new FormAddEmployee();
-
-        public static List<Employee> List { get => list; set => list = value; }
 
         private void btnAddEmployee_Click(object sender, EventArgs e)
         {
-            addEmployee.Show();
+            FormAddEmployee formAddEmployee = FormAddEmployee.getInstance(this);
+            formAddEmployee.ShowFormAdd();
         }
 
         private void ReloadButton_Click(object sender, EventArgs e)
@@ -111,47 +212,45 @@ namespace HarvestManagerSystem
         }
         public void DisplayEmployeeData()
         {
-            employeeDataGridView.DataSource = employeeDAO.getData();
-            
+            EmployeeDataGridView.DataSource = employeeDAO.getData();
         }
 
-        private void employeeMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void EmployeeContextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            
-            if (e.ClickedItem.Name == editEmployeeTable.Name)
+            if (e.ClickedItem.Name == EditEmployeeStrip.Name)
             {
-                employeeMenuStrip.Visible = false;
+                EmployeeContextMenuStrip.Visible = false;
                 HandleEditEmployeeTable();
             }
-            else if (e.ClickedItem.Name == deleteFromEmployeeTable.Name)
+            else if (e.ClickedItem.Name == DeleteEmployeeStrip.Name)
             {
-                employeeMenuStrip.Visible = false;
+                EmployeeContextMenuStrip.Visible = false;
                 HandleDeleteEmployeeTable();
             }
         }
 
         void HandleEditEmployeeTable()
         {
-            Employee employee = (Employee) employeeDataGridView.CurrentRow.DataBoundItem;
+            FormAddEmployee formAddEmployee = FormAddEmployee.getInstance(this);
+            Employee employee = (Employee) EmployeeDataGridView.CurrentRow.DataBoundItem;
             if (employee == null)
             {
                 MessageBox.Show("Select Employee");
                 return;
-            }
-            FormAddEmployee formAddEmployee = new FormAddEmployee();
+            }           
             formAddEmployee.InflateUI(employee);
-            formAddEmployee.Show();
+            formAddEmployee.ShowFormAdd();
         }
 
         void HandleDeleteEmployeeTable()
         {
-            Employee selectedEmployee = (Employee)employeeDataGridView.CurrentRow.DataBoundItem;
+            Employee selectedEmployee = (Employee)EmployeeDataGridView.CurrentRow.DataBoundItem;
             if (selectedEmployee == null)
             {
                 MessageBox.Show("Select Employee");
                 return;
             }
-            DialogResult dr = MessageBox.Show("Are you sure you want to delete this employee", "Delete", MessageBoxButtons.YesNoCancel,
+            DialogResult dr = MessageBox.Show("Are you sure you want to delete: " + selectedEmployee.FullName, "Delete", MessageBoxButtons.YesNoCancel,
             MessageBoxIcon.Information);
             bool deleted = false;
             if (dr == DialogResult.Yes)
@@ -170,11 +269,11 @@ namespace HarvestManagerSystem
             
         }
 
-        private void employeeDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        private void EmployeeDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == employeeDataGridView.Columns["employeeStatusColumn"].Index)
+            if (e.ColumnIndex == EmployeeDataGridView.Columns["employeeStatusColumn"].Index)
             {
-                Employee selectedEmployee = (Employee)employeeDataGridView.CurrentRow.DataBoundItem;
+                Employee selectedEmployee = (Employee)EmployeeDataGridView.CurrentRow.DataBoundItem;
                 employeeDAO.updateEmployeeStatusById(selectedEmployee);
             }
 
@@ -182,34 +281,17 @@ namespace HarvestManagerSystem
 
         private void employeeDataGridView_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (employeeDataGridView.DataSource != null)
+            if (EmployeeDataGridView.DataSource != null)
             {
-                if (e.ColumnIndex == employeeDataGridView.Columns["employeeStatusColumn"].Index && e.RowIndex != -1)
+                if (e.ColumnIndex == EmployeeDataGridView.Columns["employeeStatusColumn"].Index && e.RowIndex != -1)
                 {
-                    employeeDataGridView.EndEdit();
+                    EmployeeDataGridView.EndEdit();
                 }
             }
         }
 
+
         #endregion
-
-        private void displayQuantityContextMenu_Opening(object sender, CancelEventArgs e)
-        {
-
-        }
-
-        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void btnSearchQuantityProduction_Click(object sender, EventArgs e)
-        {
-
-            loadDataProgressBar.Visible = true;
-            loadDataProgressBar.Value = 20;
-            
-        }
 
 
     }
