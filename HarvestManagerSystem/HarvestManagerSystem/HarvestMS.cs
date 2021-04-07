@@ -82,11 +82,6 @@ namespace HarvestManagerSystem
             ProductDataGridView.DataSource = listProduct;
         }
 
-        private void DisplayProductDetailData(Product product)
-        {
-            ProductDetailDataGridView.DataSource = productDetailDAO.getData(product);
-        }
-
         private void ProductDataGridView_SelectionChanged(object sender, EventArgs e)
         {
             int i = ProductDataGridView.CurrentCell.RowIndex;
@@ -94,7 +89,7 @@ namespace HarvestManagerSystem
             {
                 DisplayProductDetailData(listProduct[i]);
             }
-            
+
         }
 
         private void ProductContextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -140,6 +135,74 @@ namespace HarvestManagerSystem
             if (dr == DialogResult.Yes)
             {
                 deleted = productDAO.DeleteData(product);
+                DisplayProductData();
+            }
+
+            if (deleted)
+            {
+                MessageBox.Show("Delete");
+                DisplayEmployeeData();
+            }
+            else if (dr == DialogResult.Yes)
+            {
+                MessageBox.Show("Not Delete");
+            }
+
+        }
+
+        #endregion
+
+        #region PRODUCT DETAIL CODE
+
+        private void DisplayProductDetailData(Product product)
+        {
+            ProductDetailDataGridView.DataSource = productDetailDAO.getData(product);
+        }
+
+        private void ProductDetailContextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            if (e.ClickedItem.Name == EditProductDetailStrip.Name)
+            {
+                ProductDetailContextMenuStrip.Visible = false;
+                HandleEditProductDetailTable();
+            }
+            else if (e.ClickedItem.Name == DeleteProductDetailStrip.Name)
+            {
+                ProductDetailContextMenuStrip.Visible = false;
+                HandleDeleteProductDetailTable();
+            }
+        }
+
+        void HandleEditProductDetailTable()
+        {
+
+            FormAddProduct formEditProductDetail = FormAddProduct.getInstance(this);
+            Product product = (Product)ProductDataGridView.CurrentRow.DataBoundItem;
+            ProductDetail productDetail = (ProductDetail)ProductDetailDataGridView.CurrentRow.DataBoundItem;
+            if (productDetail == null)
+            {
+                MessageBox.Show("Select Product Detail");
+                return;
+            }
+
+            formEditProductDetail.InflateUI(productDetail, product);
+            formEditProductDetail.ShowFormAdd();
+        }
+
+        void HandleDeleteProductDetailTable()
+        {
+            ProductDetail productDetail = (ProductDetail)ProductDetailDataGridView.CurrentRow.DataBoundItem;
+            if (productDetail == null)
+            {
+                MessageBox.Show("Select product");
+                return;
+            }
+            DialogResult dr = MessageBox.Show("Are you sure you want to delete product with code: " + productDetail.ProductCode, "Delete", MessageBoxButtons.YesNoCancel,
+            MessageBoxIcon.Information);
+            bool deleted = false;
+            if (dr == DialogResult.Yes)
+            {
+                deleted = productDetailDAO.DeleteData(productDetail);
                 DisplayProductData();
             }
 

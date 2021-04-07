@@ -44,9 +44,8 @@ namespace HarvestManagerSystem.database
                  + COLUMN_PRODUCT_TYPE + " =@" + COLUMN_PRODUCT_TYPE + ", "
                  + COLUMN_PRODUCT_CODE + " =@" + COLUMN_PRODUCT_CODE + ", "
                  + COLUMN_PRODUCT_PRICE_EMPLOYEE + " =@" + COLUMN_PRODUCT_PRICE_EMPLOYEE + ", "
-                 + COLUMN_PRODUCT_PRICE_COMPANY + " =@" + COLUMN_PRODUCT_PRICE_COMPANY + ", "
-                 + COLUMN_FOREIGN_KEY_PRODUCT_ID + " =@" + COLUMN_FOREIGN_KEY_PRODUCT_ID + " "
-                 + " WHERE " + COLUMN_FOREIGN_KEY_PRODUCT_ID + " = " + productDetail.ProductDetailId + " ";
+                 + COLUMN_PRODUCT_PRICE_COMPANY + " =@" + COLUMN_PRODUCT_PRICE_COMPANY + " "
+                 + " WHERE " + COLUMN_PRODUCT_DETAIL_ID + " = " + productDetail.ProductDetailId + " ";
 
             try
             {
@@ -56,7 +55,6 @@ namespace HarvestManagerSystem.database
                 sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_PRODUCT_CODE, productDetail.ProductCode));
                 sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_PRODUCT_PRICE_EMPLOYEE, productDetail.PriceEmployee));
                 sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_PRODUCT_PRICE_COMPANY, productDetail.PriceCompany));
-                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_FOREIGN_KEY_PRODUCT_ID, productDetail.PriceCompany));
                 sQLiteCommand.ExecuteNonQuery();
                 CloseConnection();
                 return true;
