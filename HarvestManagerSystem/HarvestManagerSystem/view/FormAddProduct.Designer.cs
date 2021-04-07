@@ -32,17 +32,17 @@ namespace HarvestManagerSystem.view
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAddProduct));
             this.btnReset = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.btnAjouter = new System.Windows.Forms.Button();
-            this.fxProductPriceCompany = new System.Windows.Forms.TextBox();
-            this.fxProductPriceEmployee = new System.Windows.Forms.TextBox();
-            this.fxProductCode = new System.Windows.Forms.TextBox();
-            this.fxProductTypeComboBox = new System.Windows.Forms.ComboBox();
-            this.fxProductNameComboBox = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.Product = new System.Windows.Forms.Label();
+            this.handleSaveButton = new System.Windows.Forms.Button();
+            this.ProductPriceCompany = new System.Windows.Forms.TextBox();
+            this.ProductPriceEmployee = new System.Windows.Forms.TextBox();
+            this.ProductCode = new System.Windows.Forms.TextBox();
+            this.ProductTypeComboBox = new System.Windows.Forms.ComboBox();
+            this.ProductNameComboBox = new System.Windows.Forms.ComboBox();
+            this.PriceCLabel = new System.Windows.Forms.Label();
+            this.PriceELabel = new System.Windows.Forms.Label();
+            this.CodeLabel = new System.Windows.Forms.Label();
+            this.TypeLabel = new System.Windows.Forms.Label();
+            this.ProductLabel = new System.Windows.Forms.Label();
             this.nameProductErrorLabel = new System.Windows.Forms.Label();
             this.typeProductErrorLabel = new System.Windows.Forms.Label();
             this.codeProductErrorLabel = new System.Windows.Forms.Label();
@@ -82,120 +82,122 @@ namespace HarvestManagerSystem.view
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // btnAjouter
+            // handleSaveButton
             // 
-            this.btnAjouter.BackColor = System.Drawing.Color.DarkOrange;
-            this.btnAjouter.FlatAppearance.BorderSize = 0;
-            this.btnAjouter.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Moccasin;
-            this.btnAjouter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
-            this.btnAjouter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAjouter.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnAjouter.Location = new System.Drawing.Point(40, 451);
-            this.btnAjouter.Name = "btnAjouter";
-            this.btnAjouter.Size = new System.Drawing.Size(120, 30);
-            this.btnAjouter.TabIndex = 6;
-            this.btnAjouter.Text = "Ajouter";
-            this.btnAjouter.UseVisualStyleBackColor = false;
-            this.btnAjouter.Click += new System.EventHandler(this.btnAjouter_Click);
+            this.handleSaveButton.BackColor = System.Drawing.Color.DarkOrange;
+            this.handleSaveButton.FlatAppearance.BorderSize = 0;
+            this.handleSaveButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Moccasin;
+            this.handleSaveButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
+            this.handleSaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.handleSaveButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.handleSaveButton.Location = new System.Drawing.Point(40, 451);
+            this.handleSaveButton.Name = "handleSaveButton";
+            this.handleSaveButton.Size = new System.Drawing.Size(120, 30);
+            this.handleSaveButton.TabIndex = 6;
+            this.handleSaveButton.Text = "Ajouter";
+            this.handleSaveButton.UseVisualStyleBackColor = false;
+            this.handleSaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-            // fxProductPriceCompany
+            // ProductPriceCompany
             // 
-            this.fxProductPriceCompany.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.fxProductPriceCompany.Location = new System.Drawing.Point(107, 345);
-            this.fxProductPriceCompany.Name = "fxProductPriceCompany";
-            this.fxProductPriceCompany.Size = new System.Drawing.Size(160, 29);
-            this.fxProductPriceCompany.TabIndex = 5;
+            this.ProductPriceCompany.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ProductPriceCompany.Location = new System.Drawing.Point(107, 345);
+            this.ProductPriceCompany.Name = "ProductPriceCompany";
+            this.ProductPriceCompany.Size = new System.Drawing.Size(160, 29);
+            this.ProductPriceCompany.TabIndex = 5;
             // 
-            // fxProductPriceEmployee
+            // ProductPriceEmployee
             // 
-            this.fxProductPriceEmployee.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.fxProductPriceEmployee.Location = new System.Drawing.Point(108, 275);
-            this.fxProductPriceEmployee.Name = "fxProductPriceEmployee";
-            this.fxProductPriceEmployee.Size = new System.Drawing.Size(160, 29);
-            this.fxProductPriceEmployee.TabIndex = 4;
+            this.ProductPriceEmployee.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ProductPriceEmployee.Location = new System.Drawing.Point(108, 275);
+            this.ProductPriceEmployee.Name = "ProductPriceEmployee";
+            this.ProductPriceEmployee.Size = new System.Drawing.Size(160, 29);
+            this.ProductPriceEmployee.TabIndex = 4;
             // 
-            // fxProductCode
+            // ProductCode
             // 
-            this.fxProductCode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.fxProductCode.Location = new System.Drawing.Point(108, 201);
-            this.fxProductCode.Name = "fxProductCode";
-            this.fxProductCode.Size = new System.Drawing.Size(160, 29);
-            this.fxProductCode.TabIndex = 3;
+            this.ProductCode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ProductCode.Location = new System.Drawing.Point(108, 201);
+            this.ProductCode.Name = "ProductCode";
+            this.ProductCode.Size = new System.Drawing.Size(160, 29);
+            this.ProductCode.TabIndex = 3;
             // 
-            // fxProductTypeComboBox
+            // ProductTypeComboBox
             // 
-            this.fxProductTypeComboBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.fxProductTypeComboBox.FormattingEnabled = true;
-            this.fxProductTypeComboBox.Location = new System.Drawing.Point(108, 133);
-            this.fxProductTypeComboBox.Name = "fxProductTypeComboBox";
-            this.fxProductTypeComboBox.Size = new System.Drawing.Size(160, 29);
-            this.fxProductTypeComboBox.TabIndex = 2;
+            this.ProductTypeComboBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ProductTypeComboBox.FormattingEnabled = true;
+            this.ProductTypeComboBox.Location = new System.Drawing.Point(108, 133);
+            this.ProductTypeComboBox.Name = "ProductTypeComboBox";
+            this.ProductTypeComboBox.Size = new System.Drawing.Size(160, 29);
+            this.ProductTypeComboBox.TabIndex = 2;
             // 
-            // fxProductNameComboBox
+            // ProductNameComboBox
             // 
-            this.fxProductNameComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.fxProductNameComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.fxProductNameComboBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.fxProductNameComboBox.FormattingEnabled = true;
-            this.fxProductNameComboBox.Location = new System.Drawing.Point(108, 66);
-            this.fxProductNameComboBox.Name = "fxProductNameComboBox";
-            this.fxProductNameComboBox.Size = new System.Drawing.Size(160, 29);
-            this.fxProductNameComboBox.TabIndex = 1;
+            this.ProductNameComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ProductNameComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.ProductNameComboBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ProductNameComboBox.FormattingEnabled = true;
+            this.ProductNameComboBox.Location = new System.Drawing.Point(108, 66);
+            this.ProductNameComboBox.Name = "ProductNameComboBox";
+            this.ProductNameComboBox.Size = new System.Drawing.Size(160, 29);
+            this.ProductNameComboBox.TabIndex = 1;
+            this.ProductNameComboBox.SelectedIndexChanged += new System.EventHandler(this.ProductNameComboBox_SelectedIndexChanged);
+            this.ProductNameComboBox.SelectedValueChanged += new System.EventHandler(this.ProductNameComboBox_SelectedValueChanged);
             // 
-            // label5
+            // PriceCLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.ForeColor = System.Drawing.Color.FloralWhite;
-            this.label5.Location = new System.Drawing.Point(108, 321);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(52, 21);
-            this.label5.TabIndex = 17;
-            this.label5.Text = "Prix.C:";
+            this.PriceCLabel.AutoSize = true;
+            this.PriceCLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.PriceCLabel.ForeColor = System.Drawing.Color.FloralWhite;
+            this.PriceCLabel.Location = new System.Drawing.Point(108, 321);
+            this.PriceCLabel.Name = "PriceCLabel";
+            this.PriceCLabel.Size = new System.Drawing.Size(52, 21);
+            this.PriceCLabel.TabIndex = 17;
+            this.PriceCLabel.Text = "Prix.C:";
             // 
-            // label4
+            // PriceELabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.ForeColor = System.Drawing.Color.FloralWhite;
-            this.label4.Location = new System.Drawing.Point(107, 251);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(50, 21);
-            this.label4.TabIndex = 15;
-            this.label4.Text = "Prix.E:";
+            this.PriceELabel.AutoSize = true;
+            this.PriceELabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.PriceELabel.ForeColor = System.Drawing.Color.FloralWhite;
+            this.PriceELabel.Location = new System.Drawing.Point(107, 251);
+            this.PriceELabel.Name = "PriceELabel";
+            this.PriceELabel.Size = new System.Drawing.Size(50, 21);
+            this.PriceELabel.TabIndex = 15;
+            this.PriceELabel.Text = "Prix.E:";
             // 
-            // label3
+            // CodeLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.Color.FloralWhite;
-            this.label3.Location = new System.Drawing.Point(106, 176);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 21);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "Code:";
+            this.CodeLabel.AutoSize = true;
+            this.CodeLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CodeLabel.ForeColor = System.Drawing.Color.FloralWhite;
+            this.CodeLabel.Location = new System.Drawing.Point(106, 176);
+            this.CodeLabel.Name = "CodeLabel";
+            this.CodeLabel.Size = new System.Drawing.Size(49, 21);
+            this.CodeLabel.TabIndex = 13;
+            this.CodeLabel.Text = "Code:";
             // 
-            // label2
+            // TypeLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.Color.FloralWhite;
-            this.label2.Location = new System.Drawing.Point(107, 109);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 21);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "Type:";
+            this.TypeLabel.AutoSize = true;
+            this.TypeLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TypeLabel.ForeColor = System.Drawing.Color.FloralWhite;
+            this.TypeLabel.Location = new System.Drawing.Point(107, 109);
+            this.TypeLabel.Name = "TypeLabel";
+            this.TypeLabel.Size = new System.Drawing.Size(45, 21);
+            this.TypeLabel.TabIndex = 11;
+            this.TypeLabel.Text = "Type:";
             // 
-            // Product
+            // ProductLabel
             // 
-            this.Product.AutoSize = true;
-            this.Product.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Product.ForeColor = System.Drawing.Color.White;
-            this.Product.Location = new System.Drawing.Point(108, 41);
-            this.Product.Name = "Product";
-            this.Product.Size = new System.Drawing.Size(64, 21);
-            this.Product.TabIndex = 9;
-            this.Product.Text = "Produit:";
+            this.ProductLabel.AutoSize = true;
+            this.ProductLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ProductLabel.ForeColor = System.Drawing.Color.White;
+            this.ProductLabel.Location = new System.Drawing.Point(108, 41);
+            this.ProductLabel.Name = "ProductLabel";
+            this.ProductLabel.Size = new System.Drawing.Size(64, 21);
+            this.ProductLabel.TabIndex = 9;
+            this.ProductLabel.Text = "Produit:";
             // 
             // nameProductErrorLabel
             // 
@@ -265,17 +267,17 @@ namespace HarvestManagerSystem.view
             this.ClientSize = new System.Drawing.Size(384, 561);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnAjouter);
-            this.Controls.Add(this.fxProductPriceCompany);
-            this.Controls.Add(this.fxProductPriceEmployee);
-            this.Controls.Add(this.fxProductCode);
-            this.Controls.Add(this.fxProductTypeComboBox);
-            this.Controls.Add(this.fxProductNameComboBox);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.Product);
+            this.Controls.Add(this.handleSaveButton);
+            this.Controls.Add(this.ProductPriceCompany);
+            this.Controls.Add(this.ProductPriceEmployee);
+            this.Controls.Add(this.ProductCode);
+            this.Controls.Add(this.ProductTypeComboBox);
+            this.Controls.Add(this.ProductNameComboBox);
+            this.Controls.Add(this.PriceCLabel);
+            this.Controls.Add(this.PriceELabel);
+            this.Controls.Add(this.CodeLabel);
+            this.Controls.Add(this.TypeLabel);
+            this.Controls.Add(this.ProductLabel);
             this.Controls.Add(this.nameProductErrorLabel);
             this.Controls.Add(this.typeProductErrorLabel);
             this.Controls.Add(this.codeProductErrorLabel);
@@ -285,6 +287,7 @@ namespace HarvestManagerSystem.view
             this.Name = "FormAddProduct";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Product";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAddProduct_FormClosed);
             this.Load += new System.EventHandler(this.FormAddProduct_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -295,17 +298,17 @@ namespace HarvestManagerSystem.view
 
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnAjouter;
-        private System.Windows.Forms.TextBox fxProductPriceCompany;
-        private System.Windows.Forms.TextBox fxProductPriceEmployee;
-        private System.Windows.Forms.TextBox fxProductCode;
-        private System.Windows.Forms.ComboBox fxProductTypeComboBox;
-        private System.Windows.Forms.ComboBox fxProductNameComboBox;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label Product;
+        private System.Windows.Forms.Button handleSaveButton;
+        private System.Windows.Forms.TextBox ProductPriceCompany;
+        private System.Windows.Forms.TextBox ProductPriceEmployee;
+        private System.Windows.Forms.TextBox ProductCode;
+        private System.Windows.Forms.ComboBox ProductTypeComboBox;
+        private System.Windows.Forms.ComboBox ProductNameComboBox;
+        private System.Windows.Forms.Label PriceCLabel;
+        private System.Windows.Forms.Label PriceELabel;
+        private System.Windows.Forms.Label CodeLabel;
+        private System.Windows.Forms.Label TypeLabel;
+        private System.Windows.Forms.Label ProductLabel;
         private System.Windows.Forms.Label nameProductErrorLabel;
         private System.Windows.Forms.Label typeProductErrorLabel;
         private System.Windows.Forms.Label codeProductErrorLabel;
