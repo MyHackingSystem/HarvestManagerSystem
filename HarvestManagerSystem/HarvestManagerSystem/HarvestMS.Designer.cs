@@ -75,7 +75,6 @@ namespace HarvestManagerSystem
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HarvestMS));
             this.tabProduction = new System.Windows.Forms.TabControl();
             this.tabPageQuantity = new System.Windows.Forms.TabPage();
             this.toLabel = new System.Windows.Forms.Label();
@@ -121,12 +120,21 @@ namespace HarvestManagerSystem
             this.SupplierLastNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPageFarm = new System.Windows.Forms.TabPage();
             this.SeasonDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SeasonId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SeasonPlantingDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SeasonHarvestDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Farm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SeasonContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.EditSeasonStrip = new System.Windows.Forms.ToolStripMenuItem();
+            this.DeleteSeasonStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.labelFarmsTab = new System.Windows.Forms.Label();
             this.FarmDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FarmId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FarmName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FarmAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FarmContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.EditFarmStrip = new System.Windows.Forms.ToolStripMenuItem();
+            this.DeleteFarmStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPageProduct = new System.Windows.Forms.TabPage();
             this.ProductDetailDataGridView = new System.Windows.Forms.DataGridView();
             this.ProductDetailId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -175,7 +183,9 @@ namespace HarvestManagerSystem
             ((System.ComponentModel.ISupportInitialize)(this.SupplierDataGridView)).BeginInit();
             this.tabPageFarm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SeasonDataGridView)).BeginInit();
+            this.SeasonContextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FarmDataGridView)).BeginInit();
+            this.FarmContextMenuStrip.SuspendLayout();
             this.tabPageProduct.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProductDetailDataGridView)).BeginInit();
             this.ProductDetailContextMenuStrip.SuspendLayout();
@@ -875,8 +885,10 @@ namespace HarvestManagerSystem
             this.SeasonDataGridView.ColumnHeadersHeight = 36;
             this.SeasonDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.SeasonDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn8,
-            this.dataGridViewTextBoxColumn9});
+            this.SeasonId,
+            this.SeasonPlantingDate,
+            this.SeasonHarvestDate,
+            this.Farm});
             dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle28.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle28.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -888,7 +900,7 @@ namespace HarvestManagerSystem
             this.SeasonDataGridView.DefaultCellStyle = dataGridViewCellStyle28;
             this.SeasonDataGridView.EnableHeadersVisualStyles = false;
             this.SeasonDataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.SeasonDataGridView.Location = new System.Drawing.Point(505, 44);
+            this.SeasonDataGridView.Location = new System.Drawing.Point(655, 44);
             this.SeasonDataGridView.MultiSelect = false;
             this.SeasonDataGridView.Name = "SeasonDataGridView";
             dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -904,24 +916,60 @@ namespace HarvestManagerSystem
             dataGridViewCellStyle30.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle30.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.SeasonDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle30;
+            this.SeasonDataGridView.RowTemplate.ContextMenuStrip = this.SeasonContextMenuStrip;
             this.SeasonDataGridView.RowTemplate.Height = 25;
             this.SeasonDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.SeasonDataGridView.Size = new System.Drawing.Size(613, 515);
+            this.SeasonDataGridView.Size = new System.Drawing.Size(463, 515);
             this.SeasonDataGridView.TabIndex = 4;
             // 
-            // dataGridViewTextBoxColumn8
+            // SeasonId
             // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "plantingDateColumn";
-            this.dataGridViewTextBoxColumn8.HeaderText = "Date de plantation ";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.SeasonId.DataPropertyName = "SeasonId";
+            this.SeasonId.HeaderText = "Season Id";
+            this.SeasonId.Name = "SeasonId";
+            this.SeasonId.Visible = false;
             // 
-            // dataGridViewTextBoxColumn9
+            // SeasonPlantingDate
             // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "harvestDateColumn";
-            this.dataGridViewTextBoxColumn9.HeaderText = "Date de récolte ";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            this.SeasonPlantingDate.DataPropertyName = "SeasonPlantingDate";
+            this.SeasonPlantingDate.HeaderText = "Date de plantation ";
+            this.SeasonPlantingDate.Name = "SeasonPlantingDate";
+            this.SeasonPlantingDate.ReadOnly = true;
+            // 
+            // SeasonHarvestDate
+            // 
+            this.SeasonHarvestDate.DataPropertyName = "SeasonHarvestDate";
+            this.SeasonHarvestDate.HeaderText = "Date de récolte ";
+            this.SeasonHarvestDate.Name = "SeasonHarvestDate";
+            this.SeasonHarvestDate.ReadOnly = true;
+            // 
+            // Farm
+            // 
+            this.Farm.DataPropertyName = "FarmID";
+            this.Farm.HeaderText = "Farm ID";
+            this.Farm.Name = "Farm";
+            this.Farm.Visible = false;
+            // 
+            // SeasonContextMenuStrip
+            // 
+            this.SeasonContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.EditSeasonStrip,
+            this.DeleteSeasonStrip});
+            this.SeasonContextMenuStrip.Name = "SeasonContextMenuStrip";
+            this.SeasonContextMenuStrip.Size = new System.Drawing.Size(130, 48);
+            this.SeasonContextMenuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.SeasonContextMenuStrip_ItemClicked);
+            // 
+            // EditSeasonStrip
+            // 
+            this.EditSeasonStrip.Name = "EditSeasonStrip";
+            this.EditSeasonStrip.Size = new System.Drawing.Size(129, 22);
+            this.EditSeasonStrip.Text = "Edit";
+            // 
+            // DeleteSeasonStrip
+            // 
+            this.DeleteSeasonStrip.Name = "DeleteSeasonStrip";
+            this.DeleteSeasonStrip.Size = new System.Drawing.Size(129, 22);
+            this.DeleteSeasonStrip.Text = "Supprimer";
             // 
             // labelFarmsTab
             // 
@@ -959,8 +1007,9 @@ namespace HarvestManagerSystem
             this.FarmDataGridView.ColumnHeadersHeight = 36;
             this.FarmDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.FarmDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn10,
-            this.dataGridViewTextBoxColumn11});
+            this.FarmId,
+            this.FarmName,
+            this.FarmAddress});
             dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle33.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle33.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -987,26 +1036,56 @@ namespace HarvestManagerSystem
             dataGridViewCellStyle35.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle35.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.FarmDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle35;
+            this.FarmDataGridView.RowTemplate.ContextMenuStrip = this.FarmContextMenuStrip;
             this.FarmDataGridView.RowTemplate.Height = 25;
             this.FarmDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.FarmDataGridView.Size = new System.Drawing.Size(505, 515);
+            this.FarmDataGridView.Size = new System.Drawing.Size(646, 515);
             this.FarmDataGridView.TabIndex = 2;
+            this.FarmDataGridView.SelectionChanged += new System.EventHandler(this.FarmtDataGridView_SelectionChanged);
             // 
-            // dataGridViewTextBoxColumn10
+            // FarmId
             // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "FarmName";
-            this.dataGridViewTextBoxColumn10.HeaderText = "Champs";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.ReadOnly = true;
-            this.dataGridViewTextBoxColumn10.Width = 220;
+            this.FarmId.DataPropertyName = "FarmId";
+            this.FarmId.HeaderText = "FarmId";
+            this.FarmId.Name = "FarmId";
+            this.FarmId.Visible = false;
             // 
-            // dataGridViewTextBoxColumn11
+            // FarmName
             // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "farmAddress";
-            this.dataGridViewTextBoxColumn11.HeaderText = "Adresse";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.ReadOnly = true;
-            this.dataGridViewTextBoxColumn11.Width = 280;
+            this.FarmName.DataPropertyName = "FarmName";
+            this.FarmName.HeaderText = "Champs";
+            this.FarmName.Name = "FarmName";
+            this.FarmName.ReadOnly = true;
+            this.FarmName.Width = 240;
+            // 
+            // FarmAddress
+            // 
+            this.FarmAddress.DataPropertyName = "FarmAddress";
+            this.FarmAddress.HeaderText = "Adresse";
+            this.FarmAddress.Name = "FarmAddress";
+            this.FarmAddress.ReadOnly = true;
+            this.FarmAddress.Width = 400;
+            // 
+            // FarmContextMenuStrip
+            // 
+            this.FarmContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.EditFarmStrip,
+            this.DeleteFarmStrip});
+            this.FarmContextMenuStrip.Name = "FarmContextMenuStrip";
+            this.FarmContextMenuStrip.Size = new System.Drawing.Size(130, 48);
+            this.FarmContextMenuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.FarmContextMenuStrip_ItemClicked);
+            // 
+            // EditFarmStrip
+            // 
+            this.EditFarmStrip.Name = "EditFarmStrip";
+            this.EditFarmStrip.Size = new System.Drawing.Size(129, 22);
+            this.EditFarmStrip.Text = "Edit";
+            // 
+            // DeleteFarmStrip
+            // 
+            this.DeleteFarmStrip.Name = "DeleteFarmStrip";
+            this.DeleteFarmStrip.Size = new System.Drawing.Size(129, 22);
+            this.DeleteFarmStrip.Text = "Supprimer";
             // 
             // tabPageProduct
             // 
@@ -1026,7 +1105,6 @@ namespace HarvestManagerSystem
             this.ProductDetailDataGridView.AllowUserToAddRows = false;
             this.ProductDetailDataGridView.AllowUserToDeleteRows = false;
             this.ProductDetailDataGridView.AllowUserToOrderColumns = true;
-            this.ProductDetailDataGridView.AllowUserToResizeColumns = false;
             this.ProductDetailDataGridView.AllowUserToResizeRows = false;
             dataGridViewCellStyle36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ProductDetailDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle36;
@@ -1067,7 +1145,6 @@ namespace HarvestManagerSystem
             this.ProductDetailDataGridView.Location = new System.Drawing.Point(248, 44);
             this.ProductDetailDataGridView.MultiSelect = false;
             this.ProductDetailDataGridView.Name = "ProductDetailDataGridView";
-            this.ProductDetailDataGridView.ReadOnly = true;
             dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle39.BackColor = System.Drawing.Color.LightSkyBlue;
             dataGridViewCellStyle39.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -1092,7 +1169,6 @@ namespace HarvestManagerSystem
             this.ProductDetailId.DataPropertyName = "ProductDetailId";
             this.ProductDetailId.HeaderText = "ProductDetailId";
             this.ProductDetailId.Name = "ProductDetailId";
-            this.ProductDetailId.ReadOnly = true;
             this.ProductDetailId.Visible = false;
             // 
             // ProductTypeColumn
@@ -1122,7 +1198,6 @@ namespace HarvestManagerSystem
             this.ProductPriceEmployeeColumn.HeaderText = "Prix.E";
             this.ProductPriceEmployeeColumn.MinimumWidth = 200;
             this.ProductPriceEmployeeColumn.Name = "ProductPriceEmployeeColumn";
-            this.ProductPriceEmployeeColumn.ReadOnly = true;
             this.ProductPriceEmployeeColumn.Width = 210;
             // 
             // ProductPriceCompanyColumn
@@ -1132,7 +1207,6 @@ namespace HarvestManagerSystem
             this.ProductPriceCompanyColumn.HeaderText = "Prix.C";
             this.ProductPriceCompanyColumn.MinimumWidth = 200;
             this.ProductPriceCompanyColumn.Name = "ProductPriceCompanyColumn";
-            this.ProductPriceCompanyColumn.ReadOnly = true;
             this.ProductPriceCompanyColumn.Width = 210;
             // 
             // dataGridViewTextBoxColumn1
@@ -1141,7 +1215,6 @@ namespace HarvestManagerSystem
             this.dataGridViewTextBoxColumn1.HeaderText = "ProductId";
             this.dataGridViewTextBoxColumn1.MinimumWidth = 100;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             this.dataGridViewTextBoxColumn1.Visible = false;
             // 
             // ProductDetailContextMenuStrip
@@ -1390,6 +1463,7 @@ namespace HarvestManagerSystem
             this.btnAddfarm.TabIndex = 15;
             this.btnAddfarm.Text = "Champ";
             this.btnAddfarm.UseVisualStyleBackColor = true;
+            this.btnAddfarm.Click += new System.EventHandler(this.btnAddFarm_Click);
             // 
             // btnAddProduct
             // 
@@ -1450,7 +1524,6 @@ namespace HarvestManagerSystem
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tabProduction);
             this.ForeColor = System.Drawing.Color.White;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "HarvestMS";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Harvest Manager System";
@@ -1470,7 +1543,9 @@ namespace HarvestManagerSystem
             ((System.ComponentModel.ISupportInitialize)(this.SupplierDataGridView)).EndInit();
             this.tabPageFarm.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SeasonDataGridView)).EndInit();
+            this.SeasonContextMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.FarmDataGridView)).EndInit();
+            this.FarmContextMenuStrip.ResumeLayout(false);
             this.tabPageProduct.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ProductDetailDataGridView)).EndInit();
             this.ProductDetailContextMenuStrip.ResumeLayout(false);
@@ -1534,12 +1609,8 @@ namespace HarvestManagerSystem
         private System.Windows.Forms.Label labelSuuplierTab;
         private System.Windows.Forms.DataGridView SupplierDataGridView;
         private System.Windows.Forms.DataGridView SeasonDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.Label labelFarmsTab;
         private System.Windows.Forms.DataGridView FarmDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.DataGridView ProductDetailDataGridView;
         private System.Windows.Forms.Label labelProductsTab;
         private System.Windows.Forms.DataGridView ProductDataGridView;
@@ -1573,9 +1644,22 @@ namespace HarvestManagerSystem
         private System.Windows.Forms.ToolStripMenuItem EditProductStrip;
         private System.Windows.Forms.ToolStripMenuItem DeleteProductStrip;
         private System.Windows.Forms.ToolStripMenuItem DeleteEmployeeStrip;
+        private System.Windows.Forms.ContextMenuStrip FarmContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem EditFarmStrip;
+        private System.Windows.Forms.ToolStripMenuItem DeleteFarmStrip;
         private System.Windows.Forms.ContextMenuStrip ProductDetailContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem EditProductDetailStrip;
         private System.Windows.Forms.ToolStripMenuItem DeleteProductDetailStrip;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SeasonId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SeasonPlantingDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SeasonHarvestDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Farm;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FarmId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FarmName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FarmAddress;
+        private System.Windows.Forms.ContextMenuStrip SeasonContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem EditSeasonStrip;
+        private System.Windows.Forms.ToolStripMenuItem DeleteSeasonStrip;
     }
 }
 

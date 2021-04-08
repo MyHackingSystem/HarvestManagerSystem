@@ -142,7 +142,6 @@ namespace HarvestManagerSystem.view
             this.ProductNameComboBox.Size = new System.Drawing.Size(160, 29);
             this.ProductNameComboBox.TabIndex = 1;
             this.ProductNameComboBox.SelectedIndexChanged += new System.EventHandler(this.ProductNameComboBox_SelectedIndexChanged);
-            this.ProductNameComboBox.SelectedValueChanged += new System.EventHandler(this.ProductNameComboBox_SelectedValueChanged);
             // 
             // PriceCLabel
             // 

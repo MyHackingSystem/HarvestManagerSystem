@@ -18,6 +18,8 @@ namespace HarvestManagerSystem
     {
         EmployeeDAO employeeDAO = EmployeeDAO.getInstance();
         ProductDAO productDAO = ProductDAO.getInstance();
+        FarmDAO farmDAO = FarmDAO.getInstance();
+        SeasonDAO seasonDAO = SeasonDAO.getInstance();
         ProductDetailDAO productDetailDAO = ProductDetailDAO.getInstance();
         private static List<Employee> list = new List<Employee>();
 
@@ -25,7 +27,7 @@ namespace HarvestManagerSystem
         public HarvestMS()
         {
             InitializeComponent();
-            
+
         }
 
 
@@ -53,10 +55,10 @@ namespace HarvestManagerSystem
                     DisplayEmployeeData();
                     break;
                 case 4:
-                    MessageBox.Show(Convert.ToString(tabProduction.SelectedIndex));
+                    Console.WriteLine("supplier ");
                     break;
                 case 5:
-                    MessageBox.Show(Convert.ToString(tabProduction.SelectedIndex));
+                    DisplayFarmData();
                     break;
                 case 6:
                     DisplayProductData();
@@ -64,11 +66,163 @@ namespace HarvestManagerSystem
                 default:
                     Console.WriteLine("nothing");
                     break;
-            }          
+            }
         }
 
 
+        #region FARM CODE
+
+        List<Farm> listFarm = new List<Farm>();
+        private void btnAddFarm_Click(object sender, EventArgs e)
+        {
+            FormAddFarm formAddFarm = FormAddFarm.getInstance(this);
+            formAddFarm.ShowFormAdd();
+        }
+
+        public void DisplayFarmData()
+        {
+            listFarm = farmDAO.getData();
+            FarmDataGridView.DataSource = listFarm;
+        }
+
+        private void FarmtDataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            int i = FarmDataGridView.CurrentCell.RowIndex;
+            if (i < listFarm.Count)
+            {
+                DisplaySeasonData(listFarm[i]);
+            }
+
+        }
+
+        private void FarmContextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            if (e.ClickedItem.Name == EditFarmStrip.Name)
+            {
+                FarmContextMenuStrip.Visible = false;
+                HandleEditFarmTable();
+            }
+            else if (e.ClickedItem.Name == DeleteFarmStrip.Name)
+            {
+                FarmContextMenuStrip.Visible = false;
+                HandleDeleteFarmTable();
+            }
+        }
+
+        void HandleEditFarmTable()
+        {
+
+            FormAddFarm formAddFarm = FormAddFarm.getInstance(this);
+            Farm farm = (Farm)FarmDataGridView.CurrentRow.DataBoundItem;
+            if (farm == null)
+            {
+                MessageBox.Show("Select farm");
+                return;
+            }
+
+            formAddFarm.InflateUI(farm);
+            formAddFarm.ShowFormAdd();
+        }
+
+        void HandleDeleteFarmTable()
+        {
+            Farm farm = (Farm)FarmDataGridView.CurrentRow.DataBoundItem;
+            if (farm == null)
+            {
+                MessageBox.Show("Select farm");
+                return;
+            }
+            DialogResult dr = MessageBox.Show("Are you sure you want to delete: " + farm.FarmName, "Delete", MessageBoxButtons.YesNoCancel,
+            MessageBoxIcon.Information);
+            bool deleted = false;
+            if (dr == DialogResult.Yes)
+            {
+                deleted = farmDAO.DeleteData(farm);
+            }
+
+            if (deleted)
+            {
+                MessageBox.Show("Delete");
+            }
+            else if (dr == DialogResult.Yes)
+            {
+                MessageBox.Show("Not Delete");
+            }
+            DisplayFarmData();
+
+        }
+
+        #endregion
+
+        #region Season DATA
+
+        private void DisplaySeasonData(Farm farm)
+        {
+            SeasonDataGridView.DataSource = seasonDAO.getData(farm);
+        }
+
+        private void SeasonContextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            if (e.ClickedItem.Name == EditSeasonStrip.Name)
+            {
+                SeasonContextMenuStrip.Visible = false;
+                HandleEditSeasonTable();
+            }
+            else if (e.ClickedItem.Name == DeleteSeasonStrip.Name)
+            {
+                SeasonContextMenuStrip.Visible = false;
+                HandleDeleteSeasonTable();
+            }
+        }
+
+        void HandleEditSeasonTable()
+        {
+            FormAddFarm formAddFarm = FormAddFarm.getInstance(this);
+            Farm farm = (Farm)FarmDataGridView.CurrentRow.DataBoundItem;
+            Season season = (Season)SeasonDataGridView.CurrentRow.DataBoundItem;
+            if (season == null)
+            {
+                MessageBox.Show("Select season");
+                return;
+            }
+
+            formAddFarm.InflateUI(season, farm);
+            formAddFarm.ShowFormAdd();
+        }
+
+        void HandleDeleteSeasonTable()
+        {
+            Season season = (Season)SeasonDataGridView.CurrentRow.DataBoundItem;
+            if (season == null)
+            {
+                MessageBox.Show("Select product");
+                return;
+            }
+
+            DialogResult dr = MessageBox.Show("Are you sure you want to delete season from: " + season.SeasonPlantingDate + " to " + season.SeasonHarvestDate, "Delete", MessageBoxButtons.YesNoCancel,
+MessageBoxIcon.Information);
+            bool deleted = false;
+            if (dr == DialogResult.Yes)
+            {
+                deleted = seasonDAO.DeleteData(season); //productDetailDAO.DeleteData(productDetail);
+            }
+
+            if (deleted)
+            {
+                MessageBox.Show("Delete");
+            }
+            else if (dr == DialogResult.Yes)
+            {
+                MessageBox.Show("Not Delete");
+            }
+            DisplayFarmData();
+
+        }
+
+        #endregion
+
         #region PRODUCT CODE
+
         List<Product> listProduct = new List<Product>();
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
@@ -76,7 +230,7 @@ namespace HarvestManagerSystem
             formAddProduct.ShowFormAdd();
         }
 
-         public void DisplayProductData()
+        public void DisplayProductData()
         {
             listProduct = productDAO.getData();
             ProductDataGridView.DataSource = listProduct;
@@ -108,7 +262,7 @@ namespace HarvestManagerSystem
 
         void HandleEditProductTable()
         {
-            
+
             FormAddProduct formAddProduct = FormAddProduct.getInstance(this);
             Product product = (Product)ProductDataGridView.CurrentRow.DataBoundItem;
             if (product == null)
@@ -135,18 +289,17 @@ namespace HarvestManagerSystem
             if (dr == DialogResult.Yes)
             {
                 deleted = productDAO.DeleteData(product);
-                DisplayProductData();
             }
 
             if (deleted)
             {
                 MessageBox.Show("Delete");
-                DisplayEmployeeData();
             }
             else if (dr == DialogResult.Yes)
             {
                 MessageBox.Show("Not Delete");
             }
+            DisplayProductData();
 
         }
 
@@ -203,18 +356,17 @@ namespace HarvestManagerSystem
             if (dr == DialogResult.Yes)
             {
                 deleted = productDetailDAO.DeleteData(productDetail);
-                DisplayProductData();
             }
 
             if (deleted)
             {
                 MessageBox.Show("Delete");
-                DisplayEmployeeData();
             }
             else if (dr == DialogResult.Yes)
             {
                 MessageBox.Show("Not Delete");
             }
+            DisplayProductData();
 
         }
 
@@ -254,7 +406,7 @@ namespace HarvestManagerSystem
         }
         #endregion
 
-        #region //To do Credit CODE
+        #region //To do Transport CODE
         void DisplayTransportData()
         {
 
@@ -295,12 +447,12 @@ namespace HarvestManagerSystem
         void HandleEditEmployeeTable()
         {
             FormAddEmployee formAddEmployee = FormAddEmployee.getInstance(this);
-            Employee employee = (Employee) EmployeeDataGridView.CurrentRow.DataBoundItem;
+            Employee employee = (Employee)EmployeeDataGridView.CurrentRow.DataBoundItem;
             if (employee == null)
             {
                 MessageBox.Show("Select Employee");
                 return;
-            }           
+            }
             formAddEmployee.InflateUI(employee);
             formAddEmployee.ShowFormAdd();
         }
@@ -320,16 +472,17 @@ namespace HarvestManagerSystem
             {
                 deleted = employeeDAO.DeleteData(selectedEmployee);
             }
-            
+
             if (deleted)
             {
                 MessageBox.Show("Delete");
                 DisplayEmployeeData();
-            }else if(dr == DialogResult.Yes)
+            }
+            else if (dr == DialogResult.Yes)
             {
                 MessageBox.Show("Not Delete");
             }
-            
+
         }
 
         private void EmployeeDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -352,6 +505,8 @@ namespace HarvestManagerSystem
                 }
             }
         }
+
+
 
 
         #endregion

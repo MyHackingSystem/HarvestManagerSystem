@@ -93,14 +93,8 @@ namespace HarvestManagerSystem.view
             {
                 ProductNameComboBox.DataSource = NamesList;
             }
-
-            
         }
 
-        private void ProductNameComboBox_SelectedValueChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void ProductNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
