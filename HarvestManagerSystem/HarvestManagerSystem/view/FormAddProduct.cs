@@ -69,6 +69,10 @@ namespace HarvestManagerSystem.view
             if (isEditProduct)
             {
                 ProductNameComboBox.SelectedIndex = ProductNameComboBox.FindStringExact(mProduct.ProductName);
+            }else if (isEditDetail)
+            {
+                ProductTypeComboBox.SelectedIndex = ProductTypeComboBox.FindStringExact(mProductDetail.ProductType);
+                ProductNameComboBox.SelectedIndex = ProductNameComboBox.FindStringExact(mProduct.ProductName);
             }
         }
 
@@ -89,14 +93,8 @@ namespace HarvestManagerSystem.view
             {
                 ProductNameComboBox.DataSource = NamesList;
             }
-
-            
         }
 
-        private void ProductNameComboBox_SelectedValueChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void ProductNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -135,7 +133,6 @@ namespace HarvestManagerSystem.view
         internal void InflateUI(Product product)
         {
             isEditProduct = true;
-            //ProductNameComboBox.Text = product.ProductName;
             ProductNameComboBox.SelectedIndex = -1;
             ProductNameComboBox.SelectedIndex = ProductNameComboBox.FindStringExact(product.ProductName);
             mProduct.ProductId = product.ProductId;
@@ -144,6 +141,21 @@ namespace HarvestManagerSystem.view
             ProductCode.Enabled = false;
             ProductPriceEmployee.Enabled = false;
             ProductPriceCompany.Enabled = false;
+            handleSaveButton.Text = "Update";
+        }
+
+        internal void InflateUI(ProductDetail productDetail, Product product)
+        {
+            isEditDetail = true;
+            ProductNameComboBox.Enabled = false;
+            mProductDetail.ProductDetailId = productDetail.ProductDetailId;
+            mProductDetail.ProductType = productDetail.ProductType;
+            mProduct.ProductId = product.ProductId;
+            mProduct.ProductName = product.ProductName;
+
+            ProductCode.Text = productDetail.ProductCode;
+            ProductPriceEmployee.Text = Convert.ToString(productDetail.PriceEmployee);
+            ProductPriceCompany.Text = Convert.ToString(productDetail.PriceCompany);
             handleSaveButton.Text = "Update";
         }
 
@@ -181,7 +193,10 @@ namespace HarvestManagerSystem.view
 
         private void UpdateProductDetail(ProductDetail productDetail)
         {
-
+            productDetail.ProductType = ProductTypeComboBox.Text;
+            productDetail.ProductCode = ProductCode.Text;
+            productDetail.PriceEmployee = Convert.ToDouble(ProductPriceEmployee.Text);
+            productDetail.PriceCompany = Convert.ToDouble(ProductPriceCompany.Text);
             bool isAdded = mProductDetailDAO.UpdateData(productDetail);
 
             if (isAdded)

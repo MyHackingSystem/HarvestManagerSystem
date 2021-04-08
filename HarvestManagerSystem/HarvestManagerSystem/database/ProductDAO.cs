@@ -48,12 +48,11 @@ namespace HarvestManagerSystem.database
                 OpenConnection();
                 sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_PRODUCT_NAME, product.ProductName));
                 sQLiteCommand.ExecuteNonQuery();
-                CloseConnection();
                 return true;
             }
             catch (SQLiteException e)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
                 return false;
             }
             finally
@@ -88,13 +87,16 @@ namespace HarvestManagerSystem.database
                         productDictionary.Add(product.ProductName, product);
                     }
                 }
-                CloseConnection();
                 return productDictionary;
             }
             catch (SQLiteException e)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
                 return productDictionary;
+            }
+            finally
+            {
+                CloseConnection();
             }
         }
 

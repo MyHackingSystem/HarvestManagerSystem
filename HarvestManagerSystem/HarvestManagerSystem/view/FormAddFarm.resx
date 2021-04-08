@@ -57,13 +57,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="SeasonId.UserAddedColumn" type="System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
-    <value>True</value>
-  </metadata>
-  <metadata name="Farm.UserAddedColumn" type="System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
-    <value>True</value>
-  </metadata>
-  <metadata name="FarmId.UserAddedColumn" type="System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
-    <value>True</value>
-  </metadata>
+  <assembly alias="System.Drawing.Common" name="System.Drawing.Common, Version=4.0.2.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAMQOAADEDgAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAEC1+/8CBwv/QLX7/0C1+/9Atfv/QLX7/0C1+/8CBwv/QLX7/0C1+/9Atfv/QLX7/0C1
+        +/8CBwv/AAAA/wAAAAAAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAA
+        AP8AAAD/AAAA/wAAAP8AAAAALZ3q/y2d6v8tner/LZ3q/y2d6v8tner/LZ3q/y2d6v8tner/LZ3q/y2d
+        6v8tner/LZ3q/y2d6v8AAAD/AAAAAEC1+/8CBwv/QLX7/0C1+/9Atfv/QLX7/0C1+/8CBwv/QLX7/0C1
+        +/9Atfv/QLX7/0C1+/8CBwv/AAAA/wAAAAAAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAA
+        AP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAAAAAAAAAAAAAAAAAP8ULlD/AAAA/wsJK/8AAAD/Pi/o/z4v
+        6P/Ly8v/AAAA/wAAAP8AAAB7AAAA/wAAAP8AAAAAAAAAAAAAAAAmkv3/JpL9/wAAAP8AAAD/Pi/o/wQD
+        D/85K9f/AAAA/zekAv83pAL/N6QC/zekAv83pAL/AAAAAAAAAAAAAAD/IoTl/yaS/f8AAAD/AAAAAAAA
+        AAAAAAD/AAAA/wAAAP8cVQH/N6QC/zekAv83pAL/N6QC/wAAAGcAAAAAAAAA/zekAv8AAAD/AAAA/wAA
+        AAA3pAL/AAAA/wAAAP8AAAD/N6QC/zekAv83pAL/N6QC/zekAv8AAAAAAAAAAAAAAP8AAAD/N6QC/wAA
+        AP8AAAAAAAAAAAAAAAAmcgL/Kn4C/wAAAP83pAL/AAAA/zekAv8AAAD/AAAAAAAAAAAAAADsAAAA/wAA
+        AP8AAAAAAAAAAAAAAAAAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAAuAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAP8AAAD/AAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8AAAD/AAAA/wAAAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPQAAAD/AAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAA//8AAIAAAACAAAAAgAAAAIAAAACAAQAAwAkAAMABAACGAQAAhAEAAIcBAADOBwAA/h8AAP4f
+        AAD/PwAA/78AAA==
+</value>
+  </data>
 </root>

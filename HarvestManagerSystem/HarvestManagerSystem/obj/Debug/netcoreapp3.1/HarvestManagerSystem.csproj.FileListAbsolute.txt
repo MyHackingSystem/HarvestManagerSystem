@@ -32,3 +32,4 @@ E:\Projects\C_Sharp\Desktop\HarvestManagerSystem\HarvestManagerSystem\HarvestMan
 E:\Projects\C_Sharp\Desktop\HarvestManagerSystem\HarvestManagerSystem\HarvestManagerSystem\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 E:\Projects\C_Sharp\Desktop\HarvestManagerSystem\HarvestManagerSystem\HarvestManagerSystem\obj\Debug\netcoreapp3.1\HarvestManagerSystem.csproj.CopyComplete
 E:\Projects\C_Sharp\Desktop\HarvestManagerSystem\HarvestManagerSystem\HarvestManagerSystem\bin\Debug\netcoreapp3.1\bin\Debug\netcoreapp3.1\database.sqlite3
+E:\Projects\C_Sharp\Desktop\HarvestManagerSystem\HarvestManagerSystem\HarvestManagerSystem\obj\Debug\netcoreapp3.1\HarvestManagerSystem.view.FormAddFarm.resources

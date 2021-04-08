@@ -35,6 +35,28 @@ namespace HarvestManagerSystem.database
             return instance;
         }
 
+        public void CreateTable()
+        {
+            String createStmt = "CREATE TABLE IF NOT EXISTS " + TABLE_PRODUCT_DETAIL
+                   + "(" + COLUMN_PRODUCT_DETAIL_ID + " INTEGER PRIMARY KEY, "
+                    + COLUMN_PRODUCT_TYPE + " TEXT NOT NULL, "
+                    + COLUMN_PRODUCT_CODE + " TEXT NOT NULL UNIQUE, "
+                    + COLUMN_PRODUCT_PRICE_EMPLOYEE + " REAL NOT NULL DEFAULT 0, "
+                    + COLUMN_PRODUCT_PRICE_COMPANY + " REAL NOT NULL DEFAULT 0, "
+                    + COLUMN_FOREIGN_KEY_PRODUCT_ID + " INTEGER NOT NULL, "
+                    + COLUMN_PRODUCT_DETAIL_IS_EXIST + " INTEGER DEFAULT 1, "
+                    + "FOREIGN KEY (" + COLUMN_FOREIGN_KEY_PRODUCT_ID + ") REFERENCES " + ProductDAO.TABLE_PRODUCT + " (" + ProductDAO.COLUMN_PRODUCT_ID + ") "
+                    + ")";
+
+
+            SQLiteCommand sQLiteCommand = new SQLiteCommand(createStmt, mSQLiteConnection);
+            OpenConnection();
+            sQLiteCommand.ExecuteNonQuery();
+            CloseConnection();
+            MessageBox.Show("Create table");
+
+        }
+
         //*******************************
         //Update product data
         //*******************************
@@ -44,9 +66,8 @@ namespace HarvestManagerSystem.database
                  + COLUMN_PRODUCT_TYPE + " =@" + COLUMN_PRODUCT_TYPE + ", "
                  + COLUMN_PRODUCT_CODE + " =@" + COLUMN_PRODUCT_CODE + ", "
                  + COLUMN_PRODUCT_PRICE_EMPLOYEE + " =@" + COLUMN_PRODUCT_PRICE_EMPLOYEE + ", "
-                 + COLUMN_PRODUCT_PRICE_COMPANY + " =@" + COLUMN_PRODUCT_PRICE_COMPANY + ", "
-                 + COLUMN_FOREIGN_KEY_PRODUCT_ID + " =@" + COLUMN_FOREIGN_KEY_PRODUCT_ID + " "
-                 + " WHERE " + COLUMN_FOREIGN_KEY_PRODUCT_ID + " = " + productDetail.ProductDetailId + " ";
+                 + COLUMN_PRODUCT_PRICE_COMPANY + " =@" + COLUMN_PRODUCT_PRICE_COMPANY + " "
+                 + " WHERE " + COLUMN_PRODUCT_DETAIL_ID + " = " + productDetail.ProductDetailId + " ";
 
             try
             {
@@ -56,9 +77,7 @@ namespace HarvestManagerSystem.database
                 sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_PRODUCT_CODE, productDetail.ProductCode));
                 sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_PRODUCT_PRICE_EMPLOYEE, productDetail.PriceEmployee));
                 sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_PRODUCT_PRICE_COMPANY, productDetail.PriceCompany));
-                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_FOREIGN_KEY_PRODUCT_ID, productDetail.PriceCompany));
                 sQLiteCommand.ExecuteNonQuery();
-                CloseConnection();
                 return true;
             }
             catch (SQLiteException e)
@@ -296,26 +315,6 @@ namespace HarvestManagerSystem.database
             }
         }
 
-        public void CreateTable()
-        {
-            String createStmt = "CREATE TABLE IF NOT EXISTS " + TABLE_PRODUCT_DETAIL
-                   + "(" + COLUMN_PRODUCT_DETAIL_ID + " INTEGER PRIMARY KEY, "
-                    + COLUMN_PRODUCT_TYPE + " TEXT NOT NULL, "
-                    + COLUMN_PRODUCT_CODE + " TEXT NOT NULL UNIQUE, "
-                    + COLUMN_PRODUCT_PRICE_EMPLOYEE + " REAL NOT NULL DEFAULT 0, "
-                    + COLUMN_PRODUCT_PRICE_COMPANY + " REAL NOT NULL DEFAULT 0, "
-                    + COLUMN_FOREIGN_KEY_PRODUCT_ID + " INTEGER NOT NULL, "
-                    + COLUMN_PRODUCT_DETAIL_IS_EXIST + " INTEGER DEFAULT 1, "
-                    + "FOREIGN KEY (" + COLUMN_FOREIGN_KEY_PRODUCT_ID + ") REFERENCES " + ProductDAO.TABLE_PRODUCT + " (" + ProductDAO.COLUMN_PRODUCT_ID + ") "
-                    + ")";
 
-
-            SQLiteCommand sQLiteCommand = new SQLiteCommand(createStmt, mSQLiteConnection);
-            OpenConnection();
-            sQLiteCommand.ExecuteNonQuery();
-            CloseConnection();
-            MessageBox.Show("Create table");
-
-        }
     }
 }
