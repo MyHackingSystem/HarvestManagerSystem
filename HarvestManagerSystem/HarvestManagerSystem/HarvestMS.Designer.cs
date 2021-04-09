@@ -110,14 +110,17 @@ namespace HarvestManagerSystem
             this.EditEmployeeStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteEmployeeStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPageSupplier = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.SupplyFarmColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SupplyProductColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SupplyDataGridView = new System.Windows.Forms.DataGridView();
+            this.SupplyId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Supplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SupplyFarmName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SupplyProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelSuuplierTab = new System.Windows.Forms.Label();
             this.SupplierDataGridView = new System.Windows.Forms.DataGridView();
-            this.SupplierNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SupplierFirstNameColomn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SupplierLastNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SupplierId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SupplierName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SupplierLastNameColomn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SupplierLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPageFarm = new System.Windows.Forms.TabPage();
             this.SeasonDataGridView = new System.Windows.Forms.DataGridView();
             this.SeasonId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -179,7 +182,7 @@ namespace HarvestManagerSystem
             ((System.ComponentModel.ISupportInitialize)(this.EmployeeDataGridView)).BeginInit();
             this.EmployeeContextMenuStrip.SuspendLayout();
             this.tabPageSupplier.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SupplyDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SupplierDataGridView)).BeginInit();
             this.tabPageFarm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SeasonDataGridView)).BeginInit();
@@ -677,7 +680,7 @@ namespace HarvestManagerSystem
             // tabPageSupplier
             // 
             this.tabPageSupplier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tabPageSupplier.Controls.Add(this.dataGridView1);
+            this.tabPageSupplier.Controls.Add(this.SupplyDataGridView);
             this.tabPageSupplier.Controls.Add(this.labelSuuplierTab);
             this.tabPageSupplier.Controls.Add(this.SupplierDataGridView);
             this.tabPageSupplier.Location = new System.Drawing.Point(4, 34);
@@ -687,20 +690,20 @@ namespace HarvestManagerSystem
             this.tabPageSupplier.TabIndex = 4;
             this.tabPageSupplier.Text = "Fournisseur";
             // 
-            // dataGridView1
+            // SupplyDataGridView
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
+            this.SupplyDataGridView.AllowUserToAddRows = false;
+            this.SupplyDataGridView.AllowUserToDeleteRows = false;
+            this.SupplyDataGridView.AllowUserToOrderColumns = true;
             dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.SupplyDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
+            this.SupplyDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.SupplyDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.SupplyDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.SupplyDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SupplyDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(25)))), ((int)(((byte)(70)))));
             dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -708,12 +711,14 @@ namespace HarvestManagerSystem
             dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
-            this.dataGridView1.ColumnHeadersHeight = 36;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.SupplyFarmColumn,
-            this.SupplyProductColumn});
+            this.SupplyDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            this.SupplyDataGridView.ColumnHeadersHeight = 36;
+            this.SupplyDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.SupplyDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.SupplyId,
+            this.Supplier,
+            this.SupplyFarmName,
+            this.SupplyProductName});
             dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle18.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -722,11 +727,11 @@ namespace HarvestManagerSystem
             dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle18;
-            this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dataGridView1.Location = new System.Drawing.Point(637, 45);
-            this.dataGridView1.Name = "dataGridView1";
+            this.SupplyDataGridView.DefaultCellStyle = dataGridViewCellStyle18;
+            this.SupplyDataGridView.EnableHeadersVisualStyles = false;
+            this.SupplyDataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.SupplyDataGridView.Location = new System.Drawing.Point(637, 45);
+            this.SupplyDataGridView.Name = "SupplyDataGridView";
             dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle19.BackColor = System.Drawing.Color.LightSkyBlue;
             dataGridViewCellStyle19.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -734,28 +739,43 @@ namespace HarvestManagerSystem
             dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
-            this.dataGridView1.RowHeadersVisible = false;
+            this.SupplyDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            this.SupplyDataGridView.RowHeadersVisible = false;
             dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             dataGridViewCellStyle20.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle20.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle20;
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(476, 515);
-            this.dataGridView1.TabIndex = 4;
+            this.SupplyDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle20;
+            this.SupplyDataGridView.RowTemplate.Height = 25;
+            this.SupplyDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.SupplyDataGridView.Size = new System.Drawing.Size(476, 515);
+            this.SupplyDataGridView.TabIndex = 4;
             // 
-            // SupplyFarmColumn
+            // SupplyId
             // 
-            this.SupplyFarmColumn.HeaderText = "Champ";
-            this.SupplyFarmColumn.Name = "SupplyFarmColumn";
-            this.SupplyFarmColumn.ReadOnly = true;
+            this.SupplyId.DataPropertyName = "SupplyId";
+            this.SupplyId.HeaderText = "SupplyId";
+            this.SupplyId.Name = "SupplyId";
+            this.SupplyId.Visible = false;
             // 
-            // SupplyProductColumn
+            // Supplier
             // 
-            this.SupplyProductColumn.HeaderText = "Pruduit";
-            this.SupplyProductColumn.Name = "SupplyProductColumn";
-            this.SupplyProductColumn.ReadOnly = true;
+            this.Supplier.HeaderText = "Supplier";
+            this.Supplier.Name = "Supplier";
+            this.Supplier.Visible = false;
+            // 
+            // SupplyFarmName
+            // 
+            this.SupplyFarmName.DataPropertyName = "SupplyFarmName";
+            this.SupplyFarmName.HeaderText = "Champ";
+            this.SupplyFarmName.Name = "SupplyFarmName";
+            this.SupplyFarmName.ReadOnly = true;
+            // 
+            // SupplyProductName
+            // 
+            this.SupplyProductName.DataPropertyName = "SupplyProductName";
+            this.SupplyProductName.HeaderText = "Pruduit";
+            this.SupplyProductName.Name = "SupplyProductName";
+            this.SupplyProductName.ReadOnly = true;
             // 
             // labelSuuplierTab
             // 
@@ -793,9 +813,10 @@ namespace HarvestManagerSystem
             this.SupplierDataGridView.ColumnHeadersHeight = 36;
             this.SupplierDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.SupplierDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.SupplierNameColumn,
-            this.SupplierFirstNameColomn,
-            this.SupplierLastNameColumn});
+            this.SupplierId,
+            this.SupplierName,
+            this.SupplierLastNameColomn,
+            this.SupplierLastName});
             dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle23.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle23.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -826,26 +847,37 @@ namespace HarvestManagerSystem
             this.SupplierDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.SupplierDataGridView.Size = new System.Drawing.Size(631, 515);
             this.SupplierDataGridView.TabIndex = 2;
+            this.SupplierDataGridView.SelectionChanged += new System.EventHandler(this.SupplierDataGridView_SelectionChanged);
             // 
-            // SupplierNameColumn
+            // SupplierId
             // 
-            this.SupplierNameColumn.HeaderText = "Fournisseur";
-            this.SupplierNameColumn.Name = "SupplierNameColumn";
-            this.SupplierNameColumn.Width = 230;
+            this.SupplierId.DataPropertyName = "SupplierId";
+            this.SupplierId.HeaderText = "SupplierId";
+            this.SupplierId.Name = "SupplierId";
+            this.SupplierId.Visible = false;
             // 
-            // SupplierFirstNameColomn
+            // SupplierName
             // 
-            this.SupplierFirstNameColomn.HeaderText = "Prénom";
-            this.SupplierFirstNameColomn.Name = "SupplierFirstNameColomn";
-            this.SupplierFirstNameColomn.ReadOnly = true;
-            this.SupplierFirstNameColomn.Width = 200;
+            this.SupplierName.DataPropertyName = "SupplierName";
+            this.SupplierName.HeaderText = "Fournisseur";
+            this.SupplierName.Name = "SupplierName";
+            this.SupplierName.Width = 230;
             // 
-            // SupplierLastNameColumn
+            // SupplierLastNameColomn
             // 
-            this.SupplierLastNameColumn.HeaderText = "Nom";
-            this.SupplierLastNameColumn.Name = "SupplierLastNameColumn";
-            this.SupplierLastNameColumn.ReadOnly = true;
-            this.SupplierLastNameColumn.Width = 200;
+            this.SupplierLastNameColomn.DataPropertyName = "SupplierFirstName";
+            this.SupplierLastNameColomn.HeaderText = "Prénom";
+            this.SupplierLastNameColomn.Name = "SupplierLastNameColomn";
+            this.SupplierLastNameColomn.ReadOnly = true;
+            this.SupplierLastNameColomn.Width = 200;
+            // 
+            // SupplierLastName
+            // 
+            this.SupplierLastName.DataPropertyName = "SupplierLastName";
+            this.SupplierLastName.HeaderText = "Nom";
+            this.SupplierLastName.Name = "SupplierLastName";
+            this.SupplierLastName.ReadOnly = true;
+            this.SupplierLastName.Width = 200;
             // 
             // tabPageFarm
             // 
@@ -1433,6 +1465,7 @@ namespace HarvestManagerSystem
             this.btnAddSupplier.TabIndex = 12;
             this.btnAddSupplier.Text = "Fournisseur";
             this.btnAddSupplier.UseVisualStyleBackColor = true;
+            this.btnAddSupplier.Click += new System.EventHandler(this.btnAddSupplier_Click);
             // 
             // btnAddCredit
             // 
@@ -1539,7 +1572,7 @@ namespace HarvestManagerSystem
             ((System.ComponentModel.ISupportInitialize)(this.EmployeeDataGridView)).EndInit();
             this.EmployeeContextMenuStrip.ResumeLayout(false);
             this.tabPageSupplier.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SupplyDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SupplierDataGridView)).EndInit();
             this.tabPageFarm.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SeasonDataGridView)).EndInit();
@@ -1624,12 +1657,7 @@ namespace HarvestManagerSystem
         private System.Windows.Forms.DataGridViewTextBoxColumn TransportEmployeeColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn TransportAmountColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn TransportFarmColumn;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SupplyFarmColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SupplyProductColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierNameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierFirstNameColomn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierLastNameColumn;
+        private System.Windows.Forms.DataGridView SupplyDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductNameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductDetailId;
@@ -1660,6 +1688,14 @@ namespace HarvestManagerSystem
         private System.Windows.Forms.ContextMenuStrip SeasonContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem EditSeasonStrip;
         private System.Windows.Forms.ToolStripMenuItem DeleteSeasonStrip;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SupplyId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Supplier;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SupplyFarmName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SupplyProductName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierLastNameColomn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierLastName;
     }
 }
 
