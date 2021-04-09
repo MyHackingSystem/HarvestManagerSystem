@@ -287,6 +287,7 @@ namespace HarvestManagerSystem.view
             this.Controls.Add(this.nameSupplierErrorLabel);
             this.Controls.Add(this.supplierFirstNameErrorLabel);
             this.Name = "FormAddSupplier";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormAddSupplier";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAddProduct_FormClosed);
             this.Load += new System.EventHandler(this.FormAddSupplier_Load);

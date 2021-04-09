@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Data.SQLite;
 using HarvestManagerSystem.model;
+using System.Windows.Forms;
 
 namespace HarvestManagerSystem.database
 {
@@ -63,18 +64,13 @@ namespace HarvestManagerSystem.database
                     while (result.Read())
                     {
                         Supply supply = new Supply();
-
                         supply.SupplyId = Convert.ToInt32((result[COLUMN_SUPPLY_ID]).ToString());
                         supply.Supplier.SupplierId = Convert.ToInt32((result[SupplierDAO.COLUMN_SUPPLIER_ID]).ToString());
                         supply.Supplier.SupplierName = (string)result[SupplierDAO.COLUMN_SUPPLIER_NAME];
-
-
-                        // to do 
-
-                        //supply.Farm.FarmId = Convert.ToInt32((result[FarmDAO.COLUMN_FARM_ID]).ToString());
-                        //supply.Farm.FarmName = (string)result[FarmDAO.COLUMN_FARM_NAME];
-                        //supply.Product.ProductId = Convert.ToInt32((result[ProductDAO.COLUMN_PRODUCT_ID]).ToString());
-                        //supply.Product.ProductName = (string)result[ProductDAO.COLUMN_PRODUCT_NAME];
+                        supply.Farm.FarmId = Convert.ToInt32((result[FarmDAO.COLUMN_FARM_ID]).ToString());
+                        supply.Farm.FarmName = (string)result[FarmDAO.COLUMN_FARM_NAME];
+                        supply.Product.ProductId = Convert.ToInt32((result[ProductDAO.COLUMN_PRODUCT_ID]).ToString());
+                        supply.Product.ProductName = (string)result[ProductDAO.COLUMN_PRODUCT_NAME];
                         list.Add(supply);
                     }
                 }

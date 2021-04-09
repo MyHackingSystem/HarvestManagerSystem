@@ -158,13 +158,16 @@ namespace HarvestManagerSystem.database
         //*******************************
         public bool DeleteData(Supplier supplier)
         {
-            String updateStmt = "UPDATE " + TABLE_SUPPLIER + " SET "
+            string updateStmt = "UPDATE " + TABLE_SUPPLIER + " SET "
                  + COLUMN_SUPPLIER_IS_EXIST + " = 0 "
                 + " WHERE " + COLUMN_SUPPLIER_ID + " = " + supplier.SupplierId + " ";
 
+            string deleteStmt = "DELETE FROM " + SupplyDAO.TABLE_SUPPLY
+                + " WHERE " + SupplyDAO.COLUMN_SUPPLY_FRGN_KEY_SUPPLIER_ID + " = " + supplier.SupplierId + " ;";
+
             try
             {
-                SQLiteCommand sQLiteCommand = new SQLiteCommand(updateStmt, mSQLiteConnection);
+                SQLiteCommand sQLiteCommand = new SQLiteCommand(updateStmt + ";" + deleteStmt, mSQLiteConnection);
                 OpenConnection();
                 sQLiteCommand.ExecuteNonQuery();
                 return true;
@@ -196,7 +199,7 @@ namespace HarvestManagerSystem.database
                 SQLiteCommand sQLiteCommand = new SQLiteCommand(updateStmt, mSQLiteConnection);
                 OpenConnection();
                 sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_SUPPLIER_NAME, supplier.SupplierName));
-                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_SUPPLIER_NAME, supplier.SupplierFirstName));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_SUPPLIER_FIRSTNAME, supplier.SupplierFirstName));
                 sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_SUPPLIER_LASTNAME, supplier.SupplierLastName));
                 sQLiteCommand.ExecuteNonQuery();
                 CloseConnection();

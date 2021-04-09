@@ -29,7 +29,6 @@ namespace HarvestManagerSystem
         public HarvestMS()
         {
             InitializeComponent();
-
         }
 
 
@@ -101,7 +100,123 @@ namespace HarvestManagerSystem
             SupplyDataGridView.DataSource = supplyDAO.getData(supplier);
         }
 
+        private void SupplierContextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            if (e.ClickedItem.Name == EditSupplierStrip.Name)
+            {
+                SupplierContextMenuStrip.Visible = false;
+                HandleEditSupplierTable();
+            }
+            else if (e.ClickedItem.Name == DeleteSupplierStrip.Name)
+            {
+                SupplierContextMenuStrip.Visible = false;
+                HandleDeleteSupplierTable();
+            }
+        }
+
+
+        void HandleEditSupplierTable()
+        {
+            FormAddSupplier formAddSupplier = FormAddSupplier.getInstance(this);
+            Supplier supplier = (Supplier)SupplierDataGridView.CurrentRow.DataBoundItem;
+            if(supplier == null)
+            {
+                MessageBox.Show("Select fournisseur");
+                return;
+            }
+            formAddSupplier.InflateUI(supplier);
+            formAddSupplier.ShowFormAdd();
+        }
+
+        void HandleDeleteSupplierTable()
+        {
+            Supplier supplier = (Supplier)SupplierDataGridView.CurrentRow.DataBoundItem;
+            if (supplier == null)
+            {
+                MessageBox.Show("Select fournisseur");
+                return;
+            }
+
+            DialogResult dr = MessageBox.Show("Are you sure you want to delete: " + supplier.SupplierName, "Delete", MessageBoxButtons.YesNoCancel,
+            MessageBoxIcon.Information);
+            bool deleted = false;
+            if (dr == DialogResult.Yes)
+            {
+                deleted = supplierDAO.DeleteData(supplier);
+            }
+
+            if (deleted)
+            {
+                MessageBox.Show("Delete");
+            }
+            else if (dr == DialogResult.Yes)
+            {
+                MessageBox.Show("Not Delete");
+            }
+            DisplaySupplierData();
+
+        }
+
+        private void SupplyContextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            if (e.ClickedItem.Name == EditSupplyStrip.Name)
+            {
+                SupplyContextMenuStrip.Visible = false;
+                HandleEditSupplyTable();
+            }
+            else if (e.ClickedItem.Name == DeleteSupplyStrip.Name)
+            {
+                SupplyContextMenuStrip.Visible = false;
+                HandleDeleteSupplyTable();
+            }
+        }
+
+        void HandleEditSupplyTable()
+        {
+            FormAddSupplier formAddSupplier = FormAddSupplier.getInstance(this);
+            Supplier supplier = (Supplier)SupplierDataGridView.CurrentRow.DataBoundItem;
+            Supply supply = (Supply)SupplyDataGridView.CurrentRow.DataBoundItem;
+            if(supply == null)
+            {
+                MessageBox.Show("Select champ");
+                return;
+            }
+
+            formAddSupplier.InflateUI(supply, supplier);
+            formAddSupplier.ShowFormAdd();
+        }
+
+        void HandleDeleteSupplyTable()
+        {
+            Supply supply = (Supply)SupplyDataGridView.CurrentRow.DataBoundItem;
+            if (supply == null)
+            {
+                MessageBox.Show("Select champ");
+                return;
+            }
+
+            DialogResult dr = MessageBox.Show("Are you sure you want to delete champ: " + supply.Farm.FarmName, "Delete", MessageBoxButtons.YesNoCancel,
+MessageBoxIcon.Information);
+            bool deleted = false;
+            if (dr == DialogResult.Yes)
+            {
+                deleted = supplyDAO.DeleteData(supply);
+            }
+
+            if (deleted)
+            {
+                MessageBox.Show("Delete");
+            }
+            else if (dr == DialogResult.Yes)
+            {
+                MessageBox.Show("Not Delete");
+            }
+            DisplaySupplierData();
+
+        }
+
         #endregion
+
 
         #region FARM CODE
 
@@ -538,6 +653,8 @@ MessageBoxIcon.Information);
                 }
             }
         }
+
+
 
 
 
