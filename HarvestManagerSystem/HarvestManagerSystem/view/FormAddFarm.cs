@@ -17,12 +17,8 @@ namespace HarvestManagerSystem.view
         private Farm mFarm = new Farm();
         private Season mSeason = new Season();
         private FarmDAO farmDAO = FarmDAO.getInstance();
-
         private SeasonDAO seasonDAO = SeasonDAO.getInstance();
-
         private Dictionary<string, Farm> mFarmDictionary = new Dictionary<string, Farm>();
-
-
         private HarvestMS harvestMS;
         private static FormAddFarm instance;
 
@@ -134,10 +130,6 @@ namespace HarvestManagerSystem.view
             mSeason.SeasonPlantingDate = season.SeasonPlantingDate;
             mSeason.SeasonHarvestDate = season.SeasonHarvestDate;
 
-            //mFarm.FarmId = farm.FarmId;
-            //mFarm.FarmName = farm.FarmName;
-            //mFarm.FarmAddress = farm.FarmAddress;
-
             PlantingDate.Value = season.SeasonPlantingDate;
             HarvestDate.Value = season.SeasonHarvestDate;
             handleSaveButton.Text = "Update";
@@ -176,9 +168,6 @@ namespace HarvestManagerSystem.view
         {
             season.SeasonPlantingDate = PlantingDate.Value;
             season.SeasonHarvestDate = HarvestDate.Value;
-            //season.Farm.FarmId = mFarm.FarmId;
-            //season.Farm.FarmName = mFarm.FarmName;
-            //season.Farm.FarmAddress = mFarm.FarmAddress;
 
             bool isAdded = seasonDAO.UpdateData(season); 
 
@@ -197,8 +186,8 @@ namespace HarvestManagerSystem.view
 
         private void UpdateFarm(Farm farm)
         {
-            farm.FarmName = FarmNameComboBox.Text;
-            farm.FarmAddress = FarmAddress.Text;
+            farm.FarmName = FarmNameComboBox.Text.ToUpper().Trim();
+            farm.FarmAddress = FarmAddress.Text.ToUpper().Trim();
 
             bool isAdded = farmDAO.UpdateData(farm); 
             if (isAdded)
@@ -237,8 +226,8 @@ namespace HarvestManagerSystem.view
             }
             else
             {
-                season.Farm.FarmName = FarmNameComboBox.Text;
-                season.Farm.FarmAddress = FarmAddress.Text;
+                season.Farm.FarmName = FarmNameComboBox.Text.ToUpper().Trim();
+                season.Farm.FarmAddress = FarmAddress.Text.ToUpper().Trim();
                 added = seasonDAO.addNewFarmSeason(season); 
 
             }

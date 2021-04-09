@@ -17,9 +17,11 @@ namespace HarvestManagerSystem
     public partial class HarvestMS : Form
     {
         EmployeeDAO employeeDAO = EmployeeDAO.getInstance();
-        ProductDAO productDAO = ProductDAO.getInstance();
+        SupplierDAO supplierDAO = SupplierDAO.getInstance();
+        SupplyDAO supplyDAO = SupplyDAO.getInstance();
         FarmDAO farmDAO = FarmDAO.getInstance();
         SeasonDAO seasonDAO = SeasonDAO.getInstance();
+        ProductDAO productDAO = ProductDAO.getInstance();
         ProductDetailDAO productDetailDAO = ProductDetailDAO.getInstance();
         private static List<Employee> list = new List<Employee>();
 
@@ -55,7 +57,7 @@ namespace HarvestManagerSystem
                     DisplayEmployeeData();
                     break;
                 case 4:
-                    Console.WriteLine("supplier ");
+                    DisplaySupplierData();
                     break;
                 case 5:
                     DisplayFarmData();
@@ -69,6 +71,37 @@ namespace HarvestManagerSystem
             }
         }
 
+        #region SUPPLIER CODE
+
+        List<Supplier> listSupplier = new List<Supplier>();
+        private void btnAddSupplier_Click(object sender, EventArgs e)
+        {
+            FormAddSupplier formAddSupplier = FormAddSupplier.getInstance(this);
+            formAddSupplier.ShowFormAdd();
+
+        }
+        public void DisplaySupplierData()
+        {
+            listSupplier = supplierDAO.getData();
+            SupplierDataGridView.DataSource = listSupplier;
+        }
+
+        private void SupplierDataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            int i = SupplierDataGridView.CurrentCell.RowIndex;
+            if (i < listSupplier.Count)
+            {
+                DisplaySupplyData(listSupplier[i]);
+            }
+
+        }
+
+        private void DisplaySupplyData(Supplier supplier)
+        {
+            SupplyDataGridView.DataSource = supplyDAO.getData(supplier);
+        }
+
+        #endregion
 
         #region FARM CODE
 
@@ -505,6 +538,7 @@ MessageBoxIcon.Information);
                 }
             }
         }
+
 
 
 

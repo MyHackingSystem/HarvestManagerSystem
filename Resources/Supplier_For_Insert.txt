@@ -1,0 +1,75 @@
+
+CREATE VIEW Supplier_For_Insert AS
+SELECT a.FarmId,
+    a.ProductId,
+    b.SupplierName,
+    b.SupplierFirstName,
+    b.SupplierLastName
+FROM Supply a
+    INNER JOIN Supplier b ON a.SupplierId = b.SupplierId
+
+
+/////////////////////
+
+INSERT INTO Supplier_For_Insert
+(
+    FarmId,
+    ProductId,
+    SupplierName,
+    SupplierFirstName,
+    SupplierLastName
+)
+VALUES
+(
+    10,
+    20,
+    'name',
+    'fn',
+    'ln'
+)
+
+//////////////////////
+
+
+CREATE TRIGGER insert_supplier_supply
+INSTEAD OF INSERT
+ON Supplier_For_Insert
+    
+BEGIN
+    
+INSERT INTO Supplier (SupplierName, SupplierFirstName, SupplierLastName)
+SELECT NEW.SupplierName, NEW.SupplierFirstName, NEW.SupplierLastName
+WHERE NOT EXISTS
+    (SELECT 1 FROM Supplier
+     WHERE SupplierName = NEW.SupplierName);
+        
+INSERT INTO Supply (FarmId, ProductId, SupplierId)
+SELECT NEW.FarmId, NEW.ProductId, Supplier.SupplierId
+FROM Supplier
+WHERE Supplier.SupplierName = NEW.SupplierName;
+    
+END
+
+//////////////
+
+
+DROP TRIGGER insert_products_detail
+
+///////////
+
+DROP VIEW Product_For_Insert
+
+
+        public const string TABLE_SUPPLIER = "Supplier";
+        public const string COLUMN_SUPPLIER_ID = "SupplierId";
+        public const string COLUMN_SUPPLIER_NAME = "SupplierName";
+        public const string COLUMN_SUPPLIER_FIRSTNAME = "SupplierFirstName";
+        public const string COLUMN_SUPPLIER_LASTNAME = "SupplierLastName";
+        public const string COLUMN_SUPPLIER_IS_EXIST = "is_exist";
+
+        public const string TABLE_SUPPLY = "Supply";
+        public const string COLUMN_SUPPLY_ID = "SupplyId";
+        public const string COLUMN_SUPPLY_FRGN_KEY_SUPPLIER_ID = "SupplierId";
+        public const string COLUMN_SUPPLY_FRGN_KEY_FARM_ID = "FarmId";
+        public const string COLUMN_SUPPLY_FRGN_KEY_PRODUCT_ID = "ProductId";
+        public const string COLUMN_SUPPLY_FRGN_KEY_PRODUCT_DETAIL_ID = "ProductDetailId";

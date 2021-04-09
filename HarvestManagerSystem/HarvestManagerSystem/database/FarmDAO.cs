@@ -38,7 +38,7 @@ namespace HarvestManagerSystem.database
         {
             Dictionary<string, Farm> dictionary = new Dictionary<string, Farm>();
 
-            String selectStmt = "SELECT * FROM " + TABLE_FARM
+            var selectStmt = "SELECT * FROM " + TABLE_FARM
                 + " WHERE " + COLUMN_FARM_IS_EXIST + " = 1 "
                 + " ORDER BY " + COLUMN_FARM_NAME + " ASC;";
 
@@ -115,11 +115,11 @@ namespace HarvestManagerSystem.database
         }
 
         //*******************************
-        //Add new product data 
+        //Add new farm data 
         //*******************************
         public bool addData(Farm farm)
         {
-            String insertStmt = "INSERT INTO " + TABLE_FARM + " ("
+            string insertStmt = "INSERT INTO " + TABLE_FARM + " ("
                     + COLUMN_FARM_NAME + ", "
                     + COLUMN_FARM_ADDRESS + ", "
                     + COLUMN_FARM_IS_EXIST + 
@@ -150,7 +150,7 @@ namespace HarvestManagerSystem.database
         }
 
         //*******************************
-        //Delete product data (hide)
+        //Delete farm data (hide)
         //*******************************
         public bool DeleteData(Farm farm)
         {
