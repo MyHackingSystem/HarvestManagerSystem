@@ -84,10 +84,15 @@ namespace HarvestManagerSystem
             this.label2 = new System.Windows.Forms.Label();
             this.tabPageHours = new System.Windows.Forms.TabPage();
             this.tabPageTransportCredit = new System.Windows.Forms.TabPage();
-            this.dataGridView7 = new System.Windows.Forms.DataGridView();
+            this.CreditDataGridView = new System.Windows.Forms.DataGridView();
+            this.CreditIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreditDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreditEmployeeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreditAmountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EmployeeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreditContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.EditCreditStrip = new System.Windows.Forms.ToolStripMenuItem();
+            this.DeleteCreditStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.labelTransportCreditTab = new System.Windows.Forms.Label();
             this.dataGridView6 = new System.Windows.Forms.DataGridView();
             this.TransportDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -181,7 +186,8 @@ namespace HarvestManagerSystem
             this.tabProduction.SuspendLayout();
             this.tabPageQuantity.SuspendLayout();
             this.tabPageTransportCredit.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CreditDataGridView)).BeginInit();
+            this.CreditContextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
             this.tabPageEmployee.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ReloadButton)).BeginInit();
@@ -308,7 +314,7 @@ namespace HarvestManagerSystem
             // tabPageTransportCredit
             // 
             this.tabPageTransportCredit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tabPageTransportCredit.Controls.Add(this.dataGridView7);
+            this.tabPageTransportCredit.Controls.Add(this.CreditDataGridView);
             this.tabPageTransportCredit.Controls.Add(this.labelTransportCreditTab);
             this.tabPageTransportCredit.Controls.Add(this.dataGridView6);
             this.tabPageTransportCredit.Location = new System.Drawing.Point(4, 34);
@@ -318,19 +324,19 @@ namespace HarvestManagerSystem
             this.tabPageTransportCredit.TabIndex = 2;
             this.tabPageTransportCredit.Text = "Transport / Credit";
             // 
-            // dataGridView7
+            // CreditDataGridView
             // 
-            this.dataGridView7.AllowUserToAddRows = false;
-            this.dataGridView7.AllowUserToDeleteRows = false;
-            this.dataGridView7.AllowUserToOrderColumns = true;
+            this.CreditDataGridView.AllowUserToAddRows = false;
+            this.CreditDataGridView.AllowUserToDeleteRows = false;
+            this.CreditDataGridView.AllowUserToOrderColumns = true;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dataGridView7.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.CreditDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.CreditDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView7.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dataGridView7.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView7.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.CreditDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.CreditDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CreditDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(25)))), ((int)(((byte)(70)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -338,13 +344,15 @@ namespace HarvestManagerSystem
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView7.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView7.ColumnHeadersHeight = 36;
-            this.dataGridView7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridView7.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CreditDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.CreditDataGridView.ColumnHeadersHeight = 36;
+            this.CreditDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.CreditDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CreditIdColumn,
             this.CreditDateColumn,
             this.CreditEmployeeColumn,
-            this.CreditAmountColumn});
+            this.CreditAmountColumn,
+            this.EmployeeColumn});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -353,11 +361,11 @@ namespace HarvestManagerSystem
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView7.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView7.EnableHeadersVisualStyles = false;
-            this.dataGridView7.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dataGridView7.Location = new System.Drawing.Point(656, 45);
-            this.dataGridView7.Name = "dataGridView7";
+            this.CreditDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
+            this.CreditDataGridView.EnableHeadersVisualStyles = false;
+            this.CreditDataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.CreditDataGridView.Location = new System.Drawing.Point(656, 45);
+            this.CreditDataGridView.Name = "CreditDataGridView";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightSkyBlue;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -365,36 +373,74 @@ namespace HarvestManagerSystem
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView7.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridView7.RowHeadersVisible = false;
+            this.CreditDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.CreditDataGridView.RowHeadersVisible = false;
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.dataGridView7.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridView7.RowTemplate.Height = 25;
-            this.dataGridView7.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView7.Size = new System.Drawing.Size(462, 515);
-            this.dataGridView7.TabIndex = 6;
+            this.CreditDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.CreditDataGridView.RowTemplate.ContextMenuStrip = this.CreditContextMenuStrip;
+            this.CreditDataGridView.RowTemplate.Height = 25;
+            this.CreditDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.CreditDataGridView.Size = new System.Drawing.Size(462, 515);
+            this.CreditDataGridView.TabIndex = 6;
+            // 
+            // CreditIdColumn
+            // 
+            this.CreditIdColumn.DataPropertyName = "CreditId";
+            this.CreditIdColumn.HeaderText = "CreditId";
+            this.CreditIdColumn.Name = "CreditIdColumn";
+            this.CreditIdColumn.Visible = false;
             // 
             // CreditDateColumn
             // 
+            this.CreditDateColumn.DataPropertyName = "CreditDate";
             this.CreditDateColumn.HeaderText = "Date";
             this.CreditDateColumn.Name = "CreditDateColumn";
             this.CreditDateColumn.ReadOnly = true;
-            this.CreditDateColumn.Width = 140;
+            this.CreditDateColumn.Width = 120;
             // 
             // CreditEmployeeColumn
             // 
+            this.CreditEmployeeColumn.DataPropertyName = "EmployeeName";
             this.CreditEmployeeColumn.HeaderText = "Employée";
             this.CreditEmployeeColumn.Name = "CreditEmployeeColumn";
             this.CreditEmployeeColumn.ReadOnly = true;
-            this.CreditEmployeeColumn.Width = 200;
+            this.CreditEmployeeColumn.Width = 240;
             // 
             // CreditAmountColumn
             // 
+            this.CreditAmountColumn.DataPropertyName = "CreditAmount";
             this.CreditAmountColumn.HeaderText = "Credit";
             this.CreditAmountColumn.Name = "CreditAmountColumn";
-            this.CreditAmountColumn.Width = 120;
+            // 
+            // EmployeeColumn
+            // 
+            this.EmployeeColumn.DataPropertyName = "Employee";
+            this.EmployeeColumn.HeaderText = "EmployeeColumn";
+            this.EmployeeColumn.Name = "EmployeeColumn";
+            this.EmployeeColumn.Visible = false;
+            // 
+            // CreditContextMenuStrip
+            // 
+            this.CreditContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.EditCreditStrip,
+            this.DeleteCreditStrip});
+            this.CreditContextMenuStrip.Name = "CreditContextMenuStrip";
+            this.CreditContextMenuStrip.Size = new System.Drawing.Size(130, 48);
+            this.CreditContextMenuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.CreditContextMenuStrip_ItemClicked);
+            // 
+            // EditCreditStrip
+            // 
+            this.EditCreditStrip.Name = "EditCreditStrip";
+            this.EditCreditStrip.Size = new System.Drawing.Size(129, 22);
+            this.EditCreditStrip.Text = "Edit";
+            // 
+            // DeleteCreditStrip
+            // 
+            this.DeleteCreditStrip.Name = "DeleteCreditStrip";
+            this.DeleteCreditStrip.Size = new System.Drawing.Size(129, 22);
+            this.DeleteCreditStrip.Text = "Supprimer";
             // 
             // labelTransportCreditTab
             // 
@@ -1528,6 +1574,7 @@ namespace HarvestManagerSystem
             this.btnAddCredit.TabIndex = 13;
             this.btnAddCredit.Text = "Crédit";
             this.btnAddCredit.UseVisualStyleBackColor = true;
+            this.btnAddCredit.Click += new System.EventHandler(this.btnAddCredit_Click);
             // 
             // btnAddTransport
             // 
@@ -1617,7 +1664,8 @@ namespace HarvestManagerSystem
             this.tabPageQuantity.ResumeLayout(false);
             this.tabPageQuantity.PerformLayout();
             this.tabPageTransportCredit.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CreditDataGridView)).EndInit();
+            this.CreditContextMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).EndInit();
             this.tabPageEmployee.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ReloadButton)).EndInit();
@@ -1704,9 +1752,6 @@ namespace HarvestManagerSystem
         private System.Windows.Forms.DataGridView dataGridView7;
         private System.Windows.Forms.Label labelTransportCreditTab;
         private System.Windows.Forms.DataGridView dataGridView6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreditDateColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreditEmployeeColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreditAmountColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn TransportDateColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn TransportEmployeeColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn TransportAmountColumn;
@@ -1756,6 +1801,15 @@ namespace HarvestManagerSystem
         private System.Windows.Forms.ContextMenuStrip SupplyContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem EditSupplyStrip;
         private System.Windows.Forms.ToolStripMenuItem DeleteSupplyStrip;
+        private System.Windows.Forms.DataGridView CreditDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreditIdColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreditDateColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreditEmployeeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreditAmountColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeColumn;
+        private System.Windows.Forms.ContextMenuStrip CreditContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem EditCreditStrip;
+        private System.Windows.Forms.ToolStripMenuItem DeleteCreditStrip;
     }
 }
 

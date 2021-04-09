@@ -29,8 +29,7 @@ namespace HarvestManagerSystem.database
         private static EmployeeDAO instance = new EmployeeDAO();
 
         private EmployeeDAO() : base()
-        {
-            
+        {           
         }
 
         public static EmployeeDAO getInstance()
@@ -40,6 +39,50 @@ namespace HarvestManagerSystem.database
                 instance = new EmployeeDAO();
             }
             return instance;
+        }
+
+        //*************************************************************
+        //Get data Employee as Dictionary
+        //*************************************************************
+        internal Dictionary<string, Employee> EmployeeDictionary()
+        {
+            Dictionary<string, Employee> employeeDictionary = new Dictionary<string, Employee>();
+
+            String selectStmt = "SELECT * FROM " + TABLE_EMPLOYEE
+                + " WHERE " + COLUMN_EMPLOYEE_IS_EXIST + " = 1 " 
+                + " ORDER BY " + COLUMN_EMPLOYEE_FIRST_NAME + " ASC;";
+
+            try
+            {
+                SQLiteCommand sQLiteCommand = new SQLiteCommand(selectStmt, mSQLiteConnection);
+                OpenConnection();
+                SQLiteDataReader result = sQLiteCommand.ExecuteReader();
+                if (result.HasRows)
+                {
+                    while (result.Read())
+                    {
+                        Employee employee = new Employee();
+                        employee.EmployeeId = Convert.ToInt32((result[COLUMN_EMPLOYEE_ID]).ToString());
+                        employee.EmployeeStatus = (bool)result[COLUMN_EMPLOYEE_STATUS];
+                        employee.FirstName = (string)result[COLUMN_EMPLOYEE_FIRST_NAME];
+                        employee.LastName = (string)result[COLUMN_EMPLOYEE_LAST_NAME];
+                        employee.HireDate = (DateTime)result[COLUMN_EMPLOYEE_HIRE_DATE];
+                        employee.FireDate = (DateTime)result[COLUMN_EMPLOYEE_FIRE_DATE];
+                        employee.PermissionDate = (DateTime)result[COLUMN_EMPLOYEE_PERMISSION_DATE];
+                        employeeDictionary.Add(employee.FullName, employee);
+                    }
+                }
+                return employeeDictionary;
+            }
+            catch (SQLiteException e)
+            {
+                Console.WriteLine(e.StackTrace);
+                return employeeDictionary;
+            }
+            finally
+            {
+                CloseConnection();
+            }
         }
 
 

@@ -293,7 +293,11 @@ namespace HarvestManagerSystem.database
         //*******************************
         public bool DeleteData(ProductDetail productDetail)
         {
-            String updateStmt = "UPDATE " + TABLE_PRODUCT_DETAIL + " SET "
+            Random rand = new Random();
+            string sr = Convert.ToString(rand.Next(10001));
+            sr += productDetail.ProductCode;
+            string updateStmt = "UPDATE " + TABLE_PRODUCT_DETAIL + " SET "
+                 + COLUMN_PRODUCT_CODE + " = '" + sr + "', "
                  + COLUMN_PRODUCT_DETAIL_IS_EXIST + " = 0 "
                 + " WHERE " + COLUMN_PRODUCT_DETAIL_ID + " = " + productDetail.ProductDetailId + " ";
 

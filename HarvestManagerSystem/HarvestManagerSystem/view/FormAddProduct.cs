@@ -74,6 +74,11 @@ namespace HarvestManagerSystem.view
                 ProductTypeComboBox.SelectedIndex = ProductTypeComboBox.FindStringExact(mProductDetail.ProductType);
                 ProductNameComboBox.SelectedIndex = ProductNameComboBox.FindStringExact(mProduct.ProductName);
             }
+            else
+            {
+                ProductNameComboBox.SelectedIndex = -1;
+                ProductTypeComboBox.SelectedIndex = -1;
+            }
         }
 
         private void ProductNameList()

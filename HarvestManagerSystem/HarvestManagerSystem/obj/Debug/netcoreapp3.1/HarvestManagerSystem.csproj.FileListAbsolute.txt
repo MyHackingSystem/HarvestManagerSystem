@@ -34,3 +34,4 @@ E:\Projects\C_Sharp\Desktop\HarvestManagerSystem\HarvestManagerSystem\HarvestMan
 E:\Projects\C_Sharp\Desktop\HarvestManagerSystem\HarvestManagerSystem\HarvestManagerSystem\bin\Debug\netcoreapp3.1\bin\Debug\netcoreapp3.1\database.sqlite3
 E:\Projects\C_Sharp\Desktop\HarvestManagerSystem\HarvestManagerSystem\HarvestManagerSystem\obj\Debug\netcoreapp3.1\HarvestManagerSystem.view.FormAddFarm.resources
 E:\Projects\C_Sharp\Desktop\HarvestManagerSystem\HarvestManagerSystem\HarvestManagerSystem\obj\Debug\netcoreapp3.1\HarvestManagerSystem.view.FormAddSupplier.resources
+E:\Projects\C_Sharp\Desktop\HarvestManagerSystem\HarvestManagerSystem\HarvestManagerSystem\obj\Debug\netcoreapp3.1\HarvestManagerSystem.view.FormAddCredit.resources

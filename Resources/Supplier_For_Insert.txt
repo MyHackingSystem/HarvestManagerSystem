@@ -21,8 +21,8 @@ INSERT INTO Supplier_For_Insert
 )
 VALUES
 (
-    10,
-    20,
+    1,
+    1,
     'name',
     'fn',
     'ln'

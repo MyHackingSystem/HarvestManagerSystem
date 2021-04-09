@@ -180,20 +180,9 @@ namespace HarvestManagerSystem.database
             }
         }
 
-        public void CreateTable()
-        {
-            String createStmt = "CREATE TABLE IF NOT EXISTS " + TABLE_SUPPLY
-                    + "(" + COLUMN_SUPPLY_ID + " INTEGER PRIMARY KEY, "
-                    + COLUMN_SUPPLY_FRGN_KEY_SUPPLIER_ID + " INTEGER NOT NULL, "
-                    + COLUMN_SUPPLY_FRGN_KEY_FARM_ID + " INTEGER NOT NULL, "
-                    + COLUMN_SUPPLY_FRGN_KEY_PRODUCT_ID + " INTEGER NOT NULL)";
-
-            SQLiteCommand sQLiteCommand = new SQLiteCommand(createStmt, mSQLiteConnection);
-            OpenConnection();
-            sQLiteCommand.ExecuteNonQuery();
-            CloseConnection();
-        }
-
+        //*******************************
+        //Add new Supplier data
+        //*******************************
         internal bool addNewSupplierData(Supply supply)
         {
             string insertStmt = "INSERT INTO Supplier_For_Insert (FarmId, ProductId, SupplierName, SupplierFirstName, SupplierLastName) VALUES ("
@@ -224,6 +213,25 @@ namespace HarvestManagerSystem.database
             {
                 CloseConnection();
             }
+        }
+
+
+        public void CreateTable()
+        {
+            string createStmt =  "CREATE TABLE IF NOT EXISTS " + TABLE_SUPPLY  + "("
+                    + COLUMN_SUPPLY_ID + " INTEGER PRIMARY KEY, "
+                    + COLUMN_SUPPLY_FRGN_KEY_SUPPLIER_ID + " INTEGER NOT NULL, "
+                    + COLUMN_SUPPLY_FRGN_KEY_FARM_ID + " INTEGER NOT NULL, "
+                    + COLUMN_SUPPLY_FRGN_KEY_PRODUCT_ID + " INTEGER NOT NULL, "
+                    + " FOREIGN KEY (" + COLUMN_SUPPLY_FRGN_KEY_SUPPLIER_ID + ") REFERENCES " + SupplierDAO.TABLE_SUPPLIER + " (" + SupplierDAO.COLUMN_SUPPLIER_ID + "), "
+                    + " FOREIGN KEY (" + COLUMN_SUPPLY_FRGN_KEY_FARM_ID + ") REFERENCES " + FarmDAO.TABLE_FARM + " (" + FarmDAO.COLUMN_FARM_ID + "), "
+                    + " FOREIGN KEY (" + COLUMN_SUPPLY_FRGN_KEY_PRODUCT_ID + ") REFERENCES " + ProductDAO.TABLE_PRODUCT + " (" + ProductDAO.COLUMN_PRODUCT_ID + ") "
+                    + ")";
+
+            SQLiteCommand sQLiteCommand = new SQLiteCommand(createStmt, mSQLiteConnection);
+            OpenConnection();
+            sQLiteCommand.ExecuteNonQuery();
+            CloseConnection();
         }
     }
 }

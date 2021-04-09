@@ -202,7 +202,6 @@ namespace HarvestManagerSystem.database
                 sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_SUPPLIER_FIRSTNAME, supplier.SupplierFirstName));
                 sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_SUPPLIER_LASTNAME, supplier.SupplierLastName));
                 sQLiteCommand.ExecuteNonQuery();
-                CloseConnection();
                 return true;
             }
             catch (SQLiteException e)
