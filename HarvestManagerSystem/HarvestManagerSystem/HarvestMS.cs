@@ -35,7 +35,6 @@ namespace HarvestManagerSystem
 
         private void HarvestMS_Load(object sender, EventArgs e)
         {
-
         }
 
         private void tabProduction_SelectedIndexChanged(object sender, EventArgs e)
