@@ -174,19 +174,18 @@ namespace HarvestManagerSystem.database
 
         public void CreateTable()
         {
-            //string createStmt = "CREATE TABLE IF NOT EXISTS " + TABLE_CREDIT + "("
-            //        + COLUMN_CREDIT_ID + " INTEGER PRIMARY KEY, "
-            //        + COLUMN_CREDIT_DATE + " DATE NOT NULL, "
-            //        + COLUMN_CREDIT_AMOUNT + " REAL NOT NULL, "
-            //        + COLUMN_CREDIT_EMPLOYEE_ID + " INTEGER NOT NULL, "
-            //        + COLUMN_CREDIT_IS_EXIST + " INTEGER DEFAULT 1 , "
-            //        + " FOREIGN KEY (" + COLUMN_CREDIT_EMPLOYEE_ID + ") REFERENCES " + TABLE_EMPLOYEE + " (" + COLUMN_EMPLOYEE_ID + ") "
-            //        + ")";
+            string createStmt = "CREATE TABLE IF NOT EXISTS " + TABLE_CREDIT + "("
+                    + COLUMN_CREDIT_ID + " INTEGER PRIMARY KEY, "
+                    + COLUMN_CREDIT_DATE + " DATE NOT NULL, "
+                    + COLUMN_CREDIT_AMOUNT + " REAL NOT NULL DEFAULT 0, "
+                    + COLUMN_CREDIT_EMPLOYEE_ID + " INTEGER NOT NULL, "
+                    + " FOREIGN KEY (" + COLUMN_CREDIT_EMPLOYEE_ID + ") REFERENCES " + EmployeeDAO.TABLE_EMPLOYEE + " (" + EmployeeDAO.COLUMN_EMPLOYEE_ID + ") "
+                    + ")";
 
-            //SQLiteCommand sQLiteCommand = new SQLiteCommand(createStmt, mSQLiteConnection);
-            //OpenConnection();
-            //sQLiteCommand.ExecuteNonQuery();
-            //CloseConnection();
+            SQLiteCommand sQLiteCommand = new SQLiteCommand(createStmt, mSQLiteConnection);
+            OpenConnection();
+            sQLiteCommand.ExecuteNonQuery();
+            CloseConnection();
         }
 
     }

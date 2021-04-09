@@ -23,18 +23,18 @@ namespace HarvestManagerSystem
         SeasonDAO seasonDAO = SeasonDAO.getInstance();
         ProductDAO productDAO = ProductDAO.getInstance();
         ProductDetailDAO productDetailDAO = ProductDetailDAO.getInstance();
-        private static List<Employee> list = new List<Employee>();
+        CreditDAO creditDAO = CreditDAO.getInstance();
 
+        private static List<Employee> list = new List<Employee>();
 
         public HarvestMS()
         {
             InitializeComponent();
         }
 
-
-
         private void HarvestMS_Load(object sender, EventArgs e)
         {
+            
         }
 
         private void tabProduction_SelectedIndexChanged(object sender, EventArgs e)
@@ -215,7 +215,6 @@ MessageBoxIcon.Information);
         }
 
         #endregion
-
 
         #region FARM CODE
 
@@ -546,11 +545,79 @@ MessageBoxIcon.Information);
         }
         #endregion
 
-        #region //TO DO Credit CODE
-        void DisplayCreditData()
+        #region Credit CODE
+
+        List<Credit> listCredit = new List<Credit>();
+        private void btnAddCredit_Click(object sender, EventArgs e)
         {
+            FormAddCredit formAddCredit = FormAddCredit.getInstance(this);
+            formAddCredit.ShowFormAdd();
+        }
+        public void DisplayCreditData()
+        {
+            listCredit = creditDAO.getData();
+            CreditDataGridView.DataSource = listCredit;
+        }
+
+        private void CreditContextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            if (e.ClickedItem.Name == EditCreditStrip.Name)
+            {
+                ProductContextMenuStrip.Visible = false;
+                HandleEditCreditTable();
+            }
+            else if (e.ClickedItem.Name == DeleteCreditStrip.Name)
+            {
+                ProductContextMenuStrip.Visible = false;
+                HandleDeleteCreditTable();
+            }
+        }
+
+        void HandleEditCreditTable()
+        {
+            FormAddCredit formAddCredit = FormAddCredit.getInstance(this);
+            Credit credit = (Credit)CreditDataGridView.CurrentRow.DataBoundItem;
+
+
+            if (credit == null)
+            {
+                MessageBox.Show("Select Credit");
+                return;
+            }
+
+            formAddCredit.InflateUI(credit);
+            formAddCredit.ShowFormAdd();
+        }
+
+        void HandleDeleteCreditTable()
+        {
+            Credit credit = (Credit)CreditDataGridView.CurrentRow.DataBoundItem;
+            if (credit == null)
+            {
+                MessageBox.Show("Select product");
+                return;
+            }
+
+            DialogResult dr = MessageBox.Show("Are you sure you want to delete " + credit.EmployeeName + " credit", "Delete", MessageBoxButtons.YesNoCancel,
+            MessageBoxIcon.Information);
+            bool deleted = false;
+            if (dr == DialogResult.Yes)
+            {
+                deleted = creditDAO.DeleteData(credit); 
+            }
+
+            if (deleted)
+            {
+                MessageBox.Show("Delete");
+            }
+            else if (dr == DialogResult.Yes)
+            {
+                MessageBox.Show("Not Delete");
+            }
+            DisplayCreditData();
 
         }
+
         #endregion
 
         #region //To do Transport CODE
@@ -652,6 +719,8 @@ MessageBoxIcon.Information);
                 }
             }
         }
+
+
 
 
 

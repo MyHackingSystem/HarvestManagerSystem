@@ -16,6 +16,6 @@ namespace HarvestManagerSystem.model
         public double CreditAmount { get => creditAmount; set => creditAmount = value; }
         public Employee Employee { get => employee;}
 
-        public string EmployeeName { get => Employee.FirstName + " " + Employee.LastName; }
+        public string EmployeeName { get => Employee.FullName; }
     }
 }
