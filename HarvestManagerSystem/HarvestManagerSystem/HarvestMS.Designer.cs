@@ -115,12 +115,18 @@ namespace HarvestManagerSystem
             this.Supplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SupplyFarmName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SupplyProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SupplyContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.EditSupplyStrip = new System.Windows.Forms.ToolStripMenuItem();
+            this.DeleteSupplyStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.labelSuuplierTab = new System.Windows.Forms.Label();
             this.SupplierDataGridView = new System.Windows.Forms.DataGridView();
             this.SupplierId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SupplierName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SupplierLastNameColomn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SupplierLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SupplierContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.EditSupplierStrip = new System.Windows.Forms.ToolStripMenuItem();
+            this.DeleteSupplierStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPageFarm = new System.Windows.Forms.TabPage();
             this.SeasonDataGridView = new System.Windows.Forms.DataGridView();
             this.SeasonId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -183,7 +189,9 @@ namespace HarvestManagerSystem
             this.EmployeeContextMenuStrip.SuspendLayout();
             this.tabPageSupplier.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SupplyDataGridView)).BeginInit();
+            this.SupplyContextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SupplierDataGridView)).BeginInit();
+            this.SupplierContextMenuStrip.SuspendLayout();
             this.tabPageFarm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SeasonDataGridView)).BeginInit();
             this.SeasonContextMenuStrip.SuspendLayout();
@@ -745,6 +753,7 @@ namespace HarvestManagerSystem
             dataGridViewCellStyle20.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle20.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.SupplyDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle20;
+            this.SupplyDataGridView.RowTemplate.ContextMenuStrip = this.SupplyContextMenuStrip;
             this.SupplyDataGridView.RowTemplate.Height = 25;
             this.SupplyDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.SupplyDataGridView.Size = new System.Drawing.Size(476, 515);
@@ -776,6 +785,27 @@ namespace HarvestManagerSystem
             this.SupplyProductName.HeaderText = "Pruduit";
             this.SupplyProductName.Name = "SupplyProductName";
             this.SupplyProductName.ReadOnly = true;
+            // 
+            // SupplyContextMenuStrip
+            // 
+            this.SupplyContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.EditSupplyStrip,
+            this.DeleteSupplyStrip});
+            this.SupplyContextMenuStrip.Name = "SupplyContextMenuStrip";
+            this.SupplyContextMenuStrip.Size = new System.Drawing.Size(130, 48);
+            this.SupplyContextMenuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.SupplyContextMenuStrip_ItemClicked);
+            // 
+            // EditSupplyStrip
+            // 
+            this.EditSupplyStrip.Name = "EditSupplyStrip";
+            this.EditSupplyStrip.Size = new System.Drawing.Size(129, 22);
+            this.EditSupplyStrip.Text = "Edit";
+            // 
+            // DeleteSupplyStrip
+            // 
+            this.DeleteSupplyStrip.Name = "DeleteSupplyStrip";
+            this.DeleteSupplyStrip.Size = new System.Drawing.Size(129, 22);
+            this.DeleteSupplyStrip.Text = "Supprimer";
             // 
             // labelSuuplierTab
             // 
@@ -843,6 +873,7 @@ namespace HarvestManagerSystem
             dataGridViewCellStyle25.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle25.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.SupplierDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle25;
+            this.SupplierDataGridView.RowTemplate.ContextMenuStrip = this.SupplierContextMenuStrip;
             this.SupplierDataGridView.RowTemplate.Height = 25;
             this.SupplierDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.SupplierDataGridView.Size = new System.Drawing.Size(631, 515);
@@ -878,6 +909,27 @@ namespace HarvestManagerSystem
             this.SupplierLastName.Name = "SupplierLastName";
             this.SupplierLastName.ReadOnly = true;
             this.SupplierLastName.Width = 200;
+            // 
+            // SupplierContextMenuStrip
+            // 
+            this.SupplierContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.EditSupplierStrip,
+            this.DeleteSupplierStrip});
+            this.SupplierContextMenuStrip.Name = "SupplierContextMenuStrip";
+            this.SupplierContextMenuStrip.Size = new System.Drawing.Size(130, 48);
+            this.SupplierContextMenuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.SupplierContextMenuStrip_ItemClicked);
+            // 
+            // EditSupplierStrip
+            // 
+            this.EditSupplierStrip.Name = "EditSupplierStrip";
+            this.EditSupplierStrip.Size = new System.Drawing.Size(129, 22);
+            this.EditSupplierStrip.Text = "Edit";
+            // 
+            // DeleteSupplierStrip
+            // 
+            this.DeleteSupplierStrip.Name = "DeleteSupplierStrip";
+            this.DeleteSupplierStrip.Size = new System.Drawing.Size(129, 22);
+            this.DeleteSupplierStrip.Text = "Supprimer";
             // 
             // tabPageFarm
             // 
@@ -1573,7 +1625,9 @@ namespace HarvestManagerSystem
             this.EmployeeContextMenuStrip.ResumeLayout(false);
             this.tabPageSupplier.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SupplyDataGridView)).EndInit();
+            this.SupplyContextMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SupplierDataGridView)).EndInit();
+            this.SupplierContextMenuStrip.ResumeLayout(false);
             this.tabPageFarm.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SeasonDataGridView)).EndInit();
             this.SeasonContextMenuStrip.ResumeLayout(false);
@@ -1696,6 +1750,12 @@ namespace HarvestManagerSystem
         private System.Windows.Forms.DataGridViewTextBoxColumn SupplierName;
         private System.Windows.Forms.DataGridViewTextBoxColumn SupplierLastNameColomn;
         private System.Windows.Forms.DataGridViewTextBoxColumn SupplierLastName;
+        private System.Windows.Forms.ContextMenuStrip SupplierContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem EditSupplierStrip;
+        private System.Windows.Forms.ToolStripMenuItem DeleteSupplierStrip;
+        private System.Windows.Forms.ContextMenuStrip SupplyContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem EditSupplyStrip;
+        private System.Windows.Forms.ToolStripMenuItem DeleteSupplyStrip;
     }
 }
 

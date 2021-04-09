@@ -18,8 +18,8 @@ namespace HarvestManagerSystem.model
         internal Farm Farm { get => farm;}
         internal Product Product { get => product;}
 
-        string SupplyFarmName { get => Farm.FarmName;}
-        string SupplyProductName { get => Product.ProductName;}
+        public string SupplyFarmName { get => Farm.FarmName;}
+        public string SupplyProductName { get => Product.ProductName;}
 
     }
 }

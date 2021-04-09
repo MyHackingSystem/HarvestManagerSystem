@@ -166,8 +166,8 @@ namespace HarvestManagerSystem.view
 
         private void UpdateSeason(Season season)
         {
-            season.SeasonPlantingDate = PlantingDate.Value;
-            season.SeasonHarvestDate = HarvestDate.Value;
+            season.SeasonPlantingDate = PlantingDate.Value.Date;
+            season.SeasonHarvestDate = HarvestDate.Value.Date;
 
             bool isAdded = seasonDAO.UpdateData(season); 
 
@@ -213,8 +213,8 @@ namespace HarvestManagerSystem.view
             }
 
             Season season = new Season();
-            season.SeasonPlantingDate = PlantingDate.Value;
-            season.SeasonHarvestDate = HarvestDate.Value;
+            season.SeasonPlantingDate = PlantingDate.Value.Date;
+            season.SeasonHarvestDate = HarvestDate.Value.Date;
 
             bool added = false;
             if (farm != null)

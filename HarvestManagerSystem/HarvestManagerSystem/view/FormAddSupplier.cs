@@ -78,9 +78,9 @@ namespace HarvestManagerSystem.view
             }
             else if (isEditSupply)
             {
-                SupplierNameComboBox.SelectedIndex = SupplierNameComboBox.FindStringExact(mSupplier.SupplierName);
-                SupplierFirstNameTextBox.Text = mSupplier.SupplierFirstName;
-                SupplierLastNameTextBox.Text = mSupplier.SupplierLastName;
+                SupplierNameComboBox.SelectedIndex = SupplierNameComboBox.FindStringExact(mSupply.Supplier.SupplierName);
+                SupplierFirstNameTextBox.Text = mSupply.Supplier.SupplierFirstName;
+                SupplierLastNameTextBox.Text = mSupply.Supplier.SupplierLastName;
                 FarmSupplierComboBox.SelectedIndex = FarmSupplierComboBox.FindStringExact(mSupply.Farm.FarmName);
                 ProductSupplierComboBox.SelectedIndex = ProductSupplierComboBox.FindStringExact(mSupply.Product.ProductName);
             }
@@ -159,10 +159,9 @@ namespace HarvestManagerSystem.view
             isEditSupplier = true;
             SupplierNameComboBox.SelectedIndex = -1;
             mSupplier.SupplierId = supplier.SupplierId;
-
-            SupplierNameComboBox.SelectedIndex = SupplierNameComboBox.FindStringExact(supplier.SupplierName);
-            SupplierFirstNameTextBox.Text = supplier.SupplierFirstName;
-            SupplierLastNameTextBox.Text = supplier.SupplierLastName;
+            mSupplier.SupplierName = supplier.SupplierName;
+            mSupplier.SupplierFirstName = supplier.SupplierFirstName;
+            mSupplier.SupplierLastName = supplier.SupplierLastName;
             FarmSupplierComboBox.Enabled = false;
             ProductSupplierComboBox.Enabled = false;
 
@@ -175,23 +174,15 @@ namespace HarvestManagerSystem.view
             mSupply.SupplyId = supply.SupplyId;
             mSupply.Supplier.SupplierId = supplier.SupplierId;
             mSupply.Supplier.SupplierName = supplier.SupplierName;
+            mSupply.Supplier.SupplierFirstName = supplier.SupplierFirstName;
+            mSupply.Supplier.SupplierLastName = supplier.SupplierLastName;
             mSupply.Farm.FarmId = supply.Farm.FarmId;
             mSupply.Farm.FarmName = supply.Farm.FarmName;
             mSupply.Product.ProductId = supply.Product.ProductId;
             mSupply.Product.ProductName = supply.Product.ProductName;
-
-            //SupplierNameComboBox.SelectedIndex = SupplierNameComboBox.FindStringExact(supplier.SupplierName);
-            //SupplierFirstNameTextBox.Text = supplier.SupplierFirstName;
-            //SupplierLastNameTextBox.Text = supplier.SupplierLastName;
-
             SupplierNameComboBox.Enabled = false;
             SupplierFirstNameTextBox.Enabled = false;
             SupplierLastNameTextBox.Enabled = false;
-
-            //FarmSupplierComboBox.SelectedIndex = FarmSupplierComboBox.FindStringExact(supply.Farm.FarmName);
-            //ProductSupplierComboBox.SelectedIndex = ProductSupplierComboBox.FindStringExact(supply.Product.ProductName);
-
-
             handleSaveButton.Text = "Update";
         }
 
@@ -215,7 +206,7 @@ namespace HarvestManagerSystem.view
                 }
                 SaveSupplierData();
             }
-            harvestMS.DisplayFarmData();
+            harvestMS.DisplaySupplierData();
         }
 
         private bool CheckInput()
@@ -251,9 +242,9 @@ namespace HarvestManagerSystem.view
 
         private void UpdateSupplier(Supplier supplier)
         {
-            supplier.SupplierName = SupplierNameComboBox.Text;
-            supplier.SupplierFirstName = SupplierFirstNameTextBox.Text;
-            supplier.SupplierLastName = SupplierLastNameTextBox.Text;
+            supplier.SupplierName = SupplierNameComboBox.Text.Trim().ToUpper();
+            supplier.SupplierFirstName = SupplierFirstNameTextBox.Text.Trim().ToUpper();
+            supplier.SupplierLastName = SupplierLastNameTextBox.Text.Trim().ToUpper();
 
             bool isAdded = supplierDAO.UpdateData(supplier);
             if (isAdded)
@@ -289,9 +280,9 @@ namespace HarvestManagerSystem.view
             }
             else
             {
-                supply.Supplier.SupplierName = SupplierNameComboBox.Text;
-                supply.Supplier.SupplierFirstName = SupplierFirstNameTextBox.Text;
-                supply.Supplier.SupplierLastName = SupplierLastNameTextBox.Text;
+                supply.Supplier.SupplierName = SupplierNameComboBox.Text.Trim().ToUpper();
+                supply.Supplier.SupplierFirstName = SupplierFirstNameTextBox.Text.Trim().ToUpper();
+                supply.Supplier.SupplierLastName = SupplierLastNameTextBox.Text.Trim().ToUpper();
                 added = supplyDAO.addNewSupplierData(supply);
 
             }

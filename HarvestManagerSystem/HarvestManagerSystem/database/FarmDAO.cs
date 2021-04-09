@@ -154,13 +154,16 @@ namespace HarvestManagerSystem.database
         //*******************************
         public bool DeleteData(Farm farm)
         {
-            String updateStmt = "UPDATE " + TABLE_FARM + " SET "
+            string updateStmt = "UPDATE " + TABLE_FARM + " SET "
                  + COLUMN_FARM_IS_EXIST + " = 0 "
                 + " WHERE " + COLUMN_FARM_ID + " = " + farm.FarmId + " ";
 
+            string deleteStmt = "DELETE FROM " + SeasonDAO.TABLE_SEASON
+                + " WHERE " + SeasonDAO.COLUMN_FOREIGN_KEY_FARM_ID + " = " + farm.FarmId + " ;";
+
             try
             {
-                SQLiteCommand sQLiteCommand = new SQLiteCommand(updateStmt, mSQLiteConnection);
+                SQLiteCommand sQLiteCommand = new SQLiteCommand(updateStmt + ";" + deleteStmt, mSQLiteConnection);
                 OpenConnection();
                 sQLiteCommand.ExecuteNonQuery();
                 return true;
