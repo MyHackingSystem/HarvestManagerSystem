@@ -66,6 +66,7 @@ namespace HarvestManagerSystem.view
             {
                 CreditEmployeeComboBox.SelectedIndex = CreditEmployeeComboBox.FindStringExact(mCredit.Employee.FullName);
                 CreditAmountTextBox.Text = Convert.ToString(mCredit.CreditAmount);
+                CreditDatePicker.Value = mCredit.CreditDate;
             }
             else
             {
@@ -101,6 +102,8 @@ namespace HarvestManagerSystem.view
             mCredit.CreditDate = credit.CreditDate;
             mCredit.CreditAmount = credit.CreditAmount;
             mCredit.Employee.EmployeeId = credit.Employee.EmployeeId;
+            mCredit.Employee.FirstName = credit.Employee.FirstName;
+            mCredit.Employee.LastName = credit.Employee.LastName;
             CreditDatePicker.Enabled = false;
             CreditEmployeeComboBox.Enabled = false;
             handleSaveButton.Text = "Update";

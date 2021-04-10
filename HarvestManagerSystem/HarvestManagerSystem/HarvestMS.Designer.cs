@@ -94,11 +94,17 @@ namespace HarvestManagerSystem
             this.EditCreditStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteCreditStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.labelTransportCreditTab = new System.Windows.Forms.Label();
-            this.dataGridView6 = new System.Windows.Forms.DataGridView();
+            this.TransportDataGridView = new System.Windows.Forms.DataGridView();
+            this.TransportIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TransportDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TransportEmployeeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TransportAmountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TransportFarmColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FarmColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TransportContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.EditTransportStrip = new System.Windows.Forms.ToolStripMenuItem();
+            this.DeleteTransportStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPageEmployee = new System.Windows.Forms.TabPage();
             this.ReloadButton = new System.Windows.Forms.PictureBox();
             this.labelEmployeesTab = new System.Windows.Forms.Label();
@@ -188,7 +194,8 @@ namespace HarvestManagerSystem
             this.tabPageTransportCredit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CreditDataGridView)).BeginInit();
             this.CreditContextMenuStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TransportDataGridView)).BeginInit();
+            this.TransportContextMenuStrip.SuspendLayout();
             this.tabPageEmployee.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ReloadButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EmployeeDataGridView)).BeginInit();
@@ -316,7 +323,7 @@ namespace HarvestManagerSystem
             this.tabPageTransportCredit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.tabPageTransportCredit.Controls.Add(this.CreditDataGridView);
             this.tabPageTransportCredit.Controls.Add(this.labelTransportCreditTab);
-            this.tabPageTransportCredit.Controls.Add(this.dataGridView6);
+            this.tabPageTransportCredit.Controls.Add(this.TransportDataGridView);
             this.tabPageTransportCredit.Location = new System.Drawing.Point(4, 34);
             this.tabPageTransportCredit.Name = "tabPageTransportCredit";
             this.tabPageTransportCredit.Padding = new System.Windows.Forms.Padding(3);
@@ -454,19 +461,19 @@ namespace HarvestManagerSystem
             this.labelTransportCreditTab.Text = "Transport / Credit";
             this.labelTransportCreditTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // dataGridView6
+            // TransportDataGridView
             // 
-            this.dataGridView6.AllowUserToAddRows = false;
-            this.dataGridView6.AllowUserToDeleteRows = false;
-            this.dataGridView6.AllowUserToOrderColumns = true;
+            this.TransportDataGridView.AllowUserToAddRows = false;
+            this.TransportDataGridView.AllowUserToDeleteRows = false;
+            this.TransportDataGridView.AllowUserToOrderColumns = true;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dataGridView6.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridView6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.TransportDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.TransportDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView6.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dataGridView6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView6.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.TransportDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TransportDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TransportDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(25)))), ((int)(((byte)(70)))));
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -474,14 +481,17 @@ namespace HarvestManagerSystem
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView6.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridView6.ColumnHeadersHeight = 36;
-            this.dataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridView6.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TransportDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.TransportDataGridView.ColumnHeadersHeight = 36;
+            this.TransportDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.TransportDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TransportIdColumn,
             this.TransportDateColumn,
             this.TransportEmployeeColumn,
             this.TransportAmountColumn,
-            this.TransportFarmColumn});
+            this.TransportFarmColumn,
+            this.dataGridViewTextBoxColumn2,
+            this.FarmColumn});
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -490,11 +500,11 @@ namespace HarvestManagerSystem
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView6.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dataGridView6.EnableHeadersVisualStyles = false;
-            this.dataGridView6.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dataGridView6.Location = new System.Drawing.Point(5, 45);
-            this.dataGridView6.Name = "dataGridView6";
+            this.TransportDataGridView.DefaultCellStyle = dataGridViewCellStyle8;
+            this.TransportDataGridView.EnableHeadersVisualStyles = false;
+            this.TransportDataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TransportDataGridView.Location = new System.Drawing.Point(5, 45);
+            this.TransportDataGridView.Name = "TransportDataGridView";
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle9.BackColor = System.Drawing.Color.LightSkyBlue;
             dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -502,19 +512,28 @@ namespace HarvestManagerSystem
             dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView6.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.dataGridView6.RowHeadersVisible = false;
+            this.TransportDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.TransportDataGridView.RowHeadersVisible = false;
             dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle10.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.dataGridView6.RowsDefaultCellStyle = dataGridViewCellStyle10;
-            this.dataGridView6.RowTemplate.Height = 25;
-            this.dataGridView6.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView6.Size = new System.Drawing.Size(652, 515);
-            this.dataGridView6.TabIndex = 4;
+            this.TransportDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            this.TransportDataGridView.RowTemplate.ContextMenuStrip = this.TransportContextMenuStrip;
+            this.TransportDataGridView.RowTemplate.Height = 25;
+            this.TransportDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.TransportDataGridView.Size = new System.Drawing.Size(652, 515);
+            this.TransportDataGridView.TabIndex = 4;
+            // 
+            // TransportIdColumn
+            // 
+            this.TransportIdColumn.DataPropertyName = "TransportId";
+            this.TransportIdColumn.HeaderText = "TransportId";
+            this.TransportIdColumn.Name = "TransportIdColumn";
+            this.TransportIdColumn.Visible = false;
             // 
             // TransportDateColumn
             // 
+            this.TransportDateColumn.DataPropertyName = "TransportDate";
             this.TransportDateColumn.HeaderText = "Date";
             this.TransportDateColumn.Name = "TransportDateColumn";
             this.TransportDateColumn.ReadOnly = true;
@@ -522,6 +541,7 @@ namespace HarvestManagerSystem
             // 
             // TransportEmployeeColumn
             // 
+            this.TransportEmployeeColumn.DataPropertyName = "EmployeeName";
             this.TransportEmployeeColumn.HeaderText = "Employée";
             this.TransportEmployeeColumn.Name = "TransportEmployeeColumn";
             this.TransportEmployeeColumn.ReadOnly = true;
@@ -529,15 +549,52 @@ namespace HarvestManagerSystem
             // 
             // TransportAmountColumn
             // 
+            this.TransportAmountColumn.DataPropertyName = "TransportAmount";
             this.TransportAmountColumn.HeaderText = "Transport";
             this.TransportAmountColumn.Name = "TransportAmountColumn";
             this.TransportAmountColumn.Width = 120;
             // 
             // TransportFarmColumn
             // 
+            this.TransportFarmColumn.DataPropertyName = "FarmName";
             this.TransportFarmColumn.HeaderText = "Farm";
             this.TransportFarmColumn.Name = "TransportFarmColumn";
             this.TransportFarmColumn.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Employee";
+            this.dataGridViewTextBoxColumn2.HeaderText = "EmployeeColumn";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Visible = false;
+            // 
+            // FarmColumn
+            // 
+            this.FarmColumn.DataPropertyName = "Farm";
+            this.FarmColumn.HeaderText = "FarmColumn";
+            this.FarmColumn.Name = "FarmColumn";
+            this.FarmColumn.Visible = false;
+            // 
+            // TransportContextMenuStrip
+            // 
+            this.TransportContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.EditTransportStrip,
+            this.DeleteTransportStrip});
+            this.TransportContextMenuStrip.Name = "TransportContextMenuStrip";
+            this.TransportContextMenuStrip.Size = new System.Drawing.Size(130, 48);
+            this.TransportContextMenuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.TransportContextMenuStrip_ItemClicked);
+            // 
+            // EditTransportStrip
+            // 
+            this.EditTransportStrip.Name = "EditTransportStrip";
+            this.EditTransportStrip.Size = new System.Drawing.Size(129, 22);
+            this.EditTransportStrip.Text = "Edit";
+            // 
+            // DeleteTransportStrip
+            // 
+            this.DeleteTransportStrip.Name = "DeleteTransportStrip";
+            this.DeleteTransportStrip.Size = new System.Drawing.Size(129, 22);
+            this.DeleteTransportStrip.Text = "Supprimer";
             // 
             // tabPageEmployee
             // 
@@ -1585,6 +1642,7 @@ namespace HarvestManagerSystem
             this.btnAddTransport.TabIndex = 14;
             this.btnAddTransport.Text = "Transport";
             this.btnAddTransport.UseVisualStyleBackColor = true;
+            this.btnAddTransport.Click += new System.EventHandler(this.btnAddTransport_Click);
             // 
             // btnAddfarm
             // 
@@ -1666,7 +1724,8 @@ namespace HarvestManagerSystem
             this.tabPageTransportCredit.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.CreditDataGridView)).EndInit();
             this.CreditContextMenuStrip.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TransportDataGridView)).EndInit();
+            this.TransportContextMenuStrip.ResumeLayout(false);
             this.tabPageEmployee.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ReloadButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EmployeeDataGridView)).EndInit();
@@ -1751,11 +1810,7 @@ namespace HarvestManagerSystem
         private System.Windows.Forms.DataGridView ProductDataGridView;
         private System.Windows.Forms.DataGridView dataGridView7;
         private System.Windows.Forms.Label labelTransportCreditTab;
-        private System.Windows.Forms.DataGridView dataGridView6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TransportDateColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TransportEmployeeColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TransportAmountColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TransportFarmColumn;
+        private System.Windows.Forms.DataGridView TransportDataGridView;
         private System.Windows.Forms.DataGridView SupplyDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductNameColumn;
@@ -1810,6 +1865,16 @@ namespace HarvestManagerSystem
         private System.Windows.Forms.ContextMenuStrip CreditContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem EditCreditStrip;
         private System.Windows.Forms.ToolStripMenuItem DeleteCreditStrip;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TransportIdColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TransportDateColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TransportEmployeeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TransportAmountColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TransportFarmColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FarmColumn;
+        private System.Windows.Forms.ContextMenuStrip TransportContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem EditTransportStrip;
+        private System.Windows.Forms.ToolStripMenuItem DeleteTransportStrip;
     }
 }
 

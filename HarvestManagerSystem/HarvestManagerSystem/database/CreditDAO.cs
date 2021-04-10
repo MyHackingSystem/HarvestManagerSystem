@@ -30,7 +30,7 @@ namespace HarvestManagerSystem.database
 
 
         //*******************************
-        //Get redit data
+        //Get Credit data
         //*******************************
         public List<Credit> getData()
         {
