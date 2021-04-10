@@ -24,6 +24,7 @@ namespace HarvestManagerSystem
         ProductDAO productDAO = ProductDAO.getInstance();
         ProductDetailDAO productDetailDAO = ProductDetailDAO.getInstance();
         CreditDAO creditDAO = CreditDAO.getInstance();
+        TransportDAO transportDAO = TransportDAO.getInstance();
 
         private static List<Employee> list = new List<Employee>();
 
@@ -620,11 +621,82 @@ MessageBoxIcon.Information);
 
         #endregion
 
-        #region //To do Transport CODE
-        void DisplayTransportData()
+        #region TRANSPORT CODE
+
+        List<Transport> listTransport = new List<Transport>();
+
+        private void btnAddTransport_Click(object sender, EventArgs e)
+        {
+            FormAddTransport formAddTransport = FormAddTransport.getInstance(this);
+            formAddTransport.ShowFormAdd();
+        }
+        public void DisplayTransportData()
+        {
+            listTransport = transportDAO.getData();
+            TransportDataGridView.DataSource = listTransport;
+        }
+
+
+        private void TransportContextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            if (e.ClickedItem.Name == EditTransportStrip.Name)
+            {
+                ProductContextMenuStrip.Visible = false;
+                HandleEditTransportTable();
+            }
+            else if (e.ClickedItem.Name == DeleteTransportStrip.Name)
+            {
+                ProductContextMenuStrip.Visible = false;
+                HandleDeleteTransportTable();
+            }
+        }
+
+        void HandleEditTransportTable()
         {
 
+            FormAddTransport formAddTransport = FormAddTransport.getInstance(this);
+            Transport transport = (Transport)TransportDataGridView.CurrentRow.DataBoundItem;
+
+
+            if (transport == null)
+            {
+                MessageBox.Show("Select Credit");
+                return;
+            }
+
+            formAddTransport.InflateUI(transport);
+            formAddTransport.ShowFormAdd();
         }
+
+        void HandleDeleteTransportTable()
+        {
+            Transport transport = (Transport)TransportDataGridView.CurrentRow.DataBoundItem;
+            if (transport == null)
+            {
+                MessageBox.Show("Select product");
+                return;
+            }
+
+            DialogResult dr = MessageBox.Show("Are you sure you want to delete " + transport.EmployeeName + " transport", "Delete", MessageBoxButtons.YesNoCancel,
+            MessageBoxIcon.Information);
+            bool deleted = false;
+            if (dr == DialogResult.Yes)
+            {
+                deleted = transportDAO.DeleteData(transport);
+            }
+
+            if (deleted)
+            {
+                MessageBox.Show("Delete");
+            }
+            else if (dr == DialogResult.Yes)
+            {
+                MessageBox.Show("Not Delete");
+            }
+            DisplayTransportData();
+
+        }
+
         #endregion
 
         #region EMPLOYEE CODE
@@ -719,6 +791,8 @@ MessageBoxIcon.Information);
                 }
             }
         }
+
+
 
 
 
