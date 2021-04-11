@@ -160,7 +160,6 @@ namespace HarvestManagerSystem.view
             this.HarvesterRadioButton.TabStop = true;
             this.HarvesterRadioButton.Text = "Harvester";
             this.HarvesterRadioButton.UseVisualStyleBackColor = true;
-            this.HarvesterRadioButton.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // ControllerRadioButton
             // 
@@ -334,6 +333,7 @@ namespace HarvestManagerSystem.view
             this.ApplyHarvestHoursButton.TabIndex = 21;
             this.ApplyHarvestHoursButton.Text = "Apply";
             this.ApplyHarvestHoursButton.UseVisualStyleBackColor = true;
+            this.ApplyHarvestHoursButton.Click += new System.EventHandler(this.ApplyHarvestHoursButton_Click);
             // 
             // label10
             // 

@@ -1,0 +1,87 @@
+
+
+CREATE VIEW HarvestHours_For_Insert AS
+SELECT hh.HarvestDate,
+        hh.TimeStartMorning,
+	hh.TimeEndMorning,
+	hh.TimeStartNoon,
+	hh.TimeEndNoon,
+	hh.HourPrice,
+	hh.Remarque,
+	hh.EmployeeType,
+	hh.EmployeeId,
+	t.TransportDate,
+	t.TransportAmount,
+	t.EmployeeId,
+	t.FarmId,
+	c.CreditDate,
+	c.CreditAmount,
+	c.EmployeeId,
+	hh.ProductionId
+
+FROM HarvestHours hh
+    INNER JOIN Transport t ON hh.TransportId = t.TransportId
+    INNER JOIN Credit c ON hh.CreditId = c.CreditId
+
+
+/////////////////////
+
+INSERT INTO HarvestHours_For_Insert
+(HarvestDate,TimeStartMorning,
+TimeEndMorning,TimeStartNoon,TimeEndNoon,
+HourPrice,Remarque,EmployeeType,EmployeeId,
+TransportDate,TransportAmount,EmployeeId,
+FarmId,CreditDate,CreditAmount,EmployeeId,ProductionId) VALUES (
+
+	1,
+        1,
+	1,
+	1,
+	1,
+	1,
+	'Remarque',
+	1,
+	1,
+	1,
+	1,
+	1,
+	1,
+	1,
+	1,
+	1,
+	1
+)
+
+//////////////////////
+
+
+CREATE TRIGGER HarvestHours_Insert
+INSTEAD OF INSERT
+ON HarvestHours_For_Insert
+    
+BEGIN
+    
+INSERT INTO Transport (TransportDate, TransportAmount, EmployeeId, FarmId)
+SELECT NEW.TransportDate, NEW.TransportAmount, NEW.EmployeeId, NEW.FarmId
+WHERE NOT EXISTS
+    (SELECT 1 FROM Transport
+     WHERE TransportDate = NEW.TransportDate);
+
+INSERT INTO Credit (CreditDate, CreditAmount, EmployeeId)
+SELECT NEW.CreditDate, NEW.CreditAmount, NEW.EmployeeId
+WHERE NOT EXISTS
+    (SELECT 1 FROM Credit
+     WHERE CreditDate = NEW.CreditDate);
+        
+INSERT INTO HarvestHours (HarvestDate, TimeStartMorning, TimeEndMorning, TimeStartNoon, TimeEndNoon, 
+HourPrice, Remarque, EmployeeType, EmployeeId, TransportId, CreditId, ProductionId)
+SELECT NEW.HarvestDate, NEW.TimeStartMorning, NEW.TimeEndMorning, NEW.TimeStartNoon, NEW.TimeEndNoon, 
+NEW.HourPrice, NEW.Remarque, NEW.EmployeeType, NEW.EmployeeId, 
+Transport.TransportId, Credit.CreditId, NEW.ProductionId
+FROM Transport, Credit
+WHERE Transport.TransportDate = NEW.TransportDate
+ AND Credit.CreditDate = NEW.CreditDate;
+    
+END
+
+//////////////
