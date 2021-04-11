@@ -26,6 +26,7 @@ namespace HarvestManagerSystem
         CreditDAO creditDAO = CreditDAO.getInstance();
         TransportDAO transportDAO = TransportDAO.getInstance();
         HarvestHoursDAO harvestHoursDAO = HarvestHoursDAO.getInstance();
+        ProductionDAO productionDAO = ProductionDAO.getInstance();
 
         private static List<Employee> list = new List<Employee>();
 
@@ -36,7 +37,6 @@ namespace HarvestManagerSystem
 
         private void HarvestMS_Load(object sender, EventArgs e)
         {
-            harvestHoursDAO.CreateTable();
         }
 
         private void tabProduction_SelectedIndexChanged(object sender, EventArgs e)

@@ -40,6 +40,120 @@ namespace HarvestManagerSystem.database
             return instance;
         }
 
+        //*******************************
+        //Add production data
+        //*******************************
+        public bool addHoursWork(HarvestHours harvestHours)
+        {
+            SQLiteTransaction transaction = null;
+            SQLiteCommand sQLiteCommand = null;
+
+            String insertTransport = "INSERT INTO " + TransportDAO.TABLE_TRANSPORT + " ("
+                    + TransportDAO.COLUMN_TRANSPORT_DATE + ", "
+                    + TransportDAO.COLUMN_TRANSPORT_AMOUNT + ", "
+                    + TransportDAO.COLUMN_TRANSPORT_EMPLOYEE_ID + ", "
+                    + TransportDAO.COLUMN_TRANSPORT_FARM_ID +
+                    " ) VALUES ( "
+                    + "@" + TransportDAO.COLUMN_TRANSPORT_DATE + ", "
+                    + "@" + TransportDAO.COLUMN_TRANSPORT_AMOUNT + ", "
+                    + "@" + TransportDAO.COLUMN_TRANSPORT_EMPLOYEE_ID + ", "
+                    + "@" + TransportDAO.COLUMN_TRANSPORT_FARM_ID
+                    + " )";
+
+            //String TransportId = "SELECT MAX(id) FROM " + TransportDAO.TABLE_TRANSPORT + " ;";
+
+            String insertCredit = "INSERT INTO " + CreditDAO.TABLE_CREDIT + " ("
+                    + CreditDAO.COLUMN_CREDIT_DATE + ", "
+                    + CreditDAO.COLUMN_CREDIT_AMOUNT + ", "
+                    + CreditDAO.COLUMN_CREDIT_EMPLOYEE_ID +
+                    " ) VALUES ( "
+                    + "@" + CreditDAO.COLUMN_CREDIT_DATE + ", "
+                    + "@" + CreditDAO.COLUMN_CREDIT_AMOUNT + ", "
+                    + "@" + CreditDAO.COLUMN_CREDIT_EMPLOYEE_ID
+                    + " )";
+
+            //String CreditId = "SELECT MAX(id) FROM " + CreditDAO.TABLE_CREDIT + " ;";
+
+            String insertHarvestHours = "INSERT INTO " + TABLE_HOURS + " ("
+                    + COLUMN_HOURS_DATE + ", "
+                    + COLUMN_HOURS_SM + ", "
+                    + COLUMN_HOURS_EM + ", "
+                    + COLUMN_HOURS_SN + ", "
+                    + COLUMN_HOURS_EN + ", "
+                    + COLUMN_HOURS_PRICE + ", "
+                    + COLUMN_HOURS_REMARQUE + ", "
+                    + COLUMN_HOURS_EMPLOYEE_TYPE + ", "
+                    + COLUMN_HOURS_EMPLOYEE_ID + ", "
+                    + COLUMN_HOURS_TRANSPORT_ID + ", "
+                    + COLUMN_HOURS_CREDIT_ID + ", "
+                    + COLUMN_HOURS_PRODUCTION_ID +
+                    " ) VALUES ( "
+                    + "@" + COLUMN_HOURS_DATE + ", "
+                    + "@" + COLUMN_HOURS_SM + ", "
+                    + "@" + COLUMN_HOURS_EM + ", "
+                    + "@" + COLUMN_HOURS_SN + ", "
+                    + "@" + COLUMN_HOURS_EN + ", "
+                    + "@" + COLUMN_HOURS_PRICE + ", "
+                    + "@" + COLUMN_HOURS_REMARQUE + ", "
+                    + "@" + COLUMN_HOURS_EMPLOYEE_TYPE + ", "
+                    + "@" + COLUMN_HOURS_EMPLOYEE_ID + ", "
+                    + "@" + COLUMN_HOURS_TRANSPORT_ID + ", "
+                    + "@" + COLUMN_HOURS_CREDIT_ID + ", "
+                    + "@" + COLUMN_HOURS_PRODUCTION_ID
+                    + " )";
+
+            try
+            {
+                OpenConnection();
+                transaction = mSQLiteConnection.BeginTransaction();
+                sQLiteCommand = new SQLiteCommand(insertTransport, mSQLiteConnection);
+                sQLiteCommand.Parameters.AddWithValue(TransportDAO.COLUMN_TRANSPORT_DATE, harvestHours.HarvestDate);
+                sQLiteCommand.Parameters.AddWithValue(TransportDAO.COLUMN_TRANSPORT_AMOUNT, harvestHours.Transport.TransportAmount);
+                sQLiteCommand.Parameters.AddWithValue(TransportDAO.COLUMN_TRANSPORT_EMPLOYEE_ID, harvestHours.Employee.EmployeeId);
+                sQLiteCommand.Parameters.AddWithValue(TransportDAO.COLUMN_TRANSPORT_FARM_ID, harvestHours.Production.Farm.FarmId);
+                sQLiteCommand.ExecuteNonQuery();
+
+                long rowTransportId = 0;
+
+                rowTransportId = mSQLiteConnection.LastInsertRowId;
+
+                sQLiteCommand = new SQLiteCommand(insertCredit, mSQLiteConnection);
+                sQLiteCommand.Parameters.AddWithValue(CreditDAO.COLUMN_CREDIT_DATE, harvestHours.HarvestDate);
+                sQLiteCommand.Parameters.AddWithValue(CreditDAO.COLUMN_CREDIT_AMOUNT, harvestHours.Credit.CreditAmount);
+                sQLiteCommand.Parameters.AddWithValue(CreditDAO.COLUMN_CREDIT_EMPLOYEE_ID, harvestHours.Employee.EmployeeId);
+                sQLiteCommand.ExecuteNonQuery();
+
+                long rowCreditId = 0;
+                rowCreditId = mSQLiteConnection.LastInsertRowId;
+
+                sQLiteCommand = new SQLiteCommand(insertHarvestHours, mSQLiteConnection);
+                sQLiteCommand.Parameters.AddWithValue(COLUMN_HOURS_DATE, harvestHours.HarvestDate);
+                sQLiteCommand.Parameters.AddWithValue(COLUMN_HOURS_SM, harvestHours.StartMorning);
+                sQLiteCommand.Parameters.AddWithValue(COLUMN_HOURS_EM, harvestHours.EndMorning);
+                sQLiteCommand.Parameters.AddWithValue(COLUMN_HOURS_SN, harvestHours.StartNoon);
+                sQLiteCommand.Parameters.AddWithValue(COLUMN_HOURS_EN, harvestHours.EndNoon);
+                sQLiteCommand.Parameters.AddWithValue(COLUMN_HOURS_PRICE, harvestHours.HourPrice);
+                sQLiteCommand.Parameters.AddWithValue(COLUMN_HOURS_REMARQUE, harvestHours.Remarque);
+                sQLiteCommand.Parameters.AddWithValue(COLUMN_HOURS_EMPLOYEE_TYPE, harvestHours.EmployeeType);
+                sQLiteCommand.Parameters.AddWithValue(COLUMN_HOURS_EMPLOYEE_ID, harvestHours.Employee.EmployeeId);
+                sQLiteCommand.Parameters.AddWithValue(COLUMN_HOURS_TRANSPORT_ID, rowTransportId);
+                sQLiteCommand.Parameters.AddWithValue(COLUMN_HOURS_CREDIT_ID, rowCreditId);
+                sQLiteCommand.Parameters.AddWithValue(COLUMN_HOURS_PRODUCTION_ID, harvestHours.Production.ProductionID);
+                sQLiteCommand.ExecuteNonQuery();
+
+                transaction.Commit();
+                return true;
+            }
+            catch (SQLiteException e)
+            {
+                Console.WriteLine(e.StackTrace);
+                return false;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
 
         //*******************************
         //Get Hours data by production id
@@ -150,6 +264,8 @@ namespace HarvestManagerSystem.database
 
             return list;
         }
+
+        
 
 
         //*******************************

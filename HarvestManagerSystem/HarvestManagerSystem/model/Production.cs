@@ -6,12 +6,11 @@ namespace HarvestManagerSystem.model
 {
     class Production
     {
-
-        private int productionID;
+        private long productionID;
         private DateTime productionDate;
         private int totalEmployee;
         private double totalQuantity;
-        private long totalMinutes;
+        private double totalMinutes;
         private double price;
         private int productionType;
         private Supplier supplier = new Supplier();
@@ -19,11 +18,11 @@ namespace HarvestManagerSystem.model
         private Product product = new Product();
         private ProductDetail productDetail = new ProductDetail();
 
-        public int ProductionID { get => productionID; set => productionID = value; }
-        public DateTime ProductionDate { get => productionDate; set => productionDate = value; }
+        public long ProductionID { get => productionID; set => productionID = value; }
+        public DateTime ProductionDate { get => productionDate.Date; set => productionDate = value; }
         public int TotalEmployee { get => totalEmployee; set => totalEmployee = value; }
         public double TotalQuantity { get => totalQuantity; set => totalQuantity = value; }
-        public long TotalMinutes { get => totalMinutes; set => totalMinutes = value; }
+        public double TotalMinutes { get => totalMinutes; set => totalMinutes = value; }
         public double Price { get => price; set => price = value; }
         public int ProductionType { get => productionType; set => productionType = value; }
         internal Supplier Supplier { get => supplier;}
