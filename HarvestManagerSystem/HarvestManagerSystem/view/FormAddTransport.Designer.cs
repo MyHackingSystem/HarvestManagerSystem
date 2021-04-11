@@ -235,6 +235,7 @@ namespace HarvestManagerSystem.view
             this.Controls.Add(this.transportEmployeeErrorLabel);
             this.Controls.Add(this.transportAmountErrorLabel);
             this.Name = "FormAddTransport";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormAddTransport";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAddTransport_FormClosed);
             this.Load += new System.EventHandler(this.FormAddTransport_Load);

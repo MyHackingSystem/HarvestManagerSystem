@@ -1,0 +1,33 @@
+        private void ProductNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Product product = mProductDictionary.GetValueOrDefault(ProductNameComboBox.GetItemText(ProductNameComboBox.SelectedItem));
+            //if (product != null)
+            //{
+            //    ProductTypeList(product);
+            //}
+            int i = ProductNameComboBox.SelectedIndex;
+            if (i < mProductDictionary.Values.Count && i >= 0)
+            {
+                DisplayProductDetailData(mProductDictionary.ElementAt(i).Value);
+            }
+        }
+
+        private void DisplayProductDetailData(Product product)
+        {
+            List<string> ls = new List<string>();
+            mProductDetailDictionary.Clear();
+            try
+            {
+                mProductDetailDictionary = mProductDetailDAO.ProductDetailDictionary(product);
+                ls.AddRange(mProductDetailDictionary.Keys);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            if (ls != null)
+            {
+                ProductTypeComboBox.DataSource = ls;
+            }
+
+        }

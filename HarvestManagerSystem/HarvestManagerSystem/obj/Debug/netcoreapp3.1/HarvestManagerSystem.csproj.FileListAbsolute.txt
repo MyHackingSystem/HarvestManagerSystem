@@ -36,3 +36,4 @@ E:\Projects\C_Sharp\Desktop\HarvestManagerSystem\HarvestManagerSystem\HarvestMan
 E:\Projects\C_Sharp\Desktop\HarvestManagerSystem\HarvestManagerSystem\HarvestManagerSystem\obj\Debug\netcoreapp3.1\HarvestManagerSystem.view.FormAddSupplier.resources
 E:\Projects\C_Sharp\Desktop\HarvestManagerSystem\HarvestManagerSystem\HarvestManagerSystem\obj\Debug\netcoreapp3.1\HarvestManagerSystem.view.FormAddCredit.resources
 E:\Projects\C_Sharp\Desktop\HarvestManagerSystem\HarvestManagerSystem\HarvestManagerSystem\obj\Debug\netcoreapp3.1\HarvestManagerSystem.view.FormAddTransport.resources
+E:\Projects\C_Sharp\Desktop\HarvestManagerSystem\HarvestManagerSystem\HarvestManagerSystem\obj\Debug\netcoreapp3.1\HarvestManagerSystem.view.FormAddHours.resources

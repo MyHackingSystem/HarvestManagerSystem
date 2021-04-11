@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using HarvestManagerSystem.database;
@@ -21,7 +22,6 @@ namespace HarvestManagerSystem.view
         private ProductDAO mProductDAO = ProductDAO.getInstance();
         private ProductDetailDAO mProductDetailDAO = ProductDetailDAO.getInstance();
         private Dictionary<string, Product> mProductDictionary = new Dictionary<string, Product>();
-        
 
         private HarvestMS harvestMS;
         private static FormAddProduct instance;
