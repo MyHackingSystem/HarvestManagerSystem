@@ -25,7 +25,7 @@ namespace HarvestManagerSystem.model
         {
             get
             {
-                return $"{firstName} {lastName}";
+                return $"{FirstName} {LastName}";
             }
         }
     }

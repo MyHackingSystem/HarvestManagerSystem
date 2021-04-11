@@ -1599,6 +1599,7 @@ namespace HarvestManagerSystem
             this.btnAddHarvestHours.TabIndex = 10;
             this.btnAddHarvestHours.Text = "Heures";
             this.btnAddHarvestHours.UseVisualStyleBackColor = true;
+            this.btnAddHarvestHours.Click += new System.EventHandler(this.btnAddHarvestHours_Click);
             // 
             // btnAddEmployee
             // 

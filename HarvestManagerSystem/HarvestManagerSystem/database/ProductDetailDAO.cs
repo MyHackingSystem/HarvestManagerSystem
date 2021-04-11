@@ -132,6 +132,47 @@ namespace HarvestManagerSystem.database
             }
         }
 
+        //*************************************************************
+        //Get productdetail as Dictionary by product type
+        //*************************************************************
+        internal Dictionary<string, ProductDetail> ProductCodeDictionary(Product product)
+        {
+            Dictionary<string, ProductDetail> productDictionary = new Dictionary<string, ProductDetail>();
+
+            string selectStmt = "SELECT * FROM " + TABLE_PRODUCT_DETAIL
+                + " WHERE " + COLUMN_FOREIGN_KEY_PRODUCT_ID + " = " + product.ProductId
+                + " AND " + COLUMN_PRODUCT_DETAIL_IS_EXIST + " = 1 "
+                + " ORDER BY " + COLUMN_PRODUCT_TYPE + " ASC;";
+
+            try
+            {
+                SQLiteCommand sQLiteCommand = new SQLiteCommand(selectStmt, mSQLiteConnection);
+                OpenConnection();
+                SQLiteDataReader result = sQLiteCommand.ExecuteReader();
+                if (result.HasRows)
+                {
+                    while (result.Read())
+                    {
+                        ProductDetail productDetail = new ProductDetail();
+                        productDetail.ProductDetailId = Convert.ToInt32((result["Id"]).ToString());
+                        productDetail.ProductType = (string)result["ProductType"];
+                        productDetail.ProductCode = (string)result["ProductCode"];
+                        productDetail.PriceEmployee = Convert.ToDouble((result["PriceEmployee"]).ToString());
+                        productDetail.PriceCompany = Convert.ToDouble((result["PriceCompany"]).ToString());
+                        productDetail.Product.ProductId = Convert.ToInt32((result["ProductId"]).ToString());
+                        productDictionary.Add(productDetail.ProductCode, productDetail);
+                    }
+                }
+                CloseConnection();
+                return productDictionary;
+            }
+            catch (SQLiteException e)
+            {
+                Console.WriteLine(e.Message);
+                return productDictionary;
+            }
+        }
+
         //*******************************
         //Get all product data
         //*******************************

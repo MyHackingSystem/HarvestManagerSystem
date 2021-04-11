@@ -25,6 +25,7 @@ namespace HarvestManagerSystem
         ProductDetailDAO productDetailDAO = ProductDetailDAO.getInstance();
         CreditDAO creditDAO = CreditDAO.getInstance();
         TransportDAO transportDAO = TransportDAO.getInstance();
+        HarvestHoursDAO harvestHoursDAO = HarvestHoursDAO.getInstance();
 
         private static List<Employee> list = new List<Employee>();
 
@@ -35,7 +36,7 @@ namespace HarvestManagerSystem
 
         private void HarvestMS_Load(object sender, EventArgs e)
         {
-            
+            harvestHoursDAO.CreateTable();
         }
 
         private void tabProduction_SelectedIndexChanged(object sender, EventArgs e)
@@ -69,6 +70,44 @@ namespace HarvestManagerSystem
                     break;
             }
         }
+
+        #region //TO DO QUANTITY CODE
+        void DisplayQuantityData()
+        {
+
+        }
+        private void btnSearchQuantityProduction_Click(object sender, EventArgs e)
+        {
+
+            loadDataProgressBar.Visible = true;
+            loadDataProgressBar.Value = 20;
+
+        }
+
+        private void displayQuantityContextMenu_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        #endregion
+
+        #region HOURS CODE
+
+        List<HarvestHours> listHarvestHours = new List<HarvestHours>();
+
+        private void btnAddHarvestHours_Click(object sender, EventArgs e)
+        {
+            FormAddHours formAddHours = FormAddHours.getInstance(this);
+            formAddHours.ShowFormAdd();
+        }
+
+        void DisplayHoursData()
+        {
+            //listHarvestHours = harvestHoursDAO.HoursDataByProductionId();
+            //ProductDataGridView.DataSource = listProduct;
+        }
+        #endregion
+
 
         #region SUPPLIER CODE
 
@@ -519,33 +558,6 @@ MessageBoxIcon.Information);
 
         #endregion
 
-        #region //TO DO QUANTITY CODE
-        void DisplayQuantityData()
-        {
-
-        }
-        private void btnSearchQuantityProduction_Click(object sender, EventArgs e)
-        {
-
-            loadDataProgressBar.Visible = true;
-            loadDataProgressBar.Value = 20;
-
-        }
-
-        private void displayQuantityContextMenu_Opening(object sender, CancelEventArgs e)
-        {
-
-        }
-
-        #endregion
-
-        #region //TO DO HOURS CODE
-        void DisplayHoursData()
-        {
-
-        }
-        #endregion
-
         #region Credit CODE
 
         List<Credit> listCredit = new List<Credit>();
@@ -791,6 +803,7 @@ MessageBoxIcon.Information);
                 }
             }
         }
+
 
 
 
