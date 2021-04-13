@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "MyZGXZGCdoEYIVeM3itd1YK5JzO0rj6Hg3rwg37/I+N1HIPR/1/T9+6bkCTYMzwnXAf0+pgTLfRsDxzHu58LTw==",
+  "dgSpecHash": "aDNFXEz37YTLMKExSy/Gw4KGomCoprdTgSS7f/uye3bU3uVAkw7LN3G4fqvwwnVYsRkm9DSTy8Qv87jNMrS+Cw==",
   "success": true,
   "projectFilePath": "E:\\Projects\\C_Sharp\\Desktop\\HarvestManagerSystem\\HarvestManagerSystem\\HarvestManagerSystem\\HarvestManagerSystem.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Rawaha\\.nuget\\packages\\entityframework\\6.3.0\\entityframework.6.3.0.nupkg.sha512",
+    "C:\\Users\\Rawaha\\.nuget\\packages\\fastmember\\1.5.0\\fastmember.1.5.0.nupkg.sha512",
     "C:\\Users\\Rawaha\\.nuget\\packages\\microsoft.csharp\\4.6.0\\microsoft.csharp.4.6.0.nupkg.sha512",
     "C:\\Users\\Rawaha\\.nuget\\packages\\microsoft.netcore.platforms\\3.0.0\\microsoft.netcore.platforms.3.0.0.nupkg.sha512",
     "C:\\Users\\Rawaha\\.nuget\\packages\\microsoft.win32.registry\\4.6.0\\microsoft.win32.registry.4.6.0.nupkg.sha512",

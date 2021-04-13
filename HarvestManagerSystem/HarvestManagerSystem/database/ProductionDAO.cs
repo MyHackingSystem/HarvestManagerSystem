@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Data.SQLite;
 using HarvestManagerSystem.model;
+using System.Data.SqlClient;
+using System.Data;
+using System.Windows.Forms;
 
 namespace HarvestManagerSystem.database
 {
@@ -23,9 +26,7 @@ namespace HarvestManagerSystem.database
 
 
         private static ProductionDAO instance = new ProductionDAO();
-
         private ProductionDAO() : base() { }
-
         public static ProductionDAO getInstance()
         {
             if (instance == null)
@@ -40,7 +41,7 @@ namespace HarvestManagerSystem.database
         //*******************************
         public List<Production> searchHarvestHoursProduction(DateTime fromDate, DateTime toDate, int type)
         {
-            String select = "SELECT "
+            string select = "SELECT "
         + TABLE_PRODUCTION + "." + COLUMN_PRODUCTION_ID + ", "
         + TABLE_PRODUCTION + "." + COLUMN_PRODUCTION_DATE + ", "
         + TABLE_PRODUCTION + "." + COLUMN_PRODUCTION_TOTAL_EMPLOYEES + ", "
@@ -65,8 +66,8 @@ namespace HarvestManagerSystem.database
         + " ON " + ProductDAO.TABLE_PRODUCT + "." + ProductDAO.COLUMN_PRODUCT_ID + " = " + TABLE_PRODUCTION + "." + COLUMN_PRODUCTION_PRODUCT_ID
         + " LEFT JOIN " + ProductDetailDAO.TABLE_PRODUCT_DETAIL + " "
         + " ON " + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_DETAIL_ID + " = " + TABLE_PRODUCTION + "." + COLUMN_PRODUCTION_PRODUCT_DETAIL_ID
-        + " WHERE " + COLUMN_PRODUCTION_DATE + " >= " + fromDate
-        + " AND " + COLUMN_PRODUCTION_DATE + " <= " + toDate
+        + " WHERE " + COLUMN_PRODUCTION_DATE 
+        + " BETWEEN strftime('%Y-%m-%d %H:%M:%S', '" + fromDate.ToString("yyyy'-'MM'-'dd' 'HH':'mm':'ss") + "') AND strftime('%Y-%m-%d %H:%M:%S', '" + toDate.ToString("yyyy'-'MM'-'dd' 'HH':'mm':'ss") + "') "
         + " AND " + COLUMN_PRODUCTION_TYPE + " = " + type
         + " ORDER BY " + COLUMN_PRODUCTION_DATE + " DESC ;";
 
@@ -75,7 +76,7 @@ namespace HarvestManagerSystem.database
                 SQLiteCommand sQLiteCommand = new SQLiteCommand(select, mSQLiteConnection);
                 OpenConnection();
                 SQLiteDataReader result = sQLiteCommand.ExecuteReader();
-                return getProductionFromResultSet(result);
+                return ProductionResultDataReader(result);
             }
             catch (SQLiteException e)
             {
@@ -90,7 +91,7 @@ namespace HarvestManagerSystem.database
         }
 
         //Help method to get data from SQLiteDataReader
-        private List<Production> getProductionFromResultSet(SQLiteDataReader result)
+        private List<Production> ProductionResultDataReader(SQLiteDataReader result)
         {
             List<Production> list = new List<Production>();
 
@@ -100,7 +101,11 @@ namespace HarvestManagerSystem.database
                 {
                     Production production = new Production();
                     production.ProductionID = Convert.ToInt32((result[COLUMN_PRODUCTION_ID]).ToString());
-
+                    production.ProductionDate = (DateTime)result[COLUMN_PRODUCTION_DATE];
+                    production.TotalEmployee = Convert.ToInt32((result[COLUMN_PRODUCTION_TOTAL_EMPLOYEES]).ToString());
+                    production.TotalQuantity = Convert.ToDouble((result[COLUMN_PRODUCTION_TOTAL_QUANTITY]).ToString());
+                    production.TotalMinutes = Convert.ToDouble((result[COLUMN_PRODUCTION_TOTAL_MINUTES]).ToString());
+                    production.Price = Convert.ToDouble((result[COLUMN_PRODUCTION_PRICE]).ToString());
                     production.Supplier.SupplierId = Convert.ToInt32((result[SupplierDAO.COLUMN_SUPPLIER_ID]).ToString());
                     production.Supplier.SupplierName = (string)result[SupplierDAO.COLUMN_SUPPLIER_NAME];
                     production.Farm.FarmId = Convert.ToInt32((result[FarmDAO.COLUMN_FARM_ID]).ToString());
@@ -110,6 +115,50 @@ namespace HarvestManagerSystem.database
                     production.ProductDetail.ProductDetailId = Convert.ToInt32((result[ProductDetailDAO.COLUMN_PRODUCT_DETAIL_ID]).ToString());
                     production.ProductDetail.ProductType = (string)result[ProductDetailDAO.COLUMN_PRODUCT_TYPE];
                     production.ProductDetail.ProductCode = (string)result[ProductDetailDAO.COLUMN_PRODUCT_CODE];
+                    list.Add(production);
+                }
+            }
+            
+            return list;
+        }
+
+        public List<Production> getdata()
+        {
+            string select = "SELECT * FROM " + TABLE_PRODUCTION + " WHERE " + COLUMN_PRODUCTION_DATE + " BETWEEN '2021-01-01 00:00:00' AND '2021-05-05 00:00:00' ";
+
+            try
+            {
+                SQLiteCommand sQLiteCommand = new SQLiteCommand(select, mSQLiteConnection);
+                OpenConnection();
+                SQLiteDataReader result = sQLiteCommand.ExecuteReader();
+                return ResultDataReader(result);
+            }
+            catch (SQLiteException e)
+            {
+                Console.WriteLine(e.StackTrace);
+                throw e;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        private List<Production> ResultDataReader(SQLiteDataReader result)
+        {
+            List<Production> list = new List<Production>();
+
+            if (result.HasRows)
+            {
+                while (result.Read())
+                {
+                    Production production = new Production();
+                    production.ProductionID = Convert.ToInt32((result[COLUMN_PRODUCTION_ID]).ToString());
+                    production.ProductionDate = (DateTime)result[COLUMN_PRODUCTION_DATE];
+                    production.TotalEmployee = Convert.ToInt32((result[COLUMN_PRODUCTION_TOTAL_EMPLOYEES]).ToString());
+                    production.TotalQuantity = Convert.ToDouble((result[COLUMN_PRODUCTION_TOTAL_QUANTITY]).ToString());
+                    production.TotalMinutes = Convert.ToDouble((result[COLUMN_PRODUCTION_TOTAL_MINUTES]).ToString());
+                    production.Price = Convert.ToInt32((result[COLUMN_PRODUCTION_PRICE]).ToString());
                     list.Add(production);
                 }
             }
@@ -216,6 +265,45 @@ namespace HarvestManagerSystem.database
                 CloseConnection();
             }
         }
+
+        
+        public string getSelectQuery(DateTime fromDate, DateTime toDate, int type)
+        {
+
+         string selectproduct = "SELECT "
+        + TABLE_PRODUCTION + "." + COLUMN_PRODUCTION_ID + ", "
+        + TABLE_PRODUCTION + "." + COLUMN_PRODUCTION_DATE + ", "
+        + TABLE_PRODUCTION + "." + COLUMN_PRODUCTION_TOTAL_EMPLOYEES + ", "
+        + TABLE_PRODUCTION + "." + COLUMN_PRODUCTION_TOTAL_QUANTITY + ", "
+        + TABLE_PRODUCTION + "." + COLUMN_PRODUCTION_TOTAL_MINUTES + ", "
+        + TABLE_PRODUCTION + "." + COLUMN_PRODUCTION_PRICE + ", "
+        + SupplierDAO.TABLE_SUPPLIER + "." + SupplierDAO.COLUMN_SUPPLIER_ID + ", "
+        + SupplierDAO.TABLE_SUPPLIER + "." + SupplierDAO.COLUMN_SUPPLIER_NAME + ", "
+        + FarmDAO.TABLE_FARM + "." + FarmDAO.COLUMN_FARM_ID + ", "
+        + FarmDAO.TABLE_FARM + "." + FarmDAO.COLUMN_FARM_NAME + ", "
+        + ProductDAO.TABLE_PRODUCT + "." + ProductDAO.COLUMN_PRODUCT_ID + ", "
+        + ProductDAO.TABLE_PRODUCT + "." + ProductDAO.COLUMN_PRODUCT_NAME + ", "
+        + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_DETAIL_ID + ", "
+        + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_TYPE + ", "
+        + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_CODE + " "
+        + " FROM " + TABLE_PRODUCTION
+        + " LEFT JOIN " + SupplierDAO.TABLE_SUPPLIER + " "
+        + " ON " + SupplierDAO.TABLE_SUPPLIER + "." + SupplierDAO.COLUMN_SUPPLIER_ID + " = " + TABLE_PRODUCTION + "." + COLUMN_PRODUCTION_SUPPLIER_ID
+        + " LEFT JOIN " + FarmDAO.TABLE_FARM + " "
+        + " ON " + FarmDAO.TABLE_FARM + "." + FarmDAO.COLUMN_FARM_ID + " = " + TABLE_PRODUCTION + "." + COLUMN_PRODUCTION_FARM_ID
+        + " LEFT JOIN " + ProductDAO.TABLE_PRODUCT + " "
+        + " ON " + ProductDAO.TABLE_PRODUCT + "." + ProductDAO.COLUMN_PRODUCT_ID + " = " + TABLE_PRODUCTION + "." + COLUMN_PRODUCTION_PRODUCT_ID
+        + " LEFT JOIN " + ProductDetailDAO.TABLE_PRODUCT_DETAIL + " "
+        + " ON " + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_DETAIL_ID + " = " + TABLE_PRODUCTION + "." + COLUMN_PRODUCTION_PRODUCT_DETAIL_ID
+        + " WHERE " + COLUMN_PRODUCTION_DATE
+        + " BETWEEN strftime('%Y-%m-%d %H:%M:%S', '" + fromDate.ToString("yyyy'-'MM'-'dd' 'HH':'mm':'ss") + "') AND strftime('%Y-%m-%d %H:%M:%S', '" + toDate.ToString("yyyy'-'MM'-'dd' 'HH':'mm':'ss") + "') "
+        + " AND " + COLUMN_PRODUCTION_TYPE + " = " + type
+        + " ORDER BY " + COLUMN_PRODUCTION_DATE + " DESC ;";
+
+
+            return selectproduct;
+        }
+
 
 
     }

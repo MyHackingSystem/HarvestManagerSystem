@@ -27,11 +27,7 @@ namespace HarvestManagerSystem.model
         private Credit mCredit = new Credit();
         private Production mProduction = new Production();
 
-        public string Remarque { get => remarque; set => remarque = value; }
-        public Employee Employee { get => mEmployee; }
-        internal Transport Transport { get => mTransport; }
-        internal Credit Credit { get => mCredit; }
-        internal Production Production { get => mProduction; }
+
 
         public int HarvestHoursID { get => harvestHoursID; set => harvestHoursID = value; }
         public DateTime HarvestDate { get => harvestDate.Date; set => harvestDate = value; }
@@ -39,16 +35,25 @@ namespace HarvestManagerSystem.model
         public DateTime EndMorning { get => endMorning; set => endMorning = value; }
         public DateTime StartNoon { get => startNoon; set => startNoon = value; }
         public DateTime EndNoon { get => endNoon; set => endNoon = value; }
-        public double TotalMinutes { get => EndMorning.Subtract(StartMorning).Add(EndNoon.Subtract(StartNoon)).TotalMinutes; }
+        public double TotalMinutes { get => (double) System.Math.Round(EndMorning.Subtract(StartMorning).Add(EndNoon.Subtract(StartNoon)).TotalMinutes, 2); }
         public int EmployeeType { get => employeeType; set => employeeType = value; }
         public double HourPrice { get => hourPrice; set => hourPrice = value; }
         public bool TransportStatus { get => transportStatus; set => transportStatus = value; }
         public double Payment
         {
 
-            get => (TotalMinutes * (HourPrice / 60)) - (Transport.TransportAmount + Credit.CreditAmount);
+            get => System.Math.Round((TotalMinutes * (HourPrice / 60)) - (Transport.TransportAmount + Credit.CreditAmount), 2);
             set => payment = value;
         }
+
+
+        public string Remarque { get => remarque; set => remarque = (value != null) ? value : ""; }
+        public Employee Employee { get => mEmployee; }
+        internal Transport Transport { get => mTransport; }
+        internal Credit Credit { get => mCredit; }
+        internal Production Production { get => mProduction; }
+
+        public long ProductionId { get => Production.ProductionID; }
 
         public double CreditAmount { get => Credit.CreditAmount; set => Credit.CreditAmount = value; }
 
@@ -59,7 +64,7 @@ namespace HarvestManagerSystem.model
 
         public string TimeStartMorning
         {
-            get =>  StartMorning.ToShortTimeString();
+            get => StartMorning.ToShortTimeString();
         }
         public string TimeEndMorning
         {
@@ -67,7 +72,7 @@ namespace HarvestManagerSystem.model
         }
         public string TimeStartNoon
         {
-            get => (StartNoon != null) ? StartNoon.ToShortTimeString(): "";
+            get => StartNoon.ToShortTimeString();
         }
         public string TimeEndNoon
         {
@@ -78,6 +83,11 @@ namespace HarvestManagerSystem.model
         {
             RECOLTEUR, CONTROLEUR, UNKNOWN
         };
+
+        public EmployeeCategory EmpCat
+        {
+            get => (EmployeeType == 1) ? EmployeeCategory.RECOLTEUR : EmployeeCategory.CONTROLEUR;
+        }
 
         public EmployeeCategory getEmployeeCategory()
         {

@@ -23,6 +23,11 @@ namespace HarvestManagerSystem.database
            
         }
 
+        public SQLiteConnection getCon()
+        {
+            return mSQLiteConnection;
+        }
+
         public void OpenConnection()
         {
             if (mSQLiteConnection.State != System.Data.ConnectionState.Open)
