@@ -29,7 +29,7 @@ namespace HarvestManagerSystem.view
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ClearHarvestHoursButton = new System.Windows.Forms.Button();
             this.ValidateHarvestHoursButton = new System.Windows.Forms.Button();
@@ -88,6 +88,8 @@ namespace HarvestManagerSystem.view
             this.Employee = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EmployeeType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AddHoursProductionIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EmpCatColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -470,15 +472,17 @@ namespace HarvestManagerSystem.view
             this.dataGridViewTextBoxColumn1,
             this.Employee,
             this.ProductionColumn,
-            this.EmployeeType});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.AddHarvestHoursDataGridView.DefaultCellStyle = dataGridViewCellStyle1;
+            this.EmployeeType,
+            this.AddHoursProductionIdColumn,
+            this.EmpCatColumn});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.AddHarvestHoursDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.AddHarvestHoursDataGridView.Location = new System.Drawing.Point(220, 23);
             this.AddHarvestHoursDataGridView.MultiSelect = false;
             this.AddHarvestHoursDataGridView.Name = "AddHarvestHoursDataGridView";
@@ -661,6 +665,20 @@ namespace HarvestManagerSystem.view
             this.EmployeeType.Name = "EmployeeType";
             this.EmployeeType.Visible = false;
             // 
+            // AddHoursProductionIdColumn
+            // 
+            this.AddHoursProductionIdColumn.DataPropertyName = "ProductionId";
+            this.AddHoursProductionIdColumn.HeaderText = "ProductionId";
+            this.AddHoursProductionIdColumn.Name = "AddHoursProductionIdColumn";
+            this.AddHoursProductionIdColumn.Visible = false;
+            // 
+            // EmpCatColumn
+            // 
+            this.EmpCatColumn.DataPropertyName = "EmpCat";
+            this.EmpCatColumn.HeaderText = "EmpCat";
+            this.EmpCatColumn.Name = "EmpCatColumn";
+            this.EmpCatColumn.Visible = false;
+            // 
             // FormAddHours
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -747,5 +765,7 @@ namespace HarvestManagerSystem.view
         private System.Windows.Forms.DataGridViewTextBoxColumn Employee;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductionColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AddHoursProductionIdColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EmpCatColumn;
     }
 }

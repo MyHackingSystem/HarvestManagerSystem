@@ -158,7 +158,7 @@ namespace HarvestManagerSystem.database
         //*******************************
         //Get Hours data by production id
         //*******************************
-        public List<HarvestHours> HoursDataByProductionId(Production production)
+        public List<HarvestHours> HarvestHoursByProduction(Production production)
         {
             string selectStmt = "SELECT "
                 + TABLE_HOURS + "." + COLUMN_HOURS_ID + ", "
@@ -237,9 +237,9 @@ namespace HarvestManagerSystem.database
                     harvestHours.StartMorning = (DateTime)result[COLUMN_HOURS_SM];
                     harvestHours.EndMorning = (DateTime)result[COLUMN_HOURS_EM];
                     harvestHours.StartNoon = (DateTime)result[COLUMN_HOURS_SN];
-                    harvestHours.EndMorning = (DateTime)result[COLUMN_HOURS_EN];
+                    harvestHours.EndNoon = (DateTime)result[COLUMN_HOURS_EN];
                     harvestHours.HourPrice = Convert.ToDouble((result[COLUMN_HOURS_PRICE]).ToString());
-                    harvestHours.Remarque = (string)result[COLUMN_HOURS_REMARQUE];
+                    harvestHours.Remarque = Convert.ToString(result[COLUMN_HOURS_REMARQUE]);
                     harvestHours.EmployeeType = Convert.ToInt32((result[COLUMN_HOURS_EMPLOYEE_TYPE]).ToString());
                     harvestHours.Employee.EmployeeId = Convert.ToInt32((result[EmployeeDAO.COLUMN_EMPLOYEE_ID]).ToString());
                     harvestHours.Employee.FirstName = (string)result[EmployeeDAO.COLUMN_EMPLOYEE_FIRST_NAME];
@@ -412,6 +412,128 @@ namespace HarvestManagerSystem.database
             {
                 CloseConnection();
             }
+        }
+
+
+        //*******************************
+        //Get Hours data by production id
+        //*******************************
+        public List<HarvestHours> HarvestHoursData()
+        {
+            string selectStmt = "SELECT "
+                + TABLE_HOURS + "." + COLUMN_HOURS_ID + ", "
+                + TABLE_HOURS + "." + COLUMN_HOURS_DATE + ", "
+                + TABLE_HOURS + "." + COLUMN_HOURS_SM + ", "
+                + TABLE_HOURS + "." + COLUMN_HOURS_EM + ", "
+                + TABLE_HOURS + "." + COLUMN_HOURS_SN + ", "
+                + TABLE_HOURS + "." + COLUMN_HOURS_EN + ", "
+                + TABLE_HOURS + "." + COLUMN_HOURS_PRICE + ", "
+                + TABLE_HOURS + "." + COLUMN_HOURS_REMARQUE + ", "
+                + TABLE_HOURS + "." + COLUMN_HOURS_EMPLOYEE_TYPE + ", "
+                + EmployeeDAO.TABLE_EMPLOYEE + "." + EmployeeDAO.COLUMN_EMPLOYEE_ID + ", "
+                + EmployeeDAO.TABLE_EMPLOYEE + "." + EmployeeDAO.COLUMN_EMPLOYEE_FIRST_NAME + ", "
+                + EmployeeDAO.TABLE_EMPLOYEE + "." + EmployeeDAO.COLUMN_EMPLOYEE_LAST_NAME + ", "
+                + TransportDAO.TABLE_TRANSPORT + "." + TransportDAO.COLUMN_TRANSPORT_ID + ", "
+                + TransportDAO.TABLE_TRANSPORT + "." + TransportDAO.COLUMN_TRANSPORT_AMOUNT + ", "
+                + CreditDAO.TABLE_CREDIT + "." + CreditDAO.COLUMN_CREDIT_ID + ", "
+                + CreditDAO.TABLE_CREDIT + "." + CreditDAO.COLUMN_CREDIT_AMOUNT + ", "
+                + ProductionDAO.TABLE_PRODUCTION + "." + ProductionDAO.COLUMN_PRODUCTION_ID + ", "
+                + SupplierDAO.TABLE_SUPPLIER + "." + SupplierDAO.COLUMN_SUPPLIER_ID + ", "
+                + SupplierDAO.TABLE_SUPPLIER + "." + SupplierDAO.COLUMN_SUPPLIER_NAME + ", "
+                + FarmDAO.TABLE_FARM + "." + FarmDAO.COLUMN_FARM_ID + ", "
+                + FarmDAO.TABLE_FARM + "." + FarmDAO.COLUMN_FARM_NAME + ", "
+                + ProductDAO.TABLE_PRODUCT + "." + ProductDAO.COLUMN_PRODUCT_ID + ", "
+                + ProductDAO.TABLE_PRODUCT + "." + ProductDAO.COLUMN_PRODUCT_NAME + ", "
+                + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_DETAIL_ID + ", "
+                + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_TYPE + ", "
+                + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_CODE + " "
+                + " FROM " + TABLE_HOURS + " "
+                + " LEFT JOIN " + EmployeeDAO.TABLE_EMPLOYEE + " "
+                + " ON " + EmployeeDAO.TABLE_EMPLOYEE + "." + EmployeeDAO.COLUMN_EMPLOYEE_ID + " = " + TABLE_HOURS + "." + COLUMN_HOURS_EMPLOYEE_ID
+                + " LEFT JOIN " + TransportDAO.TABLE_TRANSPORT + " "
+                + " ON " + TransportDAO.TABLE_TRANSPORT + "." + TransportDAO.COLUMN_TRANSPORT_ID + " = " + TABLE_HOURS + "." + COLUMN_HOURS_TRANSPORT_ID
+                + " LEFT JOIN " + CreditDAO.TABLE_CREDIT + " "
+                + " ON " + CreditDAO.TABLE_CREDIT + "." + CreditDAO.COLUMN_CREDIT_ID + " = " + TABLE_HOURS + "." + COLUMN_HOURS_CREDIT_ID
+                + " LEFT JOIN " + ProductionDAO.TABLE_PRODUCTION + " "
+                + " ON " + ProductionDAO.TABLE_PRODUCTION + "." + ProductionDAO.COLUMN_PRODUCTION_ID + " = " + TABLE_HOURS + "." + COLUMN_HOURS_PRODUCTION_ID
+                + " LEFT JOIN " + SupplierDAO.TABLE_SUPPLIER + " "
+                + " ON " + SupplierDAO.TABLE_SUPPLIER + "." + SupplierDAO.COLUMN_SUPPLIER_ID + " = " + ProductionDAO.TABLE_PRODUCTION + "." + ProductionDAO.COLUMN_PRODUCTION_SUPPLIER_ID
+                + " LEFT JOIN " + FarmDAO.TABLE_FARM + " "
+                + " ON " + FarmDAO.TABLE_FARM + "." + FarmDAO.COLUMN_FARM_ID + " = " + ProductionDAO.TABLE_PRODUCTION + "." + ProductionDAO.COLUMN_PRODUCTION_FARM_ID
+                + " LEFT JOIN " + ProductDAO.TABLE_PRODUCT + " "
+                + " ON " + ProductDAO.TABLE_PRODUCT + "." + ProductDAO.COLUMN_PRODUCT_ID + " = " + ProductionDAO.TABLE_PRODUCTION + "." + ProductionDAO.COLUMN_PRODUCTION_PRODUCT_ID
+                + " LEFT JOIN " + ProductDetailDAO.TABLE_PRODUCT_DETAIL + " "
+                + " ON " + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_DETAIL_ID + " = " + ProductionDAO.TABLE_PRODUCTION + "." + ProductionDAO.COLUMN_PRODUCTION_PRODUCT_DETAIL_ID
+                + " ORDER BY " + TABLE_HOURS + "." + COLUMN_HOURS_DATE + " DESC ;";
+            try
+            {
+                SQLiteCommand sQLiteCommand = new SQLiteCommand(selectStmt, mSQLiteConnection);
+                OpenConnection();
+                SQLiteDataReader result = sQLiteCommand.ExecuteReader();
+                return getHarvestHoursFromResultSet(result);
+            }
+            catch (SQLiteException e)
+            {
+                Console.WriteLine(e.StackTrace);
+                throw e;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public string getSelectQuery()
+        {
+
+            string selectproduct = "SELECT "
+           + TABLE_HOURS + "." + COLUMN_HOURS_ID + ", "
+                + TABLE_HOURS + "." + COLUMN_HOURS_DATE + ", "
+                + TABLE_HOURS + "." + COLUMN_HOURS_SM + ", "
+                + TABLE_HOURS + "." + COLUMN_HOURS_EM + ", "
+                + TABLE_HOURS + "." + COLUMN_HOURS_SN + ", "
+                + TABLE_HOURS + "." + COLUMN_HOURS_EN + ", "
+                + TABLE_HOURS + "." + COLUMN_HOURS_PRICE + ", "
+                + TABLE_HOURS + "." + COLUMN_HOURS_REMARQUE + ", "
+                + TABLE_HOURS + "." + COLUMN_HOURS_EMPLOYEE_TYPE + ", "
+                + EmployeeDAO.TABLE_EMPLOYEE + "." + EmployeeDAO.COLUMN_EMPLOYEE_ID + ", "
+                + EmployeeDAO.TABLE_EMPLOYEE + "." + EmployeeDAO.COLUMN_EMPLOYEE_FIRST_NAME + ", "
+                + EmployeeDAO.TABLE_EMPLOYEE + "." + EmployeeDAO.COLUMN_EMPLOYEE_LAST_NAME + ", "
+                + TransportDAO.TABLE_TRANSPORT + "." + TransportDAO.COLUMN_TRANSPORT_ID + ", "
+                + TransportDAO.TABLE_TRANSPORT + "." + TransportDAO.COLUMN_TRANSPORT_AMOUNT + ", "
+                + CreditDAO.TABLE_CREDIT + "." + CreditDAO.COLUMN_CREDIT_ID + ", "
+                + CreditDAO.TABLE_CREDIT + "." + CreditDAO.COLUMN_CREDIT_AMOUNT + ", "
+                + ProductionDAO.TABLE_PRODUCTION + "." + ProductionDAO.COLUMN_PRODUCTION_ID + ", "
+                + SupplierDAO.TABLE_SUPPLIER + "." + SupplierDAO.COLUMN_SUPPLIER_ID + ", "
+                + SupplierDAO.TABLE_SUPPLIER + "." + SupplierDAO.COLUMN_SUPPLIER_NAME + ", "
+                + FarmDAO.TABLE_FARM + "." + FarmDAO.COLUMN_FARM_ID + ", "
+                + FarmDAO.TABLE_FARM + "." + FarmDAO.COLUMN_FARM_NAME + ", "
+                + ProductDAO.TABLE_PRODUCT + "." + ProductDAO.COLUMN_PRODUCT_ID + ", "
+                + ProductDAO.TABLE_PRODUCT + "." + ProductDAO.COLUMN_PRODUCT_NAME + ", "
+                + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_DETAIL_ID + ", "
+                + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_TYPE + ", "
+                + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_CODE + " "
+                + " FROM " + TABLE_HOURS + " "
+                + " LEFT JOIN " + EmployeeDAO.TABLE_EMPLOYEE + " "
+                + " ON " + EmployeeDAO.TABLE_EMPLOYEE + "." + EmployeeDAO.COLUMN_EMPLOYEE_ID + " = " + TABLE_HOURS + "." + COLUMN_HOURS_EMPLOYEE_ID
+                + " LEFT JOIN " + TransportDAO.TABLE_TRANSPORT + " "
+                + " ON " + TransportDAO.TABLE_TRANSPORT + "." + TransportDAO.COLUMN_TRANSPORT_ID + " = " + TABLE_HOURS + "." + COLUMN_HOURS_TRANSPORT_ID
+                + " LEFT JOIN " + CreditDAO.TABLE_CREDIT + " "
+                + " ON " + CreditDAO.TABLE_CREDIT + "." + CreditDAO.COLUMN_CREDIT_ID + " = " + TABLE_HOURS + "." + COLUMN_HOURS_CREDIT_ID
+                + " LEFT JOIN " + ProductionDAO.TABLE_PRODUCTION + " "
+                + " ON " + ProductionDAO.TABLE_PRODUCTION + "." + ProductionDAO.COLUMN_PRODUCTION_ID + " = " + TABLE_HOURS + "." + COLUMN_HOURS_PRODUCTION_ID
+                + " LEFT JOIN " + SupplierDAO.TABLE_SUPPLIER + " "
+                + " ON " + SupplierDAO.TABLE_SUPPLIER + "." + SupplierDAO.COLUMN_SUPPLIER_ID + " = " + ProductionDAO.TABLE_PRODUCTION + "." + ProductionDAO.COLUMN_PRODUCTION_SUPPLIER_ID
+                + " LEFT JOIN " + FarmDAO.TABLE_FARM + " "
+                + " ON " + FarmDAO.TABLE_FARM + "." + FarmDAO.COLUMN_FARM_ID + " = " + ProductionDAO.TABLE_PRODUCTION + "." + ProductionDAO.COLUMN_PRODUCTION_FARM_ID
+                + " LEFT JOIN " + ProductDAO.TABLE_PRODUCT + " "
+                + " ON " + ProductDAO.TABLE_PRODUCT + "." + ProductDAO.COLUMN_PRODUCT_ID + " = " + ProductionDAO.TABLE_PRODUCTION + "." + ProductionDAO.COLUMN_PRODUCTION_PRODUCT_ID
+                + " LEFT JOIN " + ProductDetailDAO.TABLE_PRODUCT_DETAIL + " "
+                + " ON " + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_DETAIL_ID + " = " + ProductionDAO.TABLE_PRODUCTION + "." + ProductionDAO.COLUMN_PRODUCTION_PRODUCT_DETAIL_ID
+                + " ORDER BY " + TABLE_HOURS + "." + COLUMN_HOURS_DATE + " DESC ;";
+
+
+            return selectproduct;
         }
 
     }
