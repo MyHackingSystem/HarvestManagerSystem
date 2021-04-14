@@ -224,6 +224,91 @@ namespace HarvestManagerSystem.database
             }
         }
 
+
+
+
+        internal bool updateHoursWork(HarvestHours item)
+        {
+            SQLiteTransaction transaction = null;
+            SQLiteCommand sQLiteCommand = null;
+
+            string updateTransport = "UPDATE " + TransportDAO.TABLE_TRANSPORT + " SET "
+                                     + TransportDAO.COLUMN_TRANSPORT_DATE + " =@" + TransportDAO.COLUMN_TRANSPORT_DATE + ", "
+                                     + TransportDAO.COLUMN_TRANSPORT_AMOUNT + " =@" + TransportDAO.COLUMN_TRANSPORT_AMOUNT + ", "
+                                     + TransportDAO.COLUMN_TRANSPORT_EMPLOYEE_ID + " =@" + TransportDAO.COLUMN_TRANSPORT_EMPLOYEE_ID + ", "
+                                     + TransportDAO.COLUMN_TRANSPORT_FARM_ID + " =@" + TransportDAO.COLUMN_TRANSPORT_FARM_ID + " "
+                                     + " WHERE " + TransportDAO.COLUMN_TRANSPORT_ID + " = " + item.Transport.TransportId + " ";
+
+
+            string updateCredit = "UPDATE " + CreditDAO.TABLE_CREDIT + " SET "
+                                       + CreditDAO.COLUMN_CREDIT_DATE + " =@" + CreditDAO.COLUMN_CREDIT_DATE + ", "
+                                       + CreditDAO.COLUMN_CREDIT_AMOUNT + " =@" + CreditDAO.COLUMN_CREDIT_AMOUNT + ", "
+                                       + CreditDAO.COLUMN_CREDIT_EMPLOYEE_ID + " =@" + CreditDAO.COLUMN_CREDIT_EMPLOYEE_ID + " "
+                                       + " WHERE " + CreditDAO.COLUMN_CREDIT_ID + " = " + item.Credit.CreditId+ " ";
+
+
+            string updateHarvestHours = "UPDATE " + TABLE_HOURS + " SET "
+                           + COLUMN_HOURS_DATE + " =@" + COLUMN_HOURS_DATE + ", "
+                           + COLUMN_HOURS_SM + " =@" + COLUMN_HOURS_SM + ", "
+                           + COLUMN_HOURS_EM + " =@" + COLUMN_HOURS_EM + ", "
+                           + COLUMN_HOURS_SN + " =@" + COLUMN_HOURS_SN + ", "
+                           + COLUMN_HOURS_EN + " =@" + COLUMN_HOURS_EN + ", "
+                           + COLUMN_HOURS_PRICE + " =@" + COLUMN_HOURS_PRICE + ", "
+                           + COLUMN_HOURS_REMARQUE + " =@" + COLUMN_HOURS_REMARQUE + ", "
+                           + COLUMN_HOURS_EMPLOYEE_TYPE + " =@" + COLUMN_HOURS_EMPLOYEE_TYPE + ", "
+                           + COLUMN_HOURS_EMPLOYEE_ID + " =@" + COLUMN_HOURS_EMPLOYEE_ID + ", "
+                           + COLUMN_HOURS_TRANSPORT_ID + " =@" + COLUMN_HOURS_TRANSPORT_ID + ", "
+                           + COLUMN_HOURS_CREDIT_ID + " =@" + COLUMN_HOURS_CREDIT_ID + ", "
+                           + COLUMN_HOURS_PRODUCTION_ID + " =@" + COLUMN_HOURS_PRODUCTION_ID + " "
+                           + " WHERE " + COLUMN_HOURS_ID + " = " + item.HarvestHoursID + " ";
+
+
+            try
+            {
+                OpenConnection();
+                transaction = mSQLiteConnection.BeginTransaction();
+                sQLiteCommand = new SQLiteCommand(updateTransport, mSQLiteConnection);
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(TransportDAO.COLUMN_TRANSPORT_DATE, item.HarvestDate));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(TransportDAO.COLUMN_TRANSPORT_AMOUNT, item.TransportAmount));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(TransportDAO.COLUMN_TRANSPORT_EMPLOYEE_ID, item.Employee.EmployeeId));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(TransportDAO.COLUMN_TRANSPORT_FARM_ID, item.Production.Farm.FarmId));
+                sQLiteCommand.ExecuteNonQuery();
+
+                sQLiteCommand = new SQLiteCommand(updateCredit, mSQLiteConnection);
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(CreditDAO.COLUMN_CREDIT_DATE, item.HarvestDate));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(CreditDAO.COLUMN_CREDIT_AMOUNT, item.CreditAmount));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(CreditDAO.COLUMN_CREDIT_EMPLOYEE_ID, item.Employee.EmployeeId));
+                sQLiteCommand.ExecuteNonQuery();
+
+                sQLiteCommand = new SQLiteCommand(updateHarvestHours, mSQLiteConnection);
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_HOURS_DATE, item.HarvestDate));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_HOURS_SM, item.StartMorning));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_HOURS_EM, item.EndMorning));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_HOURS_SN, item.StartNoon));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_HOURS_EN, item.EndNoon));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_HOURS_PRICE, item.HourPrice));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_HOURS_REMARQUE, item.Remarque));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_HOURS_EMPLOYEE_TYPE, item.EmployeeType));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_HOURS_EMPLOYEE_ID, item.Employee.EmployeeId));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_HOURS_TRANSPORT_ID, item.Transport.TransportId));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_HOURS_CREDIT_ID, item.Credit.CreditId));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_HOURS_PRODUCTION_ID, item.Production.ProductionID));
+                sQLiteCommand.ExecuteNonQuery();
+                
+                transaction.Commit();
+                return true;
+            }
+            catch (SQLiteException e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
         public List<HarvestHours> getHarvestHoursFromResultSet(SQLiteDataReader result)
         {
             List<HarvestHours> list = new List<HarvestHours>();
@@ -264,8 +349,6 @@ namespace HarvestManagerSystem.database
 
             return list;
         }
-
-        
 
 
         //*******************************

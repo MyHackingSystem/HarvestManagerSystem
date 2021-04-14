@@ -29,7 +29,7 @@ namespace HarvestManagerSystem.view
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ClearHarvestHoursButton = new System.Windows.Forms.Button();
             this.ValidateHarvestHoursButton = new System.Windows.Forms.Button();
@@ -342,11 +342,11 @@ namespace HarvestManagerSystem.view
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label10.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label10.Location = new System.Drawing.Point(618, 38);
+            this.label10.Location = new System.Drawing.Point(620, 38);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(96, 19);
+            this.label10.Size = new System.Drawing.Size(74, 19);
             this.label10.TabIndex = 11;
-            this.label10.Text = "Total Payment";
+            this.label10.Text = "Total E.Pay";
             // 
             // TotalPaymentTextBox
             // 
@@ -475,14 +475,14 @@ namespace HarvestManagerSystem.view
             this.EmployeeType,
             this.AddHoursProductionIdColumn,
             this.EmpCatColumn});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.AddHarvestHoursDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.AddHarvestHoursDataGridView.DefaultCellStyle = dataGridViewCellStyle1;
             this.AddHarvestHoursDataGridView.Location = new System.Drawing.Point(220, 23);
             this.AddHarvestHoursDataGridView.MultiSelect = false;
             this.AddHarvestHoursDataGridView.Name = "AddHarvestHoursDataGridView";
@@ -691,6 +691,7 @@ namespace HarvestManagerSystem.view
             this.MaximumSize = new System.Drawing.Size(1200, 660);
             this.MinimumSize = new System.Drawing.Size(1200, 660);
             this.Name = "FormAddHours";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormAddHours";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAddHours_FormClosed);
             this.Load += new System.EventHandler(this.FormAddHours_Load);
