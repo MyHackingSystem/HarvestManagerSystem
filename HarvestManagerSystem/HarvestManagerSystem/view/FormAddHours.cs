@@ -14,7 +14,7 @@ namespace HarvestManagerSystem.view
 {
     public partial class FormAddHours : Form
     {
-        private bool isEditHours = false;
+        private bool isEditHarvestHours = false;
         private HarvestHours mHarvestHours = new HarvestHours();
 
         private TransportDAO transportDAO = TransportDAO.getInstance();
@@ -24,6 +24,8 @@ namespace HarvestManagerSystem.view
         private ProductDAO productDAO = ProductDAO.getInstance();
         private ProductDetailDAO productDetailDAO = ProductDetailDAO.getInstance();
         private HarvestHoursDAO harvestHoursDAO = HarvestHoursDAO.getInstance();
+        private Production mProduction = new Production();
+        private ProductionDAO mProductionDAO = ProductionDAO.getInstance();
         private Dictionary<string, Supplier> mSupplierDictionary = new Dictionary<string, Supplier>();
         private Dictionary<string, Farm> mFarmDictionary = new Dictionary<string, Farm>();
         private Dictionary<string, Product> mProductDictionary = new Dictionary<string, Product>();
@@ -62,11 +64,38 @@ namespace HarvestManagerSystem.view
             instance.Show();
         }
 
+        private void FormAddHours_Load(object sender, EventArgs e)
+        {
+            SupplierNameList();
+            FarmNameList();
+            ProductNameList();
+            AddHarvestHoursDataGridView.DataSource = bindingSourceHarvesterList;
+            if (isEditHarvestHours)
+            {
+                HarvestHoursDateTimePicker.Value = mProduction.ProductionDate;
+                SupplierHarvestHoursComboBox.SelectedIndex = SupplierHarvestHoursComboBox.FindStringExact(mProduction.Supplier.SupplierName);
+                FarmHarvestHoursComboBox.SelectedIndex = FarmHarvestHoursComboBox.FindStringExact(mProduction.Farm.FarmName);
+                ProductHarvestHoursComboBox.SelectedIndex = ProductHarvestHoursComboBox.FindStringExact(mProduction.Product.ProductName);
+                ProductCodeHarvestHoursComboBox.SelectedIndex = ProductCodeHarvestHoursComboBox.FindStringExact(mProduction.ProductDetail.ProductCode);
+                ApplyHarvestHoursButton.Text = "Update";
+            }
+            else
+            {
+                HarvesterRadioButton.Checked = true;
+                HarvesterList = harvestHoursDAO.HarvestersData();
+
+            }
+
+            bindingSourceHarvesterList.DataSource = HarvesterList;
+            SortDisplayIndex();
+            disableTotalTextBoxField();
+        }
+
         private void ValidateHarvestHoursButton_Click(object sender, EventArgs e)
         {
             if (ValidateInput())
             {
-                MessageBox.Show("Check values");
+                MessageBox.Show("Vérifier les valeurs saisies");
                 return;
             }
             ValidateAddHarvestHours();
@@ -116,19 +145,6 @@ namespace HarvestManagerSystem.view
             TotalPaymentTextBox.Text = Convert.ToString(totalPayment);
             AddHarvestHoursDataGridView.Refresh();
 
-
-        }
-
-        public int getEmployeeType()
-        {
-            if (ControllerRadioButton.Checked)
-            {
-                return 2;
-            }
-            else
-            {
-                return 1;
-            }
         }
 
         private void ApplyHarvestHoursButton_Click(object sender, EventArgs e)
@@ -139,11 +155,14 @@ namespace HarvestManagerSystem.view
                 return;
             }
 
-            if (isEditHours)
+            if (isEditHarvestHours)
             {
                 updateProductionDataInDatabase();
             }
-            else { addProductionDataToDatabase(); }
+            else 
+            { 
+                addProductionDataToDatabase(); 
+            }
         }
 
         private bool checkApplyButtonInput()
@@ -152,8 +171,6 @@ namespace HarvestManagerSystem.view
             TotalPaymentTextBox.Text == "") || (Convert.ToInt32(TotalEmployeeTextBox.Text) <= 0) || (Convert.ToDouble(TotalMinutesTextBox.Text) <= 0);
         }
 
-        Production mProduction = new Production();
-        ProductionDAO mProductionDAO = ProductionDAO.getInstance();
         private void addProductionDataToDatabase()
         {
 
@@ -171,20 +188,6 @@ namespace HarvestManagerSystem.view
             }
             else { MessageBox.Show("Data Not Added"); }
 
-        }
-
-        private void setProductionValueFromFields()
-        {
-            mProduction.ProductionType = 1;
-            mProduction.ProductionDate = HarvestHoursDateTimePicker.Value;
-            mProduction.Supplier.SupplierId = mSupplierDictionary.GetValueOrDefault(SupplierHarvestHoursComboBox.GetItemText(SupplierHarvestHoursComboBox.SelectedItem)).SupplierId;
-            mProduction.Farm.FarmId = mFarmDictionary.GetValueOrDefault(FarmHarvestHoursComboBox.GetItemText(FarmHarvestHoursComboBox.SelectedItem)).FarmId;
-            mProduction.Product.ProductId = mProductDictionary.GetValueOrDefault(ProductHarvestHoursComboBox.GetItemText(ProductHarvestHoursComboBox.SelectedItem)).ProductId;
-            mProduction.ProductDetail.ProductDetailId = mProductDetailDictionary.GetValueOrDefault(ProductCodeHarvestHoursComboBox.GetItemText(ProductCodeHarvestHoursComboBox.SelectedItem)).ProductDetailId;
-            mProduction.TotalEmployee = Convert.ToInt32(TotalEmployeeTextBox.Text);
-            mProduction.TotalMinutes = Convert.ToDouble(TotalMinutesTextBox.Text);
-            mProduction.TotalQuantity = 0.0;
-            mProduction.Price = Convert.ToDouble(HourPriceTextBox.Text);
         }
 
         private bool addHarvestHoursToDatabase()
@@ -206,20 +209,117 @@ namespace HarvestManagerSystem.view
 
         private void updateProductionDataInDatabase()
         {
-
+            setProductionValueFromFields();
+            if (mProductionDAO.updateProductionData(mProduction))
+            {
+                var message = (updateHoursWorkInDatabase()) ? "Updated production and hours" : "Not updated production and hours";
+                MessageBox.Show(message);
+            }
+            else
+            {
+                MessageBox.Show("Not Update Production");
+            }
+            harvestMS.RefreshTable();
+        
+            isEditHarvestHours = false;
+            this.Close();
         }
 
-        private void FormAddHours_Load(object sender, EventArgs e)
+        private bool updateHoursWorkInDatabase()
         {
-            SupplierNameList();
-            FarmNameList();
-            ProductNameList();
-            HarvesterRadioButton.Checked = true;
-            AddHarvestHoursDataGridView.DataSource = bindingSourceHarvesterList;
-            HarvesterList = harvestHoursDAO.HarvestersData();
-            bindingSourceHarvesterList.DataSource = HarvesterList;
-            SortDisplayIndex();
-            disableTotalTextBoxField();
+            bool trackInsert = false;
+            foreach (HarvestHours item in HarvesterList)
+            {
+                item.HarvestDate = mProduction.ProductionDate;
+                item.Production.Farm.FarmId = mProduction.Farm.FarmId;
+                item.Production.ProductionID = mProduction.ProductionID;
+                trackInsert = harvestHoursDAO.updateHoursWork(item); 
+                if (!trackInsert) break;
+            }
+            return trackInsert;
+        }
+
+        private void setProductionValueFromFields()
+        {
+            mProduction.ProductionType = 1;
+            mProduction.ProductionDate = HarvestHoursDateTimePicker.Value;
+            mProduction.Supplier.SupplierId = mSupplierDictionary.GetValueOrDefault(SupplierHarvestHoursComboBox.GetItemText(SupplierHarvestHoursComboBox.SelectedItem)).SupplierId;
+            mProduction.Farm.FarmId = mFarmDictionary.GetValueOrDefault(FarmHarvestHoursComboBox.GetItemText(FarmHarvestHoursComboBox.SelectedItem)).FarmId;
+            mProduction.Product.ProductId = mProductDictionary.GetValueOrDefault(ProductHarvestHoursComboBox.GetItemText(ProductHarvestHoursComboBox.SelectedItem)).ProductId;
+            mProduction.ProductDetail.ProductDetailId = mProductDetailDictionary.GetValueOrDefault(ProductCodeHarvestHoursComboBox.GetItemText(ProductCodeHarvestHoursComboBox.SelectedItem)).ProductDetailId;
+            mProduction.TotalEmployee = Convert.ToInt32(TotalEmployeeTextBox.Text);
+            mProduction.TotalMinutes = Convert.ToDouble(TotalMinutesTextBox.Text);
+            mProduction.TotalQuantity = 0.0;
+            mProduction.Price = Convert.ToDouble(HourPriceTextBox.Text);
+        }
+
+        // Update Harvest hours Section
+        internal void InflateUI(Production production)
+        {
+            isEditHarvestHours = true;
+
+            mProduction.ProductionID = production.ProductionID;
+            mProduction.ProductionDate = production.ProductionDate;
+            mProduction.Supplier.SupplierName = production.SupplierName;
+            mProduction.Farm.FarmName = production.FarmName;
+            mProduction.Product.ProductName = production.ProductName;
+            mProduction.ProductDetail.ProductCode = production.ProductCode;
+
+            HarvesterList.Clear();
+            try
+            {
+                HarvesterList = harvestHoursDAO.HarvestHoursByProduction(production);
+            }catch(Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+
+            HarvestHours firstEmpoyee = HarvesterList[0];
+            SMHoursDateTimePicker.Value = firstEmpoyee.StartMorning;
+            EMHoursDateTimePicker.Value = firstEmpoyee.EndMorning;
+            SNHoursDateTimePicker.Value = firstEmpoyee.StartNoon;
+            ENHoursDateTimePicker.Value = firstEmpoyee.EndNoon;
+            setEmployeeType(firstEmpoyee.EmployeeType);
+
+            foreach (HarvestHours hours in HarvesterList)
+            {
+                hours.TransportStatus = (hours.TransportAmount > 0) ? true : false;
+            }
+            SetToTotalZero();
+        }
+
+        public int getEmployeeType()
+        {
+            if (ControllerRadioButton.Checked)
+            {
+                return 2;
+            }
+            else
+            {
+                return 1;
+            }
+        }
+
+        public void setEmployeeType(int i)
+        {
+            if (i == 2)
+            {
+                ControllerRadioButton.Checked = true;
+            }
+            else
+            {
+                HarvesterRadioButton.Checked = true;
+            }
+        }
+
+        private void SetToTotalZero()
+        {
+            TotalEmployeeTextBox.Text = "0";
+            TotalMinutesTextBox.Text = "0";
+            HourPriceTextBox.Text = "0";
+            TotalTransportTextBox.Text = "0";
+            TotalCreditTextBox.Text = "0";
+            TotalPaymentTextBox.Text = "0";
         }
 
         private void SupplierNameList()

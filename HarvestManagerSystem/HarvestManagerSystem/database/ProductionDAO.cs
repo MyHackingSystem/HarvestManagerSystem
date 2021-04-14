@@ -166,6 +166,49 @@ namespace HarvestManagerSystem.database
             return list;
         }
 
+        internal bool updateProductionData(Production production)
+        {
+            String updateStmt = "UPDATE " + TABLE_PRODUCTION + " SET "
+                                 + COLUMN_PRODUCTION_TYPE + " =@" + COLUMN_PRODUCTION_TYPE + ", "
+                                 + COLUMN_PRODUCTION_DATE + " =@" + COLUMN_PRODUCTION_DATE + ", "
+                                 + COLUMN_PRODUCTION_SUPPLIER_ID + " =@" + COLUMN_PRODUCTION_SUPPLIER_ID + ", "
+                                 + COLUMN_PRODUCTION_FARM_ID + " =@" + COLUMN_PRODUCTION_FARM_ID + ", "
+                                 + COLUMN_PRODUCTION_PRODUCT_ID + " =@" + COLUMN_PRODUCTION_PRODUCT_ID + ", "
+                                 + COLUMN_PRODUCTION_PRODUCT_DETAIL_ID + " =@" + COLUMN_PRODUCTION_PRODUCT_DETAIL_ID + ", "
+                                 + COLUMN_PRODUCTION_TOTAL_EMPLOYEES + " =@" + COLUMN_PRODUCTION_TOTAL_EMPLOYEES + ", "
+                                 + COLUMN_PRODUCTION_TOTAL_QUANTITY + " =@" + COLUMN_PRODUCTION_TOTAL_QUANTITY + ", "
+                                 + COLUMN_PRODUCTION_TOTAL_MINUTES + " =@" + COLUMN_PRODUCTION_TOTAL_MINUTES + ", "
+                                 + COLUMN_PRODUCTION_PRICE + " =@" + COLUMN_PRODUCTION_PRICE + " "
+                                 + " WHERE " + COLUMN_PRODUCTION_ID + " = " + production.ProductionID + " ";
+
+            try
+            {
+                SQLiteCommand sQLiteCommand = new SQLiteCommand(updateStmt, mSQLiteConnection);
+                OpenConnection();
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_PRODUCTION_TYPE, production.ProductionType));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_PRODUCTION_DATE, production.ProductionDate));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_PRODUCTION_SUPPLIER_ID, production.Supplier.SupplierId));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_PRODUCTION_FARM_ID, production.Farm.FarmId));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_PRODUCTION_PRODUCT_ID, production.Product.ProductId));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_PRODUCTION_PRODUCT_DETAIL_ID, production.ProductDetail.ProductDetailId));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_PRODUCTION_TOTAL_EMPLOYEES, production.TotalEmployee));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_PRODUCTION_TOTAL_QUANTITY, production.TotalQuantity));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_PRODUCTION_TOTAL_MINUTES, production.TotalMinutes));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_PRODUCTION_PRICE, production.Price));
+                sQLiteCommand.ExecuteNonQuery();
+                return true;
+            }
+            catch (SQLiteException e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
         //*******************************
         //Add production data
         //*******************************

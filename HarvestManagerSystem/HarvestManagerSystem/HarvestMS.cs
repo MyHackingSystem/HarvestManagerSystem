@@ -85,20 +85,7 @@ namespace HarvestManagerSystem
         void DisplayQuantityData()
         {
 
-            tabPageQuantity.Controls.Add(masterDataGridView);
-            tabPageQuantity.Controls.Add(detailsDataGridView);
 
-            masterDataGridView.DataSource = masterBindingSource;
-            detailsDataGridView.DataSource = detailsBindingSource;
-            GetData();
-
-            // Resize the master DataGridView columns to fit the newly loaded data.
-            masterDataGridView.AutoResizeColumns();
-
-            // Configure the details DataGridView so that its columns automatically
-            // adjust their widths when the data changes.
-            detailsDataGridView.AutoSizeColumnsMode =
-                DataGridViewAutoSizeColumnsMode.AllCells;
 
         }
 
@@ -124,14 +111,7 @@ namespace HarvestManagerSystem
 
         List<HarvestHours> listHarvestHours = new List<HarvestHours>();
 
-
-
-        private void btnAddHarvestHours_Click(object sender, EventArgs e)
-        {
-            FormAddHours formAddHours = FormAddHours.getInstance(this);
-            formAddHours.ShowFormAdd();
-        }
-
+        List<Production> listHoursProduction = new List<Production>();
 
         private BindingSource masterHoursBindingSource = new BindingSource();
         private BindingSource detailsHoursBindingSource = new BindingSource();
@@ -139,31 +119,40 @@ namespace HarvestManagerSystem
 
         void DisplayHoursData()
         {
-
-            tabPageHours.Controls.Add(masterHoursDataGridView);
-            tabPageHours.Controls.Add(detailsHoursDataGridView);
-
             masterHoursDataGridView.DataSource = masterHoursBindingSource;
             detailsHoursDataGridView.DataSource = detailsHoursBindingSource;
-
-            GetData();
-
+            StartSearchDateTimePicker.Value = DateTime.Now.AddDays(-29);
+            EndtSearchDateTimePicker.Value = DateTime.Now.AddDays(1);
+            UpdateData(StartSearchDateTimePicker.Value, EndtSearchDateTimePicker.Value);
             masterDataGridView.AutoResizeColumns();
-
             detailsDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
-        public void GetData()
+        
+        private void SearchButton_Click(object sender, EventArgs e)
         {
+            UpdateData(StartSearchDateTimePicker.Value, EndtSearchDateTimePicker.Value);
+        }
+
+        
+
+
+        public void RefreshTable()
+        {
+            UpdateData(StartSearchDateTimePicker.Value, EndtSearchDateTimePicker.Value);
+        }
+
+        public void UpdateData(DateTime fromDate, DateTime toDate)
+        {
+            listHoursProduction.Clear();
             try
             {
 
-                List<Production> listHoursProduction = productionDAO.searchHarvestHoursProduction(DateTime.Now.AddDays(-10), DateTime.Now.AddDays(10), 1);
+                listHoursProduction = productionDAO.searchHarvestHoursProduction(fromDate, toDate, 1);
                 List<HarvestHours> listHarvestHours = harvestHoursDAO.HarvestHoursData();
 
                 DataSet data = new DataSet();
                 data.Locale = System.Globalization.CultureInfo.InvariantCulture;
-
 
                 IEnumerable<Production> HoursProduction = listHoursProduction;
                 DataTable tableHoursProduction = new DataTable("Production");
@@ -186,13 +175,18 @@ namespace HarvestManagerSystem
 
                 data.Tables.Add(tableHarvestHours);
 
-                // Establish a relationship between the two tables.
-                DataRelation relation = new DataRelation("ProductionHarvestHours",
-                        data.Tables["Production"].Columns["ProductionId"],
-                        data.Tables["HarvestHours"].Columns["ProductionId"]);
-                data.Relations.Add(relation);
-
-
+                DataRelation relation = null;
+                try
+                {
+                    relation = new DataRelation("ProductionHarvestHours",
+                                            data.Tables["Production"].Columns["ProductionId"],
+                                            data.Tables["HarvestHours"].Columns["ProductionId"]);
+                    data.Relations.Add(relation);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
 
                 // Bind the master data connector to the Customers table.
                 masterHoursBindingSource.DataSource = data;
@@ -211,7 +205,6 @@ namespace HarvestManagerSystem
                     "valid for your system.");
             }
         }
-
 
         private void SortDisplayDetailsHoursColumnsIndex()
         {
@@ -249,6 +242,61 @@ namespace HarvestManagerSystem
             masterHoursDataGridView.Columns["ProductionFarmColumn"].DisplayIndex = 13;
             masterHoursDataGridView.Columns["ProductionProductColumn"].DisplayIndex = 14;
             masterHoursDataGridView.Columns["ProductionProductDetailColumn"].DisplayIndex = 15;
+        }
+
+
+        int SelectedRowIndex = -1;
+        private void masterHoursDataGridView_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                masterHoursDataGridView.Rows[e.RowIndex].Selected = true;
+                HoursContextMenuStrip.Show(this.masterHoursDataGridView, e.Location);
+                SelectedRowIndex = e.RowIndex;
+                HoursContextMenuStrip.Show(Cursor.Position);
+                
+            }
+        }
+
+
+
+        private void HoursContextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            
+            if (e.ClickedItem.Name == EditHoursStrip.Name)
+            {
+                HoursContextMenuStrip.Visible = false;
+                HandleEditHoursTable();
+            }
+            else if (e.ClickedItem.Name == DeleteHoursStrip.Name)
+            {
+                HoursContextMenuStrip.Visible = false;
+                HandleDeleteHoursTable();
+            }
+        }
+
+        private void HandleEditHoursTable()
+        {
+            FormAddHours formAddHours = FormAddHours.getInstance(this);
+            Production production = (Production)listHoursProduction[SelectedRowIndex];
+            if (production == null)
+            {
+                MessageBox.Show("Select Item");
+                return;
+            }
+            formAddHours.InflateUI(production);
+            formAddHours.ShowFormAdd();
+        }
+
+        private void HandleDeleteHoursTable()
+        {
+
+        }
+
+        private void btnAddHarvestHours_Click(object sender, EventArgs e)
+        {
+            FormAddHours formAddHours = FormAddHours.getInstance(this);
+            formAddHours.ShowFormAdd();
         }
 
         #endregion
@@ -948,6 +996,11 @@ MessageBoxIcon.Information);
                 }
             }
         }
+
+
+
+
+
 
 
 
