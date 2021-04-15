@@ -109,13 +109,11 @@ namespace HarvestManagerSystem
 
         #region HOURS CODE
 
-        List<HarvestHours> listHarvestHours = new List<HarvestHours>();
 
         List<Production> listHoursProduction = new List<Production>();
 
         private BindingSource masterHoursBindingSource = new BindingSource();
         private BindingSource detailsHoursBindingSource = new BindingSource();
-
 
         void DisplayHoursData()
         {
@@ -124,18 +122,14 @@ namespace HarvestManagerSystem
             StartSearchDateTimePicker.Value = DateTime.Now.AddDays(-29);
             EndtSearchDateTimePicker.Value = DateTime.Now.AddDays(1);
             UpdateData(StartSearchDateTimePicker.Value, EndtSearchDateTimePicker.Value);
-            masterDataGridView.AutoResizeColumns();
-            detailsDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            masterHoursDataGridView.AutoResizeColumns();
+            detailsHoursDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
-        
         private void SearchButton_Click(object sender, EventArgs e)
         {
             UpdateData(StartSearchDateTimePicker.Value, EndtSearchDateTimePicker.Value);
         }
-
-        
-
 
         public void RefreshTable()
         {
@@ -290,6 +284,39 @@ namespace HarvestManagerSystem
 
         private void HandleDeleteHoursTable()
         {
+
+            Production production = (Production)listHoursProduction[SelectedRowIndex];
+            if(production == null)
+            {
+                MessageBox.Show("Select production");
+                return;
+            }
+
+            List<HarvestHours> listHours = new List<HarvestHours>();
+            try
+            {
+                listHours = harvestHoursDAO.HarvestHoursByProduction(production);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return;
+            }
+
+            DialogResult dr = MessageBox.Show("Are you sure you want to delete this data ", "Delete", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+
+            if (dr == DialogResult.Yes)
+            {
+                bool trackInsert = false;
+                foreach (HarvestHours hours in listHours)
+                {
+                    trackInsert = productionDAO.deleteHoursProductionData(production, hours);
+                    if (!trackInsert) break;
+                }
+                var msg = (trackInsert) ? "deleted" : "not deleted";
+                MessageBox.Show(msg);
+                RefreshTable();
+            }
 
         }
 
@@ -1013,8 +1040,13 @@ MessageBoxIcon.Information);
 
 
 
+
         #endregion
 
-
+        private void btnAddHarvestQuantity_Click(object sender, EventArgs e)
+        {
+            FormAddQuantity formAddQuantity = FormAddQuantity.getInstance(this);
+            formAddQuantity.ShowFormAdd();
+        }
     }
 }
