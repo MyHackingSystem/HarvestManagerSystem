@@ -161,7 +161,8 @@ namespace HarvestManagerSystem.view
             }
             else 
             { 
-                addProductionDataToDatabase(); 
+                addProductionDataToDatabase();
+                harvestMS.RefreshTable();
             }
         }
 
