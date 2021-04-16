@@ -31,46 +31,54 @@ namespace HarvestManagerSystem.view
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.radioBtnHarvestByIndividual = new System.Windows.Forms.RadioButton();
+            this.radioBtnHarvestByGroup = new System.Windows.Forms.RadioButton();
+            this.labelBadQuantity = new System.Windows.Forms.Label();
+            this.txtInputBadQuantity = new System.Windows.Forms.TextBox();
+            this.labelAllQuantity = new System.Windows.Forms.Label();
+            this.txtInputAllQuantity = new System.Windows.Forms.TextBox();
             this.ClearHarvestHoursButton = new System.Windows.Forms.Button();
-            this.ValidateHarvestHoursButton = new System.Windows.Forms.Button();
+            this.ValidateHarvestQuantityButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.ProductCodeHarvestHoursComboBox = new System.Windows.Forms.ComboBox();
+            this.ProductCodeHarvestQuantityComboBox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.ProductHarvestHoursComboBox = new System.Windows.Forms.ComboBox();
+            this.ProductHarvestQuantityComboBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.FarmHarvestHoursComboBox = new System.Windows.Forms.ComboBox();
+            this.FarmHarvestQuantityComboBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.SupplierHarvestHoursComboBox = new System.Windows.Forms.ComboBox();
+            this.SupplierHarvestQuantityComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.HarvestHoursDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.AddHarvestHoursDataGridView = new System.Windows.Forms.DataGridView();
+            this.AddHarvestQuantityDataGridView = new System.Windows.Forms.DataGridView();
             this.HarvestHoursIDColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HarvestDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EmployeeNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StartMorningColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EndMorningColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StartNoonColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EndNoonColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TimeStartMorningColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TimeEndMorningColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TimeStartNoonColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TimeEndNoonColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalMinutesColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HourPriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AllQuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BadQuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GoodQuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductPriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TransportStatusColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.CreditColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreditAmountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TransportAmountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PaymentColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RemarqueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TransportColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TransportAmountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreditColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Employee = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EmployeeType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AddHoursProductionIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EmpCatColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HarvestCategoryColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PenaltyGeneralColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DamageGeneralColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HarvestTypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TransportStatusByAmountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.ApplyHarvestHoursButton = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtTotalGoodQuantity = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtTotalBadQuantity = new System.Windows.Forms.TextBox();
+            this.ApplyHarvestQuantityButton = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.TotalPaymentTextBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -78,30 +86,39 @@ namespace HarvestManagerSystem.view
             this.label8 = new System.Windows.Forms.Label();
             this.TotalTransportTextBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.HourPriceTextBox = new System.Windows.Forms.TextBox();
+            this.ProductPriceTextBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.TotalMinutesTextBox = new System.Windows.Forms.TextBox();
+            this.TotalQuantityTextBox = new System.Windows.Forms.TextBox();
             this.totalEmployeeLabel = new System.Windows.Forms.Label();
             this.TotalEmployeeTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AddHarvestHoursDataGridView)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AddHarvestQuantityDataGridView)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.groupBox3);
+            this.groupBox1.Controls.Add(this.labelBadQuantity);
+            this.groupBox1.Controls.Add(this.txtInputBadQuantity);
+            this.groupBox1.Controls.Add(this.labelAllQuantity);
+            this.groupBox1.Controls.Add(this.txtInputAllQuantity);
             this.groupBox1.Controls.Add(this.ClearHarvestHoursButton);
-            this.groupBox1.Controls.Add(this.ValidateHarvestHoursButton);
+            this.groupBox1.Controls.Add(this.ValidateHarvestQuantityButton);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.ProductCodeHarvestHoursComboBox);
+            this.groupBox1.Controls.Add(this.ProductCodeHarvestQuantityComboBox);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.ProductHarvestHoursComboBox);
+            this.groupBox1.Controls.Add(this.ProductHarvestQuantityComboBox);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.FarmHarvestHoursComboBox);
+            this.groupBox1.Controls.Add(this.FarmHarvestQuantityComboBox);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.SupplierHarvestHoursComboBox);
+            this.groupBox1.Controls.Add(this.SupplierHarvestQuantityComboBox);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.HarvestHoursDateTimePicker);
+            this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 596);
@@ -109,108 +126,195 @@ namespace HarvestManagerSystem.view
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Production";
             // 
+            // button1
+            // 
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.button1.Location = new System.Drawing.Point(7, 485);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(186, 34);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "Import Excel";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.radioBtnHarvestByIndividual);
+            this.groupBox3.Controls.Add(this.radioBtnHarvestByGroup);
+            this.groupBox3.Location = new System.Drawing.Point(6, 433);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(186, 35);
+            this.groupBox3.TabIndex = 18;
+            this.groupBox3.TabStop = false;
+            // 
+            // radioBtnHarvestByIndividual
+            // 
+            this.radioBtnHarvestByIndividual.AutoSize = true;
+            this.radioBtnHarvestByIndividual.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.radioBtnHarvestByIndividual.ForeColor = System.Drawing.Color.White;
+            this.radioBtnHarvestByIndividual.Location = new System.Drawing.Point(78, 10);
+            this.radioBtnHarvestByIndividual.Name = "radioBtnHarvestByIndividual";
+            this.radioBtnHarvestByIndividual.Size = new System.Drawing.Size(82, 21);
+            this.radioBtnHarvestByIndividual.TabIndex = 1;
+            this.radioBtnHarvestByIndividual.TabStop = true;
+            this.radioBtnHarvestByIndividual.Text = "Individual";
+            this.radioBtnHarvestByIndividual.UseVisualStyleBackColor = true;
+            // 
+            // radioBtnHarvestByGroup
+            // 
+            this.radioBtnHarvestByGroup.AutoSize = true;
+            this.radioBtnHarvestByGroup.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.radioBtnHarvestByGroup.ForeColor = System.Drawing.Color.White;
+            this.radioBtnHarvestByGroup.Location = new System.Drawing.Point(7, 10);
+            this.radioBtnHarvestByGroup.Name = "radioBtnHarvestByGroup";
+            this.radioBtnHarvestByGroup.Size = new System.Drawing.Size(69, 21);
+            this.radioBtnHarvestByGroup.TabIndex = 0;
+            this.radioBtnHarvestByGroup.TabStop = true;
+            this.radioBtnHarvestByGroup.Text = "Groupe";
+            this.radioBtnHarvestByGroup.UseVisualStyleBackColor = true;
+            // 
+            // labelBadQuantity
+            // 
+            this.labelBadQuantity.AutoSize = true;
+            this.labelBadQuantity.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelBadQuantity.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelBadQuantity.Location = new System.Drawing.Point(6, 382);
+            this.labelBadQuantity.Name = "labelBadQuantity";
+            this.labelBadQuantity.Size = new System.Drawing.Size(46, 17);
+            this.labelBadQuantity.TabIndex = 17;
+            this.labelBadQuantity.Text = "Pertes";
+            // 
+            // txtInputBadQuantity
+            // 
+            this.txtInputBadQuantity.Location = new System.Drawing.Point(6, 404);
+            this.txtInputBadQuantity.Name = "txtInputBadQuantity";
+            this.txtInputBadQuantity.Size = new System.Drawing.Size(187, 25);
+            this.txtInputBadQuantity.TabIndex = 16;
+            // 
+            // labelAllQuantity
+            // 
+            this.labelAllQuantity.AutoSize = true;
+            this.labelAllQuantity.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelAllQuantity.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelAllQuantity.Location = new System.Drawing.Point(6, 322);
+            this.labelAllQuantity.Name = "labelAllQuantity";
+            this.labelAllQuantity.Size = new System.Drawing.Size(36, 17);
+            this.labelAllQuantity.TabIndex = 15;
+            this.labelAllQuantity.Text = "Tous";
+            // 
+            // txtInputAllQuantity
+            // 
+            this.txtInputAllQuantity.Location = new System.Drawing.Point(6, 344);
+            this.txtInputAllQuantity.Name = "txtInputAllQuantity";
+            this.txtInputAllQuantity.Size = new System.Drawing.Size(187, 25);
+            this.txtInputAllQuantity.TabIndex = 14;
+            // 
             // ClearHarvestHoursButton
             // 
-            this.ClearHarvestHoursButton.Location = new System.Drawing.Point(109, 513);
+            this.ClearHarvestHoursButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.ClearHarvestHoursButton.Location = new System.Drawing.Point(110, 535);
             this.ClearHarvestHoursButton.Name = "ClearHarvestHoursButton";
             this.ClearHarvestHoursButton.Size = new System.Drawing.Size(84, 34);
             this.ClearHarvestHoursButton.TabIndex = 13;
             this.ClearHarvestHoursButton.Text = "Vider";
             this.ClearHarvestHoursButton.UseVisualStyleBackColor = true;
             // 
-            // ValidateHarvestHoursButton
+            // ValidateHarvestQuantityButton
             // 
-            this.ValidateHarvestHoursButton.Location = new System.Drawing.Point(7, 513);
-            this.ValidateHarvestHoursButton.Name = "ValidateHarvestHoursButton";
-            this.ValidateHarvestHoursButton.Size = new System.Drawing.Size(90, 34);
-            this.ValidateHarvestHoursButton.TabIndex = 12;
-            this.ValidateHarvestHoursButton.Text = "Valider";
-            this.ValidateHarvestHoursButton.UseVisualStyleBackColor = true;
+            this.ValidateHarvestQuantityButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ValidateHarvestQuantityButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.ValidateHarvestQuantityButton.Location = new System.Drawing.Point(7, 535);
+            this.ValidateHarvestQuantityButton.Name = "ValidateHarvestQuantityButton";
+            this.ValidateHarvestQuantityButton.Size = new System.Drawing.Size(90, 34);
+            this.ValidateHarvestQuantityButton.TabIndex = 12;
+            this.ValidateHarvestQuantityButton.Text = "Valider";
+            this.ValidateHarvestQuantityButton.UseVisualStyleBackColor = true;
+            this.ValidateHarvestQuantityButton.Click += new System.EventHandler(this.ValidateHarvestQuantityButton_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label4.Location = new System.Drawing.Point(7, 266);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 19);
+            this.label4.Size = new System.Drawing.Size(42, 17);
             this.label4.TabIndex = 9;
             this.label4.Text = "Code:";
             // 
-            // ProductCodeHarvestHoursComboBox
+            // ProductCodeHarvestQuantityComboBox
             // 
-            this.ProductCodeHarvestHoursComboBox.FormattingEnabled = true;
-            this.ProductCodeHarvestHoursComboBox.Location = new System.Drawing.Point(7, 288);
-            this.ProductCodeHarvestHoursComboBox.Name = "ProductCodeHarvestHoursComboBox";
-            this.ProductCodeHarvestHoursComboBox.Size = new System.Drawing.Size(186, 23);
-            this.ProductCodeHarvestHoursComboBox.TabIndex = 5;
+            this.ProductCodeHarvestQuantityComboBox.FormattingEnabled = true;
+            this.ProductCodeHarvestQuantityComboBox.Location = new System.Drawing.Point(7, 288);
+            this.ProductCodeHarvestQuantityComboBox.Name = "ProductCodeHarvestQuantityComboBox";
+            this.ProductCodeHarvestQuantityComboBox.Size = new System.Drawing.Size(186, 25);
+            this.ProductCodeHarvestQuantityComboBox.TabIndex = 5;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label5.Location = new System.Drawing.Point(7, 206);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(63, 19);
+            this.label5.Size = new System.Drawing.Size(53, 17);
             this.label5.TabIndex = 7;
             this.label5.Text = "Produit:";
             // 
-            // ProductHarvestHoursComboBox
+            // ProductHarvestQuantityComboBox
             // 
-            this.ProductHarvestHoursComboBox.FormattingEnabled = true;
-            this.ProductHarvestHoursComboBox.Location = new System.Drawing.Point(7, 228);
-            this.ProductHarvestHoursComboBox.Name = "ProductHarvestHoursComboBox";
-            this.ProductHarvestHoursComboBox.Size = new System.Drawing.Size(186, 23);
-            this.ProductHarvestHoursComboBox.TabIndex = 4;
+            this.ProductHarvestQuantityComboBox.FormattingEnabled = true;
+            this.ProductHarvestQuantityComboBox.Location = new System.Drawing.Point(7, 228);
+            this.ProductHarvestQuantityComboBox.Name = "ProductHarvestQuantityComboBox";
+            this.ProductHarvestQuantityComboBox.Size = new System.Drawing.Size(186, 25);
+            this.ProductHarvestQuantityComboBox.TabIndex = 4;
+            this.ProductHarvestQuantityComboBox.SelectedIndexChanged += new System.EventHandler(this.ProductHarvestHoursComboBox_SelectedIndexChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label3.Location = new System.Drawing.Point(7, 144);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 19);
+            this.label3.Size = new System.Drawing.Size(53, 17);
             this.label3.TabIndex = 5;
             this.label3.Text = "Champ:";
             // 
-            // FarmHarvestHoursComboBox
+            // FarmHarvestQuantityComboBox
             // 
-            this.FarmHarvestHoursComboBox.FormattingEnabled = true;
-            this.FarmHarvestHoursComboBox.Location = new System.Drawing.Point(7, 166);
-            this.FarmHarvestHoursComboBox.Name = "FarmHarvestHoursComboBox";
-            this.FarmHarvestHoursComboBox.Size = new System.Drawing.Size(186, 23);
-            this.FarmHarvestHoursComboBox.TabIndex = 3;
+            this.FarmHarvestQuantityComboBox.FormattingEnabled = true;
+            this.FarmHarvestQuantityComboBox.Location = new System.Drawing.Point(7, 166);
+            this.FarmHarvestQuantityComboBox.Name = "FarmHarvestQuantityComboBox";
+            this.FarmHarvestQuantityComboBox.Size = new System.Drawing.Size(186, 25);
+            this.FarmHarvestQuantityComboBox.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label2.Location = new System.Drawing.Point(7, 86);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 19);
+            this.label2.Size = new System.Drawing.Size(80, 17);
             this.label2.TabIndex = 3;
             this.label2.Text = "Fournisseur;";
             // 
-            // SupplierHarvestHoursComboBox
+            // SupplierHarvestQuantityComboBox
             // 
-            this.SupplierHarvestHoursComboBox.FormattingEnabled = true;
-            this.SupplierHarvestHoursComboBox.Location = new System.Drawing.Point(7, 108);
-            this.SupplierHarvestHoursComboBox.Name = "SupplierHarvestHoursComboBox";
-            this.SupplierHarvestHoursComboBox.Size = new System.Drawing.Size(186, 23);
-            this.SupplierHarvestHoursComboBox.TabIndex = 2;
+            this.SupplierHarvestQuantityComboBox.FormattingEnabled = true;
+            this.SupplierHarvestQuantityComboBox.Location = new System.Drawing.Point(7, 108);
+            this.SupplierHarvestQuantityComboBox.Name = "SupplierHarvestQuantityComboBox";
+            this.SupplierHarvestQuantityComboBox.Size = new System.Drawing.Size(186, 25);
+            this.SupplierHarvestQuantityComboBox.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Location = new System.Drawing.Point(7, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 19);
+            this.label1.Size = new System.Drawing.Size(37, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "Date";
             // 
@@ -218,39 +322,35 @@ namespace HarvestManagerSystem.view
             // 
             this.HarvestHoursDateTimePicker.Location = new System.Drawing.Point(6, 49);
             this.HarvestHoursDateTimePicker.Name = "HarvestHoursDateTimePicker";
-            this.HarvestHoursDateTimePicker.Size = new System.Drawing.Size(187, 23);
+            this.HarvestHoursDateTimePicker.Size = new System.Drawing.Size(187, 25);
             this.HarvestHoursDateTimePicker.TabIndex = 1;
             // 
-            // AddHarvestHoursDataGridView
+            // AddHarvestQuantityDataGridView
             // 
-            this.AddHarvestHoursDataGridView.AllowUserToAddRows = false;
-            this.AddHarvestHoursDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.AddHarvestHoursDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.AddHarvestQuantityDataGridView.AllowUserToAddRows = false;
+            this.AddHarvestQuantityDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.AddHarvestQuantityDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.HarvestHoursIDColumn,
             this.HarvestDateColumn,
             this.EmployeeNameColumn,
-            this.StartMorningColumn,
-            this.EndMorningColumn,
-            this.StartNoonColumn,
-            this.EndNoonColumn,
-            this.TimeStartMorningColumn,
-            this.TimeEndMorningColumn,
-            this.TimeStartNoonColumn,
-            this.TimeEndNoonColumn,
-            this.TotalMinutesColumn,
-            this.HourPriceColumn,
+            this.AllQuantityColumn,
+            this.BadQuantityColumn,
+            this.GoodQuantityColumn,
+            this.ProductPriceColumn,
             this.TransportStatusColumn,
-            this.CreditColumn,
+            this.CreditAmountColumn,
+            this.TransportAmountColumn,
             this.PaymentColumn,
             this.RemarqueColumn,
             this.TransportColumn,
-            this.TransportAmountColumn,
-            this.dataGridViewTextBoxColumn1,
+            this.CreditColumn,
             this.Employee,
             this.ProductionColumn,
-            this.EmployeeType,
-            this.AddHoursProductionIdColumn,
-            this.EmpCatColumn});
+            this.HarvestCategoryColumn,
+            this.PenaltyGeneralColumn,
+            this.DamageGeneralColumn,
+            this.HarvestTypeColumn,
+            this.TransportStatusByAmountColumn});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.InactiveCaption;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -258,18 +358,18 @@ namespace HarvestManagerSystem.view
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.AddHarvestHoursDataGridView.DefaultCellStyle = dataGridViewCellStyle1;
-            this.AddHarvestHoursDataGridView.Location = new System.Drawing.Point(218, 16);
-            this.AddHarvestHoursDataGridView.MultiSelect = false;
-            this.AddHarvestHoursDataGridView.Name = "AddHarvestHoursDataGridView";
-            this.AddHarvestHoursDataGridView.RowHeadersVisible = false;
-            this.AddHarvestHoursDataGridView.RowTemplate.Height = 25;
-            this.AddHarvestHoursDataGridView.Size = new System.Drawing.Size(952, 459);
-            this.AddHarvestHoursDataGridView.TabIndex = 15;
+            this.AddHarvestQuantityDataGridView.DefaultCellStyle = dataGridViewCellStyle1;
+            this.AddHarvestQuantityDataGridView.Location = new System.Drawing.Point(218, 16);
+            this.AddHarvestQuantityDataGridView.MultiSelect = false;
+            this.AddHarvestQuantityDataGridView.Name = "AddHarvestQuantityDataGridView";
+            this.AddHarvestQuantityDataGridView.RowHeadersVisible = false;
+            this.AddHarvestQuantityDataGridView.RowTemplate.Height = 25;
+            this.AddHarvestQuantityDataGridView.Size = new System.Drawing.Size(952, 459);
+            this.AddHarvestQuantityDataGridView.TabIndex = 15;
             // 
             // HarvestHoursIDColumn
             // 
-            this.HarvestHoursIDColumn.DataPropertyName = "HarvestHoursID";
+            this.HarvestHoursIDColumn.DataPropertyName = "HarvestQuantityId";
             this.HarvestHoursIDColumn.HeaderText = "ID";
             this.HarvestHoursIDColumn.Name = "HarvestHoursIDColumn";
             this.HarvestHoursIDColumn.Visible = false;
@@ -289,99 +389,56 @@ namespace HarvestManagerSystem.view
             this.EmployeeNameColumn.Name = "EmployeeNameColumn";
             this.EmployeeNameColumn.Width = 160;
             // 
-            // StartMorningColumn
+            // AllQuantityColumn
             // 
-            this.StartMorningColumn.DataPropertyName = "StartMorning";
-            this.StartMorningColumn.HeaderText = "SM";
-            this.StartMorningColumn.MinimumWidth = 60;
-            this.StartMorningColumn.Name = "StartMorningColumn";
-            this.StartMorningColumn.Visible = false;
-            this.StartMorningColumn.Width = 80;
+            this.AllQuantityColumn.DataPropertyName = "AllQuantity";
+            this.AllQuantityColumn.HeaderText = "Tous";
+            this.AllQuantityColumn.Name = "AllQuantityColumn";
             // 
-            // EndMorningColumn
+            // BadQuantityColumn
             // 
-            this.EndMorningColumn.DataPropertyName = "EndMorning";
-            this.EndMorningColumn.HeaderText = "EM";
-            this.EndMorningColumn.MinimumWidth = 60;
-            this.EndMorningColumn.Name = "EndMorningColumn";
-            this.EndMorningColumn.Visible = false;
-            this.EndMorningColumn.Width = 80;
+            this.BadQuantityColumn.DataPropertyName = "BadQuantity";
+            this.BadQuantityColumn.HeaderText = "Pertes";
+            this.BadQuantityColumn.Name = "BadQuantityColumn";
             // 
-            // StartNoonColumn
+            // GoodQuantityColumn
             // 
-            this.StartNoonColumn.DataPropertyName = "StartNoon";
-            this.StartNoonColumn.HeaderText = "SN";
-            this.StartNoonColumn.MinimumWidth = 60;
-            this.StartNoonColumn.Name = "StartNoonColumn";
-            this.StartNoonColumn.Visible = false;
-            this.StartNoonColumn.Width = 80;
+            this.GoodQuantityColumn.DataPropertyName = "GoodQuantity";
+            this.GoodQuantityColumn.HeaderText = "Rest";
+            this.GoodQuantityColumn.Name = "GoodQuantityColumn";
             // 
-            // EndNoonColumn
+            // ProductPriceColumn
             // 
-            this.EndNoonColumn.DataPropertyName = "EndNoon";
-            this.EndNoonColumn.HeaderText = "EN";
-            this.EndNoonColumn.MinimumWidth = 60;
-            this.EndNoonColumn.Name = "EndNoonColumn";
-            this.EndNoonColumn.Visible = false;
-            this.EndNoonColumn.Width = 80;
-            // 
-            // TimeStartMorningColumn
-            // 
-            this.TimeStartMorningColumn.DataPropertyName = "TimeStartMorning";
-            this.TimeStartMorningColumn.HeaderText = "DM";
-            this.TimeStartMorningColumn.Name = "TimeStartMorningColumn";
-            // 
-            // TimeEndMorningColumn
-            // 
-            this.TimeEndMorningColumn.DataPropertyName = "TimeEndMorning";
-            this.TimeEndMorningColumn.HeaderText = "FM";
-            this.TimeEndMorningColumn.Name = "TimeEndMorningColumn";
-            // 
-            // TimeStartNoonColumn
-            // 
-            this.TimeStartNoonColumn.DataPropertyName = "TimeStartNoon";
-            this.TimeStartNoonColumn.HeaderText = "DS";
-            this.TimeStartNoonColumn.Name = "TimeStartNoonColumn";
-            // 
-            // TimeEndNoonColumn
-            // 
-            this.TimeEndNoonColumn.DataPropertyName = "TimeEndNoon";
-            this.TimeEndNoonColumn.HeaderText = "FS";
-            this.TimeEndNoonColumn.Name = "TimeEndNoonColumn";
-            // 
-            // TotalMinutesColumn
-            // 
-            this.TotalMinutesColumn.DataPropertyName = "TotalMinutes";
-            this.TotalMinutesColumn.HeaderText = "Durée";
-            this.TotalMinutesColumn.MinimumWidth = 60;
-            this.TotalMinutesColumn.Name = "TotalMinutesColumn";
-            this.TotalMinutesColumn.Width = 80;
-            // 
-            // HourPriceColumn
-            // 
-            this.HourPriceColumn.DataPropertyName = "HourPrice";
-            this.HourPriceColumn.HeaderText = "Price";
-            this.HourPriceColumn.MinimumWidth = 60;
-            this.HourPriceColumn.Name = "HourPriceColumn";
-            this.HourPriceColumn.Width = 80;
+            this.ProductPriceColumn.DataPropertyName = "ProductPrice";
+            this.ProductPriceColumn.HeaderText = "Price";
+            this.ProductPriceColumn.MinimumWidth = 60;
+            this.ProductPriceColumn.Name = "ProductPriceColumn";
+            this.ProductPriceColumn.Width = 80;
             // 
             // TransportStatusColumn
             // 
             this.TransportStatusColumn.DataPropertyName = "TransportStatus";
-            this.TransportStatusColumn.HeaderText = "TransportStatus";
+            this.TransportStatusColumn.HeaderText = "Trans";
             this.TransportStatusColumn.MinimumWidth = 40;
             this.TransportStatusColumn.Name = "TransportStatusColumn";
             this.TransportStatusColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.TransportStatusColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.TransportStatusColumn.Width = 60;
             // 
-            // CreditColumn
+            // CreditAmountColumn
             // 
-            this.CreditColumn.DataPropertyName = "CreditAmount";
-            this.CreditColumn.HeaderText = "Credit";
-            this.CreditColumn.MinimumWidth = 60;
-            this.CreditColumn.Name = "CreditColumn";
-            this.CreditColumn.Width = 80;
+            this.CreditAmountColumn.DataPropertyName = "CreditAmount";
+            this.CreditAmountColumn.HeaderText = "Credit";
+            this.CreditAmountColumn.MinimumWidth = 60;
+            this.CreditAmountColumn.Name = "CreditAmountColumn";
+            this.CreditAmountColumn.Width = 80;
+            // 
+            // TransportAmountColumn
+            // 
+            this.TransportAmountColumn.DataPropertyName = "TransportAmount";
+            this.TransportAmountColumn.HeaderText = "TransportAmount";
+            this.TransportAmountColumn.Name = "TransportAmountColumn";
+            this.TransportAmountColumn.Visible = false;
             // 
             // PaymentColumn
             // 
@@ -406,19 +463,12 @@ namespace HarvestManagerSystem.view
             this.TransportColumn.Name = "TransportColumn";
             this.TransportColumn.Visible = false;
             // 
-            // TransportAmountColumn
+            // CreditColumn
             // 
-            this.TransportAmountColumn.DataPropertyName = "TransportAmount";
-            this.TransportAmountColumn.HeaderText = "TransportAmount";
-            this.TransportAmountColumn.Name = "TransportAmountColumn";
-            this.TransportAmountColumn.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Credit";
-            this.dataGridViewTextBoxColumn1.HeaderText = "CreditColumn";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Visible = false;
+            this.CreditColumn.DataPropertyName = "Credit";
+            this.CreditColumn.HeaderText = "Credit";
+            this.CreditColumn.Name = "CreditColumn";
+            this.CreditColumn.Visible = false;
             // 
             // Employee
             // 
@@ -434,30 +484,48 @@ namespace HarvestManagerSystem.view
             this.ProductionColumn.Name = "ProductionColumn";
             this.ProductionColumn.Visible = false;
             // 
-            // EmployeeType
+            // HarvestCategoryColumn
             // 
-            this.EmployeeType.DataPropertyName = "EmployeeType";
-            this.EmployeeType.HeaderText = "EmployeeType";
-            this.EmployeeType.Name = "EmployeeType";
-            this.EmployeeType.Visible = false;
+            this.HarvestCategoryColumn.DataPropertyName = "HarvestCat";
+            this.HarvestCategoryColumn.HeaderText = "Category";
+            this.HarvestCategoryColumn.Name = "HarvestCategoryColumn";
+            this.HarvestCategoryColumn.Visible = false;
             // 
-            // AddHoursProductionIdColumn
+            // PenaltyGeneralColumn
             // 
-            this.AddHoursProductionIdColumn.DataPropertyName = "ProductionId";
-            this.AddHoursProductionIdColumn.HeaderText = "ProductionId";
-            this.AddHoursProductionIdColumn.Name = "AddHoursProductionIdColumn";
-            this.AddHoursProductionIdColumn.Visible = false;
+            this.PenaltyGeneralColumn.DataPropertyName = "PenaltyGeneral";
+            this.PenaltyGeneralColumn.HeaderText = "PenaltyGeneral";
+            this.PenaltyGeneralColumn.Name = "PenaltyGeneralColumn";
+            this.PenaltyGeneralColumn.Visible = false;
             // 
-            // EmpCatColumn
+            // DamageGeneralColumn
             // 
-            this.EmpCatColumn.DataPropertyName = "EmpCat";
-            this.EmpCatColumn.HeaderText = "EmpCat";
-            this.EmpCatColumn.Name = "EmpCatColumn";
-            this.EmpCatColumn.Visible = false;
+            this.DamageGeneralColumn.DataPropertyName = "DamageGeneral";
+            this.DamageGeneralColumn.HeaderText = "DamageGeneral";
+            this.DamageGeneralColumn.Name = "DamageGeneralColumn";
+            this.DamageGeneralColumn.Visible = false;
+            // 
+            // HarvestTypeColumn
+            // 
+            this.HarvestTypeColumn.DataPropertyName = "HarvestType";
+            this.HarvestTypeColumn.HeaderText = "HarvestType";
+            this.HarvestTypeColumn.Name = "HarvestTypeColumn";
+            this.HarvestTypeColumn.Visible = false;
+            // 
+            // TransportStatusByAmountColumn
+            // 
+            this.TransportStatusByAmountColumn.DataPropertyName = "TransportStatusByAmount";
+            this.TransportStatusByAmountColumn.HeaderText = "TransportStatusByAmount";
+            this.TransportStatusByAmountColumn.Name = "TransportStatusByAmountColumn";
+            this.TransportStatusByAmountColumn.Visible = false;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.ApplyHarvestHoursButton);
+            this.groupBox2.Controls.Add(this.label12);
+            this.groupBox2.Controls.Add(this.txtTotalGoodQuantity);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.txtTotalBadQuantity);
+            this.groupBox2.Controls.Add(this.ApplyHarvestQuantityButton);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.TotalPaymentTextBox);
             this.groupBox2.Controls.Add(this.label11);
@@ -465,9 +533,9 @@ namespace HarvestManagerSystem.view
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.TotalTransportTextBox);
             this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.HourPriceTextBox);
+            this.groupBox2.Controls.Add(this.ProductPriceTextBox);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.TotalMinutesTextBox);
+            this.groupBox2.Controls.Add(this.TotalQuantityTextBox);
             this.groupBox2.Controls.Add(this.totalEmployeeLabel);
             this.groupBox2.Controls.Add(this.TotalEmployeeTextBox);
             this.groupBox2.Location = new System.Drawing.Point(220, 488);
@@ -477,21 +545,59 @@ namespace HarvestManagerSystem.view
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Calcul Total";
             // 
-            // ApplyHarvestHoursButton
+            // label12
             // 
-            this.ApplyHarvestHoursButton.Location = new System.Drawing.Point(784, 49);
-            this.ApplyHarvestHoursButton.Name = "ApplyHarvestHoursButton";
-            this.ApplyHarvestHoursButton.Size = new System.Drawing.Size(124, 41);
-            this.ApplyHarvestHoursButton.TabIndex = 21;
-            this.ApplyHarvestHoursButton.Text = "Apply";
-            this.ApplyHarvestHoursButton.UseVisualStyleBackColor = true;
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label12.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label12.Location = new System.Drawing.Point(308, 38);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(68, 19);
+            this.label12.TabIndex = 24;
+            this.label12.Text = "Total Rest";
+            // 
+            // txtTotalGoodQuantity
+            // 
+            this.txtTotalGoodQuantity.Location = new System.Drawing.Point(308, 59);
+            this.txtTotalGoodQuantity.Name = "txtTotalGoodQuantity";
+            this.txtTotalGoodQuantity.Size = new System.Drawing.Size(96, 23);
+            this.txtTotalGoodQuantity.TabIndex = 25;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label6.Location = new System.Drawing.Point(201, 38);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(79, 19);
+            this.label6.TabIndex = 22;
+            this.label6.Text = "Total Pertes";
+            // 
+            // txtTotalBadQuantity
+            // 
+            this.txtTotalBadQuantity.Location = new System.Drawing.Point(201, 59);
+            this.txtTotalBadQuantity.Name = "txtTotalBadQuantity";
+            this.txtTotalBadQuantity.Size = new System.Drawing.Size(96, 23);
+            this.txtTotalBadQuantity.TabIndex = 23;
+            // 
+            // ApplyHarvestQuantityButton
+            // 
+            this.ApplyHarvestQuantityButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ApplyHarvestQuantityButton.ForeColor = System.Drawing.Color.Red;
+            this.ApplyHarvestQuantityButton.Location = new System.Drawing.Point(811, 48);
+            this.ApplyHarvestQuantityButton.Name = "ApplyHarvestQuantityButton";
+            this.ApplyHarvestQuantityButton.Size = new System.Drawing.Size(124, 41);
+            this.ApplyHarvestQuantityButton.TabIndex = 21;
+            this.ApplyHarvestQuantityButton.Text = "Apply";
+            this.ApplyHarvestQuantityButton.UseVisualStyleBackColor = true;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label10.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label10.Location = new System.Drawing.Point(620, 38);
+            this.label10.Location = new System.Drawing.Point(703, 38);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(74, 19);
             this.label10.TabIndex = 11;
@@ -499,9 +605,9 @@ namespace HarvestManagerSystem.view
             // 
             // TotalPaymentTextBox
             // 
-            this.TotalPaymentTextBox.Location = new System.Drawing.Point(618, 59);
+            this.TotalPaymentTextBox.Location = new System.Drawing.Point(701, 59);
             this.TotalPaymentTextBox.Name = "TotalPaymentTextBox";
-            this.TotalPaymentTextBox.Size = new System.Drawing.Size(100, 23);
+            this.TotalPaymentTextBox.Size = new System.Drawing.Size(91, 23);
             this.TotalPaymentTextBox.TabIndex = 20;
             // 
             // label11
@@ -509,7 +615,7 @@ namespace HarvestManagerSystem.view
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label11.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label11.Location = new System.Drawing.Point(505, 38);
+            this.label11.Location = new System.Drawing.Point(612, 38);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(79, 19);
             this.label11.TabIndex = 9;
@@ -517,9 +623,9 @@ namespace HarvestManagerSystem.view
             // 
             // TotalCreditTextBox
             // 
-            this.TotalCreditTextBox.Location = new System.Drawing.Point(505, 59);
+            this.TotalCreditTextBox.Location = new System.Drawing.Point(612, 59);
             this.TotalCreditTextBox.Name = "TotalCreditTextBox";
-            this.TotalCreditTextBox.Size = new System.Drawing.Size(100, 23);
+            this.TotalCreditTextBox.Size = new System.Drawing.Size(79, 23);
             this.TotalCreditTextBox.TabIndex = 19;
             // 
             // label8
@@ -527,7 +633,7 @@ namespace HarvestManagerSystem.view
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label8.Location = new System.Drawing.Point(393, 38);
+            this.label8.Location = new System.Drawing.Point(500, 38);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(100, 19);
             this.label8.TabIndex = 7;
@@ -535,7 +641,7 @@ namespace HarvestManagerSystem.view
             // 
             // TotalTransportTextBox
             // 
-            this.TotalTransportTextBox.Location = new System.Drawing.Point(393, 59);
+            this.TotalTransportTextBox.Location = new System.Drawing.Point(500, 59);
             this.TotalTransportTextBox.Name = "TotalTransportTextBox";
             this.TotalTransportTextBox.Size = new System.Drawing.Size(100, 23);
             this.TotalTransportTextBox.TabIndex = 18;
@@ -545,53 +651,53 @@ namespace HarvestManagerSystem.view
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label9.Location = new System.Drawing.Point(280, 38);
+            this.label9.Location = new System.Drawing.Point(415, 38);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(73, 19);
+            this.label9.Size = new System.Drawing.Size(31, 19);
             this.label9.TabIndex = 5;
-            this.label9.Text = "Hour Price";
+            this.label9.Text = "Prix";
             // 
-            // HourPriceTextBox
+            // ProductPriceTextBox
             // 
-            this.HourPriceTextBox.Location = new System.Drawing.Point(280, 59);
-            this.HourPriceTextBox.Name = "HourPriceTextBox";
-            this.HourPriceTextBox.Size = new System.Drawing.Size(100, 23);
-            this.HourPriceTextBox.TabIndex = 17;
+            this.ProductPriceTextBox.Location = new System.Drawing.Point(415, 59);
+            this.ProductPriceTextBox.Name = "ProductPriceTextBox";
+            this.ProductPriceTextBox.Size = new System.Drawing.Size(73, 23);
+            this.ProductPriceTextBox.TabIndex = 17;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label7.Location = new System.Drawing.Point(170, 38);
+            this.label7.Location = new System.Drawing.Point(94, 38);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(92, 19);
+            this.label7.Size = new System.Drawing.Size(102, 19);
             this.label7.TabIndex = 3;
-            this.label7.Text = "Total Minutes";
+            this.label7.Text = "Total Quantités";
             // 
-            // TotalMinutesTextBox
+            // TotalQuantityTextBox
             // 
-            this.TotalMinutesTextBox.Location = new System.Drawing.Point(170, 59);
-            this.TotalMinutesTextBox.Name = "TotalMinutesTextBox";
-            this.TotalMinutesTextBox.Size = new System.Drawing.Size(100, 23);
-            this.TotalMinutesTextBox.TabIndex = 16;
+            this.TotalQuantityTextBox.Location = new System.Drawing.Point(94, 59);
+            this.TotalQuantityTextBox.Name = "TotalQuantityTextBox";
+            this.TotalQuantityTextBox.Size = new System.Drawing.Size(96, 23);
+            this.TotalQuantityTextBox.TabIndex = 16;
             // 
             // totalEmployeeLabel
             // 
             this.totalEmployeeLabel.AutoSize = true;
             this.totalEmployeeLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.totalEmployeeLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.totalEmployeeLabel.Location = new System.Drawing.Point(57, 38);
+            this.totalEmployeeLabel.Location = new System.Drawing.Point(14, 38);
             this.totalEmployeeLabel.Name = "totalEmployeeLabel";
-            this.totalEmployeeLabel.Size = new System.Drawing.Size(68, 19);
+            this.totalEmployeeLabel.Size = new System.Drawing.Size(49, 19);
             this.totalEmployeeLabel.TabIndex = 1;
-            this.totalEmployeeLabel.Text = "Employee";
+            this.totalEmployeeLabel.Text = "N.Emp";
             // 
             // TotalEmployeeTextBox
             // 
-            this.TotalEmployeeTextBox.Location = new System.Drawing.Point(57, 59);
+            this.TotalEmployeeTextBox.Location = new System.Drawing.Point(14, 59);
             this.TotalEmployeeTextBox.Name = "TotalEmployeeTextBox";
-            this.TotalEmployeeTextBox.Size = new System.Drawing.Size(100, 23);
+            this.TotalEmployeeTextBox.Size = new System.Drawing.Size(69, 23);
             this.TotalEmployeeTextBox.TabIndex = 15;
             // 
             // FormAddQuantity
@@ -601,15 +707,18 @@ namespace HarvestManagerSystem.view
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1184, 621);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.AddHarvestHoursDataGridView);
+            this.Controls.Add(this.AddHarvestQuantityDataGridView);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormAddQuantity";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormAddQuantity";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAddQuantity_FormClosed);
             this.Load += new System.EventHandler(this.FormAddQuantity_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AddHarvestHoursDataGridView)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AddHarvestQuantityDataGridView)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
@@ -620,45 +729,20 @@ namespace HarvestManagerSystem.view
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button ClearHarvestHoursButton;
-        private System.Windows.Forms.Button ValidateHarvestHoursButton;
+        private System.Windows.Forms.Button ValidateHarvestQuantityButton;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox ProductCodeHarvestHoursComboBox;
+        private System.Windows.Forms.ComboBox ProductCodeHarvestQuantityComboBox;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox ProductHarvestHoursComboBox;
+        private System.Windows.Forms.ComboBox ProductHarvestQuantityComboBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox FarmHarvestHoursComboBox;
+        private System.Windows.Forms.ComboBox FarmHarvestQuantityComboBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox SupplierHarvestHoursComboBox;
+        private System.Windows.Forms.ComboBox SupplierHarvestQuantityComboBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker HarvestHoursDateTimePicker;
-        private System.Windows.Forms.DataGridView AddHarvestHoursDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HarvestHoursIDColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HarvestDateColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeNameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StartMorningColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EndMorningColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StartNoonColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EndNoonColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TimeStartMorningColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TimeEndMorningColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TimeStartNoonColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TimeEndNoonColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TotalMinutesColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HourPriceColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn TransportStatusColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreditColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PaymentColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RemarqueColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TransportColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TransportAmountColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Employee;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductionColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AddHoursProductionIdColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EmpCatColumn;
+        private System.Windows.Forms.DataGridView AddHarvestQuantityDataGridView;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button ApplyHarvestHoursButton;
+        private System.Windows.Forms.Button ApplyHarvestQuantityButton;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox TotalPaymentTextBox;
         private System.Windows.Forms.Label label11;
@@ -666,10 +750,43 @@ namespace HarvestManagerSystem.view
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox TotalTransportTextBox;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox HourPriceTextBox;
+        private System.Windows.Forms.TextBox ProductPriceTextBox;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox TotalMinutesTextBox;
+        private System.Windows.Forms.TextBox TotalQuantityTextBox;
         private System.Windows.Forms.Label totalEmployeeLabel;
         private System.Windows.Forms.TextBox TotalEmployeeTextBox;
+        private System.Windows.Forms.Label labelBadQuantity;
+        private System.Windows.Forms.TextBox txtInputBadQuantity;
+        private System.Windows.Forms.Label labelAllQuantity;
+        private System.Windows.Forms.TextBox txtInputAllQuantity;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.RadioButton radioBtnHarvestByIndividual;
+        private System.Windows.Forms.RadioButton radioBtnHarvestByGroup;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtTotalGoodQuantity;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtTotalBadQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HarvestHoursIDColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HarvestDateColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeNameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AllQuantityColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BadQuantityColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GoodQuantityColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductPriceColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn TransportStatusColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreditAmountColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TransportAmountColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PaymentColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RemarqueColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TransportColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreditColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Employee;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductionColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HarvestCategoryColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PenaltyGeneralColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DamageGeneralColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HarvestTypeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TransportStatusByAmountColumn;
     }
 }
