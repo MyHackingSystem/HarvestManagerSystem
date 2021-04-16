@@ -31,7 +31,9 @@ namespace HarvestManagerSystem.view
         private Dictionary<string, Product> mProductDictionary = new Dictionary<string, Product>();
         private Dictionary<string, ProductDetail> mProductDetailDictionary = new Dictionary<string, ProductDetail>();
         static List<HarvestHours> HarvesterList = new List<HarvestHours>();
+
         BindingSource bindingSourceHarvesterList = new System.Windows.Forms.BindingSource { DataSource = HarvesterList };
+
         private HarvestMS harvestMS;
         private static FormAddHours instance;
 
@@ -119,6 +121,7 @@ namespace HarvestManagerSystem.view
         private void ValidateAddHarvestHours()
         {
             //PreferencesDAO preferencesDAO = PreferencesDAO.getInstance();
+            double hourPrice = 10;
             double totalMinute = 0; double totalTransport = 0.0; double totalCredit = 0.0; double totalPayment = 0.0;
             double employeePrice = mProductDetailDictionary.GetValueOrDefault(ProductCodeHarvestHoursComboBox.GetItemText(ProductCodeHarvestHoursComboBox.SelectedItem)).PriceEmployee;
             double companyPrice = mProductDetailDictionary.GetValueOrDefault(ProductCodeHarvestHoursComboBox.GetItemText(ProductCodeHarvestHoursComboBox.SelectedItem)).PriceCompany;
@@ -129,7 +132,7 @@ namespace HarvestManagerSystem.view
                 h.StartNoon = SNHoursDateTimePicker.Value;
                 h.EndNoon = ENHoursDateTimePicker.Value;
                 h.EmployeeType = getEmployeeType();
-                h.HourPrice = employeePrice;
+                h.HourPrice = hourPrice;
                 totalMinute += h.TotalMinutes;
                 h.Transport.TransportAmount = (h.TransportStatus) ? 10 : 0;
                 totalTransport += h.Transport.TransportAmount;
@@ -139,7 +142,7 @@ namespace HarvestManagerSystem.view
 
             TotalEmployeeTextBox.Text = Convert.ToString(HarvesterList.Count);
             TotalMinutesTextBox.Text = Convert.ToString(totalMinute);
-            HourPriceTextBox.Text = Convert.ToString(companyPrice);
+            HourPriceTextBox.Text = Convert.ToString(hourPrice);
             TotalTransportTextBox.Text = Convert.ToString(totalTransport);
             TotalCreditTextBox.Text = Convert.ToString(totalCredit);
             TotalPaymentTextBox.Text = Convert.ToString(totalPayment);
