@@ -120,8 +120,20 @@ namespace HarvestManagerSystem.view
 
         private void ValidateAddHarvestHours()
         {
-            //PreferencesDAO preferencesDAO = PreferencesDAO.getInstance();
-            double hourPrice = 10;
+            PreferencesDAO preferencesDAO = PreferencesDAO.getInstance();
+            _ = new Preferences();
+            Preferences pref;
+            try
+            {
+                pref = preferencesDAO.getPreferences();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Une erreur est survenue, essayez de cliquer à nouveau sur le bouton de validation \n" + ex.Message);
+                return;
+            }
+            double hourPrice = pref.HourPrice;
+            double transPrice = pref.TransportPrice;
             double totalMinute = 0; double totalTransport = 0.0; double totalCredit = 0.0; double totalPayment = 0.0;
             double employeePrice = mProductDetailDictionary.GetValueOrDefault(ProductCodeHarvestHoursComboBox.GetItemText(ProductCodeHarvestHoursComboBox.SelectedItem)).PriceEmployee;
             double companyPrice = mProductDetailDictionary.GetValueOrDefault(ProductCodeHarvestHoursComboBox.GetItemText(ProductCodeHarvestHoursComboBox.SelectedItem)).PriceCompany;
@@ -134,7 +146,7 @@ namespace HarvestManagerSystem.view
                 h.EmployeeType = getEmployeeType();
                 h.HourPrice = hourPrice;
                 totalMinute += h.TotalMinutes;
-                h.Transport.TransportAmount = (h.TransportStatus) ? 10 : 0;
+                h.Transport.TransportAmount = (h.TransportStatus) ? transPrice : 0;
                 totalTransport += h.Transport.TransportAmount;
                 totalCredit += h.Credit.CreditAmount;
                 totalPayment += h.Payment;

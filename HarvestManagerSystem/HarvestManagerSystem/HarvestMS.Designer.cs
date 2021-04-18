@@ -813,22 +813,26 @@ namespace HarvestManagerSystem
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.label3.Location = new System.Drawing.Point(570, 9);
+            this.label3.BackColor = System.Drawing.Color.Orange;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(570, 12);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(28, 21);
+            this.label3.Size = new System.Drawing.Size(25, 17);
             this.label3.TabIndex = 17;
             this.label3.Text = "To";
             // 
             // SearchQuantityButton
             // 
-            this.SearchQuantityButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.SearchQuantityButton.FlatAppearance.BorderSize = 0;
+            this.SearchQuantityButton.BackColor = System.Drawing.Color.White;
+            this.SearchQuantityButton.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
+            this.SearchQuantityButton.FlatAppearance.BorderSize = 2;
+            this.SearchQuantityButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Blue;
             this.SearchQuantityButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SearchQuantityButton.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.SearchQuantityButton.ForeColor = System.Drawing.Color.Black;
-            this.SearchQuantityButton.Location = new System.Drawing.Point(912, 5);
+            this.SearchQuantityButton.Location = new System.Drawing.Point(864, 8);
             this.SearchQuantityButton.Name = "SearchQuantityButton";
-            this.SearchQuantityButton.Size = new System.Drawing.Size(123, 29);
+            this.SearchQuantityButton.Size = new System.Drawing.Size(88, 26);
             this.SearchQuantityButton.TabIndex = 16;
             this.SearchQuantityButton.Text = "Search";
             this.SearchQuantityButton.UseVisualStyleBackColor = false;
@@ -836,21 +840,23 @@ namespace HarvestManagerSystem
             // 
             // endQuantitySearchDateTimePicker
             // 
-            this.endQuantitySearchDateTimePicker.Location = new System.Drawing.Point(614, 5);
+            this.endQuantitySearchDateTimePicker.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.endQuantitySearchDateTimePicker.Location = new System.Drawing.Point(601, 9);
             this.endQuantitySearchDateTimePicker.Name = "endQuantitySearchDateTimePicker";
-            this.endQuantitySearchDateTimePicker.Size = new System.Drawing.Size(265, 29);
+            this.endQuantitySearchDateTimePicker.Size = new System.Drawing.Size(234, 25);
             this.endQuantitySearchDateTimePicker.TabIndex = 15;
             // 
             // startQuantitySearchDateTimePicker
             // 
-            this.startQuantitySearchDateTimePicker.Location = new System.Drawing.Point(287, 5);
+            this.startQuantitySearchDateTimePicker.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.startQuantitySearchDateTimePicker.Location = new System.Drawing.Point(328, 9);
             this.startQuantitySearchDateTimePicker.Name = "startQuantitySearchDateTimePicker";
-            this.startQuantitySearchDateTimePicker.Size = new System.Drawing.Size(265, 29);
+            this.startQuantitySearchDateTimePicker.Size = new System.Drawing.Size(236, 25);
             this.startQuantitySearchDateTimePicker.TabIndex = 14;
             // 
             // label2
             // 
-            this.label2.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.label2.BackColor = System.Drawing.Color.Orange;
             this.label2.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(1, 0);
             this.label2.Name = "label2";

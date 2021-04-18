@@ -76,7 +76,7 @@ namespace HarvestManagerSystem
             }
         }
 
-        #region QUANTITY CODE
+        #region **************************************************** QUANTITY CODE ****************************************************************************
 
         int QuantityDataGridSelectedRowIndex = -1;
 
@@ -89,7 +89,6 @@ namespace HarvestManagerSystem
             startQuantitySearchDateTimePicker.Value = DateTime.Now.AddDays(-29);
             endQuantitySearchDateTimePicker.Value = DateTime.Now.AddDays(1);
             UpdateDisplayHarvestQuantityData(startQuantitySearchDateTimePicker.Value, endQuantitySearchDateTimePicker.Value);
-            SortDisplayMasterQuantityColumnsIndex();
         }
 
         private void UpdateDisplayHarvestQuantityData(DateTime fromDate, DateTime toDate)
@@ -102,8 +101,9 @@ namespace HarvestManagerSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("UpdateDisplayHarvestQuantityData called: " + ex.Message);
             }
+            SortDisplayMasterQuantityColumnsIndex();
         }
 
         private void masterQuantityDataGridView_SelectionChanged(object sender, EventArgs e)
@@ -123,7 +123,7 @@ namespace HarvestManagerSystem
                 listHarvestQuantity = harvestQuantityDAO.HarvestQuantityByProduction(production);
             }catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("DisplayDetailQuantityData called: " +  ex.Message);
             }
             detailQuantityDataGridView.DataSource = listHarvestQuantity;
             SortDisplayDetailsQuantityColumnsIndex();

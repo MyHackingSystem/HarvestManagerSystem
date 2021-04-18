@@ -31,7 +31,7 @@ namespace HarvestManagerSystem.view
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.ImportExcelButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.radioBtnHarvestByIndividual = new System.Windows.Forms.RadioButton();
             this.radioBtnHarvestByGroup = new System.Windows.Forms.RadioButton();
@@ -99,7 +99,7 @@ namespace HarvestManagerSystem.view
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.ImportExcelButton);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.labelBadQuantity);
             this.groupBox1.Controls.Add(this.txtInputBadQuantity);
@@ -126,15 +126,15 @@ namespace HarvestManagerSystem.view
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Production";
             // 
-            // button1
+            // ImportExcelButton
             // 
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.button1.Location = new System.Drawing.Point(7, 485);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(186, 34);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "Import Excel";
-            this.button1.UseVisualStyleBackColor = true;
+            this.ImportExcelButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.ImportExcelButton.Location = new System.Drawing.Point(7, 485);
+            this.ImportExcelButton.Name = "ImportExcelButton";
+            this.ImportExcelButton.Size = new System.Drawing.Size(186, 34);
+            this.ImportExcelButton.TabIndex = 19;
+            this.ImportExcelButton.Text = "Import Excel";
+            this.ImportExcelButton.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
@@ -142,7 +142,7 @@ namespace HarvestManagerSystem.view
             this.groupBox3.Controls.Add(this.radioBtnHarvestByGroup);
             this.groupBox3.Location = new System.Drawing.Point(6, 433);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(186, 35);
+            this.groupBox3.Size = new System.Drawing.Size(186, 46);
             this.groupBox3.TabIndex = 18;
             this.groupBox3.TabStop = false;
             // 
@@ -151,20 +151,21 @@ namespace HarvestManagerSystem.view
             this.radioBtnHarvestByIndividual.AutoSize = true;
             this.radioBtnHarvestByIndividual.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.radioBtnHarvestByIndividual.ForeColor = System.Drawing.Color.White;
-            this.radioBtnHarvestByIndividual.Location = new System.Drawing.Point(78, 10);
+            this.radioBtnHarvestByIndividual.Location = new System.Drawing.Point(82, 19);
             this.radioBtnHarvestByIndividual.Name = "radioBtnHarvestByIndividual";
             this.radioBtnHarvestByIndividual.Size = new System.Drawing.Size(82, 21);
             this.radioBtnHarvestByIndividual.TabIndex = 1;
             this.radioBtnHarvestByIndividual.TabStop = true;
             this.radioBtnHarvestByIndividual.Text = "Individual";
             this.radioBtnHarvestByIndividual.UseVisualStyleBackColor = true;
+            this.radioBtnHarvestByIndividual.CheckedChanged += new System.EventHandler(this.radioBtnHarvestByIndividual_CheckedChanged);
             // 
             // radioBtnHarvestByGroup
             // 
             this.radioBtnHarvestByGroup.AutoSize = true;
             this.radioBtnHarvestByGroup.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.radioBtnHarvestByGroup.ForeColor = System.Drawing.Color.White;
-            this.radioBtnHarvestByGroup.Location = new System.Drawing.Point(7, 10);
+            this.radioBtnHarvestByGroup.Location = new System.Drawing.Point(7, 18);
             this.radioBtnHarvestByGroup.Name = "radioBtnHarvestByGroup";
             this.radioBtnHarvestByGroup.Size = new System.Drawing.Size(69, 21);
             this.radioBtnHarvestByGroup.TabIndex = 0;
@@ -761,7 +762,7 @@ namespace HarvestManagerSystem.view
         private System.Windows.Forms.TextBox txtInputBadQuantity;
         private System.Windows.Forms.Label labelAllQuantity;
         private System.Windows.Forms.TextBox txtInputAllQuantity;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ImportExcelButton;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.RadioButton radioBtnHarvestByIndividual;
         private System.Windows.Forms.RadioButton radioBtnHarvestByGroup;

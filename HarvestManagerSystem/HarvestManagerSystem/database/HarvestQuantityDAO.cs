@@ -332,7 +332,7 @@ namespace HarvestManagerSystem.database
         }
 
 
-        internal bool updateHoursWork(HarvestQuantity item)
+        internal bool updateQuantityWork(HarvestQuantity item)
         {
             SQLiteTransaction transaction = null;
             SQLiteCommand sQLiteCommand = null;
@@ -392,10 +392,10 @@ namespace HarvestManagerSystem.database
                 sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_QUANTITY_DAMAGE_GENERAL, item.DamageGeneral));
                 sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_QUANTITY_PRICE, item.ProductPrice));
                 sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_QUANTITY_REMARQUE, item.Remarque));
-                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_QUANTITY_HARVEST_TYPE, item.Employee.EmployeeId));
-                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_QUANTITY_EMPLOYEE_ID, item.Transport.TransportId));
-                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_QUANTITY_TRANSPORT_ID, item.Credit.CreditId));
-                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_QUANTITY_CREDIT_ID, item.Production.ProductionID));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_QUANTITY_HARVEST_TYPE, item.HarvestType));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_QUANTITY_EMPLOYEE_ID, item.Employee.EmployeeId));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_QUANTITY_TRANSPORT_ID, item.Transport.TransportId));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_QUANTITY_CREDIT_ID, item.Credit.CreditId));
                 sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_QUANTITY_PRODUCTION_ID, item.Production.ProductionID));
                 sQLiteCommand.ExecuteNonQuery();
 

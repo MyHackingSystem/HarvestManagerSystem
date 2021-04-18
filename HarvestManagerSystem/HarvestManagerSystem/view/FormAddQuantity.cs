@@ -88,6 +88,7 @@ namespace HarvestManagerSystem.view
             bindingSourceHarvesterList.DataSource = HarvesterList;
             SortDisplayIndex();
             disableTotalTextBoxField();
+            onChangeHarvestType();
         }
 
 
@@ -121,9 +122,22 @@ namespace HarvestManagerSystem.view
 
         private void ValidateAddHarvestQuantityByGroup()
         {
-            //PreferencesDAO preferencesDAO = PreferencesDAO.getInstance();
-            double penaltyGeneral = 20;
-            double damageGeneral = 30;
+            PreferencesDAO preferencesDAO = PreferencesDAO.getInstance();
+            _ = new Preferences();
+            Preferences pref;
+            try
+            {
+                pref = preferencesDAO.getPreferences();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Une erreur est survenue, essayez de cliquer à nouveau sur le bouton de validation ");
+                return;
+            }
+
+            double penaltyGeneral = pref.PenaltyGeneral;
+            double damageGeneral = pref.DamageGeneral;
+            double transPrice = pref.TransportPrice;
             int totalEmployee = HarvesterList.Count;
             double totalTransport = 0.0; double totalCredit = 0.0; double totalPayment = 0.0;
             double totalAllQuantity = 0;
@@ -159,7 +173,7 @@ namespace HarvestManagerSystem.view
                 totalAllQuantity += hq.GoodQuantity;
                 totalBadQuantity += hq.BadQuantity;
                 totalGoodQuantity += hq.GoodQuantity;
-                hq.Transport.TransportAmount = (hq.TransportStatus) ? 10 : 0;
+                hq.Transport.TransportAmount = (hq.TransportStatus) ? transPrice : 0;
                 totalTransport += hq.Transport.TransportAmount;
                 totalCredit += hq.Credit.CreditAmount;
                 totalPayment += hq.Payment;
@@ -174,6 +188,7 @@ namespace HarvestManagerSystem.view
             TotalTransportTextBox.Text = Convert.ToString(totalTransport);
             TotalCreditTextBox.Text = Convert.ToString(totalCredit);
             TotalPaymentTextBox.Text = Convert.ToString(totalPayment);
+            mProduction.Price = companyPrice;
             AddHarvestQuantityDataGridView.Refresh();
 
         }
@@ -199,9 +214,8 @@ namespace HarvestManagerSystem.view
             else
             {
                 addProductionDataToDatabase();
-                harvestMS.RefreshHoursProductionTable();
             }
-
+            harvestMS.RefreshQuantityProductionTable();
         }
 
         private bool checkApplyButtonInput()
@@ -255,6 +269,38 @@ namespace HarvestManagerSystem.view
             return trackInsert;
         }
 
+        private void updateProductionDataInDatabase()
+        {
+            setProductionValueFromFields();
+            if (mProductionDAO.updateProductionData(mProduction))
+            {
+                if (updateHarvestQuantityInDatabase())
+                {
+
+                }
+                MessageBox.Show("Data updated");
+            }
+            else
+            {
+                MessageBox.Show("Data not updated");
+            }
+            isEditHarvestQuantity = false;
+            this.Close();
+        }
+
+        private bool updateHarvestQuantityInDatabase()
+        {
+            bool trackInsert = false;
+            foreach (HarvestQuantity item in HarvesterList)
+            {
+                item.HarvestDate = mProduction.ProductionDate;
+                item.Production.Farm.FarmId = mProduction.Farm.FarmId;
+                item.Production.ProductionID = mProduction.ProductionID;
+                trackInsert =  mHarvestQuantityDAO.updateQuantityWork(item);
+                if (!trackInsert) break;
+            }
+            return trackInsert;
+        }
 
         private void setProductionValueFromFields()
         {
@@ -270,7 +316,7 @@ namespace HarvestManagerSystem.view
             mProduction.Price = Convert.ToDouble(ProductPriceTextBox.Text);
         }
 
-        // Update Harvest hours Section
+        // Update Harvest Quantity Section
 
         internal void InflateUI(Production production)
         {
@@ -278,10 +324,10 @@ namespace HarvestManagerSystem.view
 
             mProduction.ProductionID = production.ProductionID;
             mProduction.ProductionDate = production.ProductionDate;
-            mProduction.Supplier.SupplierName = production.SupplierName;
-            mProduction.Farm.FarmName = production.FarmName;
-            mProduction.Product.ProductName = production.ProductName;
-            mProduction.ProductDetail.ProductCode = production.ProductCode;
+            mProduction.Supplier.SupplierName = production.Supplier.SupplierName;
+            mProduction.Farm.FarmName = production.Farm.FarmName;
+            mProduction.Product.ProductName = production.Product.ProductName;
+            mProduction.ProductDetail.ProductCode = production.ProductDetail.ProductCode;
             mProduction.ProductionType = production.ProductionType;
 
             HarvesterList.Clear();
@@ -303,18 +349,10 @@ namespace HarvestManagerSystem.view
                 BadQuantity += quantity.BadQuantity;
                 quantity.TransportStatus = (quantity.TransportAmount > 0) ? true : false;
             }
-
+            SetHarvestType(HarvesterList[0].HarvestType);
             txtInputAllQuantity.Text = AllQuantity.ToString();
             txtInputBadQuantity.Text = BadQuantity.ToString();
-            SetHarvestType(mProduction.ProductionType);
             SetToTotalZero();
-        }
-
-
-
-        private void updateProductionDataInDatabase()
-        {
-
         }
 
 
@@ -389,6 +427,23 @@ namespace HarvestManagerSystem.view
             AddHarvestQuantityDataGridView.Refresh();
         }
 
+        private void radioBtnHarvestByIndividual_CheckedChanged(object sender, EventArgs e)
+        {
+            onChangeHarvestType();
+        }
+
+        private void onChangeHarvestType()
+        {
+            if (radioBtnHarvestByIndividual.Checked)
+            {
+                ImportExcelButton.Enabled = true;
+            }
+            else
+            {
+                ImportExcelButton.Enabled = false;
+            }
+        }
+
         private int getHarvestType()
         {
             if (radioBtnHarvestByGroup.Checked)
@@ -403,7 +458,7 @@ namespace HarvestManagerSystem.view
 
         private void SetHarvestType(int type)
         {
-            if (type == 3)
+            if (type == 1)
             {
                 radioBtnHarvestByIndividual.Checked = true; ;
             }
@@ -513,6 +568,7 @@ namespace HarvestManagerSystem.view
         }
 
         #endregion
+
 
     }
 }
