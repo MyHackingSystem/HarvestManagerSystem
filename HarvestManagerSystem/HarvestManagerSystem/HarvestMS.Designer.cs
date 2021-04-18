@@ -91,54 +91,51 @@ namespace HarvestManagerSystem
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle59 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabProduction = new System.Windows.Forms.TabControl();
             this.tabPageQuantity = new System.Windows.Forms.TabPage();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn34 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn38 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn39 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn40 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn41 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn42 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn43 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.detailQuantityDataGridView = new System.Windows.Forms.DataGridView();
+            this.HarvestQuantityIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HarvestQuantityDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQEmployeeNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AllQuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BadQuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GoodQuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductPriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQCreditAmountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQTransportAmountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQPaymentColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQRemarqueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HarvestCategoryColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQTransportStatusColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.HQEmployeeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQTransportColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQCreditColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQProductionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PenaltyGeneralColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DamageGeneralColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQTransportStatusByAmountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HarvestTypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.masterQuantityDataGridView = new System.Windows.Forms.DataGridView();
+            this.HQProductionIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQHQProductionDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQProductionSupplierNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQProductionFarmNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQProductionProductNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQProductionProductCodeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQProductionTotalQuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQProductionProductPriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQProductionTotalEmployeeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQProductionPaymentCompanyColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQProductionTotalMinutesColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQProductionTypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQProductionSupplierColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQProductionFarmIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQProductionFarmColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQProductionProductColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQProductionProductDetailColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.SearchQuantityButton = new System.Windows.Forms.Button();
+            this.endQuantitySearchDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.startQuantitySearchDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPageHours = new System.Windows.Forms.TabPage();
             this.ToLabel = new System.Windows.Forms.Label();
@@ -189,6 +186,7 @@ namespace HarvestManagerSystem
             this.ProductionFarmColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductionProductColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductionProductDetailColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuantityPaymentColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelHarvestHoursTab = new System.Windows.Forms.Label();
             this.tabPageTransportCredit = new System.Windows.Forms.TabPage();
             this.CreditDataGridView = new System.Windows.Forms.DataGridView();
@@ -299,10 +297,13 @@ namespace HarvestManagerSystem
             this.AppLogo = new System.Windows.Forms.PictureBox();
             this.statusStripProgressbar = new System.Windows.Forms.StatusStrip();
             this.loadDataProgressBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.QuantityContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.EditQuantityStrip = new System.Windows.Forms.ToolStripMenuItem();
+            this.DeleteQuantityStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.tabProduction.SuspendLayout();
             this.tabPageQuantity.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detailQuantityDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.masterQuantityDataGridView)).BeginInit();
             this.tabPageHours.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.detailsHoursDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.masterHoursDataGridView)).BeginInit();
@@ -335,6 +336,7 @@ namespace HarvestManagerSystem
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AppLogo)).BeginInit();
             this.statusStripProgressbar.SuspendLayout();
+            this.QuantityContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabProduction
@@ -363,12 +365,12 @@ namespace HarvestManagerSystem
             // tabPageQuantity
             // 
             this.tabPageQuantity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tabPageQuantity.Controls.Add(this.dataGridView2);
-            this.tabPageQuantity.Controls.Add(this.dataGridView1);
+            this.tabPageQuantity.Controls.Add(this.detailQuantityDataGridView);
+            this.tabPageQuantity.Controls.Add(this.masterQuantityDataGridView);
             this.tabPageQuantity.Controls.Add(this.label3);
-            this.tabPageQuantity.Controls.Add(this.button1);
-            this.tabPageQuantity.Controls.Add(this.dateTimePicker1);
-            this.tabPageQuantity.Controls.Add(this.dateTimePicker2);
+            this.tabPageQuantity.Controls.Add(this.SearchQuantityButton);
+            this.tabPageQuantity.Controls.Add(this.endQuantitySearchDateTimePicker);
+            this.tabPageQuantity.Controls.Add(this.startQuantitySearchDateTimePicker);
             this.tabPageQuantity.Controls.Add(this.label2);
             this.tabPageQuantity.ForeColor = System.Drawing.Color.White;
             this.tabPageQuantity.Location = new System.Drawing.Point(4, 34);
@@ -378,313 +380,272 @@ namespace HarvestManagerSystem
             this.tabPageQuantity.TabIndex = 0;
             this.tabPageQuantity.Text = "Quantity";
             // 
-            // dataGridView2
+            // detailQuantityDataGridView
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.detailQuantityDataGridView.AllowUserToAddRows = false;
+            this.detailQuantityDataGridView.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(255)))), ((int)(((byte)(183)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dataGridView2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            this.dataGridView2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.detailQuantityDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.detailQuantityDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.detailQuantityDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.detailQuantityDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(179)))), ((int)(((byte)(39)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(179)))), ((int)(((byte)(39)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView2.ColumnHeadersHeight = 32;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn20,
-            this.dataGridViewTextBoxColumn21,
-            this.dataGridViewTextBoxColumn22,
-            this.dataGridViewTextBoxColumn23,
-            this.dataGridViewTextBoxColumn24,
-            this.dataGridViewTextBoxColumn25,
-            this.dataGridViewTextBoxColumn26,
-            this.dataGridViewTextBoxColumn27,
-            this.dataGridViewTextBoxColumn28,
-            this.dataGridViewTextBoxColumn29,
-            this.dataGridViewTextBoxColumn30,
-            this.dataGridViewTextBoxColumn31,
-            this.dataGridViewTextBoxColumn32,
-            this.dataGridViewTextBoxColumn33,
-            this.dataGridViewTextBoxColumn34,
-            this.dataGridViewCheckBoxColumn1,
-            this.dataGridViewTextBoxColumn35,
-            this.dataGridViewTextBoxColumn36,
-            this.dataGridViewTextBoxColumn37,
-            this.dataGridViewTextBoxColumn38,
-            this.dataGridViewTextBoxColumn39,
-            this.dataGridViewTextBoxColumn40,
-            this.dataGridViewTextBoxColumn41,
-            this.dataGridViewTextBoxColumn42,
-            this.dataGridViewTextBoxColumn43});
-            this.dataGridView2.EnableHeadersVisualStyles = false;
-            this.dataGridView2.Location = new System.Drawing.Point(0, 241);
-            this.dataGridView2.MultiSelect = false;
-            this.dataGridView2.Name = "dataGridView2";
+            this.detailQuantityDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.detailQuantityDataGridView.ColumnHeadersHeight = 32;
+            this.detailQuantityDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.detailQuantityDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.HarvestQuantityIdColumn,
+            this.HarvestQuantityDateColumn,
+            this.HQEmployeeNameColumn,
+            this.AllQuantityColumn,
+            this.BadQuantityColumn,
+            this.GoodQuantityColumn,
+            this.ProductPriceColumn,
+            this.HQCreditAmountColumn,
+            this.HQTransportAmountColumn,
+            this.HQPaymentColumn,
+            this.HQRemarqueColumn,
+            this.HarvestCategoryColumn,
+            this.HQTransportStatusColumn,
+            this.HQEmployeeColumn,
+            this.HQTransportColumn,
+            this.HQCreditColumn,
+            this.HQProductionColumn,
+            this.PenaltyGeneralColumn,
+            this.DamageGeneralColumn,
+            this.HQTransportStatusByAmountColumn,
+            this.HarvestTypeColumn});
+            this.detailQuantityDataGridView.EnableHeadersVisualStyles = false;
+            this.detailQuantityDataGridView.Location = new System.Drawing.Point(0, 241);
+            this.detailQuantityDataGridView.MultiSelect = false;
+            this.detailQuantityDataGridView.Name = "detailQuantityDataGridView";
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(255)))), ((int)(((byte)(210)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView2.RowTemplate.Height = 25;
-            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(1122, 318);
-            this.dataGridView2.TabIndex = 19;
+            this.detailQuantityDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.detailQuantityDataGridView.RowTemplate.Height = 25;
+            this.detailQuantityDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.detailQuantityDataGridView.Size = new System.Drawing.Size(1122, 318);
+            this.detailQuantityDataGridView.TabIndex = 19;
             // 
-            // dataGridViewTextBoxColumn20
+            // HarvestQuantityIdColumn
             // 
-            this.dataGridViewTextBoxColumn20.DataPropertyName = "HarvestHoursID";
-            this.dataGridViewTextBoxColumn20.HeaderText = "HarvestHoursID";
-            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
-            this.dataGridViewTextBoxColumn20.ReadOnly = true;
-            this.dataGridViewTextBoxColumn20.Visible = false;
+            this.HarvestQuantityIdColumn.DataPropertyName = "HarvestQuantityId";
+            this.HarvestQuantityIdColumn.HeaderText = "HarvestHoursID";
+            this.HarvestQuantityIdColumn.Name = "HarvestQuantityIdColumn";
+            this.HarvestQuantityIdColumn.ReadOnly = true;
+            this.HarvestQuantityIdColumn.Visible = false;
             // 
-            // dataGridViewTextBoxColumn21
+            // HarvestQuantityDateColumn
             // 
-            this.dataGridViewTextBoxColumn21.DataPropertyName = "HarvestDate";
-            this.dataGridViewTextBoxColumn21.HeaderText = "Date";
-            this.dataGridViewTextBoxColumn21.MinimumWidth = 80;
-            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
-            this.dataGridViewTextBoxColumn21.ReadOnly = true;
+            this.HarvestQuantityDateColumn.DataPropertyName = "HarvestDate";
+            this.HarvestQuantityDateColumn.HeaderText = "Date";
+            this.HarvestQuantityDateColumn.MinimumWidth = 80;
+            this.HarvestQuantityDateColumn.Name = "HarvestQuantityDateColumn";
+            this.HarvestQuantityDateColumn.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn22
+            // HQEmployeeNameColumn
             // 
-            this.dataGridViewTextBoxColumn22.DataPropertyName = "EmployeeName";
-            this.dataGridViewTextBoxColumn22.HeaderText = "Employee";
-            this.dataGridViewTextBoxColumn22.MinimumWidth = 160;
-            this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
-            this.dataGridViewTextBoxColumn22.ReadOnly = true;
-            this.dataGridViewTextBoxColumn22.Width = 200;
+            this.HQEmployeeNameColumn.DataPropertyName = "EmployeeName";
+            this.HQEmployeeNameColumn.HeaderText = "Employee";
+            this.HQEmployeeNameColumn.MinimumWidth = 160;
+            this.HQEmployeeNameColumn.Name = "HQEmployeeNameColumn";
+            this.HQEmployeeNameColumn.ReadOnly = true;
+            this.HQEmployeeNameColumn.Width = 200;
             // 
-            // dataGridViewTextBoxColumn23
+            // AllQuantityColumn
             // 
-            this.dataGridViewTextBoxColumn23.DataPropertyName = "TimeStartMorning";
-            this.dataGridViewTextBoxColumn23.HeaderText = "D.M";
-            this.dataGridViewTextBoxColumn23.MinimumWidth = 70;
-            this.dataGridViewTextBoxColumn23.Name = "dataGridViewTextBoxColumn23";
-            this.dataGridViewTextBoxColumn23.ReadOnly = true;
-            this.dataGridViewTextBoxColumn23.Width = 80;
+            this.AllQuantityColumn.DataPropertyName = "AllQuantity";
+            this.AllQuantityColumn.HeaderText = "Tous";
+            this.AllQuantityColumn.Name = "AllQuantityColumn";
             // 
-            // dataGridViewTextBoxColumn24
+            // BadQuantityColumn
             // 
-            this.dataGridViewTextBoxColumn24.DataPropertyName = "TimeEndMorning";
-            this.dataGridViewTextBoxColumn24.HeaderText = "F.M";
-            this.dataGridViewTextBoxColumn24.MinimumWidth = 70;
-            this.dataGridViewTextBoxColumn24.Name = "dataGridViewTextBoxColumn24";
-            this.dataGridViewTextBoxColumn24.ReadOnly = true;
-            this.dataGridViewTextBoxColumn24.Width = 80;
+            this.BadQuantityColumn.DataPropertyName = "BadQuantity";
+            this.BadQuantityColumn.HeaderText = "Pertes";
+            this.BadQuantityColumn.Name = "BadQuantityColumn";
             // 
-            // dataGridViewTextBoxColumn25
+            // GoodQuantityColumn
             // 
-            this.dataGridViewTextBoxColumn25.DataPropertyName = "TimeStartNoon";
-            this.dataGridViewTextBoxColumn25.HeaderText = "D.S";
-            this.dataGridViewTextBoxColumn25.MinimumWidth = 70;
-            this.dataGridViewTextBoxColumn25.Name = "dataGridViewTextBoxColumn25";
-            this.dataGridViewTextBoxColumn25.ReadOnly = true;
-            this.dataGridViewTextBoxColumn25.Width = 80;
+            this.GoodQuantityColumn.DataPropertyName = "GoodQuantity";
+            this.GoodQuantityColumn.HeaderText = "Rest";
+            this.GoodQuantityColumn.Name = "GoodQuantityColumn";
             // 
-            // dataGridViewTextBoxColumn26
+            // ProductPriceColumn
             // 
-            this.dataGridViewTextBoxColumn26.DataPropertyName = "TimeEndNoon";
-            this.dataGridViewTextBoxColumn26.HeaderText = "F.S";
-            this.dataGridViewTextBoxColumn26.MinimumWidth = 70;
-            this.dataGridViewTextBoxColumn26.Name = "dataGridViewTextBoxColumn26";
-            this.dataGridViewTextBoxColumn26.ReadOnly = true;
-            this.dataGridViewTextBoxColumn26.Width = 80;
+            this.ProductPriceColumn.DataPropertyName = "ProductPrice";
+            this.ProductPriceColumn.HeaderText = "Prix";
+            this.ProductPriceColumn.MinimumWidth = 70;
+            this.ProductPriceColumn.Name = "ProductPriceColumn";
+            this.ProductPriceColumn.ReadOnly = true;
+            this.ProductPriceColumn.Width = 80;
             // 
-            // dataGridViewTextBoxColumn27
+            // HQCreditAmountColumn
             // 
-            this.dataGridViewTextBoxColumn27.DataPropertyName = "TotalMinutes";
-            this.dataGridViewTextBoxColumn27.HeaderText = "Minutes";
-            this.dataGridViewTextBoxColumn27.MinimumWidth = 70;
-            this.dataGridViewTextBoxColumn27.Name = "dataGridViewTextBoxColumn27";
-            this.dataGridViewTextBoxColumn27.ReadOnly = true;
-            this.dataGridViewTextBoxColumn27.Width = 80;
+            this.HQCreditAmountColumn.DataPropertyName = "CreditAmount";
+            this.HQCreditAmountColumn.HeaderText = "Credit";
+            this.HQCreditAmountColumn.MinimumWidth = 60;
+            this.HQCreditAmountColumn.Name = "HQCreditAmountColumn";
+            this.HQCreditAmountColumn.ReadOnly = true;
+            this.HQCreditAmountColumn.Width = 70;
             // 
-            // dataGridViewTextBoxColumn28
+            // HQTransportAmountColumn
             // 
-            this.dataGridViewTextBoxColumn28.DataPropertyName = "CreditAmount";
-            this.dataGridViewTextBoxColumn28.HeaderText = "Credit";
-            this.dataGridViewTextBoxColumn28.MinimumWidth = 60;
-            this.dataGridViewTextBoxColumn28.Name = "dataGridViewTextBoxColumn28";
-            this.dataGridViewTextBoxColumn28.ReadOnly = true;
-            this.dataGridViewTextBoxColumn28.Width = 70;
+            this.HQTransportAmountColumn.DataPropertyName = "TransportAmount";
+            this.HQTransportAmountColumn.HeaderText = "Trans";
+            this.HQTransportAmountColumn.MinimumWidth = 60;
+            this.HQTransportAmountColumn.Name = "HQTransportAmountColumn";
+            this.HQTransportAmountColumn.ReadOnly = true;
+            this.HQTransportAmountColumn.Width = 70;
             // 
-            // dataGridViewTextBoxColumn29
+            // HQPaymentColumn
             // 
-            this.dataGridViewTextBoxColumn29.DataPropertyName = "TransportAmount";
-            this.dataGridViewTextBoxColumn29.HeaderText = "Trans";
-            this.dataGridViewTextBoxColumn29.MinimumWidth = 60;
-            this.dataGridViewTextBoxColumn29.Name = "dataGridViewTextBoxColumn29";
-            this.dataGridViewTextBoxColumn29.ReadOnly = true;
-            this.dataGridViewTextBoxColumn29.Width = 70;
+            this.HQPaymentColumn.DataPropertyName = "Payment";
+            this.HQPaymentColumn.HeaderText = "Payment";
+            this.HQPaymentColumn.MinimumWidth = 70;
+            this.HQPaymentColumn.Name = "HQPaymentColumn";
+            this.HQPaymentColumn.ReadOnly = true;
+            this.HQPaymentColumn.Width = 80;
             // 
-            // dataGridViewTextBoxColumn30
+            // HQRemarqueColumn
             // 
-            this.dataGridViewTextBoxColumn30.DataPropertyName = "HourPrice";
-            this.dataGridViewTextBoxColumn30.HeaderText = "Prix";
-            this.dataGridViewTextBoxColumn30.MinimumWidth = 70;
-            this.dataGridViewTextBoxColumn30.Name = "dataGridViewTextBoxColumn30";
-            this.dataGridViewTextBoxColumn30.ReadOnly = true;
-            this.dataGridViewTextBoxColumn30.Width = 80;
+            this.HQRemarqueColumn.DataPropertyName = "Remarque";
+            this.HQRemarqueColumn.HeaderText = "Remarque";
+            this.HQRemarqueColumn.MinimumWidth = 180;
+            this.HQRemarqueColumn.Name = "HQRemarqueColumn";
+            this.HQRemarqueColumn.ReadOnly = true;
+            this.HQRemarqueColumn.Width = 200;
             // 
-            // dataGridViewTextBoxColumn31
+            // HarvestCategoryColumn
             // 
-            this.dataGridViewTextBoxColumn31.DataPropertyName = "Payment";
-            this.dataGridViewTextBoxColumn31.HeaderText = "Payment";
-            this.dataGridViewTextBoxColumn31.MinimumWidth = 70;
-            this.dataGridViewTextBoxColumn31.Name = "dataGridViewTextBoxColumn31";
-            this.dataGridViewTextBoxColumn31.ReadOnly = true;
-            this.dataGridViewTextBoxColumn31.Width = 80;
+            this.HarvestCategoryColumn.DataPropertyName = "HarvestCat";
+            this.HarvestCategoryColumn.HeaderText = "Category";
+            this.HarvestCategoryColumn.MinimumWidth = 80;
+            this.HarvestCategoryColumn.Name = "HarvestCategoryColumn";
+            this.HarvestCategoryColumn.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn32
+            // HQTransportStatusColumn
             // 
-            this.dataGridViewTextBoxColumn32.DataPropertyName = "EmpCat";
-            this.dataGridViewTextBoxColumn32.HeaderText = "Category";
-            this.dataGridViewTextBoxColumn32.MinimumWidth = 80;
-            this.dataGridViewTextBoxColumn32.Name = "dataGridViewTextBoxColumn32";
-            this.dataGridViewTextBoxColumn32.ReadOnly = true;
+            this.HQTransportStatusColumn.DataPropertyName = "TransportStatus";
+            this.HQTransportStatusColumn.HeaderText = "TransportStatus";
+            this.HQTransportStatusColumn.Name = "HQTransportStatusColumn";
+            this.HQTransportStatusColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.HQTransportStatusColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.HQTransportStatusColumn.Visible = false;
             // 
-            // dataGridViewTextBoxColumn33
+            // HQEmployeeColumn
             // 
-            this.dataGridViewTextBoxColumn33.DataPropertyName = "Remarque";
-            this.dataGridViewTextBoxColumn33.HeaderText = "Remarque";
-            this.dataGridViewTextBoxColumn33.MinimumWidth = 180;
-            this.dataGridViewTextBoxColumn33.Name = "dataGridViewTextBoxColumn33";
-            this.dataGridViewTextBoxColumn33.ReadOnly = true;
-            this.dataGridViewTextBoxColumn33.Width = 200;
+            this.HQEmployeeColumn.DataPropertyName = "Employee";
+            this.HQEmployeeColumn.HeaderText = "Employee";
+            this.HQEmployeeColumn.Name = "HQEmployeeColumn";
+            this.HQEmployeeColumn.Visible = false;
             // 
-            // dataGridViewTextBoxColumn34
+            // HQTransportColumn
             // 
-            this.dataGridViewTextBoxColumn34.DataPropertyName = "EmployeeType";
-            this.dataGridViewTextBoxColumn34.HeaderText = "EmployeeType";
-            this.dataGridViewTextBoxColumn34.Name = "dataGridViewTextBoxColumn34";
-            this.dataGridViewTextBoxColumn34.ReadOnly = true;
-            this.dataGridViewTextBoxColumn34.Visible = false;
+            this.HQTransportColumn.DataPropertyName = "Transport";
+            this.HQTransportColumn.HeaderText = "Transport";
+            this.HQTransportColumn.Name = "HQTransportColumn";
+            this.HQTransportColumn.Visible = false;
             // 
-            // dataGridViewCheckBoxColumn1
+            // HQCreditColumn
             // 
-            this.dataGridViewCheckBoxColumn1.DataPropertyName = "TransportStatus";
-            this.dataGridViewCheckBoxColumn1.HeaderText = "TransportStatus";
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            this.dataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCheckBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataGridViewCheckBoxColumn1.Visible = false;
+            this.HQCreditColumn.DataPropertyName = "Credit";
+            this.HQCreditColumn.HeaderText = "Credit";
+            this.HQCreditColumn.Name = "HQCreditColumn";
+            this.HQCreditColumn.Visible = false;
             // 
-            // dataGridViewTextBoxColumn35
+            // HQProductionColumn
             // 
-            this.dataGridViewTextBoxColumn35.DataPropertyName = "Employee";
-            this.dataGridViewTextBoxColumn35.HeaderText = "Employee";
-            this.dataGridViewTextBoxColumn35.Name = "dataGridViewTextBoxColumn35";
-            this.dataGridViewTextBoxColumn35.Visible = false;
+            this.HQProductionColumn.DataPropertyName = "Production";
+            this.HQProductionColumn.HeaderText = "Production";
+            this.HQProductionColumn.Name = "HQProductionColumn";
+            this.HQProductionColumn.Visible = false;
             // 
-            // dataGridViewTextBoxColumn36
+            // PenaltyGeneralColumn
             // 
-            this.dataGridViewTextBoxColumn36.DataPropertyName = "Transport";
-            this.dataGridViewTextBoxColumn36.HeaderText = "Transport";
-            this.dataGridViewTextBoxColumn36.Name = "dataGridViewTextBoxColumn36";
-            this.dataGridViewTextBoxColumn36.Visible = false;
+            this.PenaltyGeneralColumn.DataPropertyName = "PenaltyGeneral";
+            this.PenaltyGeneralColumn.HeaderText = "PenaltyGeneral";
+            this.PenaltyGeneralColumn.Name = "PenaltyGeneralColumn";
+            this.PenaltyGeneralColumn.Visible = false;
             // 
-            // dataGridViewTextBoxColumn37
+            // DamageGeneralColumn
             // 
-            this.dataGridViewTextBoxColumn37.DataPropertyName = "Credit";
-            this.dataGridViewTextBoxColumn37.HeaderText = "Credit";
-            this.dataGridViewTextBoxColumn37.Name = "dataGridViewTextBoxColumn37";
-            this.dataGridViewTextBoxColumn37.Visible = false;
+            this.DamageGeneralColumn.DataPropertyName = "DamageGeneral";
+            this.DamageGeneralColumn.HeaderText = "DamageGeneral";
+            this.DamageGeneralColumn.Name = "DamageGeneralColumn";
+            this.DamageGeneralColumn.Visible = false;
             // 
-            // dataGridViewTextBoxColumn38
+            // HQTransportStatusByAmountColumn
             // 
-            this.dataGridViewTextBoxColumn38.DataPropertyName = "Production";
-            this.dataGridViewTextBoxColumn38.HeaderText = "Production";
-            this.dataGridViewTextBoxColumn38.Name = "dataGridViewTextBoxColumn38";
-            this.dataGridViewTextBoxColumn38.Visible = false;
+            this.HQTransportStatusByAmountColumn.DataPropertyName = "TransportStatusByAmount";
+            this.HQTransportStatusByAmountColumn.HeaderText = "TransportStatusByAmount";
+            this.HQTransportStatusByAmountColumn.Name = "HQTransportStatusByAmountColumn";
+            this.HQTransportStatusByAmountColumn.Visible = false;
             // 
-            // dataGridViewTextBoxColumn39
+            // HarvestTypeColumn
             // 
-            this.dataGridViewTextBoxColumn39.DataPropertyName = "ProductionId";
-            this.dataGridViewTextBoxColumn39.HeaderText = "ProductionId";
-            this.dataGridViewTextBoxColumn39.Name = "dataGridViewTextBoxColumn39";
-            this.dataGridViewTextBoxColumn39.Visible = false;
+            this.HarvestTypeColumn.DataPropertyName = "HarvestType";
+            this.HarvestTypeColumn.HeaderText = "HarvestType";
+            this.HarvestTypeColumn.Name = "HarvestTypeColumn";
+            this.HarvestTypeColumn.Visible = false;
             // 
-            // dataGridViewTextBoxColumn40
+            // masterQuantityDataGridView
             // 
-            this.dataGridViewTextBoxColumn40.DataPropertyName = "StartMorning";
-            this.dataGridViewTextBoxColumn40.HeaderText = "StartMorning";
-            this.dataGridViewTextBoxColumn40.Name = "dataGridViewTextBoxColumn40";
-            this.dataGridViewTextBoxColumn40.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn41
-            // 
-            this.dataGridViewTextBoxColumn41.DataPropertyName = "EndMorning";
-            this.dataGridViewTextBoxColumn41.HeaderText = "EndMorning";
-            this.dataGridViewTextBoxColumn41.Name = "dataGridViewTextBoxColumn41";
-            this.dataGridViewTextBoxColumn41.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn42
-            // 
-            this.dataGridViewTextBoxColumn42.DataPropertyName = "StartNoon";
-            this.dataGridViewTextBoxColumn42.HeaderText = "StartNoon";
-            this.dataGridViewTextBoxColumn42.Name = "dataGridViewTextBoxColumn42";
-            this.dataGridViewTextBoxColumn42.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn43
-            // 
-            this.dataGridViewTextBoxColumn43.DataPropertyName = "EndNoon";
-            this.dataGridViewTextBoxColumn43.HeaderText = "EndNoon";
-            this.dataGridViewTextBoxColumn43.Name = "dataGridViewTextBoxColumn43";
-            this.dataGridViewTextBoxColumn43.Visible = false;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.masterQuantityDataGridView.AllowUserToAddRows = false;
+            this.masterQuantityDataGridView.AllowUserToDeleteRows = false;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.masterQuantityDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.masterQuantityDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.masterQuantityDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.masterQuantityDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridView1.ColumnHeadersHeight = 34;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8,
-            this.dataGridViewTextBoxColumn9,
-            this.dataGridViewTextBoxColumn10,
-            this.dataGridViewTextBoxColumn11,
-            this.dataGridViewTextBoxColumn12,
-            this.dataGridViewTextBoxColumn13,
-            this.dataGridViewTextBoxColumn14,
-            this.dataGridViewTextBoxColumn15,
-            this.dataGridViewTextBoxColumn16,
-            this.dataGridViewTextBoxColumn17,
-            this.dataGridViewTextBoxColumn18,
-            this.dataGridViewTextBoxColumn19});
-            this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 43);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
+            this.masterQuantityDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.masterQuantityDataGridView.ColumnHeadersHeight = 34;
+            this.masterQuantityDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.masterQuantityDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.HQProductionIdColumn,
+            this.HQHQProductionDateColumn,
+            this.HQProductionSupplierNameColumn,
+            this.HQProductionFarmNameColumn,
+            this.HQProductionProductNameColumn,
+            this.HQProductionProductCodeColumn,
+            this.HQProductionTotalQuantityColumn,
+            this.HQProductionProductPriceColumn,
+            this.HQProductionTotalEmployeeColumn,
+            this.HQProductionPaymentCompanyColumn,
+            this.HQProductionTotalMinutesColumn,
+            this.HQProductionTypeColumn,
+            this.HQProductionSupplierColumn,
+            this.HQProductionFarmIdColumn,
+            this.HQProductionFarmColumn,
+            this.HQProductionProductColumn,
+            this.HQProductionProductDetailColumn,
+            this.dataGridViewTextBoxColumn3});
+            this.masterQuantityDataGridView.EnableHeadersVisualStyles = false;
+            this.masterQuantityDataGridView.Location = new System.Drawing.Point(0, 43);
+            this.masterQuantityDataGridView.MultiSelect = false;
+            this.masterQuantityDataGridView.Name = "masterQuantityDataGridView";
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(234)))), ((int)(((byte)(246)))));
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -692,153 +653,162 @@ namespace HarvestManagerSystem
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.masterQuantityDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(233)))), ((int)(((byte)(217)))));
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridView1.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1125, 194);
-            this.dataGridView1.TabIndex = 18;
+            this.masterQuantityDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle7;
+            this.masterQuantityDataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.masterQuantityDataGridView.RowTemplate.Height = 25;
+            this.masterQuantityDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.masterQuantityDataGridView.Size = new System.Drawing.Size(1125, 194);
+            this.masterQuantityDataGridView.TabIndex = 18;
+            this.masterQuantityDataGridView.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.masterQuantityDataGridView_CellMouseDown);
+            this.masterQuantityDataGridView.SelectionChanged += new System.EventHandler(this.masterQuantityDataGridView_SelectionChanged);
+            // 
+            // HQProductionIdColumn
+            // 
+            this.HQProductionIdColumn.DataPropertyName = "ProductionID";
+            this.HQProductionIdColumn.HeaderText = "ID";
+            this.HQProductionIdColumn.Name = "HQProductionIdColumn";
+            this.HQProductionIdColumn.ReadOnly = true;
+            this.HQProductionIdColumn.Visible = false;
+            // 
+            // HQHQProductionDateColumn
+            // 
+            this.HQHQProductionDateColumn.DataPropertyName = "ProductionDate";
+            this.HQHQProductionDateColumn.HeaderText = "Date";
+            this.HQHQProductionDateColumn.MinimumWidth = 100;
+            this.HQHQProductionDateColumn.Name = "HQHQProductionDateColumn";
+            this.HQHQProductionDateColumn.ReadOnly = true;
+            // 
+            // HQProductionSupplierNameColumn
+            // 
+            this.HQProductionSupplierNameColumn.DataPropertyName = "SupplierName";
+            this.HQProductionSupplierNameColumn.HeaderText = "Fournisseur";
+            this.HQProductionSupplierNameColumn.MinimumWidth = 160;
+            this.HQProductionSupplierNameColumn.Name = "HQProductionSupplierNameColumn";
+            this.HQProductionSupplierNameColumn.ReadOnly = true;
+            this.HQProductionSupplierNameColumn.Width = 200;
+            // 
+            // HQProductionFarmNameColumn
+            // 
+            this.HQProductionFarmNameColumn.DataPropertyName = "FarmName";
+            this.HQProductionFarmNameColumn.HeaderText = "Champ";
+            this.HQProductionFarmNameColumn.MinimumWidth = 160;
+            this.HQProductionFarmNameColumn.Name = "HQProductionFarmNameColumn";
+            this.HQProductionFarmNameColumn.ReadOnly = true;
+            this.HQProductionFarmNameColumn.Width = 160;
+            // 
+            // HQProductionProductNameColumn
+            // 
+            this.HQProductionProductNameColumn.DataPropertyName = "ProductName";
+            this.HQProductionProductNameColumn.HeaderText = "Produit";
+            this.HQProductionProductNameColumn.MinimumWidth = 120;
+            this.HQProductionProductNameColumn.Name = "HQProductionProductNameColumn";
+            this.HQProductionProductNameColumn.ReadOnly = true;
+            this.HQProductionProductNameColumn.Width = 120;
+            // 
+            // HQProductionProductCodeColumn
+            // 
+            this.HQProductionProductCodeColumn.DataPropertyName = "ProductCode";
+            this.HQProductionProductCodeColumn.HeaderText = "Code";
+            this.HQProductionProductCodeColumn.MinimumWidth = 120;
+            this.HQProductionProductCodeColumn.Name = "HQProductionProductCodeColumn";
+            this.HQProductionProductCodeColumn.ReadOnly = true;
+            this.HQProductionProductCodeColumn.Width = 120;
+            // 
+            // HQProductionTotalQuantityColumn
+            // 
+            this.HQProductionTotalQuantityColumn.DataPropertyName = "TotalQuantity";
+            this.HQProductionTotalQuantityColumn.HeaderText = "Quantity";
+            this.HQProductionTotalQuantityColumn.Name = "HQProductionTotalQuantityColumn";
+            this.HQProductionTotalQuantityColumn.ReadOnly = true;
+            // 
+            // HQProductionProductPriceColumn
+            // 
+            this.HQProductionProductPriceColumn.DataPropertyName = "Price";
+            this.HQProductionProductPriceColumn.HeaderText = "Prix";
+            this.HQProductionProductPriceColumn.MinimumWidth = 70;
+            this.HQProductionProductPriceColumn.Name = "HQProductionProductPriceColumn";
+            this.HQProductionProductPriceColumn.ReadOnly = true;
+            // 
+            // HQProductionTotalEmployeeColumn
+            // 
+            this.HQProductionTotalEmployeeColumn.DataPropertyName = "TotalEmployee";
+            this.HQProductionTotalEmployeeColumn.HeaderText = "Emp.N";
+            this.HQProductionTotalEmployeeColumn.MinimumWidth = 60;
+            this.HQProductionTotalEmployeeColumn.Name = "HQProductionTotalEmployeeColumn";
+            this.HQProductionTotalEmployeeColumn.ReadOnly = true;
+            this.HQProductionTotalEmployeeColumn.Width = 70;
+            // 
+            // HQProductionPaymentCompanyColumn
+            // 
+            this.HQProductionPaymentCompanyColumn.DataPropertyName = "QuantityPayment";
+            this.HQProductionPaymentCompanyColumn.HeaderText = "Payment";
+            this.HQProductionPaymentCompanyColumn.Name = "HQProductionPaymentCompanyColumn";
+            this.HQProductionPaymentCompanyColumn.ReadOnly = true;
+            // 
+            // HQProductionTotalMinutesColumn
+            // 
+            this.HQProductionTotalMinutesColumn.DataPropertyName = "TotalMinutes";
+            this.HQProductionTotalMinutesColumn.HeaderText = "Minutes";
+            this.HQProductionTotalMinutesColumn.MinimumWidth = 80;
+            this.HQProductionTotalMinutesColumn.Name = "HQProductionTotalMinutesColumn";
+            this.HQProductionTotalMinutesColumn.ReadOnly = true;
+            this.HQProductionTotalMinutesColumn.Visible = false;
+            // 
+            // HQProductionTypeColumn
+            // 
+            this.HQProductionTypeColumn.DataPropertyName = "ProductionType";
+            this.HQProductionTypeColumn.HeaderText = "ProductionType";
+            this.HQProductionTypeColumn.Name = "HQProductionTypeColumn";
+            this.HQProductionTypeColumn.ReadOnly = true;
+            this.HQProductionTypeColumn.Visible = false;
+            // 
+            // HQProductionSupplierColumn
+            // 
+            this.HQProductionSupplierColumn.DataPropertyName = "Supplier";
+            this.HQProductionSupplierColumn.HeaderText = "Supplier";
+            this.HQProductionSupplierColumn.Name = "HQProductionSupplierColumn";
+            this.HQProductionSupplierColumn.Visible = false;
+            // 
+            // HQProductionFarmIdColumn
+            // 
+            this.HQProductionFarmIdColumn.DataPropertyName = "FarmId";
+            this.HQProductionFarmIdColumn.HeaderText = "FarmId";
+            this.HQProductionFarmIdColumn.Name = "HQProductionFarmIdColumn";
+            this.HQProductionFarmIdColumn.Visible = false;
+            // 
+            // HQProductionFarmColumn
+            // 
+            this.HQProductionFarmColumn.DataPropertyName = "Farm";
+            this.HQProductionFarmColumn.HeaderText = "Farm";
+            this.HQProductionFarmColumn.Name = "HQProductionFarmColumn";
+            this.HQProductionFarmColumn.Visible = false;
+            // 
+            // HQProductionProductColumn
+            // 
+            this.HQProductionProductColumn.DataPropertyName = "ProductId";
+            this.HQProductionProductColumn.HeaderText = "Product";
+            this.HQProductionProductColumn.Name = "HQProductionProductColumn";
+            this.HQProductionProductColumn.Visible = false;
+            // 
+            // HQProductionProductDetailColumn
+            // 
+            this.HQProductionProductDetailColumn.DataPropertyName = "ProductDetail";
+            this.HQProductionProductDetailColumn.HeaderText = "ProductDetail";
+            this.HQProductionProductDetailColumn.Name = "HQProductionProductDetailColumn";
+            this.HQProductionProductDetailColumn.Visible = false;
             // 
             // dataGridViewTextBoxColumn3
             // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "ProductionID";
-            this.dataGridViewTextBoxColumn3.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "PaymentCompany";
+            this.dataGridViewTextBoxColumn3.HeaderText = "PaymentCompany";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
             this.dataGridViewTextBoxColumn3.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "ProductionDate";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Date";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 100;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "SupplierName";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Fournisseur";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 160;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "FarmName";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Champ";
-            this.dataGridViewTextBoxColumn6.MinimumWidth = 160;
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 160;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "ProductName";
-            this.dataGridViewTextBoxColumn7.HeaderText = "Produit";
-            this.dataGridViewTextBoxColumn7.MinimumWidth = 120;
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            this.dataGridViewTextBoxColumn7.Width = 120;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "TotalEmployee";
-            this.dataGridViewTextBoxColumn8.HeaderText = "Emp.N";
-            this.dataGridViewTextBoxColumn8.MinimumWidth = 60;
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            this.dataGridViewTextBoxColumn8.Width = 70;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "ProductCode";
-            this.dataGridViewTextBoxColumn9.HeaderText = "Code";
-            this.dataGridViewTextBoxColumn9.MinimumWidth = 120;
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
-            this.dataGridViewTextBoxColumn9.Width = 120;
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "TotalQuantity";
-            this.dataGridViewTextBoxColumn10.HeaderText = "Quantity";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "TotalMinutes";
-            this.dataGridViewTextBoxColumn11.HeaderText = "Minutes";
-            this.dataGridViewTextBoxColumn11.MinimumWidth = 80;
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.ReadOnly = true;
-            this.dataGridViewTextBoxColumn11.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.DataPropertyName = "Price";
-            this.dataGridViewTextBoxColumn12.HeaderText = "Prix";
-            this.dataGridViewTextBoxColumn12.MinimumWidth = 70;
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            this.dataGridViewTextBoxColumn12.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            this.dataGridViewTextBoxColumn13.DataPropertyName = "PaymentCompany";
-            this.dataGridViewTextBoxColumn13.HeaderText = "Payment";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            this.dataGridViewTextBoxColumn13.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn14
-            // 
-            this.dataGridViewTextBoxColumn14.DataPropertyName = "ProductionType";
-            this.dataGridViewTextBoxColumn14.HeaderText = "ProductionType";
-            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-            this.dataGridViewTextBoxColumn14.ReadOnly = true;
-            this.dataGridViewTextBoxColumn14.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn15
-            // 
-            this.dataGridViewTextBoxColumn15.DataPropertyName = "Supplier";
-            this.dataGridViewTextBoxColumn15.HeaderText = "Supplier";
-            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            this.dataGridViewTextBoxColumn15.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn16
-            // 
-            this.dataGridViewTextBoxColumn16.DataPropertyName = "FarmId";
-            this.dataGridViewTextBoxColumn16.HeaderText = "FarmId";
-            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
-            this.dataGridViewTextBoxColumn16.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn17
-            // 
-            this.dataGridViewTextBoxColumn17.DataPropertyName = "Farm";
-            this.dataGridViewTextBoxColumn17.HeaderText = "Farm";
-            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
-            this.dataGridViewTextBoxColumn17.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn18
-            // 
-            this.dataGridViewTextBoxColumn18.DataPropertyName = "ProductId";
-            this.dataGridViewTextBoxColumn18.HeaderText = "Product";
-            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
-            this.dataGridViewTextBoxColumn18.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn19
-            // 
-            this.dataGridViewTextBoxColumn19.DataPropertyName = "ProductDetail";
-            this.dataGridViewTextBoxColumn19.HeaderText = "ProductDetail";
-            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
-            this.dataGridViewTextBoxColumn19.Visible = false;
             // 
             // label3
             // 
@@ -850,32 +820,33 @@ namespace HarvestManagerSystem
             this.label3.TabIndex = 17;
             this.label3.Text = "To";
             // 
-            // button1
+            // SearchQuantityButton
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(912, 5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(123, 29);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "Search";
-            this.button1.UseVisualStyleBackColor = false;
+            this.SearchQuantityButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.SearchQuantityButton.FlatAppearance.BorderSize = 0;
+            this.SearchQuantityButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SearchQuantityButton.ForeColor = System.Drawing.Color.Black;
+            this.SearchQuantityButton.Location = new System.Drawing.Point(912, 5);
+            this.SearchQuantityButton.Name = "SearchQuantityButton";
+            this.SearchQuantityButton.Size = new System.Drawing.Size(123, 29);
+            this.SearchQuantityButton.TabIndex = 16;
+            this.SearchQuantityButton.Text = "Search";
+            this.SearchQuantityButton.UseVisualStyleBackColor = false;
+            this.SearchQuantityButton.Click += new System.EventHandler(this.btnSearchQuantityProduction_Click);
             // 
-            // dateTimePicker1
+            // endQuantitySearchDateTimePicker
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(614, 5);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(265, 29);
-            this.dateTimePicker1.TabIndex = 15;
+            this.endQuantitySearchDateTimePicker.Location = new System.Drawing.Point(614, 5);
+            this.endQuantitySearchDateTimePicker.Name = "endQuantitySearchDateTimePicker";
+            this.endQuantitySearchDateTimePicker.Size = new System.Drawing.Size(265, 29);
+            this.endQuantitySearchDateTimePicker.TabIndex = 15;
             // 
-            // dateTimePicker2
+            // startQuantitySearchDateTimePicker
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(287, 5);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(265, 29);
-            this.dateTimePicker2.TabIndex = 14;
+            this.startQuantitySearchDateTimePicker.Location = new System.Drawing.Point(287, 5);
+            this.startQuantitySearchDateTimePicker.Name = "startQuantitySearchDateTimePicker";
+            this.startQuantitySearchDateTimePicker.Size = new System.Drawing.Size(265, 29);
+            this.startQuantitySearchDateTimePicker.TabIndex = 14;
             // 
             // label2
             // 
@@ -961,7 +932,9 @@ namespace HarvestManagerSystem
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(179)))), ((int)(((byte)(39)))));
             dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(179)))), ((int)(((byte)(39)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.detailsHoursDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.detailsHoursDataGridView.ColumnHeadersHeight = 32;
@@ -1226,6 +1199,8 @@ namespace HarvestManagerSystem
             dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
             dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.masterHoursDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.masterHoursDataGridView.ColumnHeadersHeight = 34;
@@ -1247,7 +1222,8 @@ namespace HarvestManagerSystem
             this.FarmIdColumn,
             this.ProductionFarmColumn,
             this.ProductionProductColumn,
-            this.ProductionProductDetailColumn});
+            this.ProductionProductDetailColumn,
+            this.QuantityPaymentColumn});
             this.masterHoursDataGridView.EnableHeadersVisualStyles = false;
             this.masterHoursDataGridView.Location = new System.Drawing.Point(0, 41);
             this.masterHoursDataGridView.MultiSelect = false;
@@ -1408,6 +1384,13 @@ namespace HarvestManagerSystem
             this.ProductionProductDetailColumn.Name = "ProductionProductDetailColumn";
             this.ProductionProductDetailColumn.Visible = false;
             // 
+            // QuantityPaymentColumn
+            // 
+            this.QuantityPaymentColumn.DataPropertyName = "QuantityPayment";
+            this.QuantityPaymentColumn.HeaderText = "QuantityPayment";
+            this.QuantityPaymentColumn.Name = "QuantityPaymentColumn";
+            this.QuantityPaymentColumn.Visible = false;
+            // 
             // labelHarvestHoursTab
             // 
             this.labelHarvestHoursTab.BackColor = System.Drawing.SystemColors.HotTrack;
@@ -1438,7 +1421,11 @@ namespace HarvestManagerSystem
             this.CreditDataGridView.AllowUserToAddRows = false;
             this.CreditDataGridView.AllowUserToDeleteRows = false;
             this.CreditDataGridView.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.White;
             this.CreditDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle15;
             this.CreditDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
@@ -1447,11 +1434,11 @@ namespace HarvestManagerSystem
             this.CreditDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.CreditDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(25)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
             dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.GhostWhite;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.CreditDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.CreditDataGridView.ColumnHeadersHeight = 36;
@@ -1473,7 +1460,7 @@ namespace HarvestManagerSystem
             this.CreditDataGridView.DefaultCellStyle = dataGridViewCellStyle17;
             this.CreditDataGridView.EnableHeadersVisualStyles = false;
             this.CreditDataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.CreditDataGridView.Location = new System.Drawing.Point(656, 45);
+            this.CreditDataGridView.Location = new System.Drawing.Point(653, 45);
             this.CreditDataGridView.Name = "CreditDataGridView";
             dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle18.BackColor = System.Drawing.Color.LightSkyBlue;
@@ -1484,14 +1471,17 @@ namespace HarvestManagerSystem
             dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.CreditDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.CreditDataGridView.RowHeadersVisible = false;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(233)))), ((int)(((byte)(217)))));
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle19.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle19.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.White;
             this.CreditDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle19;
             this.CreditDataGridView.RowTemplate.ContextMenuStrip = this.CreditContextMenuStrip;
             this.CreditDataGridView.RowTemplate.Height = 25;
             this.CreditDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.CreditDataGridView.Size = new System.Drawing.Size(462, 515);
+            this.CreditDataGridView.Size = new System.Drawing.Size(465, 515);
             this.CreditDataGridView.TabIndex = 6;
             // 
             // CreditIdColumn
@@ -1515,7 +1505,7 @@ namespace HarvestManagerSystem
             this.CreditEmployeeColumn.HeaderText = "Employée";
             this.CreditEmployeeColumn.Name = "CreditEmployeeColumn";
             this.CreditEmployeeColumn.ReadOnly = true;
-            this.CreditEmployeeColumn.Width = 240;
+            this.CreditEmployeeColumn.Width = 220;
             // 
             // CreditAmountColumn
             // 
@@ -1568,7 +1558,11 @@ namespace HarvestManagerSystem
             this.TransportDataGridView.AllowUserToAddRows = false;
             this.TransportDataGridView.AllowUserToDeleteRows = false;
             this.TransportDataGridView.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.White;
             this.TransportDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle20;
             this.TransportDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
@@ -1577,11 +1571,11 @@ namespace HarvestManagerSystem
             this.TransportDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TransportDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(25)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
             dataGridViewCellStyle21.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.GhostWhite;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.TransportDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
             this.TransportDataGridView.ColumnHeadersHeight = 36;
@@ -1605,7 +1599,7 @@ namespace HarvestManagerSystem
             this.TransportDataGridView.DefaultCellStyle = dataGridViewCellStyle22;
             this.TransportDataGridView.EnableHeadersVisualStyles = false;
             this.TransportDataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.TransportDataGridView.Location = new System.Drawing.Point(5, 45);
+            this.TransportDataGridView.Location = new System.Drawing.Point(3, 45);
             this.TransportDataGridView.Name = "TransportDataGridView";
             dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle23.BackColor = System.Drawing.Color.LightSkyBlue;
@@ -1616,14 +1610,17 @@ namespace HarvestManagerSystem
             dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.TransportDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle23;
             this.TransportDataGridView.RowHeadersVisible = false;
-            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(233)))), ((int)(((byte)(217)))));
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle24.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle24.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.White;
             this.TransportDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle24;
             this.TransportDataGridView.RowTemplate.ContextMenuStrip = this.TransportContextMenuStrip;
             this.TransportDataGridView.RowTemplate.Height = 25;
             this.TransportDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.TransportDataGridView.Size = new System.Drawing.Size(652, 515);
+            this.TransportDataGridView.Size = new System.Drawing.Size(641, 515);
             this.TransportDataGridView.TabIndex = 4;
             // 
             // TransportIdColumn
@@ -1654,7 +1651,6 @@ namespace HarvestManagerSystem
             this.TransportAmountColumn.DataPropertyName = "TransportAmount";
             this.TransportAmountColumn.HeaderText = "Transport";
             this.TransportAmountColumn.Name = "TransportAmountColumn";
-            this.TransportAmountColumn.Width = 120;
             // 
             // TransportFarmColumn
             // 
@@ -1741,7 +1737,10 @@ namespace HarvestManagerSystem
             this.EmployeeDataGridView.AllowUserToAddRows = false;
             this.EmployeeDataGridView.AllowUserToDeleteRows = false;
             this.EmployeeDataGridView.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle25.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
             this.EmployeeDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle25;
             this.EmployeeDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
@@ -1750,11 +1749,11 @@ namespace HarvestManagerSystem
             this.EmployeeDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.EmployeeDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(25)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
             dataGridViewCellStyle26.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle26.ForeColor = System.Drawing.Color.GhostWhite;
-            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle26.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.EmployeeDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle26;
             this.EmployeeDataGridView.ColumnHeadersHeight = 36;
@@ -1769,7 +1768,7 @@ namespace HarvestManagerSystem
             this.employeeFireDateColumn,
             this.employeePermissionDateColumn});
             dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle27.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle27.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle27.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle27.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
@@ -1791,9 +1790,12 @@ namespace HarvestManagerSystem
             dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.EmployeeDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle28;
             this.EmployeeDataGridView.RowHeadersVisible = false;
-            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(233)))), ((int)(((byte)(217)))));
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle29.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle29.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.Color.White;
             this.EmployeeDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle29;
             this.EmployeeDataGridView.RowTemplate.ContextMenuStrip = this.EmployeeContextMenuStrip;
             this.EmployeeDataGridView.RowTemplate.Height = 25;
@@ -1908,7 +1910,11 @@ namespace HarvestManagerSystem
             this.SupplyDataGridView.AllowUserToAddRows = false;
             this.SupplyDataGridView.AllowUserToDeleteRows = false;
             this.SupplyDataGridView.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle30.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.Color.White;
             this.SupplyDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle30;
             this.SupplyDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
@@ -1918,11 +1924,11 @@ namespace HarvestManagerSystem
             this.SupplyDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.SupplyDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(25)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
             dataGridViewCellStyle31.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle31.ForeColor = System.Drawing.Color.GhostWhite;
-            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle31.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.SupplyDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle31;
             this.SupplyDataGridView.ColumnHeadersHeight = 36;
@@ -1954,9 +1960,12 @@ namespace HarvestManagerSystem
             dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.SupplyDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle33;
             this.SupplyDataGridView.RowHeadersVisible = false;
-            dataGridViewCellStyle34.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(233)))), ((int)(((byte)(217)))));
+            dataGridViewCellStyle34.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle34.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle34.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.Color.White;
             this.SupplyDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle34;
             this.SupplyDataGridView.RowTemplate.ContextMenuStrip = this.SupplyContextMenuStrip;
             this.SupplyDataGridView.RowTemplate.Height = 25;
@@ -2029,7 +2038,11 @@ namespace HarvestManagerSystem
             this.SupplierDataGridView.AllowUserToAddRows = false;
             this.SupplierDataGridView.AllowUserToDeleteRows = false;
             this.SupplierDataGridView.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle35.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle35.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle35.SelectionForeColor = System.Drawing.Color.White;
             this.SupplierDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle35;
             this.SupplierDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
@@ -2038,11 +2051,11 @@ namespace HarvestManagerSystem
             this.SupplierDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.SupplierDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(25)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
             dataGridViewCellStyle36.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle36.ForeColor = System.Drawing.Color.GhostWhite;
-            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle36.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle36.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.SupplierDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle36;
             this.SupplierDataGridView.ColumnHeadersHeight = 36;
@@ -2074,9 +2087,12 @@ namespace HarvestManagerSystem
             dataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.SupplierDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle38;
             this.SupplierDataGridView.RowHeadersVisible = false;
-            dataGridViewCellStyle39.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle39.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(233)))), ((int)(((byte)(217)))));
+            dataGridViewCellStyle39.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle39.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle39.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            dataGridViewCellStyle39.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle39.SelectionForeColor = System.Drawing.Color.White;
             this.SupplierDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle39;
             this.SupplierDataGridView.RowTemplate.ContextMenuStrip = this.SupplierContextMenuStrip;
             this.SupplierDataGridView.RowTemplate.Height = 25;
@@ -2154,7 +2170,11 @@ namespace HarvestManagerSystem
             this.SeasonDataGridView.AllowUserToAddRows = false;
             this.SeasonDataGridView.AllowUserToDeleteRows = false;
             this.SeasonDataGridView.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle40.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle40.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle40.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle40.SelectionForeColor = System.Drawing.Color.White;
             this.SeasonDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle40;
             this.SeasonDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
@@ -2164,11 +2184,11 @@ namespace HarvestManagerSystem
             this.SeasonDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.SeasonDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle41.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(25)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle41.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
             dataGridViewCellStyle41.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle41.ForeColor = System.Drawing.Color.GhostWhite;
-            dataGridViewCellStyle41.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle41.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle41.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle41.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle41.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle41.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.SeasonDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle41;
             this.SeasonDataGridView.ColumnHeadersHeight = 36;
@@ -2201,9 +2221,12 @@ namespace HarvestManagerSystem
             dataGridViewCellStyle43.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.SeasonDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle43;
             this.SeasonDataGridView.RowHeadersVisible = false;
-            dataGridViewCellStyle44.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle44.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(233)))), ((int)(((byte)(217)))));
+            dataGridViewCellStyle44.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle44.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle44.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            dataGridViewCellStyle44.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle44.SelectionForeColor = System.Drawing.Color.White;
             this.SeasonDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle44;
             this.SeasonDataGridView.RowTemplate.ContextMenuStrip = this.SeasonContextMenuStrip;
             this.SeasonDataGridView.RowTemplate.Height = 25;
@@ -2277,7 +2300,11 @@ namespace HarvestManagerSystem
             this.FarmDataGridView.AllowUserToAddRows = false;
             this.FarmDataGridView.AllowUserToDeleteRows = false;
             this.FarmDataGridView.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle45.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle45.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle45.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle45.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle45.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle45.SelectionForeColor = System.Drawing.Color.White;
             this.FarmDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle45;
             this.FarmDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
@@ -2286,11 +2313,11 @@ namespace HarvestManagerSystem
             this.FarmDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.FarmDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle46.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(25)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle46.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
             dataGridViewCellStyle46.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle46.ForeColor = System.Drawing.Color.GhostWhite;
-            dataGridViewCellStyle46.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle46.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle46.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle46.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle46.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle46.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.FarmDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle46;
             this.FarmDataGridView.ColumnHeadersHeight = 36;
@@ -2321,9 +2348,12 @@ namespace HarvestManagerSystem
             dataGridViewCellStyle48.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.FarmDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle48;
             this.FarmDataGridView.RowHeadersVisible = false;
-            dataGridViewCellStyle49.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle49.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(233)))), ((int)(((byte)(217)))));
+            dataGridViewCellStyle49.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle49.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle49.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            dataGridViewCellStyle49.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle49.SelectionForeColor = System.Drawing.Color.White;
             this.FarmDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle49;
             this.FarmDataGridView.RowTemplate.ContextMenuStrip = this.FarmContextMenuStrip;
             this.FarmDataGridView.RowTemplate.Height = 25;
@@ -2395,7 +2425,11 @@ namespace HarvestManagerSystem
             this.ProductDetailDataGridView.AllowUserToDeleteRows = false;
             this.ProductDetailDataGridView.AllowUserToOrderColumns = true;
             this.ProductDetailDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle50.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle50.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle50.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle50.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle50.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle50.SelectionForeColor = System.Drawing.Color.White;
             this.ProductDetailDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle50;
             this.ProductDetailDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
@@ -2404,11 +2438,11 @@ namespace HarvestManagerSystem
             this.ProductDetailDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ProductDetailDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle51.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(25)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle51.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
             dataGridViewCellStyle51.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle51.ForeColor = System.Drawing.Color.GhostWhite;
-            dataGridViewCellStyle51.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle51.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle51.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle51.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle51.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle51.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.ProductDetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle51;
             this.ProductDetailDataGridView.ColumnHeadersHeight = 36;
@@ -2443,9 +2477,12 @@ namespace HarvestManagerSystem
             dataGridViewCellStyle53.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.ProductDetailDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle53;
             this.ProductDetailDataGridView.RowHeadersVisible = false;
-            dataGridViewCellStyle54.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle54.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(233)))), ((int)(((byte)(217)))));
+            dataGridViewCellStyle54.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle54.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle54.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            dataGridViewCellStyle54.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle54.SelectionForeColor = System.Drawing.Color.White;
             this.ProductDetailDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle54;
             this.ProductDetailDataGridView.RowTemplate.ContextMenuStrip = this.ProductDetailContextMenuStrip;
             this.ProductDetailDataGridView.RowTemplate.Height = 30;
@@ -2545,7 +2582,11 @@ namespace HarvestManagerSystem
             this.ProductDataGridView.AllowUserToDeleteRows = false;
             this.ProductDataGridView.AllowUserToOrderColumns = true;
             this.ProductDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle55.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle55.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle55.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle55.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle55.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle55.SelectionForeColor = System.Drawing.Color.White;
             this.ProductDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle55;
             this.ProductDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
@@ -2555,11 +2596,11 @@ namespace HarvestManagerSystem
             this.ProductDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ProductDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewCellStyle56.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle56.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(25)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle56.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
             dataGridViewCellStyle56.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle56.ForeColor = System.Drawing.Color.GhostWhite;
-            dataGridViewCellStyle56.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle56.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle56.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle56.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle56.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle56.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.ProductDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle56;
             this.ProductDataGridView.ColumnHeadersHeight = 36;
@@ -2592,9 +2633,12 @@ namespace HarvestManagerSystem
             this.ProductDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle58;
             this.ProductDataGridView.RowHeadersVisible = false;
             this.ProductDataGridView.RowHeadersWidth = 40;
-            dataGridViewCellStyle59.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle59.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(233)))), ((int)(((byte)(217)))));
+            dataGridViewCellStyle59.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle59.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle59.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            dataGridViewCellStyle59.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle59.SelectionForeColor = System.Drawing.Color.White;
             this.ProductDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle59;
             this.ProductDataGridView.RowTemplate.ContextMenuStrip = this.ProductContextMenuStrip;
             this.ProductDataGridView.RowTemplate.Height = 30;
@@ -2671,7 +2715,6 @@ namespace HarvestManagerSystem
             this.deleteQuantityproduction});
             this.displayQuantityContextMenu.Name = "displayQuantityContextMenu";
             this.displayQuantityContextMenu.Size = new System.Drawing.Size(108, 48);
-            this.displayQuantityContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.displayQuantityContextMenu_Opening);
             // 
             // editQuantityproduction
             // 
@@ -2810,6 +2853,7 @@ namespace HarvestManagerSystem
             this.AppLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.AppLogo.TabIndex = 5;
             this.AppLogo.TabStop = false;
+            this.AppLogo.Click += new System.EventHandler(this.AppLogo_Click);
             // 
             // statusStripProgressbar
             // 
@@ -2826,6 +2870,27 @@ namespace HarvestManagerSystem
             this.loadDataProgressBar.Name = "loadDataProgressBar";
             this.loadDataProgressBar.Size = new System.Drawing.Size(1200, 16);
             this.loadDataProgressBar.Visible = false;
+            // 
+            // QuantityContextMenuStrip
+            // 
+            this.QuantityContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.EditQuantityStrip,
+            this.DeleteQuantityStrip});
+            this.QuantityContextMenuStrip.Name = "QuantityContextMenuStrip";
+            this.QuantityContextMenuStrip.Size = new System.Drawing.Size(130, 48);
+            this.QuantityContextMenuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.QuantityContextMenuStrip_ItemClicked);
+            // 
+            // EditQuantityStrip
+            // 
+            this.EditQuantityStrip.Name = "EditQuantityStrip";
+            this.EditQuantityStrip.Size = new System.Drawing.Size(129, 22);
+            this.EditQuantityStrip.Text = "Edit";
+            // 
+            // DeleteQuantityStrip
+            // 
+            this.DeleteQuantityStrip.Name = "DeleteQuantityStrip";
+            this.DeleteQuantityStrip.Size = new System.Drawing.Size(129, 22);
+            this.DeleteQuantityStrip.Text = "Supprimer";
             // 
             // HarvestMS
             // 
@@ -2846,8 +2911,8 @@ namespace HarvestManagerSystem
             this.tabProduction.ResumeLayout(false);
             this.tabPageQuantity.ResumeLayout(false);
             this.tabPageQuantity.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detailQuantityDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.masterQuantityDataGridView)).EndInit();
             this.tabPageHours.ResumeLayout(false);
             this.tabPageHours.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.detailsHoursDataGridView)).EndInit();
@@ -2882,6 +2947,7 @@ namespace HarvestManagerSystem
             ((System.ComponentModel.ISupportInitialize)(this.AppLogo)).EndInit();
             this.statusStripProgressbar.ResumeLayout(false);
             this.statusStripProgressbar.PerformLayout();
+            this.QuantityContextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2984,21 +3050,9 @@ namespace HarvestManagerSystem
         private System.Windows.Forms.ToolStripMenuItem EditSupplyStrip;
         private System.Windows.Forms.ToolStripMenuItem DeleteSupplyStrip;
         private System.Windows.Forms.DataGridView CreditDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreditIdColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreditDateColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreditEmployeeColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreditAmountColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeColumn;
         private System.Windows.Forms.ContextMenuStrip CreditContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem EditCreditStrip;
         private System.Windows.Forms.ToolStripMenuItem DeleteCreditStrip;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TransportIdColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TransportDateColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TransportEmployeeColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TransportAmountColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TransportFarmColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FarmColumn;
         private System.Windows.Forms.ContextMenuStrip TransportContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem EditTransportStrip;
         private System.Windows.Forms.ToolStripMenuItem DeleteTransportStrip;
@@ -3030,6 +3084,73 @@ namespace HarvestManagerSystem
         private System.Windows.Forms.DataGridViewTextBoxColumn EndMorningColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn StartNoonColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn EndNoonColumn;
+        private System.Windows.Forms.ContextMenuStrip HoursContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem EditHoursStrip;
+        private System.Windows.Forms.ToolStripMenuItem DeleteHoursStrip;
+        private System.Windows.Forms.Label ToLabel;
+        private System.Windows.Forms.Button SearchButton;
+        private System.Windows.Forms.DateTimePicker startQuantitySearchDateTimePicker;
+        private System.Windows.Forms.DateTimePicker StartSearchDateTimePicker;
+        private System.Windows.Forms.DateTimePicker EndtSearchDateTimePicker;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DateTimePicker endQuantitySearchDateTimePicker;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView masterQuantityDataGridView;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridView detailQuantityDataGridView;
+        private System.Windows.Forms.Button SearchQuantityButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQProductionIdColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQHQProductionDateColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQProductionSupplierNameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQProductionFarmNameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQProductionProductNameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQProductionProductCodeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQProductionTotalQuantityColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQProductionProductPriceColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQProductionTotalEmployeeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQProductionPaymentCompanyColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQProductionTotalMinutesColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQProductionTypeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQProductionSupplierColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQProductionFarmIdColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQProductionFarmColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQProductionProductColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQProductionProductDetailColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HarvestQuantityIdColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HarvestQuantityDateColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQEmployeeNameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AllQuantityColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BadQuantityColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GoodQuantityColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductPriceColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQCreditAmountColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQTransportAmountColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQPaymentColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQRemarqueColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HarvestCategoryColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn HQTransportStatusColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQEmployeeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQTransportColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQCreditColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQProductionColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PenaltyGeneralColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DamageGeneralColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQTransportStatusByAmountColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HarvestTypeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TransportIdColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TransportDateColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TransportEmployeeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TransportAmountColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TransportFarmColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FarmColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreditIdColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreditDateColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreditEmployeeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreditAmountColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductionIDColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductionDateColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductionSupplierNameColumn;
@@ -3047,62 +3168,10 @@ namespace HarvestManagerSystem
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductionFarmColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductionProductColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductionProductDetailColumn;
-        private System.Windows.Forms.ContextMenuStrip HoursContextMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem EditHoursStrip;
-        private System.Windows.Forms.ToolStripMenuItem DeleteHoursStrip;
-        private System.Windows.Forms.Label ToLabel;
-        private System.Windows.Forms.Button SearchButton;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker StartSearchDateTimePicker;
-        private System.Windows.Forms.DateTimePicker EndtSearchDateTimePicker;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn27;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn28;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn29;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn30;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn31;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn32;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn33;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn34;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn35;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn36;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn37;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn38;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn39;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn40;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn41;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn42;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn43;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QuantityPaymentColumn;
+        private System.Windows.Forms.ContextMenuStrip QuantityContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem EditQuantityStrip;
+        private System.Windows.Forms.ToolStripMenuItem DeleteQuantityStrip;
     }
 }
 

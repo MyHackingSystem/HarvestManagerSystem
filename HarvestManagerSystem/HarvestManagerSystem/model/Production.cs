@@ -35,5 +35,6 @@ namespace HarvestManagerSystem.model
         internal ProductDetail ProductDetail { get => productDetail;}
         public string ProductCode { get => ProductDetail.ProductCode; }
         public double PaymentCompany { get => System.Math.Round(TotalMinutes * (Price / 60), 2); }
+        public double QuantityPayment { get => System.Math.Round(totalQuantity * (Price / 60), 2); }
     }
 }

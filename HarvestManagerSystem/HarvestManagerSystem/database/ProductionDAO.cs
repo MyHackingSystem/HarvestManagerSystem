@@ -242,6 +242,39 @@ namespace HarvestManagerSystem.database
             }
         }
 
+        internal bool deleteQuantityProductionData(Production production, HarvestQuantity item)
+        {
+
+            var deleteTransport = "DELETE FROM " + TransportDAO.TABLE_TRANSPORT
+                    + " WHERE " + TransportDAO.COLUMN_TRANSPORT_ID + " = " + item.Transport.TransportId + " ;";
+
+            var deleteCredit = "DELETE FROM " + CreditDAO.TABLE_CREDIT
+                    + " WHERE " + CreditDAO.COLUMN_CREDIT_ID + " = " + item.Credit.CreditId + " ;";
+
+            var deleteHours = "DELETE FROM " + HarvestQuantityDAO.TABLE_QUANTITY
+                    + " WHERE " + HarvestQuantityDAO.COLUMN_QUANTITY_PRODUCTION_ID + " = " + production.ProductionID + " ;";
+
+            var deleteProduction = "DELETE FROM " + TABLE_PRODUCTION
+                    + " WHERE " + COLUMN_PRODUCTION_ID + " = " + production.ProductionID + " ;";
+
+            try
+            {
+                SQLiteCommand sQLiteCommand = new SQLiteCommand(deleteTransport + ";" + deleteCredit + ";" + deleteHours + ";" + deleteProduction, mSQLiteConnection);
+                OpenConnection();
+                sQLiteCommand.ExecuteNonQuery();
+                return true;
+            }
+            catch (SQLiteException e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
         //*******************************
         //Add production data
         //*******************************

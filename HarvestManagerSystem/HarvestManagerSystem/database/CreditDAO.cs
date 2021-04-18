@@ -120,7 +120,7 @@ namespace HarvestManagerSystem.database
         //*******************************
         internal bool UpdateData(Credit credit)
         {
-            String updateStmt = "UPDATE " + TABLE_CREDIT + " SET "
+            string updateStmt = "UPDATE " + TABLE_CREDIT + " SET "
                  + COLUMN_CREDIT_DATE + " =@" + COLUMN_CREDIT_DATE + ", "
                  + COLUMN_CREDIT_AMOUNT + " =@" + COLUMN_CREDIT_AMOUNT + " "
                 + " WHERE " + COLUMN_CREDIT_ID + " = " + credit.CreditId + " ";

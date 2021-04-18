@@ -165,7 +165,7 @@ namespace HarvestManagerSystem.view
             else 
             { 
                 addProductionDataToDatabase();
-                harvestMS.RefreshTable();
+                harvestMS.RefreshHoursProductionTable();
             }
         }
 
@@ -223,7 +223,7 @@ namespace HarvestManagerSystem.view
             {
                 MessageBox.Show("Not Update Production");
             }
-            harvestMS.RefreshTable();
+            harvestMS.RefreshHoursProductionTable();
         
             isEditHarvestHours = false;
             this.Close();
@@ -484,6 +484,7 @@ namespace HarvestManagerSystem.view
                 h.TransportStatus = false;
                 h.Transport.TransportAmount = 0.0;
                 h.Credit.CreditAmount = 0.0;
+                h.Remarque = "";
 
             }
 

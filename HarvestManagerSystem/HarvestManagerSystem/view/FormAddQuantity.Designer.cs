@@ -29,7 +29,7 @@ namespace HarvestManagerSystem.view
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -39,7 +39,7 @@ namespace HarvestManagerSystem.view
             this.txtInputBadQuantity = new System.Windows.Forms.TextBox();
             this.labelAllQuantity = new System.Windows.Forms.Label();
             this.txtInputAllQuantity = new System.Windows.Forms.TextBox();
-            this.ClearHarvestHoursButton = new System.Windows.Forms.Button();
+            this.ClearHarvestButton = new System.Windows.Forms.Button();
             this.ValidateHarvestQuantityButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.ProductCodeHarvestQuantityComboBox = new System.Windows.Forms.ComboBox();
@@ -50,7 +50,7 @@ namespace HarvestManagerSystem.view
             this.label2 = new System.Windows.Forms.Label();
             this.SupplierHarvestQuantityComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.HarvestHoursDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.HarvestDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.AddHarvestQuantityDataGridView = new System.Windows.Forms.DataGridView();
             this.HarvestHoursIDColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HarvestDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -105,7 +105,7 @@ namespace HarvestManagerSystem.view
             this.groupBox1.Controls.Add(this.txtInputBadQuantity);
             this.groupBox1.Controls.Add(this.labelAllQuantity);
             this.groupBox1.Controls.Add(this.txtInputAllQuantity);
-            this.groupBox1.Controls.Add(this.ClearHarvestHoursButton);
+            this.groupBox1.Controls.Add(this.ClearHarvestButton);
             this.groupBox1.Controls.Add(this.ValidateHarvestQuantityButton);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.ProductCodeHarvestQuantityComboBox);
@@ -116,7 +116,7 @@ namespace HarvestManagerSystem.view
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.SupplierHarvestQuantityComboBox);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.HarvestHoursDateTimePicker);
+            this.groupBox1.Controls.Add(this.HarvestDateTimePicker);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
@@ -208,15 +208,16 @@ namespace HarvestManagerSystem.view
             this.txtInputAllQuantity.Size = new System.Drawing.Size(187, 25);
             this.txtInputAllQuantity.TabIndex = 14;
             // 
-            // ClearHarvestHoursButton
+            // ClearHarvestButton
             // 
-            this.ClearHarvestHoursButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.ClearHarvestHoursButton.Location = new System.Drawing.Point(110, 535);
-            this.ClearHarvestHoursButton.Name = "ClearHarvestHoursButton";
-            this.ClearHarvestHoursButton.Size = new System.Drawing.Size(84, 34);
-            this.ClearHarvestHoursButton.TabIndex = 13;
-            this.ClearHarvestHoursButton.Text = "Vider";
-            this.ClearHarvestHoursButton.UseVisualStyleBackColor = true;
+            this.ClearHarvestButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.ClearHarvestButton.Location = new System.Drawing.Point(110, 535);
+            this.ClearHarvestButton.Name = "ClearHarvestButton";
+            this.ClearHarvestButton.Size = new System.Drawing.Size(84, 34);
+            this.ClearHarvestButton.TabIndex = 13;
+            this.ClearHarvestButton.Text = "Vider";
+            this.ClearHarvestButton.UseVisualStyleBackColor = true;
+            this.ClearHarvestButton.Click += new System.EventHandler(this.ClearHarvestButton_Click);
             // 
             // ValidateHarvestQuantityButton
             // 
@@ -318,12 +319,12 @@ namespace HarvestManagerSystem.view
             this.label1.TabIndex = 1;
             this.label1.Text = "Date";
             // 
-            // HarvestHoursDateTimePicker
+            // HarvestDateTimePicker
             // 
-            this.HarvestHoursDateTimePicker.Location = new System.Drawing.Point(6, 49);
-            this.HarvestHoursDateTimePicker.Name = "HarvestHoursDateTimePicker";
-            this.HarvestHoursDateTimePicker.Size = new System.Drawing.Size(187, 25);
-            this.HarvestHoursDateTimePicker.TabIndex = 1;
+            this.HarvestDateTimePicker.Location = new System.Drawing.Point(6, 49);
+            this.HarvestDateTimePicker.Name = "HarvestDateTimePicker";
+            this.HarvestDateTimePicker.Size = new System.Drawing.Size(187, 25);
+            this.HarvestDateTimePicker.TabIndex = 1;
             // 
             // AddHarvestQuantityDataGridView
             // 
@@ -351,14 +352,14 @@ namespace HarvestManagerSystem.view
             this.DamageGeneralColumn,
             this.HarvestTypeColumn,
             this.TransportStatusByAmountColumn});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.AddHarvestQuantityDataGridView.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.AddHarvestQuantityDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.AddHarvestQuantityDataGridView.Location = new System.Drawing.Point(218, 16);
             this.AddHarvestQuantityDataGridView.MultiSelect = false;
             this.AddHarvestQuantityDataGridView.Name = "AddHarvestQuantityDataGridView";
@@ -591,6 +592,7 @@ namespace HarvestManagerSystem.view
             this.ApplyHarvestQuantityButton.TabIndex = 21;
             this.ApplyHarvestQuantityButton.Text = "Apply";
             this.ApplyHarvestQuantityButton.UseVisualStyleBackColor = true;
+            this.ApplyHarvestQuantityButton.Click += new System.EventHandler(this.ApplyHarvestQuantityButton_Click);
             // 
             // label10
             // 
@@ -728,7 +730,7 @@ namespace HarvestManagerSystem.view
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button ClearHarvestHoursButton;
+        private System.Windows.Forms.Button ClearHarvestButton;
         private System.Windows.Forms.Button ValidateHarvestQuantityButton;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox ProductCodeHarvestQuantityComboBox;
@@ -739,7 +741,7 @@ namespace HarvestManagerSystem.view
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox SupplierHarvestQuantityComboBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker HarvestHoursDateTimePicker;
+        private System.Windows.Forms.DateTimePicker HarvestDateTimePicker;
         private System.Windows.Forms.DataGridView AddHarvestQuantityDataGridView;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button ApplyHarvestQuantityButton;

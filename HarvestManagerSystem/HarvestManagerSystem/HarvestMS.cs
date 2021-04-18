@@ -28,6 +28,7 @@ namespace HarvestManagerSystem
         CreditDAO creditDAO = CreditDAO.getInstance();
         TransportDAO transportDAO = TransportDAO.getInstance();
         HarvestHoursDAO harvestHoursDAO = HarvestHoursDAO.getInstance();
+        HarvestQuantityDAO harvestQuantityDAO = HarvestQuantityDAO.getInstance();
         ProductionDAO productionDAO = ProductionDAO.getInstance();
 
         private static List<Employee> list = new List<Employee>();
@@ -36,12 +37,11 @@ namespace HarvestManagerSystem
         public HarvestMS()
         {
             InitializeComponent();
-
-
         }
 
         private void HarvestMS_Load(object sender, EventArgs e)
         {
+            DisplayQuantityData();
         }
 
         private void tabProduction_SelectedIndexChanged(object sender, EventArgs e)
@@ -76,34 +76,184 @@ namespace HarvestManagerSystem
             }
         }
 
-        #region //TO DO QUANTITY CODE
+        #region QUANTITY CODE
+
+        int QuantityDataGridSelectedRowIndex = -1;
 
 
-        private BindingSource masterBindingSource = new BindingSource();
-        private BindingSource detailsBindingSource = new BindingSource();
+        List<Production> listQuantityProduction = new List<Production>();
+        List<HarvestQuantity> listHarvestQuantity = new List<HarvestQuantity>();
 
         void DisplayQuantityData()
         {
+            startQuantitySearchDateTimePicker.Value = DateTime.Now.AddDays(-29);
+            endQuantitySearchDateTimePicker.Value = DateTime.Now.AddDays(1);
+            UpdateDisplayHarvestQuantityData(startQuantitySearchDateTimePicker.Value, endQuantitySearchDateTimePicker.Value);
+            SortDisplayMasterQuantityColumnsIndex();
+        }
 
+        private void UpdateDisplayHarvestQuantityData(DateTime fromDate, DateTime toDate)
+        {
+            listQuantityProduction.Clear();
+            try
+            {
+                listQuantityProduction = productionDAO.searchHarvestHoursProduction(startQuantitySearchDateTimePicker.Value, endQuantitySearchDateTimePicker.Value, 2);
+                masterQuantityDataGridView.DataSource = listQuantityProduction;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 
+        private void masterQuantityDataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            int i = masterQuantityDataGridView.CurrentRow.Index;
+            if (i < listQuantityProduction.Count && i >= 0)
+            {
+                DisplayDetailQuantityData(listQuantityProduction[i]);
+            }
+        }
 
+        private void DisplayDetailQuantityData(Production production)
+        {
+            listHarvestQuantity.Clear();
+            try
+            {
+                listHarvestQuantity = harvestQuantityDAO.HarvestQuantityByProduction(production);
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            detailQuantityDataGridView.DataSource = listHarvestQuantity;
+            SortDisplayDetailsQuantityColumnsIndex();
+        }
+
+        private void masterQuantityDataGridView_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                masterQuantityDataGridView.Rows[e.RowIndex].Selected = true;
+                QuantityContextMenuStrip.Show(this.masterQuantityDataGridView, e.Location);
+                QuantityDataGridSelectedRowIndex = e.RowIndex;
+                QuantityContextMenuStrip.Show(Cursor.Position);
+                DisplayDetailQuantityData(listQuantityProduction[QuantityDataGridSelectedRowIndex]);
+            }
+        }
+
+        private void QuantityContextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            if (e.ClickedItem.Name == EditQuantityStrip.Name)
+            {
+                HoursContextMenuStrip.Visible = false;
+                HandleEditQuantityTable();
+            }
+            else if (e.ClickedItem.Name == DeleteQuantityStrip.Name)
+            {
+                HoursContextMenuStrip.Visible = false;
+                HandleDeleteQuantityTable();
+            }
+        }
+
+        private void HandleEditQuantityTable()
+        {
+            FormAddQuantity formAddQuantity = FormAddQuantity.getInstance(this);
+            Production production = (Production)listQuantityProduction[QuantityDataGridSelectedRowIndex];
+            if (production == null)
+            {
+                MessageBox.Show("Select Item");
+                return;
+            }
+            formAddQuantity.InflateUI(production);
+            formAddQuantity.ShowFormAdd();
         }
 
 
+        private void HandleDeleteQuantityTable()
+        {
 
+            Production production = (Production)listQuantityProduction[QuantityDataGridSelectedRowIndex];
+            if (production == null)
+            {
+                MessageBox.Show("Select production");
+                return;
+            }
+
+            List<HarvestQuantity> listQuantity = new List<HarvestQuantity>();
+            try
+            {
+                listQuantity = harvestQuantityDAO.HarvestQuantityByProduction(production);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return;
+            }
+
+            DialogResult dr = MessageBox.Show("Are you sure you want to delete this data ", "Delete", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+
+            if (dr == DialogResult.Yes)
+            {
+                bool trackInsert = false;
+                foreach (HarvestQuantity item in listQuantity)
+                {
+                    trackInsert = productionDAO.deleteQuantityProductionData(production, item);
+                    if (!trackInsert) break;
+                }
+                var msg = (trackInsert) ? "deleted" : "not deleted";
+                MessageBox.Show(msg);
+                RefreshQuantityProductionTable();
+            }
+
+        }
 
         private void btnSearchQuantityProduction_Click(object sender, EventArgs e)
         {
-
-            loadDataProgressBar.Visible = true;
-            loadDataProgressBar.Value = 20;
-
+            UpdateDisplayHarvestQuantityData(startQuantitySearchDateTimePicker.Value, endQuantitySearchDateTimePicker.Value);
         }
 
-        private void displayQuantityContextMenu_Opening(object sender, CancelEventArgs e)
+        public void RefreshQuantityProductionTable()
         {
-
+            UpdateDisplayHarvestQuantityData(DateTime.Now.AddDays(-29), DateTime.Now.AddDays(1));
         }
+
+        private void SortDisplayDetailsQuantityColumnsIndex()
+        {
+            detailQuantityDataGridView.Columns["HarvestQuantityIdColumn"].DisplayIndex = 0;
+            detailQuantityDataGridView.Columns["HarvestQuantityDateColumn"].DisplayIndex = 1;
+            detailQuantityDataGridView.Columns["HQEmployeeNameColumn"].DisplayIndex = 2;
+            detailQuantityDataGridView.Columns["AllQuantityColumn"].DisplayIndex = 3;
+            detailQuantityDataGridView.Columns["BadQuantityColumn"].DisplayIndex = 4;
+            detailQuantityDataGridView.Columns["GoodQuantityColumn"].DisplayIndex = 5;
+            detailQuantityDataGridView.Columns["ProductPriceColumn"].DisplayIndex = 6;
+            detailQuantityDataGridView.Columns["HQCreditAmountColumn"].DisplayIndex = 7;
+            detailQuantityDataGridView.Columns["HQTransportAmountColumn"].DisplayIndex = 8;
+            detailQuantityDataGridView.Columns["HQPaymentColumn"].DisplayIndex = 9;
+            detailQuantityDataGridView.Columns["HQRemarqueColumn"].DisplayIndex = 10;
+            detailQuantityDataGridView.Columns["HarvestCategoryColumn"].DisplayIndex = 11;
+        }
+
+        private void SortDisplayMasterQuantityColumnsIndex()
+        {
+            masterQuantityDataGridView.Columns["HQProductionIdColumn"].DisplayIndex = 0;
+            masterQuantityDataGridView.Columns["HQHQProductionDateColumn"].DisplayIndex = 1;
+            masterQuantityDataGridView.Columns["HQProductionSupplierNameColumn"].DisplayIndex = 2;
+            masterQuantityDataGridView.Columns["HQProductionFarmNameColumn"].DisplayIndex = 3;
+            masterQuantityDataGridView.Columns["HQProductionProductNameColumn"].DisplayIndex = 4;
+            masterQuantityDataGridView.Columns["HQProductionProductCodeColumn"].DisplayIndex = 5;
+            masterQuantityDataGridView.Columns["HQProductionTotalQuantityColumn"].DisplayIndex = 6;
+            masterQuantityDataGridView.Columns["HQProductionProductPriceColumn"].DisplayIndex = 7;
+            masterQuantityDataGridView.Columns["HQProductionTotalEmployeeColumn"].DisplayIndex = 8;
+            masterQuantityDataGridView.Columns["HQProductionPaymentCompanyColumn"].DisplayIndex = 9;
+            masterQuantityDataGridView.Columns["HQProductionTypeColumn"].DisplayIndex = 10;
+        }
+
+        private void btnAddHarvestQuantity_Click(object sender, EventArgs e)
+        {
+            FormAddQuantity formAddQuantity = FormAddQuantity.getInstance(this);
+            formAddQuantity.ShowFormAdd();
+        }
+
 
         #endregion
 
@@ -121,22 +271,12 @@ namespace HarvestManagerSystem
             detailsHoursDataGridView.DataSource = detailsHoursBindingSource;
             StartSearchDateTimePicker.Value = DateTime.Now.AddDays(-29);
             EndtSearchDateTimePicker.Value = DateTime.Now.AddDays(1);
-            UpdateData(StartSearchDateTimePicker.Value, EndtSearchDateTimePicker.Value);
+            UpdateDisplayHarvestHoursData(StartSearchDateTimePicker.Value, EndtSearchDateTimePicker.Value);
             masterHoursDataGridView.AutoResizeColumns();
             detailsHoursDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
-        private void SearchButton_Click(object sender, EventArgs e)
-        {
-            UpdateData(StartSearchDateTimePicker.Value, EndtSearchDateTimePicker.Value);
-        }
-
-        public void RefreshTable()
-        {
-            UpdateData(StartSearchDateTimePicker.Value, EndtSearchDateTimePicker.Value);
-        }
-
-        public void UpdateData(DateTime fromDate, DateTime toDate)
+        public void UpdateDisplayHarvestHoursData(DateTime fromDate, DateTime toDate)
         {
             listHoursProduction.Clear();
             try
@@ -200,6 +340,16 @@ namespace HarvestManagerSystem
             }
         }
 
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+            UpdateDisplayHarvestHoursData(StartSearchDateTimePicker.Value, EndtSearchDateTimePicker.Value);
+        }
+
+        public void RefreshHoursProductionTable()
+        {
+            UpdateDisplayHarvestHoursData(StartSearchDateTimePicker.Value, EndtSearchDateTimePicker.Value);
+        }
+
         private void SortDisplayDetailsHoursColumnsIndex()
         {
             detailsHoursDataGridView.Columns["HarvestHoursIDColumn"].DisplayIndex = 0;
@@ -239,14 +389,14 @@ namespace HarvestManagerSystem
         }
 
 
-        int SelectedRowIndex = -1;
+        int HoursDataGridSelectedRowIndex = -1;
         private void masterHoursDataGridView_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
             {
                 masterHoursDataGridView.Rows[e.RowIndex].Selected = true;
                 HoursContextMenuStrip.Show(this.masterHoursDataGridView, e.Location);
-                SelectedRowIndex = e.RowIndex;
+                HoursDataGridSelectedRowIndex = e.RowIndex;
                 HoursContextMenuStrip.Show(Cursor.Position);
                 
             }
@@ -272,7 +422,7 @@ namespace HarvestManagerSystem
         private void HandleEditHoursTable()
         {
             FormAddHours formAddHours = FormAddHours.getInstance(this);
-            Production production = (Production)listHoursProduction[SelectedRowIndex];
+            Production production = (Production)listHoursProduction[HoursDataGridSelectedRowIndex];
             if (production == null)
             {
                 MessageBox.Show("Select Item");
@@ -285,7 +435,7 @@ namespace HarvestManagerSystem
         private void HandleDeleteHoursTable()
         {
 
-            Production production = (Production)listHoursProduction[SelectedRowIndex];
+            Production production = (Production)listHoursProduction[HoursDataGridSelectedRowIndex];
             if(production == null)
             {
                 MessageBox.Show("Select production");
@@ -315,7 +465,7 @@ namespace HarvestManagerSystem
                 }
                 var msg = (trackInsert) ? "deleted" : "not deleted";
                 MessageBox.Show(msg);
-                RefreshTable();
+                RefreshHoursProductionTable();
             }
 
         }
@@ -327,7 +477,6 @@ namespace HarvestManagerSystem
         }
 
         #endregion
-
 
         #region SUPPLIER CODE
 
@@ -1041,12 +1190,16 @@ MessageBoxIcon.Information);
 
 
 
+
+
+
+
         #endregion
 
-        private void btnAddHarvestQuantity_Click(object sender, EventArgs e)
+        private void AppLogo_Click(object sender, EventArgs e)
         {
-            FormAddQuantity formAddQuantity = FormAddQuantity.getInstance(this);
-            formAddQuantity.ShowFormAdd();
+            FormPreferences formPreferences = FormPreferences.getInstance();
+            formPreferences.ShowForm();
         }
     }
 }
