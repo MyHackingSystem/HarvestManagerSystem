@@ -13,6 +13,7 @@ namespace HarvestManagerSystem.view
 {
     public partial class FormAddQuantity : Form
     {
+
         private bool isEditHarvestQuantity = false;
         private TransportDAO transportDAO = TransportDAO.getInstance();
         private EmployeeDAO employeeDAO = EmployeeDAO.getInstance();
@@ -29,7 +30,7 @@ namespace HarvestManagerSystem.view
         private Dictionary<string, ProductDetail> mProductDetailDictionary = new Dictionary<string, ProductDetail>();
         static List<HarvestQuantity> HarvesterList = new List<HarvestQuantity>();
 
-        BindingSource bindingSourceHarvesterList = new System.Windows.Forms.BindingSource { DataSource = HarvesterList };
+        BindingSource bindingSourceHarvesterList = new BindingSource { DataSource = HarvesterList };
 
         private HarvestMS harvestMS;
         private static FormAddQuantity instance;
@@ -71,7 +72,7 @@ namespace HarvestManagerSystem.view
             AddHarvestQuantityDataGridView.DataSource = bindingSourceHarvesterList;
             if (isEditHarvestQuantity)
             {
-                HarvestHoursDateTimePicker.Value = mProduction.ProductionDate;
+                HarvestDateTimePicker.Value = mProduction.ProductionDate;
                 SupplierHarvestQuantityComboBox.SelectedIndex = SupplierHarvestQuantityComboBox.FindStringExact(mProduction.Supplier.SupplierName);
                 FarmHarvestQuantityComboBox.SelectedIndex = FarmHarvestQuantityComboBox.FindStringExact(mProduction.Farm.FarmName);
                 ProductHarvestQuantityComboBox.SelectedIndex = ProductHarvestQuantityComboBox.FindStringExact(mProduction.Product.ProductName);
@@ -82,12 +83,12 @@ namespace HarvestManagerSystem.view
             {
                 radioBtnHarvestByGroup.Checked = true;
                 HarvesterList = mHarvestQuantityDAO.HarvestersData();
-
             }
 
             bindingSourceHarvesterList.DataSource = HarvesterList;
             SortDisplayIndex();
             disableTotalTextBoxField();
+            onChangeHarvestType();
         }
 
 
@@ -98,36 +99,70 @@ namespace HarvestManagerSystem.view
                 MessageBox.Show("Vérifier les valeurs saisies");
                 return;
             }
-            ValidateAddHarvestHours();
+            if (radioBtnHarvestByIndividual.Checked)
+            {
+                ValidateAddHarvestQuantityByIndividual();
+            }
+            else
+            {
+                ValidateAddHarvestQuantityByGroup();
+            }
+           
         }
 
         private bool ValidateInput()
         {
             return
-            HarvestHoursDateTimePicker.Value == null ||
+            HarvestDateTimePicker.Value == null ||
             SupplierHarvestQuantityComboBox.SelectedIndex == -1 ||
             FarmHarvestQuantityComboBox.SelectedIndex == -1 ||
             ProductHarvestQuantityComboBox.SelectedIndex == -1 ||
             ProductCodeHarvestQuantityComboBox.SelectedIndex == -1;
-
         }
 
-        private void ValidateAddHarvestHours()
+        private void ValidateAddHarvestQuantityByGroup()
         {
-            //PreferencesDAO preferencesDAO = PreferencesDAO.getInstance();
+            PreferencesDAO preferencesDAO = PreferencesDAO.getInstance();
+            _ = new Preferences();
+            Preferences pref;
+            try
+            {
+                pref = preferencesDAO.getPreferences();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Une erreur est survenue, essayez de cliquer à nouveau sur le bouton de validation ");
+                return;
+            }
+
+            double penaltyGeneral = pref.PenaltyGeneral;
+            double damageGeneral = pref.DamageGeneral;
+            double transPrice = pref.TransportPrice;
             int totalEmployee = HarvesterList.Count;
             double totalTransport = 0.0; double totalCredit = 0.0; double totalPayment = 0.0;
             double totalAllQuantity = 0;
             double totalBadQuantity = 0.0;
             double totalGoodQuantity = 0.0;
-            double allQuantity = Convert.ToDouble(txtInputAllQuantity.Text);
-            double badQuantity = Convert.ToDouble(txtInputBadQuantity.Text);
+            double allQuantity = 0.0;
+            double badQuantity = 0.0;
+
+            try
+            {
+                allQuantity = Convert.ToDouble(txtInputAllQuantity.Text);
+                badQuantity = Convert.ToDouble(txtInputBadQuantity.Text);
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                MessageBox.Show("Vérifier les valeurs saisies");
+                return;
+            }
+
             double allQuantityEmp = allQuantity / totalEmployee;
             double badQuantityEmp = badQuantity / totalEmployee;
-            double penaltyGeneral = 20;
-            double damageGeneral = 30;
+
             double employeePrice = mProductDetailDictionary.GetValueOrDefault(ProductCodeHarvestQuantityComboBox.GetItemText(ProductCodeHarvestQuantityComboBox.SelectedItem)).PriceEmployee;
             double companyPrice = mProductDetailDictionary.GetValueOrDefault(ProductCodeHarvestQuantityComboBox.GetItemText(ProductCodeHarvestQuantityComboBox.SelectedItem)).PriceCompany;
+            
             foreach (HarvestQuantity hq in HarvesterList)
             {
                 hq.AllQuantity = allQuantityEmp;
@@ -138,7 +173,7 @@ namespace HarvestManagerSystem.view
                 totalAllQuantity += hq.GoodQuantity;
                 totalBadQuantity += hq.BadQuantity;
                 totalGoodQuantity += hq.GoodQuantity;
-                hq.Transport.TransportAmount = (hq.TransportStatus) ? 10 : 0;
+                hq.Transport.TransportAmount = (hq.TransportStatus) ? transPrice : 0;
                 totalTransport += hq.Transport.TransportAmount;
                 totalCredit += hq.Credit.CreditAmount;
                 totalPayment += hq.Payment;
@@ -153,8 +188,260 @@ namespace HarvestManagerSystem.view
             TotalTransportTextBox.Text = Convert.ToString(totalTransport);
             TotalCreditTextBox.Text = Convert.ToString(totalCredit);
             TotalPaymentTextBox.Text = Convert.ToString(totalPayment);
+            mProduction.Price = companyPrice;
             AddHarvestQuantityDataGridView.Refresh();
 
+        }
+
+        private void ValidateAddHarvestQuantityByIndividual()
+        {
+
+        }
+
+        
+
+        private void ApplyHarvestQuantityButton_Click(object sender, EventArgs e)
+        {
+            if (checkApplyButtonInput())
+            {
+                MessageBox.Show("Vérifier les values entrée");
+                return;
+            }
+            if (isEditHarvestQuantity)
+            {
+                updateProductionDataInDatabase();
+            }
+            else
+            {
+                addProductionDataToDatabase();
+            }
+            harvestMS.RefreshQuantityProductionTable();
+        }
+
+        private bool checkApplyButtonInput()
+        {
+            return (TotalEmployeeTextBox.Text == "" || 
+                TotalQuantityTextBox.Text == "" ||
+                txtTotalBadQuantity.Text == "" ||
+                txtTotalGoodQuantity.Text == "" ||
+                ProductPriceTextBox.Text == "" || 
+                TotalTransportTextBox.Text == "" || 
+                TotalCreditTextBox.Text == "" ||
+                TotalPaymentTextBox.Text == "") || 
+                (Convert.ToInt32(TotalEmployeeTextBox.Text) <= 0) || 
+                (Convert.ToDouble(TotalQuantityTextBox.Text) <= 0);
+        }
+
+        private void addProductionDataToDatabase()
+        {
+
+            setProductionValueFromFields();
+            long productionId = mProductionDAO.addProductionAndGetId(mProduction);
+            if (productionId != -1)
+            {
+                mProduction.ProductionID = productionId;
+                bool added = addHarvestQuantityToDatabase();
+                if (added)
+                {
+                    MessageBox.Show("Data Was Added");
+                    wipeFields();
+                }
+
+            }
+            else { MessageBox.Show("Data Not Added"); }
+
+        }
+
+        private bool addHarvestQuantityToDatabase()
+        {
+            bool trackInsert = false;
+            if (mProduction.ProductionID > 0)
+            {
+                foreach (HarvestQuantity item in HarvesterList)
+                {
+                    item.Production.ProductionID = mProduction.ProductionID;
+                    item.HarvestDate = mProduction.ProductionDate;
+                    item.Production.Farm.FarmId = mProduction.Farm.FarmId;
+                    trackInsert = mHarvestQuantityDAO.addHarvestQuantity(item);
+                    if (!trackInsert) break;
+                }
+            }
+            return trackInsert;
+        }
+
+        private void updateProductionDataInDatabase()
+        {
+            setProductionValueFromFields();
+            if (mProductionDAO.updateProductionData(mProduction))
+            {
+                if (updateHarvestQuantityInDatabase())
+                {
+
+                }
+                MessageBox.Show("Data updated");
+            }
+            else
+            {
+                MessageBox.Show("Data not updated");
+            }
+            isEditHarvestQuantity = false;
+            this.Close();
+        }
+
+        private bool updateHarvestQuantityInDatabase()
+        {
+            bool trackInsert = false;
+            foreach (HarvestQuantity item in HarvesterList)
+            {
+                item.HarvestDate = mProduction.ProductionDate;
+                item.Production.Farm.FarmId = mProduction.Farm.FarmId;
+                item.Production.ProductionID = mProduction.ProductionID;
+                trackInsert =  mHarvestQuantityDAO.updateQuantityWork(item);
+                if (!trackInsert) break;
+            }
+            return trackInsert;
+        }
+
+        private void setProductionValueFromFields()
+        {
+            mProduction.ProductionType = 2;
+            mProduction.ProductionDate = HarvestDateTimePicker.Value;
+            mProduction.Supplier.SupplierId = mSupplierDictionary.GetValueOrDefault(SupplierHarvestQuantityComboBox.GetItemText(SupplierHarvestQuantityComboBox.SelectedItem)).SupplierId;
+            mProduction.Farm.FarmId = mFarmDictionary.GetValueOrDefault(FarmHarvestQuantityComboBox.GetItemText(FarmHarvestQuantityComboBox.SelectedItem)).FarmId;
+            mProduction.Product.ProductId = mProductDictionary.GetValueOrDefault(ProductHarvestQuantityComboBox.GetItemText(ProductHarvestQuantityComboBox.SelectedItem)).ProductId;
+            mProduction.ProductDetail.ProductDetailId = mProductDetailDictionary.GetValueOrDefault(ProductCodeHarvestQuantityComboBox.GetItemText(ProductCodeHarvestQuantityComboBox.SelectedItem)).ProductDetailId;
+            mProduction.TotalEmployee = Convert.ToInt32(TotalEmployeeTextBox.Text);
+            mProduction.TotalQuantity = Convert.ToDouble(TotalQuantityTextBox.Text);
+            mProduction.TotalMinutes = 0.0;
+            mProduction.Price = Convert.ToDouble(ProductPriceTextBox.Text);
+        }
+
+        // Update Harvest Quantity Section
+
+        internal void InflateUI(Production production)
+        {
+            isEditHarvestQuantity = true;
+
+            mProduction.ProductionID = production.ProductionID;
+            mProduction.ProductionDate = production.ProductionDate;
+            mProduction.Supplier.SupplierName = production.Supplier.SupplierName;
+            mProduction.Farm.FarmName = production.Farm.FarmName;
+            mProduction.Product.ProductName = production.Product.ProductName;
+            mProduction.ProductDetail.ProductCode = production.ProductDetail.ProductCode;
+            mProduction.ProductionType = production.ProductionType;
+
+            HarvesterList.Clear();
+            try
+            {
+                HarvesterList = mHarvestQuantityDAO.HarvestQuantityByProduction(production);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+
+            double AllQuantity = 0;
+            double BadQuantity = 0;
+
+            foreach (HarvestQuantity quantity in HarvesterList)
+            {
+                AllQuantity += quantity.AllQuantity;
+                BadQuantity += quantity.BadQuantity;
+                quantity.TransportStatus = (quantity.TransportAmount > 0) ? true : false;
+            }
+            SetHarvestType(HarvesterList[0].HarvestType);
+            txtInputAllQuantity.Text = AllQuantity.ToString();
+            txtInputBadQuantity.Text = BadQuantity.ToString();
+            SetToTotalZero();
+        }
+
+
+        #region Common code
+
+        private void ProductHarvestHoursComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int i = ProductHarvestQuantityComboBox.SelectedIndex;
+            if (i < mProductDictionary.Values.Count && i >= 0)
+            {
+                DisplayProductDetailData(mProductDictionary.ElementAt(i).Value);
+            }
+        }
+
+        private void DisplayProductDetailData(Product product)
+        {
+            List<string> CodeList = new List<string>();
+            mProductDetailDictionary.Clear();
+            try
+            {
+                mProductDetailDictionary = productDetailDAO.ProductCodeDictionary(product);
+                CodeList.AddRange(mProductDetailDictionary.Keys);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            if (CodeList != null)
+            {
+                ProductCodeHarvestQuantityComboBox.DataSource = CodeList;
+            }
+        }
+
+        private void FormAddQuantity_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            wipeFields();
+            instance = null;
+        }
+
+        private void wipeFields()
+        {
+            SupplierNameList();
+            FarmNameList();
+            ProductNameList();
+            radioBtnHarvestByGroup.Checked = true;
+            HarvestDateTimePicker.Value = DateTime.Now;
+            SupplierHarvestQuantityComboBox.SelectedIndex = -1;
+            FarmHarvestQuantityComboBox.SelectedIndex = -1;
+            ProductHarvestQuantityComboBox.SelectedIndex = -1;
+            ProductCodeHarvestQuantityComboBox.SelectedIndex = -1;
+            txtInputAllQuantity.Text = "";
+            txtInputBadQuantity.Text = "";
+            InitDataGridView();
+        }
+
+        private void InitDataGridView()
+        {
+            foreach (HarvestQuantity h in HarvesterList)
+            {
+                h.HarvestDate = DateTime.Now;
+                h.AllQuantity = 0.0;
+                h.BadQuantity = 0.0;
+                h.ProductPrice = 0.0;
+                h.TransportStatus = false;
+                h.Transport.TransportAmount = 0.0;
+                h.Credit.CreditAmount = 0.0;
+                h.HarvestType = getHarvestType();
+                h.Remarque = "";
+            }
+
+            SetToTotalZero();
+            AddHarvestQuantityDataGridView.Refresh();
+        }
+
+        private void radioBtnHarvestByIndividual_CheckedChanged(object sender, EventArgs e)
+        {
+            onChangeHarvestType();
+        }
+
+        private void onChangeHarvestType()
+        {
+            if (radioBtnHarvestByIndividual.Checked)
+            {
+                ImportExcelButton.Enabled = true;
+            }
+            else
+            {
+                ImportExcelButton.Enabled = false;
+            }
         }
 
         private int getHarvestType()
@@ -166,6 +453,18 @@ namespace HarvestManagerSystem.view
             else
             {
                 return 1;
+            }
+        }
+
+        private void SetHarvestType(int type)
+        {
+            if (type == 1)
+            {
+                radioBtnHarvestByIndividual.Checked = true; ;
+            }
+            else
+            {
+                radioBtnHarvestByGroup.Checked = true;
             }
         }
 
@@ -226,47 +525,6 @@ namespace HarvestManagerSystem.view
             }
         }
 
-        private void ProductHarvestHoursComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int i = ProductHarvestQuantityComboBox.SelectedIndex;
-            if (i < mProductDictionary.Values.Count && i >= 0)
-            {
-                DisplayProductDetailData(mProductDictionary.ElementAt(i).Value);
-            }
-        }
-
-        private void DisplayProductDetailData(Product product)
-        {
-            List<string> CodeList = new List<string>();
-            mProductDetailDictionary.Clear();
-            try
-            {
-                mProductDetailDictionary = productDetailDAO.ProductCodeDictionary(product);
-                CodeList.AddRange(mProductDetailDictionary.Keys);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            if (CodeList != null)
-            {
-                ProductCodeHarvestQuantityComboBox.DataSource = CodeList;
-            }
-
-        }
-
-
-        private void FormAddQuantity_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            wipeFields();
-            instance = null;
-        }
-
-        private void wipeFields()
-        {
-
-        }
-
         private void SortDisplayIndex()
         {
             AddHarvestQuantityDataGridView.Columns["HarvestHoursIDColumn"].DisplayIndex = 0;
@@ -291,6 +549,25 @@ namespace HarvestManagerSystem.view
             TotalCreditTextBox.Enabled = false;
             TotalPaymentTextBox.Enabled = false;
         }
+
+        private void SetToTotalZero()
+        {
+            TotalEmployeeTextBox.Text = "0";
+            TotalQuantityTextBox.Text = "0.0";
+            txtTotalBadQuantity.Text = "0.0";
+            txtTotalGoodQuantity.Text = "0.0";
+            ProductPriceTextBox.Text = "0.0";
+            TotalTransportTextBox.Text = "0.0";
+            TotalCreditTextBox.Text = "0.0";
+            TotalPaymentTextBox.Text = "0.0";
+        }
+
+        private void ClearHarvestButton_Click(object sender, EventArgs e)
+        {
+            wipeFields();
+        }
+
+        #endregion
 
 
     }

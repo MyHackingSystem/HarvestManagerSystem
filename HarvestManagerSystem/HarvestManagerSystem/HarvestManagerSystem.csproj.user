@@ -7,6 +7,9 @@
     <Compile Update="HarvestMS.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="view\FormPreferences.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="view\FormAddCredit.cs">
       <SubType>Form</SubType>
     </Compile>
