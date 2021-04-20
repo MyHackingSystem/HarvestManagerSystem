@@ -132,9 +132,10 @@ namespace HarvestManagerSystem.view
             this.ImportExcelButton.Location = new System.Drawing.Point(7, 485);
             this.ImportExcelButton.Name = "ImportExcelButton";
             this.ImportExcelButton.Size = new System.Drawing.Size(186, 34);
-            this.ImportExcelButton.TabIndex = 19;
+            this.ImportExcelButton.TabIndex = 10;
             this.ImportExcelButton.Text = "Import Excel";
             this.ImportExcelButton.UseVisualStyleBackColor = true;
+            this.ImportExcelButton.Click += new System.EventHandler(this.ImportExcelButton_Click);
             // 
             // groupBox3
             // 
@@ -154,7 +155,7 @@ namespace HarvestManagerSystem.view
             this.radioBtnHarvestByIndividual.Location = new System.Drawing.Point(82, 19);
             this.radioBtnHarvestByIndividual.Name = "radioBtnHarvestByIndividual";
             this.radioBtnHarvestByIndividual.Size = new System.Drawing.Size(82, 21);
-            this.radioBtnHarvestByIndividual.TabIndex = 1;
+            this.radioBtnHarvestByIndividual.TabIndex = 9;
             this.radioBtnHarvestByIndividual.TabStop = true;
             this.radioBtnHarvestByIndividual.Text = "Individual";
             this.radioBtnHarvestByIndividual.UseVisualStyleBackColor = true;
@@ -168,7 +169,7 @@ namespace HarvestManagerSystem.view
             this.radioBtnHarvestByGroup.Location = new System.Drawing.Point(7, 18);
             this.radioBtnHarvestByGroup.Name = "radioBtnHarvestByGroup";
             this.radioBtnHarvestByGroup.Size = new System.Drawing.Size(69, 21);
-            this.radioBtnHarvestByGroup.TabIndex = 0;
+            this.radioBtnHarvestByGroup.TabIndex = 8;
             this.radioBtnHarvestByGroup.TabStop = true;
             this.radioBtnHarvestByGroup.Text = "Groupe";
             this.radioBtnHarvestByGroup.UseVisualStyleBackColor = true;
@@ -189,7 +190,7 @@ namespace HarvestManagerSystem.view
             this.txtInputBadQuantity.Location = new System.Drawing.Point(6, 404);
             this.txtInputBadQuantity.Name = "txtInputBadQuantity";
             this.txtInputBadQuantity.Size = new System.Drawing.Size(187, 25);
-            this.txtInputBadQuantity.TabIndex = 16;
+            this.txtInputBadQuantity.TabIndex = 7;
             // 
             // labelAllQuantity
             // 
@@ -207,7 +208,7 @@ namespace HarvestManagerSystem.view
             this.txtInputAllQuantity.Location = new System.Drawing.Point(6, 344);
             this.txtInputAllQuantity.Name = "txtInputAllQuantity";
             this.txtInputAllQuantity.Size = new System.Drawing.Size(187, 25);
-            this.txtInputAllQuantity.TabIndex = 14;
+            this.txtInputAllQuantity.TabIndex = 6;
             // 
             // ClearHarvestButton
             // 
@@ -215,7 +216,7 @@ namespace HarvestManagerSystem.view
             this.ClearHarvestButton.Location = new System.Drawing.Point(110, 535);
             this.ClearHarvestButton.Name = "ClearHarvestButton";
             this.ClearHarvestButton.Size = new System.Drawing.Size(84, 34);
-            this.ClearHarvestButton.TabIndex = 13;
+            this.ClearHarvestButton.TabIndex = 12;
             this.ClearHarvestButton.Text = "Vider";
             this.ClearHarvestButton.UseVisualStyleBackColor = true;
             this.ClearHarvestButton.Click += new System.EventHandler(this.ClearHarvestButton_Click);
@@ -227,7 +228,7 @@ namespace HarvestManagerSystem.view
             this.ValidateHarvestQuantityButton.Location = new System.Drawing.Point(7, 535);
             this.ValidateHarvestQuantityButton.Name = "ValidateHarvestQuantityButton";
             this.ValidateHarvestQuantityButton.Size = new System.Drawing.Size(90, 34);
-            this.ValidateHarvestQuantityButton.TabIndex = 12;
+            this.ValidateHarvestQuantityButton.TabIndex = 11;
             this.ValidateHarvestQuantityButton.Text = "Valider";
             this.ValidateHarvestQuantityButton.UseVisualStyleBackColor = true;
             this.ValidateHarvestQuantityButton.Click += new System.EventHandler(this.ValidateHarvestQuantityButton_Click);
@@ -560,6 +561,7 @@ namespace HarvestManagerSystem.view
             // 
             // txtTotalGoodQuantity
             // 
+            this.txtTotalGoodQuantity.Enabled = false;
             this.txtTotalGoodQuantity.Location = new System.Drawing.Point(308, 59);
             this.txtTotalGoodQuantity.Name = "txtTotalGoodQuantity";
             this.txtTotalGoodQuantity.Size = new System.Drawing.Size(96, 23);
@@ -578,6 +580,7 @@ namespace HarvestManagerSystem.view
             // 
             // txtTotalBadQuantity
             // 
+            this.txtTotalBadQuantity.Enabled = false;
             this.txtTotalBadQuantity.Location = new System.Drawing.Point(201, 59);
             this.txtTotalBadQuantity.Name = "txtTotalBadQuantity";
             this.txtTotalBadQuantity.Size = new System.Drawing.Size(96, 23);
@@ -590,7 +593,7 @@ namespace HarvestManagerSystem.view
             this.ApplyHarvestQuantityButton.Location = new System.Drawing.Point(811, 48);
             this.ApplyHarvestQuantityButton.Name = "ApplyHarvestQuantityButton";
             this.ApplyHarvestQuantityButton.Size = new System.Drawing.Size(124, 41);
-            this.ApplyHarvestQuantityButton.TabIndex = 21;
+            this.ApplyHarvestQuantityButton.TabIndex = 13;
             this.ApplyHarvestQuantityButton.Text = "Apply";
             this.ApplyHarvestQuantityButton.UseVisualStyleBackColor = true;
             this.ApplyHarvestQuantityButton.Click += new System.EventHandler(this.ApplyHarvestQuantityButton_Click);
@@ -608,6 +611,7 @@ namespace HarvestManagerSystem.view
             // 
             // TotalPaymentTextBox
             // 
+            this.TotalPaymentTextBox.Enabled = false;
             this.TotalPaymentTextBox.Location = new System.Drawing.Point(701, 59);
             this.TotalPaymentTextBox.Name = "TotalPaymentTextBox";
             this.TotalPaymentTextBox.Size = new System.Drawing.Size(91, 23);
@@ -626,6 +630,7 @@ namespace HarvestManagerSystem.view
             // 
             // TotalCreditTextBox
             // 
+            this.TotalCreditTextBox.Enabled = false;
             this.TotalCreditTextBox.Location = new System.Drawing.Point(612, 59);
             this.TotalCreditTextBox.Name = "TotalCreditTextBox";
             this.TotalCreditTextBox.Size = new System.Drawing.Size(79, 23);
@@ -644,6 +649,7 @@ namespace HarvestManagerSystem.view
             // 
             // TotalTransportTextBox
             // 
+            this.TotalTransportTextBox.Enabled = false;
             this.TotalTransportTextBox.Location = new System.Drawing.Point(500, 59);
             this.TotalTransportTextBox.Name = "TotalTransportTextBox";
             this.TotalTransportTextBox.Size = new System.Drawing.Size(100, 23);
@@ -662,6 +668,7 @@ namespace HarvestManagerSystem.view
             // 
             // ProductPriceTextBox
             // 
+            this.ProductPriceTextBox.Enabled = false;
             this.ProductPriceTextBox.Location = new System.Drawing.Point(415, 59);
             this.ProductPriceTextBox.Name = "ProductPriceTextBox";
             this.ProductPriceTextBox.Size = new System.Drawing.Size(73, 23);
@@ -680,6 +687,7 @@ namespace HarvestManagerSystem.view
             // 
             // TotalQuantityTextBox
             // 
+            this.TotalQuantityTextBox.Enabled = false;
             this.TotalQuantityTextBox.Location = new System.Drawing.Point(94, 59);
             this.TotalQuantityTextBox.Name = "TotalQuantityTextBox";
             this.TotalQuantityTextBox.Size = new System.Drawing.Size(96, 23);
@@ -698,6 +706,7 @@ namespace HarvestManagerSystem.view
             // 
             // TotalEmployeeTextBox
             // 
+            this.TotalEmployeeTextBox.Enabled = false;
             this.TotalEmployeeTextBox.Location = new System.Drawing.Point(14, 59);
             this.TotalEmployeeTextBox.Name = "TotalEmployeeTextBox";
             this.TotalEmployeeTextBox.Size = new System.Drawing.Size(69, 23);

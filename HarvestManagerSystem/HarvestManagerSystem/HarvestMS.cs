@@ -1201,5 +1201,6 @@ MessageBoxIcon.Information);
             FormPreferences formPreferences = FormPreferences.getInstance();
             formPreferences.ShowForm();
         }
+
     }
 }
