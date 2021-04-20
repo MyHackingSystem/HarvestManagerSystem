@@ -433,6 +433,7 @@ namespace HarvestManagerSystem.view
         private void ClearHarvestHoursButton_Click(object sender, EventArgs e)
         {
             wipeFields();
+            SortDisplayIndex();
         }
         private void wipeFields()
         {

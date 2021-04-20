@@ -40,13 +40,33 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "ExcelDataReader": {
+              "target": "Package",
+              "version": "[3.6.0, )"
+            },
+            "ExcelDataReader.DataSet": {
+              "target": "Package",
+              "version": "[3.6.0, )"
+            },
             "FastMember": {
               "target": "Package",
               "version": "[1.5.0, )"
             },
+            "Microsoft.Office.Interop.Excel": {
+              "target": "Package",
+              "version": "[15.0.4795.1000, )"
+            },
+            "System.Data.OleDb": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
             "System.Data.SQLite": {
               "target": "Package",
               "version": "[1.0.113.7, )"
+            },
+            "System.Text.Encoding.CodePages": {
+              "target": "Package",
+              "version": "[5.0.0, )"
             }
           },
           "imports": [
