@@ -491,10 +491,14 @@ namespace HarvestManagerSystem.view
             if (radioBtnHarvestByIndividual.Checked)
             {
                 ImportExcelButton.Enabled = true;
+                txtInputAllQuantity.Enabled = false;
+                txtInputBadQuantity.Enabled = false;
             }
             else
             {
                 ImportExcelButton.Enabled = false;
+                txtInputAllQuantity.Enabled = true;
+                txtInputBadQuantity.Enabled = true;
             }
         }
 
@@ -629,13 +633,44 @@ namespace HarvestManagerSystem.view
             try
             {
                 HarvesterList = Validation.readHarvestFile();
-                AddHarvestQuantityDataGridView.DataSource = HarvesterList;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            
+            if (!validateListEmployee(HarvesterList))
+            {
+                MessageBox.Show("la liste des employés sélectionnés n'est pas la même que la liste importée");
+                return;
+            }
+            AddHarvestQuantityDataGridView.DataSource = HarvesterList;
+        }
+
+        private bool validateListEmployee(List<HarvestQuantity> imported)
+        {
+
+            List<HarvestQuantity> selected = new List<HarvestQuantity>();
+
+            try
+            {
+                selected = mHarvestQuantityDAO.HarvestersData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            List<int> selectedID = new List<int>();
+            List<int> importedID = new List<int>();
+
+            foreach (HarvestQuantity q in selected) {
+                selectedID.Add(q.Employee.EmployeeId);
+            }
+            foreach (HarvestQuantity q in imported)
+            {
+                importedID.Add(q.Employee.EmployeeId);
+            }
+            return Validation.ScrambledEquals(importedID, selectedID);
         }
     }
 }

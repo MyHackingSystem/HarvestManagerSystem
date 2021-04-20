@@ -47,7 +47,7 @@ namespace HarvestManagerSystem.outil
                         HarvestQuantity hq = new HarvestQuantity();
                         try
                         {
-                            hq.HarvestQuantityId = (row.ItemArray[0].ToString() != null && !row.ItemArray[0].ToString().Equals("")) ? Convert.ToInt32(row.ItemArray[0].ToString()) : -1;
+                            hq.Employee.EmployeeId = (row.ItemArray[0].ToString() != null && !row.ItemArray[0].ToString().Equals("")) ? Convert.ToInt32(row.ItemArray[0].ToString()) : -1;
                             hq.Employee.FirstName = row.ItemArray[1].ToString();
                             hq.AllQuantity = (row.ItemArray[7].ToString() != null && !row.ItemArray[7].ToString().Equals("")) ? Convert.ToDouble(row.ItemArray[7].ToString()) : 0;
                         }
@@ -56,12 +56,17 @@ namespace HarvestManagerSystem.outil
                             MessageBox.Show(ex.Message);
                         }
 
-                        if (hq.AllQuantity > 0 && hq.HarvestQuantityId > 0) HarvesterList.Add(hq);
+                        if (hq.AllQuantity > 0 && hq.Employee.EmployeeId > 0) HarvesterList.Add(hq);
                     }
                     reader.Close();
                 }
             }
             return HarvesterList;
+        }
+
+        public static bool ScrambledEquals(List<int> x, List<int> y)
+        {
+            return !x.Except(y).Any();
         }
 
     }
