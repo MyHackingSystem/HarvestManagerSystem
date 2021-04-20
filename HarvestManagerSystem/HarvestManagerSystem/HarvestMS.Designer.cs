@@ -211,7 +211,6 @@ namespace HarvestManagerSystem
             this.EditTransportStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteTransportStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPageEmployee = new System.Windows.Forms.TabPage();
-            this.ReloadButton = new System.Windows.Forms.PictureBox();
             this.labelEmployeesTab = new System.Windows.Forms.Label();
             this.EmployeeDataGridView = new System.Windows.Forms.DataGridView();
             this.employeeStatusColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -313,7 +312,6 @@ namespace HarvestManagerSystem
             ((System.ComponentModel.ISupportInitialize)(this.TransportDataGridView)).BeginInit();
             this.TransportContextMenuStrip.SuspendLayout();
             this.tabPageEmployee.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ReloadButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EmployeeDataGridView)).BeginInit();
             this.EmployeeContextMenuStrip.SuspendLayout();
             this.tabPageSupplier.SuspendLayout();
@@ -643,7 +641,7 @@ namespace HarvestManagerSystem
             this.HQProductionProductDetailColumn,
             this.dataGridViewTextBoxColumn3});
             this.masterQuantityDataGridView.EnableHeadersVisualStyles = false;
-            this.masterQuantityDataGridView.Location = new System.Drawing.Point(0, 43);
+            this.masterQuantityDataGridView.Location = new System.Drawing.Point(2, 43);
             this.masterQuantityDataGridView.MultiSelect = false;
             this.masterQuantityDataGridView.Name = "masterQuantityDataGridView";
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -663,7 +661,7 @@ namespace HarvestManagerSystem
             this.masterQuantityDataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.masterQuantityDataGridView.RowTemplate.Height = 25;
             this.masterQuantityDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.masterQuantityDataGridView.Size = new System.Drawing.Size(1125, 194);
+            this.masterQuantityDataGridView.Size = new System.Drawing.Size(1118, 194);
             this.masterQuantityDataGridView.TabIndex = 18;
             this.masterQuantityDataGridView.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.masterQuantityDataGridView_CellMouseDown);
             this.masterQuantityDataGridView.SelectionChanged += new System.EventHandler(this.masterQuantityDataGridView_SelectionChanged);
@@ -813,13 +811,13 @@ namespace HarvestManagerSystem
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Orange;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(570, 12);
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(686, 14);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(25, 17);
+            this.label3.Size = new System.Drawing.Size(31, 19);
             this.label3.TabIndex = 17;
-            this.label3.Text = "To";
+            this.label3.Text = " =>";
             // 
             // SearchQuantityButton
             // 
@@ -830,7 +828,7 @@ namespace HarvestManagerSystem
             this.SearchQuantityButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SearchQuantityButton.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.SearchQuantityButton.ForeColor = System.Drawing.Color.Black;
-            this.SearchQuantityButton.Location = new System.Drawing.Point(864, 8);
+            this.SearchQuantityButton.Location = new System.Drawing.Point(974, 8);
             this.SearchQuantityButton.Name = "SearchQuantityButton";
             this.SearchQuantityButton.Size = new System.Drawing.Size(88, 26);
             this.SearchQuantityButton.TabIndex = 16;
@@ -841,7 +839,7 @@ namespace HarvestManagerSystem
             // endQuantitySearchDateTimePicker
             // 
             this.endQuantitySearchDateTimePicker.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.endQuantitySearchDateTimePicker.Location = new System.Drawing.Point(601, 9);
+            this.endQuantitySearchDateTimePicker.Location = new System.Drawing.Point(723, 9);
             this.endQuantitySearchDateTimePicker.Name = "endQuantitySearchDateTimePicker";
             this.endQuantitySearchDateTimePicker.Size = new System.Drawing.Size(234, 25);
             this.endQuantitySearchDateTimePicker.TabIndex = 15;
@@ -849,21 +847,21 @@ namespace HarvestManagerSystem
             // startQuantitySearchDateTimePicker
             // 
             this.startQuantitySearchDateTimePicker.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.startQuantitySearchDateTimePicker.Location = new System.Drawing.Point(328, 9);
+            this.startQuantitySearchDateTimePicker.Location = new System.Drawing.Point(444, 9);
             this.startQuantitySearchDateTimePicker.Name = "startQuantitySearchDateTimePicker";
             this.startQuantitySearchDateTimePicker.Size = new System.Drawing.Size(236, 25);
             this.startQuantitySearchDateTimePicker.TabIndex = 14;
             // 
             // label2
             // 
-            this.label2.BackColor = System.Drawing.Color.Orange;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(1, 0);
+            this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
             this.label2.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.label2.Size = new System.Drawing.Size(1120, 40);
+            this.label2.Size = new System.Drawing.Size(133, 40);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Heures";
+            this.label2.Text = "Quantity";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tabPageHours
@@ -886,23 +884,25 @@ namespace HarvestManagerSystem
             // ToLabel
             // 
             this.ToLabel.AutoSize = true;
-            this.ToLabel.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.ToLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ToLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ToLabel.ForeColor = System.Drawing.Color.White;
-            this.ToLabel.Location = new System.Drawing.Point(631, 8);
+            this.ToLabel.Location = new System.Drawing.Point(694, 11);
             this.ToLabel.Name = "ToLabel";
-            this.ToLabel.Size = new System.Drawing.Size(34, 21);
+            this.ToLabel.Size = new System.Drawing.Size(31, 19);
             this.ToLabel.TabIndex = 14;
-            this.ToLabel.Text = " to ";
+            this.ToLabel.Text = " =>";
             // 
             // SearchButton
             // 
-            this.SearchButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.SearchButton.FlatAppearance.BorderSize = 0;
+            this.SearchButton.BackColor = System.Drawing.Color.White;
+            this.SearchButton.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.SearchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SearchButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.SearchButton.ForeColor = System.Drawing.Color.Black;
-            this.SearchButton.Location = new System.Drawing.Point(959, 5);
+            this.SearchButton.Location = new System.Drawing.Point(975, 7);
             this.SearchButton.Name = "SearchButton";
-            this.SearchButton.Size = new System.Drawing.Size(123, 29);
+            this.SearchButton.Size = new System.Drawing.Size(88, 26);
             this.SearchButton.TabIndex = 13;
             this.SearchButton.Text = "Search";
             this.SearchButton.UseVisualStyleBackColor = false;
@@ -910,16 +910,19 @@ namespace HarvestManagerSystem
             // 
             // EndtSearchDateTimePicker
             // 
-            this.EndtSearchDateTimePicker.Location = new System.Drawing.Point(667, 5);
+            this.EndtSearchDateTimePicker.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.EndtSearchDateTimePicker.Location = new System.Drawing.Point(731, 8);
             this.EndtSearchDateTimePicker.Name = "EndtSearchDateTimePicker";
-            this.EndtSearchDateTimePicker.Size = new System.Drawing.Size(265, 29);
+            this.EndtSearchDateTimePicker.Size = new System.Drawing.Size(238, 25);
             this.EndtSearchDateTimePicker.TabIndex = 12;
             // 
             // StartSearchDateTimePicker
             // 
-            this.StartSearchDateTimePicker.Location = new System.Drawing.Point(359, 6);
+            this.StartSearchDateTimePicker.CalendarFont = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.StartSearchDateTimePicker.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.StartSearchDateTimePicker.Location = new System.Drawing.Point(452, 8);
             this.StartSearchDateTimePicker.Name = "StartSearchDateTimePicker";
-            this.StartSearchDateTimePicker.Size = new System.Drawing.Size(265, 29);
+            this.StartSearchDateTimePicker.Size = new System.Drawing.Size(237, 25);
             this.StartSearchDateTimePicker.TabIndex = 11;
             // 
             // detailsHoursDataGridView
@@ -1231,7 +1234,7 @@ namespace HarvestManagerSystem
             this.ProductionProductDetailColumn,
             this.QuantityPaymentColumn});
             this.masterHoursDataGridView.EnableHeadersVisualStyles = false;
-            this.masterHoursDataGridView.Location = new System.Drawing.Point(0, 41);
+            this.masterHoursDataGridView.Location = new System.Drawing.Point(2, 43);
             this.masterHoursDataGridView.MultiSelect = false;
             this.masterHoursDataGridView.Name = "masterHoursDataGridView";
             dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -1251,7 +1254,7 @@ namespace HarvestManagerSystem
             this.masterHoursDataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.masterHoursDataGridView.RowTemplate.Height = 25;
             this.masterHoursDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.masterHoursDataGridView.Size = new System.Drawing.Size(1125, 194);
+            this.masterHoursDataGridView.Size = new System.Drawing.Size(1118, 194);
             this.masterHoursDataGridView.TabIndex = 7;
             this.masterHoursDataGridView.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.masterHoursDataGridView_CellMouseDown);
             // 
@@ -1399,12 +1402,12 @@ namespace HarvestManagerSystem
             // 
             // labelHarvestHoursTab
             // 
-            this.labelHarvestHoursTab.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.labelHarvestHoursTab.BackColor = System.Drawing.Color.Transparent;
             this.labelHarvestHoursTab.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelHarvestHoursTab.Location = new System.Drawing.Point(1, 0);
+            this.labelHarvestHoursTab.Location = new System.Drawing.Point(3, 0);
             this.labelHarvestHoursTab.Name = "labelHarvestHoursTab";
             this.labelHarvestHoursTab.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.labelHarvestHoursTab.Size = new System.Drawing.Size(1120, 40);
+            this.labelHarvestHoursTab.Size = new System.Drawing.Size(103, 40);
             this.labelHarvestHoursTab.TabIndex = 6;
             this.labelHarvestHoursTab.Text = "Heures";
             this.labelHarvestHoursTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1487,7 +1490,7 @@ namespace HarvestManagerSystem
             this.CreditDataGridView.RowTemplate.ContextMenuStrip = this.CreditContextMenuStrip;
             this.CreditDataGridView.RowTemplate.Height = 25;
             this.CreditDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.CreditDataGridView.Size = new System.Drawing.Size(465, 515);
+            this.CreditDataGridView.Size = new System.Drawing.Size(450, 515);
             this.CreditDataGridView.TabIndex = 6;
             // 
             // CreditIdColumn
@@ -1549,12 +1552,12 @@ namespace HarvestManagerSystem
             // 
             // labelTransportCreditTab
             // 
-            this.labelTransportCreditTab.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.labelTransportCreditTab.BackColor = System.Drawing.Color.Transparent;
             this.labelTransportCreditTab.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelTransportCreditTab.Location = new System.Drawing.Point(0, 2);
             this.labelTransportCreditTab.Name = "labelTransportCreditTab";
             this.labelTransportCreditTab.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.labelTransportCreditTab.Size = new System.Drawing.Size(1120, 40);
+            this.labelTransportCreditTab.Size = new System.Drawing.Size(223, 40);
             this.labelTransportCreditTab.TabIndex = 5;
             this.labelTransportCreditTab.Text = "Transport / Credit";
             this.labelTransportCreditTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1605,7 +1608,7 @@ namespace HarvestManagerSystem
             this.TransportDataGridView.DefaultCellStyle = dataGridViewCellStyle22;
             this.TransportDataGridView.EnableHeadersVisualStyles = false;
             this.TransportDataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.TransportDataGridView.Location = new System.Drawing.Point(3, 45);
+            this.TransportDataGridView.Location = new System.Drawing.Point(6, 45);
             this.TransportDataGridView.Name = "TransportDataGridView";
             dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle23.BackColor = System.Drawing.Color.LightSkyBlue;
@@ -1626,7 +1629,7 @@ namespace HarvestManagerSystem
             this.TransportDataGridView.RowTemplate.ContextMenuStrip = this.TransportContextMenuStrip;
             this.TransportDataGridView.RowTemplate.Height = 25;
             this.TransportDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.TransportDataGridView.Size = new System.Drawing.Size(641, 515);
+            this.TransportDataGridView.Size = new System.Drawing.Size(628, 515);
             this.TransportDataGridView.TabIndex = 4;
             // 
             // TransportIdColumn
@@ -1703,7 +1706,6 @@ namespace HarvestManagerSystem
             // tabPageEmployee
             // 
             this.tabPageEmployee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tabPageEmployee.Controls.Add(this.ReloadButton);
             this.tabPageEmployee.Controls.Add(this.labelEmployeesTab);
             this.tabPageEmployee.Controls.Add(this.EmployeeDataGridView);
             this.tabPageEmployee.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -1714,26 +1716,14 @@ namespace HarvestManagerSystem
             this.tabPageEmployee.TabIndex = 3;
             this.tabPageEmployee.Text = "Employées";
             // 
-            // ReloadButton
-            // 
-            this.ReloadButton.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.ReloadButton.Image = global::HarvestManagerSystem.Properties.Resources.refresh;
-            this.ReloadButton.Location = new System.Drawing.Point(1078, 3);
-            this.ReloadButton.Name = "ReloadButton";
-            this.ReloadButton.Size = new System.Drawing.Size(36, 36);
-            this.ReloadButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ReloadButton.TabIndex = 2;
-            this.ReloadButton.TabStop = false;
-            this.ReloadButton.Click += new System.EventHandler(this.ReloadButton_Click);
-            // 
             // labelEmployeesTab
             // 
-            this.labelEmployeesTab.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.labelEmployeesTab.BackColor = System.Drawing.Color.Transparent;
             this.labelEmployeesTab.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelEmployeesTab.Location = new System.Drawing.Point(0, 1);
             this.labelEmployeesTab.Name = "labelEmployeesTab";
             this.labelEmployeesTab.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.labelEmployeesTab.Size = new System.Drawing.Size(1118, 40);
+            this.labelEmployeesTab.Size = new System.Drawing.Size(144, 40);
             this.labelEmployeesTab.TabIndex = 1;
             this.labelEmployeesTab.Text = "Employées";
             this.labelEmployeesTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1784,7 +1774,7 @@ namespace HarvestManagerSystem
             this.EmployeeDataGridView.DefaultCellStyle = dataGridViewCellStyle27;
             this.EmployeeDataGridView.EnableHeadersVisualStyles = false;
             this.EmployeeDataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.EmployeeDataGridView.Location = new System.Drawing.Point(5, 44);
+            this.EmployeeDataGridView.Location = new System.Drawing.Point(16, 44);
             this.EmployeeDataGridView.MultiSelect = false;
             this.EmployeeDataGridView.Name = "EmployeeDataGridView";
             dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -1806,7 +1796,7 @@ namespace HarvestManagerSystem
             this.EmployeeDataGridView.RowTemplate.ContextMenuStrip = this.EmployeeContextMenuStrip;
             this.EmployeeDataGridView.RowTemplate.Height = 25;
             this.EmployeeDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.EmployeeDataGridView.Size = new System.Drawing.Size(1120, 515);
+            this.EmployeeDataGridView.Size = new System.Drawing.Size(1088, 515);
             this.EmployeeDataGridView.TabIndex = 0;
             this.EmployeeDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.EmployeeDataGridView_CellEndEdit);
             this.EmployeeDataGridView.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.employeeDataGridView_CellMouseUp);
@@ -1955,7 +1945,7 @@ namespace HarvestManagerSystem
             this.SupplyDataGridView.DefaultCellStyle = dataGridViewCellStyle32;
             this.SupplyDataGridView.EnableHeadersVisualStyles = false;
             this.SupplyDataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.SupplyDataGridView.Location = new System.Drawing.Point(637, 45);
+            this.SupplyDataGridView.Location = new System.Drawing.Point(638, 45);
             this.SupplyDataGridView.Name = "SupplyDataGridView";
             dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle33.BackColor = System.Drawing.Color.LightSkyBlue;
@@ -2029,12 +2019,12 @@ namespace HarvestManagerSystem
             // 
             // labelSuuplierTab
             // 
-            this.labelSuuplierTab.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.labelSuuplierTab.BackColor = System.Drawing.Color.Transparent;
             this.labelSuuplierTab.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelSuuplierTab.Location = new System.Drawing.Point(-2, 2);
             this.labelSuuplierTab.Name = "labelSuuplierTab";
             this.labelSuuplierTab.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.labelSuuplierTab.Size = new System.Drawing.Size(1118, 40);
+            this.labelSuuplierTab.Size = new System.Drawing.Size(169, 40);
             this.labelSuuplierTab.TabIndex = 3;
             this.labelSuuplierTab.Text = "Fournisseurs";
             this.labelSuuplierTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2103,7 +2093,7 @@ namespace HarvestManagerSystem
             this.SupplierDataGridView.RowTemplate.ContextMenuStrip = this.SupplierContextMenuStrip;
             this.SupplierDataGridView.RowTemplate.Height = 25;
             this.SupplierDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.SupplierDataGridView.Size = new System.Drawing.Size(631, 515);
+            this.SupplierDataGridView.Size = new System.Drawing.Size(638, 515);
             this.SupplierDataGridView.TabIndex = 2;
             this.SupplierDataGridView.SelectionChanged += new System.EventHandler(this.SupplierDataGridView_SelectionChanged);
             // 
@@ -2215,7 +2205,7 @@ namespace HarvestManagerSystem
             this.SeasonDataGridView.DefaultCellStyle = dataGridViewCellStyle42;
             this.SeasonDataGridView.EnableHeadersVisualStyles = false;
             this.SeasonDataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.SeasonDataGridView.Location = new System.Drawing.Point(655, 44);
+            this.SeasonDataGridView.Location = new System.Drawing.Point(653, 44);
             this.SeasonDataGridView.MultiSelect = false;
             this.SeasonDataGridView.Name = "SeasonDataGridView";
             dataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -2291,12 +2281,12 @@ namespace HarvestManagerSystem
             // 
             // labelFarmsTab
             // 
-            this.labelFarmsTab.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.labelFarmsTab.BackColor = System.Drawing.Color.Transparent;
             this.labelFarmsTab.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelFarmsTab.Location = new System.Drawing.Point(-2, 2);
             this.labelFarmsTab.Name = "labelFarmsTab";
             this.labelFarmsTab.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.labelFarmsTab.Size = new System.Drawing.Size(1120, 40);
+            this.labelFarmsTab.Size = new System.Drawing.Size(121, 40);
             this.labelFarmsTab.TabIndex = 3;
             this.labelFarmsTab.Text = "Champs";
             this.labelFarmsTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2364,7 +2354,7 @@ namespace HarvestManagerSystem
             this.FarmDataGridView.RowTemplate.ContextMenuStrip = this.FarmContextMenuStrip;
             this.FarmDataGridView.RowTemplate.Height = 25;
             this.FarmDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.FarmDataGridView.Size = new System.Drawing.Size(646, 515);
+            this.FarmDataGridView.Size = new System.Drawing.Size(644, 515);
             this.FarmDataGridView.TabIndex = 2;
             this.FarmDataGridView.SelectionChanged += new System.EventHandler(this.FarmtDataGridView_SelectionChanged);
             // 
@@ -2572,12 +2562,12 @@ namespace HarvestManagerSystem
             // 
             // labelProductsTab
             // 
-            this.labelProductsTab.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.labelProductsTab.BackColor = System.Drawing.Color.Transparent;
             this.labelProductsTab.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelProductsTab.Location = new System.Drawing.Point(0, 2);
             this.labelProductsTab.Name = "labelProductsTab";
             this.labelProductsTab.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.labelProductsTab.Size = new System.Drawing.Size(1120, 40);
+            this.labelProductsTab.Size = new System.Drawing.Size(123, 40);
             this.labelProductsTab.TabIndex = 6;
             this.labelProductsTab.Text = "Produits";
             this.labelProductsTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2929,7 +2919,6 @@ namespace HarvestManagerSystem
             ((System.ComponentModel.ISupportInitialize)(this.TransportDataGridView)).EndInit();
             this.TransportContextMenuStrip.ResumeLayout(false);
             this.tabPageEmployee.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ReloadButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EmployeeDataGridView)).EndInit();
             this.EmployeeContextMenuStrip.ResumeLayout(false);
             this.tabPageSupplier.ResumeLayout(false);
@@ -2990,7 +2979,6 @@ namespace HarvestManagerSystem
         private System.Windows.Forms.ToolStripMenuItem EditEmployeeStrip;
         private System.Windows.Forms.ToolStripMenuItem deleteStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteFromEmployeeTable;
-        private System.Windows.Forms.PictureBox ReloadButton;
         private System.Windows.Forms.DataGridViewCheckBoxColumn employeeStatusColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn employeeIdColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn employeeFullNameColumn;
