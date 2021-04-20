@@ -29,7 +29,7 @@ namespace HarvestManagerSystem.view
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ImportExcelButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -135,6 +135,7 @@ namespace HarvestManagerSystem.view
             this.ImportExcelButton.TabIndex = 19;
             this.ImportExcelButton.Text = "Import Excel";
             this.ImportExcelButton.UseVisualStyleBackColor = true;
+            this.ImportExcelButton.Click += new System.EventHandler(this.ImportExcelButton_Click);
             // 
             // groupBox3
             // 
@@ -353,14 +354,14 @@ namespace HarvestManagerSystem.view
             this.DamageGeneralColumn,
             this.HarvestTypeColumn,
             this.TransportStatusByAmountColumn});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.AddHarvestQuantityDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.AddHarvestQuantityDataGridView.DefaultCellStyle = dataGridViewCellStyle1;
             this.AddHarvestQuantityDataGridView.Location = new System.Drawing.Point(218, 16);
             this.AddHarvestQuantityDataGridView.MultiSelect = false;
             this.AddHarvestQuantityDataGridView.Name = "AddHarvestQuantityDataGridView";

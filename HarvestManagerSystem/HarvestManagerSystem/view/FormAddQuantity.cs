@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using HarvestManagerSystem.database;
 using HarvestManagerSystem.model;
 using System.Linq;
+using HarvestManagerSystem.outil;
 
 namespace HarvestManagerSystem.view
 {
@@ -37,6 +38,7 @@ namespace HarvestManagerSystem.view
 
         public FormAddQuantity(HarvestMS harvestMS)
         {
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
             this.harvestMS = harvestMS;
             InitializeComponent();
         }
@@ -105,6 +107,7 @@ namespace HarvestManagerSystem.view
             }
             else
             {
+
                 ValidateAddHarvestQuantityByGroup();
             }
            
@@ -122,6 +125,21 @@ namespace HarvestManagerSystem.view
 
         private void ValidateAddHarvestQuantityByGroup()
         {
+            double allQuantity = 0.0;
+            double badQuantity = 0.0;
+
+            try
+            {
+                allQuantity = Convert.ToDouble(txtInputAllQuantity.Text);
+                badQuantity = Convert.ToDouble(txtInputBadQuantity.Text);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                MessageBox.Show("Vérifier les valeurs saisies");
+                return;
+            }
+
             PreferencesDAO preferencesDAO = PreferencesDAO.getInstance();
             _ = new Preferences();
             Preferences pref;
@@ -143,19 +161,6 @@ namespace HarvestManagerSystem.view
             double totalAllQuantity = 0;
             double totalBadQuantity = 0.0;
             double totalGoodQuantity = 0.0;
-            double allQuantity = 0.0;
-            double badQuantity = 0.0;
-
-            try
-            {
-                allQuantity = Convert.ToDouble(txtInputAllQuantity.Text);
-                badQuantity = Convert.ToDouble(txtInputBadQuantity.Text);
-            }catch(Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                MessageBox.Show("Vérifier les valeurs saisies");
-                return;
-            }
 
             double allQuantityEmp = allQuantity / totalEmployee;
             double badQuantityEmp = badQuantity / totalEmployee;
@@ -195,7 +200,56 @@ namespace HarvestManagerSystem.view
 
         private void ValidateAddHarvestQuantityByIndividual()
         {
+            PreferencesDAO preferencesDAO = PreferencesDAO.getInstance();
+            _ = new Preferences();
+            Preferences pref;
+            try
+            {
+                pref = preferencesDAO.getPreferences();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Une erreur est survenue, essayez de cliquer à nouveau sur le bouton de validation ");
+                return;
+            }
 
+            double penaltyGeneral = pref.PenaltyGeneral;
+            double damageGeneral = pref.DamageGeneral;
+            double transPrice = pref.TransportPrice;
+            int totalEmployee = HarvesterList.Count;
+            double totalTransport = 0.0; double totalCredit = 0.0; double totalPayment = 0.0;
+            double totalAllQuantity = 0;
+            double totalBadQuantity = 0.0;
+            double totalGoodQuantity = 0.0;
+
+            double employeePrice = mProductDetailDictionary.GetValueOrDefault(ProductCodeHarvestQuantityComboBox.GetItemText(ProductCodeHarvestQuantityComboBox.SelectedItem)).PriceEmployee;
+            double companyPrice = mProductDetailDictionary.GetValueOrDefault(ProductCodeHarvestQuantityComboBox.GetItemText(ProductCodeHarvestQuantityComboBox.SelectedItem)).PriceCompany;
+
+            foreach (HarvestQuantity hq in HarvesterList)
+            {
+                hq.ProductPrice = employeePrice;
+                hq.PenaltyGeneral = penaltyGeneral;
+                hq.DamageGeneral = damageGeneral;
+                totalAllQuantity += hq.GoodQuantity;
+                totalBadQuantity += hq.BadQuantity;
+                totalGoodQuantity += hq.GoodQuantity;
+                hq.Transport.TransportAmount = (hq.TransportStatus) ? transPrice : 0;
+                totalTransport += hq.Transport.TransportAmount;
+                totalCredit += hq.Credit.CreditAmount;
+                totalPayment += hq.Payment;
+                hq.HarvestType = getHarvestType();
+            }
+
+            TotalEmployeeTextBox.Text = Convert.ToString(totalEmployee);
+            TotalQuantityTextBox.Text = Convert.ToString(totalAllQuantity);
+            txtTotalBadQuantity.Text = Convert.ToString(totalBadQuantity);
+            txtTotalGoodQuantity.Text = Convert.ToString(totalGoodQuantity);
+            ProductPriceTextBox.Text = Convert.ToString(employeePrice);
+            TotalTransportTextBox.Text = Convert.ToString(totalTransport);
+            TotalCreditTextBox.Text = Convert.ToString(totalCredit);
+            TotalPaymentTextBox.Text = Convert.ToString(totalPayment);
+            mProduction.Price = companyPrice;
+            AddHarvestQuantityDataGridView.Refresh();
         }
 
         
@@ -567,8 +621,21 @@ namespace HarvestManagerSystem.view
             wipeFields();
         }
 
+
         #endregion
 
-
+        private void ImportExcelButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                HarvesterList = Validation.readHarvestFile();
+                AddHarvestQuantityDataGridView.DataSource = HarvesterList;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
+        }
     }
 }
