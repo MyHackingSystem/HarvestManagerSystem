@@ -31,5 +31,8 @@
     <Compile Update="view\FormAddTransport.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="view\FormRapport.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

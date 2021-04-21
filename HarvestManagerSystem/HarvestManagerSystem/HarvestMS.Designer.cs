@@ -299,6 +299,7 @@ namespace HarvestManagerSystem
             this.QuantityContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.EditQuantityStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteQuantityStrip = new System.Windows.Forms.ToolStripMenuItem();
+            this.RapportButton = new System.Windows.Forms.PictureBox();
             this.tabProduction.SuspendLayout();
             this.tabPageQuantity.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.detailQuantityDataGridView)).BeginInit();
@@ -335,6 +336,7 @@ namespace HarvestManagerSystem
             ((System.ComponentModel.ISupportInitialize)(this.AppLogo)).BeginInit();
             this.statusStripProgressbar.SuspendLayout();
             this.QuantityContextMenuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RapportButton)).BeginInit();
             this.SuspendLayout();
             // 
             // tabProduction
@@ -2888,12 +2890,24 @@ namespace HarvestManagerSystem
             this.DeleteQuantityStrip.Size = new System.Drawing.Size(129, 22);
             this.DeleteQuantityStrip.Text = "Supprimer";
             // 
+            // RapportButton
+            // 
+            this.RapportButton.Image = global::HarvestManagerSystem.Properties.Resources.report;
+            this.RapportButton.Location = new System.Drawing.Point(1183, 517);
+            this.RapportButton.Name = "RapportButton";
+            this.RapportButton.Size = new System.Drawing.Size(63, 72);
+            this.RapportButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.RapportButton.TabIndex = 12;
+            this.RapportButton.TabStop = false;
+            this.RapportButton.Click += new System.EventHandler(this.RapportButton_Click);
+            // 
             // HarvestMS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1284, 661);
+            this.Controls.Add(this.RapportButton);
             this.Controls.Add(this.statusStripProgressbar);
             this.Controls.Add(this.AppLogo);
             this.Controls.Add(this.label1);
@@ -2943,6 +2957,7 @@ namespace HarvestManagerSystem
             this.statusStripProgressbar.ResumeLayout(false);
             this.statusStripProgressbar.PerformLayout();
             this.QuantityContextMenuStrip.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.RapportButton)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3166,6 +3181,7 @@ namespace HarvestManagerSystem
         private System.Windows.Forms.ContextMenuStrip QuantityContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem EditQuantityStrip;
         private System.Windows.Forms.ToolStripMenuItem DeleteQuantityStrip;
+        private System.Windows.Forms.PictureBox RapportButton;
     }
 }
 
