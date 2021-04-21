@@ -52,6 +52,7 @@ namespace HarvestManagerSystem.view
             // 
             this.fxEmployeeStatus.AutoSize = true;
             this.fxEmployeeStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.fxEmployeeStatus.ForeColor = System.Drawing.Color.White;
             this.fxEmployeeStatus.Location = new System.Drawing.Point(112, 376);
             this.fxEmployeeStatus.Name = "fxEmployeeStatus";
             this.fxEmployeeStatus.Size = new System.Drawing.Size(55, 25);
@@ -66,7 +67,7 @@ namespace HarvestManagerSystem.view
             this.clearFieldsButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Moccasin;
             this.clearFieldsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
             this.clearFieldsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.clearFieldsButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.clearFieldsButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.clearFieldsButton.Location = new System.Drawing.Point(216, 455);
             this.clearFieldsButton.Name = "clearFieldsButton";
             this.clearFieldsButton.Size = new System.Drawing.Size(120, 30);
@@ -103,7 +104,7 @@ namespace HarvestManagerSystem.view
             this.handleSaveButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Moccasin;
             this.handleSaveButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
             this.handleSaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.handleSaveButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.handleSaveButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.handleSaveButton.Location = new System.Drawing.Point(58, 455);
             this.handleSaveButton.Name = "handleSaveButton";
             this.handleSaveButton.Size = new System.Drawing.Size(120, 30);
@@ -194,7 +195,7 @@ namespace HarvestManagerSystem.view
             this.handleCancelButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Moccasin;
             this.handleCancelButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
             this.handleCancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.handleCancelButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.handleCancelButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.handleCancelButton.Location = new System.Drawing.Point(302, 519);
             this.handleCancelButton.Name = "handleCancelButton";
             this.handleCancelButton.Size = new System.Drawing.Size(70, 30);

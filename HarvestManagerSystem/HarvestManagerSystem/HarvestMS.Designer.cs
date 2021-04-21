@@ -89,6 +89,7 @@ namespace HarvestManagerSystem
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle57 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle58 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle59 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HarvestMS));
             this.tabProduction = new System.Windows.Forms.TabControl();
             this.tabPageQuantity = new System.Windows.Forms.TabPage();
             this.detailQuantityDataGridView = new System.Windows.Forms.DataGridView();
@@ -300,6 +301,7 @@ namespace HarvestManagerSystem
             this.EditQuantityStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteQuantityStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.RapportButton = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.tabProduction.SuspendLayout();
             this.tabPageQuantity.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.detailQuantityDataGridView)).BeginInit();
@@ -2892,14 +2894,26 @@ namespace HarvestManagerSystem
             // 
             // RapportButton
             // 
+            this.RapportButton.BackColor = System.Drawing.Color.Lime;
+            this.RapportButton.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.RapportButton.Image = global::HarvestManagerSystem.Properties.Resources.report;
-            this.RapportButton.Location = new System.Drawing.Point(1183, 517);
+            this.RapportButton.Location = new System.Drawing.Point(1180, 492);
             this.RapportButton.Name = "RapportButton";
+            this.RapportButton.Padding = new System.Windows.Forms.Padding(5);
             this.RapportButton.Size = new System.Drawing.Size(63, 72);
             this.RapportButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.RapportButton.TabIndex = 12;
             this.RapportButton.TabStop = false;
             this.RapportButton.Click += new System.EventHandler(this.RapportButton_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(1185, 473);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(54, 15);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Rapports";
             // 
             // HarvestMS
             // 
@@ -2907,6 +2921,7 @@ namespace HarvestManagerSystem
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1284, 661);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.RapportButton);
             this.Controls.Add(this.statusStripProgressbar);
             this.Controls.Add(this.AppLogo);
@@ -2914,6 +2929,7 @@ namespace HarvestManagerSystem
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tabProduction);
             this.ForeColor = System.Drawing.Color.White;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "HarvestMS";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Harvest Manager System";
@@ -3182,6 +3198,7 @@ namespace HarvestManagerSystem
         private System.Windows.Forms.ToolStripMenuItem EditQuantityStrip;
         private System.Windows.Forms.ToolStripMenuItem DeleteQuantityStrip;
         private System.Windows.Forms.PictureBox RapportButton;
+        private System.Windows.Forms.Label label4;
     }
 }
 
