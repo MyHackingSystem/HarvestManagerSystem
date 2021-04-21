@@ -553,7 +553,7 @@ namespace HarvestManagerSystem.view
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label12.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label12.Location = new System.Drawing.Point(308, 38);
+            this.label12.Location = new System.Drawing.Point(313, 38);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(68, 19);
             this.label12.TabIndex = 24;
@@ -562,9 +562,9 @@ namespace HarvestManagerSystem.view
             // txtTotalGoodQuantity
             // 
             this.txtTotalGoodQuantity.Enabled = false;
-            this.txtTotalGoodQuantity.Location = new System.Drawing.Point(308, 59);
+            this.txtTotalGoodQuantity.Location = new System.Drawing.Point(313, 59);
             this.txtTotalGoodQuantity.Name = "txtTotalGoodQuantity";
-            this.txtTotalGoodQuantity.Size = new System.Drawing.Size(96, 23);
+            this.txtTotalGoodQuantity.Size = new System.Drawing.Size(90, 23);
             this.txtTotalGoodQuantity.TabIndex = 25;
             // 
             // label6
@@ -572,7 +572,7 @@ namespace HarvestManagerSystem.view
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label6.Location = new System.Drawing.Point(201, 38);
+            this.label6.Location = new System.Drawing.Point(219, 38);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(79, 19);
             this.label6.TabIndex = 22;
@@ -581,20 +581,20 @@ namespace HarvestManagerSystem.view
             // txtTotalBadQuantity
             // 
             this.txtTotalBadQuantity.Enabled = false;
-            this.txtTotalBadQuantity.Location = new System.Drawing.Point(201, 59);
+            this.txtTotalBadQuantity.Location = new System.Drawing.Point(219, 59);
             this.txtTotalBadQuantity.Name = "txtTotalBadQuantity";
-            this.txtTotalBadQuantity.Size = new System.Drawing.Size(96, 23);
+            this.txtTotalBadQuantity.Size = new System.Drawing.Size(90, 23);
             this.txtTotalBadQuantity.TabIndex = 23;
             // 
             // ApplyHarvestQuantityButton
             // 
             this.ApplyHarvestQuantityButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ApplyHarvestQuantityButton.ForeColor = System.Drawing.Color.Red;
-            this.ApplyHarvestQuantityButton.Location = new System.Drawing.Point(811, 48);
+            this.ApplyHarvestQuantityButton.Location = new System.Drawing.Point(815, 48);
             this.ApplyHarvestQuantityButton.Name = "ApplyHarvestQuantityButton";
             this.ApplyHarvestQuantityButton.Size = new System.Drawing.Size(124, 41);
             this.ApplyHarvestQuantityButton.TabIndex = 13;
-            this.ApplyHarvestQuantityButton.Text = "Apply";
+            this.ApplyHarvestQuantityButton.Text = "Appliquer ";
             this.ApplyHarvestQuantityButton.UseVisualStyleBackColor = true;
             this.ApplyHarvestQuantityButton.Click += new System.EventHandler(this.ApplyHarvestQuantityButton_Click);
             // 
@@ -603,7 +603,7 @@ namespace HarvestManagerSystem.view
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label10.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label10.Location = new System.Drawing.Point(703, 38);
+            this.label10.Location = new System.Drawing.Point(693, 38);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(74, 19);
             this.label10.TabIndex = 11;
@@ -612,9 +612,9 @@ namespace HarvestManagerSystem.view
             // TotalPaymentTextBox
             // 
             this.TotalPaymentTextBox.Enabled = false;
-            this.TotalPaymentTextBox.Location = new System.Drawing.Point(701, 59);
+            this.TotalPaymentTextBox.Location = new System.Drawing.Point(691, 59);
             this.TotalPaymentTextBox.Name = "TotalPaymentTextBox";
-            this.TotalPaymentTextBox.Size = new System.Drawing.Size(91, 23);
+            this.TotalPaymentTextBox.Size = new System.Drawing.Size(90, 23);
             this.TotalPaymentTextBox.TabIndex = 20;
             // 
             // label11
@@ -622,7 +622,7 @@ namespace HarvestManagerSystem.view
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label11.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label11.Location = new System.Drawing.Point(612, 38);
+            this.label11.Location = new System.Drawing.Point(600, 38);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(79, 19);
             this.label11.TabIndex = 9;
@@ -631,9 +631,9 @@ namespace HarvestManagerSystem.view
             // TotalCreditTextBox
             // 
             this.TotalCreditTextBox.Enabled = false;
-            this.TotalCreditTextBox.Location = new System.Drawing.Point(612, 59);
+            this.TotalCreditTextBox.Location = new System.Drawing.Point(597, 59);
             this.TotalCreditTextBox.Name = "TotalCreditTextBox";
-            this.TotalCreditTextBox.Size = new System.Drawing.Size(79, 23);
+            this.TotalCreditTextBox.Size = new System.Drawing.Size(90, 23);
             this.TotalCreditTextBox.TabIndex = 19;
             // 
             // label8
@@ -641,7 +641,7 @@ namespace HarvestManagerSystem.view
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label8.Location = new System.Drawing.Point(500, 38);
+            this.label8.Location = new System.Drawing.Point(498, 38);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(100, 19);
             this.label8.TabIndex = 7;
@@ -650,9 +650,9 @@ namespace HarvestManagerSystem.view
             // TotalTransportTextBox
             // 
             this.TotalTransportTextBox.Enabled = false;
-            this.TotalTransportTextBox.Location = new System.Drawing.Point(500, 59);
+            this.TotalTransportTextBox.Location = new System.Drawing.Point(502, 59);
             this.TotalTransportTextBox.Name = "TotalTransportTextBox";
-            this.TotalTransportTextBox.Size = new System.Drawing.Size(100, 23);
+            this.TotalTransportTextBox.Size = new System.Drawing.Size(90, 23);
             this.TotalTransportTextBox.TabIndex = 18;
             // 
             // label9
@@ -660,7 +660,7 @@ namespace HarvestManagerSystem.view
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label9.Location = new System.Drawing.Point(415, 38);
+            this.label9.Location = new System.Drawing.Point(408, 38);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(31, 19);
             this.label9.TabIndex = 5;
@@ -669,9 +669,9 @@ namespace HarvestManagerSystem.view
             // ProductPriceTextBox
             // 
             this.ProductPriceTextBox.Enabled = false;
-            this.ProductPriceTextBox.Location = new System.Drawing.Point(415, 59);
+            this.ProductPriceTextBox.Location = new System.Drawing.Point(407, 59);
             this.ProductPriceTextBox.Name = "ProductPriceTextBox";
-            this.ProductPriceTextBox.Size = new System.Drawing.Size(73, 23);
+            this.ProductPriceTextBox.Size = new System.Drawing.Size(90, 23);
             this.ProductPriceTextBox.TabIndex = 17;
             // 
             // label7
@@ -679,7 +679,7 @@ namespace HarvestManagerSystem.view
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label7.Location = new System.Drawing.Point(94, 38);
+            this.label7.Location = new System.Drawing.Point(118, 38);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(102, 19);
             this.label7.TabIndex = 3;
@@ -688,7 +688,7 @@ namespace HarvestManagerSystem.view
             // TotalQuantityTextBox
             // 
             this.TotalQuantityTextBox.Enabled = false;
-            this.TotalQuantityTextBox.Location = new System.Drawing.Point(94, 59);
+            this.TotalQuantityTextBox.Location = new System.Drawing.Point(118, 59);
             this.TotalQuantityTextBox.Name = "TotalQuantityTextBox";
             this.TotalQuantityTextBox.Size = new System.Drawing.Size(96, 23);
             this.TotalQuantityTextBox.TabIndex = 16;
@@ -698,18 +698,18 @@ namespace HarvestManagerSystem.view
             this.totalEmployeeLabel.AutoSize = true;
             this.totalEmployeeLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.totalEmployeeLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.totalEmployeeLabel.Location = new System.Drawing.Point(14, 38);
+            this.totalEmployeeLabel.Location = new System.Drawing.Point(24, 38);
             this.totalEmployeeLabel.Name = "totalEmployeeLabel";
-            this.totalEmployeeLabel.Size = new System.Drawing.Size(49, 19);
+            this.totalEmployeeLabel.Size = new System.Drawing.Size(87, 19);
             this.totalEmployeeLabel.TabIndex = 1;
-            this.totalEmployeeLabel.Text = "N.Emp";
+            this.totalEmployeeLabel.Text = "N.Employées";
             // 
             // TotalEmployeeTextBox
             // 
             this.TotalEmployeeTextBox.Enabled = false;
-            this.TotalEmployeeTextBox.Location = new System.Drawing.Point(14, 59);
+            this.TotalEmployeeTextBox.Location = new System.Drawing.Point(24, 59);
             this.TotalEmployeeTextBox.Name = "TotalEmployeeTextBox";
-            this.TotalEmployeeTextBox.Size = new System.Drawing.Size(69, 23);
+            this.TotalEmployeeTextBox.Size = new System.Drawing.Size(90, 23);
             this.TotalEmployeeTextBox.TabIndex = 15;
             // 
             // FormAddQuantity

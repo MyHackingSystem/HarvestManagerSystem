@@ -257,7 +257,7 @@ namespace HarvestManagerSystem
 
         #endregion
 
-        #region HOURS CODE
+        #region **************************************************** HOURS CODE ****************************************************************************
 
 
         List<Production> listHoursProduction = new List<Production>();
@@ -1202,5 +1202,10 @@ MessageBoxIcon.Information);
             formPreferences.ShowForm();
         }
 
+        private void RapportButton_Click(object sender, EventArgs e)
+        {
+            FormRapport rapport = FormRapport.getInstance();
+            rapport.ShowForm();
+        }
     }
 }

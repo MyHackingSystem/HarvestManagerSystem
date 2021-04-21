@@ -16,8 +16,6 @@ namespace HarvestManagerSystem.view
     {
 
         private bool isEditHarvestQuantity = false;
-        private TransportDAO transportDAO = TransportDAO.getInstance();
-        private EmployeeDAO employeeDAO = EmployeeDAO.getInstance();
         private FarmDAO farmDAO = FarmDAO.getInstance();
         private SupplierDAO supplierDAO = SupplierDAO.getInstance();
         private ProductDAO productDAO = ProductDAO.getInstance();
@@ -623,8 +621,8 @@ namespace HarvestManagerSystem.view
         private void ClearHarvestButton_Click(object sender, EventArgs e)
         {
             wipeFields();
+            SortDisplayIndex();
         }
-
 
         #endregion
 
@@ -644,6 +642,7 @@ namespace HarvestManagerSystem.view
                 return;
             }
             AddHarvestQuantityDataGridView.DataSource = HarvesterList;
+            SortDisplayIndex();
         }
 
         private bool validateListEmployee(List<HarvestQuantity> imported)

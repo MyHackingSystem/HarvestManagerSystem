@@ -29,7 +29,7 @@ namespace HarvestManagerSystem.view
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ClearHarvestHoursButton = new System.Windows.Forms.Button();
             this.ValidateHarvestHoursButton = new System.Windows.Forms.Button();
@@ -124,6 +124,8 @@ namespace HarvestManagerSystem.view
             // 
             // ClearHarvestHoursButton
             // 
+            this.ClearHarvestHoursButton.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ClearHarvestHoursButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.ClearHarvestHoursButton.Location = new System.Drawing.Point(109, 513);
             this.ClearHarvestHoursButton.Name = "ClearHarvestHoursButton";
             this.ClearHarvestHoursButton.Size = new System.Drawing.Size(84, 34);
@@ -134,6 +136,8 @@ namespace HarvestManagerSystem.view
             // 
             // ValidateHarvestHoursButton
             // 
+            this.ValidateHarvestHoursButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ValidateHarvestHoursButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.ValidateHarvestHoursButton.Location = new System.Drawing.Point(7, 513);
             this.ValidateHarvestHoursButton.Name = "ValidateHarvestHoursButton";
             this.ValidateHarvestHoursButton.Size = new System.Drawing.Size(90, 34);
@@ -329,11 +333,13 @@ namespace HarvestManagerSystem.view
             // 
             // ApplyHarvestHoursButton
             // 
+            this.ApplyHarvestHoursButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ApplyHarvestHoursButton.ForeColor = System.Drawing.Color.Red;
             this.ApplyHarvestHoursButton.Location = new System.Drawing.Point(784, 49);
             this.ApplyHarvestHoursButton.Name = "ApplyHarvestHoursButton";
             this.ApplyHarvestHoursButton.Size = new System.Drawing.Size(124, 41);
-            this.ApplyHarvestHoursButton.TabIndex = 21;
-            this.ApplyHarvestHoursButton.Text = "Apply";
+            this.ApplyHarvestHoursButton.TabIndex = 14;
+            this.ApplyHarvestHoursButton.Text = "Appliquer ";
             this.ApplyHarvestHoursButton.UseVisualStyleBackColor = true;
             this.ApplyHarvestHoursButton.Click += new System.EventHandler(this.ApplyHarvestHoursButton_Click);
             // 
@@ -344,12 +350,13 @@ namespace HarvestManagerSystem.view
             this.label10.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label10.Location = new System.Drawing.Point(620, 38);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(74, 19);
+            this.label10.Size = new System.Drawing.Size(96, 19);
             this.label10.TabIndex = 11;
-            this.label10.Text = "Total E.Pay";
+            this.label10.Text = "Total E.Charge";
             // 
             // TotalPaymentTextBox
             // 
+            this.TotalPaymentTextBox.Enabled = false;
             this.TotalPaymentTextBox.Location = new System.Drawing.Point(618, 59);
             this.TotalPaymentTextBox.Name = "TotalPaymentTextBox";
             this.TotalPaymentTextBox.Size = new System.Drawing.Size(100, 23);
@@ -368,6 +375,7 @@ namespace HarvestManagerSystem.view
             // 
             // TotalCreditTextBox
             // 
+            this.TotalCreditTextBox.Enabled = false;
             this.TotalCreditTextBox.Location = new System.Drawing.Point(505, 59);
             this.TotalCreditTextBox.Name = "TotalCreditTextBox";
             this.TotalCreditTextBox.Size = new System.Drawing.Size(100, 23);
@@ -386,6 +394,7 @@ namespace HarvestManagerSystem.view
             // 
             // TotalTransportTextBox
             // 
+            this.TotalTransportTextBox.Enabled = false;
             this.TotalTransportTextBox.Location = new System.Drawing.Point(393, 59);
             this.TotalTransportTextBox.Name = "TotalTransportTextBox";
             this.TotalTransportTextBox.Size = new System.Drawing.Size(100, 23);
@@ -396,15 +405,16 @@ namespace HarvestManagerSystem.view
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label9.Location = new System.Drawing.Point(280, 38);
+            this.label9.Location = new System.Drawing.Point(281, 38);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(73, 19);
+            this.label9.Size = new System.Drawing.Size(72, 19);
             this.label9.TabIndex = 5;
-            this.label9.Text = "Hour Price";
+            this.label9.Text = "Prix Heure";
             // 
             // HourPriceTextBox
             // 
-            this.HourPriceTextBox.Location = new System.Drawing.Point(280, 59);
+            this.HourPriceTextBox.Enabled = false;
+            this.HourPriceTextBox.Location = new System.Drawing.Point(281, 59);
             this.HourPriceTextBox.Name = "HourPriceTextBox";
             this.HourPriceTextBox.Size = new System.Drawing.Size(100, 23);
             this.HourPriceTextBox.TabIndex = 17;
@@ -422,6 +432,7 @@ namespace HarvestManagerSystem.view
             // 
             // TotalMinutesTextBox
             // 
+            this.TotalMinutesTextBox.Enabled = false;
             this.TotalMinutesTextBox.Location = new System.Drawing.Point(170, 59);
             this.TotalMinutesTextBox.Name = "TotalMinutesTextBox";
             this.TotalMinutesTextBox.Size = new System.Drawing.Size(100, 23);
@@ -434,12 +445,13 @@ namespace HarvestManagerSystem.view
             this.totalEmployeeLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.totalEmployeeLabel.Location = new System.Drawing.Point(57, 38);
             this.totalEmployeeLabel.Name = "totalEmployeeLabel";
-            this.totalEmployeeLabel.Size = new System.Drawing.Size(68, 19);
+            this.totalEmployeeLabel.Size = new System.Drawing.Size(87, 19);
             this.totalEmployeeLabel.TabIndex = 1;
-            this.totalEmployeeLabel.Text = "Employee";
+            this.totalEmployeeLabel.Text = "N.Employées";
             // 
             // TotalEmployeeTextBox
             // 
+            this.TotalEmployeeTextBox.Enabled = false;
             this.TotalEmployeeTextBox.Location = new System.Drawing.Point(57, 59);
             this.TotalEmployeeTextBox.Name = "TotalEmployeeTextBox";
             this.TotalEmployeeTextBox.Size = new System.Drawing.Size(100, 23);
@@ -475,14 +487,14 @@ namespace HarvestManagerSystem.view
             this.EmployeeType,
             this.AddHoursProductionIdColumn,
             this.EmpCatColumn});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.AddHarvestHoursDataGridView.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.AddHarvestHoursDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.AddHarvestHoursDataGridView.Location = new System.Drawing.Point(220, 23);
             this.AddHarvestHoursDataGridView.MultiSelect = false;
             this.AddHarvestHoursDataGridView.Name = "AddHarvestHoursDataGridView";
