@@ -2933,6 +2933,7 @@ namespace HarvestManagerSystem
             this.Name = "HarvestMS";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Harvest Manager System";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HarvestMS_FormClosed);
             this.Load += new System.EventHandler(this.HarvestMS_Load);
             this.tabProduction.ResumeLayout(false);
             this.tabPageQuantity.ResumeLayout(false);

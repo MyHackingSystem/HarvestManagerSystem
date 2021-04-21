@@ -1207,5 +1207,10 @@ MessageBoxIcon.Information);
             FormRapport rapport = FormRapport.getInstance();
             rapport.ShowForm();
         }
+
+        private void HarvestMS_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

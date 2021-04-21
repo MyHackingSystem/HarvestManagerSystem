@@ -100,6 +100,43 @@ namespace HarvestManagerSystem.database
             }
         }
 
+
+
+        //***********************************
+        //Get Preferences
+        //***********************************
+
+        public Account getLogin()
+        {
+            Account user = new Account();
+            string selectStmt = "SELECT * FROM Login where ID = 1";
+
+            try
+            {
+                SQLiteCommand sQLiteCommand = new SQLiteCommand(selectStmt, mSQLiteConnection);
+                OpenConnection();
+                SQLiteDataReader result = sQLiteCommand.ExecuteReader();
+                if (result.HasRows)
+                {
+                    while (result.Read())
+                    {
+                        user.Name = result["User"].ToString();
+                        user.Passwword = result["Password"].ToString();
+                    }
+                }
+                return user;
+            }
+            catch (SQLiteException e)
+            {
+                Console.WriteLine(e.StackTrace);
+                throw e;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
         /*
          
         CREATE TABLE "Preferences" (
