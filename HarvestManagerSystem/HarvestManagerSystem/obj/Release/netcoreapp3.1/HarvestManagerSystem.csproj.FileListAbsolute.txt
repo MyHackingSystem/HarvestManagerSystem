@@ -69,3 +69,4 @@ E:\Projects\C_Sharp\Desktop\HarvestManagerSystem\HarvestManagerSystem\HarvestMan
 E:\Projects\C_Sharp\Desktop\HarvestManagerSystem\HarvestManagerSystem\HarvestManagerSystem\obj\Release\netcoreapp3.1\HarvestManagerSystem.dll
 E:\Projects\C_Sharp\Desktop\HarvestManagerSystem\HarvestManagerSystem\HarvestManagerSystem\obj\Release\netcoreapp3.1\HarvestManagerSystem.pdb
 E:\Projects\C_Sharp\Desktop\HarvestManagerSystem\HarvestManagerSystem\HarvestManagerSystem\obj\Release\netcoreapp3.1\HarvestManagerSystem.genruntimeconfig.cache
+E:\Projects\C_Sharp\Desktop\HarvestManagerSystem\HarvestManagerSystem\HarvestManagerSystem\obj\Release\netcoreapp3.1\HarvestManagerSystem.LoginForm.resources
