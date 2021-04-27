@@ -285,6 +285,7 @@ namespace HarvestManagerSystem
             this.editQuantityproduction = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteQuantityproduction = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnAddIndividualHarvest = new System.Windows.Forms.Button();
             this.btnAddHarvestQuantity = new System.Windows.Forms.Button();
             this.btnAddHarvestHours = new System.Windows.Forms.Button();
             this.btnAddEmployee = new System.Windows.Forms.Button();
@@ -2730,6 +2731,7 @@ namespace HarvestManagerSystem
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnAddIndividualHarvest);
             this.groupBox1.Controls.Add(this.btnAddHarvestQuantity);
             this.groupBox1.Controls.Add(this.btnAddHarvestHours);
             this.groupBox1.Controls.Add(this.btnAddEmployee);
@@ -2741,26 +2743,37 @@ namespace HarvestManagerSystem
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(1145, 96);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(127, 315);
+            this.groupBox1.Size = new System.Drawing.Size(127, 352);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ajouter";
             // 
+            // btnAddIndividualHarvest
+            // 
+            this.btnAddIndividualHarvest.ForeColor = System.Drawing.Color.Black;
+            this.btnAddIndividualHarvest.Location = new System.Drawing.Point(16, 22);
+            this.btnAddIndividualHarvest.Name = "btnAddIndividualHarvest";
+            this.btnAddIndividualHarvest.Size = new System.Drawing.Size(100, 30);
+            this.btnAddIndividualHarvest.TabIndex = 17;
+            this.btnAddIndividualHarvest.Text = "Individuel";
+            this.btnAddIndividualHarvest.UseVisualStyleBackColor = true;
+            this.btnAddIndividualHarvest.Click += new System.EventHandler(this.btnAddIndividualHarvest_Click);
+            // 
             // btnAddHarvestQuantity
             // 
             this.btnAddHarvestQuantity.ForeColor = System.Drawing.Color.Black;
-            this.btnAddHarvestQuantity.Location = new System.Drawing.Point(16, 22);
+            this.btnAddHarvestQuantity.Location = new System.Drawing.Point(16, 56);
             this.btnAddHarvestQuantity.Name = "btnAddHarvestQuantity";
             this.btnAddHarvestQuantity.Size = new System.Drawing.Size(100, 30);
             this.btnAddHarvestQuantity.TabIndex = 9;
-            this.btnAddHarvestQuantity.Text = "Quantité";
+            this.btnAddHarvestQuantity.Text = "Groupe";
             this.btnAddHarvestQuantity.UseVisualStyleBackColor = true;
             this.btnAddHarvestQuantity.Click += new System.EventHandler(this.btnAddHarvestQuantity_Click);
             // 
             // btnAddHarvestHours
             // 
             this.btnAddHarvestHours.ForeColor = System.Drawing.Color.Black;
-            this.btnAddHarvestHours.Location = new System.Drawing.Point(16, 58);
+            this.btnAddHarvestHours.Location = new System.Drawing.Point(16, 92);
             this.btnAddHarvestHours.Name = "btnAddHarvestHours";
             this.btnAddHarvestHours.Size = new System.Drawing.Size(100, 30);
             this.btnAddHarvestHours.TabIndex = 10;
@@ -2771,7 +2784,7 @@ namespace HarvestManagerSystem
             // btnAddEmployee
             // 
             this.btnAddEmployee.ForeColor = System.Drawing.Color.Black;
-            this.btnAddEmployee.Location = new System.Drawing.Point(16, 94);
+            this.btnAddEmployee.Location = new System.Drawing.Point(16, 128);
             this.btnAddEmployee.Name = "btnAddEmployee";
             this.btnAddEmployee.Size = new System.Drawing.Size(100, 30);
             this.btnAddEmployee.TabIndex = 11;
@@ -2782,7 +2795,7 @@ namespace HarvestManagerSystem
             // btnAddSupplier
             // 
             this.btnAddSupplier.ForeColor = System.Drawing.Color.Black;
-            this.btnAddSupplier.Location = new System.Drawing.Point(16, 130);
+            this.btnAddSupplier.Location = new System.Drawing.Point(16, 164);
             this.btnAddSupplier.Name = "btnAddSupplier";
             this.btnAddSupplier.Size = new System.Drawing.Size(100, 30);
             this.btnAddSupplier.TabIndex = 12;
@@ -2793,7 +2806,7 @@ namespace HarvestManagerSystem
             // btnAddCredit
             // 
             this.btnAddCredit.ForeColor = System.Drawing.Color.Black;
-            this.btnAddCredit.Location = new System.Drawing.Point(16, 166);
+            this.btnAddCredit.Location = new System.Drawing.Point(16, 200);
             this.btnAddCredit.Name = "btnAddCredit";
             this.btnAddCredit.Size = new System.Drawing.Size(100, 30);
             this.btnAddCredit.TabIndex = 13;
@@ -2804,7 +2817,7 @@ namespace HarvestManagerSystem
             // btnAddTransport
             // 
             this.btnAddTransport.ForeColor = System.Drawing.Color.Black;
-            this.btnAddTransport.Location = new System.Drawing.Point(16, 202);
+            this.btnAddTransport.Location = new System.Drawing.Point(16, 236);
             this.btnAddTransport.Name = "btnAddTransport";
             this.btnAddTransport.Size = new System.Drawing.Size(100, 30);
             this.btnAddTransport.TabIndex = 14;
@@ -2815,7 +2828,7 @@ namespace HarvestManagerSystem
             // btnAddfarm
             // 
             this.btnAddfarm.ForeColor = System.Drawing.Color.Black;
-            this.btnAddfarm.Location = new System.Drawing.Point(16, 238);
+            this.btnAddfarm.Location = new System.Drawing.Point(16, 272);
             this.btnAddfarm.Name = "btnAddfarm";
             this.btnAddfarm.Size = new System.Drawing.Size(100, 30);
             this.btnAddfarm.TabIndex = 15;
@@ -2826,7 +2839,7 @@ namespace HarvestManagerSystem
             // btnAddProduct
             // 
             this.btnAddProduct.ForeColor = System.Drawing.Color.Black;
-            this.btnAddProduct.Location = new System.Drawing.Point(16, 274);
+            this.btnAddProduct.Location = new System.Drawing.Point(16, 308);
             this.btnAddProduct.Name = "btnAddProduct";
             this.btnAddProduct.Size = new System.Drawing.Size(100, 30);
             this.btnAddProduct.TabIndex = 16;
@@ -3200,6 +3213,7 @@ namespace HarvestManagerSystem
         private System.Windows.Forms.ToolStripMenuItem DeleteQuantityStrip;
         private System.Windows.Forms.PictureBox RapportButton;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnAddIndividualHarvest;
     }
 }
 

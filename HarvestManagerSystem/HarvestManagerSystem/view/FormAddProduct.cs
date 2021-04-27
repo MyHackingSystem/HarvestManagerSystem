@@ -26,7 +26,7 @@ namespace HarvestManagerSystem.view
         private HarvestMS harvestMS;
         private static FormAddProduct instance;
 
-        private FormAddProduct(HarvestMS harvestMS)
+        public FormAddProduct(HarvestMS harvestMS)
         {
             this.harvestMS = harvestMS;
             InitializeComponent();
@@ -39,28 +39,28 @@ namespace HarvestManagerSystem.view
         }
 
 
-        public static FormAddProduct getInstance(HarvestMS harvestMS)
-        {
-            if (instance == null)
-            {
-                instance = new FormAddProduct(harvestMS);
-            }
-            return instance;
-        }
+        //public static FormAddProduct getInstance(HarvestMS harvestMS)
+        //{
+        //    if (instance == null)
+        //    {
+        //        instance = new FormAddProduct(harvestMS);
+        //    }
+        //    return instance;
+        //}
 
-        public void ShowFormAdd()
-        {
-            if (instance != null)
-            {
-                instance.BringToFront();
-            }
-            else
-            {
-                instance = new FormAddProduct(harvestMS);
+        //public void ShowFormAdd()
+        //{
+        //    if (instance != null)
+        //    {
+        //        instance.BringToFront();
+        //    }
+        //    else
+        //    {
+        //        instance = new FormAddProduct(harvestMS);
                 
-            }
-            instance.Show();
-        }
+        //    }
+        //    instance.Show();
+        //}
 
 
         private void FormAddProduct_Load(object sender, EventArgs e)

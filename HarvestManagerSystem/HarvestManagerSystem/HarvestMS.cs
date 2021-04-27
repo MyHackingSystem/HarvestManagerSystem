@@ -76,6 +76,18 @@ namespace HarvestManagerSystem
             }
         }
 
+        #region *************************************************** Individual QUANTITY CODE ****************************************************************************
+
+        private void btnAddIndividualHarvest_Click(object sender, EventArgs e)
+        {
+            FormAddIndWork formAddIndWork = FormAddIndWork.getInstance(this);
+            formAddIndWork.ShowFormAdd();
+        }
+
+
+        #endregion
+
+
         #region **************************************************** QUANTITY CODE ****************************************************************************
 
         int QuantityDataGridSelectedRowIndex = -1;
@@ -781,8 +793,8 @@ MessageBoxIcon.Information);
         List<Product> listProduct = new List<Product>();
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
-            FormAddProduct formAddProduct = FormAddProduct.getInstance(this);
-            formAddProduct.ShowFormAdd();
+            FormAddProduct formAddProduct = new FormAddProduct(this);
+            formAddProduct.ShowDialog();
         }
 
         public void DisplayProductData()
@@ -818,7 +830,7 @@ MessageBoxIcon.Information);
         void HandleEditProductTable()
         {
 
-            FormAddProduct formAddProduct = FormAddProduct.getInstance(this);
+            FormAddProduct formAddProduct = new FormAddProduct(this);
             Product product = (Product)ProductDataGridView.CurrentRow.DataBoundItem;
             if (product == null)
             {
@@ -827,7 +839,7 @@ MessageBoxIcon.Information);
             }
 
             formAddProduct.InflateUI(product);
-            formAddProduct.ShowFormAdd();
+            formAddProduct.ShowDialog();
         }
 
         void HandleDeleteProductTable()
@@ -884,7 +896,7 @@ MessageBoxIcon.Information);
         void HandleEditProductDetailTable()
         {
 
-            FormAddProduct formEditProductDetail = FormAddProduct.getInstance(this);
+            FormAddProduct formEditProductDetail = new FormAddProduct(this);
             Product product = (Product)ProductDataGridView.CurrentRow.DataBoundItem;
             ProductDetail productDetail = (ProductDetail)ProductDetailDataGridView.CurrentRow.DataBoundItem;
             if (productDetail == null)
@@ -894,7 +906,7 @@ MessageBoxIcon.Information);
             }
 
             formEditProductDetail.InflateUI(productDetail, product);
-            formEditProductDetail.ShowFormAdd();
+            formEditProductDetail.ShowDialog();
         }
 
         void HandleDeleteProductDetailTable()
@@ -1212,5 +1224,7 @@ MessageBoxIcon.Information);
         {
             Application.Exit();
         }
+
+
     }
 }
