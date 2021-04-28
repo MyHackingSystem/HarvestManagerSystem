@@ -264,7 +264,6 @@ namespace HarvestManagerSystem
             this.ProductDetailDataGridView = new System.Windows.Forms.DataGridView();
             this.ProductDetailId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductTypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductCodeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductPriceEmployeeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductPriceCompanyColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -2451,7 +2450,6 @@ namespace HarvestManagerSystem
             this.ProductDetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ProductDetailId,
             this.ProductTypeColumn,
-            this.ProductCodeColumn,
             this.ProductPriceEmployeeColumn,
             this.ProductPriceCompanyColumn,
             this.dataGridViewTextBoxColumn1});
@@ -2466,7 +2464,7 @@ namespace HarvestManagerSystem
             this.ProductDetailDataGridView.DefaultCellStyle = dataGridViewCellStyle52;
             this.ProductDetailDataGridView.EnableHeadersVisualStyles = false;
             this.ProductDetailDataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ProductDetailDataGridView.Location = new System.Drawing.Point(248, 44);
+            this.ProductDetailDataGridView.Location = new System.Drawing.Point(358, 47);
             this.ProductDetailDataGridView.MultiSelect = false;
             this.ProductDetailDataGridView.Name = "ProductDetailDataGridView";
             dataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -2488,7 +2486,7 @@ namespace HarvestManagerSystem
             this.ProductDetailDataGridView.RowTemplate.ContextMenuStrip = this.ProductDetailContextMenuStrip;
             this.ProductDetailDataGridView.RowTemplate.Height = 30;
             this.ProductDetailDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ProductDetailDataGridView.Size = new System.Drawing.Size(870, 515);
+            this.ProductDetailDataGridView.Size = new System.Drawing.Size(662, 515);
             this.ProductDetailDataGridView.TabIndex = 7;
             // 
             // ProductDetailId
@@ -2503,38 +2501,28 @@ namespace HarvestManagerSystem
             this.ProductTypeColumn.DataPropertyName = "ProductType";
             this.ProductTypeColumn.FillWeight = 369.5432F;
             this.ProductTypeColumn.HeaderText = "Type";
-            this.ProductTypeColumn.MinimumWidth = 200;
+            this.ProductTypeColumn.MinimumWidth = 220;
             this.ProductTypeColumn.Name = "ProductTypeColumn";
             this.ProductTypeColumn.ReadOnly = true;
             this.ProductTypeColumn.Width = 220;
-            // 
-            // ProductCodeColumn
-            // 
-            this.ProductCodeColumn.DataPropertyName = "ProductCode";
-            this.ProductCodeColumn.FillWeight = 0.1635498F;
-            this.ProductCodeColumn.HeaderText = "Code";
-            this.ProductCodeColumn.MinimumWidth = 200;
-            this.ProductCodeColumn.Name = "ProductCodeColumn";
-            this.ProductCodeColumn.ReadOnly = true;
-            this.ProductCodeColumn.Width = 220;
             // 
             // ProductPriceEmployeeColumn
             // 
             this.ProductPriceEmployeeColumn.DataPropertyName = "PriceEmployee";
             this.ProductPriceEmployeeColumn.FillWeight = 2.143695F;
             this.ProductPriceEmployeeColumn.HeaderText = "Prix.E";
-            this.ProductPriceEmployeeColumn.MinimumWidth = 200;
+            this.ProductPriceEmployeeColumn.MinimumWidth = 220;
             this.ProductPriceEmployeeColumn.Name = "ProductPriceEmployeeColumn";
-            this.ProductPriceEmployeeColumn.Width = 210;
+            this.ProductPriceEmployeeColumn.Width = 220;
             // 
             // ProductPriceCompanyColumn
             // 
             this.ProductPriceCompanyColumn.DataPropertyName = "PriceCompany";
             this.ProductPriceCompanyColumn.FillWeight = 28.1496F;
             this.ProductPriceCompanyColumn.HeaderText = "Prix.C";
-            this.ProductPriceCompanyColumn.MinimumWidth = 200;
+            this.ProductPriceCompanyColumn.MinimumWidth = 220;
             this.ProductPriceCompanyColumn.Name = "ProductPriceCompanyColumn";
-            this.ProductPriceCompanyColumn.Width = 210;
+            this.ProductPriceCompanyColumn.Width = 220;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -2620,7 +2608,7 @@ namespace HarvestManagerSystem
             this.ProductDataGridView.DefaultCellStyle = dataGridViewCellStyle57;
             this.ProductDataGridView.EnableHeadersVisualStyles = false;
             this.ProductDataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ProductDataGridView.Location = new System.Drawing.Point(5, 44);
+            this.ProductDataGridView.Location = new System.Drawing.Point(21, 47);
             this.ProductDataGridView.MultiSelect = false;
             this.ProductDataGridView.Name = "ProductDataGridView";
             this.ProductDataGridView.ReadOnly = true;
@@ -2645,7 +2633,7 @@ namespace HarvestManagerSystem
             this.ProductDataGridView.RowTemplate.Height = 30;
             this.ProductDataGridView.RowTemplate.ReadOnly = true;
             this.ProductDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ProductDataGridView.Size = new System.Drawing.Size(237, 515);
+            this.ProductDataGridView.Size = new System.Drawing.Size(310, 515);
             this.ProductDataGridView.TabIndex = 5;
             this.ProductDataGridView.SelectionChanged += new System.EventHandler(this.ProductDataGridView_SelectionChanged);
             // 
@@ -3046,12 +3034,6 @@ namespace HarvestManagerSystem
         private System.Windows.Forms.DataGridView SupplyDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductNameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductDetailId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductTypeColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductCodeColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductPriceEmployeeColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductPriceCompanyColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.ContextMenuStrip ProductContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem EditProductStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem DeleteToolStripMenuItem;
@@ -3214,6 +3196,11 @@ namespace HarvestManagerSystem
         private System.Windows.Forms.PictureBox RapportButton;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnAddIndividualHarvest;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductDetailId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductTypeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductPriceEmployeeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductPriceCompanyColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
     }
 }
 

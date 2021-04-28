@@ -41,7 +41,7 @@ namespace HarvestManagerSystem
 
         private void HarvestMS_Load(object sender, EventArgs e)
         {
-            DisplayQuantityData();
+            //DisplayQuantityData();
         }
 
         private void tabProduction_SelectedIndexChanged(object sender, EventArgs e)
@@ -917,7 +917,7 @@ MessageBoxIcon.Information);
                 MessageBox.Show("Select product");
                 return;
             }
-            DialogResult dr = MessageBox.Show("Are you sure you want to delete product with code: " + productDetail.ProductCode, "Delete", MessageBoxButtons.YesNoCancel,
+            DialogResult dr = MessageBox.Show("Are you sure you want to delete product with code: " + productDetail.ProductType, "Delete", MessageBoxButtons.YesNoCancel,
             MessageBoxIcon.Information);
             bool deleted = false;
             if (dr == DialogResult.Yes)

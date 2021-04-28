@@ -14,7 +14,7 @@ namespace HarvestManagerSystem.database
         public const string TABLE_PRODUCT = "Product";
         public const string COLUMN_PRODUCT_ID = "ProductId";
         public const string COLUMN_PRODUCT_NAME = "ProductName";
-        public const string COLUMN_PRODUCT_IS_EXIST = "is_exist";
+        //public const string COLUMN_PRODUCT_IS_EXIST = "is_exist";
 
         private static ProductDAO instance = new ProductDAO();
 
@@ -68,9 +68,7 @@ namespace HarvestManagerSystem.database
         {
             Dictionary<string, Product> productDictionary = new Dictionary<string, Product>();
 
-            String selectStmt = "SELECT * FROM " + TABLE_PRODUCT
-                + " WHERE " + COLUMN_PRODUCT_IS_EXIST + " = " + 1
-                + " ORDER BY " + COLUMN_PRODUCT_NAME + " ASC;";
+            String selectStmt = "SELECT * FROM " + TABLE_PRODUCT + " ORDER BY " + COLUMN_PRODUCT_NAME + " ASC;";
 
             try
             {
@@ -106,10 +104,7 @@ namespace HarvestManagerSystem.database
         public List<Product> getData()
         {
             List<Product> list = new List<Product>();
-            String selectStmt = "SELECT * FROM " + TABLE_PRODUCT
-                + " WHERE " + COLUMN_PRODUCT_IS_EXIST + " = " + 1
-                + " ORDER BY " + COLUMN_PRODUCT_NAME + " ASC;";
-
+            String selectStmt = "SELECT * FROM " + TABLE_PRODUCT + " ORDER BY " + COLUMN_PRODUCT_NAME + " ASC;";
             try
             {
                 SQLiteCommand sQLiteCommand = new SQLiteCommand(selectStmt, mSQLiteConnection);
@@ -141,19 +136,12 @@ namespace HarvestManagerSystem.database
         //*******************************
         public bool addData(Product product)
         {
-            String insertStmt = "INSERT INTO " + TABLE_PRODUCT + " ("
-                    + COLUMN_PRODUCT_NAME + ", "
-                    + COLUMN_PRODUCT_IS_EXIST + "" +
-                    ") VALUES ( "
-                    + "@" + COLUMN_PRODUCT_NAME + ", "
-                    + "@" + COLUMN_PRODUCT_IS_EXIST + ""
-                    + " )";
+            String insertStmt = "INSERT INTO " + TABLE_PRODUCT + " (" + COLUMN_PRODUCT_NAME +  ") VALUES ( @" + COLUMN_PRODUCT_NAME + " )";
             try
             {
                 SQLiteCommand sQLiteCommand = new SQLiteCommand(insertStmt, mSQLiteConnection);
                 OpenConnection();
                 sQLiteCommand.Parameters.AddWithValue(COLUMN_PRODUCT_NAME, product.ProductName);
-                sQLiteCommand.Parameters.AddWithValue(COLUMN_PRODUCT_IS_EXIST, 1);
                 sQLiteCommand.ExecuteNonQuery();
                 return true;
             }
@@ -174,9 +162,7 @@ namespace HarvestManagerSystem.database
         //*******************************
         public bool DeleteData(Product product)
         {
-            String updateStmt = "UPDATE " + TABLE_PRODUCT + " SET "
-                 + COLUMN_PRODUCT_IS_EXIST + " = 0 "
-                + " WHERE " + COLUMN_PRODUCT_ID + " = " + product.ProductId + " ";
+            String updateStmt = "DELETE FROM " + TABLE_PRODUCT + " WHERE " + COLUMN_PRODUCT_ID + " = " + product.ProductId + " ";
 
             try
             {
@@ -200,10 +186,7 @@ namespace HarvestManagerSystem.database
         {
             String createStmt = "CREATE TABLE IF NOT EXISTS " + TABLE_PRODUCT
                     + "(" + COLUMN_PRODUCT_ID + " INTEGER PRIMARY KEY, "
-                    + COLUMN_PRODUCT_NAME + " TEXT NOT NULL, "
-                    + COLUMN_PRODUCT_IS_EXIST + " INTEGER DEFAULT 1)";
-
-
+                    + COLUMN_PRODUCT_NAME + " TEXT NOT NULL)";
             SQLiteCommand sQLiteCommand = new SQLiteCommand(createStmt, mSQLiteConnection);
             OpenConnection();
             sQLiteCommand.ExecuteNonQuery();

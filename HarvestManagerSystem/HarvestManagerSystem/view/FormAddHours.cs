@@ -78,7 +78,7 @@ namespace HarvestManagerSystem.view
                 SupplierHarvestHoursComboBox.SelectedIndex = SupplierHarvestHoursComboBox.FindStringExact(mProduction.Supplier.SupplierName);
                 FarmHarvestHoursComboBox.SelectedIndex = FarmHarvestHoursComboBox.FindStringExact(mProduction.Farm.FarmName);
                 ProductHarvestHoursComboBox.SelectedIndex = ProductHarvestHoursComboBox.FindStringExact(mProduction.Product.ProductName);
-                ProductCodeHarvestHoursComboBox.SelectedIndex = ProductCodeHarvestHoursComboBox.FindStringExact(mProduction.ProductDetail.ProductCode);
+                //ProductCodeHarvestHoursComboBox.SelectedIndex = ProductCodeHarvestHoursComboBox.FindStringExact(mProduction.ProductDetail.ProductCode);
                 ApplyHarvestHoursButton.Text = "Update";
             }
             else
@@ -279,7 +279,7 @@ namespace HarvestManagerSystem.view
             mProduction.Supplier.SupplierName = production.SupplierName;
             mProduction.Farm.FarmName = production.FarmName;
             mProduction.Product.ProductName = production.ProductName;
-            mProduction.ProductDetail.ProductCode = production.ProductCode;
+            //mProduction.ProductDetail.ProductCode = production.ProductCode;
 
             HarvesterList.Clear();
             try

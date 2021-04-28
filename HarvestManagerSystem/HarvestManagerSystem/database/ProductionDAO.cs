@@ -56,7 +56,7 @@ namespace HarvestManagerSystem.database
         + ProductDAO.TABLE_PRODUCT + "." + ProductDAO.COLUMN_PRODUCT_NAME + ", "
         + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_DETAIL_ID + ", "
         + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_TYPE + ", "
-        + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_CODE + " "
+       // + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_CODE + " "
         + " FROM " + TABLE_PRODUCTION
         + " LEFT JOIN " + SupplierDAO.TABLE_SUPPLIER + " "
         + " ON " + SupplierDAO.TABLE_SUPPLIER + "." + SupplierDAO.COLUMN_SUPPLIER_ID + " = " + TABLE_PRODUCTION + "." + COLUMN_PRODUCTION_SUPPLIER_ID
@@ -114,7 +114,7 @@ namespace HarvestManagerSystem.database
                     production.Product.ProductName = (string)result[ProductDAO.COLUMN_PRODUCT_NAME];
                     production.ProductDetail.ProductDetailId = Convert.ToInt32((result[ProductDetailDAO.COLUMN_PRODUCT_DETAIL_ID]).ToString());
                     production.ProductDetail.ProductType = (string)result[ProductDetailDAO.COLUMN_PRODUCT_TYPE];
-                    production.ProductDetail.ProductCode = (string)result[ProductDetailDAO.COLUMN_PRODUCT_CODE];
+                   // production.ProductDetail.ProductCode = (string)result[ProductDetailDAO.COLUMN_PRODUCT_CODE];
                     list.Add(production);
                 }
             }
@@ -394,7 +394,7 @@ namespace HarvestManagerSystem.database
         + ProductDAO.TABLE_PRODUCT + "." + ProductDAO.COLUMN_PRODUCT_NAME + ", "
         + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_DETAIL_ID + ", "
         + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_TYPE + ", "
-        + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_CODE + " "
+       // + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_CODE + " "
         + " FROM " + TABLE_PRODUCTION
         + " LEFT JOIN " + SupplierDAO.TABLE_SUPPLIER + " "
         + " ON " + SupplierDAO.TABLE_SUPPLIER + "." + SupplierDAO.COLUMN_SUPPLIER_ID + " = " + TABLE_PRODUCTION + "." + COLUMN_PRODUCTION_SUPPLIER_ID

@@ -49,7 +49,7 @@ namespace HarvestManagerSystem.database
         + ProductDAO.TABLE_PRODUCT + "." + ProductDAO.COLUMN_PRODUCT_NAME + ", "
         + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_DETAIL_ID + ", "
         + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_TYPE + ", "
-        + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_CODE + " "
+        //+ ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_CODE + " "
         + " FROM " + ProductionDAO.TABLE_PRODUCTION
         + " LEFT JOIN " + SupplierDAO.TABLE_SUPPLIER + " "
         + " ON " + SupplierDAO.TABLE_SUPPLIER + "." + SupplierDAO.COLUMN_SUPPLIER_ID + " = " + ProductionDAO.TABLE_PRODUCTION + "." + ProductionDAO.COLUMN_PRODUCTION_SUPPLIER_ID
@@ -147,7 +147,7 @@ namespace HarvestManagerSystem.database
                 + ProductDAO.TABLE_PRODUCT + "." + ProductDAO.COLUMN_PRODUCT_NAME + ", "
                 + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_DETAIL_ID + ", "
                 + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_TYPE + ", "
-                + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_CODE + " "
+                //+ ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_CODE + " "
                 + " FROM " + HarvestHoursDAO.TABLE_HOURS + " "
                 + " LEFT JOIN " + EmployeeDAO.TABLE_EMPLOYEE + " "
                 + " ON " + EmployeeDAO.TABLE_EMPLOYEE + "." + EmployeeDAO.COLUMN_EMPLOYEE_ID + " = " + HarvestHoursDAO.TABLE_HOURS + "." + HarvestHoursDAO.COLUMN_HOURS_EMPLOYEE_ID
@@ -218,7 +218,7 @@ namespace HarvestManagerSystem.database
                     harvestHours.Production.Product.ProductName = (string)result[ProductDAO.COLUMN_PRODUCT_NAME];
                     harvestHours.Production.ProductDetail.ProductDetailId = Convert.ToInt32((result[ProductDetailDAO.COLUMN_PRODUCT_DETAIL_ID]).ToString());
                     harvestHours.Production.ProductDetail.ProductType = (string)result[ProductDetailDAO.COLUMN_PRODUCT_TYPE];
-                    harvestHours.Production.ProductDetail.ProductCode = (string)result[ProductDetailDAO.COLUMN_PRODUCT_CODE];
+                   // harvestHours.Production.ProductDetail.ProductCode = (string)result[ProductDetailDAO.COLUMN_PRODUCT_CODE];
                     list.Add(harvestHours);
                 }
             }
@@ -258,7 +258,7 @@ namespace HarvestManagerSystem.database
                 + ProductDAO.TABLE_PRODUCT + "." + ProductDAO.COLUMN_PRODUCT_NAME + ", "
                 + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_DETAIL_ID + ", "
                 + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_TYPE + ", "
-                + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_CODE + " "
+                //+ ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_CODE + " "
                 + " FROM " + HarvestQuantityDAO.TABLE_QUANTITY + " "
                 + " LEFT JOIN " + EmployeeDAO.TABLE_EMPLOYEE + " "
                 + " ON " + EmployeeDAO.TABLE_EMPLOYEE + "." + EmployeeDAO.COLUMN_EMPLOYEE_ID + " = " + HarvestQuantityDAO.TABLE_QUANTITY + "." + HarvestQuantityDAO.COLUMN_QUANTITY_EMPLOYEE_ID
@@ -329,7 +329,7 @@ namespace HarvestManagerSystem.database
                     item.Production.Product.ProductName = (string)result[ProductDAO.COLUMN_PRODUCT_NAME];
                     item.Production.ProductDetail.ProductDetailId = Convert.ToInt32((result[ProductDetailDAO.COLUMN_PRODUCT_DETAIL_ID]).ToString());
                     item.Production.ProductDetail.ProductType = (string)result[ProductDetailDAO.COLUMN_PRODUCT_TYPE];
-                    item.Production.ProductDetail.ProductCode = (string)result[ProductDetailDAO.COLUMN_PRODUCT_CODE];
+                    //item.Production.ProductDetail.ProductCode = (string)result[ProductDetailDAO.COLUMN_PRODUCT_CODE];
                     list.Add(item);
                 }
             }
