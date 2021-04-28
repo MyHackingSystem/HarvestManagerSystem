@@ -21,7 +21,6 @@ namespace HarvestManagerSystem.database
 
         private ProductDetailDAO() : base()
         {
-
         }
 
         public static ProductDetailDAO getInstance()
@@ -33,14 +32,12 @@ namespace HarvestManagerSystem.database
             return instance;
         }
 
-
-
         //*******************************
         //Update product data
         //*******************************
         internal bool UpdateData(ProductDetail productDetail)
         {
-            String updateStmt = "UPDATE " + TABLE_PRODUCT_DETAIL + " SET "
+            string updateStmt = "UPDATE " + TABLE_PRODUCT_DETAIL + " SET "
                  + COLUMN_PRODUCT_TYPE + " =@" + COLUMN_PRODUCT_TYPE + ", "
                  + COLUMN_PRODUCT_PRICE_EMPLOYEE + " =@" + COLUMN_PRODUCT_PRICE_EMPLOYEE + ", "
                  + COLUMN_PRODUCT_PRICE_COMPANY + " =@" + COLUMN_PRODUCT_PRICE_COMPANY + " "
@@ -58,7 +55,7 @@ namespace HarvestManagerSystem.database
             }
             catch (SQLiteException e)
             {
-                Console.WriteLine(e.Message);
+                MessageBox.Show("Error: " + e.Message);
                 return false;
             }
             finally
@@ -88,11 +85,11 @@ namespace HarvestManagerSystem.database
                     while (result.Read())
                     {
                         ProductDetail productDetail = new ProductDetail();
-                        productDetail.ProductDetailId = Convert.ToInt32((result["Id"]).ToString());
-                        productDetail.ProductType = (string)result["ProductType"];
-                        productDetail.PriceEmployee = Convert.ToDouble((result["PriceEmployee"]).ToString());
-                        productDetail.PriceCompany = Convert.ToDouble((result["PriceCompany"]).ToString());
-                        productDetail.Product.ProductId = Convert.ToInt32((result["ProductId"]).ToString());
+                        productDetail.ProductDetailId = Convert.ToInt32((result[COLUMN_PRODUCT_DETAIL_ID]).ToString());
+                        productDetail.ProductType = (string)result[COLUMN_PRODUCT_TYPE];
+                        productDetail.PriceEmployee = Convert.ToDouble((result[COLUMN_PRODUCT_PRICE_EMPLOYEE]).ToString());
+                        productDetail.PriceCompany = Convert.ToDouble((result[COLUMN_PRODUCT_PRICE_COMPANY]).ToString());
+                        productDetail.Product.ProductId = Convert.ToInt32((result[COLUMN_FOREIGN_KEY_PRODUCT_ID]).ToString());
                         productDictionary.Add(productDetail.ProductType, productDetail);
                     }
                 }
@@ -101,7 +98,7 @@ namespace HarvestManagerSystem.database
             }
             catch (SQLiteException e)
             {
-                Console.WriteLine(e.Message);
+                MessageBox.Show("Error: " + e.Message);
                 return productDictionary;
             }
         }
@@ -126,11 +123,11 @@ namespace HarvestManagerSystem.database
                     while (result.Read())
                     {
                         ProductDetail productDetail = new ProductDetail();
-                        productDetail.ProductDetailId = Convert.ToInt32((result["Id"]).ToString());
-                        productDetail.ProductType = (string)result["ProductType"];
-                        productDetail.PriceEmployee = Convert.ToDouble((result["PriceEmployee"]).ToString());
-                        productDetail.PriceCompany = Convert.ToDouble((result["PriceCompany"]).ToString());
-                        productDetail.Product.ProductId = Convert.ToInt32((result["ProductId"]).ToString());
+                        productDetail.ProductDetailId = Convert.ToInt32((result[COLUMN_PRODUCT_DETAIL_ID]).ToString());
+                        productDetail.ProductType = (string)result[COLUMN_PRODUCT_TYPE];
+                        productDetail.PriceEmployee = Convert.ToDouble((result[COLUMN_PRODUCT_PRICE_EMPLOYEE]).ToString());
+                        productDetail.PriceCompany = Convert.ToDouble((result[COLUMN_PRODUCT_PRICE_COMPANY]).ToString());
+                        productDetail.Product.ProductId = Convert.ToInt32((result[COLUMN_FOREIGN_KEY_PRODUCT_ID]).ToString());
                         list.Add(productDetail);
                     }
                 }
@@ -139,7 +136,7 @@ namespace HarvestManagerSystem.database
             }
             catch (SQLiteException e)
             {
-                Console.WriteLine(e.Message);
+                MessageBox.Show("Error: " + e.Message);
                 return list;
             }
         }
@@ -163,11 +160,11 @@ namespace HarvestManagerSystem.database
                     while (result.Read())
                     {
                         ProductDetail productDetail = new ProductDetail();
-                        productDetail.ProductDetailId = Convert.ToInt32((result["Id"]).ToString());
-                        productDetail.ProductType = (string)result["ProductType"];
-                        productDetail.PriceEmployee = Convert.ToDouble((result["PriceEmployee"]).ToString());
-                        productDetail.PriceCompany = Convert.ToDouble((result["PriceCompany"]).ToString());
-                        productDetail.Product.ProductId = Convert.ToInt32((result["ProductId"]).ToString());
+                        productDetail.ProductDetailId = Convert.ToInt32((result[COLUMN_PRODUCT_DETAIL_ID]).ToString());
+                        productDetail.ProductType = (string)result[COLUMN_PRODUCT_TYPE];
+                        productDetail.PriceEmployee = Convert.ToDouble((result[COLUMN_PRODUCT_PRICE_EMPLOYEE]).ToString());
+                        productDetail.PriceCompany = Convert.ToDouble((result[COLUMN_PRODUCT_PRICE_COMPANY]).ToString());
+                        productDetail.Product.ProductId = Convert.ToInt32((result[COLUMN_FOREIGN_KEY_PRODUCT_ID]).ToString());
                         list.Add(productDetail);
                     }
                 }
@@ -176,7 +173,7 @@ namespace HarvestManagerSystem.database
             }
             catch (SQLiteException e)
             {
-                Console.WriteLine(e.Message);
+                MessageBox.Show("Error: " + e.Message);
                 return list;
             }
         }
@@ -225,7 +222,7 @@ namespace HarvestManagerSystem.database
             }
             catch (SQLiteException e)
             {
-                Console.WriteLine(e.Message);
+                MessageBox.Show("Le produit n'est pas ajouté à la base de données, erreur: " + e.Message);
                 return false;
             }
             finally
@@ -263,7 +260,7 @@ namespace HarvestManagerSystem.database
             }
             catch (SQLiteException e)
             {
-                Console.WriteLine(e.Message);
+                MessageBox.Show("Le produit n'est pas ajouté à la base de données, erreur: " + e.Message);
                 return false;
             }
             finally
@@ -274,7 +271,7 @@ namespace HarvestManagerSystem.database
 
 
         //*******************************
-        //Delete product data (hide)
+        //Delete product data
         //*******************************
         public bool DeleteData(ProductDetail productDetail)
         {
@@ -289,7 +286,7 @@ namespace HarvestManagerSystem.database
             }
             catch (SQLiteException e)
             {
-                Console.WriteLine(e.Message);
+                MessageBox.Show("Error: " + e.Message);
                 return false;
             }
             finally
@@ -300,7 +297,7 @@ namespace HarvestManagerSystem.database
 
         public void CreateTable()
         {
-            String createStmt = "CREATE TABLE IF NOT EXISTS " + TABLE_PRODUCT_DETAIL
+            string createStmt = "CREATE TABLE IF NOT EXISTS " + TABLE_PRODUCT_DETAIL
                    + "(" + COLUMN_PRODUCT_DETAIL_ID + " INTEGER PRIMARY KEY, "
                     + COLUMN_PRODUCT_TYPE + " TEXT NOT NULL UNIQUE, "
                     + COLUMN_PRODUCT_PRICE_EMPLOYEE + " REAL NOT NULL DEFAULT 0, "

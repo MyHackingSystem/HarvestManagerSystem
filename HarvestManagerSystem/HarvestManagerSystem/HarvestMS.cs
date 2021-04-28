@@ -49,23 +49,23 @@ namespace HarvestManagerSystem
             switch (tabProduction.SelectedIndex)
             {
                 case 0:
-                    DisplayQuantityData();
+                    //DisplayQuantityData();
                     break;
                 case 1:
-                    DisplayHoursData();
+                    //DisplayHoursData();
                     break;
                 case 2:
-                    DisplayCreditData();
-                    DisplayTransportData();
+                    //DisplayCreditData();
+                    //DisplayTransportData();
                     break;
                 case 3:
-                    DisplayEmployeeData();
+                    //DisplayEmployeeData();
                     break;
                 case 4:
-                    DisplaySupplierData();
+                    //DisplaySupplierData();
                     break;
                 case 5:
-                    DisplayFarmData();
+                    //DisplayFarmData();
                     break;
                 case 6:
                     DisplayProductData();
@@ -788,17 +788,14 @@ MessageBoxIcon.Information);
 
         #endregion
 
-        #region PRODUCT CODE
+        #region *******************************************- PRODUCT CODE ****************************************************************************
 
         List<Product> listProduct = new List<Product>();
-        private void btnAddProduct_Click(object sender, EventArgs e)
-        {
-            FormAddProduct formAddProduct = new FormAddProduct(this);
-            formAddProduct.ShowDialog();
-        }
+
 
         public void DisplayProductData()
         {
+            listProduct.Clear();
             listProduct = productDAO.getData();
             ProductDataGridView.DataSource = listProduct;
         }
@@ -806,135 +803,49 @@ MessageBoxIcon.Information);
         private void ProductDataGridView_SelectionChanged(object sender, EventArgs e)
         {
             int i = ProductDataGridView.CurrentCell.RowIndex;
-            if (i < listProduct.Count)
+            if (i < listProduct.Count && i != -1)
             {
                 DisplayProductDetailData(listProduct[i]);
             }
-
         }
 
-        private void ProductContextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void ProductDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ClickedItem.Name == EditProductStrip.Name)
-            {
-                ProductContextMenuStrip.Visible = false;
-                HandleEditProductTable();
-            }
-            else if (e.ClickedItem.Name == DeleteProductStrip.Name)
-            {
-                ProductContextMenuStrip.Visible = false;
-                HandleDeleteProductTable();
-            }
-        }
-
-        void HandleEditProductTable()
-        {
-
-            FormAddProduct formAddProduct = new FormAddProduct(this);
-            Product product = (Product)ProductDataGridView.CurrentRow.DataBoundItem;
+            Product product = (Product)listProduct[e.RowIndex];
             if (product == null)
             {
-                MessageBox.Show("Select Product");
                 return;
             }
-
-            formAddProduct.InflateUI(product);
-            formAddProduct.ShowDialog();
-        }
-
-        void HandleDeleteProductTable()
-        {
-            Product product = (Product)ProductDataGridView.CurrentRow.DataBoundItem;
-            if (product == null)
+            if (productDAO.UpdateData(product))
             {
-                MessageBox.Show("Select product");
-                return;
+                MessageBox.Show("les valeurs mises à jour.");
             }
-            DialogResult dr = MessageBox.Show("Are you sure you want to delete: " + product.ProductName, "Delete", MessageBoxButtons.YesNoCancel,
-            MessageBoxIcon.Information);
-            bool deleted = false;
-            if (dr == DialogResult.Yes)
-            {
-                deleted = productDAO.DeleteData(product);
-            }
-
-            if (deleted)
-            {
-                MessageBox.Show("Delete");
-            }
-            else if (dr == DialogResult.Yes)
-            {
-                MessageBox.Show("Not Delete");
-            }
-            DisplayProductData();
-
         }
 
         #endregion
 
         #region PRODUCT DETAIL CODE
 
+        List<ProductDetail> listProductDetail = new List<ProductDetail>();
+
         private void DisplayProductDetailData(Product product)
         {
-            ProductDetailDataGridView.DataSource = productDetailDAO.getData(product);
+            listProductDetail.Clear();
+            listProductDetail = productDetailDAO.getData(product);
+            ProductDetailDataGridView.DataSource = listProductDetail;
         }
 
-        private void ProductDetailContextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void ProductDetailDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ClickedItem.Name == EditProductDetailStrip.Name)
+            ProductDetail item = (ProductDetail)listProductDetail[e.RowIndex];
+            if (item == null)
             {
-                ProductDetailContextMenuStrip.Visible = false;
-                HandleEditProductDetailTable();
-            }
-            else if (e.ClickedItem.Name == DeleteProductDetailStrip.Name)
-            {
-                ProductDetailContextMenuStrip.Visible = false;
-                HandleDeleteProductDetailTable();
-            }
-        }
-
-        void HandleEditProductDetailTable()
-        {
-
-            FormAddProduct formEditProductDetail = new FormAddProduct(this);
-            Product product = (Product)ProductDataGridView.CurrentRow.DataBoundItem;
-            ProductDetail productDetail = (ProductDetail)ProductDetailDataGridView.CurrentRow.DataBoundItem;
-            if (productDetail == null)
-            {
-                MessageBox.Show("Select Product Detail");
                 return;
             }
-
-            formEditProductDetail.InflateUI(productDetail, product);
-            formEditProductDetail.ShowDialog();
-        }
-
-        void HandleDeleteProductDetailTable()
-        {
-            ProductDetail productDetail = (ProductDetail)ProductDetailDataGridView.CurrentRow.DataBoundItem;
-            if (productDetail == null)
+            if (productDetailDAO.UpdateData(item))
             {
-                MessageBox.Show("Select product");
-                return;
+                MessageBox.Show("les valeurs mises à jour.");
             }
-            DialogResult dr = MessageBox.Show("Are you sure you want to delete product with code: " + productDetail.ProductType, "Delete", MessageBoxButtons.YesNoCancel,
-            MessageBoxIcon.Information);
-            bool deleted = false;
-            if (dr == DialogResult.Yes)
-            {
-                deleted = productDetailDAO.DeleteData(productDetail);
-            }
-
-            if (deleted)
-            {
-                MessageBox.Show("Delete");
-            }
-            else if (dr == DialogResult.Yes)
-            {
-                MessageBox.Show("Not Delete");
-            }
-            DisplayProductData();
-
         }
 
         #endregion
@@ -957,12 +868,12 @@ MessageBoxIcon.Information);
         {
             if (e.ClickedItem.Name == EditCreditStrip.Name)
             {
-                ProductContextMenuStrip.Visible = false;
+                CreditContextMenuStrip.Visible = false;
                 HandleEditCreditTable();
             }
             else if (e.ClickedItem.Name == DeleteCreditStrip.Name)
             {
-                ProductContextMenuStrip.Visible = false;
+                CreditContextMenuStrip.Visible = false;
                 HandleDeleteCreditTable();
             }
         }
@@ -1034,12 +945,12 @@ MessageBoxIcon.Information);
         {
             if (e.ClickedItem.Name == EditTransportStrip.Name)
             {
-                ProductContextMenuStrip.Visible = false;
+                TransportContextMenuStrip.Visible = false;
                 HandleEditTransportTable();
             }
             else if (e.ClickedItem.Name == DeleteTransportStrip.Name)
             {
-                ProductContextMenuStrip.Visible = false;
+                TransportContextMenuStrip.Visible = false;
                 HandleDeleteTransportTable();
             }
         }
@@ -1225,6 +1136,14 @@ MessageBoxIcon.Information);
             Application.Exit();
         }
 
+        #region ************************************************* FormAdd Code ***********************************************
 
+        private void btnAddProduct_Click(object sender, EventArgs e)
+        {
+            FormAddProduct formAddProduct = new FormAddProduct(this);
+            formAddProduct.ShowDialog();
+        }
+
+        #endregion
     }
 }

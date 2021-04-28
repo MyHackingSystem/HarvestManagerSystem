@@ -24,20 +24,34 @@ namespace HarvestManagerSystem
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            login();
+        }
+
+        private void btnLogin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                login();
+            }
+
+        }
+
+        private void login()
+        {
             PreferencesDAO preferencesDAO = PreferencesDAO.getInstance();
             Account user = new Account();
 
             try
             {
                 user = preferencesDAO.getLogin();
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message + " Error");
                 return;
             }
 
-
-            if (txtUser.Text ==  user.Name && txtPassword.Text == user.Passwword)
+            if (txtUser.Text == user.Name && txtPassword.Text == user.Passwword)
             {
                 HarvestMS harvestMS = new HarvestMS();
                 harvestMS.Show();
@@ -46,6 +60,14 @@ namespace HarvestManagerSystem
             else
             {
                 MessageBox.Show("The User name or Password you entered is incorrect, try again.");
+            }
+        }
+
+        private void LoginForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                login();
             }
         }
     }

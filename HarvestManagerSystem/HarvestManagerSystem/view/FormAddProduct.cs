@@ -1,24 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using HarvestManagerSystem.database;
 using HarvestManagerSystem.model;
-using HarvestManagerSystem;
 
 namespace HarvestManagerSystem.view
 {
     public partial class FormAddProduct : Form
     {
-        private bool isEditProduct = false;
-        private bool isEditDetail = false;
-        private Product mProduct = new Product();
-        private ProductDetail mProductDetail = new ProductDetail();
+
         private ProductDAO mProductDAO = ProductDAO.getInstance();
         private ProductDetailDAO mProductDetailDAO = ProductDetailDAO.getInstance();
         private Dictionary<string, Product> mProductDictionary = new Dictionary<string, Product>();
@@ -39,17 +29,7 @@ namespace HarvestManagerSystem.view
         private void FormAddProduct_Load(object sender, EventArgs e)
         {
             ProductNameList();
-            if (isEditProduct)
-            {
-                ProductNameComboBox.SelectedIndex = ProductNameComboBox.FindStringExact(mProduct.ProductName);
-            }else if (isEditDetail)
-            {
-                ProductNameComboBox.SelectedIndex = ProductNameComboBox.FindStringExact(mProduct.ProductName);
-            }
-            else
-            {
-                ProductNameComboBox.SelectedIndex = -1;
-            }
+            ProductNameComboBox.SelectedIndex = -1;
         }
 
         private void ProductNameList()
@@ -71,52 +51,14 @@ namespace HarvestManagerSystem.view
             }
         }
 
-        internal void InflateUI(Product product)
-        {
-            isEditProduct = true;
-            ProductNameComboBox.SelectedIndex = -1;
-            ProductNameComboBox.SelectedIndex = ProductNameComboBox.FindStringExact(product.ProductName);
-            mProduct.ProductId = product.ProductId;
-            mProduct.ProductName = product.ProductName;
-            ProductType.Enabled = false;
-            ProductPriceEmployee.Enabled = false;
-            ProductPriceCompany.Enabled = false;
-            handleSaveButton.Text = "Update";
-        }
-
-        internal void InflateUI(ProductDetail productDetail, Product product)
-        {
-            isEditDetail = true;
-            ProductNameComboBox.Enabled = false;
-            mProductDetail.ProductDetailId = productDetail.ProductDetailId;
-            mProductDetail.ProductType = productDetail.ProductType;
-            mProduct.ProductId = product.ProductId;
-            mProduct.ProductName = product.ProductName;
-
-            ProductPriceEmployee.Text = Convert.ToString(productDetail.PriceEmployee);
-            ProductPriceCompany.Text = Convert.ToString(productDetail.PriceCompany);
-            handleSaveButton.Text = "Update";
-        }
-
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            if (isEditDetail)
+            if (CheckInput())
             {
-                UpdateProductDetail(mProductDetail);
+                MessageBox.Show("Vérifier les valeurs");
+                return;
             }
-            else if (isEditProduct)
-            {
-                UpdateProduct(mProduct);
-            }
-            else
-            {
-                if (CheckInput() || !validateData())
-                {
-                    MessageBox.Show("Vérifier les valeurs");
-                    return;
-                }
-                SaveProductData();
-            }
+            SaveProductData();
             harvestMS.DisplayProductData();
         }
 
@@ -129,51 +71,13 @@ namespace HarvestManagerSystem.view
             return nameProductErrorLabel.Visible || codeProductErrorLabel.Visible || prixEmployeeErrorlabel.Visible || prixCompanyErrorlabel.Visible;
         }
 
-        private void UpdateProductDetail(ProductDetail productDetail)
-        {
-            productDetail.ProductType = ProductType.Text;
-            productDetail.PriceEmployee = Convert.ToDouble(ProductPriceEmployee.Text);
-            productDetail.PriceCompany = Convert.ToDouble(ProductPriceCompany.Text);
-            bool isAdded = mProductDetailDAO.UpdateData(productDetail);
-
-            if (isAdded)
-            {
-                wipeFields();
-                MessageBox.Show("data updated");
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Not updated");
-                this.Close();
-            }
-        }
-
-        private void UpdateProduct(Product product)
-        {
-            product.ProductName = ProductNameComboBox.Text;
-
-            bool isAdded = mProductDAO.UpdateData(product);
-            if (isAdded)
-            {
-                wipeFields();
-                MessageBox.Show("data updated");
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Not updated");
-                this.Close();
-            }
-
-        }
 
         private void SaveProductData()
         {
             Product product;
             if (!mProductDictionary.TryGetValue(ProductNameComboBox.Text, out product))
             {
-                Console.WriteLine("no select value");
+                Console.WriteLine("Pas de valeur de sélection");
             }
 
             ProductDetail productDetail = new ProductDetail();
@@ -194,27 +98,12 @@ namespace HarvestManagerSystem.view
             }
             if (added)
             {
+                MessageBox.Show("Produit ajouté à la base de données");
+                ProductNameList();
                 wipeFields();
             }
-            else
-            {
-                MessageBox.Show("Not added to database: ");
-            }
-           
-            ProductNameList();
-            wipeFields();
         }
 
-        private bool validateData()
-        {
-            Regex regex = new Regex(@"^[0-9]+\.?[0-9]*$");
-            return regex.Match(ProductPriceEmployee.Text).Success && regex.Match(ProductPriceCompany.Text).Success;
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
         private void btnReset_Click(object sender, EventArgs e)
         {
@@ -223,11 +112,22 @@ namespace HarvestManagerSystem.view
         private void wipeFields()
         {
             ProductNameComboBox.SelectedIndex = -1;
+            ProductNameComboBox.Text = "";
             ProductType.Text = "";
             ProductPriceEmployee.Text = "";
             ProductPriceCompany.Text = "";
         }
 
-
+        private void ValidateNumberEntred(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= '0' && e.KeyChar <= '9') || e.KeyChar == 8 || e.KeyChar == 46)
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

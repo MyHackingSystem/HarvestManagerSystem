@@ -10,17 +10,14 @@ namespace HarvestManagerSystem.database
 {
     class ProductDAO :DAO
     {
-
         public const string TABLE_PRODUCT = "Product";
         public const string COLUMN_PRODUCT_ID = "ProductId";
         public const string COLUMN_PRODUCT_NAME = "ProductName";
-        //public const string COLUMN_PRODUCT_IS_EXIST = "is_exist";
 
         private static ProductDAO instance = new ProductDAO();
 
         private ProductDAO() : base()
         {
-
         }
 
         public static ProductDAO getInstance()
@@ -52,7 +49,7 @@ namespace HarvestManagerSystem.database
             }
             catch (SQLiteException e)
             {
-                Console.WriteLine(e.StackTrace);
+                MessageBox.Show("Product Not Updated: " + e.Message);
                 return false;
             }
             finally
@@ -68,7 +65,7 @@ namespace HarvestManagerSystem.database
         {
             Dictionary<string, Product> productDictionary = new Dictionary<string, Product>();
 
-            String selectStmt = "SELECT * FROM " + TABLE_PRODUCT + " ORDER BY " + COLUMN_PRODUCT_NAME + " ASC;";
+            string selectStmt = "SELECT * FROM " + TABLE_PRODUCT + " ORDER BY " + COLUMN_PRODUCT_NAME + " ASC;";
 
             try
             {
@@ -104,7 +101,8 @@ namespace HarvestManagerSystem.database
         public List<Product> getData()
         {
             List<Product> list = new List<Product>();
-            String selectStmt = "SELECT * FROM " + TABLE_PRODUCT + " ORDER BY " + COLUMN_PRODUCT_NAME + " ASC;";
+            string selectStmt = "SELECT * FROM " + TABLE_PRODUCT + " ORDER BY " + COLUMN_PRODUCT_NAME + " ASC;";
+
             try
             {
                 SQLiteCommand sQLiteCommand = new SQLiteCommand(selectStmt, mSQLiteConnection);
@@ -131,38 +129,13 @@ namespace HarvestManagerSystem.database
             }
         }
 
-        //*******************************
-        //Add new product data 
-        //*******************************
-        public bool addData(Product product)
-        {
-            String insertStmt = "INSERT INTO " + TABLE_PRODUCT + " (" + COLUMN_PRODUCT_NAME +  ") VALUES ( @" + COLUMN_PRODUCT_NAME + " )";
-            try
-            {
-                SQLiteCommand sQLiteCommand = new SQLiteCommand(insertStmt, mSQLiteConnection);
-                OpenConnection();
-                sQLiteCommand.Parameters.AddWithValue(COLUMN_PRODUCT_NAME, product.ProductName);
-                sQLiteCommand.ExecuteNonQuery();
-                return true;
-            }
-            catch (SQLiteException e)
-            {
-                Console.WriteLine(e.Message);
-                return false;
-            }
-            finally
-            {
-                CloseConnection();
-            }
-        }
-
 
         //*******************************
-        //Delete product data (hide)
+        //Delete product data
         //*******************************
         public bool DeleteData(Product product)
         {
-            String updateStmt = "DELETE FROM " + TABLE_PRODUCT + " WHERE " + COLUMN_PRODUCT_ID + " = " + product.ProductId + " ";
+            string updateStmt = "DELETE FROM " + TABLE_PRODUCT + " WHERE " + COLUMN_PRODUCT_ID + " = " + product.ProductId + " ";
 
             try
             {
@@ -184,7 +157,7 @@ namespace HarvestManagerSystem.database
 
         public void CreateTable()
         {
-            String createStmt = "CREATE TABLE IF NOT EXISTS " + TABLE_PRODUCT
+            string createStmt = "CREATE TABLE IF NOT EXISTS " + TABLE_PRODUCT
                     + "(" + COLUMN_PRODUCT_ID + " INTEGER PRIMARY KEY, "
                     + COLUMN_PRODUCT_NAME + " TEXT NOT NULL)";
             SQLiteCommand sQLiteCommand = new SQLiteCommand(createStmt, mSQLiteConnection);

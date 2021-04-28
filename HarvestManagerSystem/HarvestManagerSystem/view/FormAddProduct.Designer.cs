@@ -85,6 +85,7 @@ namespace HarvestManagerSystem.view
             this.ProductPriceCompany.Name = "ProductPriceCompany";
             this.ProductPriceCompany.Size = new System.Drawing.Size(160, 29);
             this.ProductPriceCompany.TabIndex = 4;
+            this.ProductPriceCompany.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
             // 
             // ProductPriceEmployee
             // 
@@ -93,6 +94,7 @@ namespace HarvestManagerSystem.view
             this.ProductPriceEmployee.Name = "ProductPriceEmployee";
             this.ProductPriceEmployee.Size = new System.Drawing.Size(160, 29);
             this.ProductPriceEmployee.TabIndex = 3;
+            this.ProductPriceEmployee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
             // 
             // ProductType
             // 

@@ -91,7 +91,7 @@ namespace HarvestManagerSystem
             this.txtUser.Location = new System.Drawing.Point(90, 279);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(221, 23);
-            this.txtUser.TabIndex = 4;
+            this.txtUser.TabIndex = 1;
             // 
             // txtPassword
             // 
@@ -105,6 +105,7 @@ namespace HarvestManagerSystem
             // btnLogin
             // 
             this.btnLogin.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnLogin.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnLogin.ForeColor = System.Drawing.Color.White;
             this.btnLogin.Location = new System.Drawing.Point(141, 405);
@@ -114,6 +115,7 @@ namespace HarvestManagerSystem
             this.btnLogin.Text = "LOG IN";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            this.btnLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnLogin_KeyPress);
             // 
             // btnLabelExit
             // 
@@ -146,6 +148,7 @@ namespace HarvestManagerSystem
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginForm";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.LoginForm_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
