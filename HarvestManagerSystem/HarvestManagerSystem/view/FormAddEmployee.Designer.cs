@@ -43,7 +43,6 @@ namespace HarvestManagerSystem.view
             this.label1 = new System.Windows.Forms.Label();
             this.labelLastName = new System.Windows.Forms.Label();
             this.labelFirstName = new System.Windows.Forms.Label();
-            this.handleCancelButton = new System.Windows.Forms.Button();
             this.firstNameErrorLabel = new System.Windows.Forms.Label();
             this.lastNameErrorLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -188,22 +187,6 @@ namespace HarvestManagerSystem.view
             this.labelFirstName.TabIndex = 18;
             this.labelFirstName.Text = "Prénom";
             // 
-            // handleCancelButton
-            // 
-            this.handleCancelButton.BackColor = System.Drawing.Color.DarkOrange;
-            this.handleCancelButton.FlatAppearance.BorderSize = 0;
-            this.handleCancelButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Moccasin;
-            this.handleCancelButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
-            this.handleCancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.handleCancelButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.handleCancelButton.Location = new System.Drawing.Point(302, 519);
-            this.handleCancelButton.Name = "handleCancelButton";
-            this.handleCancelButton.Size = new System.Drawing.Size(70, 30);
-            this.handleCancelButton.TabIndex = 9;
-            this.handleCancelButton.Text = "Close";
-            this.handleCancelButton.UseVisualStyleBackColor = false;
-            this.handleCancelButton.Click += new System.EventHandler(this.handleCancelButton_Click);
-            // 
             // firstNameErrorLabel
             // 
             this.firstNameErrorLabel.AutoSize = true;
@@ -247,7 +230,6 @@ namespace HarvestManagerSystem.view
             this.Controls.Add(this.label1);
             this.Controls.Add(this.labelLastName);
             this.Controls.Add(this.labelFirstName);
-            this.Controls.Add(this.handleCancelButton);
             this.Controls.Add(this.firstNameErrorLabel);
             this.Controls.Add(this.lastNameErrorLabel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -276,7 +258,6 @@ namespace HarvestManagerSystem.view
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelLastName;
         private System.Windows.Forms.Label labelFirstName;
-        private System.Windows.Forms.Button handleCancelButton;
         private System.Windows.Forms.Label ProductErrorLabel;
         private System.Windows.Forms.Label firstNameErrorLabel;
         private System.Windows.Forms.Label lastNameErrorLabel;

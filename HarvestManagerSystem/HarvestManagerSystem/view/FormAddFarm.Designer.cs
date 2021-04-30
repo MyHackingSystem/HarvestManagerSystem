@@ -31,7 +31,6 @@ namespace HarvestManagerSystem.view
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAddFarm));
             this.btnReset = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.handleSaveButton = new System.Windows.Forms.Button();
             this.FarmNameComboBox = new System.Windows.Forms.ComboBox();
             this.ChampLabel = new System.Windows.Forms.Label();
@@ -60,22 +59,6 @@ namespace HarvestManagerSystem.view
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = false;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.BackColor = System.Drawing.Color.DarkOrange;
-            this.btnCancel.FlatAppearance.BorderSize = 0;
-            this.btnCancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Moccasin;
-            this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCancel.Location = new System.Drawing.Point(288, 504);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(70, 30);
-            this.btnCancel.TabIndex = 7;
-            this.btnCancel.Text = "Close";
-            this.btnCancel.UseVisualStyleBackColor = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // handleSaveButton
             // 
@@ -161,14 +144,14 @@ namespace HarvestManagerSystem.view
             // 
             // HarvestDate
             // 
-            this.HarvestDate.Location = new System.Drawing.Point(107, 322);
+            this.HarvestDate.Location = new System.Drawing.Point(107, 332);
             this.HarvestDate.Name = "HarvestDate";
             this.HarvestDate.Size = new System.Drawing.Size(160, 23);
             this.HarvestDate.TabIndex = 4;
             // 
             // PlantingDate
             // 
-            this.PlantingDate.Location = new System.Drawing.Point(107, 257);
+            this.PlantingDate.Location = new System.Drawing.Point(107, 259);
             this.PlantingDate.Name = "PlantingDate";
             this.PlantingDate.Size = new System.Drawing.Size(160, 23);
             this.PlantingDate.TabIndex = 3;
@@ -178,7 +161,7 @@ namespace HarvestManagerSystem.view
             this.HarvestLabel.AutoSize = true;
             this.HarvestLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.HarvestLabel.ForeColor = System.Drawing.Color.White;
-            this.HarvestLabel.Location = new System.Drawing.Point(107, 298);
+            this.HarvestLabel.Location = new System.Drawing.Point(107, 308);
             this.HarvestLabel.Name = "HarvestLabel";
             this.HarvestLabel.Size = new System.Drawing.Size(64, 21);
             this.HarvestLabel.TabIndex = 38;
@@ -189,7 +172,7 @@ namespace HarvestManagerSystem.view
             this.PlantationLabel.AutoSize = true;
             this.PlantationLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.PlantationLabel.ForeColor = System.Drawing.Color.White;
-            this.PlantationLabel.Location = new System.Drawing.Point(107, 232);
+            this.PlantationLabel.Location = new System.Drawing.Point(107, 234);
             this.PlantationLabel.Name = "PlantationLabel";
             this.PlantationLabel.Size = new System.Drawing.Size(83, 21);
             this.PlantationLabel.TabIndex = 37;
@@ -208,7 +191,6 @@ namespace HarvestManagerSystem.view
             this.Controls.Add(this.AddressLabel);
             this.Controls.Add(this.FarmAddress);
             this.Controls.Add(this.btnReset);
-            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.handleSaveButton);
             this.Controls.Add(this.FarmNameComboBox);
             this.Controls.Add(this.ChampLabel);
@@ -228,7 +210,6 @@ namespace HarvestManagerSystem.view
         #endregion
 
         private System.Windows.Forms.Button btnReset;
-        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button handleSaveButton;
         private System.Windows.Forms.ComboBox FarmNameComboBox;
         private System.Windows.Forms.Label ChampLabel;

@@ -212,6 +212,8 @@ namespace HarvestManagerSystem
             this.EditTransportStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteTransportStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPageEmployee = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtListEmployeeCloseFire = new System.Windows.Forms.TextBox();
             this.labelEmployeesTab = new System.Windows.Forms.Label();
             this.EmployeeDataGridView = new System.Windows.Forms.DataGridView();
             this.employeeStatusColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -222,9 +224,6 @@ namespace HarvestManagerSystem
             this.employeeHireDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeeFireDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeePermissionDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EmployeeContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.EditEmployeeStrip = new System.Windows.Forms.ToolStripMenuItem();
-            this.DeleteEmployeeStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPageSupplier = new System.Windows.Forms.TabPage();
             this.SupplyDataGridView = new System.Windows.Forms.DataGridView();
             this.SupplyId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -310,7 +309,6 @@ namespace HarvestManagerSystem
             this.TransportContextMenuStrip.SuspendLayout();
             this.tabPageEmployee.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EmployeeDataGridView)).BeginInit();
-            this.EmployeeContextMenuStrip.SuspendLayout();
             this.tabPageSupplier.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SupplyDataGridView)).BeginInit();
             this.SupplyContextMenuStrip.SuspendLayout();
@@ -1702,6 +1700,8 @@ namespace HarvestManagerSystem
             // tabPageEmployee
             // 
             this.tabPageEmployee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tabPageEmployee.Controls.Add(this.label5);
+            this.tabPageEmployee.Controls.Add(this.txtListEmployeeCloseFire);
             this.tabPageEmployee.Controls.Add(this.labelEmployeesTab);
             this.tabPageEmployee.Controls.Add(this.EmployeeDataGridView);
             this.tabPageEmployee.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -1711,6 +1711,25 @@ namespace HarvestManagerSystem
             this.tabPageEmployee.Size = new System.Drawing.Size(1121, 562);
             this.tabPageEmployee.TabIndex = 3;
             this.tabPageEmployee.Text = "Employées";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(875, 20);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(108, 21);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "Fin de Contrat";
+            // 
+            // txtListEmployeeCloseFire
+            // 
+            this.txtListEmployeeCloseFire.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtListEmployeeCloseFire.ForeColor = System.Drawing.Color.Red;
+            this.txtListEmployeeCloseFire.Location = new System.Drawing.Point(875, 44);
+            this.txtListEmployeeCloseFire.Multiline = true;
+            this.txtListEmployeeCloseFire.Name = "txtListEmployeeCloseFire";
+            this.txtListEmployeeCloseFire.Size = new System.Drawing.Size(231, 515);
+            this.txtListEmployeeCloseFire.TabIndex = 2;
             // 
             // labelEmployeesTab
             // 
@@ -1789,100 +1808,71 @@ namespace HarvestManagerSystem
             dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
             dataGridViewCellStyle29.SelectionForeColor = System.Drawing.Color.White;
             this.EmployeeDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle29;
-            this.EmployeeDataGridView.RowTemplate.ContextMenuStrip = this.EmployeeContextMenuStrip;
             this.EmployeeDataGridView.RowTemplate.Height = 25;
             this.EmployeeDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.EmployeeDataGridView.Size = new System.Drawing.Size(1088, 515);
-            this.EmployeeDataGridView.TabIndex = 0;
+            this.EmployeeDataGridView.Size = new System.Drawing.Size(822, 515);
+            this.EmployeeDataGridView.TabIndex = 1;
             this.EmployeeDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.EmployeeDataGridView_CellEndEdit);
-            this.EmployeeDataGridView.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.employeeDataGridView_CellMouseUp);
             // 
             // employeeStatusColumn
             // 
             this.employeeStatusColumn.DataPropertyName = "EmployeeStatus";
-            this.employeeStatusColumn.HeaderText = "Status";
+            this.employeeStatusColumn.HeaderText = "Etat";
+            this.employeeStatusColumn.MinimumWidth = 40;
             this.employeeStatusColumn.Name = "employeeStatusColumn";
-            this.employeeStatusColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.employeeStatusColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.employeeStatusColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.employeeStatusColumn.Width = 80;
+            this.employeeStatusColumn.Width = 40;
             // 
             // employeeIdColumn
             // 
             this.employeeIdColumn.DataPropertyName = "EmployeeId";
             this.employeeIdColumn.HeaderText = "Id";
+            this.employeeIdColumn.MinimumWidth = 40;
             this.employeeIdColumn.Name = "employeeIdColumn";
-            this.employeeIdColumn.Width = 80;
+            this.employeeIdColumn.ReadOnly = true;
+            this.employeeIdColumn.Width = 40;
             // 
             // employeeFullNameColumn
             // 
             this.employeeFullNameColumn.DataPropertyName = "FullName";
             this.employeeFullNameColumn.HeaderText = "Employée";
             this.employeeFullNameColumn.Name = "employeeFullNameColumn";
-            this.employeeFullNameColumn.Width = 260;
+            this.employeeFullNameColumn.ReadOnly = true;
+            this.employeeFullNameColumn.Width = 200;
             // 
             // employeeFirstNameColumn
             // 
             this.employeeFirstNameColumn.DataPropertyName = "FirstName";
             this.employeeFirstNameColumn.HeaderText = "Prénom";
             this.employeeFirstNameColumn.Name = "employeeFirstNameColumn";
-            this.employeeFirstNameColumn.ReadOnly = true;
-            this.employeeFirstNameColumn.Width = 150;
+            this.employeeFirstNameColumn.Width = 120;
             // 
             // employeeLastNameColumn
             // 
             this.employeeLastNameColumn.DataPropertyName = "LastName";
             this.employeeLastNameColumn.HeaderText = "Nom";
             this.employeeLastNameColumn.Name = "employeeLastNameColumn";
-            this.employeeLastNameColumn.ReadOnly = true;
-            this.employeeLastNameColumn.Width = 150;
+            this.employeeLastNameColumn.Width = 120;
             // 
             // employeeHireDateColumn
             // 
             this.employeeHireDateColumn.DataPropertyName = "HireDate";
             this.employeeHireDateColumn.HeaderText = "Debut CTR";
             this.employeeHireDateColumn.Name = "employeeHireDateColumn";
-            this.employeeHireDateColumn.ReadOnly = true;
             this.employeeHireDateColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.employeeHireDateColumn.Width = 120;
             // 
             // employeeFireDateColumn
             // 
             this.employeeFireDateColumn.DataPropertyName = "FireDate";
             this.employeeFireDateColumn.HeaderText = "Fin CTR";
             this.employeeFireDateColumn.Name = "employeeFireDateColumn";
-            this.employeeFireDateColumn.ReadOnly = true;
-            this.employeeFireDateColumn.Width = 120;
             // 
             // employeePermissionDateColumn
             // 
-            this.employeePermissionDateColumn.DataPropertyName = "PermissionDate";
+            this.employeePermissionDateColumn.DataPropertyName = "PermitDate";
             this.employeePermissionDateColumn.HeaderText = "SCDZP";
             this.employeePermissionDateColumn.Name = "employeePermissionDateColumn";
-            this.employeePermissionDateColumn.ReadOnly = true;
-            this.employeePermissionDateColumn.Width = 120;
-            // 
-            // EmployeeContextMenuStrip
-            // 
-            this.EmployeeContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.EditEmployeeStrip,
-            this.DeleteEmployeeStrip});
-            this.EmployeeContextMenuStrip.Name = "employeeMenuStrip";
-            this.EmployeeContextMenuStrip.Size = new System.Drawing.Size(140, 52);
-            this.EmployeeContextMenuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.EmployeeContextMenuStrip_ItemClicked);
-            // 
-            // EditEmployeeStrip
-            // 
-            this.EditEmployeeStrip.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.EditEmployeeStrip.Name = "EditEmployeeStrip";
-            this.EditEmployeeStrip.Size = new System.Drawing.Size(139, 24);
-            this.EditEmployeeStrip.Text = "Edit";
-            // 
-            // DeleteEmployeeStrip
-            // 
-            this.DeleteEmployeeStrip.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.DeleteEmployeeStrip.Name = "DeleteEmployeeStrip";
-            this.DeleteEmployeeStrip.Size = new System.Drawing.Size(139, 24);
-            this.DeleteEmployeeStrip.Text = "Supprimer";
             // 
             // tabPageSupplier
             // 
@@ -2225,6 +2215,7 @@ namespace HarvestManagerSystem
             this.SeasonDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.SeasonDataGridView.Size = new System.Drawing.Size(463, 515);
             this.SeasonDataGridView.TabIndex = 4;
+            this.SeasonDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.SeasonDataGridView_CellEndEdit);
             // 
             // SeasonId
             // 
@@ -2238,14 +2229,12 @@ namespace HarvestManagerSystem
             this.SeasonPlantingDate.DataPropertyName = "SeasonPlantingDate";
             this.SeasonPlantingDate.HeaderText = "Date de plantation ";
             this.SeasonPlantingDate.Name = "SeasonPlantingDate";
-            this.SeasonPlantingDate.ReadOnly = true;
             // 
             // SeasonHarvestDate
             // 
             this.SeasonHarvestDate.DataPropertyName = "SeasonHarvestDate";
             this.SeasonHarvestDate.HeaderText = "Date de récolte ";
             this.SeasonHarvestDate.Name = "SeasonHarvestDate";
-            this.SeasonHarvestDate.ReadOnly = true;
             // 
             // Farm
             // 
@@ -2261,7 +2250,6 @@ namespace HarvestManagerSystem
             this.DeleteSeasonStrip});
             this.SeasonContextMenuStrip.Name = "SeasonContextMenuStrip";
             this.SeasonContextMenuStrip.Size = new System.Drawing.Size(130, 48);
-            this.SeasonContextMenuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.SeasonContextMenuStrip_ItemClicked);
             // 
             // EditSeasonStrip
             // 
@@ -2352,6 +2340,7 @@ namespace HarvestManagerSystem
             this.FarmDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.FarmDataGridView.Size = new System.Drawing.Size(644, 515);
             this.FarmDataGridView.TabIndex = 2;
+            this.FarmDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.FarmDataGridView_CellEndEdit);
             this.FarmDataGridView.SelectionChanged += new System.EventHandler(this.FarmtDataGridView_SelectionChanged);
             // 
             // FarmId
@@ -2366,7 +2355,6 @@ namespace HarvestManagerSystem
             this.FarmName.DataPropertyName = "FarmName";
             this.FarmName.HeaderText = "Champs";
             this.FarmName.Name = "FarmName";
-            this.FarmName.ReadOnly = true;
             this.FarmName.Width = 240;
             // 
             // FarmAddress
@@ -2374,7 +2362,6 @@ namespace HarvestManagerSystem
             this.FarmAddress.DataPropertyName = "FarmAddress";
             this.FarmAddress.HeaderText = "Adresse";
             this.FarmAddress.Name = "FarmAddress";
-            this.FarmAddress.ReadOnly = true;
             this.FarmAddress.Width = 400;
             // 
             // FarmContextMenuStrip
@@ -2384,7 +2371,6 @@ namespace HarvestManagerSystem
             this.DeleteFarmStrip});
             this.FarmContextMenuStrip.Name = "FarmContextMenuStrip";
             this.FarmContextMenuStrip.Size = new System.Drawing.Size(130, 48);
-            this.FarmContextMenuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.FarmContextMenuStrip_ItemClicked);
             // 
             // EditFarmStrip
             // 
@@ -2886,8 +2872,8 @@ namespace HarvestManagerSystem
             ((System.ComponentModel.ISupportInitialize)(this.TransportDataGridView)).EndInit();
             this.TransportContextMenuStrip.ResumeLayout(false);
             this.tabPageEmployee.ResumeLayout(false);
+            this.tabPageEmployee.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EmployeeDataGridView)).EndInit();
-            this.EmployeeContextMenuStrip.ResumeLayout(false);
             this.tabPageSupplier.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SupplyDataGridView)).EndInit();
             this.SupplyContextMenuStrip.ResumeLayout(false);
@@ -2941,18 +2927,8 @@ namespace HarvestManagerSystem
         private System.Windows.Forms.ToolStripProgressBar loadDataProgressBar;
         private System.Windows.Forms.DataGridView EmployeeDataGridView;
         private System.Windows.Forms.Label labelEmployeesTab;
-        private System.Windows.Forms.ContextMenuStrip EmployeeContextMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem EditEmployeeStrip;
         private System.Windows.Forms.ToolStripMenuItem deleteStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteFromEmployeeTable;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn employeeStatusColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn employeeIdColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn employeeFullNameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn employeeFirstNameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn employeeLastNameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn employeeHireDateColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn employeeFireDateColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn employeePermissionDateColumn;
         private System.Windows.Forms.Label labelSuuplierTab;
         private System.Windows.Forms.DataGridView SupplierDataGridView;
         private System.Windows.Forms.DataGridView SeasonDataGridView;
@@ -2966,17 +2942,9 @@ namespace HarvestManagerSystem
         private System.Windows.Forms.DataGridView SupplyDataGridView;
         private System.Windows.Forms.ToolStripMenuItem EditProductStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem DeleteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem DeleteEmployeeStrip;
         private System.Windows.Forms.ContextMenuStrip FarmContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem EditFarmStrip;
         private System.Windows.Forms.ToolStripMenuItem DeleteFarmStrip;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SeasonId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SeasonPlantingDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SeasonHarvestDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Farm;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FarmId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FarmName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FarmAddress;
         private System.Windows.Forms.ContextMenuStrip SeasonContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem EditSeasonStrip;
         private System.Windows.Forms.ToolStripMenuItem DeleteSeasonStrip;
@@ -3128,6 +3096,23 @@ namespace HarvestManagerSystem
         private System.Windows.Forms.DataGridView ProductDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn employeeStatusColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn employeeIdColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn employeeFullNameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn employeeFirstNameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn employeeLastNameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn employeeHireDateColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn employeeFireDateColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn employeePermissionDateColumn;
+        private System.Windows.Forms.TextBox txtListEmployeeCloseFire;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SeasonId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SeasonPlantingDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SeasonHarvestDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Farm;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FarmId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FarmName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FarmAddress;
+        private System.Windows.Forms.Label label5;
     }
 }
 

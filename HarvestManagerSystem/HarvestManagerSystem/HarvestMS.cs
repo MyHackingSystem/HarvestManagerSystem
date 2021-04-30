@@ -42,6 +42,9 @@ namespace HarvestManagerSystem
         private void HarvestMS_Load(object sender, EventArgs e)
         {
             //DisplayQuantityData();
+            //employeeDAO.CreateTable();
+            //farmDAO.CreateTable();
+            //seasonDAO.CreateTable();
         }
 
         private void tabProduction_SelectedIndexChanged(object sender, EventArgs e)
@@ -59,13 +62,14 @@ namespace HarvestManagerSystem
                     //DisplayTransportData();
                     break;
                 case 3:
-                    //DisplayEmployeeData();
+                    DisplayEmployeeData();
+                    EndCotract();
                     break;
                 case 4:
                     //DisplaySupplierData();
                     break;
                 case 5:
-                    //DisplayFarmData();
+                    DisplayFarmData();
                     break;
                 case 6:
                     DisplayProductData();
@@ -76,7 +80,7 @@ namespace HarvestManagerSystem
             }
         }
 
-        #region *************************************************** Individual QUANTITY CODE ****************************************************************************
+        #region ********************************************* Individual CODE ***********************************************************************
 
         private void btnAddIndividualHarvest_Click(object sender, EventArgs e)
         {
@@ -86,7 +90,6 @@ namespace HarvestManagerSystem
 
 
         #endregion
-
 
         #region **************************************************** QUANTITY CODE ****************************************************************************
 
@@ -637,14 +640,11 @@ MessageBoxIcon.Information);
 
         #endregion
 
-        #region FARM CODE
+        #region  ******************************************* FARM CODE *************************************************************************
 
         List<Farm> listFarm = new List<Farm>();
-        private void btnAddFarm_Click(object sender, EventArgs e)
-        {
-            FormAddFarm formAddFarm = FormAddFarm.getInstance(this);
-            formAddFarm.ShowFormAdd();
-        }
+
+        List<Season> listSeason = new List<Season>();
 
         public void DisplayFarmData()
         {
@@ -662,136 +662,44 @@ MessageBoxIcon.Information);
 
         }
 
-        private void FarmContextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-            if (e.ClickedItem.Name == EditFarmStrip.Name)
-            {
-                FarmContextMenuStrip.Visible = false;
-                HandleEditFarmTable();
-            }
-            else if (e.ClickedItem.Name == DeleteFarmStrip.Name)
-            {
-                FarmContextMenuStrip.Visible = false;
-                HandleDeleteFarmTable();
-            }
-        }
-
-        void HandleEditFarmTable()
-        {
-
-            FormAddFarm formAddFarm = FormAddFarm.getInstance(this);
-            Farm farm = (Farm)FarmDataGridView.CurrentRow.DataBoundItem;
-            if (farm == null)
-            {
-                MessageBox.Show("Select farm");
-                return;
-            }
-
-            formAddFarm.InflateUI(farm);
-            formAddFarm.ShowFormAdd();
-        }
-
-        void HandleDeleteFarmTable()
-        {
-            Farm farm = (Farm)FarmDataGridView.CurrentRow.DataBoundItem;
-            if (farm == null)
-            {
-                MessageBox.Show("Select farm");
-                return;
-            }
-            DialogResult dr = MessageBox.Show("Are you sure you want to delete: " + farm.FarmName, "Delete", MessageBoxButtons.YesNoCancel,
-            MessageBoxIcon.Information);
-            bool deleted = false;
-            if (dr == DialogResult.Yes)
-            {
-                deleted = farmDAO.DeleteData(farm);
-            }
-
-            if (deleted)
-            {
-                MessageBox.Show("Delete");
-            }
-            else if (dr == DialogResult.Yes)
-            {
-                MessageBox.Show("Not Delete");
-            }
-            DisplayFarmData();
-
-        }
-
-        #endregion
-
-        #region Season DATA
-
         private void DisplaySeasonData(Farm farm)
         {
-            SeasonDataGridView.DataSource = seasonDAO.getData(farm);
+            listSeason.Clear();
+            listSeason = seasonDAO.getData(farm);
+            SeasonDataGridView.DataSource = listSeason;
         }
 
-        private void SeasonContextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void FarmDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ClickedItem.Name == EditSeasonStrip.Name)
+            Farm farm = (Farm)listFarm[e.RowIndex];
+            if (farm == null)
             {
-                SeasonContextMenuStrip.Visible = false;
-                HandleEditSeasonTable();
-            }
-            else if (e.ClickedItem.Name == DeleteSeasonStrip.Name)
-            {
-                SeasonContextMenuStrip.Visible = false;
-                HandleDeleteSeasonTable();
-            }
-        }
-
-        void HandleEditSeasonTable()
-        {
-            FormAddFarm formAddFarm = FormAddFarm.getInstance(this);
-            Farm farm = (Farm)FarmDataGridView.CurrentRow.DataBoundItem;
-            Season season = (Season)SeasonDataGridView.CurrentRow.DataBoundItem;
-            if (season == null)
-            {
-                MessageBox.Show("Select season");
                 return;
             }
-
-            formAddFarm.InflateUI(season, farm);
-            formAddFarm.ShowFormAdd();
+            if (farmDAO.UpdateData(farm))
+            {
+                DisplayFarmData();
+            }
         }
 
-        void HandleDeleteSeasonTable()
+        private void SeasonDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            Season season = (Season)SeasonDataGridView.CurrentRow.DataBoundItem;
+            Season season = (Season)listSeason[e.RowIndex];
             if (season == null)
             {
-                MessageBox.Show("Select product");
                 return;
             }
-
-            DialogResult dr = MessageBox.Show("Are you sure you want to delete season from: " + season.SeasonPlantingDate + " to " + season.SeasonHarvestDate, "Delete", MessageBoxButtons.YesNoCancel,
-MessageBoxIcon.Information);
-            bool deleted = false;
-            if (dr == DialogResult.Yes)
+            if (seasonDAO.UpdateData(season))
             {
-                deleted = seasonDAO.DeleteData(season); //productDetailDAO.DeleteData(productDetail);
+                DisplayFarmData();
             }
-
-            if (deleted)
-            {
-                MessageBox.Show("Delete");
-            }
-            else if (dr == DialogResult.Yes)
-            {
-                MessageBox.Show("Not Delete");
-            }
-            DisplayFarmData();
-
         }
 
         #endregion
 
-        #region *******************************************- PRODUCT CODE ****************************************************************************
+        #region ******************************************* PRODUCT CODE ****************************************************************************
 
         List<Product> listProduct = new List<Product>();
-
 
         public void DisplayProductData()
         {
@@ -824,7 +732,7 @@ MessageBoxIcon.Information);
 
         #endregion
 
-        #region PRODUCT DETAIL CODE
+        #region ******************************************* PRODUCT DETAIL CODE *****************************************************************
 
         List<ProductDetail> listProductDetail = new List<ProductDetail>();
 
@@ -1003,121 +911,45 @@ MessageBoxIcon.Information);
 
         #endregion
 
-        #region EMPLOYEE CODE
+        #region *********************************** EMPLOYEE CODE ***************************************************************
 
-        private void btnAddEmployee_Click(object sender, EventArgs e)
-        {
-            FormAddEmployee formAddEmployee = FormAddEmployee.getInstance(this);
-            formAddEmployee.ShowFormAdd();
-        }
+        List<Employee> listEmployee = new List<Employee>();
 
-        private void ReloadButton_Click(object sender, EventArgs e)
-        {
-            DisplayEmployeeData();
-        }
         public void DisplayEmployeeData()
         {
-            EmployeeDataGridView.DataSource = employeeDAO.getData();
-        }
-
-        private void EmployeeContextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-            if (e.ClickedItem.Name == EditEmployeeStrip.Name)
-            {
-                EmployeeContextMenuStrip.Visible = false;
-                HandleEditEmployeeTable();
-            }
-            else if (e.ClickedItem.Name == DeleteEmployeeStrip.Name)
-            {
-                EmployeeContextMenuStrip.Visible = false;
-                HandleDeleteEmployeeTable();
-            }
-        }
-
-        void HandleEditEmployeeTable()
-        {
-            FormAddEmployee formAddEmployee = FormAddEmployee.getInstance(this);
-            Employee employee = (Employee)EmployeeDataGridView.CurrentRow.DataBoundItem;
-            if (employee == null)
-            {
-                MessageBox.Show("Select Employee");
-                return;
-            }
-            formAddEmployee.InflateUI(employee);
-            formAddEmployee.ShowFormAdd();
-        }
-
-        void HandleDeleteEmployeeTable()
-        {
-            Employee selectedEmployee = (Employee)EmployeeDataGridView.CurrentRow.DataBoundItem;
-            if (selectedEmployee == null)
-            {
-                MessageBox.Show("Select Employee");
-                return;
-            }
-            DialogResult dr = MessageBox.Show("Are you sure you want to delete: " + selectedEmployee.FullName, "Delete", MessageBoxButtons.YesNoCancel,
-            MessageBoxIcon.Information);
-            bool deleted = false;
-            if (dr == DialogResult.Yes)
-            {
-                deleted = employeeDAO.DeleteData(selectedEmployee);
-            }
-
-            if (deleted)
-            {
-                MessageBox.Show("Delete");
-                DisplayEmployeeData();
-            }
-            else if (dr == DialogResult.Yes)
-            {
-                MessageBox.Show("Not Delete");
-            }
-
+            listEmployee = employeeDAO.getData();
+            EmployeeDataGridView.DataSource = listEmployee;
         }
 
         private void EmployeeDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == EmployeeDataGridView.Columns["employeeStatusColumn"].Index)
+            Employee employee = (Employee)listEmployee[e.RowIndex];
+            if (employee == null)
             {
-                Employee selectedEmployee = (Employee)EmployeeDataGridView.CurrentRow.DataBoundItem;
-                employeeDAO.updateEmployeeStatusById(selectedEmployee);
+                MessageBox.Show("Check values");
+                return;
             }
-
+            if (employeeDAO.UpdateData(employee))
+            {
+                EndCotract();
+            }
         }
 
-        private void employeeDataGridView_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        private void EndCotract()
         {
-            if (EmployeeDataGridView.DataSource != null)
+            txtListEmployeeCloseFire.Text = "";
+            foreach (Employee emp in listEmployee)
             {
-                if (e.ColumnIndex == EmployeeDataGridView.Columns["employeeStatusColumn"].Index && e.RowIndex != -1)
+                if (emp.FireDate.AddDays(-5) <= DateTime.Now.Date)
                 {
-                    EmployeeDataGridView.EndEdit();
+                    txtListEmployeeCloseFire.Text += "* " + emp.FullName + Environment.NewLine;
                 }
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         #endregion
+
+        #region ************************************************* Side Code ***********************************************
 
         private void AppLogo_Click(object sender, EventArgs e)
         {
@@ -1136,7 +968,17 @@ MessageBoxIcon.Information);
             Application.Exit();
         }
 
-        #region ************************************************* FormAdd Code ***********************************************
+        private void btnAddFarm_Click(object sender, EventArgs e)
+        {
+            FormAddFarm formAddFarm = new FormAddFarm(this);
+            formAddFarm.ShowDialog();
+        }
+
+        private void btnAddEmployee_Click(object sender, EventArgs e)
+        {
+            FormAddEmployee formAddEmployee = new FormAddEmployee(this);
+            formAddEmployee.ShowDialog();
+        }
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
@@ -1144,6 +986,10 @@ MessageBoxIcon.Information);
             formAddProduct.ShowDialog();
         }
 
+
+
         #endregion
+
+
     }
 }

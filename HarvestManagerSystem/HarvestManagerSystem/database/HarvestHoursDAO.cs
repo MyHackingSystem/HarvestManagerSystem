@@ -384,7 +384,7 @@ namespace HarvestManagerSystem.database
                 + EmployeeDAO.TABLE_EMPLOYEE + "." + EmployeeDAO.COLUMN_EMPLOYEE_LAST_NAME + " "
                     + " FROM " + EmployeeDAO.TABLE_EMPLOYEE
                     + " WHERE " + EmployeeDAO.COLUMN_EMPLOYEE_STATUS + " = 1 "
-                    + " AND " + EmployeeDAO.COLUMN_EMPLOYEE_IS_EXIST + " = 1 "
+                    //+ " AND " + EmployeeDAO.COLUMN_EMPLOYEE_IS_EXIST + " = 1 "
                     + " ORDER BY " + EmployeeDAO.COLUMN_EMPLOYEE_FIRST_NAME + " ASC;";
 
             try

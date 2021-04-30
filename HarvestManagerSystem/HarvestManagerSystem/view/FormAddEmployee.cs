@@ -13,46 +13,23 @@ namespace HarvestManagerSystem.view
     public partial class FormAddEmployee : Form
     {
         EmployeeDAO emplouyeeDAO = EmployeeDAO.getInstance();
-        Employee mEmployee = new Employee();
-        bool isEditStatus = false;
 
         private HarvestMS harvestMS;
-        private static FormAddEmployee instance;
 
-        private FormAddEmployee(HarvestMS harvestMS)
+        public FormAddEmployee(HarvestMS harvestMS)
         {
             this.harvestMS = harvestMS;
             InitializeComponent();
         }
 
+        private void FormAddEmployee_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void FormAddEmployee_FormClosed(object sender, FormClosedEventArgs e)
         {
             wipeFields();
-            instance = null;
-        }
-
-
-        public static FormAddEmployee getInstance(HarvestMS harvestMS)
-        {
-            if (instance == null)
-            {
-                instance = new FormAddEmployee(harvestMS);
-            }
-            return instance;
-        }
-
-        public void ShowFormAdd()
-        {
-            if (instance != null)
-            {
-                instance.BringToFront();
-            }
-            else
-            {
-                instance = new FormAddEmployee(harvestMS);
-
-            }
-            instance.Show();
         }
 
         private void handleSaveButton_Click(object sender, EventArgs e)
@@ -61,61 +38,24 @@ namespace HarvestManagerSystem.view
             {  
                 return;
             }
-            if (isEditStatus)
-            {
-                UpdateEmployeedata(mEmployee);
-            }
-            else
-            {
-                SaveEmployeedata();
-            }
+            SaveEmployeedata();
             harvestMS.DisplayEmployeeData();
-            
-        }
-
-        private void UpdateEmployeedata(Employee employee)
-        {
-            employee.EmployeeStatus = fxEmployeeStatus.Checked;
-            employee.FirstName = fxFirstName.Text.ToUpper().Trim();
-            employee.LastName = fxLastName.Text.ToUpper().Trim();
-            employee.FireDate = fxFireDate.Value;
-            employee.HireDate = fxHireDate.Value;
-            employee.PermissionDate = fxPermissionDate.Value;
-
-            bool isAdded = emplouyeeDAO.UpdateData(employee);
-            if (isAdded)
-            {
-                wipeFields();
-                MessageBox.Show("data updated");
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Not updated");
-                this.Close();
-            }
         }
 
         private void SaveEmployeedata()
         {
             Employee employee = new Employee();
-
             employee.EmployeeStatus = fxEmployeeStatus.Checked;
             employee.FirstName = fxFirstName.Text.ToUpper().Trim();
             employee.LastName = fxLastName.Text.ToUpper().Trim();
             employee.FireDate = fxFireDate.Value;
             employee.HireDate = fxHireDate.Value;
-            employee.PermissionDate = fxPermissionDate.Value;
+            employee.PermitDate = fxPermissionDate.Value;
 
-            bool isAdded = emplouyeeDAO.addData(employee);
-            if (isAdded)
+            if (emplouyeeDAO.addData(employee))
             {
-                wipeFields();
                 MessageBox.Show("Data Added");
-            }
-            else
-            {
-                MessageBox.Show("Data not added");
+                wipeFields();
             }
         }
 
@@ -152,30 +92,5 @@ namespace HarvestManagerSystem.view
             firstNameErrorLabel.Visible = false;
             lastNameErrorLabel.Visible = false;
         }
-
-        private void handleCancelButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void FormAddEmployee_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        public void InflateUI(Employee employee)
-        {
-            isEditStatus = true;
-            mEmployee.EmployeeId = employee.EmployeeId;
-            fxEmployeeStatus.Checked = employee.EmployeeStatus;
-            fxFirstName.Text = employee.FirstName;
-            fxLastName.Text = employee.LastName;
-            fxFireDate.Value = employee.HireDate;
-            fxHireDate.Value = employee.FireDate;
-            fxPermissionDate.Value = employee.PermissionDate;
-            handleSaveButton.Text = "Update";
-        }
-
-
     }
 }

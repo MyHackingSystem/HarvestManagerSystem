@@ -16,15 +16,15 @@ namespace HarvestManagerSystem.database
     class EmployeeDAO:DAO
     {
 
-        public const string TABLE_EMPLOYEE = "employee";
-        public const string COLUMN_EMPLOYEE_ID = "id";
-        public const string COLUMN_EMPLOYEE_STATUS = "status";
-        public const string COLUMN_EMPLOYEE_FIRST_NAME = "first_name";
-        public const string COLUMN_EMPLOYEE_LAST_NAME = "last_name";
-        public const string COLUMN_EMPLOYEE_HIRE_DATE = "hire_date";
-        public const string COLUMN_EMPLOYEE_FIRE_DATE = "fire_date";
-        public const string COLUMN_EMPLOYEE_PERMISSION_DATE = "permission_date";
-        public const string COLUMN_EMPLOYEE_IS_EXIST = "is_exist";
+        public const string TABLE_EMPLOYEE = "Employee";
+        public const string COLUMN_EMPLOYEE_ID = "EmployeeId";
+        public const string COLUMN_EMPLOYEE_STATUS = "EmployeeStatus";
+        public const string COLUMN_EMPLOYEE_FIRST_NAME = "FirstName";
+        public const string COLUMN_EMPLOYEE_LAST_NAME = "LastName";
+        public const string COLUMN_EMPLOYEE_HIRE_DATE = "HireDate";
+        public const string COLUMN_EMPLOYEE_FIRE_DATE = "FireDate";
+        public const string COLUMN_EMPLOYEE_PERMIT_DATE = "PermitDate";
+
 
         private static EmployeeDAO instance = new EmployeeDAO();
 
@@ -48,9 +48,7 @@ namespace HarvestManagerSystem.database
         {
             Dictionary<string, Employee> employeeDictionary = new Dictionary<string, Employee>();
 
-            String selectStmt = "SELECT * FROM " + TABLE_EMPLOYEE
-                + " WHERE " + COLUMN_EMPLOYEE_IS_EXIST + " = 1 " 
-                + " ORDER BY " + COLUMN_EMPLOYEE_FIRST_NAME + " ASC;";
+            String selectStmt = "SELECT * FROM " + TABLE_EMPLOYEE + " ORDER BY " + COLUMN_EMPLOYEE_FIRST_NAME + " ASC;";
 
             try
             {
@@ -68,7 +66,7 @@ namespace HarvestManagerSystem.database
                         employee.LastName = (string)result[COLUMN_EMPLOYEE_LAST_NAME];
                         employee.HireDate = (DateTime)result[COLUMN_EMPLOYEE_HIRE_DATE];
                         employee.FireDate = (DateTime)result[COLUMN_EMPLOYEE_FIRE_DATE];
-                        employee.PermissionDate = (DateTime)result[COLUMN_EMPLOYEE_PERMISSION_DATE];
+                        employee.PermitDate = (DateTime)result[COLUMN_EMPLOYEE_PERMIT_DATE];
                         employeeDictionary.Add(employee.FullName, employee);
                     }
                 }
@@ -97,7 +95,7 @@ namespace HarvestManagerSystem.database
                 + COLUMN_EMPLOYEE_LAST_NAME + " =@" + COLUMN_EMPLOYEE_LAST_NAME + ", "
                 + COLUMN_EMPLOYEE_HIRE_DATE + " =@" + COLUMN_EMPLOYEE_HIRE_DATE + ", "
                 + COLUMN_EMPLOYEE_FIRE_DATE + " =@" + COLUMN_EMPLOYEE_FIRE_DATE + ", "
-                + COLUMN_EMPLOYEE_PERMISSION_DATE + " =@" + COLUMN_EMPLOYEE_PERMISSION_DATE + " "
+                + COLUMN_EMPLOYEE_PERMIT_DATE + " =@" + COLUMN_EMPLOYEE_PERMIT_DATE + " "
                 + " WHERE " + COLUMN_EMPLOYEE_ID + " = " + employee.EmployeeId + " ";
 
             try
@@ -109,14 +107,14 @@ namespace HarvestManagerSystem.database
                 sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_EMPLOYEE_LAST_NAME, employee.LastName));
                 sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_EMPLOYEE_HIRE_DATE, employee.HireDate));
                 sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_EMPLOYEE_FIRE_DATE, employee.FireDate));
-                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_EMPLOYEE_PERMISSION_DATE, employee.PermissionDate));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_EMPLOYEE_PERMIT_DATE, employee.PermitDate));
                 sQLiteCommand.ExecuteNonQuery();
                 CloseConnection();
                 return true;
             }
             catch (SQLiteException e)
             {
-                Console.WriteLine(e.Message);
+                MessageBox.Show("Error: " + e.Message);
                 return false;
             }
             finally
@@ -130,22 +128,20 @@ namespace HarvestManagerSystem.database
         //*******************************
         public bool addData(Employee employee)
         {
-            String insertStmt = "INSERT INTO " + TABLE_EMPLOYEE + " ("
+            string insertStmt = "INSERT INTO " + TABLE_EMPLOYEE + " ("
                     + COLUMN_EMPLOYEE_STATUS + ", "
                     + COLUMN_EMPLOYEE_FIRST_NAME + ", "
                     + COLUMN_EMPLOYEE_LAST_NAME + ", "
                     + COLUMN_EMPLOYEE_HIRE_DATE + ", "
                     + COLUMN_EMPLOYEE_FIRE_DATE + ", "
-                    + COLUMN_EMPLOYEE_PERMISSION_DATE + ", "
-                    + COLUMN_EMPLOYEE_IS_EXIST + "" +
-                    ") VALUES ( "
+                    + COLUMN_EMPLOYEE_PERMIT_DATE + " "
+                    + ") VALUES ( "
                     + "@" + COLUMN_EMPLOYEE_STATUS + ", "
                     + "@" + COLUMN_EMPLOYEE_FIRST_NAME + ", "
                     + "@" + COLUMN_EMPLOYEE_LAST_NAME + ", "
                     + "@" + COLUMN_EMPLOYEE_HIRE_DATE + ", "
                     + "@" + COLUMN_EMPLOYEE_FIRE_DATE + ", "
-                    + "@" + COLUMN_EMPLOYEE_PERMISSION_DATE + ", "
-                    + "@" + COLUMN_EMPLOYEE_IS_EXIST + "" 
+                    + "@" + COLUMN_EMPLOYEE_PERMIT_DATE + " "
                     +" )";
             try
             {
@@ -156,14 +152,13 @@ namespace HarvestManagerSystem.database
                 sQLiteCommand.Parameters.AddWithValue(COLUMN_EMPLOYEE_LAST_NAME, employee.LastName);
                 sQLiteCommand.Parameters.AddWithValue(COLUMN_EMPLOYEE_HIRE_DATE, employee.HireDate);
                 sQLiteCommand.Parameters.AddWithValue(COLUMN_EMPLOYEE_FIRE_DATE, employee.FireDate);
-                sQLiteCommand.Parameters.AddWithValue(COLUMN_EMPLOYEE_PERMISSION_DATE, employee.PermissionDate);
-                sQLiteCommand.Parameters.AddWithValue(COLUMN_EMPLOYEE_IS_EXIST, 1);
+                sQLiteCommand.Parameters.AddWithValue(COLUMN_EMPLOYEE_PERMIT_DATE, employee.PermitDate);
                 sQLiteCommand.ExecuteNonQuery();
                 return true;
             }
             catch (SQLiteException e)
             {
-                Console.WriteLine(e.Message);
+                MessageBox.Show("Error: " + e.Message);
                 return false;
             }
             finally
@@ -178,9 +173,7 @@ namespace HarvestManagerSystem.database
         public List<Employee> getData()
         {
             List<Employee> list = new List<Employee>();
-            String selectStmt = "SELECT * FROM " + TABLE_EMPLOYEE
-                + " WHERE " + COLUMN_EMPLOYEE_IS_EXIST + " = " + 1
-                + " ORDER BY " + COLUMN_EMPLOYEE_FIRST_NAME + " ASC;";
+            String selectStmt = "SELECT * FROM " + TABLE_EMPLOYEE + " ORDER BY " + COLUMN_EMPLOYEE_FIRST_NAME + " ASC;";
 
             try
             {
@@ -192,23 +185,26 @@ namespace HarvestManagerSystem.database
                     while (result.Read())
                     {
                         Employee employee = new Employee();
-                        employee.EmployeeId = Convert.ToInt32((result["id"]).ToString());
-                        employee.EmployeeStatus = (bool)result["status"];
-                        employee.FirstName = (string)result["first_name"];
-                        employee.LastName = (string)result["last_name"];
-                        employee.HireDate = (DateTime)result["hire_date"];
-                        employee.FireDate = (DateTime)result["fire_date"];
-                        employee.PermissionDate = (DateTime)result["permission_date"];
+                        employee.EmployeeId = Convert.ToInt32((result[COLUMN_EMPLOYEE_ID]).ToString());
+                        employee.EmployeeStatus = (bool)result[COLUMN_EMPLOYEE_STATUS];
+                        employee.FirstName = (string)result[COLUMN_EMPLOYEE_FIRST_NAME];
+                        employee.LastName = (string)result[COLUMN_EMPLOYEE_LAST_NAME];
+                        employee.HireDate = (DateTime)result[COLUMN_EMPLOYEE_HIRE_DATE];
+                        employee.FireDate = (DateTime)result[COLUMN_EMPLOYEE_FIRE_DATE];
+                        employee.PermitDate = (DateTime)result[COLUMN_EMPLOYEE_PERMIT_DATE];
                         list.Add(employee);
                     }
                 }
-                CloseConnection();
                 return list;
             }
             catch (SQLiteException e)
             {
                 Console.WriteLine(e.Message);
                 return list;
+            }
+            finally
+            {
+                CloseConnection();
             }
         }
 
@@ -239,9 +235,7 @@ namespace HarvestManagerSystem.database
         //*******************************
         public bool DeleteData(Employee employee)
         {
-            String updateStmt = "UPDATE " + TABLE_EMPLOYEE + " SET "
-                 + COLUMN_EMPLOYEE_IS_EXIST + " = 0 "
-                + " WHERE " + COLUMN_EMPLOYEE_ID + " = " + employee.EmployeeId + " ";
+            String updateStmt = "DELETE FROM " + TABLE_EMPLOYEE + " WHERE " + COLUMN_EMPLOYEE_ID + " = " + employee.EmployeeId + " ";
 
             try
             {
@@ -270,9 +264,7 @@ namespace HarvestManagerSystem.database
                     + COLUMN_EMPLOYEE_LAST_NAME + " VARCHAR(16) NOT NULL, "
                     + COLUMN_EMPLOYEE_HIRE_DATE + " DATE, "
                     + COLUMN_EMPLOYEE_FIRE_DATE + " DATE, "
-                    + COLUMN_EMPLOYEE_PERMISSION_DATE + " DATE, "
-                    + COLUMN_EMPLOYEE_IS_EXIST + " INTEGER DEFAULT 1)";
-
+                    + COLUMN_EMPLOYEE_PERMIT_DATE + " DATE )";
 
                 SQLiteCommand sQLiteCommand = new SQLiteCommand(createStmt, mSQLiteConnection);
                 OpenConnection();
