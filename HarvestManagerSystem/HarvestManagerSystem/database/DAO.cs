@@ -9,7 +9,7 @@ namespace HarvestManagerSystem.database
     class DAO
     {
         public SQLiteConnection mSQLiteConnection;
-        static String  DB_NAME = "database.sqlite3";
+        static String  DB_NAME = "harvest_database.sqlite3";
         static String CONNECTION_URL = "Data Source=" + DB_NAME;
 
         public DAO()

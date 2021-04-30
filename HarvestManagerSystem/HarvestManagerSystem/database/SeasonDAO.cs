@@ -16,8 +16,6 @@ namespace HarvestManagerSystem.database
         public const string COLUMN_SEASON_HARVEST_DATE = "HarvestDate";
         public const string COLUMN_FOREIGN_KEY_FARM_ID = "FarmId";
 
-        
-
         private static SeasonDAO instance = new SeasonDAO();
 
         private SeasonDAO() : base(){}
@@ -125,32 +123,61 @@ namespace HarvestManagerSystem.database
         //*******************************
         internal bool addNewFarmSeason(Season season)
         {
-            string insertStmt = "INSERT INTO Farm_For_Insert (PlantingDate, HarvestDate, FarmName, FarmAddress) VALUES ("
+
+            SQLiteTransaction transaction = null;
+            SQLiteCommand sQLiteCommand = null;
+
+            string insertFarm = "INSERT INTO " + FarmDAO.TABLE_FARM + " ("
+                    + FarmDAO.COLUMN_FARM_NAME + ", "
+                    + FarmDAO.COLUMN_FARM_ADDRESS + " "
+                    + ") VALUES ( "
+                    + "@" + FarmDAO.COLUMN_FARM_NAME + ", "
+                    + "@" + FarmDAO.COLUMN_FARM_ADDRESS + " "
+                    + " )";
+
+            string insertSeason = "INSERT INTO " + TABLE_SEASON + " ("
+                    + COLUMN_SEASON_PLANTING_DATE + ", "
+                    + COLUMN_SEASON_HARVEST_DATE + ", "
+                    + COLUMN_FOREIGN_KEY_FARM_ID + " "
+                    + ") VALUES ( "
                     + "@" + COLUMN_SEASON_PLANTING_DATE + ", "
                     + "@" + COLUMN_SEASON_HARVEST_DATE + ", "
-                    + "@FarmName, "
-                    + "@FarmAddress "
+                    + "@" + COLUMN_FOREIGN_KEY_FARM_ID + " "
                     + " )";
+
             try
             {
-                SQLiteCommand sQLiteCommand = new SQLiteCommand(insertStmt, mSQLiteConnection);
                 OpenConnection();
-                sQLiteCommand.Parameters.AddWithValue(COLUMN_SEASON_PLANTING_DATE, season.SeasonPlantingDate);
-                sQLiteCommand.Parameters.AddWithValue(COLUMN_SEASON_HARVEST_DATE, season.SeasonHarvestDate);
-                sQLiteCommand.Parameters.AddWithValue("@FarmName", season.Farm.FarmName);
-                sQLiteCommand.Parameters.AddWithValue("@FarmAddress", season.Farm.FarmAddress);
+                transaction = mSQLiteConnection.BeginTransaction();
+
+                sQLiteCommand = new SQLiteCommand(insertFarm, mSQLiteConnection);
+                sQLiteCommand.Parameters.AddWithValue(FarmDAO.COLUMN_FARM_NAME, season.Farm.FarmName);
+                sQLiteCommand.Parameters.AddWithValue(FarmDAO.COLUMN_FARM_ADDRESS, season.Farm.FarmAddress);
                 sQLiteCommand.ExecuteNonQuery();
+
+                long lastFarmRowId;
+                lastFarmRowId = mSQLiteConnection.LastInsertRowId;
+
+                sQLiteCommand = new SQLiteCommand(insertSeason, mSQLiteConnection);
+                sQLiteCommand.Parameters.AddWithValue(COLUMN_SEASON_PLANTING_DATE, season.SeasonHarvestDate);
+                sQLiteCommand.Parameters.AddWithValue(COLUMN_SEASON_HARVEST_DATE, season.SeasonPlantingDate);
+                sQLiteCommand.Parameters.AddWithValue(COLUMN_FOREIGN_KEY_FARM_ID, lastFarmRowId);
+
+                sQLiteCommand.ExecuteNonQuery();
+
+                transaction.Commit();
                 return true;
             }
             catch (SQLiteException e)
             {
-                Console.WriteLine(e.Message);
+                MessageBox.Show("Les information n'est pas ajouté à la base de données, erreur: " + e.Message);
                 return false;
             }
             finally
             {
                 CloseConnection();
             }
+
         }
 
         //*******************************

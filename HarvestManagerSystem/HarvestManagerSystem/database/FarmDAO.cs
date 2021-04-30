@@ -13,13 +13,11 @@ namespace HarvestManagerSystem.database
         public const string COLUMN_FARM_ID = "FarmId";
         public const string COLUMN_FARM_NAME = "FarmName";
         public const string COLUMN_FARM_ADDRESS = "FarmAddress";
-        public const string COLUMN_FARM_IS_EXIST = "is_exist";
 
         private static FarmDAO instance = new FarmDAO();
 
         private FarmDAO() : base()
         {
-
         }
 
         public static FarmDAO getInstance()
@@ -38,9 +36,7 @@ namespace HarvestManagerSystem.database
         {
             Dictionary<string, Farm> dictionary = new Dictionary<string, Farm>();
 
-            var selectStmt = "SELECT * FROM " + TABLE_FARM
-                + " WHERE " + COLUMN_FARM_IS_EXIST + " = 1 "
-                + " ORDER BY " + COLUMN_FARM_NAME + " ASC;";
+            var selectStmt = "SELECT * FROM " + TABLE_FARM + " ORDER BY " + COLUMN_FARM_NAME + " ASC;";
 
             try
             {
@@ -79,9 +75,7 @@ namespace HarvestManagerSystem.database
         public List<Farm> getData()
         {
             List<Farm> list = new List<Farm>();
-            var selectStmt = "SELECT * FROM " + TABLE_FARM
-                + " WHERE " + COLUMN_FARM_IS_EXIST + " = 1 " 
-                + " ORDER BY " + COLUMN_FARM_NAME + " ASC;";
+            var selectStmt = "SELECT * FROM " + TABLE_FARM + " ORDER BY " + COLUMN_FARM_NAME + " ASC;";
 
             try
             {
@@ -115,51 +109,13 @@ namespace HarvestManagerSystem.database
         }
 
         //*******************************
-        //Add new farm data 
-        //*******************************
-        public bool addData(Farm farm)
-        {
-            string insertStmt = "INSERT INTO " + TABLE_FARM + " ("
-                    + COLUMN_FARM_NAME + ", "
-                    + COLUMN_FARM_ADDRESS + ", "
-                    + COLUMN_FARM_IS_EXIST + 
-                    " ) VALUES ( "
-                    + "@" + COLUMN_FARM_NAME + ", "
-                    + "@" + COLUMN_FARM_ADDRESS + ", "
-                    + "@" + COLUMN_FARM_IS_EXIST
-                    + " )";
-            try
-            {
-                SQLiteCommand sQLiteCommand = new SQLiteCommand(insertStmt, mSQLiteConnection);
-                OpenConnection();
-                sQLiteCommand.Parameters.AddWithValue(COLUMN_FARM_NAME, farm.FarmName);
-                sQLiteCommand.Parameters.AddWithValue(COLUMN_FARM_ADDRESS, farm.FarmAddress);
-                sQLiteCommand.Parameters.AddWithValue(COLUMN_FARM_IS_EXIST, 1);
-                sQLiteCommand.ExecuteNonQuery();
-                return true;
-            }
-            catch (SQLiteException e)
-            {
-                Console.WriteLine(e.StackTrace);
-                return false;
-            }
-            finally
-            {
-                CloseConnection();
-            }
-        }
-
-        //*******************************
         //Delete farm data (hide)
         //*******************************
         public bool DeleteData(Farm farm)
         {
-            string updateStmt = "UPDATE " + TABLE_FARM + " SET "
-                 + COLUMN_FARM_IS_EXIST + " = 0 "
-                + " WHERE " + COLUMN_FARM_ID + " = " + farm.FarmId + " ";
+            string updateStmt = "DELETE FROM " + TABLE_FARM + " WHERE " + COLUMN_FARM_ID + " = " + farm.FarmId + " ";
 
-            string deleteStmt = "DELETE FROM " + SeasonDAO.TABLE_SEASON
-                + " WHERE " + SeasonDAO.COLUMN_FOREIGN_KEY_FARM_ID + " = " + farm.FarmId + " ;";
+            string deleteStmt = "DELETE FROM " + SeasonDAO.TABLE_SEASON + " WHERE " + SeasonDAO.COLUMN_FOREIGN_KEY_FARM_ID + " = " + farm.FarmId + " ;";
 
             try
             {
@@ -184,7 +140,7 @@ namespace HarvestManagerSystem.database
         //*******************************
         internal bool UpdateData(Farm farm)
         {
-            String updateStmt = "UPDATE " + TABLE_FARM + " SET "
+            string updateStmt = "UPDATE " + TABLE_FARM + " SET "
                  + COLUMN_FARM_NAME + " =@" + COLUMN_FARM_NAME + ", "
                  + COLUMN_FARM_ADDRESS + " =@" + COLUMN_FARM_ADDRESS + " "
                 + " WHERE " + COLUMN_FARM_ID + " = " + farm.FarmId + " ";
@@ -193,8 +149,8 @@ namespace HarvestManagerSystem.database
             {
                 SQLiteCommand sQLiteCommand = new SQLiteCommand(updateStmt, mSQLiteConnection);
                 OpenConnection();
-                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_FARM_NAME, farm.FarmName));
-                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_FARM_ADDRESS, farm.FarmAddress));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_FARM_NAME, farm.FarmName.ToUpper()));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_FARM_ADDRESS, farm.FarmAddress.ToUpper()));
                 sQLiteCommand.ExecuteNonQuery();
                 CloseConnection();
                 return true;
@@ -215,8 +171,7 @@ namespace HarvestManagerSystem.database
             String createStmt = "CREATE TABLE IF NOT EXISTS " + TABLE_FARM
                     + "(" + COLUMN_FARM_ID + " INTEGER PRIMARY KEY, "
                     + COLUMN_FARM_NAME + " TEXT NOT NULL, "
-                    + COLUMN_FARM_ADDRESS + " TEXT, "
-                    + COLUMN_FARM_IS_EXIST + " INTEGER DEFAULT 1)";
+                    + COLUMN_FARM_ADDRESS + " TEXT )";
 
             SQLiteCommand sQLiteCommand = new SQLiteCommand(createStmt, mSQLiteConnection);
             OpenConnection();

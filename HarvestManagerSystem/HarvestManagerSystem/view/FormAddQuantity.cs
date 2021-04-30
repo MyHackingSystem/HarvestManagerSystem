@@ -76,7 +76,7 @@ namespace HarvestManagerSystem.view
                 SupplierHarvestQuantityComboBox.SelectedIndex = SupplierHarvestQuantityComboBox.FindStringExact(mProduction.Supplier.SupplierName);
                 FarmHarvestQuantityComboBox.SelectedIndex = FarmHarvestQuantityComboBox.FindStringExact(mProduction.Farm.FarmName);
                 ProductHarvestQuantityComboBox.SelectedIndex = ProductHarvestQuantityComboBox.FindStringExact(mProduction.Product.ProductName);
-                ProductCodeHarvestQuantityComboBox.SelectedIndex = ProductCodeHarvestQuantityComboBox.FindStringExact(mProduction.ProductDetail.ProductCode);
+                //ProductCodeHarvestQuantityComboBox.SelectedIndex = ProductCodeHarvestQuantityComboBox.FindStringExact(mProduction.ProductDetail.ProductCode);
                 ApplyHarvestQuantityButton.Text = "Update";
             }
             else
@@ -379,7 +379,7 @@ namespace HarvestManagerSystem.view
             mProduction.Supplier.SupplierName = production.Supplier.SupplierName;
             mProduction.Farm.FarmName = production.Farm.FarmName;
             mProduction.Product.ProductName = production.Product.ProductName;
-            mProduction.ProductDetail.ProductCode = production.ProductDetail.ProductCode;
+            //mProduction.ProductDetail.ProductCode = production.ProductDetail.ProductCode;
             mProduction.ProductionType = production.ProductionType;
 
             HarvesterList.Clear();

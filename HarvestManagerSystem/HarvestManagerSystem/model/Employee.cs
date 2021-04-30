@@ -12,7 +12,7 @@ namespace HarvestManagerSystem.model
         private string lastName;
         private DateTime hireDate;
         private DateTime fireDate;
-        private DateTime permissionDate;
+        private DateTime permitDate;
 
         public int EmployeeId { get => employeeId; set => employeeId = value; }
         public bool EmployeeStatus { get => employeeStatus; set => employeeStatus = value; }
@@ -20,7 +20,7 @@ namespace HarvestManagerSystem.model
         public string LastName { get => lastName; set => lastName = value; }
         public DateTime HireDate { get => hireDate.Date; set => hireDate = value; }
         public DateTime FireDate { get => fireDate.Date; set => fireDate = value; }
-        public DateTime PermissionDate { get => permissionDate.Date; set => permissionDate = value; }
+        public DateTime PermitDate { get => permitDate.Date; set => permitDate = value; }
         public string FullName
         {
             get
