@@ -45,6 +45,8 @@ namespace HarvestManagerSystem
             //employeeDAO.CreateTable();
             //farmDAO.CreateTable();
             //seasonDAO.CreateTable();
+            //supplierDAO.CreateTable();
+            //supplyDAO.CreateTable();
         }
 
         private void tabProduction_SelectedIndexChanged(object sender, EventArgs e)
@@ -66,7 +68,7 @@ namespace HarvestManagerSystem
                     EndCotract();
                     break;
                 case 4:
-                    //DisplaySupplierData();
+                    DisplaySupplierData();
                     break;
                 case 5:
                     DisplayFarmData();
@@ -496,12 +498,8 @@ namespace HarvestManagerSystem
         #region SUPPLIER CODE
 
         List<Supplier> listSupplier = new List<Supplier>();
-        private void btnAddSupplier_Click(object sender, EventArgs e)
-        {
-            FormAddSupplier formAddSupplier = FormAddSupplier.getInstance(this);
-            formAddSupplier.ShowFormAdd();
+        List<Supply> listSupply = new List<Supply>();
 
-        }
         public void DisplaySupplierData()
         {
             listSupplier = supplierDAO.getData();
@@ -520,123 +518,10 @@ namespace HarvestManagerSystem
 
         private void DisplaySupplyData(Supplier supplier)
         {
-            SupplyDataGridView.DataSource = supplyDAO.getData(supplier);
+            listSupply = supplyDAO.getData(supplier);
+            SupplyDataGridView.DataSource = listSupply;
         }
 
-        private void SupplierContextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-            if (e.ClickedItem.Name == EditSupplierStrip.Name)
-            {
-                SupplierContextMenuStrip.Visible = false;
-                HandleEditSupplierTable();
-            }
-            else if (e.ClickedItem.Name == DeleteSupplierStrip.Name)
-            {
-                SupplierContextMenuStrip.Visible = false;
-                HandleDeleteSupplierTable();
-            }
-        }
-
-
-        void HandleEditSupplierTable()
-        {
-            FormAddSupplier formAddSupplier = FormAddSupplier.getInstance(this);
-            Supplier supplier = (Supplier)SupplierDataGridView.CurrentRow.DataBoundItem;
-            if (supplier == null)
-            {
-                MessageBox.Show("Select fournisseur");
-                return;
-            }
-            formAddSupplier.InflateUI(supplier);
-            formAddSupplier.ShowFormAdd();
-        }
-
-        void HandleDeleteSupplierTable()
-        {
-            Supplier supplier = (Supplier)SupplierDataGridView.CurrentRow.DataBoundItem;
-            if (supplier == null)
-            {
-                MessageBox.Show("Select fournisseur");
-                return;
-            }
-
-            DialogResult dr = MessageBox.Show("Are you sure you want to delete: " + supplier.SupplierName, "Delete", MessageBoxButtons.YesNoCancel,
-            MessageBoxIcon.Information);
-            bool deleted = false;
-            if (dr == DialogResult.Yes)
-            {
-                deleted = supplierDAO.DeleteData(supplier);
-            }
-
-            if (deleted)
-            {
-                MessageBox.Show("Delete");
-            }
-            else if (dr == DialogResult.Yes)
-            {
-                MessageBox.Show("Not Delete");
-            }
-            DisplaySupplierData();
-
-        }
-
-        private void SupplyContextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-            if (e.ClickedItem.Name == EditSupplyStrip.Name)
-            {
-                SupplyContextMenuStrip.Visible = false;
-                HandleEditSupplyTable();
-            }
-            else if (e.ClickedItem.Name == DeleteSupplyStrip.Name)
-            {
-                SupplyContextMenuStrip.Visible = false;
-                HandleDeleteSupplyTable();
-            }
-        }
-
-        void HandleEditSupplyTable()
-        {
-            FormAddSupplier formAddSupplier = FormAddSupplier.getInstance(this);
-            Supplier supplier = (Supplier)SupplierDataGridView.CurrentRow.DataBoundItem;
-            Supply supply = (Supply)SupplyDataGridView.CurrentRow.DataBoundItem;
-            if (supply == null)
-            {
-                MessageBox.Show("Select champ");
-                return;
-            }
-
-            formAddSupplier.InflateUI(supply, supplier);
-            formAddSupplier.ShowFormAdd();
-        }
-
-        void HandleDeleteSupplyTable()
-        {
-            Supply supply = (Supply)SupplyDataGridView.CurrentRow.DataBoundItem;
-            if (supply == null)
-            {
-                MessageBox.Show("Select champ");
-                return;
-            }
-
-            DialogResult dr = MessageBox.Show("Are you sure you want to delete champ: " + supply.Farm.FarmName, "Delete", MessageBoxButtons.YesNoCancel,
-MessageBoxIcon.Information);
-            bool deleted = false;
-            if (dr == DialogResult.Yes)
-            {
-                deleted = supplyDAO.DeleteData(supply);
-            }
-
-            if (deleted)
-            {
-                MessageBox.Show("Delete");
-            }
-            else if (dr == DialogResult.Yes)
-            {
-                MessageBox.Show("Not Delete");
-            }
-            DisplaySupplierData();
-
-        }
 
         #endregion
 
@@ -966,6 +851,13 @@ MessageBoxIcon.Information);
         private void HarvestMS_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnAddSupplier_Click(object sender, EventArgs e)
+        {
+            FormAddSupplier formAddSupplier = new FormAddSupplier(this);
+            formAddSupplier.ShowDialog();
+
         }
 
         private void btnAddFarm_Click(object sender, EventArgs e)

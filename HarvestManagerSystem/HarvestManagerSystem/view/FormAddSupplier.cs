@@ -12,10 +12,6 @@ namespace HarvestManagerSystem.view
 {
     public partial class FormAddSupplier : Form
     {
-        private bool isEditSupplier = false;
-        private bool isEditSupply = false;
-        private Supplier mSupplier = new Supplier();
-        private Supply mSupply = new Supply();
         private SupplierDAO supplierDAO = SupplierDAO.getInstance();
         private SupplyDAO supplyDAO = SupplyDAO.getInstance();
         private FarmDAO farmDAO = FarmDAO.getInstance();
@@ -26,9 +22,8 @@ namespace HarvestManagerSystem.view
         private Dictionary<string, Product> mProductDictionary = new Dictionary<string, Product>();
 
         private HarvestMS harvestMS;
-        private static FormAddSupplier instance;
 
-        private FormAddSupplier(HarvestMS harvestMS)
+        public FormAddSupplier(HarvestMS harvestMS)
         {
             this.harvestMS = harvestMS;
             InitializeComponent();
@@ -36,32 +31,7 @@ namespace HarvestManagerSystem.view
 
         private void FormAddProduct_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //wipeFields();
-            instance = null;
-        }
-
-
-        public static FormAddSupplier getInstance(HarvestMS harvestMS)
-        {
-            if (instance == null)
-            {
-                instance = new FormAddSupplier(harvestMS);
-            }
-            return instance;
-        }
-
-        public void ShowFormAdd()
-        {
-            if (instance != null)
-            {
-                instance.BringToFront();
-            }
-            else
-            {
-                instance = new FormAddSupplier(harvestMS);
-
-            }
-            instance.Show();
+            wipeFields();
         }
 
 
@@ -70,20 +40,6 @@ namespace HarvestManagerSystem.view
             SupplierNameList();
             FarmNameList();
             ProductNameList();
-            if (isEditSupplier)
-            {
-                SupplierNameComboBox.SelectedIndex = SupplierNameComboBox.FindStringExact(mSupplier.SupplierName);
-                SupplierFirstNameTextBox.Text = mSupplier.SupplierFirstName;
-                SupplierLastNameTextBox.Text = mSupplier.SupplierLastName;
-            }
-            else if (isEditSupply)
-            {
-                SupplierNameComboBox.SelectedIndex = SupplierNameComboBox.FindStringExact(mSupply.Supplier.SupplierName);
-                SupplierFirstNameTextBox.Text = mSupply.Supplier.SupplierFirstName;
-                SupplierLastNameTextBox.Text = mSupply.Supplier.SupplierLastName;
-                FarmSupplierComboBox.SelectedIndex = FarmSupplierComboBox.FindStringExact(mSupply.Farm.FarmName);
-                ProductSupplierComboBox.SelectedIndex = ProductSupplierComboBox.FindStringExact(mSupply.Product.ProductName);
-            }
         }
 
         private void SupplierNameList()
@@ -154,58 +110,14 @@ namespace HarvestManagerSystem.view
 
         }
 
-        internal void InflateUI(Supplier supplier)
-        {
-            isEditSupplier = true;
-            SupplierNameComboBox.SelectedIndex = -1;
-            mSupplier.SupplierId = supplier.SupplierId;
-            mSupplier.SupplierName = supplier.SupplierName;
-            mSupplier.SupplierFirstName = supplier.SupplierFirstName;
-            mSupplier.SupplierLastName = supplier.SupplierLastName;
-            FarmSupplierComboBox.Enabled = false;
-            ProductSupplierComboBox.Enabled = false;
-
-            handleSaveButton.Text = "Update";
-        }
-
-        internal void InflateUI(Supply supply, Supplier supplier)
-        {
-            isEditSupply = true;
-            mSupply.SupplyId = supply.SupplyId;
-            mSupply.Supplier.SupplierId = supplier.SupplierId;
-            mSupply.Supplier.SupplierName = supplier.SupplierName;
-            mSupply.Supplier.SupplierFirstName = supplier.SupplierFirstName;
-            mSupply.Supplier.SupplierLastName = supplier.SupplierLastName;
-            mSupply.Farm.FarmId = supply.Farm.FarmId;
-            mSupply.Farm.FarmName = supply.Farm.FarmName;
-            mSupply.Product.ProductId = supply.Product.ProductId;
-            mSupply.Product.ProductName = supply.Product.ProductName;
-            SupplierNameComboBox.Enabled = false;
-            SupplierFirstNameTextBox.Enabled = false;
-            SupplierLastNameTextBox.Enabled = false;
-            handleSaveButton.Text = "Update";
-        }
-
-
         private void handleSaveButton_Click(object sender, EventArgs e)
         {
-            if (isEditSupply)
+            if (CheckInput())
             {
-                UpdateSupply(mSupply);
+                MessageBox.Show("Vérifier les valeurs");
+                return;
             }
-            else if (isEditSupplier)
-            {
-                UpdateSupplier(mSupplier);
-            }
-            else
-            {
-                if (CheckInput())
-                {
-                    MessageBox.Show("Vérifier les valeurs");
-                    return;
-                }
-                SaveSupplierData();
-            }
+            SaveSupplierData();
             harvestMS.DisplaySupplierData();
         }
 
@@ -217,47 +129,6 @@ namespace HarvestManagerSystem.view
             farmSupplierErrorLabel.Visible = FarmSupplierComboBox.SelectedIndex == -1 && FarmSupplierComboBox.Text == "";
             productSupplierErrorLabel.Visible = ProductSupplierComboBox.SelectedIndex == -1 && ProductSupplierComboBox.Text == ""; ;
             return nameSupplierErrorLabel.Visible || supplierFirstNameErrorLabel.Visible || supplierLastNameErrorLabel.Visible || farmSupplierErrorLabel.Visible || productSupplierErrorLabel.Visible;
-        }
-
-        private void UpdateSupply(Supply supply)
-        {
-            supply.Supplier.SupplierId = mSupplierDictionary.GetValueOrDefault(SupplierNameComboBox.GetItemText(SupplierNameComboBox.SelectedItem)).SupplierId;
-            supply.Farm.FarmId = mFarmDictionary.GetValueOrDefault(FarmSupplierComboBox.GetItemText(FarmSupplierComboBox.SelectedItem)).FarmId;
-            supply.Product.ProductId = mProductDictionary.GetValueOrDefault(ProductSupplierComboBox.GetItemText(ProductSupplierComboBox.SelectedItem)).ProductId;
-
-            bool isAdded = supplyDAO.UpdateData(supply);
-
-            if (isAdded)
-            {
-                wipeFields();
-                MessageBox.Show("data updated");
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Not updated");
-                this.Close();
-            }
-        }
-
-        private void UpdateSupplier(Supplier supplier)
-        {
-            supplier.SupplierName = SupplierNameComboBox.Text.Trim().ToUpper();
-            supplier.SupplierFirstName = SupplierFirstNameTextBox.Text.Trim().ToUpper();
-            supplier.SupplierLastName = SupplierLastNameTextBox.Text.Trim().ToUpper();
-
-            bool isAdded = supplierDAO.UpdateData(supplier);
-            if (isAdded)
-            {
-                wipeFields();
-                MessageBox.Show("data updated");
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Not updated");
-                this.Close();
-            }
         }
 
         private void SaveSupplierData()
@@ -299,11 +170,6 @@ namespace HarvestManagerSystem.view
             wipeFields();
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void btnReset_Click(object sender, EventArgs e)
         {
             wipeFields();
@@ -312,10 +178,13 @@ namespace HarvestManagerSystem.view
         private void wipeFields()
         {
             SupplierNameComboBox.SelectedIndex = -1;
+            SupplierNameComboBox.Text = "";
             SupplierFirstNameTextBox.Text = "";
             SupplierLastNameTextBox.Text = "";
             FarmSupplierComboBox.SelectedIndex = -1;
+            FarmSupplierComboBox.Text = "";
             ProductSupplierComboBox.SelectedIndex = -1;
+            ProductSupplierComboBox.Text = "";
         }
 
     }

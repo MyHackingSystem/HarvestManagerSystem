@@ -32,7 +32,6 @@ namespace HarvestManagerSystem.view
             this.SupplierFirstNameLabel = new System.Windows.Forms.Label();
             this.SupplierFirstNameTextBox = new System.Windows.Forms.TextBox();
             this.btnReset = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.handleSaveButton = new System.Windows.Forms.Button();
             this.SupplierNameComboBox = new System.Windows.Forms.ComboBox();
             this.SupplierLabel = new System.Windows.Forms.Label();
@@ -83,22 +82,6 @@ namespace HarvestManagerSystem.view
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = false;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.BackColor = System.Drawing.Color.DarkOrange;
-            this.btnCancel.FlatAppearance.BorderSize = 0;
-            this.btnCancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Moccasin;
-            this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCancel.Location = new System.Drawing.Point(302, 519);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(70, 30);
-            this.btnCancel.TabIndex = 39;
-            this.btnCancel.Text = "Close";
-            this.btnCancel.UseVisualStyleBackColor = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // handleSaveButton
             // 
@@ -280,7 +263,6 @@ namespace HarvestManagerSystem.view
             this.Controls.Add(this.SupplierFirstNameLabel);
             this.Controls.Add(this.SupplierFirstNameTextBox);
             this.Controls.Add(this.btnReset);
-            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.handleSaveButton);
             this.Controls.Add(this.SupplierNameComboBox);
             this.Controls.Add(this.SupplierLabel);
@@ -301,7 +283,6 @@ namespace HarvestManagerSystem.view
         private System.Windows.Forms.Label SupplierFirstNameLabel;
         private System.Windows.Forms.TextBox SupplierFirstNameTextBox;
         private System.Windows.Forms.Button btnReset;
-        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button handleSaveButton;
         private System.Windows.Forms.ComboBox SupplierNameComboBox;
         private System.Windows.Forms.Label SupplierLabel;

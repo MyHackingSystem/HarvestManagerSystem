@@ -15,7 +15,6 @@ namespace HarvestManagerSystem.database
         public const string COLUMN_SUPPLIER_NAME = "SupplierName";
         public const string COLUMN_SUPPLIER_FIRSTNAME = "SupplierFirstName";
         public const string COLUMN_SUPPLIER_LASTNAME = "SupplierLastName";
-        public const string COLUMN_SUPPLIER_IS_EXIST = "is_exist";
 
         private static SupplierDAO instance = new SupplierDAO();
 
@@ -37,9 +36,7 @@ namespace HarvestManagerSystem.database
         {
             Dictionary<string, Supplier> dictionary = new Dictionary<string, Supplier>();
 
-            string selectStmt = "SELECT * FROM " + TABLE_SUPPLIER
-                + " WHERE " + COLUMN_SUPPLIER_IS_EXIST + " = 1 "
-                + " ORDER BY " + COLUMN_SUPPLIER_NAME + " ASC;";
+            string selectStmt = "SELECT * FROM " + TABLE_SUPPLIER + " ORDER BY " + COLUMN_SUPPLIER_NAME + " ASC;";
 
             try
             {
@@ -79,9 +76,7 @@ namespace HarvestManagerSystem.database
         public List<Supplier> getData()
         {
             List<Supplier> list = new List<Supplier>();
-            var selectStmt = "SELECT * FROM " + TABLE_SUPPLIER
-                + " WHERE " + COLUMN_SUPPLIER_IS_EXIST + " = 1 "
-                + " ORDER BY " + COLUMN_SUPPLIER_NAME + " ASC;";
+            var selectStmt = "SELECT * FROM " + TABLE_SUPPLIER + " ORDER BY " + COLUMN_SUPPLIER_NAME + " ASC;";
 
             try
             {
@@ -123,13 +118,11 @@ namespace HarvestManagerSystem.database
             string insertStmt = "INSERT INTO " + TABLE_SUPPLIER + " ("
                     + COLUMN_SUPPLIER_NAME + ", "
                     + COLUMN_SUPPLIER_FIRSTNAME + ", "
-                    + COLUMN_SUPPLIER_LASTNAME + ", "
-                    + COLUMN_SUPPLIER_IS_EXIST +
-                    " ) VALUES ( "
+                    + COLUMN_SUPPLIER_LASTNAME + " "
+                    + " ) VALUES ( "
                     + "@" + COLUMN_SUPPLIER_NAME + ", "
                     + "@" + COLUMN_SUPPLIER_FIRSTNAME + ", "
-                    + "@" + COLUMN_SUPPLIER_LASTNAME + ", "
-                    + "@" + COLUMN_SUPPLIER_IS_EXIST
+                    + "@" + COLUMN_SUPPLIER_LASTNAME + ","
                     + " )";
             try
             {
@@ -138,7 +131,6 @@ namespace HarvestManagerSystem.database
                 sQLiteCommand.Parameters.AddWithValue(COLUMN_SUPPLIER_NAME, supplier.SupplierName);
                 sQLiteCommand.Parameters.AddWithValue(COLUMN_SUPPLIER_FIRSTNAME, supplier.SupplierFirstName);
                 sQLiteCommand.Parameters.AddWithValue(COLUMN_SUPPLIER_LASTNAME, supplier.SupplierLastName);
-                sQLiteCommand.Parameters.AddWithValue(COLUMN_SUPPLIER_IS_EXIST, 1);
                 sQLiteCommand.ExecuteNonQuery();
                 return true;
             }
@@ -158,9 +150,7 @@ namespace HarvestManagerSystem.database
         //*******************************
         public bool DeleteData(Supplier supplier)
         {
-            string updateStmt = "UPDATE " + TABLE_SUPPLIER + " SET "
-                 + COLUMN_SUPPLIER_IS_EXIST + " = 0 "
-                + " WHERE " + COLUMN_SUPPLIER_ID + " = " + supplier.SupplierId + " ";
+            string updateStmt = "DELETE FROM " + TABLE_SUPPLIER + " WHERE " + COLUMN_SUPPLIER_ID + " = " + supplier.SupplierId + " ";
 
             string deleteStmt = "DELETE FROM " + SupplyDAO.TABLE_SUPPLY
                 + " WHERE " + SupplyDAO.COLUMN_SUPPLY_FRGN_KEY_SUPPLIER_ID + " = " + supplier.SupplierId + " ;";
@@ -221,8 +211,7 @@ namespace HarvestManagerSystem.database
                     + "(" + COLUMN_SUPPLIER_ID + " INTEGER PRIMARY KEY, "
                     + COLUMN_SUPPLIER_NAME + " TEXT NOT NULL, "
                     + COLUMN_SUPPLIER_FIRSTNAME + " TEXT, "
-                    + COLUMN_SUPPLIER_LASTNAME + " TEXT, "
-                    + COLUMN_SUPPLIER_IS_EXIST + " INTEGER DEFAULT 1)";
+                    + COLUMN_SUPPLIER_LASTNAME + " TEXT)";
 
             SQLiteCommand sQLiteCommand = new SQLiteCommand(createStmt, mSQLiteConnection);
             OpenConnection();
