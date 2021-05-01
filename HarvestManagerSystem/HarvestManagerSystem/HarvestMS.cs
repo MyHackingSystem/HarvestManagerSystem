@@ -522,6 +522,31 @@ namespace HarvestManagerSystem
             SupplyDataGridView.DataSource = listSupply;
         }
 
+        private void SupplierDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            Supplier supplier = (Supplier)listSupplier[e.RowIndex];
+            if (supplier == null)
+            {
+                return;
+            }
+            if (supplierDAO.UpdateData(supplier))
+            {
+                DisplaySupplierData();
+            }
+        }
+
+        private void SupplyDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            Supply supply = (Supply)listSupply[e.RowIndex];
+            if (supply == null)
+            {
+                return;
+            }
+            if (supplyDAO.UpdateData(supply))
+            {
+                DisplaySupplierData();
+            }
+        }
 
         #endregion
 
@@ -877,6 +902,8 @@ namespace HarvestManagerSystem
             FormAddProduct formAddProduct = new FormAddProduct(this);
             formAddProduct.ShowDialog();
         }
+
+
 
 
 

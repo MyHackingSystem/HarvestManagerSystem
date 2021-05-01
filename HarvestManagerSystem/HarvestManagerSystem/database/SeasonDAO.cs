@@ -53,7 +53,7 @@ namespace HarvestManagerSystem.database
         //*******************************
         internal bool UpdateData(Season season)
         {
-            String updateStmt = "UPDATE " + TABLE_SEASON + " SET "
+            string updateStmt = "UPDATE " + TABLE_SEASON + " SET "
                  + COLUMN_SEASON_PLANTING_DATE + " =@" + COLUMN_SEASON_PLANTING_DATE + ", "
                  + COLUMN_SEASON_HARVEST_DATE + " =@" + COLUMN_SEASON_HARVEST_DATE + " "
                  + " WHERE " + COLUMN_SEASON_ID + " = " + season.SeasonId + " ";

@@ -185,28 +185,56 @@ namespace HarvestManagerSystem.database
         //*******************************
         internal bool addNewSupplierData(Supply supply)
         {
-            string insertStmt = "INSERT INTO Supplier_For_Insert (FarmId, ProductId, SupplierName, SupplierFirstName, SupplierLastName) VALUES ("
-        + "@" + COLUMN_SUPPLY_FRGN_KEY_FARM_ID + ", "
-        + "@" + COLUMN_SUPPLY_FRGN_KEY_PRODUCT_ID + ", "
-        + "@SupplierName, "
-        + "@SupplierFirstName, "
-        + "@SupplierLastName "
-        + " )";
+            SQLiteTransaction transaction = null;
+            SQLiteCommand sQLiteCommand = null;
+
+            string insertSupplier = "INSERT INTO " + SupplierDAO.TABLE_SUPPLIER + " ("
+                    + SupplierDAO.COLUMN_SUPPLIER_NAME + ", "
+                    + SupplierDAO.COLUMN_SUPPLIER_FIRSTNAME + ", "
+                    + SupplierDAO.COLUMN_SUPPLIER_LASTNAME + " "
+                    + ") VALUES ( "
+                    + "@" + SupplierDAO.COLUMN_SUPPLIER_NAME + ", "
+                    + "@" + SupplierDAO.COLUMN_SUPPLIER_FIRSTNAME + ", "
+                    + "@" + SupplierDAO.COLUMN_SUPPLIER_LASTNAME + " "
+                    + " )";
+
+            string insertSeason = "INSERT INTO " + TABLE_SUPPLY + " ("
+                    + COLUMN_SUPPLY_FRGN_KEY_SUPPLIER_ID + ", "
+                    + COLUMN_SUPPLY_FRGN_KEY_FARM_ID + ", "
+                    + COLUMN_SUPPLY_FRGN_KEY_PRODUCT_ID + " "
+                    + ") VALUES ( "
+                    + "@" + COLUMN_SUPPLY_FRGN_KEY_SUPPLIER_ID + ", "
+                    + "@" + COLUMN_SUPPLY_FRGN_KEY_FARM_ID + ", "
+                    + "@" + COLUMN_SUPPLY_FRGN_KEY_PRODUCT_ID + " "
+                    + " )";
+
             try
             {
-                SQLiteCommand sQLiteCommand = new SQLiteCommand(insertStmt, mSQLiteConnection);
                 OpenConnection();
+                transaction = mSQLiteConnection.BeginTransaction();
+
+                sQLiteCommand = new SQLiteCommand(insertSupplier, mSQLiteConnection);
+                sQLiteCommand.Parameters.AddWithValue(SupplierDAO.COLUMN_SUPPLIER_NAME, supply.Supplier.SupplierName);
+                sQLiteCommand.Parameters.AddWithValue(SupplierDAO.COLUMN_SUPPLIER_FIRSTNAME, supply.Supplier.SupplierFirstName);
+                sQLiteCommand.Parameters.AddWithValue(SupplierDAO.COLUMN_SUPPLIER_LASTNAME, supply.Supplier.SupplierLastName);
+                sQLiteCommand.ExecuteNonQuery();
+
+                long lastSupplierRowId;
+                lastSupplierRowId = mSQLiteConnection.LastInsertRowId;
+
+                sQLiteCommand = new SQLiteCommand(insertSeason, mSQLiteConnection);
+                sQLiteCommand.Parameters.AddWithValue(COLUMN_SUPPLY_FRGN_KEY_SUPPLIER_ID, lastSupplierRowId);
                 sQLiteCommand.Parameters.AddWithValue(COLUMN_SUPPLY_FRGN_KEY_FARM_ID, supply.Farm.FarmId);
                 sQLiteCommand.Parameters.AddWithValue(COLUMN_SUPPLY_FRGN_KEY_PRODUCT_ID, supply.Product.ProductId);
-                sQLiteCommand.Parameters.AddWithValue("@SupplierName", supply.Supplier.SupplierName);
-                sQLiteCommand.Parameters.AddWithValue("@SupplierFirstName", supply.Supplier.SupplierFirstName);
-                sQLiteCommand.Parameters.AddWithValue("@SupplierLastName", supply.Supplier.SupplierLastName);
+
                 sQLiteCommand.ExecuteNonQuery();
+
+                transaction.Commit();
                 return true;
             }
             catch (SQLiteException e)
             {
-                Console.WriteLine(e.Message);
+                MessageBox.Show("Les information n'est pas ajouté à la base de données, erreur: " + e.Message);
                 return false;
             }
             finally
