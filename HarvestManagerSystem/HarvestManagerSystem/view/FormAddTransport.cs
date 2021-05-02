@@ -13,9 +13,6 @@ namespace HarvestManagerSystem.view
 {
     public partial class FormAddTransport : Form
     {
-
-        private bool isEditTransport = false;
-        private Transport mTransport = new Transport();
         private TransportDAO transportDAO = TransportDAO.getInstance();
         private EmployeeDAO employeeDAO = EmployeeDAO.getInstance();
         private FarmDAO farmDAO = FarmDAO.getInstance();
@@ -36,49 +33,11 @@ namespace HarvestManagerSystem.view
         private void FormAddTransport_FormClosed(object sender, FormClosedEventArgs e)
         {
             wipeFields();
-            instance = null;
-        }
-
-        public static FormAddTransport getInstance(HarvestMS harvestMS)
-        {
-            if (instance == null)
-            {
-                instance = new FormAddTransport(harvestMS);
-            }
-            return instance;
-        }
-
-        public void ShowFormAdd()
-        {
-            if (instance != null)
-            {
-                instance.BringToFront();
-            }
-            else
-            {
-                instance = new FormAddTransport(harvestMS);
-
-            }
-            instance.Show();
         }
 
         private void FormAddTransport_Load(object sender, EventArgs e)
         {
-            EmployeeNameList();
-            FarmNameList();
-            if (isEditTransport)
-            {
-                TransportEmployeeComboBox.SelectedIndex = TransportEmployeeComboBox.FindStringExact(mTransport.Employee.FullName);
-                TransportFarmComboBox.SelectedIndex = TransportFarmComboBox.FindStringExact(mTransport.Farm.FarmName);
-                TransportDatePicker.Value = mTransport.TransportDate;
-                TransportAmountTextBox.Text = Convert.ToString(mTransport.TransportAmount);
-            }
-            else
-            {
-                TransportEmployeeComboBox.SelectedIndex = -1;
-                TransportFarmComboBox.SelectedIndex = -1;
-                TransportAmountTextBox.Text = "0.0";
-            }
+            wipeFields();
         }
 
         private void EmployeeNameList()
@@ -120,40 +79,14 @@ namespace HarvestManagerSystem.view
             }
         }
 
-        internal void InflateUI(Transport transport)
-        {
-            isEditTransport = true;
-            TransportEmployeeComboBox.SelectedIndex = -1;
-            TransportFarmComboBox.SelectedIndex = -1;
-            mTransport.TransportId = transport.TransportId;
-            mTransport.TransportDate = transport.TransportDate;
-            mTransport.TransportAmount = transport.TransportAmount;
-            mTransport.Employee.EmployeeId = transport.Employee.EmployeeId;
-            mTransport.Employee.FirstName = transport.Employee.FirstName;
-            mTransport.Employee.LastName = transport.Employee.LastName;
-            mTransport.Farm.FarmId = transport.Farm.FarmId;
-            mTransport.Farm.FarmName = transport.Farm.FarmName;
-            TransportDatePicker.Enabled = false;
-            TransportEmployeeComboBox.Enabled = false;
-            TransportFarmComboBox.Enabled = false;
-            handleSaveButton.Text = "Update";
-        }
-
         private void handleSaveButton_Click(object sender, EventArgs e)
         {
-            if (isEditTransport)
+            if (CheckInput())
             {
-                UpdateTransport(mTransport);
+                MessageBox.Show("Vérifier les valeurs");
+                return;
             }
-            else
-            {
-                if (CheckInput() || !validateData())
-                {
-                    MessageBox.Show("Vérifier les valeurs");
-                    return;
-                }
-                SaveTransportData();
-            }
+            SaveTransportData();
             harvestMS.DisplayTransportData();
         }
 
@@ -165,26 +98,16 @@ namespace HarvestManagerSystem.view
             return transportEmployeeErrorLabel.Visible || transportFarmErrorLabel.Visible || transportAmountErrorLabel.Visible;
         }
 
-        private bool validateData()
+        private void ValidateNumberEntred(object sender, KeyPressEventArgs e)
         {
-            Regex regex = new Regex(@"^[0-9]+\.?[0-9]*$");
-            return regex.Match(TransportAmountTextBox.Text).Success;
-        }
-
-        private void UpdateTransport(Transport transport)
-        {
-            transport.TransportAmount = Convert.ToDouble(TransportAmountTextBox.Text);
-
-            if (transportDAO.UpdateData(transport))
+            if ((e.KeyChar >= '0' && e.KeyChar <= '9') || e.KeyChar == 8 || e.KeyChar == 46)
             {
-                wipeFields();
-                MessageBox.Show("data updated");
+                e.Handled = false;
             }
             else
             {
-                MessageBox.Show("Not updated");
+                e.Handled = true;
             }
-            this.Close();
         }
 
         private void SaveTransportData()
@@ -226,11 +149,6 @@ namespace HarvestManagerSystem.view
             wipeFields();
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void wipeFields()
         {
             EmployeeNameList();
@@ -238,7 +156,7 @@ namespace HarvestManagerSystem.view
             TransportEmployeeComboBox.SelectedIndex = -1;
             TransportDatePicker.Value = DateTime.Now;
             TransportFarmComboBox.SelectedIndex = -1;
-            TransportAmountTextBox.Text = "0.0";
+            TransportAmountTextBox.Text = "";
         }
 
 

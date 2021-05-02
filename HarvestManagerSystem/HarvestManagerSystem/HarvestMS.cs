@@ -47,6 +47,8 @@ namespace HarvestManagerSystem
             //seasonDAO.CreateTable();
             //supplierDAO.CreateTable();
             //supplyDAO.CreateTable();
+            //creditDAO.CreateTable();
+            //transportDAO.CreateTable();
         }
 
         private void tabProduction_SelectedIndexChanged(object sender, EventArgs e)
@@ -60,8 +62,8 @@ namespace HarvestManagerSystem
                     //DisplayHoursData();
                     break;
                 case 2:
-                    //DisplayCreditData();
-                    //DisplayTransportData();
+                    DisplayCreditData();
+                    DisplayTransportData();
                     break;
                 case 3:
                     DisplayEmployeeData();
@@ -93,7 +95,7 @@ namespace HarvestManagerSystem
 
         #endregion
 
-        #region **************************************************** QUANTITY CODE ****************************************************************************
+        #region ********************************************* QUANTITY CODE *************************************************************************
 
         int QuantityDataGridSelectedRowIndex = -1;
 
@@ -274,7 +276,7 @@ namespace HarvestManagerSystem
 
         #endregion
 
-        #region **************************************************** HOURS CODE ****************************************************************************
+        #region ********************************************* HOURS CODE ****************************************************************************
 
 
         List<Production> listHoursProduction = new List<Production>();
@@ -495,15 +497,22 @@ namespace HarvestManagerSystem
 
         #endregion
 
-        #region SUPPLIER CODE
+        #region ********************************************* SUPPLIER CODE *************************************************************************
 
         List<Supplier> listSupplier = new List<Supplier>();
         List<Supply> listSupply = new List<Supply>();
 
         public void DisplaySupplierData()
         {
-            listSupplier = supplierDAO.getData();
-            SupplierDataGridView.DataSource = listSupplier;
+            try
+            {
+                listSupplier = supplierDAO.getData();
+                SupplierDataGridView.DataSource = listSupplier;
+            }
+            catch
+            {
+
+            }
         }
 
         private void SupplierDataGridView_SelectionChanged(object sender, EventArgs e)
@@ -518,8 +527,15 @@ namespace HarvestManagerSystem
 
         private void DisplaySupplyData(Supplier supplier)
         {
-            listSupply = supplyDAO.getData(supplier);
-            SupplyDataGridView.DataSource = listSupply;
+            try
+            {
+                listSupply = supplyDAO.getData(supplier);
+                SupplyDataGridView.DataSource = listSupply;
+            }
+            catch
+            {
+
+            }
         }
 
         private void SupplierDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -550,7 +566,7 @@ namespace HarvestManagerSystem
 
         #endregion
 
-        #region  ******************************************* FARM CODE *************************************************************************
+        #region  ********************************************* FARM CODE *****************************************************************************
 
         List<Farm> listFarm = new List<Farm>();
 
@@ -607,7 +623,7 @@ namespace HarvestManagerSystem
 
         #endregion
 
-        #region ******************************************* PRODUCT CODE ****************************************************************************
+        #region ********************************************* PRODUCT CODE **************************************************************************
 
         List<Product> listProduct = new List<Product>();
 
@@ -642,7 +658,7 @@ namespace HarvestManagerSystem
 
         #endregion
 
-        #region ******************************************* PRODUCT DETAIL CODE *****************************************************************
+        #region ********************************************* PRODUCT DETAIL CODE *******************************************************************
 
         List<ProductDetail> listProductDetail = new List<ProductDetail>();
 
@@ -668,160 +684,67 @@ namespace HarvestManagerSystem
 
         #endregion
 
-        #region Credit CODE
+        #region ********************************************* Credit CODE ***************************************************************************
 
         List<Credit> listCredit = new List<Credit>();
-        private void btnAddCredit_Click(object sender, EventArgs e)
-        {
-            FormAddCredit formAddCredit = FormAddCredit.getInstance(this);
-            formAddCredit.ShowFormAdd();
-        }
+
         public void DisplayCreditData()
         {
-            listCredit = creditDAO.getData();
-            CreditDataGridView.DataSource = listCredit;
+            try
+            {
+                listCredit = creditDAO.getData();
+                CreditDataGridView.DataSource = listCredit;
+            }
+            catch
+            {
+
+            }
+
         }
 
-        private void CreditContextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void CreditDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ClickedItem.Name == EditCreditStrip.Name)
+            Credit item = (Credit)listCredit[e.RowIndex];
+            if (item == null)
             {
-                CreditContextMenuStrip.Visible = false;
-                HandleEditCreditTable();
-            }
-            else if (e.ClickedItem.Name == DeleteCreditStrip.Name)
-            {
-                CreditContextMenuStrip.Visible = false;
-                HandleDeleteCreditTable();
-            }
-        }
-
-        void HandleEditCreditTable()
-        {
-            FormAddCredit formAddCredit = FormAddCredit.getInstance(this);
-            Credit credit = (Credit)CreditDataGridView.CurrentRow.DataBoundItem;
-
-
-            if (credit == null)
-            {
-                MessageBox.Show("Select Credit");
                 return;
             }
-
-            formAddCredit.InflateUI(credit);
-            formAddCredit.ShowFormAdd();
+            if (creditDAO.UpdateData(item))
+            {
+                DisplaySupplierData();
+            }
         }
 
-        void HandleDeleteCreditTable()
-        {
-            Credit credit = (Credit)CreditDataGridView.CurrentRow.DataBoundItem;
-            if (credit == null)
-            {
-                MessageBox.Show("Select product");
-                return;
-            }
-
-            DialogResult dr = MessageBox.Show("Are you sure you want to delete " + credit.EmployeeName + " credit", "Delete", MessageBoxButtons.YesNoCancel,
-            MessageBoxIcon.Information);
-            bool deleted = false;
-            if (dr == DialogResult.Yes)
-            {
-                deleted = creditDAO.DeleteData(credit);
-            }
-
-            if (deleted)
-            {
-                MessageBox.Show("Delete");
-            }
-            else if (dr == DialogResult.Yes)
-            {
-                MessageBox.Show("Not Delete");
-            }
-            DisplayCreditData();
-
-        }
 
         #endregion
 
-        #region TRANSPORT CODE
+        #region ********************************************* TRANSPORT CODE ************************************************************************
 
         List<Transport> listTransport = new List<Transport>();
 
-        private void btnAddTransport_Click(object sender, EventArgs e)
-        {
-            FormAddTransport formAddTransport = FormAddTransport.getInstance(this);
-            formAddTransport.ShowFormAdd();
-        }
         public void DisplayTransportData()
         {
             listTransport = transportDAO.getData();
             TransportDataGridView.DataSource = listTransport;
         }
 
-
-        private void TransportContextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void TransportDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ClickedItem.Name == EditTransportStrip.Name)
+            Transport item = (Transport)listTransport[e.RowIndex];
+            if (item == null)
             {
-                TransportContextMenuStrip.Visible = false;
-                HandleEditTransportTable();
-            }
-            else if (e.ClickedItem.Name == DeleteTransportStrip.Name)
-            {
-                TransportContextMenuStrip.Visible = false;
-                HandleDeleteTransportTable();
-            }
-        }
-
-        void HandleEditTransportTable()
-        {
-
-            FormAddTransport formAddTransport = FormAddTransport.getInstance(this);
-            Transport transport = (Transport)TransportDataGridView.CurrentRow.DataBoundItem;
-
-
-            if (transport == null)
-            {
-                MessageBox.Show("Select Credit");
                 return;
             }
-
-            formAddTransport.InflateUI(transport);
-            formAddTransport.ShowFormAdd();
+            if (transportDAO.UpdateData(item))
+            {
+                DisplaySupplierData();
+            }
         }
 
-        void HandleDeleteTransportTable()
-        {
-            Transport transport = (Transport)TransportDataGridView.CurrentRow.DataBoundItem;
-            if (transport == null)
-            {
-                MessageBox.Show("Select product");
-                return;
-            }
-
-            DialogResult dr = MessageBox.Show("Are you sure you want to delete " + transport.EmployeeName + " transport", "Delete", MessageBoxButtons.YesNoCancel,
-            MessageBoxIcon.Information);
-            bool deleted = false;
-            if (dr == DialogResult.Yes)
-            {
-                deleted = transportDAO.DeleteData(transport);
-            }
-
-            if (deleted)
-            {
-                MessageBox.Show("Delete");
-            }
-            else if (dr == DialogResult.Yes)
-            {
-                MessageBox.Show("Not Delete");
-            }
-            DisplayTransportData();
-
-        }
 
         #endregion
 
-        #region *********************************** EMPLOYEE CODE ***************************************************************
+        #region ********************************************* EMPLOYEE CODE *************************************************************************
 
         List<Employee> listEmployee = new List<Employee>();
 
@@ -859,7 +782,7 @@ namespace HarvestManagerSystem
 
         #endregion
 
-        #region ************************************************* Side Code ***********************************************
+        #region ********************************************* Side Code *****************************************************************************
 
         private void AppLogo_Click(object sender, EventArgs e)
         {
@@ -903,12 +826,20 @@ namespace HarvestManagerSystem
             formAddProduct.ShowDialog();
         }
 
+        private void btnAddCredit_Click(object sender, EventArgs e)
+        {
+            FormAddCredit formAddCredit = new FormAddCredit(this);
+            formAddCredit.ShowDialog();
+        }
 
-
+        private void btnAddTransport_Click(object sender, EventArgs e)
+        {
+            FormAddTransport formAddTransport = new FormAddTransport(this);
+            formAddTransport.ShowDialog();
+        }
 
 
         #endregion
-
 
     }
 }

@@ -232,6 +232,10 @@ namespace HarvestManagerSystem
             this.SupplyProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelSuuplierTab = new System.Windows.Forms.Label();
             this.SupplierDataGridView = new System.Windows.Forms.DataGridView();
+            this.SupplierId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SupplierName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SupplierLastNameColomn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SupplierLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPageFarm = new System.Windows.Forms.TabPage();
             this.SeasonDataGridView = new System.Windows.Forms.DataGridView();
             this.SeasonId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -279,10 +283,6 @@ namespace HarvestManagerSystem
             this.DeleteQuantityStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.RapportButton = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.SupplierId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SupplierName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SupplierLastNameColomn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SupplierLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabProduction.SuspendLayout();
             this.tabPageQuantity.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.detailQuantityDataGridView)).BeginInit();
@@ -1470,6 +1470,7 @@ namespace HarvestManagerSystem
             this.CreditDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.CreditDataGridView.Size = new System.Drawing.Size(450, 515);
             this.CreditDataGridView.TabIndex = 6;
+            this.CreditDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.CreditDataGridView_CellEndEdit);
             // 
             // CreditIdColumn
             // 
@@ -1514,7 +1515,6 @@ namespace HarvestManagerSystem
             this.DeleteCreditStrip});
             this.CreditContextMenuStrip.Name = "CreditContextMenuStrip";
             this.CreditContextMenuStrip.Size = new System.Drawing.Size(130, 48);
-            this.CreditContextMenuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.CreditContextMenuStrip_ItemClicked);
             // 
             // EditCreditStrip
             // 
@@ -1609,6 +1609,7 @@ namespace HarvestManagerSystem
             this.TransportDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.TransportDataGridView.Size = new System.Drawing.Size(628, 515);
             this.TransportDataGridView.TabIndex = 4;
+            this.TransportDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.TransportDataGridView_CellEndEdit);
             // 
             // TransportIdColumn
             // 
@@ -1667,7 +1668,6 @@ namespace HarvestManagerSystem
             this.DeleteTransportStrip});
             this.TransportContextMenuStrip.Name = "TransportContextMenuStrip";
             this.TransportContextMenuStrip.Size = new System.Drawing.Size(130, 48);
-            this.TransportContextMenuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.TransportContextMenuStrip_ItemClicked);
             // 
             // EditTransportStrip
             // 
@@ -2019,6 +2019,7 @@ namespace HarvestManagerSystem
             dataGridViewCellStyle37.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle37.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.SupplierDataGridView.DefaultCellStyle = dataGridViewCellStyle37;
+            this.SupplierDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
             this.SupplierDataGridView.EnableHeadersVisualStyles = false;
             this.SupplierDataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.SupplierDataGridView.Location = new System.Drawing.Point(3, 45);
@@ -2045,6 +2046,34 @@ namespace HarvestManagerSystem
             this.SupplierDataGridView.TabIndex = 2;
             this.SupplierDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.SupplierDataGridView_CellEndEdit);
             this.SupplierDataGridView.SelectionChanged += new System.EventHandler(this.SupplierDataGridView_SelectionChanged);
+            // 
+            // SupplierId
+            // 
+            this.SupplierId.DataPropertyName = "SupplierId";
+            this.SupplierId.HeaderText = "SupplierId";
+            this.SupplierId.Name = "SupplierId";
+            this.SupplierId.Visible = false;
+            // 
+            // SupplierName
+            // 
+            this.SupplierName.DataPropertyName = "SupplierName";
+            this.SupplierName.HeaderText = "Fournisseur";
+            this.SupplierName.Name = "SupplierName";
+            this.SupplierName.Width = 230;
+            // 
+            // SupplierLastNameColomn
+            // 
+            this.SupplierLastNameColomn.DataPropertyName = "SupplierFirstName";
+            this.SupplierLastNameColomn.HeaderText = "Prénom";
+            this.SupplierLastNameColomn.Name = "SupplierLastNameColomn";
+            this.SupplierLastNameColomn.Width = 200;
+            // 
+            // SupplierLastName
+            // 
+            this.SupplierLastName.DataPropertyName = "SupplierLastName";
+            this.SupplierLastName.HeaderText = "Nom";
+            this.SupplierLastName.Name = "SupplierLastName";
+            this.SupplierLastName.Width = 200;
             // 
             // tabPageFarm
             // 
@@ -2706,34 +2735,6 @@ namespace HarvestManagerSystem
             this.label4.Size = new System.Drawing.Size(54, 15);
             this.label4.TabIndex = 13;
             this.label4.Text = "Rapports";
-            // 
-            // SupplierId
-            // 
-            this.SupplierId.DataPropertyName = "SupplierId";
-            this.SupplierId.HeaderText = "SupplierId";
-            this.SupplierId.Name = "SupplierId";
-            this.SupplierId.Visible = false;
-            // 
-            // SupplierName
-            // 
-            this.SupplierName.DataPropertyName = "SupplierName";
-            this.SupplierName.HeaderText = "Fournisseur";
-            this.SupplierName.Name = "SupplierName";
-            this.SupplierName.Width = 230;
-            // 
-            // SupplierLastNameColomn
-            // 
-            this.SupplierLastNameColomn.DataPropertyName = "SupplierFirstName";
-            this.SupplierLastNameColomn.HeaderText = "Prénom";
-            this.SupplierLastNameColomn.Name = "SupplierLastNameColomn";
-            this.SupplierLastNameColomn.Width = 200;
-            // 
-            // SupplierLastName
-            // 
-            this.SupplierLastName.DataPropertyName = "SupplierLastName";
-            this.SupplierLastName.HeaderText = "Nom";
-            this.SupplierLastName.Name = "SupplierLastName";
-            this.SupplierLastName.Width = 200;
             // 
             // HarvestMS
             // 

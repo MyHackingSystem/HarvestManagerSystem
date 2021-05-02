@@ -146,7 +146,7 @@ namespace HarvestManagerSystem.database
         }
 
         //*******************************
-        //Delete credit data (hide)
+        //Delete credit data
         //*******************************
         public bool DeleteData(Credit credit)
         {

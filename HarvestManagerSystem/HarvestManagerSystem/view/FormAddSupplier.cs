@@ -171,7 +171,6 @@ namespace HarvestManagerSystem.view
             FarmNameList();
             ProductNameList();
             wipeFields();
-            wipeFields();
         }
 
         private void btnReset_Click(object sender, EventArgs e)
