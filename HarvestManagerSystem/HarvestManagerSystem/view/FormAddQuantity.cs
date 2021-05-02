@@ -32,36 +32,12 @@ namespace HarvestManagerSystem.view
         BindingSource bindingSourceHarvesterList = new BindingSource { DataSource = HarvesterList };
 
         private HarvestMS harvestMS;
-        private static FormAddQuantity instance;
 
         public FormAddQuantity(HarvestMS harvestMS)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
             this.harvestMS = harvestMS;
             InitializeComponent();
-        }
-
-        public static FormAddQuantity getInstance(HarvestMS harvestMS)
-        {
-            if (instance == null)
-            {
-                instance = new FormAddQuantity(harvestMS);
-            }
-            return instance;
-        }
-
-        public void ShowFormAdd()
-        {
-            if (instance != null)
-            {
-                instance.BringToFront();
-            }
-            else
-            {
-                instance = new FormAddQuantity(harvestMS);
-
-            }
-            instance.Show();
         }
 
         private void FormAddQuantity_Load(object sender, EventArgs e)
@@ -76,7 +52,7 @@ namespace HarvestManagerSystem.view
                 SupplierHarvestQuantityComboBox.SelectedIndex = SupplierHarvestQuantityComboBox.FindStringExact(mProduction.Supplier.SupplierName);
                 FarmHarvestQuantityComboBox.SelectedIndex = FarmHarvestQuantityComboBox.FindStringExact(mProduction.Farm.FarmName);
                 ProductHarvestQuantityComboBox.SelectedIndex = ProductHarvestQuantityComboBox.FindStringExact(mProduction.Product.ProductName);
-                //ProductCodeHarvestQuantityComboBox.SelectedIndex = ProductCodeHarvestQuantityComboBox.FindStringExact(mProduction.ProductDetail.ProductCode);
+                ProductTypeHarvestQuantityComboBox.SelectedIndex = ProductTypeHarvestQuantityComboBox.FindStringExact(mProduction.ProductDetail.ProductType);
                 ApplyHarvestQuantityButton.Text = "Update";
             }
             else
@@ -118,7 +94,7 @@ namespace HarvestManagerSystem.view
             SupplierHarvestQuantityComboBox.SelectedIndex == -1 ||
             FarmHarvestQuantityComboBox.SelectedIndex == -1 ||
             ProductHarvestQuantityComboBox.SelectedIndex == -1 ||
-            ProductCodeHarvestQuantityComboBox.SelectedIndex == -1;
+            ProductTypeHarvestQuantityComboBox.SelectedIndex == -1;
         }
 
         private void ValidateAddHarvestQuantityByGroup()
@@ -163,8 +139,8 @@ namespace HarvestManagerSystem.view
             double allQuantityEmp = allQuantity / totalEmployee;
             double badQuantityEmp = badQuantity / totalEmployee;
 
-            double employeePrice = mProductDetailDictionary.GetValueOrDefault(ProductCodeHarvestQuantityComboBox.GetItemText(ProductCodeHarvestQuantityComboBox.SelectedItem)).PriceEmployee;
-            double companyPrice = mProductDetailDictionary.GetValueOrDefault(ProductCodeHarvestQuantityComboBox.GetItemText(ProductCodeHarvestQuantityComboBox.SelectedItem)).PriceCompany;
+            double employeePrice = mProductDetailDictionary.GetValueOrDefault(ProductTypeHarvestQuantityComboBox.GetItemText(ProductTypeHarvestQuantityComboBox.SelectedItem)).PriceEmployee;
+            double companyPrice = mProductDetailDictionary.GetValueOrDefault(ProductTypeHarvestQuantityComboBox.GetItemText(ProductTypeHarvestQuantityComboBox.SelectedItem)).PriceCompany;
             
             foreach (HarvestQuantity hq in HarvesterList)
             {
@@ -220,8 +196,8 @@ namespace HarvestManagerSystem.view
             double totalBadQuantity = 0.0;
             double totalGoodQuantity = 0.0;
 
-            double employeePrice = mProductDetailDictionary.GetValueOrDefault(ProductCodeHarvestQuantityComboBox.GetItemText(ProductCodeHarvestQuantityComboBox.SelectedItem)).PriceEmployee;
-            double companyPrice = mProductDetailDictionary.GetValueOrDefault(ProductCodeHarvestQuantityComboBox.GetItemText(ProductCodeHarvestQuantityComboBox.SelectedItem)).PriceCompany;
+            double employeePrice = mProductDetailDictionary.GetValueOrDefault(ProductTypeHarvestQuantityComboBox.GetItemText(ProductTypeHarvestQuantityComboBox.SelectedItem)).PriceEmployee;
+            double companyPrice = mProductDetailDictionary.GetValueOrDefault(ProductTypeHarvestQuantityComboBox.GetItemText(ProductTypeHarvestQuantityComboBox.SelectedItem)).PriceCompany;
 
             foreach (HarvestQuantity hq in HarvesterList)
             {
@@ -249,8 +225,6 @@ namespace HarvestManagerSystem.view
             mProduction.Price = companyPrice;
             AddHarvestQuantityDataGridView.Refresh();
         }
-
-        
 
         private void ApplyHarvestQuantityButton_Click(object sender, EventArgs e)
         {
@@ -361,7 +335,7 @@ namespace HarvestManagerSystem.view
             mProduction.Supplier.SupplierId = mSupplierDictionary.GetValueOrDefault(SupplierHarvestQuantityComboBox.GetItemText(SupplierHarvestQuantityComboBox.SelectedItem)).SupplierId;
             mProduction.Farm.FarmId = mFarmDictionary.GetValueOrDefault(FarmHarvestQuantityComboBox.GetItemText(FarmHarvestQuantityComboBox.SelectedItem)).FarmId;
             mProduction.Product.ProductId = mProductDictionary.GetValueOrDefault(ProductHarvestQuantityComboBox.GetItemText(ProductHarvestQuantityComboBox.SelectedItem)).ProductId;
-            mProduction.ProductDetail.ProductDetailId = mProductDetailDictionary.GetValueOrDefault(ProductCodeHarvestQuantityComboBox.GetItemText(ProductCodeHarvestQuantityComboBox.SelectedItem)).ProductDetailId;
+            mProduction.ProductDetail.ProductDetailId = mProductDetailDictionary.GetValueOrDefault(ProductTypeHarvestQuantityComboBox.GetItemText(ProductTypeHarvestQuantityComboBox.SelectedItem)).ProductDetailId;
             mProduction.TotalEmployee = Convert.ToInt32(TotalEmployeeTextBox.Text);
             mProduction.TotalQuantity = Convert.ToDouble(TotalQuantityTextBox.Text);
             mProduction.TotalMinutes = 0.0;
@@ -379,7 +353,7 @@ namespace HarvestManagerSystem.view
             mProduction.Supplier.SupplierName = production.Supplier.SupplierName;
             mProduction.Farm.FarmName = production.Farm.FarmName;
             mProduction.Product.ProductName = production.Product.ProductName;
-            //mProduction.ProductDetail.ProductCode = production.ProductDetail.ProductCode;
+            mProduction.ProductDetail.ProductType = production.ProductDetail.ProductType;
             mProduction.ProductionType = production.ProductionType;
 
             HarvesterList.Clear();
@@ -407,7 +381,6 @@ namespace HarvestManagerSystem.view
             SetToTotalZero();
         }
 
-
         #region Common code
 
         private void ProductHarvestHoursComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -434,14 +407,13 @@ namespace HarvestManagerSystem.view
             }
             if (CodeList != null)
             {
-                ProductCodeHarvestQuantityComboBox.DataSource = CodeList;
+                ProductTypeHarvestQuantityComboBox.DataSource = CodeList;
             }
         }
 
         private void FormAddQuantity_FormClosed(object sender, FormClosedEventArgs e)
         {
             wipeFields();
-            instance = null;
         }
 
         private void wipeFields()
@@ -454,7 +426,7 @@ namespace HarvestManagerSystem.view
             SupplierHarvestQuantityComboBox.SelectedIndex = -1;
             FarmHarvestQuantityComboBox.SelectedIndex = -1;
             ProductHarvestQuantityComboBox.SelectedIndex = -1;
-            ProductCodeHarvestQuantityComboBox.SelectedIndex = -1;
+            ProductTypeHarvestQuantityComboBox.SelectedIndex = -1;
             txtInputAllQuantity.Text = "";
             txtInputBadQuantity.Text = "";
             InitDataGridView();

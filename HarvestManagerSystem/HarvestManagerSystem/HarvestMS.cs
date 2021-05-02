@@ -31,9 +31,6 @@ namespace HarvestManagerSystem
         HarvestQuantityDAO harvestQuantityDAO = HarvestQuantityDAO.getInstance();
         ProductionDAO productionDAO = ProductionDAO.getInstance();
 
-        private static List<Employee> list = new List<Employee>();
-
-
         public HarvestMS()
         {
             InitializeComponent();
@@ -49,6 +46,9 @@ namespace HarvestManagerSystem
             //supplyDAO.CreateTable();
             //creditDAO.CreateTable();
             //transportDAO.CreateTable();
+            //harvestHoursDAO.CreateTable();
+            //harvestQuantityDAO.CreateTable();
+            //productionDAO.CreateTable();
         }
 
         private void tabProduction_SelectedIndexChanged(object sender, EventArgs e)
@@ -56,10 +56,10 @@ namespace HarvestManagerSystem
             switch (tabProduction.SelectedIndex)
             {
                 case 0:
-                    //DisplayQuantityData();
+                    DisplayQuantityData();
                     break;
                 case 1:
-                    //DisplayHoursData();
+                    DisplayHoursData();
                     break;
                 case 2:
                     DisplayCreditData();
@@ -98,8 +98,6 @@ namespace HarvestManagerSystem
         #region ********************************************* QUANTITY CODE *************************************************************************
 
         int QuantityDataGridSelectedRowIndex = -1;
-
-
         List<Production> listQuantityProduction = new List<Production>();
         List<HarvestQuantity> listHarvestQuantity = new List<HarvestQuantity>();
 
@@ -176,7 +174,7 @@ namespace HarvestManagerSystem
 
         private void HandleEditQuantityTable()
         {
-            FormAddQuantity formAddQuantity = FormAddQuantity.getInstance(this);
+            FormAddQuantity formAddQuantity = new FormAddQuantity(this);
             Production production = (Production)listQuantityProduction[QuantityDataGridSelectedRowIndex];
             if (production == null)
             {
@@ -184,9 +182,8 @@ namespace HarvestManagerSystem
                 return;
             }
             formAddQuantity.InflateUI(production);
-            formAddQuantity.ShowFormAdd();
+            formAddQuantity.ShowDialog();
         }
-
 
         private void HandleDeleteQuantityTable()
         {
@@ -267,148 +264,71 @@ namespace HarvestManagerSystem
             masterQuantityDataGridView.Columns["HQProductionTypeColumn"].DisplayIndex = 10;
         }
 
-        private void btnAddHarvestQuantity_Click(object sender, EventArgs e)
-        {
-            FormAddQuantity formAddQuantity = FormAddQuantity.getInstance(this);
-            formAddQuantity.ShowFormAdd();
-        }
-
 
         #endregion
 
         #region ********************************************* HOURS CODE ****************************************************************************
 
-
+        int HoursDataGridSelectedRowIndex = -1;
         List<Production> listHoursProduction = new List<Production>();
-
-        private BindingSource masterHoursBindingSource = new BindingSource();
-        private BindingSource detailsHoursBindingSource = new BindingSource();
+        List<HarvestHours> listHarvestHours = new List<HarvestHours>();
 
         void DisplayHoursData()
         {
-            masterHoursDataGridView.DataSource = masterHoursBindingSource;
-            detailsHoursDataGridView.DataSource = detailsHoursBindingSource;
-            StartSearchDateTimePicker.Value = DateTime.Now.AddDays(-29);
-            EndtSearchDateTimePicker.Value = DateTime.Now.AddDays(1);
-            UpdateDisplayHarvestHoursData(StartSearchDateTimePicker.Value, EndtSearchDateTimePicker.Value);
-            masterHoursDataGridView.AutoResizeColumns();
-            detailsHoursDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            StartHoursSearchDateTimePicker.Value = DateTime.Now.AddDays(-29);
+            EndHoursSearchDateTimePicker.Value = DateTime.Now.AddDays(1);
+            UpdateDisplayHarvestHoursData(StartHoursSearchDateTimePicker.Value, EndHoursSearchDateTimePicker.Value);
         }
 
-        public void UpdateDisplayHarvestHoursData(DateTime fromDate, DateTime toDate)
+        private void UpdateDisplayHarvestHoursData(DateTime fromDate, DateTime toDate)
         {
             listHoursProduction.Clear();
             try
             {
-
-                listHoursProduction = productionDAO.searchHarvestHoursProduction(fromDate, toDate, 1);
-                List<HarvestHours> listHarvestHours = harvestHoursDAO.HarvestHoursData();
-
-                DataSet data = new DataSet();
-                data.Locale = System.Globalization.CultureInfo.InvariantCulture;
-
-                IEnumerable<Production> HoursProduction = listHoursProduction;
-                DataTable tableHoursProduction = new DataTable("Production");
-
-                using (var reader = ObjectReader.Create(HoursProduction))
-                {
-                    tableHoursProduction.Load(reader);
-                }
-
-                data.Tables.Add(tableHoursProduction);
-
-
-                IEnumerable<HarvestHours> enumHarvestHours = listHarvestHours;
-                DataTable tableHarvestHours = new DataTable("HarvestHours");
-
-                using (var reader = ObjectReader.Create(enumHarvestHours))
-                {
-                    tableHarvestHours.Load(reader);
-                }
-
-                data.Tables.Add(tableHarvestHours);
-
-                DataRelation relation = null;
-                try
-                {
-                    relation = new DataRelation("ProductionHarvestHours",
-                                            data.Tables["Production"].Columns["ProductionId"],
-                                            data.Tables["HarvestHours"].Columns["ProductionId"]);
-                    data.Relations.Add(relation);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                }
-
-                // Bind the master data connector to the Customers table.
-                masterHoursBindingSource.DataSource = data;
-                masterHoursBindingSource.DataMember = "Production";
-
-                detailsHoursBindingSource.DataSource = masterHoursBindingSource;
-                detailsHoursBindingSource.DataMember = "ProductionHarvestHours";
-
-                SortDisplayMasterHoursColumnsIndex();
-                SortDisplayDetailsHoursColumnsIndex();
+                listHoursProduction = productionDAO.searchHarvestHoursProduction(startQuantitySearchDateTimePicker.Value, endQuantitySearchDateTimePicker.Value, 1);
+                masterHoursDataGridView.DataSource = listHoursProduction;
             }
-            catch (SQLiteException e)
+            catch (Exception ex)
             {
-                MessageBox.Show("To run this example, replace the value of the " +
-                    "connectionString variable with a connection string that is " +
-                    "valid for your system.");
+                MessageBox.Show("Update Harvest Data called: " + ex.Message);
+            }
+            SortDisplayMasterHoursColumnsIndex();
+        }
+
+        private void masterHoursDataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            int i = masterHoursDataGridView.CurrentRow.Index;
+            if (i < listHoursProduction.Count && i >= 0)
+            {
+                DisplayDetailHoursData(listHoursProduction[i]);
             }
         }
 
-        private void SearchButton_Click(object sender, EventArgs e)
+        private void DisplayDetailHoursData(Production production)
         {
-            UpdateDisplayHarvestHoursData(StartSearchDateTimePicker.Value, EndtSearchDateTimePicker.Value);
+            listHarvestHours.Clear();
+            try
+            {
+                listHarvestHours = harvestHoursDAO.HarvestHoursByProduction(production);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Display Detail Data called: " + ex.Message);
+            }
+            detailsHoursDataGridView.DataSource = listHarvestHours;
+            SortDisplayDetailsHoursColumnsIndex();
+        }
+
+        private void SearchHoursButton_Click(object sender, EventArgs e)
+        {
+            UpdateDisplayHarvestHoursData(StartHoursSearchDateTimePicker.Value, EndHoursSearchDateTimePicker.Value);
         }
 
         public void RefreshHoursProductionTable()
         {
-            UpdateDisplayHarvestHoursData(StartSearchDateTimePicker.Value, EndtSearchDateTimePicker.Value);
+            UpdateDisplayHarvestHoursData(StartHoursSearchDateTimePicker.Value, EndHoursSearchDateTimePicker.Value);
         }
 
-        private void SortDisplayDetailsHoursColumnsIndex()
-        {
-            detailsHoursDataGridView.Columns["HarvestHoursIDColumn"].DisplayIndex = 0;
-            detailsHoursDataGridView.Columns["HarvestDateColumn"].DisplayIndex = 1;
-            detailsHoursDataGridView.Columns["HoursEmployeeNameColumn"].DisplayIndex = 2;
-            detailsHoursDataGridView.Columns["TimeStartMorningColumn"].DisplayIndex = 3;
-            detailsHoursDataGridView.Columns["TimeEndMorningColumn"].DisplayIndex = 4;
-            detailsHoursDataGridView.Columns["TimeStartNoonColumn"].DisplayIndex = 5;
-            detailsHoursDataGridView.Columns["TimeEndNoonColumn"].DisplayIndex = 6;
-            detailsHoursDataGridView.Columns["HoursTotalMinutesColumn"].DisplayIndex = 7;
-            detailsHoursDataGridView.Columns["HourPriceColumn"].DisplayIndex = 8;
-            detailsHoursDataGridView.Columns["HoursCreditAmountColumn"].DisplayIndex = 9;
-            detailsHoursDataGridView.Columns["HoursTransportAmountColumn"].DisplayIndex = 10;
-            detailsHoursDataGridView.Columns["PaymentEmployeeColumn"].DisplayIndex = 11;
-            detailsHoursDataGridView.Columns["EmployeeCategoryColumn"].DisplayIndex = 12;
-            detailsHoursDataGridView.Columns["RemarqueColumn"].DisplayIndex = 13;
-        }
-
-        private void SortDisplayMasterHoursColumnsIndex()
-        {
-            masterHoursDataGridView.Columns["ProductionIDColumn"].DisplayIndex = 0;
-            masterHoursDataGridView.Columns["ProductionDateColumn"].DisplayIndex = 1;
-            masterHoursDataGridView.Columns["ProductionSupplierNameColumn"].DisplayIndex = 2;
-            masterHoursDataGridView.Columns["ProductionFarmNameColumn"].DisplayIndex = 3;
-            masterHoursDataGridView.Columns["ProductionProductNameColumn"].DisplayIndex = 4;
-            masterHoursDataGridView.Columns["ProductionProductCodeColumn"].DisplayIndex = 5;
-            masterHoursDataGridView.Columns["TotalQuantityColumn"].DisplayIndex = 6;
-            masterHoursDataGridView.Columns["TotalMinutesColumn"].DisplayIndex = 7;
-            masterHoursDataGridView.Columns["PriceColumn"].DisplayIndex = 8;
-            masterHoursDataGridView.Columns["PaymentCompanyColumn"].DisplayIndex = 9;
-            masterHoursDataGridView.Columns["TotalEmployeeColumn"].DisplayIndex = 10;
-            masterHoursDataGridView.Columns["ProductionTypeColumn"].DisplayIndex = 11;
-            masterHoursDataGridView.Columns["ProductionSupplierColumn"].DisplayIndex = 11;
-            masterHoursDataGridView.Columns["ProductionFarmColumn"].DisplayIndex = 13;
-            masterHoursDataGridView.Columns["ProductionProductColumn"].DisplayIndex = 14;
-            masterHoursDataGridView.Columns["ProductionProductDetailColumn"].DisplayIndex = 15;
-        }
-
-
-        int HoursDataGridSelectedRowIndex = -1;
         private void masterHoursDataGridView_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -417,11 +337,10 @@ namespace HarvestManagerSystem
                 HoursContextMenuStrip.Show(this.masterHoursDataGridView, e.Location);
                 HoursDataGridSelectedRowIndex = e.RowIndex;
                 HoursContextMenuStrip.Show(Cursor.Position);
-                
+                DisplayDetailHoursData(listHoursProduction[HoursDataGridSelectedRowIndex]);
+
             }
         }
-
-
 
         private void HoursContextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
@@ -440,7 +359,7 @@ namespace HarvestManagerSystem
 
         private void HandleEditHoursTable()
         {
-            FormAddHours formAddHours = FormAddHours.getInstance(this);
+            FormAddHours formAddHours = new FormAddHours(this);
             Production production = (Production)listHoursProduction[HoursDataGridSelectedRowIndex];
             if (production == null)
             {
@@ -448,7 +367,7 @@ namespace HarvestManagerSystem
                 return;
             }
             formAddHours.InflateUI(production);
-            formAddHours.ShowFormAdd();
+            formAddHours.ShowDialog();
         }
 
         private void HandleDeleteHoursTable()
@@ -489,10 +408,42 @@ namespace HarvestManagerSystem
 
         }
 
-        private void btnAddHarvestHours_Click(object sender, EventArgs e)
+        private void SortDisplayDetailsHoursColumnsIndex()
         {
-            FormAddHours formAddHours = FormAddHours.getInstance(this);
-            formAddHours.ShowFormAdd();
+            detailsHoursDataGridView.Columns["HarvestHoursIDColumn"].DisplayIndex = 0;
+            detailsHoursDataGridView.Columns["HarvestDateColumn"].DisplayIndex = 1;
+            detailsHoursDataGridView.Columns["HoursEmployeeNameColumn"].DisplayIndex = 2;
+            detailsHoursDataGridView.Columns["TimeStartMorningColumn"].DisplayIndex = 3;
+            detailsHoursDataGridView.Columns["TimeEndMorningColumn"].DisplayIndex = 4;
+            detailsHoursDataGridView.Columns["TimeStartNoonColumn"].DisplayIndex = 5;
+            detailsHoursDataGridView.Columns["TimeEndNoonColumn"].DisplayIndex = 6;
+            detailsHoursDataGridView.Columns["HoursTotalMinutesColumn"].DisplayIndex = 7;
+            detailsHoursDataGridView.Columns["HourPriceColumn"].DisplayIndex = 8;
+            detailsHoursDataGridView.Columns["HoursCreditAmountColumn"].DisplayIndex = 9;
+            detailsHoursDataGridView.Columns["HoursTransportAmountColumn"].DisplayIndex = 10;
+            detailsHoursDataGridView.Columns["PaymentEmployeeColumn"].DisplayIndex = 11;
+            detailsHoursDataGridView.Columns["EmployeeCategoryColumn"].DisplayIndex = 12;
+            detailsHoursDataGridView.Columns["RemarqueColumn"].DisplayIndex = 13;
+        }
+
+        private void SortDisplayMasterHoursColumnsIndex()
+        {
+            masterHoursDataGridView.Columns["ProductionIDColumn"].DisplayIndex = 0;
+            masterHoursDataGridView.Columns["ProductionDateColumn"].DisplayIndex = 1;
+            masterHoursDataGridView.Columns["ProductionSupplierNameColumn"].DisplayIndex = 2;
+            masterHoursDataGridView.Columns["ProductionFarmNameColumn"].DisplayIndex = 3;
+            masterHoursDataGridView.Columns["ProductionProductNameColumn"].DisplayIndex = 4;
+            masterHoursDataGridView.Columns["ProductionProductCodeColumn"].DisplayIndex = 5;
+            masterHoursDataGridView.Columns["TotalQuantityColumn"].DisplayIndex = 6;
+            masterHoursDataGridView.Columns["TotalMinutesColumn"].DisplayIndex = 7;
+            masterHoursDataGridView.Columns["PriceColumn"].DisplayIndex = 8;
+            masterHoursDataGridView.Columns["PaymentCompanyColumn"].DisplayIndex = 9;
+            masterHoursDataGridView.Columns["TotalEmployeeColumn"].DisplayIndex = 10;
+            masterHoursDataGridView.Columns["ProductionTypeColumn"].DisplayIndex = 11;
+            masterHoursDataGridView.Columns["ProductionSupplierColumn"].DisplayIndex = 11;
+            masterHoursDataGridView.Columns["ProductionFarmColumn"].DisplayIndex = 13;
+            masterHoursDataGridView.Columns["ProductionProductColumn"].DisplayIndex = 14;
+            masterHoursDataGridView.Columns["ProductionProductDetailColumn"].DisplayIndex = 15;
         }
 
         #endregion
@@ -801,6 +752,18 @@ namespace HarvestManagerSystem
             Application.Exit();
         }
 
+        private void btnAddHarvestQuantity_Click(object sender, EventArgs e)
+        {
+            FormAddQuantity formAddQuantity = new FormAddQuantity(this);
+            formAddQuantity.ShowDialog();
+        }
+
+        private void btnAddHarvestHours_Click(object sender, EventArgs e)
+        {
+            FormAddHours formAddHours = new FormAddHours(this);
+            formAddHours.ShowDialog();
+        }
+
         private void btnAddSupplier_Click(object sender, EventArgs e)
         {
             FormAddSupplier formAddSupplier = new FormAddSupplier(this);
@@ -840,6 +803,7 @@ namespace HarvestManagerSystem
 
 
         #endregion
+
 
     }
 }

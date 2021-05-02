@@ -60,8 +60,6 @@ namespace HarvestManagerSystem.database
                     + "@" + TransportDAO.COLUMN_TRANSPORT_FARM_ID
                     + " )";
 
-            //String TransportId = "SELECT MAX(id) FROM " + TransportDAO.TABLE_TRANSPORT + " ;";
-
             var insertCredit = "INSERT INTO " + CreditDAO.TABLE_CREDIT + " ("
                     + CreditDAO.COLUMN_CREDIT_DATE + ", "
                     + CreditDAO.COLUMN_CREDIT_AMOUNT + ", "
@@ -71,8 +69,6 @@ namespace HarvestManagerSystem.database
                     + "@" + CreditDAO.COLUMN_CREDIT_AMOUNT + ", "
                     + "@" + CreditDAO.COLUMN_CREDIT_EMPLOYEE_ID
                     + " )";
-
-            //String CreditId = "SELECT MAX(id) FROM " + CreditDAO.TABLE_CREDIT + " ;";
 
             var insertHarvestHours = "INSERT INTO " + TABLE_HOURS + " ("
                     + COLUMN_HOURS_DATE + ", "
@@ -185,8 +181,7 @@ namespace HarvestManagerSystem.database
                 + ProductDAO.TABLE_PRODUCT + "." + ProductDAO.COLUMN_PRODUCT_ID + ", "
                 + ProductDAO.TABLE_PRODUCT + "." + ProductDAO.COLUMN_PRODUCT_NAME + ", "
                 + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_DETAIL_ID + ", "
-                + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_TYPE + ", "
-                //+ ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_CODE + " "
+                + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_TYPE + " "
                 + " FROM " + TABLE_HOURS + " "
                 + " LEFT JOIN " + EmployeeDAO.TABLE_EMPLOYEE + " "
                 + " ON " + EmployeeDAO.TABLE_EMPLOYEE + "." + EmployeeDAO.COLUMN_EMPLOYEE_ID + " = " + TABLE_HOURS + "." + COLUMN_HOURS_EMPLOYEE_ID
@@ -384,7 +379,6 @@ namespace HarvestManagerSystem.database
                 + EmployeeDAO.TABLE_EMPLOYEE + "." + EmployeeDAO.COLUMN_EMPLOYEE_LAST_NAME + " "
                     + " FROM " + EmployeeDAO.TABLE_EMPLOYEE
                     + " WHERE " + EmployeeDAO.COLUMN_EMPLOYEE_STATUS + " = 1 "
-                    //+ " AND " + EmployeeDAO.COLUMN_EMPLOYEE_IS_EXIST + " = 1 "
                     + " ORDER BY " + EmployeeDAO.COLUMN_EMPLOYEE_FIRST_NAME + " ASC;";
 
             try
@@ -422,10 +416,10 @@ namespace HarvestManagerSystem.database
             string createStmt = "CREATE TABLE IF NOT EXISTS " + TABLE_HOURS + " ("
                 + COLUMN_HOURS_ID + " INTEGER PRIMARY KEY, "
                 + COLUMN_HOURS_DATE + " DATE NOT NULL, "
-                + COLUMN_HOURS_SM + " REAL NOT NULL, "
-                + COLUMN_HOURS_EM + " REAL NOT NULL, "
-                + COLUMN_HOURS_SN + " REAL NOT NULL, "
-                + COLUMN_HOURS_EN + " REAL NOT NULL, "
+                + COLUMN_HOURS_SM + " DATE NOT NULL, "
+                + COLUMN_HOURS_EM + " DATE NOT NULL, "
+                + COLUMN_HOURS_SN + " DATE NOT NULL, "
+                + COLUMN_HOURS_EN + " DATE NOT NULL, "
                 + COLUMN_HOURS_PRICE + " REAL, "
                 + COLUMN_HOURS_REMARQUE + " TEXT, "
                 + COLUMN_HOURS_EMPLOYEE_TYPE + " INTEGER NOT NULL, "
@@ -487,8 +481,7 @@ namespace HarvestManagerSystem.database
                 + ProductDAO.TABLE_PRODUCT + "." + ProductDAO.COLUMN_PRODUCT_ID + ", "
                 + ProductDAO.TABLE_PRODUCT + "." + ProductDAO.COLUMN_PRODUCT_NAME + ", "
                 + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_DETAIL_ID + ", "
-                + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_TYPE + ", "
-                //+ ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_CODE + " "
+                + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_TYPE + " "
                 + " FROM " + TABLE_HOURS + " "
                 + " LEFT JOIN " + EmployeeDAO.TABLE_EMPLOYEE + " "
                 + " ON " + EmployeeDAO.TABLE_EMPLOYEE + "." + EmployeeDAO.COLUMN_EMPLOYEE_ID + " = " + TABLE_HOURS + "." + COLUMN_HOURS_EMPLOYEE_ID
@@ -558,7 +551,6 @@ namespace HarvestManagerSystem.database
                     harvestHours.Production.Product.ProductName = (string)result[ProductDAO.COLUMN_PRODUCT_NAME];
                     harvestHours.Production.ProductDetail.ProductDetailId = Convert.ToInt32((result[ProductDetailDAO.COLUMN_PRODUCT_DETAIL_ID]).ToString());
                     harvestHours.Production.ProductDetail.ProductType = (string)result[ProductDetailDAO.COLUMN_PRODUCT_TYPE];
-                    //harvestHours.Production.ProductDetail.ProductCode = (string)result[ProductDetailDAO.COLUMN_PRODUCT_CODE];
                     list.Add(harvestHours);
                 }
             }
@@ -594,8 +586,7 @@ namespace HarvestManagerSystem.database
                 + ProductDAO.TABLE_PRODUCT + "." + ProductDAO.COLUMN_PRODUCT_ID + ", "
                 + ProductDAO.TABLE_PRODUCT + "." + ProductDAO.COLUMN_PRODUCT_NAME + ", "
                 + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_DETAIL_ID + ", "
-                + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_TYPE + ", "
-                //+ ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_CODE + " "
+                + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_TYPE + " "
                 + " FROM " + TABLE_HOURS + " "
                 + " LEFT JOIN " + EmployeeDAO.TABLE_EMPLOYEE + " "
                 + " ON " + EmployeeDAO.TABLE_EMPLOYEE + "." + EmployeeDAO.COLUMN_EMPLOYEE_ID + " = " + TABLE_HOURS + "." + COLUMN_HOURS_EMPLOYEE_ID

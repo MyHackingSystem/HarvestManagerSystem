@@ -29,7 +29,7 @@ namespace HarvestManagerSystem.view
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ImportExcelButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -42,7 +42,7 @@ namespace HarvestManagerSystem.view
             this.ClearHarvestButton = new System.Windows.Forms.Button();
             this.ValidateHarvestQuantityButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.ProductCodeHarvestQuantityComboBox = new System.Windows.Forms.ComboBox();
+            this.ProductTypeHarvestQuantityComboBox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.ProductHarvestQuantityComboBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -108,7 +108,7 @@ namespace HarvestManagerSystem.view
             this.groupBox1.Controls.Add(this.ClearHarvestButton);
             this.groupBox1.Controls.Add(this.ValidateHarvestQuantityButton);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.ProductCodeHarvestQuantityComboBox);
+            this.groupBox1.Controls.Add(this.ProductTypeHarvestQuantityComboBox);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.ProductHarvestQuantityComboBox);
             this.groupBox1.Controls.Add(this.label3);
@@ -240,17 +240,17 @@ namespace HarvestManagerSystem.view
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label4.Location = new System.Drawing.Point(7, 266);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(42, 17);
+            this.label4.Size = new System.Drawing.Size(40, 17);
             this.label4.TabIndex = 9;
-            this.label4.Text = "Code:";
+            this.label4.Text = "Type:";
             // 
-            // ProductCodeHarvestQuantityComboBox
+            // ProductTypeHarvestQuantityComboBox
             // 
-            this.ProductCodeHarvestQuantityComboBox.FormattingEnabled = true;
-            this.ProductCodeHarvestQuantityComboBox.Location = new System.Drawing.Point(7, 288);
-            this.ProductCodeHarvestQuantityComboBox.Name = "ProductCodeHarvestQuantityComboBox";
-            this.ProductCodeHarvestQuantityComboBox.Size = new System.Drawing.Size(186, 25);
-            this.ProductCodeHarvestQuantityComboBox.TabIndex = 5;
+            this.ProductTypeHarvestQuantityComboBox.FormattingEnabled = true;
+            this.ProductTypeHarvestQuantityComboBox.Location = new System.Drawing.Point(7, 288);
+            this.ProductTypeHarvestQuantityComboBox.Name = "ProductTypeHarvestQuantityComboBox";
+            this.ProductTypeHarvestQuantityComboBox.Size = new System.Drawing.Size(186, 25);
+            this.ProductTypeHarvestQuantityComboBox.TabIndex = 5;
             // 
             // label5
             // 
@@ -355,14 +355,14 @@ namespace HarvestManagerSystem.view
             this.DamageGeneralColumn,
             this.HarvestTypeColumn,
             this.TransportStatusByAmountColumn});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.AddHarvestQuantityDataGridView.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.AddHarvestQuantityDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.AddHarvestQuantityDataGridView.Location = new System.Drawing.Point(218, 16);
             this.AddHarvestQuantityDataGridView.MultiSelect = false;
             this.AddHarvestQuantityDataGridView.Name = "AddHarvestQuantityDataGridView";
@@ -744,7 +744,7 @@ namespace HarvestManagerSystem.view
         private System.Windows.Forms.Button ClearHarvestButton;
         private System.Windows.Forms.Button ValidateHarvestQuantityButton;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox ProductCodeHarvestQuantityComboBox;
+        private System.Windows.Forms.ComboBox ProductTypeHarvestQuantityComboBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox ProductHarvestQuantityComboBox;
         private System.Windows.Forms.Label label3;
