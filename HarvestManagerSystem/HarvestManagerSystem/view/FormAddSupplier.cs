@@ -40,6 +40,7 @@ namespace HarvestManagerSystem.view
             SupplierNameList();
             FarmNameList();
             ProductNameList();
+            wipeFields();
         }
 
         private void SupplierNameList()
@@ -166,6 +167,8 @@ namespace HarvestManagerSystem.view
                 MessageBox.Show("Not added to database: ");
             }
 
+            SupplierNameList();
+            FarmNameList();
             ProductNameList();
             wipeFields();
         }

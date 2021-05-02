@@ -230,18 +230,12 @@ namespace HarvestManagerSystem
             this.Supplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SupplyFarmName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SupplyProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SupplyContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.EditSupplyStrip = new System.Windows.Forms.ToolStripMenuItem();
-            this.DeleteSupplyStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.labelSuuplierTab = new System.Windows.Forms.Label();
             this.SupplierDataGridView = new System.Windows.Forms.DataGridView();
             this.SupplierId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SupplierName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SupplierLastNameColomn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SupplierLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SupplierContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.EditSupplierStrip = new System.Windows.Forms.ToolStripMenuItem();
-            this.DeleteSupplierStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPageFarm = new System.Windows.Forms.TabPage();
             this.SeasonDataGridView = new System.Windows.Forms.DataGridView();
             this.SeasonId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -305,9 +299,7 @@ namespace HarvestManagerSystem
             ((System.ComponentModel.ISupportInitialize)(this.EmployeeDataGridView)).BeginInit();
             this.tabPageSupplier.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SupplyDataGridView)).BeginInit();
-            this.SupplyContextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SupplierDataGridView)).BeginInit();
-            this.SupplierContextMenuStrip.SuspendLayout();
             this.tabPageFarm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SeasonDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FarmDataGridView)).BeginInit();
@@ -1478,6 +1470,7 @@ namespace HarvestManagerSystem
             this.CreditDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.CreditDataGridView.Size = new System.Drawing.Size(450, 515);
             this.CreditDataGridView.TabIndex = 6;
+            this.CreditDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.CreditDataGridView_CellEndEdit);
             // 
             // CreditIdColumn
             // 
@@ -1522,7 +1515,6 @@ namespace HarvestManagerSystem
             this.DeleteCreditStrip});
             this.CreditContextMenuStrip.Name = "CreditContextMenuStrip";
             this.CreditContextMenuStrip.Size = new System.Drawing.Size(130, 48);
-            this.CreditContextMenuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.CreditContextMenuStrip_ItemClicked);
             // 
             // EditCreditStrip
             // 
@@ -1617,6 +1609,7 @@ namespace HarvestManagerSystem
             this.TransportDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.TransportDataGridView.Size = new System.Drawing.Size(628, 515);
             this.TransportDataGridView.TabIndex = 4;
+            this.TransportDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.TransportDataGridView_CellEndEdit);
             // 
             // TransportIdColumn
             // 
@@ -1675,7 +1668,6 @@ namespace HarvestManagerSystem
             this.DeleteTransportStrip});
             this.TransportContextMenuStrip.Name = "TransportContextMenuStrip";
             this.TransportContextMenuStrip.Size = new System.Drawing.Size(130, 48);
-            this.TransportContextMenuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.TransportContextMenuStrip_ItemClicked);
             // 
             // EditTransportStrip
             // 
@@ -1941,11 +1933,11 @@ namespace HarvestManagerSystem
             dataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
             dataGridViewCellStyle34.SelectionForeColor = System.Drawing.Color.White;
             this.SupplyDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle34;
-            this.SupplyDataGridView.RowTemplate.ContextMenuStrip = this.SupplyContextMenuStrip;
             this.SupplyDataGridView.RowTemplate.Height = 25;
             this.SupplyDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.SupplyDataGridView.Size = new System.Drawing.Size(476, 515);
             this.SupplyDataGridView.TabIndex = 4;
+            this.SupplyDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.SupplyDataGridView_CellEndEdit);
             // 
             // SupplyId
             // 
@@ -1973,26 +1965,6 @@ namespace HarvestManagerSystem
             this.SupplyProductName.HeaderText = "Pruduit";
             this.SupplyProductName.Name = "SupplyProductName";
             this.SupplyProductName.ReadOnly = true;
-            // 
-            // SupplyContextMenuStrip
-            // 
-            this.SupplyContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.EditSupplyStrip,
-            this.DeleteSupplyStrip});
-            this.SupplyContextMenuStrip.Name = "SupplyContextMenuStrip";
-            this.SupplyContextMenuStrip.Size = new System.Drawing.Size(130, 48);
-            // 
-            // EditSupplyStrip
-            // 
-            this.EditSupplyStrip.Name = "EditSupplyStrip";
-            this.EditSupplyStrip.Size = new System.Drawing.Size(129, 22);
-            this.EditSupplyStrip.Text = "Edit";
-            // 
-            // DeleteSupplyStrip
-            // 
-            this.DeleteSupplyStrip.Name = "DeleteSupplyStrip";
-            this.DeleteSupplyStrip.Size = new System.Drawing.Size(129, 22);
-            this.DeleteSupplyStrip.Text = "Supprimer";
             // 
             // labelSuuplierTab
             // 
@@ -2047,6 +2019,7 @@ namespace HarvestManagerSystem
             dataGridViewCellStyle37.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle37.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.SupplierDataGridView.DefaultCellStyle = dataGridViewCellStyle37;
+            this.SupplierDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
             this.SupplierDataGridView.EnableHeadersVisualStyles = false;
             this.SupplierDataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.SupplierDataGridView.Location = new System.Drawing.Point(3, 45);
@@ -2067,11 +2040,11 @@ namespace HarvestManagerSystem
             dataGridViewCellStyle39.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
             dataGridViewCellStyle39.SelectionForeColor = System.Drawing.Color.White;
             this.SupplierDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle39;
-            this.SupplierDataGridView.RowTemplate.ContextMenuStrip = this.SupplierContextMenuStrip;
             this.SupplierDataGridView.RowTemplate.Height = 25;
             this.SupplierDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.SupplierDataGridView.Size = new System.Drawing.Size(638, 515);
             this.SupplierDataGridView.TabIndex = 2;
+            this.SupplierDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.SupplierDataGridView_CellEndEdit);
             this.SupplierDataGridView.SelectionChanged += new System.EventHandler(this.SupplierDataGridView_SelectionChanged);
             // 
             // SupplierId
@@ -2093,7 +2066,6 @@ namespace HarvestManagerSystem
             this.SupplierLastNameColomn.DataPropertyName = "SupplierFirstName";
             this.SupplierLastNameColomn.HeaderText = "Prénom";
             this.SupplierLastNameColomn.Name = "SupplierLastNameColomn";
-            this.SupplierLastNameColomn.ReadOnly = true;
             this.SupplierLastNameColomn.Width = 200;
             // 
             // SupplierLastName
@@ -2101,28 +2073,7 @@ namespace HarvestManagerSystem
             this.SupplierLastName.DataPropertyName = "SupplierLastName";
             this.SupplierLastName.HeaderText = "Nom";
             this.SupplierLastName.Name = "SupplierLastName";
-            this.SupplierLastName.ReadOnly = true;
             this.SupplierLastName.Width = 200;
-            // 
-            // SupplierContextMenuStrip
-            // 
-            this.SupplierContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.EditSupplierStrip,
-            this.DeleteSupplierStrip});
-            this.SupplierContextMenuStrip.Name = "SupplierContextMenuStrip";
-            this.SupplierContextMenuStrip.Size = new System.Drawing.Size(130, 48);
-            // 
-            // EditSupplierStrip
-            // 
-            this.EditSupplierStrip.Name = "EditSupplierStrip";
-            this.EditSupplierStrip.Size = new System.Drawing.Size(129, 22);
-            this.EditSupplierStrip.Text = "Edit";
-            // 
-            // DeleteSupplierStrip
-            // 
-            this.DeleteSupplierStrip.Name = "DeleteSupplierStrip";
-            this.DeleteSupplierStrip.Size = new System.Drawing.Size(129, 22);
-            this.DeleteSupplierStrip.Text = "Supprimer";
             // 
             // tabPageFarm
             // 
@@ -2824,9 +2775,7 @@ namespace HarvestManagerSystem
             ((System.ComponentModel.ISupportInitialize)(this.EmployeeDataGridView)).EndInit();
             this.tabPageSupplier.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SupplyDataGridView)).EndInit();
-            this.SupplyContextMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SupplierDataGridView)).EndInit();
-            this.SupplierContextMenuStrip.ResumeLayout(false);
             this.tabPageFarm.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SeasonDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FarmDataGridView)).EndInit();
@@ -2892,16 +2841,6 @@ namespace HarvestManagerSystem
         private System.Windows.Forms.DataGridViewTextBoxColumn Supplier;
         private System.Windows.Forms.DataGridViewTextBoxColumn SupplyFarmName;
         private System.Windows.Forms.DataGridViewTextBoxColumn SupplyProductName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierLastNameColomn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierLastName;
-        private System.Windows.Forms.ContextMenuStrip SupplierContextMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem EditSupplierStrip;
-        private System.Windows.Forms.ToolStripMenuItem DeleteSupplierStrip;
-        private System.Windows.Forms.ContextMenuStrip SupplyContextMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem EditSupplyStrip;
-        private System.Windows.Forms.ToolStripMenuItem DeleteSupplyStrip;
         private System.Windows.Forms.DataGridView CreditDataGridView;
         private System.Windows.Forms.ContextMenuStrip CreditContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem EditCreditStrip;
@@ -3053,6 +2992,10 @@ namespace HarvestManagerSystem
         private System.Windows.Forms.DataGridViewTextBoxColumn FarmName;
         private System.Windows.Forms.DataGridViewTextBoxColumn FarmAddress;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierLastNameColomn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierLastName;
     }
 }
 

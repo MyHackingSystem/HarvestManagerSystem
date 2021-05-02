@@ -1,28 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using HarvestManagerSystem.model;
 using HarvestManagerSystem.database;
-using System.Text.RegularExpressions;
 
 
 namespace HarvestManagerSystem.view
 {
     public partial class FormAddCredit : Form
     {
-        private bool isEditCredit = false;
-        private Credit mCredit = new Credit();
+
         private CreditDAO creditDAO = CreditDAO.getInstance();
         private EmployeeDAO employeeDAO = EmployeeDAO.getInstance();
 
         private Dictionary<string, Employee> mEmployeeDictionary = new Dictionary<string, Employee>();
 
         private HarvestMS harvestMS;
-        private static FormAddCredit instance;
 
         public FormAddCredit(HarvestMS harvestMS)
         {
@@ -30,48 +23,10 @@ namespace HarvestManagerSystem.view
             InitializeComponent();
         }
 
-        private void FormAddCredit_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            wipeFields();
-            instance = null;
-        }
-
-        public static FormAddCredit getInstance(HarvestMS harvestMS)
-        {
-            if (instance == null)
-            {
-                instance = new FormAddCredit(harvestMS);
-            }
-            return instance;
-        }
-
-        public void ShowFormAdd()
-        {
-            if (instance != null)
-            {
-                instance.BringToFront();
-            }
-            else
-            {
-                instance = new FormAddCredit(harvestMS);
-
-            }
-            instance.Show();
-        }
-
         private void FormAddCredit_Load(object sender, EventArgs e)
         {
             EmployeeNameList();
-            if (isEditCredit)
-            {
-                CreditEmployeeComboBox.SelectedIndex = CreditEmployeeComboBox.FindStringExact(mCredit.Employee.FullName);
-                CreditAmountTextBox.Text = Convert.ToString(mCredit.CreditAmount);
-                CreditDatePicker.Value = mCredit.CreditDate;
-            }
-            else
-            {
-                CreditEmployeeComboBox.SelectedIndex = -1;
-            }
+            CreditEmployeeComboBox.SelectedIndex = -1;
 
         }
 
@@ -94,36 +49,14 @@ namespace HarvestManagerSystem.view
             }
         }
 
-        internal void InflateUI(Credit credit)
-        {
-            isEditCredit = true;
-            CreditEmployeeComboBox.SelectedIndex = -1;
-            mCredit.CreditId = credit.CreditId;
-            mCredit.CreditDate = credit.CreditDate;
-            mCredit.CreditAmount = credit.CreditAmount;
-            mCredit.Employee.EmployeeId = credit.Employee.EmployeeId;
-            mCredit.Employee.FirstName = credit.Employee.FirstName;
-            mCredit.Employee.LastName = credit.Employee.LastName;
-            CreditDatePicker.Enabled = false;
-            CreditEmployeeComboBox.Enabled = false;
-            handleSaveButton.Text = "Update";
-        }
-
         private void handleSaveButton_Click(object sender, EventArgs e)
         {
-            if (isEditCredit)
+            if (CheckInput())
             {
-                UpdateCredit(mCredit);
+                MessageBox.Show("Vérifier les valeurs");
+                return;
             }
-            else
-            {
-                if (CheckInput() || !validateData())
-                {
-                    MessageBox.Show("Vérifier les valeurs");
-                    return;
-                }
-                SaveCreditData();
-            }
+            SaveCreditData();
             harvestMS.DisplayCreditData();
         }
 
@@ -134,27 +67,15 @@ namespace HarvestManagerSystem.view
             return creditEmployeeErrorLabel.Visible || creditAmountErrorLabel.Visible;
         }
 
-        private bool validateData()
+        private void ValidateNumberEntred(object sender, KeyPressEventArgs e)
         {
-            Regex regex = new Regex(@"^[0-9]+\.?[0-9]*$");
-            return regex.Match(CreditAmountTextBox.Text).Success;
-        }
-
-        private void UpdateCredit(Credit credit)
-        {
-            credit.CreditAmount = Convert.ToDouble(CreditAmountTextBox.Text);
-            bool isAdded = creditDAO.UpdateData(credit); 
-
-            if (isAdded)
+            if ((e.KeyChar >= '0' && e.KeyChar <= '9') || e.KeyChar == 8 || e.KeyChar == 46)
             {
-                wipeFields();
-                MessageBox.Show("data updated");
-                this.Close();
+                e.Handled = false;
             }
             else
             {
-                MessageBox.Show("Not updated");
-                this.Close();
+                e.Handled = true;
             }
         }
 
@@ -181,11 +102,6 @@ namespace HarvestManagerSystem.view
             {
                 MessageBox.Show("Not added to database: ");
             }
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void btnReset_Click(object sender, EventArgs e)

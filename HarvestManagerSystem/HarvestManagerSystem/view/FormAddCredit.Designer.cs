@@ -31,7 +31,6 @@ namespace HarvestManagerSystem.view
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAddCredit));
             this.btnReset = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.handleSaveButton = new System.Windows.Forms.Button();
             this.CreditAmountTextBox = new System.Windows.Forms.TextBox();
             this.CreditEmployeeComboBox = new System.Windows.Forms.ComboBox();
@@ -59,22 +58,6 @@ namespace HarvestManagerSystem.view
             this.btnReset.UseVisualStyleBackColor = false;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
-            // btnCancel
-            // 
-            this.btnCancel.BackColor = System.Drawing.Color.DarkOrange;
-            this.btnCancel.FlatAppearance.BorderSize = 0;
-            this.btnCancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Moccasin;
-            this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCancel.Location = new System.Drawing.Point(288, 504);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(70, 30);
-            this.btnCancel.TabIndex = 30;
-            this.btnCancel.Text = "Close";
-            this.btnCancel.UseVisualStyleBackColor = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
             // handleSaveButton
             // 
             this.handleSaveButton.BackColor = System.Drawing.Color.DarkOrange;
@@ -98,6 +81,7 @@ namespace HarvestManagerSystem.view
             this.CreditAmountTextBox.Name = "CreditAmountTextBox";
             this.CreditAmountTextBox.Size = new System.Drawing.Size(200, 29);
             this.CreditAmountTextBox.TabIndex = 27;
+            this.CreditAmountTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
             // 
             // CreditEmployeeComboBox
             // 
@@ -185,7 +169,6 @@ namespace HarvestManagerSystem.view
             this.Controls.Add(this.CreditDatePicker);
             this.Controls.Add(this.creditDateLabel);
             this.Controls.Add(this.btnReset);
-            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.handleSaveButton);
             this.Controls.Add(this.CreditAmountTextBox);
             this.Controls.Add(this.CreditEmployeeComboBox);
@@ -197,7 +180,6 @@ namespace HarvestManagerSystem.view
             this.Name = "FormAddCredit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormAddCredit";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAddCredit_FormClosed);
             this.Load += new System.EventHandler(this.FormAddCredit_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -207,7 +189,6 @@ namespace HarvestManagerSystem.view
         #endregion
 
         private System.Windows.Forms.Button btnReset;
-        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button handleSaveButton;
         private System.Windows.Forms.TextBox CreditAmountTextBox;
         private System.Windows.Forms.ComboBox CreditEmployeeComboBox;

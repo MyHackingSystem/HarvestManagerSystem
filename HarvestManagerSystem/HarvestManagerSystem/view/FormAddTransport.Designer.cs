@@ -32,7 +32,6 @@ namespace HarvestManagerSystem.view
             this.TransportDatePicker = new System.Windows.Forms.DateTimePicker();
             this.transportDateLabel = new System.Windows.Forms.Label();
             this.btnReset = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.handleSaveButton = new System.Windows.Forms.Button();
             this.TransportAmountTextBox = new System.Windows.Forms.TextBox();
             this.TransportEmployeeComboBox = new System.Windows.Forms.ComboBox();
@@ -79,22 +78,6 @@ namespace HarvestManagerSystem.view
             this.btnReset.UseVisualStyleBackColor = false;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
-            // btnCancel
-            // 
-            this.btnCancel.BackColor = System.Drawing.Color.DarkOrange;
-            this.btnCancel.FlatAppearance.BorderSize = 0;
-            this.btnCancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Moccasin;
-            this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCancel.Location = new System.Drawing.Point(302, 519);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(70, 30);
-            this.btnCancel.TabIndex = 41;
-            this.btnCancel.Text = "Close";
-            this.btnCancel.UseVisualStyleBackColor = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
             // handleSaveButton
             // 
             this.handleSaveButton.BackColor = System.Drawing.Color.DarkOrange;
@@ -118,6 +101,7 @@ namespace HarvestManagerSystem.view
             this.TransportAmountTextBox.Name = "TransportAmountTextBox";
             this.TransportAmountTextBox.Size = new System.Drawing.Size(200, 29);
             this.TransportAmountTextBox.TabIndex = 38;
+            this.TransportAmountTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
             // 
             // TransportEmployeeComboBox
             // 
@@ -226,7 +210,6 @@ namespace HarvestManagerSystem.view
             this.Controls.Add(this.TransportDatePicker);
             this.Controls.Add(this.transportDateLabel);
             this.Controls.Add(this.btnReset);
-            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.handleSaveButton);
             this.Controls.Add(this.TransportAmountTextBox);
             this.Controls.Add(this.TransportEmployeeComboBox);
@@ -249,7 +232,6 @@ namespace HarvestManagerSystem.view
         private System.Windows.Forms.DateTimePicker TransportDatePicker;
         private System.Windows.Forms.Label transportDateLabel;
         private System.Windows.Forms.Button btnReset;
-        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button handleSaveButton;
         private System.Windows.Forms.TextBox TransportAmountTextBox;
         private System.Windows.Forms.ComboBox TransportEmployeeComboBox;
