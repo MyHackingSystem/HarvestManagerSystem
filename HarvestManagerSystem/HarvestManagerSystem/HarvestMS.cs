@@ -49,6 +49,7 @@ namespace HarvestManagerSystem
             //harvestHoursDAO.CreateTable();
             //harvestQuantityDAO.CreateTable();
             //productionDAO.CreateTable();
+            DisplayQuantityData();
         }
 
         private void tabProduction_SelectedIndexChanged(object sender, EventArgs e)
@@ -114,7 +115,16 @@ namespace HarvestManagerSystem
             try
             {
                 listQuantityProduction = productionDAO.searchHarvestHoursProduction(startQuantitySearchDateTimePicker.Value, endQuantitySearchDateTimePicker.Value, 2);
-                masterQuantityDataGridView.DataSource = listQuantityProduction;
+
+                if (listQuantityProduction.Count > 0 )
+                {
+                    masterQuantityDataGridView.DataSource = listQuantityProduction;
+                }
+                else
+                {
+                    masterQuantityDataGridView.DataSource = new List<Production>();
+                    detailQuantityDataGridView.DataSource = new List<HarvestQuantity>();
+                }
             }
             catch (Exception ex)
             {
@@ -286,7 +296,16 @@ namespace HarvestManagerSystem
             try
             {
                 listHoursProduction = productionDAO.searchHarvestHoursProduction(startQuantitySearchDateTimePicker.Value, endQuantitySearchDateTimePicker.Value, 1);
-                masterHoursDataGridView.DataSource = listHoursProduction;
+
+                if (listHoursProduction.Count > 0)
+                {
+                    masterHoursDataGridView.DataSource = listHoursProduction;
+                }
+                else
+                {
+                    masterHoursDataGridView.DataSource = new List<Production>();
+                    detailsHoursDataGridView.DataSource = new List<HarvestHours>();
+                }
             }
             catch (Exception ex)
             {
@@ -297,10 +316,16 @@ namespace HarvestManagerSystem
 
         private void masterHoursDataGridView_SelectionChanged(object sender, EventArgs e)
         {
-            int i = masterHoursDataGridView.CurrentRow.Index;
-            if (i < listHoursProduction.Count && i >= 0)
+            try
             {
-                DisplayDetailHoursData(listHoursProduction[i]);
+                if (masterHoursDataGridView.CurrentRow.Index < listHoursProduction.Count && masterHoursDataGridView.CurrentRow.Index >= 0)
+                {
+                    DisplayDetailHoursData(listHoursProduction[masterHoursDataGridView.CurrentRow.Index]);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 

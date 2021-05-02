@@ -56,19 +56,19 @@ namespace HarvestManagerSystem.view
                 FarmHarvestHoursComboBox.SelectedIndex = FarmHarvestHoursComboBox.FindStringExact(mProduction.Farm.FarmName);
                 ProductHarvestHoursComboBox.SelectedIndex = ProductHarvestHoursComboBox.FindStringExact(mProduction.Product.ProductName);
                 ProductTypeHarvestHoursComboBox.SelectedIndex = ProductTypeHarvestHoursComboBox.FindStringExact(mProduction.ProductDetail.ProductType);
+                chkBoxChangeEmployeeHours.Checked = true;
                 ApplyHarvestHoursButton.Text = "Update";
             }
             else
             {
                 HarvesterRadioButton.Checked = true;
                 HarvesterList = harvestHoursDAO.HarvestersData();
-
+                chkBoxChangeEmployeeHours.Checked = false;
             }
 
             bindingSourceHarvesterList.DataSource = HarvesterList;
             SortDisplayIndex();
             disableTotalTextBoxField();
-            chkBoxChangeEmployeeHours.Checked = false;
         }
 
         private void ValidateHarvestHoursButton_Click(object sender, EventArgs e)
@@ -285,8 +285,6 @@ namespace HarvestManagerSystem.view
             mProduction.Farm.FarmName = production.FarmName;
             mProduction.Product.ProductName = production.ProductName;
             mProduction.ProductDetail.ProductType = production.ProductDetail.ProductType;
-
-            chkBoxChangeEmployeeHours.Checked = true;
 
             setEmployeeType(HarvesterList[0].EmployeeType);
 
