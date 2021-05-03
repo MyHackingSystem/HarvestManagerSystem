@@ -41,7 +41,7 @@ namespace HarvestManagerSystem.view
             this.EMHoursDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.SMHoursDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
-            this.ProductCodeHarvestHoursComboBox = new System.Windows.Forms.ComboBox();
+            this.ProductTypeHarvestHoursComboBox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.ProductHarvestHoursComboBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -68,14 +68,14 @@ namespace HarvestManagerSystem.view
             this.HarvestHoursIDColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HarvestDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EmployeeNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StartMorningColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EndMorningColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StartNoonColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EndNoonColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TimeStartMorningColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TimeEndMorningColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TimeStartNoonColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TimeEndNoonColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StartMorningColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EndMorningColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StartNoonColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EndNoonColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalMinutesColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HourPriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TransportStatusColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -90,6 +90,7 @@ namespace HarvestManagerSystem.view
             this.EmployeeType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddHoursProductionIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EmpCatColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chkBoxChangeEmployeeHours = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -98,6 +99,7 @@ namespace HarvestManagerSystem.view
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chkBoxChangeEmployeeHours);
             this.groupBox1.Controls.Add(this.ClearHarvestHoursButton);
             this.groupBox1.Controls.Add(this.ValidateHarvestHoursButton);
             this.groupBox1.Controls.Add(this.groupBox3);
@@ -106,7 +108,7 @@ namespace HarvestManagerSystem.view
             this.groupBox1.Controls.Add(this.EMHoursDateTimePicker);
             this.groupBox1.Controls.Add(this.SMHoursDateTimePicker);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.ProductCodeHarvestHoursComboBox);
+            this.groupBox1.Controls.Add(this.ProductTypeHarvestHoursComboBox);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.ProductHarvestHoursComboBox);
             this.groupBox1.Controls.Add(this.label3);
@@ -126,7 +128,7 @@ namespace HarvestManagerSystem.view
             // 
             this.ClearHarvestHoursButton.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ClearHarvestHoursButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.ClearHarvestHoursButton.Location = new System.Drawing.Point(109, 513);
+            this.ClearHarvestHoursButton.Location = new System.Drawing.Point(109, 534);
             this.ClearHarvestHoursButton.Name = "ClearHarvestHoursButton";
             this.ClearHarvestHoursButton.Size = new System.Drawing.Size(84, 34);
             this.ClearHarvestHoursButton.TabIndex = 13;
@@ -138,7 +140,7 @@ namespace HarvestManagerSystem.view
             // 
             this.ValidateHarvestHoursButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ValidateHarvestHoursButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.ValidateHarvestHoursButton.Location = new System.Drawing.Point(7, 513);
+            this.ValidateHarvestHoursButton.Location = new System.Drawing.Point(7, 534);
             this.ValidateHarvestHoursButton.Name = "ValidateHarvestHoursButton";
             this.ValidateHarvestHoursButton.Size = new System.Drawing.Size(90, 34);
             this.ValidateHarvestHoursButton.TabIndex = 12;
@@ -223,17 +225,17 @@ namespace HarvestManagerSystem.view
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label4.Location = new System.Drawing.Point(7, 266);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 19);
+            this.label4.Size = new System.Drawing.Size(45, 19);
             this.label4.TabIndex = 9;
-            this.label4.Text = "Code:";
+            this.label4.Text = "Type:";
             // 
-            // ProductCodeHarvestHoursComboBox
+            // ProductTypeHarvestHoursComboBox
             // 
-            this.ProductCodeHarvestHoursComboBox.FormattingEnabled = true;
-            this.ProductCodeHarvestHoursComboBox.Location = new System.Drawing.Point(7, 288);
-            this.ProductCodeHarvestHoursComboBox.Name = "ProductCodeHarvestHoursComboBox";
-            this.ProductCodeHarvestHoursComboBox.Size = new System.Drawing.Size(186, 23);
-            this.ProductCodeHarvestHoursComboBox.TabIndex = 5;
+            this.ProductTypeHarvestHoursComboBox.FormattingEnabled = true;
+            this.ProductTypeHarvestHoursComboBox.Location = new System.Drawing.Point(7, 288);
+            this.ProductTypeHarvestHoursComboBox.Name = "ProductTypeHarvestHoursComboBox";
+            this.ProductTypeHarvestHoursComboBox.Size = new System.Drawing.Size(186, 23);
+            this.ProductTypeHarvestHoursComboBox.TabIndex = 5;
             // 
             // label5
             // 
@@ -467,14 +469,14 @@ namespace HarvestManagerSystem.view
             this.HarvestHoursIDColumn,
             this.HarvestDateColumn,
             this.EmployeeNameColumn,
-            this.StartMorningColumn,
-            this.EndMorningColumn,
-            this.StartNoonColumn,
-            this.EndNoonColumn,
             this.TimeStartMorningColumn,
             this.TimeEndMorningColumn,
             this.TimeStartNoonColumn,
             this.TimeEndNoonColumn,
+            this.StartMorningColumn,
+            this.EndMorningColumn,
+            this.StartNoonColumn,
+            this.EndNoonColumn,
             this.TotalMinutesColumn,
             this.HourPriceColumn,
             this.TransportStatusColumn,
@@ -525,7 +527,32 @@ namespace HarvestManagerSystem.view
             this.EmployeeNameColumn.HeaderText = "EmployeeName";
             this.EmployeeNameColumn.MinimumWidth = 100;
             this.EmployeeNameColumn.Name = "EmployeeNameColumn";
+            this.EmployeeNameColumn.ReadOnly = true;
             this.EmployeeNameColumn.Width = 160;
+            // 
+            // TimeStartMorningColumn
+            // 
+            this.TimeStartMorningColumn.DataPropertyName = "TimeStartMorning";
+            this.TimeStartMorningColumn.HeaderText = "DM";
+            this.TimeStartMorningColumn.Name = "TimeStartMorningColumn";
+            // 
+            // TimeEndMorningColumn
+            // 
+            this.TimeEndMorningColumn.DataPropertyName = "TimeEndMorning";
+            this.TimeEndMorningColumn.HeaderText = "FM";
+            this.TimeEndMorningColumn.Name = "TimeEndMorningColumn";
+            // 
+            // TimeStartNoonColumn
+            // 
+            this.TimeStartNoonColumn.DataPropertyName = "TimeStartNoon";
+            this.TimeStartNoonColumn.HeaderText = "DS";
+            this.TimeStartNoonColumn.Name = "TimeStartNoonColumn";
+            // 
+            // TimeEndNoonColumn
+            // 
+            this.TimeEndNoonColumn.DataPropertyName = "TimeEndNoon";
+            this.TimeEndNoonColumn.HeaderText = "FS";
+            this.TimeEndNoonColumn.Name = "TimeEndNoonColumn";
             // 
             // StartMorningColumn
             // 
@@ -563,36 +590,13 @@ namespace HarvestManagerSystem.view
             this.EndNoonColumn.Visible = false;
             this.EndNoonColumn.Width = 80;
             // 
-            // TimeStartMorningColumn
-            // 
-            this.TimeStartMorningColumn.DataPropertyName = "TimeStartMorning";
-            this.TimeStartMorningColumn.HeaderText = "DM";
-            this.TimeStartMorningColumn.Name = "TimeStartMorningColumn";
-            // 
-            // TimeEndMorningColumn
-            // 
-            this.TimeEndMorningColumn.DataPropertyName = "TimeEndMorning";
-            this.TimeEndMorningColumn.HeaderText = "FM";
-            this.TimeEndMorningColumn.Name = "TimeEndMorningColumn";
-            // 
-            // TimeStartNoonColumn
-            // 
-            this.TimeStartNoonColumn.DataPropertyName = "TimeStartNoon";
-            this.TimeStartNoonColumn.HeaderText = "DS";
-            this.TimeStartNoonColumn.Name = "TimeStartNoonColumn";
-            // 
-            // TimeEndNoonColumn
-            // 
-            this.TimeEndNoonColumn.DataPropertyName = "TimeEndNoon";
-            this.TimeEndNoonColumn.HeaderText = "FS";
-            this.TimeEndNoonColumn.Name = "TimeEndNoonColumn";
-            // 
             // TotalMinutesColumn
             // 
             this.TotalMinutesColumn.DataPropertyName = "TotalMinutes";
             this.TotalMinutesColumn.HeaderText = "Durée";
             this.TotalMinutesColumn.MinimumWidth = 60;
             this.TotalMinutesColumn.Name = "TotalMinutesColumn";
+            this.TotalMinutesColumn.ReadOnly = true;
             this.TotalMinutesColumn.Width = 80;
             // 
             // HourPriceColumn
@@ -601,6 +605,7 @@ namespace HarvestManagerSystem.view
             this.HourPriceColumn.HeaderText = "Price";
             this.HourPriceColumn.MinimumWidth = 60;
             this.HourPriceColumn.Name = "HourPriceColumn";
+            this.HourPriceColumn.ReadOnly = true;
             this.HourPriceColumn.Width = 80;
             // 
             // TransportStatusColumn
@@ -627,6 +632,7 @@ namespace HarvestManagerSystem.view
             this.PaymentColumn.HeaderText = "Payment";
             this.PaymentColumn.MinimumWidth = 60;
             this.PaymentColumn.Name = "PaymentColumn";
+            this.PaymentColumn.ReadOnly = true;
             this.PaymentColumn.Width = 80;
             // 
             // RemarqueColumn
@@ -693,6 +699,17 @@ namespace HarvestManagerSystem.view
             this.EmpCatColumn.Name = "EmpCatColumn";
             this.EmpCatColumn.Visible = false;
             // 
+            // chkBoxChangeEmployeeHours
+            // 
+            this.chkBoxChangeEmployeeHours.AutoSize = true;
+            this.chkBoxChangeEmployeeHours.ForeColor = System.Drawing.Color.Red;
+            this.chkBoxChangeEmployeeHours.Location = new System.Drawing.Point(36, 495);
+            this.chkBoxChangeEmployeeHours.Name = "chkBoxChangeEmployeeHours";
+            this.chkBoxChangeEmployeeHours.Size = new System.Drawing.Size(67, 19);
+            this.chkBoxChangeEmployeeHours.TabIndex = 17;
+            this.chkBoxChangeEmployeeHours.Text = "Change";
+            this.chkBoxChangeEmployeeHours.UseVisualStyleBackColor = true;
+            // 
             // FormAddHours
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -731,7 +748,7 @@ namespace HarvestManagerSystem.view
         private System.Windows.Forms.DateTimePicker EMHoursDateTimePicker;
         private System.Windows.Forms.DateTimePicker SMHoursDateTimePicker;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox ProductCodeHarvestHoursComboBox;
+        private System.Windows.Forms.ComboBox ProductTypeHarvestHoursComboBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox ProductHarvestHoursComboBox;
         private System.Windows.Forms.Label label3;
@@ -760,14 +777,14 @@ namespace HarvestManagerSystem.view
         private System.Windows.Forms.DataGridViewTextBoxColumn HarvestHoursIDColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn HarvestDateColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeNameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StartMorningColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EndMorningColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StartNoonColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EndNoonColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn TimeStartMorningColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn TimeEndMorningColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn TimeStartNoonColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn TimeEndNoonColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StartMorningColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EndMorningColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StartNoonColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EndNoonColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalMinutesColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn HourPriceColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn TransportStatusColumn;
@@ -782,5 +799,6 @@ namespace HarvestManagerSystem.view
         private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeType;
         private System.Windows.Forms.DataGridViewTextBoxColumn AddHoursProductionIdColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn EmpCatColumn;
+        private System.Windows.Forms.CheckBox chkBoxChangeEmployeeHours;
     }
 }

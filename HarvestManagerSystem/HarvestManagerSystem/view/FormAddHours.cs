@@ -19,6 +19,7 @@ namespace HarvestManagerSystem.view
 
         private TransportDAO transportDAO = TransportDAO.getInstance();
         private EmployeeDAO employeeDAO = EmployeeDAO.getInstance();
+
         private FarmDAO farmDAO = FarmDAO.getInstance();
         private SupplierDAO supplierDAO = SupplierDAO.getInstance();
         private ProductDAO productDAO = ProductDAO.getInstance();
@@ -35,35 +36,11 @@ namespace HarvestManagerSystem.view
         BindingSource bindingSourceHarvesterList = new System.Windows.Forms.BindingSource { DataSource = HarvesterList };
 
         private HarvestMS harvestMS;
-        private static FormAddHours instance;
 
         public FormAddHours(HarvestMS harvestMS)
         {
             this.harvestMS = harvestMS;
             InitializeComponent();
-        }
-
-        public static FormAddHours getInstance(HarvestMS harvestMS)
-        {
-            if (instance == null)
-            {
-                instance = new FormAddHours(harvestMS);
-            }
-            return instance;
-        }
-
-        public void ShowFormAdd()
-        {
-            if (instance != null)
-            {
-                instance.BringToFront();
-            }
-            else
-            {
-                instance = new FormAddHours(harvestMS);
-
-            }
-            instance.Show();
         }
 
         private void FormAddHours_Load(object sender, EventArgs e)
@@ -78,14 +55,15 @@ namespace HarvestManagerSystem.view
                 SupplierHarvestHoursComboBox.SelectedIndex = SupplierHarvestHoursComboBox.FindStringExact(mProduction.Supplier.SupplierName);
                 FarmHarvestHoursComboBox.SelectedIndex = FarmHarvestHoursComboBox.FindStringExact(mProduction.Farm.FarmName);
                 ProductHarvestHoursComboBox.SelectedIndex = ProductHarvestHoursComboBox.FindStringExact(mProduction.Product.ProductName);
-                //ProductCodeHarvestHoursComboBox.SelectedIndex = ProductCodeHarvestHoursComboBox.FindStringExact(mProduction.ProductDetail.ProductCode);
+                ProductTypeHarvestHoursComboBox.SelectedIndex = ProductTypeHarvestHoursComboBox.FindStringExact(mProduction.ProductDetail.ProductType);
+                chkBoxChangeEmployeeHours.Checked = true;
                 ApplyHarvestHoursButton.Text = "Update";
             }
             else
             {
                 HarvesterRadioButton.Checked = true;
                 HarvesterList = harvestHoursDAO.HarvestersData();
-
+                chkBoxChangeEmployeeHours.Checked = false;
             }
 
             bindingSourceHarvesterList.DataSource = HarvesterList;
@@ -110,7 +88,7 @@ namespace HarvestManagerSystem.view
             SupplierHarvestHoursComboBox.SelectedIndex == -1 ||
             FarmHarvestHoursComboBox.SelectedIndex == -1 ||
             ProductHarvestHoursComboBox.SelectedIndex == -1 ||
-            ProductCodeHarvestHoursComboBox.SelectedIndex == -1 ||
+            ProductTypeHarvestHoursComboBox.SelectedIndex == -1 ||
             SMHoursDateTimePicker.Value == null ||
             EMHoursDateTimePicker.Value == null ||
             SNHoursDateTimePicker.Value == null ||
@@ -135,21 +113,39 @@ namespace HarvestManagerSystem.view
             double hourPrice = pref.HourPrice;
             double transPrice = pref.TransportPrice;
             double totalMinute = 0; double totalTransport = 0.0; double totalCredit = 0.0; double totalPayment = 0.0;
-            double employeePrice = mProductDetailDictionary.GetValueOrDefault(ProductCodeHarvestHoursComboBox.GetItemText(ProductCodeHarvestHoursComboBox.SelectedItem)).PriceEmployee;
-            double companyPrice = mProductDetailDictionary.GetValueOrDefault(ProductCodeHarvestHoursComboBox.GetItemText(ProductCodeHarvestHoursComboBox.SelectedItem)).PriceCompany;
-            foreach (HarvestHours h in HarvesterList)
+            double employeePrice = mProductDetailDictionary.GetValueOrDefault(ProductTypeHarvestHoursComboBox.GetItemText(ProductTypeHarvestHoursComboBox.SelectedItem)).PriceEmployee;
+            double companyPrice = mProductDetailDictionary.GetValueOrDefault(ProductTypeHarvestHoursComboBox.GetItemText(ProductTypeHarvestHoursComboBox.SelectedItem)).PriceCompany;
+
+
+            if (chkBoxChangeEmployeeHours.Checked)
             {
-                h.StartMorning = SMHoursDateTimePicker.Value;
-                h.EndMorning = EMHoursDateTimePicker.Value;
-                h.StartNoon = SNHoursDateTimePicker.Value;
-                h.EndNoon = ENHoursDateTimePicker.Value;
-                h.EmployeeType = getEmployeeType();
-                h.HourPrice = hourPrice;
-                totalMinute += h.TotalMinutes;
-                h.Transport.TransportAmount = (h.TransportStatus) ? transPrice : 0;
-                totalTransport += h.Transport.TransportAmount;
-                totalCredit += h.Credit.CreditAmount;
-                totalPayment += h.Payment;
+                foreach (HarvestHours h in HarvesterList)
+                {
+                    h.EmployeeType = getEmployeeType();
+                    h.HourPrice = hourPrice;
+                    totalMinute += h.TotalMinutes;
+                    h.Transport.TransportAmount = (h.TransportStatus) ? transPrice : 0;
+                    totalTransport += h.Transport.TransportAmount;
+                    totalCredit += h.Credit.CreditAmount;
+                    totalPayment += h.Payment;
+                }
+            }
+            else
+            {
+                foreach (HarvestHours h in HarvesterList)
+                {
+                    h.StartMorning = SMHoursDateTimePicker.Value;
+                    h.EndMorning = EMHoursDateTimePicker.Value;
+                    h.StartNoon = SNHoursDateTimePicker.Value;
+                    h.EndNoon = ENHoursDateTimePicker.Value;
+                    h.EmployeeType = getEmployeeType();
+                    h.HourPrice = hourPrice;
+                    totalMinute += h.TotalMinutes;
+                    h.Transport.TransportAmount = (h.TransportStatus) ? transPrice : 0;
+                    totalTransport += h.Transport.TransportAmount;
+                    totalCredit += h.Credit.CreditAmount;
+                    totalPayment += h.Payment;
+                }
             }
 
             TotalEmployeeTextBox.Text = Convert.ToString(HarvesterList.Count);
@@ -166,7 +162,7 @@ namespace HarvestManagerSystem.view
         {
             if (checkApplyButtonInput())
             {
-                MessageBox.Show("Check values");
+                MessageBox.Show("Vérifier les valeurs");
                 return;
             }
 
@@ -262,25 +258,15 @@ namespace HarvestManagerSystem.view
             mProduction.Supplier.SupplierId = mSupplierDictionary.GetValueOrDefault(SupplierHarvestHoursComboBox.GetItemText(SupplierHarvestHoursComboBox.SelectedItem)).SupplierId;
             mProduction.Farm.FarmId = mFarmDictionary.GetValueOrDefault(FarmHarvestHoursComboBox.GetItemText(FarmHarvestHoursComboBox.SelectedItem)).FarmId;
             mProduction.Product.ProductId = mProductDictionary.GetValueOrDefault(ProductHarvestHoursComboBox.GetItemText(ProductHarvestHoursComboBox.SelectedItem)).ProductId;
-            mProduction.ProductDetail.ProductDetailId = mProductDetailDictionary.GetValueOrDefault(ProductCodeHarvestHoursComboBox.GetItemText(ProductCodeHarvestHoursComboBox.SelectedItem)).ProductDetailId;
+            mProduction.ProductDetail.ProductDetailId = mProductDetailDictionary.GetValueOrDefault(ProductTypeHarvestHoursComboBox.GetItemText(ProductTypeHarvestHoursComboBox.SelectedItem)).ProductDetailId;
             mProduction.TotalEmployee = Convert.ToInt32(TotalEmployeeTextBox.Text);
             mProduction.TotalMinutes = Convert.ToDouble(TotalMinutesTextBox.Text);
             mProduction.TotalQuantity = 0.0;
             mProduction.Price = Convert.ToDouble(HourPriceTextBox.Text);
         }
 
-        // Update Harvest hours Section
         internal void InflateUI(Production production)
         {
-            isEditHarvestHours = true;
-
-            mProduction.ProductionID = production.ProductionID;
-            mProduction.ProductionDate = production.ProductionDate;
-            mProduction.Supplier.SupplierName = production.SupplierName;
-            mProduction.Farm.FarmName = production.FarmName;
-            mProduction.Product.ProductName = production.ProductName;
-            //mProduction.ProductDetail.ProductCode = production.ProductCode;
-
             HarvesterList.Clear();
             try
             {
@@ -288,14 +274,19 @@ namespace HarvestManagerSystem.view
             }catch(Exception e)
             {
                 MessageBox.Show(e.Message);
+                return;
             }
 
-            HarvestHours firstEmpoyee = HarvesterList[0];
-            SMHoursDateTimePicker.Value = firstEmpoyee.StartMorning;
-            EMHoursDateTimePicker.Value = firstEmpoyee.EndMorning;
-            SNHoursDateTimePicker.Value = firstEmpoyee.StartNoon;
-            ENHoursDateTimePicker.Value = firstEmpoyee.EndNoon;
-            setEmployeeType(firstEmpoyee.EmployeeType);
+            isEditHarvestHours = true;
+
+            mProduction.ProductionID = production.ProductionID;
+            mProduction.ProductionDate = production.ProductionDate;
+            mProduction.Supplier.SupplierName = production.SupplierName;
+            mProduction.Farm.FarmName = production.FarmName;
+            mProduction.Product.ProductName = production.ProductName;
+            mProduction.ProductDetail.ProductType = production.ProductDetail.ProductType;
+
+            setEmployeeType(HarvesterList[0].EmployeeType);
 
             foreach (HarvestHours hours in HarvesterList)
             {
@@ -419,7 +410,7 @@ namespace HarvestManagerSystem.view
             }
             if (CodeList != null)
             {
-                ProductCodeHarvestHoursComboBox.DataSource = CodeList;
+                ProductTypeHarvestHoursComboBox.DataSource = CodeList;
             }
 
         }
@@ -427,7 +418,6 @@ namespace HarvestManagerSystem.view
         private void FormAddHours_FormClosed(object sender, FormClosedEventArgs e)
         {
             wipeFields();
-            instance = null;
         }
 
         private void ClearHarvestHoursButton_Click(object sender, EventArgs e)
@@ -445,7 +435,7 @@ namespace HarvestManagerSystem.view
             SupplierHarvestHoursComboBox.SelectedIndex = -1;
             FarmHarvestHoursComboBox.SelectedIndex = -1;
             ProductHarvestHoursComboBox.SelectedIndex = -1;
-            ProductCodeHarvestHoursComboBox.SelectedIndex = -1;
+            ProductTypeHarvestHoursComboBox.SelectedIndex = -1;
             SMHoursDateTimePicker.Value = DateTime.Today;
             EMHoursDateTimePicker.Value = DateTime.Today;
             SNHoursDateTimePicker.Value = DateTime.Today;
@@ -468,20 +458,16 @@ namespace HarvestManagerSystem.view
             AddHarvestHoursDataGridView.Columns["HarvestHoursIDColumn"].DisplayIndex = 0;
             AddHarvestHoursDataGridView.Columns["HarvestDateColumn"].DisplayIndex = 1;
             AddHarvestHoursDataGridView.Columns["EmployeeNameColumn"].DisplayIndex = 2;
-            AddHarvestHoursDataGridView.Columns["StartMorningColumn"].DisplayIndex = 3;
-            AddHarvestHoursDataGridView.Columns["EndMorningColumn"].DisplayIndex = 4;
-            AddHarvestHoursDataGridView.Columns["StartNoonColumn"].DisplayIndex = 5;
-            AddHarvestHoursDataGridView.Columns["EndNoonColumn"].DisplayIndex = 6;
-            AddHarvestHoursDataGridView.Columns["TimeStartMorningColumn"].DisplayIndex = 7;
-            AddHarvestHoursDataGridView.Columns["TimeEndMorningColumn"].DisplayIndex = 8;
-            AddHarvestHoursDataGridView.Columns["TimeStartNoonColumn"].DisplayIndex = 9;
-            AddHarvestHoursDataGridView.Columns["TimeEndNoonColumn"].DisplayIndex = 10;
-            AddHarvestHoursDataGridView.Columns["TotalMinutesColumn"].DisplayIndex = 11;
-            AddHarvestHoursDataGridView.Columns["HourPriceColumn"].DisplayIndex = 12;
-            AddHarvestHoursDataGridView.Columns["TransportStatusColumn"].DisplayIndex = 13;
-            AddHarvestHoursDataGridView.Columns["CreditColumn"].DisplayIndex = 14;
-            AddHarvestHoursDataGridView.Columns["PaymentColumn"].DisplayIndex = 15;
-            AddHarvestHoursDataGridView.Columns["RemarqueColumn"].DisplayIndex = 16;
+            AddHarvestHoursDataGridView.Columns["TimeStartMorningColumn"].DisplayIndex = 3;
+            AddHarvestHoursDataGridView.Columns["TimeEndMorningColumn"].DisplayIndex = 4;
+            AddHarvestHoursDataGridView.Columns["TimeStartNoonColumn"].DisplayIndex = 5;
+            AddHarvestHoursDataGridView.Columns["TimeEndNoonColumn"].DisplayIndex = 6;
+            AddHarvestHoursDataGridView.Columns["TotalMinutesColumn"].DisplayIndex = 7;
+            AddHarvestHoursDataGridView.Columns["HourPriceColumn"].DisplayIndex = 8;
+            AddHarvestHoursDataGridView.Columns["TransportStatusColumn"].DisplayIndex = 9;
+            AddHarvestHoursDataGridView.Columns["CreditColumn"].DisplayIndex = 10;
+            AddHarvestHoursDataGridView.Columns["PaymentColumn"].DisplayIndex = 11;
+            AddHarvestHoursDataGridView.Columns["RemarqueColumn"].DisplayIndex = 12;
         }
 
         private void InitDataGridView()

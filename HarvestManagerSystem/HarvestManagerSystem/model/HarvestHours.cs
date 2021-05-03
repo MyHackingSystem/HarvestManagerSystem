@@ -64,19 +64,23 @@ namespace HarvestManagerSystem.model
 
         public string TimeStartMorning
         {
-            get => StartMorning.ToShortTimeString();
+            get => StartMorning.ToShortTimeString(); 
+            set => DateTime.TryParse(value, out startMorning);
         }
         public string TimeEndMorning
         {
             get => EndMorning.ToShortTimeString();
+            set => DateTime.TryParse(value, out endMorning);
         }
         public string TimeStartNoon
         {
             get => StartNoon.ToShortTimeString();
+            set => DateTime.TryParse(value, out startNoon);
         }
         public string TimeEndNoon
         {
             get => EndNoon.ToShortTimeString();
+            set => DateTime.TryParse(value, out endNoon);
         }
 
         public enum EmployeeCategory

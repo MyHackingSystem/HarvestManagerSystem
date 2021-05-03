@@ -29,12 +29,8 @@ namespace HarvestManagerSystem.view
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.ImportExcelButton = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.radioBtnHarvestByIndividual = new System.Windows.Forms.RadioButton();
-            this.radioBtnHarvestByGroup = new System.Windows.Forms.RadioButton();
             this.labelBadQuantity = new System.Windows.Forms.Label();
             this.txtInputBadQuantity = new System.Windows.Forms.TextBox();
             this.labelAllQuantity = new System.Windows.Forms.Label();
@@ -42,7 +38,7 @@ namespace HarvestManagerSystem.view
             this.ClearHarvestButton = new System.Windows.Forms.Button();
             this.ValidateHarvestQuantityButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.ProductCodeHarvestQuantityComboBox = new System.Windows.Forms.ComboBox();
+            this.ProductTypeHarvestQuantityComboBox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.ProductHarvestQuantityComboBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -92,15 +88,12 @@ namespace HarvestManagerSystem.view
             this.totalEmployeeLabel = new System.Windows.Forms.Label();
             this.TotalEmployeeTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AddHarvestQuantityDataGridView)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.ImportExcelButton);
-            this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.labelBadQuantity);
             this.groupBox1.Controls.Add(this.txtInputBadQuantity);
             this.groupBox1.Controls.Add(this.labelAllQuantity);
@@ -108,7 +101,7 @@ namespace HarvestManagerSystem.view
             this.groupBox1.Controls.Add(this.ClearHarvestButton);
             this.groupBox1.Controls.Add(this.ValidateHarvestQuantityButton);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.ProductCodeHarvestQuantityComboBox);
+            this.groupBox1.Controls.Add(this.ProductTypeHarvestQuantityComboBox);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.ProductHarvestQuantityComboBox);
             this.groupBox1.Controls.Add(this.label3);
@@ -125,54 +118,6 @@ namespace HarvestManagerSystem.view
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Production";
-            // 
-            // ImportExcelButton
-            // 
-            this.ImportExcelButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.ImportExcelButton.Location = new System.Drawing.Point(7, 485);
-            this.ImportExcelButton.Name = "ImportExcelButton";
-            this.ImportExcelButton.Size = new System.Drawing.Size(186, 34);
-            this.ImportExcelButton.TabIndex = 10;
-            this.ImportExcelButton.Text = "Import Excel";
-            this.ImportExcelButton.UseVisualStyleBackColor = true;
-            this.ImportExcelButton.Click += new System.EventHandler(this.ImportExcelButton_Click);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.radioBtnHarvestByIndividual);
-            this.groupBox3.Controls.Add(this.radioBtnHarvestByGroup);
-            this.groupBox3.Location = new System.Drawing.Point(6, 433);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(186, 46);
-            this.groupBox3.TabIndex = 18;
-            this.groupBox3.TabStop = false;
-            // 
-            // radioBtnHarvestByIndividual
-            // 
-            this.radioBtnHarvestByIndividual.AutoSize = true;
-            this.radioBtnHarvestByIndividual.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.radioBtnHarvestByIndividual.ForeColor = System.Drawing.Color.White;
-            this.radioBtnHarvestByIndividual.Location = new System.Drawing.Point(82, 19);
-            this.radioBtnHarvestByIndividual.Name = "radioBtnHarvestByIndividual";
-            this.radioBtnHarvestByIndividual.Size = new System.Drawing.Size(82, 21);
-            this.radioBtnHarvestByIndividual.TabIndex = 9;
-            this.radioBtnHarvestByIndividual.TabStop = true;
-            this.radioBtnHarvestByIndividual.Text = "Individual";
-            this.radioBtnHarvestByIndividual.UseVisualStyleBackColor = true;
-            this.radioBtnHarvestByIndividual.CheckedChanged += new System.EventHandler(this.radioBtnHarvestByIndividual_CheckedChanged);
-            // 
-            // radioBtnHarvestByGroup
-            // 
-            this.radioBtnHarvestByGroup.AutoSize = true;
-            this.radioBtnHarvestByGroup.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.radioBtnHarvestByGroup.ForeColor = System.Drawing.Color.White;
-            this.radioBtnHarvestByGroup.Location = new System.Drawing.Point(7, 18);
-            this.radioBtnHarvestByGroup.Name = "radioBtnHarvestByGroup";
-            this.radioBtnHarvestByGroup.Size = new System.Drawing.Size(69, 21);
-            this.radioBtnHarvestByGroup.TabIndex = 8;
-            this.radioBtnHarvestByGroup.TabStop = true;
-            this.radioBtnHarvestByGroup.Text = "Groupe";
-            this.radioBtnHarvestByGroup.UseVisualStyleBackColor = true;
             // 
             // labelBadQuantity
             // 
@@ -191,6 +136,7 @@ namespace HarvestManagerSystem.view
             this.txtInputBadQuantity.Name = "txtInputBadQuantity";
             this.txtInputBadQuantity.Size = new System.Drawing.Size(187, 25);
             this.txtInputBadQuantity.TabIndex = 7;
+            this.txtInputBadQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInputBadQuantity_KeyPress);
             // 
             // labelAllQuantity
             // 
@@ -209,6 +155,7 @@ namespace HarvestManagerSystem.view
             this.txtInputAllQuantity.Name = "txtInputAllQuantity";
             this.txtInputAllQuantity.Size = new System.Drawing.Size(187, 25);
             this.txtInputAllQuantity.TabIndex = 6;
+            this.txtInputAllQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInputAllQuantity_KeyPress);
             // 
             // ClearHarvestButton
             // 
@@ -240,17 +187,17 @@ namespace HarvestManagerSystem.view
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label4.Location = new System.Drawing.Point(7, 266);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(42, 17);
+            this.label4.Size = new System.Drawing.Size(40, 17);
             this.label4.TabIndex = 9;
-            this.label4.Text = "Code:";
+            this.label4.Text = "Type:";
             // 
-            // ProductCodeHarvestQuantityComboBox
+            // ProductTypeHarvestQuantityComboBox
             // 
-            this.ProductCodeHarvestQuantityComboBox.FormattingEnabled = true;
-            this.ProductCodeHarvestQuantityComboBox.Location = new System.Drawing.Point(7, 288);
-            this.ProductCodeHarvestQuantityComboBox.Name = "ProductCodeHarvestQuantityComboBox";
-            this.ProductCodeHarvestQuantityComboBox.Size = new System.Drawing.Size(186, 25);
-            this.ProductCodeHarvestQuantityComboBox.TabIndex = 5;
+            this.ProductTypeHarvestQuantityComboBox.FormattingEnabled = true;
+            this.ProductTypeHarvestQuantityComboBox.Location = new System.Drawing.Point(7, 288);
+            this.ProductTypeHarvestQuantityComboBox.Name = "ProductTypeHarvestQuantityComboBox";
+            this.ProductTypeHarvestQuantityComboBox.Size = new System.Drawing.Size(186, 25);
+            this.ProductTypeHarvestQuantityComboBox.TabIndex = 5;
             // 
             // label5
             // 
@@ -355,14 +302,14 @@ namespace HarvestManagerSystem.view
             this.DamageGeneralColumn,
             this.HarvestTypeColumn,
             this.TransportStatusByAmountColumn});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.AddHarvestQuantityDataGridView.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.AddHarvestQuantityDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.AddHarvestQuantityDataGridView.Location = new System.Drawing.Point(218, 16);
             this.AddHarvestQuantityDataGridView.MultiSelect = false;
             this.AddHarvestQuantityDataGridView.Name = "AddHarvestQuantityDataGridView";
@@ -729,8 +676,6 @@ namespace HarvestManagerSystem.view
             this.Load += new System.EventHandler(this.FormAddQuantity_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AddHarvestQuantityDataGridView)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -744,7 +689,7 @@ namespace HarvestManagerSystem.view
         private System.Windows.Forms.Button ClearHarvestButton;
         private System.Windows.Forms.Button ValidateHarvestQuantityButton;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox ProductCodeHarvestQuantityComboBox;
+        private System.Windows.Forms.ComboBox ProductTypeHarvestQuantityComboBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox ProductHarvestQuantityComboBox;
         private System.Windows.Forms.Label label3;
@@ -772,10 +717,6 @@ namespace HarvestManagerSystem.view
         private System.Windows.Forms.TextBox txtInputBadQuantity;
         private System.Windows.Forms.Label labelAllQuantity;
         private System.Windows.Forms.TextBox txtInputAllQuantity;
-        private System.Windows.Forms.Button ImportExcelButton;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.RadioButton radioBtnHarvestByIndividual;
-        private System.Windows.Forms.RadioButton radioBtnHarvestByGroup;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtTotalGoodQuantity;
         private System.Windows.Forms.Label label6;
