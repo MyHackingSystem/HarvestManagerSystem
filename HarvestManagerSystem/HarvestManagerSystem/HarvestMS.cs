@@ -827,8 +827,43 @@ namespace HarvestManagerSystem
         }
 
 
+
         #endregion
 
+        private void panelQuantityCompanyProduction_Paint(object sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics, panelQuantityCompanyProduction.ClientRectangle,
+           Color.DimGray, 3, ButtonBorderStyle.Solid, // left
+           Color.DimGray, 3, ButtonBorderStyle.Solid, // top
+           Color.DimGray, 3, ButtonBorderStyle.Solid, // right
+           Color.DimGray, 3, ButtonBorderStyle.Solid);// bottom
+        }
 
+        private void panelQuantityEmployeeProduction_Paint(object sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics, panelQuantityEmployeeProduction.ClientRectangle,
+            Color.DimGray, 3, ButtonBorderStyle.Solid, // left
+            Color.DimGray, 3, ButtonBorderStyle.Solid, // top
+            Color.DimGray, 3, ButtonBorderStyle.Solid, // right
+            Color.DimGray, 3, ButtonBorderStyle.Solid);// bottom
+        }
+
+        private void panelHoursCompanyProduction_Paint(object sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics, panelHoursCompanyProduction.ClientRectangle,
+Color.DimGray, 3, ButtonBorderStyle.Solid, // left
+Color.DimGray, 3, ButtonBorderStyle.Solid, // top
+Color.DimGray, 3, ButtonBorderStyle.Solid, // right
+Color.DimGray, 3, ButtonBorderStyle.Solid);// bottom
+        }
+
+        private void panelHoursEmployeeProduction_Paint(object sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics, panelHoursEmployeeProduction.ClientRectangle,
+Color.DimGray, 3, ButtonBorderStyle.Solid, // left
+Color.DimGray, 3, ButtonBorderStyle.Solid, // top
+Color.DimGray, 3, ButtonBorderStyle.Solid, // right
+Color.DimGray, 3, ButtonBorderStyle.Solid);// bottom
+        }
     }
 }

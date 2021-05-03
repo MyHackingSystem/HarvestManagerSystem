@@ -45,7 +45,9 @@ namespace HarvestManagerSystem.view
             SupplierNameList();
             FarmNameList();
             ProductNameList();
+
             AddHarvestQuantityDataGridView.DataSource = bindingSourceHarvesterList;
+
             if (isEditHarvestQuantity)
             {
                 HarvestDateTimePicker.Value = mProduction.ProductionDate;
@@ -57,16 +59,13 @@ namespace HarvestManagerSystem.view
             }
             else
             {
-                radioBtnHarvestByGroup.Checked = true;
                 HarvesterList = mHarvestQuantityDAO.HarvestersData();
             }
 
             bindingSourceHarvesterList.DataSource = HarvesterList;
             SortDisplayIndex();
             disableTotalTextBoxField();
-            onChangeHarvestType();
         }
-
 
         private void ValidateHarvestQuantityButton_Click(object sender, EventArgs e)
         {
@@ -75,16 +74,7 @@ namespace HarvestManagerSystem.view
                 MessageBox.Show("Vérifier les valeurs saisies");
                 return;
             }
-            if (radioBtnHarvestByIndividual.Checked)
-            {
-                ValidateAddHarvestQuantityByIndividual();
-            }
-            else
-            {
-
-                ValidateAddHarvestQuantityByGroup();
-            }
-           
+            ValidateAddHarvestQuantityByGroup();           
         }
 
         private bool ValidateInput()
@@ -101,18 +91,8 @@ namespace HarvestManagerSystem.view
         {
             double allQuantity = 0.0;
             double badQuantity = 0.0;
-
-            try
-            {
-                allQuantity = Convert.ToDouble(txtInputAllQuantity.Text);
-                badQuantity = Convert.ToDouble(txtInputBadQuantity.Text);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                MessageBox.Show("Vérifier les valeurs saisies");
-                return;
-            }
+            allQuantity = Convert.ToDouble(txtInputAllQuantity.Text);
+            badQuantity = Convert.ToDouble(txtInputBadQuantity.Text);
 
             PreferencesDAO preferencesDAO = PreferencesDAO.getInstance();
             _ = new Preferences();
@@ -156,7 +136,7 @@ namespace HarvestManagerSystem.view
                 totalTransport += hq.Transport.TransportAmount;
                 totalCredit += hq.Credit.CreditAmount;
                 totalPayment += hq.Payment;
-                hq.HarvestType = getHarvestType();
+                hq.HarvestType = 2;
             }
 
             TotalEmployeeTextBox.Text = Convert.ToString(totalEmployee);
@@ -172,60 +152,7 @@ namespace HarvestManagerSystem.view
 
         }
 
-        private void ValidateAddHarvestQuantityByIndividual()
-        {
-            PreferencesDAO preferencesDAO = PreferencesDAO.getInstance();
-            _ = new Preferences();
-            Preferences pref;
-            try
-            {
-                pref = preferencesDAO.getPreferences();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Une erreur est survenue, essayez de cliquer à nouveau sur le bouton de validation ");
-                return;
-            }
-
-            double penaltyGeneral = pref.PenaltyGeneral;
-            double damageGeneral = pref.DamageGeneral;
-            double transPrice = pref.TransportPrice;
-            int totalEmployee = HarvesterList.Count;
-            double totalTransport = 0.0; double totalCredit = 0.0; double totalPayment = 0.0;
-            double totalAllQuantity = 0;
-            double totalBadQuantity = 0.0;
-            double totalGoodQuantity = 0.0;
-
-            double employeePrice = mProductDetailDictionary.GetValueOrDefault(ProductTypeHarvestQuantityComboBox.GetItemText(ProductTypeHarvestQuantityComboBox.SelectedItem)).PriceEmployee;
-            double companyPrice = mProductDetailDictionary.GetValueOrDefault(ProductTypeHarvestQuantityComboBox.GetItemText(ProductTypeHarvestQuantityComboBox.SelectedItem)).PriceCompany;
-
-            foreach (HarvestQuantity hq in HarvesterList)
-            {
-                hq.ProductPrice = employeePrice;
-                hq.PenaltyGeneral = penaltyGeneral;
-                hq.DamageGeneral = damageGeneral;
-                totalAllQuantity += hq.GoodQuantity;
-                totalBadQuantity += hq.BadQuantity;
-                totalGoodQuantity += hq.GoodQuantity;
-                hq.Transport.TransportAmount = (hq.TransportStatus) ? transPrice : 0;
-                totalTransport += hq.Transport.TransportAmount;
-                totalCredit += hq.Credit.CreditAmount;
-                totalPayment += hq.Payment;
-                hq.HarvestType = getHarvestType();
-            }
-
-            TotalEmployeeTextBox.Text = Convert.ToString(totalEmployee);
-            TotalQuantityTextBox.Text = Convert.ToString(totalAllQuantity);
-            txtTotalBadQuantity.Text = Convert.ToString(totalBadQuantity);
-            txtTotalGoodQuantity.Text = Convert.ToString(totalGoodQuantity);
-            ProductPriceTextBox.Text = Convert.ToString(employeePrice);
-            TotalTransportTextBox.Text = Convert.ToString(totalTransport);
-            TotalCreditTextBox.Text = Convert.ToString(totalCredit);
-            TotalPaymentTextBox.Text = Convert.ToString(totalPayment);
-            mProduction.Price = companyPrice;
-            AddHarvestQuantityDataGridView.Refresh();
-        }
-
+        
         private void ApplyHarvestQuantityButton_Click(object sender, EventArgs e)
         {
             if (checkApplyButtonInput())
@@ -342,8 +269,6 @@ namespace HarvestManagerSystem.view
             mProduction.Price = Convert.ToDouble(ProductPriceTextBox.Text);
         }
 
-        // Update Harvest Quantity Section
-
         internal void InflateUI(Production production)
         {
             isEditHarvestQuantity = true;
@@ -375,7 +300,6 @@ namespace HarvestManagerSystem.view
                 BadQuantity += quantity.BadQuantity;
                 quantity.TransportStatus = (quantity.TransportAmount > 0) ? true : false;
             }
-            SetHarvestType(HarvesterList[0].HarvestType);
             txtInputAllQuantity.Text = AllQuantity.ToString();
             txtInputBadQuantity.Text = BadQuantity.ToString();
             SetToTotalZero();
@@ -421,7 +345,6 @@ namespace HarvestManagerSystem.view
             SupplierNameList();
             FarmNameList();
             ProductNameList();
-            radioBtnHarvestByGroup.Checked = true;
             HarvestDateTimePicker.Value = DateTime.Now;
             SupplierHarvestQuantityComboBox.SelectedIndex = -1;
             FarmHarvestQuantityComboBox.SelectedIndex = -1;
@@ -443,57 +366,12 @@ namespace HarvestManagerSystem.view
                 h.TransportStatus = false;
                 h.Transport.TransportAmount = 0.0;
                 h.Credit.CreditAmount = 0.0;
-                h.HarvestType = getHarvestType();
+                h.HarvestType = 2;
                 h.Remarque = "";
             }
 
             SetToTotalZero();
             AddHarvestQuantityDataGridView.Refresh();
-        }
-
-        private void radioBtnHarvestByIndividual_CheckedChanged(object sender, EventArgs e)
-        {
-            onChangeHarvestType();
-        }
-
-        private void onChangeHarvestType()
-        {
-            if (radioBtnHarvestByIndividual.Checked)
-            {
-                ImportExcelButton.Enabled = true;
-                txtInputAllQuantity.Enabled = false;
-                txtInputBadQuantity.Enabled = false;
-            }
-            else
-            {
-                ImportExcelButton.Enabled = false;
-                txtInputAllQuantity.Enabled = true;
-                txtInputBadQuantity.Enabled = true;
-            }
-        }
-
-        private int getHarvestType()
-        {
-            if (radioBtnHarvestByGroup.Checked)
-            {
-                return 2;
-            }
-            else
-            {
-                return 1;
-            }
-        }
-
-        private void SetHarvestType(int type)
-        {
-            if (type == 1)
-            {
-                radioBtnHarvestByIndividual.Checked = true; ;
-            }
-            else
-            {
-                radioBtnHarvestByGroup.Checked = true;
-            }
         }
 
         private void SupplierNameList()
@@ -600,21 +478,7 @@ namespace HarvestManagerSystem.view
 
         private void ImportExcelButton_Click(object sender, EventArgs e)
         {
-            try
-            {
-                HarvesterList = Validation.readHarvestFile();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            if (!validateListEmployee(HarvesterList))
-            {
-                MessageBox.Show("la liste des employés sélectionnés n'est pas la même que la liste importée");
-                return;
-            }
-            AddHarvestQuantityDataGridView.DataSource = HarvesterList;
-            SortDisplayIndex();
+
         }
 
         private bool validateListEmployee(List<HarvestQuantity> imported)
@@ -642,6 +506,30 @@ namespace HarvestManagerSystem.view
                 importedID.Add(q.Employee.EmployeeId);
             }
             return Validation.ScrambledEquals(importedID, selectedID);
+        }
+
+        private void txtInputAllQuantity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= '0' && e.KeyChar <= '9') || e.KeyChar == 8 || e.KeyChar == 46)
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtInputBadQuantity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= '0' && e.KeyChar <= '9') || e.KeyChar == 8 || e.KeyChar == 46)
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
         }
     }
 }
