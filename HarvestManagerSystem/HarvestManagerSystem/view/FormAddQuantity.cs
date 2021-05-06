@@ -229,9 +229,8 @@ namespace HarvestManagerSystem.view
             {
                 if (updateHarvestQuantityInDatabase())
                 {
-
+                    MessageBox.Show("Data updated");
                 }
-                MessageBox.Show("Data updated");
             }
             else
             {

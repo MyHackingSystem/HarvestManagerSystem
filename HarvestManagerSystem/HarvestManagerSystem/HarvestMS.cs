@@ -89,8 +89,8 @@ namespace HarvestManagerSystem
 
         private void btnAddIndividualHarvest_Click(object sender, EventArgs e)
         {
-            FormAddIndWork formAddIndWork = FormAddIndWork.getInstance(this);
-            formAddIndWork.ShowFormAdd();
+            FormAddIndWork formAddIndWork = new FormAddIndWork(this);
+            formAddIndWork.ShowDialog();
         }
 
 
