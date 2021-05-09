@@ -54,5 +54,49 @@ namespace HarvestManagerSystem.common
             }
             return mDictionary;
         }
+
+        public static Dictionary<string, Farm> FarmNameList(ComboBox cb)
+        {
+            FarmDAO farmDAO = FarmDAO.getInstance();
+            List<string> NamesList = new List<string>();
+            Dictionary<string, Farm> mDictionary = new Dictionary<string, Farm>();
+            mDictionary.Clear();
+            try
+            {
+                mDictionary = farmDAO.FarmDictionary();
+                NamesList.AddRange(mDictionary.Keys);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            if (NamesList != null)
+            {
+                cb.DataSource = NamesList;
+            }
+            return mDictionary;
+        }
+
+        public static Dictionary<string, Product> ProductNameList(ComboBox cb)
+        {
+            ProductDAO dao = ProductDAO.getInstance();
+            Dictionary<string, Product> mDictionary = new Dictionary<string, Product>();
+            List<string> NamesList = new List<string>();
+            mDictionary.Clear();
+            try
+            {
+                mDictionary = dao.ProductDictionary();
+                NamesList.AddRange(mDictionary.Keys);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            if (NamesList != null)
+            {
+                cb.DataSource = NamesList;
+            }
+            return mDictionary;
+        }
     }
 }

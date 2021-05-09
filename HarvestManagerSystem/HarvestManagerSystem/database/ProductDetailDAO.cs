@@ -67,7 +67,7 @@ namespace HarvestManagerSystem.database
         //*************************************************************
         //Get productdetail as Dictionary by product type
         //*************************************************************
-        internal Dictionary<string, ProductDetail> ProductCodeDictionary(Product product)
+        internal Dictionary<string, ProductDetail> ProductTypeDictionary(Product product)
         {
             Dictionary<string, ProductDetail> productDictionary = new Dictionary<string, ProductDetail>();
 

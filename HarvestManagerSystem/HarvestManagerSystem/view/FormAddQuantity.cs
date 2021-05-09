@@ -321,7 +321,7 @@ namespace HarvestManagerSystem.view
             mProductDetailDictionary.Clear();
             try
             {
-                mProductDetailDictionary = productDetailDAO.ProductCodeDictionary(product);
+                mProductDetailDictionary = productDetailDAO.ProductTypeDictionary(product);
                 CodeList.AddRange(mProductDetailDictionary.Keys);
             }
             catch (Exception e)
