@@ -13,7 +13,7 @@ namespace HarvestManagerSystem.view
 {
     public partial class FormRapport : Form
     {
-        private SupplierDAO supplierDAO = SupplierDAO.getInstance();
+
         private RapportDAO rapportDAO = RapportDAO.getInstance();
         private Dictionary<string, Supplier> mSupplierDictionary = new Dictionary<string, Supplier>();
         private Dictionary<string, Employee> mEmployeeDictionary = new Dictionary<string, Employee>();

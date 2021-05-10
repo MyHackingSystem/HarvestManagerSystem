@@ -89,8 +89,8 @@ namespace HarvestManagerSystem
 
         private void btnAddIndividualHarvest_Click(object sender, EventArgs e)
         {
-            FormAddIndWork formAddIndWork = FormAddIndWork.getInstance(this);
-            formAddIndWork.ShowFormAdd();
+            FormAddIndWork formAddIndWork = new FormAddIndWork(this);
+            formAddIndWork.ShowDialog();
         }
 
 
@@ -114,7 +114,7 @@ namespace HarvestManagerSystem
             listQuantityProduction.Clear();
             try
             {
-                listQuantityProduction = productionDAO.searchHarvestHoursProduction(startQuantitySearchDateTimePicker.Value, endQuantitySearchDateTimePicker.Value, 2);
+                listQuantityProduction = productionDAO.searchHarvestQuantityProduction(startQuantitySearchDateTimePicker.Value, endQuantitySearchDateTimePicker.Value, 1);
 
                 if (listQuantityProduction.Count > 0 )
                 {
