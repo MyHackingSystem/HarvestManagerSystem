@@ -29,9 +29,9 @@ namespace HarvestManagerSystem.view
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtProductPayment5 = new System.Windows.Forms.Label();
             this.txtProductPayment4 = new System.Windows.Forms.Label();
@@ -43,7 +43,6 @@ namespace HarvestManagerSystem.view
             this.txtTotalPayment3 = new System.Windows.Forms.TextBox();
             this.txtTotalPayment2 = new System.Windows.Forms.TextBox();
             this.txtTotalPayment1 = new System.Windows.Forms.TextBox();
-            this.ImportExcelButton = new System.Windows.Forms.Button();
             this.ClearHarvestButton = new System.Windows.Forms.Button();
             this.ValidateHarvestQuantityButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -52,6 +51,7 @@ namespace HarvestManagerSystem.view
             this.SupplierHarvestQuantityComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.HarvestDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.ImportExcelButton = new System.Windows.Forms.Button();
             this.ComboBoxProduct1 = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txttotalGoodQuantity5 = new System.Windows.Forms.TextBox();
@@ -223,7 +223,7 @@ namespace HarvestManagerSystem.view
             this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnApplyHarvestIndividual = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct5)).BeginInit();
@@ -336,18 +336,6 @@ namespace HarvestManagerSystem.view
             this.txtTotalPayment1.Size = new System.Drawing.Size(186, 25);
             this.txtTotalPayment1.TabIndex = 14;
             // 
-            // ImportExcelButton
-            // 
-            this.ImportExcelButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ImportExcelButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.ImportExcelButton.Location = new System.Drawing.Point(7, 26);
-            this.ImportExcelButton.Name = "ImportExcelButton";
-            this.ImportExcelButton.Size = new System.Drawing.Size(117, 60);
-            this.ImportExcelButton.TabIndex = 13;
-            this.ImportExcelButton.Text = "Import";
-            this.ImportExcelButton.UseVisualStyleBackColor = true;
-            this.ImportExcelButton.Click += new System.EventHandler(this.ImportExcelButton_Click);
-            // 
             // ClearHarvestButton
             // 
             this.ClearHarvestButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -428,6 +416,18 @@ namespace HarvestManagerSystem.view
             this.HarvestDateTimePicker.Name = "HarvestDateTimePicker";
             this.HarvestDateTimePicker.Size = new System.Drawing.Size(187, 25);
             this.HarvestDateTimePicker.TabIndex = 1;
+            // 
+            // ImportExcelButton
+            // 
+            this.ImportExcelButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ImportExcelButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.ImportExcelButton.Location = new System.Drawing.Point(7, 26);
+            this.ImportExcelButton.Name = "ImportExcelButton";
+            this.ImportExcelButton.Size = new System.Drawing.Size(117, 60);
+            this.ImportExcelButton.TabIndex = 13;
+            this.ImportExcelButton.Text = "Import";
+            this.ImportExcelButton.UseVisualStyleBackColor = true;
+            this.ImportExcelButton.Click += new System.EventHandler(this.ImportExcelButton_Click);
             // 
             // ComboBoxProduct1
             // 
@@ -1514,14 +1514,14 @@ namespace HarvestManagerSystem.view
             // dgvIndividualEmployeeList
             // 
             this.dgvIndividualEmployeeList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvIndividualEmployeeList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle46.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle46.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle46.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle46.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle46.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle46.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvIndividualEmployeeList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle46;
             this.dgvIndividualEmployeeList.ColumnHeadersHeight = 70;
             this.dgvIndividualEmployeeList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvIndividualEmployeeList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -1545,21 +1545,21 @@ namespace HarvestManagerSystem.view
             this.Column17,
             this.Column18,
             this.Column19});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvIndividualEmployeeList.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle47.BackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle47.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle47.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle47.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle47.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle47.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvIndividualEmployeeList.DefaultCellStyle = dataGridViewCellStyle47;
             this.dgvIndividualEmployeeList.Location = new System.Drawing.Point(8, 24);
             this.dgvIndividualEmployeeList.Name = "dgvIndividualEmployeeList";
             this.dgvIndividualEmployeeList.RowHeadersVisible = false;
             this.dgvIndividualEmployeeList.RowHeadersWidth = 10;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
-            this.dgvIndividualEmployeeList.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle48.BackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle48.ForeColor = System.Drawing.Color.Black;
+            this.dgvIndividualEmployeeList.RowsDefaultCellStyle = dataGridViewCellStyle48;
             this.dgvIndividualEmployeeList.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.dgvIndividualEmployeeList.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dgvIndividualEmployeeList.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
@@ -1711,7 +1711,7 @@ namespace HarvestManagerSystem.view
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.dgvTotalProduct);
-            this.groupBox4.Controls.Add(this.button1);
+            this.groupBox4.Controls.Add(this.btnApplyHarvestIndividual);
             this.groupBox4.Controls.Add(this.ImportExcelButton);
             this.groupBox4.ForeColor = System.Drawing.Color.White;
             this.groupBox4.Location = new System.Drawing.Point(1042, 13);
@@ -1904,16 +1904,17 @@ namespace HarvestManagerSystem.view
             this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
             this.dataGridViewTextBoxColumn21.Visible = false;
             // 
-            // button1
+            // btnApplyHarvestIndividual
             // 
-            this.button1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.Color.Red;
-            this.button1.Location = new System.Drawing.Point(7, 543);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(117, 47);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Appliquer ";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnApplyHarvestIndividual.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnApplyHarvestIndividual.ForeColor = System.Drawing.Color.Red;
+            this.btnApplyHarvestIndividual.Location = new System.Drawing.Point(7, 543);
+            this.btnApplyHarvestIndividual.Name = "btnApplyHarvestIndividual";
+            this.btnApplyHarvestIndividual.Size = new System.Drawing.Size(117, 47);
+            this.btnApplyHarvestIndividual.TabIndex = 0;
+            this.btnApplyHarvestIndividual.Text = "Appliquer ";
+            this.btnApplyHarvestIndividual.UseVisualStyleBackColor = true;
+            this.btnApplyHarvestIndividual.Click += new System.EventHandler(this.btnApplyHarvestIndividual_Click);
             // 
             // FormAddIndWork
             // 
@@ -1975,7 +1976,7 @@ namespace HarvestManagerSystem.view
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView dgvIndividualEmployeeList;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnApplyHarvestIndividual;
         private System.Windows.Forms.Button ImportExcelButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeListColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;

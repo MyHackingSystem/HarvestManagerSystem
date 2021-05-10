@@ -18,13 +18,8 @@ namespace HarvestManagerSystem.view
 {
     public partial class FormAddIndWork : Form
     {
-        private bool isEditHarvestQuantity = false;
-        private FarmDAO farmDAO = FarmDAO.getInstance();
-        private SupplierDAO supplierDAO = SupplierDAO.getInstance();
-        private ProductDAO productDAO = ProductDAO.getInstance();
         private ProductDetailDAO productDetailDAO = ProductDetailDAO.getInstance();
         private HarvestQuantityDAO mHarvestQuantityDAO = HarvestQuantityDAO.getInstance();
-        private Production mProduction = new Production();
         private ProductionDAO mProductionDAO = ProductionDAO.getInstance();
         private Dictionary<string, Supplier> mSupplierDictionary = new Dictionary<string, Supplier>();
         private Dictionary<string, Farm> mFarmDictionary = new Dictionary<string, Farm>();
@@ -33,6 +28,7 @@ namespace HarvestManagerSystem.view
         private ComboBox[] cbProductDetail = new ComboBox[6];
 
         List<HarvestQuantity>[] HarvestList = new List<HarvestQuantity>[6];
+        Production[] ProductionArray = new Production[6];
 
         private HarvestMS harvestMS;
 
@@ -78,6 +74,13 @@ namespace HarvestManagerSystem.view
             HarvestList[3] = new List<HarvestQuantity>();
             HarvestList[4] = new List<HarvestQuantity>();
             HarvestList[5] = new List<HarvestQuantity>();
+
+            ProductionArray[0] = new Production();
+            ProductionArray[1] = new Production();
+            ProductionArray[2] = new Production();
+            ProductionArray[3] = new Production();
+            ProductionArray[4] = new Production();
+            ProductionArray[5] = new Production();
         }
 
         private void initDictArray()
@@ -86,7 +89,6 @@ namespace HarvestManagerSystem.view
             {
                 mProductDetailDictionary[i] = new Dictionary<string, ProductDetail>();
             }
-
         }
 
         private void initComboBoxArray()
@@ -257,7 +259,6 @@ namespace HarvestManagerSystem.view
 
         private List<HarvestQuantity> ReaHarvestFile()
         {
-
             using (OpenFileDialog ofd = new OpenFileDialog() { Filter = "Office Files|*.xlsx;*.xls;", ValidateNames = true })
             {
                 if (ofd.ShowDialog() == DialogResult.OK)
@@ -441,7 +442,6 @@ namespace HarvestManagerSystem.view
             }
         }
 
-
         private void ClearHarvestButton_Click(object sender, EventArgs e)
         {
             WipeFields();
@@ -539,6 +539,132 @@ namespace HarvestManagerSystem.view
         private void ComboBoxType5_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtProductPayment5.Text = ComboBoxType5.Text;
+        }
+
+        private void btnApplyHarvestIndividual_Click(object sender, EventArgs e)
+        {
+            if (checkApplyButtonInput())
+            {
+                MessageBox.Show("Vérifier les values entrée");
+                return;
+            }
+            addProductionDataToDatabase();
+            harvestMS.RefreshQuantityProductionTable();
+        }
+
+        private bool checkApplyButtonInput()
+        {
+            return (txttotalGoodQuantity1.Text == "" ||
+                txttotalGoodQuantity2.Text == "" ||
+                txttotalGoodQuantity3.Text == "" ||
+                txttotalGoodQuantity4.Text == "" ||
+                txttotalGoodQuantity5.Text == "");
+        }
+
+        private void addProductionDataToDatabase()
+        {
+            bool added = false;
+            for (int i= 1; i <6 ; i++)
+            {
+                setProductionValueFromFields(i);
+                if (ProductionArray[i].TotalQuantity > 0)
+                {
+                    long productionId = mProductionDAO.addProductionAndGetId(ProductionArray[i]);
+                    if (productionId > 0)
+                    {
+                        ProductionArray[i].ProductionID = productionId;
+                        added = addHarvestQuantityToDatabase(i);
+                        if (!added) break;
+                    }
+                }
+            }
+            if (added)
+            {
+                MessageBox.Show("Data Was Added");
+            }
+            else { MessageBox.Show("Data Not Added"); }
+        }
+
+        private void setProductionValueFromFields(int i)
+        {
+            ProductionArray[i].ProductionType = 3;
+            ProductionArray[i].ProductionDate = HarvestDateTimePicker.Value;
+            ProductionArray[i].Supplier.SupplierId = mSupplierDictionary.GetValueOrDefault(SupplierHarvestQuantityComboBox.GetItemText(SupplierHarvestQuantityComboBox.SelectedItem)).SupplierId;
+            ProductionArray[i].Farm.FarmId = mFarmDictionary.GetValueOrDefault(FarmHarvestQuantityComboBox.GetItemText(FarmHarvestQuantityComboBox.SelectedItem)).FarmId;
+            switch (i)
+            {
+                case 1:
+                    ProductionArray[i].Product.ProductId = mProductDictionary.GetValueOrDefault(ComboBoxProduct1.GetItemText(ComboBoxProduct1.SelectedItem)).ProductId;
+                    ProductionArray[i].ProductDetail.ProductDetailId = mProductDetailDictionary[i].GetValueOrDefault(ComboBoxType1.GetItemText(ComboBoxType1.SelectedItem)).ProductDetailId;
+                    ProductionArray[i].TotalEmployee = getTotalEmployee(HarvestList[i]);
+                    ProductionArray[i].TotalQuantity = Convert.ToDouble(txttotalGoodQuantity1.Text);
+                    ProductionArray[i].TotalMinutes = 0.0;
+                    ProductionArray[i].Price = mProductDetailDictionary[i].GetValueOrDefault(ComboBoxType1.GetItemText(ComboBoxType1.SelectedItem)).PriceCompany;
+                    break;
+                case 2:
+                    ProductionArray[i].Product.ProductId = mProductDictionary.GetValueOrDefault(ComboBoxProduct2.GetItemText(ComboBoxProduct2.SelectedItem)).ProductId;
+                    ProductionArray[i].ProductDetail.ProductDetailId = mProductDetailDictionary[i].GetValueOrDefault(ComboBoxType2.GetItemText(ComboBoxType2.SelectedItem)).ProductDetailId;
+                    ProductionArray[i].TotalEmployee = getTotalEmployee(HarvestList[i]);
+                    ProductionArray[i].TotalQuantity = Convert.ToDouble(txttotalGoodQuantity2.Text);
+                    ProductionArray[i].TotalMinutes = 0.0;
+                    ProductionArray[i].Price = mProductDetailDictionary[i].GetValueOrDefault(ComboBoxType2.GetItemText(ComboBoxType2.SelectedItem)).PriceCompany;
+                    break;
+                case 3:
+                    ProductionArray[i].Product.ProductId = mProductDictionary.GetValueOrDefault(ComboBoxProduct3.GetItemText(ComboBoxProduct3.SelectedItem)).ProductId;
+                    ProductionArray[i].ProductDetail.ProductDetailId = mProductDetailDictionary[i].GetValueOrDefault(ComboBoxType3.GetItemText(ComboBoxType3.SelectedItem)).ProductDetailId;
+                    ProductionArray[i].TotalEmployee = getTotalEmployee(HarvestList[i]);
+                    ProductionArray[i].TotalQuantity = Convert.ToDouble(txttotalGoodQuantity3.Text);
+                    ProductionArray[i].TotalMinutes = 0.0;
+                    ProductionArray[i].Price = mProductDetailDictionary[i].GetValueOrDefault(ComboBoxType3.GetItemText(ComboBoxType3.SelectedItem)).PriceCompany;
+                    break;
+                case 4:
+                    ProductionArray[i].Product.ProductId = mProductDictionary.GetValueOrDefault(ComboBoxProduct4.GetItemText(ComboBoxProduct4.SelectedItem)).ProductId;
+                    ProductionArray[i].ProductDetail.ProductDetailId = mProductDetailDictionary[i].GetValueOrDefault(ComboBoxType4.GetItemText(ComboBoxType4.SelectedItem)).ProductDetailId;
+                    ProductionArray[i].TotalEmployee = getTotalEmployee(HarvestList[i]);
+                    ProductionArray[i].TotalQuantity = Convert.ToDouble(txttotalGoodQuantity4.Text);
+                    ProductionArray[i].TotalMinutes = 0.0;
+                    ProductionArray[i].Price = mProductDetailDictionary[i].GetValueOrDefault(ComboBoxType4.GetItemText(ComboBoxType4.SelectedItem)).PriceCompany;
+                    break;
+                case 5:
+                    ProductionArray[i].Product.ProductId = mProductDictionary.GetValueOrDefault(ComboBoxProduct5.GetItemText(ComboBoxProduct5.SelectedItem)).ProductId;
+                    ProductionArray[i].ProductDetail.ProductDetailId = mProductDetailDictionary[i].GetValueOrDefault(ComboBoxType5.GetItemText(ComboBoxType5.SelectedItem)).ProductDetailId;
+                    ProductionArray[i].TotalEmployee = getTotalEmployee(HarvestList[i]);
+                    ProductionArray[i].TotalQuantity = Convert.ToDouble(txttotalGoodQuantity5.Text);
+                    ProductionArray[i].TotalMinutes = 0.0;
+                    ProductionArray[i].Price = mProductDetailDictionary[i].GetValueOrDefault(ComboBoxType5.GetItemText(ComboBoxType5.SelectedItem)).PriceCompany;
+                    break;
+            }
+              
+        }
+
+        private int getTotalEmployee(List<HarvestQuantity> listItem)
+        {
+            int sum = 0;
+            foreach (HarvestQuantity item in listItem)
+            {
+                if (item.GoodQuantity > 0) sum++;
+            }
+            return sum;
+        }
+
+        private bool addHarvestQuantityToDatabase(int i)
+        {
+            bool trackInsert = false;
+            if (ProductionArray[i].ProductionID > 0)
+            {
+                foreach (HarvestQuantity item in HarvestList[i])
+                {
+                    if (item.GoodQuantity > 0)
+                    {
+                        item.Production.ProductionID = ProductionArray[i].ProductionID;
+                        item.HarvestDate = ProductionArray[i].ProductionDate;
+                        item.Production.Farm.FarmId = ProductionArray[i].Farm.FarmId;
+                        trackInsert = mHarvestQuantityDAO.addHarvestQuantity(item);
+                    }
+                    if (!trackInsert) break;
+                }
+            }
+            return trackInsert;
         }
     }
 }

@@ -2572,7 +2572,7 @@ namespace HarvestManagerSystem
             this.groupBox1.Controls.Add(this.btnAddfarm);
             this.groupBox1.Controls.Add(this.btnAddProduct);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(1145, 96);
+            this.groupBox1.Location = new System.Drawing.Point(1148, 100);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(127, 352);
             this.groupBox1.TabIndex = 3;
@@ -2774,6 +2774,8 @@ namespace HarvestManagerSystem
             this.Controls.Add(this.tabProduction);
             this.ForeColor = System.Drawing.Color.White;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(1300, 700);
+            this.MinimumSize = new System.Drawing.Size(1300, 700);
             this.Name = "HarvestMS";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Harvest Manager System";

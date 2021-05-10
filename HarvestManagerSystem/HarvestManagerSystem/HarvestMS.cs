@@ -114,7 +114,7 @@ namespace HarvestManagerSystem
             listQuantityProduction.Clear();
             try
             {
-                listQuantityProduction = productionDAO.searchHarvestHoursProduction(startQuantitySearchDateTimePicker.Value, endQuantitySearchDateTimePicker.Value, 2);
+                listQuantityProduction = productionDAO.searchHarvestQuantityProduction(startQuantitySearchDateTimePicker.Value, endQuantitySearchDateTimePicker.Value, 1);
 
                 if (listQuantityProduction.Count > 0 )
                 {
