@@ -25,15 +25,15 @@ namespace HarvestManagerSystem.model
 
         public int HarvestQuantityId { get => harvestQuantityId; set => harvestQuantityId = value; }
         public DateTime HarvestDate { get => harvestDate; set => harvestDate = value; }
-        public double AllQuantity { get => allQuantity; set => allQuantity = value; }
-        public double BadQuantity { get => badQuantity; set => badQuantity = value; }
-        public double GoodQuantity { get => AllQuantity - BadQuantity; set => goodQuantity = value; }
+        public double AllQuantity { get => (double)System.Math.Round(allQuantity, 2); set => allQuantity = value; }
+        public double BadQuantity { get => (double)System.Math.Round(badQuantity, 2); set => badQuantity = value; }
+        public double GoodQuantity { get => (double)System.Math.Round( AllQuantity - BadQuantity, 2); set => goodQuantity = value; }
         public double ProductPrice { get => productPrice; set => productPrice = value; }
         public double PenaltyGeneral { get => penaltyGeneral; set => penaltyGeneral = value; }
         public double DamageGeneral { get => damageGeneral; set => damageGeneral = value; }
         public int HarvestType { get => harvestType; set => harvestType = value; }
         public bool TransportStatus { get => transportStatus; set => transportStatus = value; }
-        public double Payment { get => getPayment(); set => payment = value; }
+        public double Payment { get => (double)System.Math.Round(getPayment(), 2) ; set => payment = value; }
         public string Remarque { get => remarque; set => remarque = value; }
         public Employee Employee { get => employee; set => employee = value; }
         internal Transport Transport { get => transport; set => transport = value; }

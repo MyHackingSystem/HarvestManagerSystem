@@ -305,7 +305,7 @@ namespace HarvestManagerSystem.database
             var deleteCredit = "DELETE FROM " + CreditDAO.TABLE_CREDIT
                     + " WHERE " + CreditDAO.COLUMN_CREDIT_ID + " = " + item.Credit.CreditId + " ;";
 
-            var deleteHours = "DELETE FROM " + HarvestQuantityDAO.TABLE_QUANTITY
+            var deleteQuantity = "DELETE FROM " + HarvestQuantityDAO.TABLE_QUANTITY
                     + " WHERE " + HarvestQuantityDAO.COLUMN_QUANTITY_PRODUCTION_ID + " = " + production.ProductionID + " ;";
 
             var deleteProduction = "DELETE FROM " + TABLE_PRODUCTION
@@ -313,7 +313,7 @@ namespace HarvestManagerSystem.database
 
             try
             {
-                SQLiteCommand sQLiteCommand = new SQLiteCommand(deleteTransport + ";" + deleteCredit + ";" + deleteHours + ";" + deleteProduction, mSQLiteConnection);
+                SQLiteCommand sQLiteCommand = new SQLiteCommand(deleteTransport + ";" + deleteCredit + ";" + deleteQuantity + ";" + deleteProduction, mSQLiteConnection);
                 OpenConnection();
                 sQLiteCommand.ExecuteNonQuery();
                 return true;

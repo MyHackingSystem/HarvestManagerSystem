@@ -38,17 +38,6 @@ namespace HarvestManagerSystem
 
         private void HarvestMS_Load(object sender, EventArgs e)
         {
-            //DisplayQuantityData();
-            //employeeDAO.CreateTable();
-            //farmDAO.CreateTable();
-            //seasonDAO.CreateTable();
-            //supplierDAO.CreateTable();
-            //supplyDAO.CreateTable();
-            //creditDAO.CreateTable();
-            //transportDAO.CreateTable();
-            //harvestHoursDAO.CreateTable();
-            //harvestQuantityDAO.CreateTable();
-            //productionDAO.CreateTable();
             DisplayQuantityData();
         }
 
@@ -550,8 +539,15 @@ namespace HarvestManagerSystem
 
         public void DisplayFarmData()
         {
-            listFarm = farmDAO.getData();
-            FarmDataGridView.DataSource = listFarm;
+            try
+            {
+                listFarm = farmDAO.getData();
+                FarmDataGridView.DataSource = listFarm;
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
         }
 
         private void FarmtDataGridView_SelectionChanged(object sender, EventArgs e)
@@ -605,9 +601,16 @@ namespace HarvestManagerSystem
 
         public void DisplayProductData()
         {
-            listProduct.Clear();
-            listProduct = productDAO.getData();
-            ProductDataGridView.DataSource = listProduct;
+            try
+            {
+                listProduct.Clear();
+                listProduct = productDAO.getData();
+                ProductDataGridView.DataSource = listProduct;
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
         }
 
         private void ProductDataGridView_SelectionChanged(object sender, EventArgs e)
@@ -640,9 +643,16 @@ namespace HarvestManagerSystem
 
         private void DisplayProductDetailData(Product product)
         {
-            listProductDetail.Clear();
-            listProductDetail = productDetailDAO.getData(product);
-            ProductDetailDataGridView.DataSource = listProductDetail;
+            try
+            {
+                listProductDetail.Clear();
+                listProductDetail = productDetailDAO.getData(product);
+                ProductDetailDataGridView.DataSource = listProductDetail;
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
         }
 
         private void ProductDetailDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -671,11 +681,10 @@ namespace HarvestManagerSystem
                 listCredit = creditDAO.getData();
                 CreditDataGridView.DataSource = listCredit;
             }
-            catch
+            catch (Exception exc)
             {
-
+                MessageBox.Show(exc.Message);
             }
-
         }
 
         private void CreditDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -700,8 +709,15 @@ namespace HarvestManagerSystem
 
         public void DisplayTransportData()
         {
-            listTransport = transportDAO.getData();
-            TransportDataGridView.DataSource = listTransport;
+            try
+            {
+                listTransport = transportDAO.getData();
+                TransportDataGridView.DataSource = listTransport;
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
         }
 
         private void TransportDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -726,8 +742,15 @@ namespace HarvestManagerSystem
 
         public void DisplayEmployeeData()
         {
-            listEmployee = employeeDAO.getData();
-            EmployeeDataGridView.DataSource = listEmployee;
+            try
+            {
+                listEmployee = employeeDAO.getData();
+                EmployeeDataGridView.DataSource = listEmployee;
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
         }
 
         private void EmployeeDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -768,8 +791,8 @@ namespace HarvestManagerSystem
 
         private void RapportButton_Click(object sender, EventArgs e)
         {
-            FormRapport rapport = FormRapport.getInstance();
-            rapport.ShowForm();
+            FormRapport rapport = new FormRapport();
+            rapport.ShowDialog();
         }
 
         private void HarvestMS_FormClosed(object sender, FormClosedEventArgs e)
@@ -825,8 +848,6 @@ namespace HarvestManagerSystem
             FormAddTransport formAddTransport = new FormAddTransport(this);
             formAddTransport.ShowDialog();
         }
-
-
 
         #endregion
 
