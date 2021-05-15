@@ -29,16 +29,48 @@ namespace HarvestManagerSystem.view
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
             this.RapportTabControl = new System.Windows.Forms.TabControl();
             this.EmployeeHourTabPage = new System.Windows.Forms.TabPage();
+            this.dgvEmployeHourRapport = new System.Windows.Forms.DataGridView();
+            this.HarvestHoursIDColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HarvestDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoursEmployeeNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TimeStartMorningColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TimeEndMorningColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TimeStartNoonColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TimeEndNoonColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoursTotalMinutesColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoursCreditAmountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoursTransportAmountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HourPriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PaymentEmployeeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EmployeeCategoryColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RemarqueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TransportStatusColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.HoursEmployeeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoursTransportColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoursCreditColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoursProductionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoursProductionIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StartMorningColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EndMorningColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StartNoonColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EndNoonColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtTotalEmployeePayment = new System.Windows.Forms.TextBox();
@@ -47,21 +79,29 @@ namespace HarvestManagerSystem.view
             this.dtpStartEmployeeHoursRapport = new System.Windows.Forms.DateTimePicker();
             this.cmbEmployeeHoursRapport = new System.Windows.Forms.ComboBox();
             this.btnEmployeeHoursRapportSearch = new System.Windows.Forms.Button();
-            this.dgvEmployeHourRapport = new System.Windows.Forms.DataGridView();
-            this.EREmployeeNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ERHarvestDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ERTotalMinutesColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ERHourPriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ERPaymentColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ERCreditAmountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ERTransportAmountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EREmployeeCategoryColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EREmployeeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EmployeeTypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ERCreditColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ERTransportColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ERProductionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EmployeeQauntityTabPage = new System.Windows.Forms.TabPage();
+            this.dgvEmployeQuantityRapport = new System.Windows.Forms.DataGridView();
+            this.HarvestQuantityIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HarvestQuantityDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQEmployeeNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AllQuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BadQuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GoodQuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductPriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQCreditAmountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQTransportAmountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQPaymentColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQRemarqueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HarvestCategoryColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQTransportStatusColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.HQEmployeeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQTransportColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQCreditColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQProductionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PenaltyGeneralColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DamageGeneralColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQTransportStatusByAmountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HarvestTypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtEmployeeQuantityPayment = new System.Windows.Forms.TextBox();
             this.txtTotalEmployeeQuantity = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -70,24 +110,6 @@ namespace HarvestManagerSystem.view
             this.dtpEndEmployeeQuantityRapport = new System.Windows.Forms.DateTimePicker();
             this.dtpStartEmployeeQuantityRapport = new System.Windows.Forms.DateTimePicker();
             this.cmbEmployeeQuantityRapport = new System.Windows.Forms.ComboBox();
-            this.dgvEmployeQuantityRapport = new System.Windows.Forms.DataGridView();
-            this.QREmployeeNameColumnColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QRHarvestDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QRAllQuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QRBadQuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QRGoodQuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QRPenaltyGeneralColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QRDamageGeneralColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QRTransportAmountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QRCreditAmountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QRProductPriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QRPaymentColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QrHarvestCatColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QREmployeeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QRTransportColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QRCreditColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QRProductionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QRHarvestTypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -117,6 +139,10 @@ namespace HarvestManagerSystem.view
             this.dtpEndCompanyHoursProduction = new System.Windows.Forms.DateTimePicker();
             this.btnCompanyHoursProduction = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtCompanyRapportProductionTotalQuantityCharge = new System.Windows.Forms.TextBox();
+            this.txtCompanyRapportProductionTotalQuantity = new System.Windows.Forms.TextBox();
             this.CompanyQuantityProductionDataGridView = new System.Windows.Forms.DataGridView();
             this.HQProductionIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HQHQProductionDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -140,10 +166,6 @@ namespace HarvestManagerSystem.view
             this.dtpStartCompanyQuantityProduction = new System.Windows.Forms.DateTimePicker();
             this.dtpEndCompanyQuantityProduction = new System.Windows.Forms.DateTimePicker();
             this.btnCompanyQuantityProduction = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtCompanyRapportProductionTotalQuantityCharge = new System.Windows.Forms.TextBox();
-            this.txtCompanyRapportProductionTotalQuantity = new System.Windows.Forms.TextBox();
             this.RapportTabControl.SuspendLayout();
             this.EmployeeHourTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeHourRapport)).BeginInit();
@@ -170,6 +192,7 @@ namespace HarvestManagerSystem.view
             // 
             // EmployeeHourTabPage
             // 
+            this.EmployeeHourTabPage.Controls.Add(this.dgvEmployeHourRapport);
             this.EmployeeHourTabPage.Controls.Add(this.label4);
             this.EmployeeHourTabPage.Controls.Add(this.label3);
             this.EmployeeHourTabPage.Controls.Add(this.txtTotalEmployeePayment);
@@ -178,7 +201,6 @@ namespace HarvestManagerSystem.view
             this.EmployeeHourTabPage.Controls.Add(this.dtpStartEmployeeHoursRapport);
             this.EmployeeHourTabPage.Controls.Add(this.cmbEmployeeHoursRapport);
             this.EmployeeHourTabPage.Controls.Add(this.btnEmployeeHoursRapportSearch);
-            this.EmployeeHourTabPage.Controls.Add(this.dgvEmployeHourRapport);
             this.EmployeeHourTabPage.Location = new System.Drawing.Point(4, 24);
             this.EmployeeHourTabPage.Name = "EmployeeHourTabPage";
             this.EmployeeHourTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -186,6 +208,277 @@ namespace HarvestManagerSystem.view
             this.EmployeeHourTabPage.TabIndex = 1;
             this.EmployeeHourTabPage.Text = "Employee Rapport Heures";
             this.EmployeeHourTabPage.UseVisualStyleBackColor = true;
+            // 
+            // dgvEmployeHourRapport
+            // 
+            this.dgvEmployeHourRapport.AllowUserToAddRows = false;
+            this.dgvEmployeHourRapport.AllowUserToDeleteRows = false;
+            this.dgvEmployeHourRapport.AllowUserToOrderColumns = true;
+            this.dgvEmployeHourRapport.AllowUserToResizeColumns = false;
+            this.dgvEmployeHourRapport.AllowUserToResizeRows = false;
+            dataGridViewCellStyle29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(255)))), ((int)(((byte)(183)))));
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle29.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvEmployeHourRapport.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle29;
+            this.dgvEmployeHourRapport.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dgvEmployeHourRapport.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.dgvEmployeHourRapport.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(179)))), ((int)(((byte)(39)))));
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle30.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(179)))), ((int)(((byte)(39)))));
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEmployeHourRapport.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle30;
+            this.dgvEmployeHourRapport.ColumnHeadersHeight = 32;
+            this.dgvEmployeHourRapport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvEmployeHourRapport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.HarvestHoursIDColumn,
+            this.HarvestDateColumn,
+            this.HoursEmployeeNameColumn,
+            this.TimeStartMorningColumn,
+            this.TimeEndMorningColumn,
+            this.TimeStartNoonColumn,
+            this.TimeEndNoonColumn,
+            this.HoursTotalMinutesColumn,
+            this.HoursCreditAmountColumn,
+            this.HoursTransportAmountColumn,
+            this.HourPriceColumn,
+            this.PaymentEmployeeColumn,
+            this.EmployeeCategoryColumn,
+            this.RemarqueColumn,
+            this.dataGridViewTextBoxColumn18,
+            this.TransportStatusColumn,
+            this.HoursEmployeeColumn,
+            this.HoursTransportColumn,
+            this.HoursCreditColumn,
+            this.HoursProductionColumn,
+            this.HoursProductionIdColumn,
+            this.StartMorningColumn,
+            this.EndMorningColumn,
+            this.StartNoonColumn,
+            this.EndNoonColumn});
+            this.dgvEmployeHourRapport.EnableHeadersVisualStyles = false;
+            this.dgvEmployeHourRapport.Location = new System.Drawing.Point(7, 46);
+            this.dgvEmployeHourRapport.MultiSelect = false;
+            this.dgvEmployeHourRapport.Name = "dgvEmployeHourRapport";
+            this.dgvEmployeHourRapport.RowHeadersVisible = false;
+            dataGridViewCellStyle31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(255)))), ((int)(((byte)(210)))));
+            dataGridViewCellStyle31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle31.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvEmployeHourRapport.RowsDefaultCellStyle = dataGridViewCellStyle31;
+            this.dgvEmployeHourRapport.RowTemplate.Height = 25;
+            this.dgvEmployeHourRapport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvEmployeHourRapport.Size = new System.Drawing.Size(996, 462);
+            this.dgvEmployeHourRapport.TabIndex = 12;
+            // 
+            // HarvestHoursIDColumn
+            // 
+            this.HarvestHoursIDColumn.DataPropertyName = "HarvestHoursID";
+            this.HarvestHoursIDColumn.HeaderText = "HarvestHoursID";
+            this.HarvestHoursIDColumn.Name = "HarvestHoursIDColumn";
+            this.HarvestHoursIDColumn.ReadOnly = true;
+            this.HarvestHoursIDColumn.Visible = false;
+            // 
+            // HarvestDateColumn
+            // 
+            this.HarvestDateColumn.DataPropertyName = "HarvestDate";
+            this.HarvestDateColumn.HeaderText = "Date";
+            this.HarvestDateColumn.MinimumWidth = 80;
+            this.HarvestDateColumn.Name = "HarvestDateColumn";
+            this.HarvestDateColumn.ReadOnly = true;
+            // 
+            // HoursEmployeeNameColumn
+            // 
+            this.HoursEmployeeNameColumn.DataPropertyName = "EmployeeName";
+            this.HoursEmployeeNameColumn.HeaderText = "Employee";
+            this.HoursEmployeeNameColumn.MinimumWidth = 160;
+            this.HoursEmployeeNameColumn.Name = "HoursEmployeeNameColumn";
+            this.HoursEmployeeNameColumn.ReadOnly = true;
+            this.HoursEmployeeNameColumn.Width = 200;
+            // 
+            // TimeStartMorningColumn
+            // 
+            this.TimeStartMorningColumn.DataPropertyName = "TimeStartMorning";
+            this.TimeStartMorningColumn.HeaderText = "D.M";
+            this.TimeStartMorningColumn.MinimumWidth = 70;
+            this.TimeStartMorningColumn.Name = "TimeStartMorningColumn";
+            this.TimeStartMorningColumn.ReadOnly = true;
+            this.TimeStartMorningColumn.Width = 80;
+            // 
+            // TimeEndMorningColumn
+            // 
+            this.TimeEndMorningColumn.DataPropertyName = "TimeEndMorning";
+            this.TimeEndMorningColumn.HeaderText = "F.M";
+            this.TimeEndMorningColumn.MinimumWidth = 70;
+            this.TimeEndMorningColumn.Name = "TimeEndMorningColumn";
+            this.TimeEndMorningColumn.ReadOnly = true;
+            this.TimeEndMorningColumn.Width = 80;
+            // 
+            // TimeStartNoonColumn
+            // 
+            this.TimeStartNoonColumn.DataPropertyName = "TimeStartNoon";
+            this.TimeStartNoonColumn.HeaderText = "D.S";
+            this.TimeStartNoonColumn.MinimumWidth = 70;
+            this.TimeStartNoonColumn.Name = "TimeStartNoonColumn";
+            this.TimeStartNoonColumn.ReadOnly = true;
+            this.TimeStartNoonColumn.Width = 80;
+            // 
+            // TimeEndNoonColumn
+            // 
+            this.TimeEndNoonColumn.DataPropertyName = "TimeEndNoon";
+            this.TimeEndNoonColumn.HeaderText = "F.S";
+            this.TimeEndNoonColumn.MinimumWidth = 70;
+            this.TimeEndNoonColumn.Name = "TimeEndNoonColumn";
+            this.TimeEndNoonColumn.ReadOnly = true;
+            this.TimeEndNoonColumn.Width = 80;
+            // 
+            // HoursTotalMinutesColumn
+            // 
+            this.HoursTotalMinutesColumn.DataPropertyName = "TotalMinutes";
+            this.HoursTotalMinutesColumn.HeaderText = "Minutes";
+            this.HoursTotalMinutesColumn.MinimumWidth = 70;
+            this.HoursTotalMinutesColumn.Name = "HoursTotalMinutesColumn";
+            this.HoursTotalMinutesColumn.ReadOnly = true;
+            this.HoursTotalMinutesColumn.Width = 80;
+            // 
+            // HoursCreditAmountColumn
+            // 
+            this.HoursCreditAmountColumn.DataPropertyName = "CreditAmount";
+            this.HoursCreditAmountColumn.HeaderText = "Credit";
+            this.HoursCreditAmountColumn.MinimumWidth = 60;
+            this.HoursCreditAmountColumn.Name = "HoursCreditAmountColumn";
+            this.HoursCreditAmountColumn.ReadOnly = true;
+            this.HoursCreditAmountColumn.Width = 70;
+            // 
+            // HoursTransportAmountColumn
+            // 
+            this.HoursTransportAmountColumn.DataPropertyName = "TransportAmount";
+            this.HoursTransportAmountColumn.HeaderText = "Trans";
+            this.HoursTransportAmountColumn.MinimumWidth = 60;
+            this.HoursTransportAmountColumn.Name = "HoursTransportAmountColumn";
+            this.HoursTransportAmountColumn.ReadOnly = true;
+            this.HoursTransportAmountColumn.Width = 70;
+            // 
+            // HourPriceColumn
+            // 
+            this.HourPriceColumn.DataPropertyName = "HourPrice";
+            this.HourPriceColumn.HeaderText = "Prix";
+            this.HourPriceColumn.MinimumWidth = 70;
+            this.HourPriceColumn.Name = "HourPriceColumn";
+            this.HourPriceColumn.ReadOnly = true;
+            this.HourPriceColumn.Width = 80;
+            // 
+            // PaymentEmployeeColumn
+            // 
+            this.PaymentEmployeeColumn.DataPropertyName = "Payment";
+            this.PaymentEmployeeColumn.HeaderText = "Payment";
+            this.PaymentEmployeeColumn.MinimumWidth = 70;
+            this.PaymentEmployeeColumn.Name = "PaymentEmployeeColumn";
+            this.PaymentEmployeeColumn.ReadOnly = true;
+            this.PaymentEmployeeColumn.Width = 80;
+            // 
+            // EmployeeCategoryColumn
+            // 
+            this.EmployeeCategoryColumn.DataPropertyName = "EmpCat";
+            this.EmployeeCategoryColumn.HeaderText = "Category";
+            this.EmployeeCategoryColumn.MinimumWidth = 80;
+            this.EmployeeCategoryColumn.Name = "EmployeeCategoryColumn";
+            this.EmployeeCategoryColumn.ReadOnly = true;
+            // 
+            // RemarqueColumn
+            // 
+            this.RemarqueColumn.DataPropertyName = "Remarque";
+            this.RemarqueColumn.HeaderText = "Remarque";
+            this.RemarqueColumn.MinimumWidth = 180;
+            this.RemarqueColumn.Name = "RemarqueColumn";
+            this.RemarqueColumn.ReadOnly = true;
+            this.RemarqueColumn.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn18
+            // 
+            this.dataGridViewTextBoxColumn18.DataPropertyName = "EmployeeType";
+            this.dataGridViewTextBoxColumn18.HeaderText = "EmployeeType";
+            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
+            this.dataGridViewTextBoxColumn18.ReadOnly = true;
+            this.dataGridViewTextBoxColumn18.Visible = false;
+            // 
+            // TransportStatusColumn
+            // 
+            this.TransportStatusColumn.DataPropertyName = "TransportStatus";
+            this.TransportStatusColumn.HeaderText = "TransportStatus";
+            this.TransportStatusColumn.Name = "TransportStatusColumn";
+            this.TransportStatusColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.TransportStatusColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.TransportStatusColumn.Visible = false;
+            // 
+            // HoursEmployeeColumn
+            // 
+            this.HoursEmployeeColumn.DataPropertyName = "Employee";
+            this.HoursEmployeeColumn.HeaderText = "Employee";
+            this.HoursEmployeeColumn.Name = "HoursEmployeeColumn";
+            this.HoursEmployeeColumn.Visible = false;
+            // 
+            // HoursTransportColumn
+            // 
+            this.HoursTransportColumn.DataPropertyName = "Transport";
+            this.HoursTransportColumn.HeaderText = "Transport";
+            this.HoursTransportColumn.Name = "HoursTransportColumn";
+            this.HoursTransportColumn.Visible = false;
+            // 
+            // HoursCreditColumn
+            // 
+            this.HoursCreditColumn.DataPropertyName = "Credit";
+            this.HoursCreditColumn.HeaderText = "Credit";
+            this.HoursCreditColumn.Name = "HoursCreditColumn";
+            this.HoursCreditColumn.Visible = false;
+            // 
+            // HoursProductionColumn
+            // 
+            this.HoursProductionColumn.DataPropertyName = "Production";
+            this.HoursProductionColumn.HeaderText = "Production";
+            this.HoursProductionColumn.Name = "HoursProductionColumn";
+            this.HoursProductionColumn.Visible = false;
+            // 
+            // HoursProductionIdColumn
+            // 
+            this.HoursProductionIdColumn.DataPropertyName = "ProductionId";
+            this.HoursProductionIdColumn.HeaderText = "ProductionId";
+            this.HoursProductionIdColumn.Name = "HoursProductionIdColumn";
+            this.HoursProductionIdColumn.Visible = false;
+            // 
+            // StartMorningColumn
+            // 
+            this.StartMorningColumn.DataPropertyName = "StartMorning";
+            this.StartMorningColumn.HeaderText = "StartMorning";
+            this.StartMorningColumn.Name = "StartMorningColumn";
+            this.StartMorningColumn.Visible = false;
+            // 
+            // EndMorningColumn
+            // 
+            this.EndMorningColumn.DataPropertyName = "EndMorning";
+            this.EndMorningColumn.HeaderText = "EndMorning";
+            this.EndMorningColumn.Name = "EndMorningColumn";
+            this.EndMorningColumn.Visible = false;
+            // 
+            // StartNoonColumn
+            // 
+            this.StartNoonColumn.DataPropertyName = "StartNoon";
+            this.StartNoonColumn.HeaderText = "StartNoon";
+            this.StartNoonColumn.Name = "StartNoonColumn";
+            this.StartNoonColumn.Visible = false;
+            // 
+            // EndNoonColumn
+            // 
+            this.EndNoonColumn.DataPropertyName = "EndNoon";
+            this.EndNoonColumn.HeaderText = "EndNoon";
+            this.EndNoonColumn.Name = "EndNoonColumn";
+            this.EndNoonColumn.Visible = false;
             // 
             // label4
             // 
@@ -251,115 +544,9 @@ namespace HarvestManagerSystem.view
             this.btnEmployeeHoursRapportSearch.UseVisualStyleBackColor = true;
             this.btnEmployeeHoursRapportSearch.Click += new System.EventHandler(this.btnEmployeeHoursRapportSearch_Click);
             // 
-            // dgvEmployeHourRapport
-            // 
-            this.dgvEmployeHourRapport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEmployeHourRapport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.EREmployeeNameColumn,
-            this.ERHarvestDateColumn,
-            this.ERTotalMinutesColumn,
-            this.ERHourPriceColumn,
-            this.ERPaymentColumn,
-            this.ERCreditAmountColumn,
-            this.ERTransportAmountColumn,
-            this.EREmployeeCategoryColumn,
-            this.EREmployeeColumn,
-            this.EmployeeTypeColumn,
-            this.ERCreditColumn,
-            this.ERTransportColumn,
-            this.ERProductionColumn});
-            this.dgvEmployeHourRapport.Location = new System.Drawing.Point(7, 60);
-            this.dgvEmployeHourRapport.Name = "dgvEmployeHourRapport";
-            this.dgvEmployeHourRapport.RowTemplate.Height = 25;
-            this.dgvEmployeHourRapport.Size = new System.Drawing.Size(970, 453);
-            this.dgvEmployeHourRapport.TabIndex = 0;
-            // 
-            // EREmployeeNameColumn
-            // 
-            this.EREmployeeNameColumn.DataPropertyName = "EmployeeName";
-            this.EREmployeeNameColumn.HeaderText = "Name";
-            this.EREmployeeNameColumn.Name = "EREmployeeNameColumn";
-            this.EREmployeeNameColumn.Width = 200;
-            // 
-            // ERHarvestDateColumn
-            // 
-            this.ERHarvestDateColumn.DataPropertyName = "HarvestDate";
-            this.ERHarvestDateColumn.HeaderText = "HarvestDate";
-            this.ERHarvestDateColumn.Name = "ERHarvestDateColumn";
-            // 
-            // ERTotalMinutesColumn
-            // 
-            this.ERTotalMinutesColumn.DataPropertyName = "TotalMinutes";
-            this.ERTotalMinutesColumn.HeaderText = "TotalMinutes";
-            this.ERTotalMinutesColumn.Name = "ERTotalMinutesColumn";
-            // 
-            // ERHourPriceColumn
-            // 
-            this.ERHourPriceColumn.DataPropertyName = "HourPrice";
-            this.ERHourPriceColumn.HeaderText = "Prix";
-            this.ERHourPriceColumn.Name = "ERHourPriceColumn";
-            // 
-            // ERPaymentColumn
-            // 
-            this.ERPaymentColumn.DataPropertyName = "Payment";
-            this.ERPaymentColumn.HeaderText = "Payment";
-            this.ERPaymentColumn.Name = "ERPaymentColumn";
-            // 
-            // ERCreditAmountColumn
-            // 
-            this.ERCreditAmountColumn.DataPropertyName = "CreditAmount";
-            this.ERCreditAmountColumn.HeaderText = "Credit";
-            this.ERCreditAmountColumn.Name = "ERCreditAmountColumn";
-            // 
-            // ERTransportAmountColumn
-            // 
-            this.ERTransportAmountColumn.DataPropertyName = "TransportAmount";
-            this.ERTransportAmountColumn.HeaderText = "Transport";
-            this.ERTransportAmountColumn.Name = "ERTransportAmountColumn";
-            // 
-            // EREmployeeCategoryColumn
-            // 
-            this.EREmployeeCategoryColumn.DataPropertyName = "EmpCat";
-            this.EREmployeeCategoryColumn.HeaderText = "Category";
-            this.EREmployeeCategoryColumn.Name = "EREmployeeCategoryColumn";
-            // 
-            // EREmployeeColumn
-            // 
-            this.EREmployeeColumn.DataPropertyName = "Employee";
-            this.EREmployeeColumn.HeaderText = "EmployeeO";
-            this.EREmployeeColumn.Name = "EREmployeeColumn";
-            this.EREmployeeColumn.Visible = false;
-            // 
-            // EmployeeTypeColumn
-            // 
-            this.EmployeeTypeColumn.DataPropertyName = "EmployeeType";
-            this.EmployeeTypeColumn.HeaderText = "EmployeeTypeO";
-            this.EmployeeTypeColumn.Name = "EmployeeTypeColumn";
-            this.EmployeeTypeColumn.Visible = false;
-            // 
-            // ERCreditColumn
-            // 
-            this.ERCreditColumn.DataPropertyName = "Credit";
-            this.ERCreditColumn.HeaderText = "CreditO";
-            this.ERCreditColumn.Name = "ERCreditColumn";
-            this.ERCreditColumn.Visible = false;
-            // 
-            // ERTransportColumn
-            // 
-            this.ERTransportColumn.DataPropertyName = "Transport";
-            this.ERTransportColumn.HeaderText = "TransportO";
-            this.ERTransportColumn.Name = "ERTransportColumn";
-            this.ERTransportColumn.Visible = false;
-            // 
-            // ERProductionColumn
-            // 
-            this.ERProductionColumn.DataPropertyName = "Production";
-            this.ERProductionColumn.HeaderText = "ProductionO";
-            this.ERProductionColumn.Name = "ERProductionColumn";
-            this.ERProductionColumn.Visible = false;
-            // 
             // EmployeeQauntityTabPage
             // 
+            this.EmployeeQauntityTabPage.Controls.Add(this.dgvEmployeQuantityRapport);
             this.EmployeeQauntityTabPage.Controls.Add(this.txtEmployeeQuantityPayment);
             this.EmployeeQauntityTabPage.Controls.Add(this.txtTotalEmployeeQuantity);
             this.EmployeeQauntityTabPage.Controls.Add(this.label5);
@@ -368,7 +555,6 @@ namespace HarvestManagerSystem.view
             this.EmployeeQauntityTabPage.Controls.Add(this.dtpEndEmployeeQuantityRapport);
             this.EmployeeQauntityTabPage.Controls.Add(this.dtpStartEmployeeQuantityRapport);
             this.EmployeeQauntityTabPage.Controls.Add(this.cmbEmployeeQuantityRapport);
-            this.EmployeeQauntityTabPage.Controls.Add(this.dgvEmployeQuantityRapport);
             this.EmployeeQauntityTabPage.Location = new System.Drawing.Point(4, 24);
             this.EmployeeQauntityTabPage.Name = "EmployeeQauntityTabPage";
             this.EmployeeQauntityTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -376,6 +562,220 @@ namespace HarvestManagerSystem.view
             this.EmployeeQauntityTabPage.TabIndex = 2;
             this.EmployeeQauntityTabPage.Text = "Employee Rapport Quantité";
             this.EmployeeQauntityTabPage.UseVisualStyleBackColor = true;
+            // 
+            // dgvEmployeQuantityRapport
+            // 
+            this.dgvEmployeQuantityRapport.AllowUserToAddRows = false;
+            this.dgvEmployeQuantityRapport.AllowUserToDeleteRows = false;
+            this.dgvEmployeQuantityRapport.AllowUserToResizeRows = false;
+            dataGridViewCellStyle32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(255)))), ((int)(((byte)(183)))));
+            dataGridViewCellStyle32.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle32.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvEmployeQuantityRapport.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle32;
+            this.dgvEmployeQuantityRapport.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dgvEmployeQuantityRapport.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.dgvEmployeQuantityRapport.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(179)))), ((int)(((byte)(39)))));
+            dataGridViewCellStyle33.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle33.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(179)))), ((int)(((byte)(39)))));
+            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEmployeQuantityRapport.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle33;
+            this.dgvEmployeQuantityRapport.ColumnHeadersHeight = 32;
+            this.dgvEmployeQuantityRapport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvEmployeQuantityRapport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.HarvestQuantityIdColumn,
+            this.HarvestQuantityDateColumn,
+            this.HQEmployeeNameColumn,
+            this.AllQuantityColumn,
+            this.BadQuantityColumn,
+            this.GoodQuantityColumn,
+            this.ProductPriceColumn,
+            this.HQCreditAmountColumn,
+            this.HQTransportAmountColumn,
+            this.HQPaymentColumn,
+            this.HQRemarqueColumn,
+            this.HarvestCategoryColumn,
+            this.HQTransportStatusColumn,
+            this.HQEmployeeColumn,
+            this.HQTransportColumn,
+            this.HQCreditColumn,
+            this.HQProductionColumn,
+            this.PenaltyGeneralColumn,
+            this.DamageGeneralColumn,
+            this.HQTransportStatusByAmountColumn,
+            this.HarvestTypeColumn});
+            this.dgvEmployeQuantityRapport.EnableHeadersVisualStyles = false;
+            this.dgvEmployeQuantityRapport.Location = new System.Drawing.Point(15, 46);
+            this.dgvEmployeQuantityRapport.MultiSelect = false;
+            this.dgvEmployeQuantityRapport.Name = "dgvEmployeQuantityRapport";
+            this.dgvEmployeQuantityRapport.RowHeadersVisible = false;
+            dataGridViewCellStyle34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(255)))), ((int)(((byte)(210)))));
+            dataGridViewCellStyle34.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle34.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvEmployeQuantityRapport.RowsDefaultCellStyle = dataGridViewCellStyle34;
+            this.dgvEmployeQuantityRapport.RowTemplate.Height = 25;
+            this.dgvEmployeQuantityRapport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvEmployeQuantityRapport.Size = new System.Drawing.Size(970, 464);
+            this.dgvEmployeQuantityRapport.TabIndex = 20;
+            // 
+            // HarvestQuantityIdColumn
+            // 
+            this.HarvestQuantityIdColumn.DataPropertyName = "HarvestQuantityId";
+            this.HarvestQuantityIdColumn.HeaderText = "HarvestHoursID";
+            this.HarvestQuantityIdColumn.Name = "HarvestQuantityIdColumn";
+            this.HarvestQuantityIdColumn.Visible = false;
+            // 
+            // HarvestQuantityDateColumn
+            // 
+            this.HarvestQuantityDateColumn.DataPropertyName = "HarvestDate";
+            this.HarvestQuantityDateColumn.HeaderText = "Date";
+            this.HarvestQuantityDateColumn.MinimumWidth = 80;
+            this.HarvestQuantityDateColumn.Name = "HarvestQuantityDateColumn";
+            // 
+            // HQEmployeeNameColumn
+            // 
+            this.HQEmployeeNameColumn.DataPropertyName = "EmployeeName";
+            this.HQEmployeeNameColumn.HeaderText = "Employee";
+            this.HQEmployeeNameColumn.MinimumWidth = 160;
+            this.HQEmployeeNameColumn.Name = "HQEmployeeNameColumn";
+            this.HQEmployeeNameColumn.Width = 200;
+            // 
+            // AllQuantityColumn
+            // 
+            this.AllQuantityColumn.DataPropertyName = "AllQuantity";
+            this.AllQuantityColumn.HeaderText = "Tous";
+            this.AllQuantityColumn.Name = "AllQuantityColumn";
+            // 
+            // BadQuantityColumn
+            // 
+            this.BadQuantityColumn.DataPropertyName = "BadQuantity";
+            this.BadQuantityColumn.HeaderText = "Pertes";
+            this.BadQuantityColumn.Name = "BadQuantityColumn";
+            // 
+            // GoodQuantityColumn
+            // 
+            this.GoodQuantityColumn.DataPropertyName = "GoodQuantity";
+            this.GoodQuantityColumn.HeaderText = "Rest";
+            this.GoodQuantityColumn.Name = "GoodQuantityColumn";
+            // 
+            // ProductPriceColumn
+            // 
+            this.ProductPriceColumn.DataPropertyName = "ProductPrice";
+            this.ProductPriceColumn.HeaderText = "Prix";
+            this.ProductPriceColumn.MinimumWidth = 70;
+            this.ProductPriceColumn.Name = "ProductPriceColumn";
+            this.ProductPriceColumn.Width = 80;
+            // 
+            // HQCreditAmountColumn
+            // 
+            this.HQCreditAmountColumn.DataPropertyName = "CreditAmount";
+            this.HQCreditAmountColumn.HeaderText = "Credit";
+            this.HQCreditAmountColumn.MinimumWidth = 60;
+            this.HQCreditAmountColumn.Name = "HQCreditAmountColumn";
+            this.HQCreditAmountColumn.Width = 70;
+            // 
+            // HQTransportAmountColumn
+            // 
+            this.HQTransportAmountColumn.DataPropertyName = "TransportAmount";
+            this.HQTransportAmountColumn.HeaderText = "Trans";
+            this.HQTransportAmountColumn.MinimumWidth = 60;
+            this.HQTransportAmountColumn.Name = "HQTransportAmountColumn";
+            this.HQTransportAmountColumn.Width = 70;
+            // 
+            // HQPaymentColumn
+            // 
+            this.HQPaymentColumn.DataPropertyName = "Payment";
+            this.HQPaymentColumn.HeaderText = "Payment";
+            this.HQPaymentColumn.MinimumWidth = 70;
+            this.HQPaymentColumn.Name = "HQPaymentColumn";
+            this.HQPaymentColumn.Width = 80;
+            // 
+            // HQRemarqueColumn
+            // 
+            this.HQRemarqueColumn.DataPropertyName = "Remarque";
+            this.HQRemarqueColumn.HeaderText = "Remarque";
+            this.HQRemarqueColumn.MinimumWidth = 180;
+            this.HQRemarqueColumn.Name = "HQRemarqueColumn";
+            this.HQRemarqueColumn.Width = 200;
+            // 
+            // HarvestCategoryColumn
+            // 
+            this.HarvestCategoryColumn.DataPropertyName = "HarvestCat";
+            this.HarvestCategoryColumn.HeaderText = "Category";
+            this.HarvestCategoryColumn.MinimumWidth = 80;
+            this.HarvestCategoryColumn.Name = "HarvestCategoryColumn";
+            // 
+            // HQTransportStatusColumn
+            // 
+            this.HQTransportStatusColumn.DataPropertyName = "TransportStatus";
+            this.HQTransportStatusColumn.HeaderText = "TransportStatus";
+            this.HQTransportStatusColumn.Name = "HQTransportStatusColumn";
+            this.HQTransportStatusColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.HQTransportStatusColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.HQTransportStatusColumn.Visible = false;
+            // 
+            // HQEmployeeColumn
+            // 
+            this.HQEmployeeColumn.DataPropertyName = "Employee";
+            this.HQEmployeeColumn.HeaderText = "Employee";
+            this.HQEmployeeColumn.Name = "HQEmployeeColumn";
+            this.HQEmployeeColumn.Visible = false;
+            // 
+            // HQTransportColumn
+            // 
+            this.HQTransportColumn.DataPropertyName = "Transport";
+            this.HQTransportColumn.HeaderText = "Transport";
+            this.HQTransportColumn.Name = "HQTransportColumn";
+            this.HQTransportColumn.Visible = false;
+            // 
+            // HQCreditColumn
+            // 
+            this.HQCreditColumn.DataPropertyName = "Credit";
+            this.HQCreditColumn.HeaderText = "Credit";
+            this.HQCreditColumn.Name = "HQCreditColumn";
+            this.HQCreditColumn.Visible = false;
+            // 
+            // HQProductionColumn
+            // 
+            this.HQProductionColumn.DataPropertyName = "Production";
+            this.HQProductionColumn.HeaderText = "Production";
+            this.HQProductionColumn.Name = "HQProductionColumn";
+            this.HQProductionColumn.Visible = false;
+            // 
+            // PenaltyGeneralColumn
+            // 
+            this.PenaltyGeneralColumn.DataPropertyName = "PenaltyGeneral";
+            this.PenaltyGeneralColumn.HeaderText = "PenaltyGeneral";
+            this.PenaltyGeneralColumn.Name = "PenaltyGeneralColumn";
+            this.PenaltyGeneralColumn.Visible = false;
+            // 
+            // DamageGeneralColumn
+            // 
+            this.DamageGeneralColumn.DataPropertyName = "DamageGeneral";
+            this.DamageGeneralColumn.HeaderText = "DamageGeneral";
+            this.DamageGeneralColumn.Name = "DamageGeneralColumn";
+            this.DamageGeneralColumn.Visible = false;
+            // 
+            // HQTransportStatusByAmountColumn
+            // 
+            this.HQTransportStatusByAmountColumn.DataPropertyName = "TransportStatusByAmount";
+            this.HQTransportStatusByAmountColumn.HeaderText = "TransportStatusByAmount";
+            this.HQTransportStatusByAmountColumn.Name = "HQTransportStatusByAmountColumn";
+            this.HQTransportStatusByAmountColumn.Visible = false;
+            // 
+            // HarvestTypeColumn
+            // 
+            this.HarvestTypeColumn.DataPropertyName = "HarvestType";
+            this.HarvestTypeColumn.HeaderText = "HarvestType";
+            this.HarvestTypeColumn.Name = "HarvestTypeColumn";
+            this.HarvestTypeColumn.Visible = false;
             // 
             // txtEmployeeQuantityPayment
             // 
@@ -441,140 +841,6 @@ namespace HarvestManagerSystem.view
             this.cmbEmployeeQuantityRapport.Size = new System.Drawing.Size(207, 23);
             this.cmbEmployeeQuantityRapport.TabIndex = 1;
             // 
-            // dgvEmployeQuantityRapport
-            // 
-            this.dgvEmployeQuantityRapport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEmployeQuantityRapport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.QREmployeeNameColumnColumn,
-            this.QRHarvestDateColumn,
-            this.QRAllQuantityColumn,
-            this.QRBadQuantityColumn,
-            this.QRGoodQuantityColumn,
-            this.QRPenaltyGeneralColumn,
-            this.QRDamageGeneralColumn,
-            this.QRTransportAmountColumn,
-            this.QRCreditAmountColumn,
-            this.QRProductPriceColumn,
-            this.QRPaymentColumn,
-            this.QrHarvestCatColumn,
-            this.QREmployeeColumn,
-            this.QRTransportColumn,
-            this.QRCreditColumn,
-            this.QRProductionColumn,
-            this.QRHarvestTypeColumn});
-            this.dgvEmployeQuantityRapport.Location = new System.Drawing.Point(15, 55);
-            this.dgvEmployeQuantityRapport.Name = "dgvEmployeQuantityRapport";
-            this.dgvEmployeQuantityRapport.RowTemplate.Height = 25;
-            this.dgvEmployeQuantityRapport.Size = new System.Drawing.Size(970, 441);
-            this.dgvEmployeQuantityRapport.TabIndex = 0;
-            // 
-            // QREmployeeNameColumnColumn
-            // 
-            this.QREmployeeNameColumnColumn.DataPropertyName = "EmployeeName";
-            this.QREmployeeNameColumnColumn.HeaderText = "Name";
-            this.QREmployeeNameColumnColumn.Name = "QREmployeeNameColumnColumn";
-            // 
-            // QRHarvestDateColumn
-            // 
-            this.QRHarvestDateColumn.DataPropertyName = "HarvestDate";
-            this.QRHarvestDateColumn.HeaderText = "Date";
-            this.QRHarvestDateColumn.Name = "QRHarvestDateColumn";
-            // 
-            // QRAllQuantityColumn
-            // 
-            this.QRAllQuantityColumn.DataPropertyName = "AllQuantity";
-            this.QRAllQuantityColumn.HeaderText = "Tous";
-            this.QRAllQuantityColumn.Name = "QRAllQuantityColumn";
-            // 
-            // QRBadQuantityColumn
-            // 
-            this.QRBadQuantityColumn.DataPropertyName = "BadQuantity";
-            this.QRBadQuantityColumn.HeaderText = "Pertes";
-            this.QRBadQuantityColumn.Name = "QRBadQuantityColumn";
-            // 
-            // QRGoodQuantityColumn
-            // 
-            this.QRGoodQuantityColumn.DataPropertyName = "GoodQuantity";
-            this.QRGoodQuantityColumn.HeaderText = "Rest";
-            this.QRGoodQuantityColumn.Name = "QRGoodQuantityColumn";
-            // 
-            // QRPenaltyGeneralColumn
-            // 
-            this.QRPenaltyGeneralColumn.DataPropertyName = "PenaltyGeneral";
-            this.QRPenaltyGeneralColumn.HeaderText = "Penalty General";
-            this.QRPenaltyGeneralColumn.Name = "QRPenaltyGeneralColumn";
-            // 
-            // QRDamageGeneralColumn
-            // 
-            this.QRDamageGeneralColumn.DataPropertyName = "DamageGeneral";
-            this.QRDamageGeneralColumn.HeaderText = "Damage General";
-            this.QRDamageGeneralColumn.Name = "QRDamageGeneralColumn";
-            // 
-            // QRTransportAmountColumn
-            // 
-            this.QRTransportAmountColumn.DataPropertyName = "TransportAmount";
-            this.QRTransportAmountColumn.HeaderText = "Transport";
-            this.QRTransportAmountColumn.Name = "QRTransportAmountColumn";
-            // 
-            // QRCreditAmountColumn
-            // 
-            this.QRCreditAmountColumn.DataPropertyName = "CreditAmount";
-            this.QRCreditAmountColumn.HeaderText = "Credit";
-            this.QRCreditAmountColumn.Name = "QRCreditAmountColumn";
-            // 
-            // QRProductPriceColumn
-            // 
-            this.QRProductPriceColumn.DataPropertyName = "ProductPrice";
-            this.QRProductPriceColumn.HeaderText = "Prix";
-            this.QRProductPriceColumn.Name = "QRProductPriceColumn";
-            // 
-            // QRPaymentColumn
-            // 
-            this.QRPaymentColumn.DataPropertyName = "Payment";
-            this.QRPaymentColumn.HeaderText = "Payment";
-            this.QRPaymentColumn.Name = "QRPaymentColumn";
-            // 
-            // QrHarvestCatColumn
-            // 
-            this.QrHarvestCatColumn.DataPropertyName = "HarvestCat";
-            this.QrHarvestCatColumn.HeaderText = "Category";
-            this.QrHarvestCatColumn.Name = "QrHarvestCatColumn";
-            // 
-            // QREmployeeColumn
-            // 
-            this.QREmployeeColumn.DataPropertyName = "Employee";
-            this.QREmployeeColumn.HeaderText = "Employee";
-            this.QREmployeeColumn.Name = "QREmployeeColumn";
-            this.QREmployeeColumn.Visible = false;
-            // 
-            // QRTransportColumn
-            // 
-            this.QRTransportColumn.DataPropertyName = "Transport";
-            this.QRTransportColumn.HeaderText = "Transport";
-            this.QRTransportColumn.Name = "QRTransportColumn";
-            this.QRTransportColumn.Visible = false;
-            // 
-            // QRCreditColumn
-            // 
-            this.QRCreditColumn.DataPropertyName = "Credit";
-            this.QRCreditColumn.HeaderText = "Credit";
-            this.QRCreditColumn.Name = "QRCreditColumn";
-            this.QRCreditColumn.Visible = false;
-            // 
-            // QRProductionColumn
-            // 
-            this.QRProductionColumn.DataPropertyName = "Production";
-            this.QRProductionColumn.HeaderText = "Production";
-            this.QRProductionColumn.Name = "QRProductionColumn";
-            this.QRProductionColumn.Visible = false;
-            // 
-            // QRHarvestTypeColumn
-            // 
-            this.QRHarvestTypeColumn.DataPropertyName = "HarvestType";
-            this.QRHarvestTypeColumn.HeaderText = "HarvestType";
-            this.QRHarvestTypeColumn.Name = "QRHarvestTypeColumn";
-            this.QRHarvestTypeColumn.Visible = false;
-            // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.label7);
@@ -633,22 +899,22 @@ namespace HarvestManagerSystem.view
             this.CompanyHoursProductionDataGridView.AllowUserToOrderColumns = true;
             this.CompanyHoursProductionDataGridView.AllowUserToResizeColumns = false;
             this.CompanyHoursProductionDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
-            this.CompanyHoursProductionDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle35.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle35.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            this.CompanyHoursProductionDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle35;
             this.CompanyHoursProductionDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.CompanyHoursProductionDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.CompanyHoursProductionDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.CompanyHoursProductionDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle36.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle36.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle36.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.CompanyHoursProductionDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle36;
             this.CompanyHoursProductionDataGridView.ColumnHeadersHeight = 34;
             this.CompanyHoursProductionDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.CompanyHoursProductionDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -674,21 +940,21 @@ namespace HarvestManagerSystem.view
             this.CompanyHoursProductionDataGridView.Location = new System.Drawing.Point(15, 44);
             this.CompanyHoursProductionDataGridView.MultiSelect = false;
             this.CompanyHoursProductionDataGridView.Name = "CompanyHoursProductionDataGridView";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(234)))), ((int)(((byte)(246)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.CompanyHoursProductionDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(234)))), ((int)(((byte)(246)))));
+            dataGridViewCellStyle37.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle37.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle37.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle37.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle37.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.CompanyHoursProductionDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle37;
             this.CompanyHoursProductionDataGridView.RowHeadersVisible = false;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(233)))), ((int)(((byte)(217)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
-            this.CompanyHoursProductionDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(233)))), ((int)(((byte)(217)))));
+            dataGridViewCellStyle38.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle38.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle38.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle38.SelectionForeColor = System.Drawing.Color.White;
+            this.CompanyHoursProductionDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle38;
             this.CompanyHoursProductionDataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CompanyHoursProductionDataGridView.RowTemplate.Height = 25;
             this.CompanyHoursProductionDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -888,6 +1154,38 @@ namespace HarvestManagerSystem.view
             this.tabPage2.Text = "Company Quantity Production";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(268, 534);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 15);
+            this.label1.TabIndex = 23;
+            this.label1.Text = "Total Charge";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(15, 534);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(82, 15);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "Total Quantity";
+            // 
+            // txtCompanyRapportProductionTotalQuantityCharge
+            // 
+            this.txtCompanyRapportProductionTotalQuantityCharge.Location = new System.Drawing.Point(349, 531);
+            this.txtCompanyRapportProductionTotalQuantityCharge.Name = "txtCompanyRapportProductionTotalQuantityCharge";
+            this.txtCompanyRapportProductionTotalQuantityCharge.Size = new System.Drawing.Size(130, 23);
+            this.txtCompanyRapportProductionTotalQuantityCharge.TabIndex = 21;
+            // 
+            // txtCompanyRapportProductionTotalQuantity
+            // 
+            this.txtCompanyRapportProductionTotalQuantity.Location = new System.Drawing.Point(103, 531);
+            this.txtCompanyRapportProductionTotalQuantity.Name = "txtCompanyRapportProductionTotalQuantity";
+            this.txtCompanyRapportProductionTotalQuantity.Size = new System.Drawing.Size(130, 23);
+            this.txtCompanyRapportProductionTotalQuantity.TabIndex = 20;
+            // 
             // CompanyQuantityProductionDataGridView
             // 
             this.CompanyQuantityProductionDataGridView.AllowUserToAddRows = false;
@@ -895,22 +1193,22 @@ namespace HarvestManagerSystem.view
             this.CompanyQuantityProductionDataGridView.AllowUserToOrderColumns = true;
             this.CompanyQuantityProductionDataGridView.AllowUserToResizeColumns = false;
             this.CompanyQuantityProductionDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
-            this.CompanyQuantityProductionDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle39.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle39.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle39.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle39.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            this.CompanyQuantityProductionDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle39;
             this.CompanyQuantityProductionDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.CompanyQuantityProductionDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.CompanyQuantityProductionDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.CompanyQuantityProductionDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle40.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle40.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle40.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle40.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle40.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.CompanyQuantityProductionDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle40;
             this.CompanyQuantityProductionDataGridView.ColumnHeadersHeight = 34;
             this.CompanyQuantityProductionDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.CompanyQuantityProductionDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -936,21 +1234,21 @@ namespace HarvestManagerSystem.view
             this.CompanyQuantityProductionDataGridView.Location = new System.Drawing.Point(15, 46);
             this.CompanyQuantityProductionDataGridView.MultiSelect = false;
             this.CompanyQuantityProductionDataGridView.Name = "CompanyQuantityProductionDataGridView";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(234)))), ((int)(((byte)(246)))));
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.CompanyQuantityProductionDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle41.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(234)))), ((int)(((byte)(246)))));
+            dataGridViewCellStyle41.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle41.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle41.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle41.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle41.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.CompanyQuantityProductionDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle41;
             this.CompanyQuantityProductionDataGridView.RowHeadersVisible = false;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(233)))), ((int)(((byte)(217)))));
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.White;
-            this.CompanyQuantityProductionDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle42.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(233)))), ((int)(((byte)(217)))));
+            dataGridViewCellStyle42.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle42.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle42.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle42.SelectionForeColor = System.Drawing.Color.White;
+            this.CompanyQuantityProductionDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle42;
             this.CompanyQuantityProductionDataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CompanyQuantityProductionDataGridView.RowTemplate.Height = 25;
             this.CompanyQuantityProductionDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -1131,38 +1429,6 @@ namespace HarvestManagerSystem.view
             this.btnCompanyQuantityProduction.UseVisualStyleBackColor = true;
             this.btnCompanyQuantityProduction.Click += new System.EventHandler(this.btnCompanyQuantityProduction_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(268, 534);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 15);
-            this.label1.TabIndex = 23;
-            this.label1.Text = "Total Charge";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 534);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 15);
-            this.label2.TabIndex = 22;
-            this.label2.Text = "Total Quantity";
-            // 
-            // txtCompanyRapportProductionTotalQuantityCharge
-            // 
-            this.txtCompanyRapportProductionTotalQuantityCharge.Location = new System.Drawing.Point(349, 531);
-            this.txtCompanyRapportProductionTotalQuantityCharge.Name = "txtCompanyRapportProductionTotalQuantityCharge";
-            this.txtCompanyRapportProductionTotalQuantityCharge.Size = new System.Drawing.Size(130, 23);
-            this.txtCompanyRapportProductionTotalQuantityCharge.TabIndex = 21;
-            // 
-            // txtCompanyRapportProductionTotalQuantity
-            // 
-            this.txtCompanyRapportProductionTotalQuantity.Location = new System.Drawing.Point(103, 531);
-            this.txtCompanyRapportProductionTotalQuantity.Name = "txtCompanyRapportProductionTotalQuantity";
-            this.txtCompanyRapportProductionTotalQuantity.Size = new System.Drawing.Size(130, 23);
-            this.txtCompanyRapportProductionTotalQuantity.TabIndex = 20;
-            // 
             // FormRapport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1196,8 +1462,6 @@ namespace HarvestManagerSystem.view
         private System.Windows.Forms.TabControl RapportTabControl;
         private System.Windows.Forms.TabPage EmployeeHourTabPage;
         private System.Windows.Forms.TabPage EmployeeQauntityTabPage;
-        private System.Windows.Forms.DataGridView dgvEmployeHourRapport;
-        private System.Windows.Forms.DataGridView dgvEmployeQuantityRapport;
         private System.Windows.Forms.ComboBox cmbEmployeeHoursRapport;
         private System.Windows.Forms.Button btnEmployeeHoursRapportSearch;
         private System.Windows.Forms.DateTimePicker dtpStartEmployeeHoursRapport;
@@ -1207,19 +1471,6 @@ namespace HarvestManagerSystem.view
         private System.Windows.Forms.DateTimePicker dtpEndEmployeeQuantityRapport;
         private System.Windows.Forms.DateTimePicker dtpStartEmployeeQuantityRapport;
         private System.Windows.Forms.ComboBox cmbEmployeeQuantityRapport;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EREmployeeNameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ERHarvestDateColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ERTotalMinutesColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ERHourPriceColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ERPaymentColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ERCreditAmountColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ERTransportAmountColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EREmployeeCategoryColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EREmployeeColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeTypeColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ERCreditColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ERTransportColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ERProductionColumn;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtTotalEmployeePayment;
@@ -1228,23 +1479,6 @@ namespace HarvestManagerSystem.view
         private System.Windows.Forms.TextBox txtTotalEmployeeQuantity;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QREmployeeNameColumnColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QRHarvestDateColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QRAllQuantityColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QRBadQuantityColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QRGoodQuantityColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QRPenaltyGeneralColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QRDamageGeneralColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QRTransportAmountColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QRCreditAmountColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QRProductPriceColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QRPaymentColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QrHarvestCatColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QREmployeeColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QRTransportColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QRCreditColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QRProductionColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QRHarvestTypeColumn;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.ComboBox comboBoxCompanyHoursProduction;
         private System.Windows.Forms.DateTimePicker dtpStartCompanyHoursProduction;
@@ -1301,5 +1535,53 @@ namespace HarvestManagerSystem.view
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtCompanyRapportProductionTotalQuantityCharge;
         private System.Windows.Forms.TextBox txtCompanyRapportProductionTotalQuantity;
+        private System.Windows.Forms.DataGridView dgvEmployeQuantityRapport;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HarvestQuantityIdColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HarvestQuantityDateColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQEmployeeNameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AllQuantityColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BadQuantityColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GoodQuantityColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductPriceColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQCreditAmountColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQTransportAmountColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQPaymentColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQRemarqueColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HarvestCategoryColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn HQTransportStatusColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQEmployeeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQTransportColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQCreditColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQProductionColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PenaltyGeneralColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DamageGeneralColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQTransportStatusByAmountColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HarvestTypeColumn;
+        private System.Windows.Forms.DataGridView dgvEmployeHourRapport;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HarvestHoursIDColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HarvestDateColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoursEmployeeNameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TimeStartMorningColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TimeEndMorningColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TimeStartNoonColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TimeEndNoonColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoursTotalMinutesColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoursCreditAmountColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoursTransportAmountColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HourPriceColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PaymentEmployeeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeCategoryColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RemarqueColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn TransportStatusColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoursEmployeeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoursTransportColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoursCreditColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoursProductionColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoursProductionIdColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StartMorningColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EndMorningColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StartNoonColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EndNoonColumn;
     }
 }

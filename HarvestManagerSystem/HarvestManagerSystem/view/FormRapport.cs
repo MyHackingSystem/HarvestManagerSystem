@@ -15,9 +15,7 @@ namespace HarvestManagerSystem.view
     {
 
         private RapportDAO rapportDAO = RapportDAO.getInstance();
-        private ProductionDAO productionDAO = ProductionDAO.getInstance();
         private SupplierDAO supplierDAO = SupplierDAO.getInstance();
-        private Dictionary<string, Supplier> mSupplierDictionary = new Dictionary<string, Supplier>();
         private Dictionary<string, Employee> mEmployeeDictionary = new Dictionary<string, Employee>();
 
         public FormRapport()
@@ -32,6 +30,7 @@ namespace HarvestManagerSystem.view
 
         private void FormRapport_FormClosed(object sender, FormClosedEventArgs e)
         {
+
         }
 
         #region ******************************************** Tab Control Selected Index ***********************************************************
@@ -62,15 +61,24 @@ namespace HarvestManagerSystem.view
 
         #region ************************************ Employee Hours Rapport ****************************************************
 
-        List<HoursEmployeeRapport> listEmployeeHoursProduction = new List<HoursEmployeeRapport>();
+        List<HarvestHours> listEmployeeHoursProduction = new List<HarvestHours>();
+
 
         void DisplayRapportEmployeeHours()
         {
             dtpStartEmployeeHoursRapport.Value = DateTime.Now.AddDays(-29);
             dtpEndEmployeeHoursRapport.Value = DateTime.Now.AddDays(1);
-            mEmployeeDictionary = Common.EmployeeNameList(cmbEmployeeHoursRapport);
-            int id = mEmployeeDictionary.GetValueOrDefault(cmbEmployeeHoursRapport.GetItemText(cmbEmployeeHoursRapport.SelectedItem)).EmployeeId;
-            UpdateEmployeeHoursRapport(dtpStartEmployeeHoursRapport.Value, dtpEndEmployeeHoursRapport.Value, id);
+            EmployeeNameList();
+            int employeeId = -1;
+            try
+            {
+                employeeId = mEmployeeDictionary.GetValueOrDefault(cmbEmployeeHoursRapport.GetItemText(cmbEmployeeHoursRapport.SelectedItem)).EmployeeId;
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+            UpdateEmployeeHoursRapport(dtpStartEmployeeHoursRapport.Value, dtpEndEmployeeHoursRapport.Value, employeeId);
         }
 
         private void UpdateEmployeeHoursRapport(DateTime fromDate, DateTime toDate, int employeeId)
@@ -78,7 +86,7 @@ namespace HarvestManagerSystem.view
             listEmployeeHoursProduction.Clear();
             try
             {
-                listEmployeeHoursProduction = rapportDAO.SearchHoursEmployeeRapport(fromDate, toDate, employeeId);  
+                listEmployeeHoursProduction = rapportDAO.EmployeeHarvestHours(fromDate, toDate, employeeId);  
                 dgvEmployeHourRapport.DataSource = listEmployeeHoursProduction;
             }
             catch (Exception ex)
@@ -90,10 +98,28 @@ namespace HarvestManagerSystem.view
             txtTotalEmployeeHours.Text = calculTotalEmployeeHours().ToString();
         }
 
+        public void EmployeeNameList()
+        {
+            List<string> NamesList = new List<string>();
+            EmployeeDAO employeeDAO = EmployeeDAO.getInstance();
+            mEmployeeDictionary.Clear();
+            try
+            {
+                mEmployeeDictionary = employeeDAO.EmployeeDictionary();
+                NamesList.AddRange(mEmployeeDictionary.Keys);
+                cmbEmployeeHoursRapport.DataSource = NamesList;
+                cmbEmployeeQuantityRapport.DataSource = NamesList;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
         private double calculTotalEmployeePayment()
         {
             double total = 0.0;
-            foreach (HoursEmployeeRapport h in listEmployeeHoursProduction)
+            foreach (HarvestHours h in listEmployeeHoursProduction)
             {
                 total += h.Payment;
             }
@@ -103,7 +129,7 @@ namespace HarvestManagerSystem.view
         private double calculTotalEmployeeHours()
         {
             double total = 0.0;
-            foreach (HoursEmployeeRapport h in listEmployeeHoursProduction)
+            foreach (HarvestHours h in listEmployeeHoursProduction)
             {
                 total += h.TotalMinutes;
             }
@@ -112,37 +138,59 @@ namespace HarvestManagerSystem.view
 
         private void btnEmployeeHoursRapportSearch_Click(object sender, EventArgs e)
         {
-            int id = mEmployeeDictionary.GetValueOrDefault(cmbEmployeeHoursRapport.GetItemText(cmbEmployeeHoursRapport.SelectedItem)).EmployeeId;
-            UpdateEmployeeHoursRapport(dtpStartEmployeeHoursRapport.Value, dtpEndEmployeeHoursRapport.Value, id);
+            int employeeId = -1;
+            try
+            {
+                employeeId = mEmployeeDictionary.GetValueOrDefault(cmbEmployeeHoursRapport.GetItemText(cmbEmployeeHoursRapport.SelectedItem)).EmployeeId;
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+            UpdateEmployeeHoursRapport(dtpStartEmployeeHoursRapport.Value, dtpEndEmployeeHoursRapport.Value, employeeId);
         }
 
         private void SortDisplayRapportEmployeeHoursColumnsIndex()
         {
-            dgvEmployeHourRapport.Columns["EREmployeeNameColumn"].DisplayIndex = 0;
-            dgvEmployeHourRapport.Columns["ERHarvestDateColumn"].DisplayIndex = 1;
-            dgvEmployeHourRapport.Columns["ERTotalMinutesColumn"].DisplayIndex = 2;
-            dgvEmployeHourRapport.Columns["ERHourPriceColumn"].DisplayIndex = 3;
-            dgvEmployeHourRapport.Columns["ERCreditAmountColumn"].DisplayIndex = 4;
-            dgvEmployeHourRapport.Columns["ERTransportAmountColumn"].DisplayIndex = 5;
-            dgvEmployeHourRapport.Columns["ERPaymentColumn"].DisplayIndex = 6;
-            dgvEmployeHourRapport.Columns["EREmployeeCategoryColumn"].DisplayIndex = 7;
+            dgvEmployeHourRapport.Columns["HarvestHoursIDColumn"].DisplayIndex = 0;
+            dgvEmployeHourRapport.Columns["HarvestDateColumn"].DisplayIndex = 1;
+            dgvEmployeHourRapport.Columns["HoursEmployeeNameColumn"].DisplayIndex = 2;
+            dgvEmployeHourRapport.Columns["TimeStartMorningColumn"].DisplayIndex = 3;
+            dgvEmployeHourRapport.Columns["TimeEndMorningColumn"].DisplayIndex = 4;
+            dgvEmployeHourRapport.Columns["TimeStartNoonColumn"].DisplayIndex = 5;
+            dgvEmployeHourRapport.Columns["TimeEndNoonColumn"].DisplayIndex = 6;
+            dgvEmployeHourRapport.Columns["HoursTotalMinutesColumn"].DisplayIndex = 7;
+            dgvEmployeHourRapport.Columns["HourPriceColumn"].DisplayIndex = 8;
+            dgvEmployeHourRapport.Columns["HoursCreditAmountColumn"].DisplayIndex = 9;
+            dgvEmployeHourRapport.Columns["HoursTransportAmountColumn"].DisplayIndex = 10;
+            dgvEmployeHourRapport.Columns["PaymentEmployeeColumn"].DisplayIndex = 11;
+            dgvEmployeHourRapport.Columns["EmployeeCategoryColumn"].DisplayIndex = 12;
+            dgvEmployeHourRapport.Columns["RemarqueColumn"].DisplayIndex = 13;
         }
 
         #endregion
 
-        #region  ****************************************** Rapport Employee Quantity ***********************************************************
+        #region  ************************************ Rapport Employee Quantity *************************************************
 
-        List<QuantityEmployeeRapport> listEmployeeQuantityProduction = new List<QuantityEmployeeRapport>();
+        List<HarvestQuantity> listEmployeeQuantityProduction = new List<HarvestQuantity>();
 
         void DisplayRapportEmployeeQuantity()
         {
 
             dtpStartEmployeeQuantityRapport.Value = DateTime.Now.AddDays(-29);
             dtpEndEmployeeQuantityRapport.Value = DateTime.Now.AddDays(1);
-            mEmployeeDictionary = Common.EmployeeNameList(cmbEmployeeQuantityRapport);
-            int id = mEmployeeDictionary.GetValueOrDefault(cmbEmployeeQuantityRapport.GetItemText(cmbEmployeeQuantityRapport.SelectedItem)).EmployeeId;
-            UpdateEmployeeQuantityRapport(dtpStartEmployeeQuantityRapport.Value, dtpEndEmployeeQuantityRapport.Value, id);
+            EmployeeNameList();
 
+            int employeeId = -1;
+            try
+            {
+                employeeId = mEmployeeDictionary.GetValueOrDefault(cmbEmployeeHoursRapport.GetItemText(cmbEmployeeHoursRapport.SelectedItem)).EmployeeId;
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+            UpdateEmployeeQuantityRapport(dtpStartEmployeeQuantityRapport.Value, dtpEndEmployeeQuantityRapport.Value, employeeId);
         }
 
         private void UpdateEmployeeQuantityRapport(DateTime fromDate, DateTime toDate, int employeeId)
@@ -150,7 +198,7 @@ namespace HarvestManagerSystem.view
             listEmployeeQuantityProduction.Clear();
             try
             {
-                listEmployeeQuantityProduction = rapportDAO.SearchQuantityEmployeeRapport(fromDate, toDate, employeeId);
+                listEmployeeQuantityProduction = rapportDAO.EmployeeHarvestQuantity(fromDate, toDate, employeeId);
                 dgvEmployeQuantityRapport.DataSource = listEmployeeQuantityProduction;
             }
             catch (Exception ex)
@@ -165,7 +213,7 @@ namespace HarvestManagerSystem.view
         private double calculTotalQuantityEmployeePayment()
         {
             double total = 0.0;
-            foreach (QuantityEmployeeRapport h in listEmployeeQuantityProduction)
+            foreach (HarvestQuantity h in listEmployeeQuantityProduction)
             {
                 total += h.Payment;
             }
@@ -175,7 +223,7 @@ namespace HarvestManagerSystem.view
         private double calculTotalEmployeeQuantity()
         {
             double total = 0.0;
-            foreach (QuantityEmployeeRapport h in listEmployeeQuantityProduction)
+            foreach (HarvestQuantity h in listEmployeeQuantityProduction)
             {
                 total += h.GoodQuantity;
             }
@@ -190,23 +238,23 @@ namespace HarvestManagerSystem.view
 
         private void SortDisplayRapportEmployeeQuantityColumnsIndex()
         {
-            dgvEmployeQuantityRapport.Columns["QREmployeeNameColumnColumn"].DisplayIndex = 0;
-            dgvEmployeQuantityRapport.Columns["QRHarvestDateColumn"].DisplayIndex = 1;
-            dgvEmployeQuantityRapport.Columns["QRAllQuantityColumn"].DisplayIndex = 2;
-            dgvEmployeQuantityRapport.Columns["QRBadQuantityColumn"].DisplayIndex = 3;
-            dgvEmployeQuantityRapport.Columns["QRGoodQuantityColumn"].DisplayIndex = 4;
-            dgvEmployeQuantityRapport.Columns["QRPenaltyGeneralColumn"].DisplayIndex = 5;
-            dgvEmployeQuantityRapport.Columns["QRDamageGeneralColumn"].DisplayIndex = 6;
-            dgvEmployeQuantityRapport.Columns["QRTransportAmountColumn"].DisplayIndex = 7;
-            dgvEmployeQuantityRapport.Columns["QRCreditAmountColumn"].DisplayIndex = 8;
-            dgvEmployeQuantityRapport.Columns["QRProductPriceColumn"].DisplayIndex = 9;
-            dgvEmployeQuantityRapport.Columns["QRPaymentColumn"].DisplayIndex = 10;
-            dgvEmployeQuantityRapport.Columns["QrHarvestCatColumn"].DisplayIndex = 11;
+            dgvEmployeQuantityRapport.Columns["HarvestQuantityIdColumn"].DisplayIndex = 0;
+            dgvEmployeQuantityRapport.Columns["HarvestQuantityDateColumn"].DisplayIndex = 1;
+            dgvEmployeQuantityRapport.Columns["HQEmployeeNameColumn"].DisplayIndex = 2;
+            dgvEmployeQuantityRapport.Columns["AllQuantityColumn"].DisplayIndex = 3;
+            dgvEmployeQuantityRapport.Columns["BadQuantityColumn"].DisplayIndex = 4;
+            dgvEmployeQuantityRapport.Columns["GoodQuantityColumn"].DisplayIndex = 5;
+            dgvEmployeQuantityRapport.Columns["ProductPriceColumn"].DisplayIndex = 6;
+            dgvEmployeQuantityRapport.Columns["HQCreditAmountColumn"].DisplayIndex = 7;
+            dgvEmployeQuantityRapport.Columns["HQTransportAmountColumn"].DisplayIndex = 8;
+            dgvEmployeQuantityRapport.Columns["HQPaymentColumn"].DisplayIndex = 9;
+            dgvEmployeQuantityRapport.Columns["HQRemarqueColumn"].DisplayIndex = 10;
+            dgvEmployeQuantityRapport.Columns["HarvestCategoryColumn"].DisplayIndex = 11;
         }
 
         #endregion
 
-        #region ************************************  Display Company Quantity Production Rapport Code ***************************************
+        #region ************************************  Display Company Quantity Production Rapport Code *************************
 
         List<Production> listCompanyQuantityProduction = new List<Production>();
         private Dictionary<string, Supplier> mSupplierQuantityDictionary = new Dictionary<string, Supplier>();
@@ -237,7 +285,7 @@ namespace HarvestManagerSystem.view
             listCompanyQuantityProduction.Clear();
             try
             {
-                listCompanyQuantityProduction = rapportDAO.searchHarvestQuantityProduction(fromDate, toDate, 1, id);
+                listCompanyQuantityProduction = rapportDAO.CompanyHarvestQuantity(fromDate, toDate, 1, id);
 
                 if (listCompanyQuantityProduction.Count > 0)
                 {
@@ -252,7 +300,7 @@ namespace HarvestManagerSystem.view
             {
                 MessageBox.Show("UpdateDisplayHarvestQuantityData called: " + ex.Message);
             }
-            SortDisplayMasterQuantityColumnsIndex();
+            SortDisplayProductionQuantityColumnsIndex();
         }
 
         private void btnCompanyQuantityProduction_Click(object sender, EventArgs e)
@@ -302,7 +350,7 @@ namespace HarvestManagerSystem.view
             return total;
         }
 
-        private void SortDisplayMasterQuantityColumnsIndex()
+        private void SortDisplayProductionQuantityColumnsIndex()
         {
             CompanyQuantityProductionDataGridView.Columns["HQProductionIdColumn"].DisplayIndex = 0;
             CompanyQuantityProductionDataGridView.Columns["HQHQProductionDateColumn"].DisplayIndex = 1;
@@ -319,7 +367,7 @@ namespace HarvestManagerSystem.view
 
         #endregion
 
-        #region ************************************  Display Company Hours Production Rapport Code ***************************************
+        #region ************************************  Display Company Hours Production Rapport Code ****************************
 
         List<Production> listCompanyHoursProduction = new List<Production>();
         private Dictionary<string, Supplier> mSupplierHoursDictionary = new Dictionary<string, Supplier>();
@@ -371,7 +419,7 @@ namespace HarvestManagerSystem.view
             listCompanyHoursProduction.Clear();
             try
             {
-                listCompanyHoursProduction = rapportDAO.searchHarvestHoursProduction(fromDate, toDate, 1, id);
+                listCompanyHoursProduction = rapportDAO.CompanyHarvestHours(fromDate, toDate, 1, id);
                 if (listCompanyHoursProduction.Count > 0)
                 {
                     CompanyHoursProductionDataGridView.DataSource = listCompanyHoursProduction;
@@ -438,9 +486,6 @@ namespace HarvestManagerSystem.view
         }
 
         #endregion
-
-
-
 
     }
 }
