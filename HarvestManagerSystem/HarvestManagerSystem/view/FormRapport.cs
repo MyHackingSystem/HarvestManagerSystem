@@ -75,7 +75,7 @@ namespace HarvestManagerSystem.view
             listQuantityProduction.Clear();
             try
             {
-                listQuantityProduction = rapportDAO.searchCompanyProduction(dtpStartCompanyRapportSearch.Value, dtpEndCompanyRapportSearch.Value, 2, SupplierId);
+                listQuantityProduction = rapportDAO.searchCompanyProduction(dtpStartCompanyRapportSearch.Value, dtpEndCompanyRapportSearch.Value, 1, SupplierId);
                 CompanyRapportDataGridView.DataSource = listQuantityProduction;
             }
             catch (Exception ex)

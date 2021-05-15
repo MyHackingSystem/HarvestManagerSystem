@@ -64,7 +64,7 @@ namespace HarvestManagerSystem.database
         + " ON " + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_DETAIL_ID + " = " + ProductionDAO.TABLE_PRODUCTION + "." + ProductionDAO.COLUMN_PRODUCTION_PRODUCT_DETAIL_ID
         + " WHERE " + ProductionDAO.COLUMN_PRODUCTION_DATE
         + " BETWEEN strftime('%Y-%m-%d %H:%M:%S', '" + fromDate.ToString("yyyy'-'MM'-'dd' 'HH':'mm':'ss") + "') AND strftime('%Y-%m-%d %H:%M:%S', '" + toDate.ToString("yyyy'-'MM'-'dd' 'HH':'mm':'ss") + "') "
-        + " AND " + ProductionDAO.COLUMN_PRODUCTION_TYPE + " = " + type
+        + " AND " + ProductionDAO.COLUMN_PRODUCTION_TYPE + " != " + type
         + " AND " + SupplierDAO.TABLE_SUPPLIER + "." + SupplierDAO.COLUMN_SUPPLIER_ID + " = " + supplierId
         + " ORDER BY " + ProductionDAO.COLUMN_PRODUCTION_DATE + " DESC ;";
 

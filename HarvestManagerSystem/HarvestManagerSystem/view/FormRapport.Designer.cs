@@ -101,6 +101,40 @@ namespace HarvestManagerSystem.view
             this.QRCreditColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QRProductionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QRHarvestTypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.CompanyQuantityProductionDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comboBoxCompanyQuantityProduction = new System.Windows.Forms.ComboBox();
+            this.dtpStartCompanyQuantityProduction = new System.Windows.Forms.DateTimePicker();
+            this.dtpEndCompanyQuantityProduction = new System.Windows.Forms.DateTimePicker();
+            this.btnCompanyQuantityProduction = new System.Windows.Forms.Button();
+            this.CompanyHoursProductionDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comboBoxCompanyHoursProduction = new System.Windows.Forms.ComboBox();
+            this.dtpStartCompanyHoursProduction = new System.Windows.Forms.DateTimePicker();
+            this.dtpEndCompanyHoursProduction = new System.Windows.Forms.DateTimePicker();
+            this.btnCompanyHoursProduction = new System.Windows.Forms.Button();
             this.RapportTabControl.SuspendLayout();
             this.CompanyTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CompanyRapportDataGridView)).BeginInit();
@@ -108,6 +142,10 @@ namespace HarvestManagerSystem.view
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeHourRapport)).BeginInit();
             this.EmployeeQauntityTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeQuantityRapport)).BeginInit();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CompanyQuantityProductionDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CompanyHoursProductionDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // RapportTabControl
@@ -115,6 +153,8 @@ namespace HarvestManagerSystem.view
             this.RapportTabControl.Controls.Add(this.CompanyTabPage);
             this.RapportTabControl.Controls.Add(this.EmployeeHourTabPage);
             this.RapportTabControl.Controls.Add(this.EmployeeQauntityTabPage);
+            this.RapportTabControl.Controls.Add(this.tabPage1);
+            this.RapportTabControl.Controls.Add(this.tabPage2);
             this.RapportTabControl.Location = new System.Drawing.Point(13, 12);
             this.RapportTabControl.Name = "RapportTabControl";
             this.RapportTabControl.SelectedIndex = 0;
@@ -706,6 +746,286 @@ namespace HarvestManagerSystem.view
             this.QRHarvestTypeColumn.Name = "QRHarvestTypeColumn";
             this.QRHarvestTypeColumn.Visible = false;
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.CompanyHoursProductionDataGridView);
+            this.tabPage1.Controls.Add(this.comboBoxCompanyHoursProduction);
+            this.tabPage1.Controls.Add(this.dtpStartCompanyHoursProduction);
+            this.tabPage1.Controls.Add(this.dtpEndCompanyHoursProduction);
+            this.tabPage1.Controls.Add(this.btnCompanyHoursProduction);
+            this.tabPage1.Location = new System.Drawing.Point(4, 24);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1013, 569);
+            this.tabPage1.TabIndex = 3;
+            this.tabPage1.Text = "Company Hours Production";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.CompanyQuantityProductionDataGridView);
+            this.tabPage2.Controls.Add(this.comboBoxCompanyQuantityProduction);
+            this.tabPage2.Controls.Add(this.dtpStartCompanyQuantityProduction);
+            this.tabPage2.Controls.Add(this.dtpEndCompanyQuantityProduction);
+            this.tabPage2.Controls.Add(this.btnCompanyQuantityProduction);
+            this.tabPage2.Location = new System.Drawing.Point(4, 24);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1013, 569);
+            this.tabPage2.TabIndex = 4;
+            this.tabPage2.Text = "Company Quantity Production";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // CompanyQuantityProductionDataGridView
+            // 
+            this.CompanyQuantityProductionDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CompanyQuantityProductionDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn10,
+            this.dataGridViewTextBoxColumn11});
+            this.CompanyQuantityProductionDataGridView.Location = new System.Drawing.Point(24, 82);
+            this.CompanyQuantityProductionDataGridView.Name = "CompanyQuantityProductionDataGridView";
+            this.CompanyQuantityProductionDataGridView.RowTemplate.Height = 25;
+            this.CompanyQuantityProductionDataGridView.Size = new System.Drawing.Size(964, 449);
+            this.CompanyQuantityProductionDataGridView.TabIndex = 5;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Supplier";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Supplier";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 120;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 120;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "HarvestDate";
+            this.dataGridViewTextBoxColumn2.HeaderText = "HarvestDate";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Employee";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Employee";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 120;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 120;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Farm";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Farm";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Product";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Product";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Type";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Type";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "GoodQuantity";
+            this.dataGridViewTextBoxColumn7.HeaderText = "GoodQuantity";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "Price";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Price";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "Payment";
+            this.dataGridViewTextBoxColumn9.HeaderText = "Payment";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "AllQuantity";
+            this.dataGridViewTextBoxColumn10.HeaderText = "AllQuantity";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "BadQuantity";
+            this.dataGridViewTextBoxColumn11.HeaderText = "BadQuantity";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.Visible = false;
+            // 
+            // comboBoxCompanyQuantityProduction
+            // 
+            this.comboBoxCompanyQuantityProduction.FormattingEnabled = true;
+            this.comboBoxCompanyQuantityProduction.Location = new System.Drawing.Point(32, 37);
+            this.comboBoxCompanyQuantityProduction.Name = "comboBoxCompanyQuantityProduction";
+            this.comboBoxCompanyQuantityProduction.Size = new System.Drawing.Size(198, 23);
+            this.comboBoxCompanyQuantityProduction.TabIndex = 6;
+            // 
+            // dtpStartCompanyQuantityProduction
+            // 
+            this.dtpStartCompanyQuantityProduction.Location = new System.Drawing.Point(278, 37);
+            this.dtpStartCompanyQuantityProduction.Name = "dtpStartCompanyQuantityProduction";
+            this.dtpStartCompanyQuantityProduction.Size = new System.Drawing.Size(200, 23);
+            this.dtpStartCompanyQuantityProduction.TabIndex = 7;
+            // 
+            // dtpEndCompanyQuantityProduction
+            // 
+            this.dtpEndCompanyQuantityProduction.Location = new System.Drawing.Point(520, 37);
+            this.dtpEndCompanyQuantityProduction.Name = "dtpEndCompanyQuantityProduction";
+            this.dtpEndCompanyQuantityProduction.Size = new System.Drawing.Size(200, 23);
+            this.dtpEndCompanyQuantityProduction.TabIndex = 8;
+            // 
+            // btnCompanyQuantityProduction
+            // 
+            this.btnCompanyQuantityProduction.Location = new System.Drawing.Point(779, 39);
+            this.btnCompanyQuantityProduction.Name = "btnCompanyQuantityProduction";
+            this.btnCompanyQuantityProduction.Size = new System.Drawing.Size(117, 23);
+            this.btnCompanyQuantityProduction.TabIndex = 9;
+            this.btnCompanyQuantityProduction.Text = "Search";
+            this.btnCompanyQuantityProduction.UseVisualStyleBackColor = true;
+            // 
+            // CompanyHoursProductionDataGridView
+            // 
+            this.CompanyHoursProductionDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CompanyHoursProductionDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn12,
+            this.dataGridViewTextBoxColumn13,
+            this.dataGridViewTextBoxColumn14,
+            this.dataGridViewTextBoxColumn15,
+            this.dataGridViewTextBoxColumn16,
+            this.dataGridViewTextBoxColumn17,
+            this.dataGridViewTextBoxColumn18,
+            this.dataGridViewTextBoxColumn19,
+            this.dataGridViewTextBoxColumn20,
+            this.dataGridViewTextBoxColumn21,
+            this.dataGridViewTextBoxColumn22});
+            this.CompanyHoursProductionDataGridView.Location = new System.Drawing.Point(24, 82);
+            this.CompanyHoursProductionDataGridView.Name = "CompanyHoursProductionDataGridView";
+            this.CompanyHoursProductionDataGridView.RowTemplate.Height = 25;
+            this.CompanyHoursProductionDataGridView.Size = new System.Drawing.Size(964, 449);
+            this.CompanyHoursProductionDataGridView.TabIndex = 5;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.DataPropertyName = "Supplier";
+            this.dataGridViewTextBoxColumn12.HeaderText = "Supplier";
+            this.dataGridViewTextBoxColumn12.MinimumWidth = 120;
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.dataGridViewTextBoxColumn12.Width = 120;
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.DataPropertyName = "HarvestDate";
+            this.dataGridViewTextBoxColumn13.HeaderText = "HarvestDate";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            // 
+            // dataGridViewTextBoxColumn14
+            // 
+            this.dataGridViewTextBoxColumn14.DataPropertyName = "Employee";
+            this.dataGridViewTextBoxColumn14.HeaderText = "Employee";
+            this.dataGridViewTextBoxColumn14.MinimumWidth = 120;
+            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            this.dataGridViewTextBoxColumn14.Width = 120;
+            // 
+            // dataGridViewTextBoxColumn15
+            // 
+            this.dataGridViewTextBoxColumn15.DataPropertyName = "Farm";
+            this.dataGridViewTextBoxColumn15.HeaderText = "Farm";
+            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            // 
+            // dataGridViewTextBoxColumn16
+            // 
+            this.dataGridViewTextBoxColumn16.DataPropertyName = "Product";
+            this.dataGridViewTextBoxColumn16.HeaderText = "Product";
+            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            // 
+            // dataGridViewTextBoxColumn17
+            // 
+            this.dataGridViewTextBoxColumn17.DataPropertyName = "Type";
+            this.dataGridViewTextBoxColumn17.HeaderText = "Type";
+            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            // 
+            // dataGridViewTextBoxColumn18
+            // 
+            this.dataGridViewTextBoxColumn18.DataPropertyName = "GoodQuantity";
+            this.dataGridViewTextBoxColumn18.HeaderText = "GoodQuantity";
+            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
+            // 
+            // dataGridViewTextBoxColumn19
+            // 
+            this.dataGridViewTextBoxColumn19.DataPropertyName = "Price";
+            this.dataGridViewTextBoxColumn19.HeaderText = "Price";
+            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
+            this.dataGridViewTextBoxColumn19.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn20
+            // 
+            this.dataGridViewTextBoxColumn20.DataPropertyName = "Payment";
+            this.dataGridViewTextBoxColumn20.HeaderText = "Payment";
+            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
+            // 
+            // dataGridViewTextBoxColumn21
+            // 
+            this.dataGridViewTextBoxColumn21.DataPropertyName = "AllQuantity";
+            this.dataGridViewTextBoxColumn21.HeaderText = "AllQuantity";
+            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
+            this.dataGridViewTextBoxColumn21.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn22
+            // 
+            this.dataGridViewTextBoxColumn22.DataPropertyName = "BadQuantity";
+            this.dataGridViewTextBoxColumn22.HeaderText = "BadQuantity";
+            this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
+            this.dataGridViewTextBoxColumn22.Visible = false;
+            // 
+            // comboBoxCompanyHoursProduction
+            // 
+            this.comboBoxCompanyHoursProduction.FormattingEnabled = true;
+            this.comboBoxCompanyHoursProduction.Location = new System.Drawing.Point(32, 37);
+            this.comboBoxCompanyHoursProduction.Name = "comboBoxCompanyHoursProduction";
+            this.comboBoxCompanyHoursProduction.Size = new System.Drawing.Size(198, 23);
+            this.comboBoxCompanyHoursProduction.TabIndex = 6;
+            // 
+            // dtpStartCompanyHoursProduction
+            // 
+            this.dtpStartCompanyHoursProduction.Location = new System.Drawing.Point(278, 37);
+            this.dtpStartCompanyHoursProduction.Name = "dtpStartCompanyHoursProduction";
+            this.dtpStartCompanyHoursProduction.Size = new System.Drawing.Size(200, 23);
+            this.dtpStartCompanyHoursProduction.TabIndex = 7;
+            // 
+            // dtpEndCompanyHoursProduction
+            // 
+            this.dtpEndCompanyHoursProduction.Location = new System.Drawing.Point(520, 37);
+            this.dtpEndCompanyHoursProduction.Name = "dtpEndCompanyHoursProduction";
+            this.dtpEndCompanyHoursProduction.Size = new System.Drawing.Size(200, 23);
+            this.dtpEndCompanyHoursProduction.TabIndex = 8;
+            // 
+            // btnCompanyHoursProduction
+            // 
+            this.btnCompanyHoursProduction.Location = new System.Drawing.Point(779, 39);
+            this.btnCompanyHoursProduction.Name = "btnCompanyHoursProduction";
+            this.btnCompanyHoursProduction.Size = new System.Drawing.Size(117, 23);
+            this.btnCompanyHoursProduction.TabIndex = 9;
+            this.btnCompanyHoursProduction.Text = "Search";
+            this.btnCompanyHoursProduction.UseVisualStyleBackColor = true;
+            // 
             // FormRapport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -727,6 +1047,10 @@ namespace HarvestManagerSystem.view
             this.EmployeeQauntityTabPage.ResumeLayout(false);
             this.EmployeeQauntityTabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeQuantityRapport)).EndInit();
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.CompanyQuantityProductionDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CompanyHoursProductionDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -806,5 +1130,39 @@ namespace HarvestManagerSystem.view
         private System.Windows.Forms.DataGridViewTextBoxColumn QRCreditColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn QRProductionColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn QRHarvestTypeColumn;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.DataGridView CompanyHoursProductionDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
+        private System.Windows.Forms.ComboBox comboBoxCompanyHoursProduction;
+        private System.Windows.Forms.DateTimePicker dtpStartCompanyHoursProduction;
+        private System.Windows.Forms.DateTimePicker dtpEndCompanyHoursProduction;
+        private System.Windows.Forms.Button btnCompanyHoursProduction;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.DataGridView CompanyQuantityProductionDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.ComboBox comboBoxCompanyQuantityProduction;
+        private System.Windows.Forms.DateTimePicker dtpStartCompanyQuantityProduction;
+        private System.Windows.Forms.DateTimePicker dtpEndCompanyQuantityProduction;
+        private System.Windows.Forms.Button btnCompanyQuantityProduction;
     }
 }
