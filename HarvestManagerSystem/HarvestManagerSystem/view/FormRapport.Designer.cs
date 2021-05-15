@@ -29,6 +29,10 @@ namespace HarvestManagerSystem.view
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.RapportTabControl = new System.Windows.Forms.TabControl();
             this.CompanyTabPage = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
@@ -102,23 +106,6 @@ namespace HarvestManagerSystem.view
             this.QRProductionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QRHarvestTypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.CompanyQuantityProductionDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comboBoxCompanyQuantityProduction = new System.Windows.Forms.ComboBox();
-            this.dtpStartCompanyQuantityProduction = new System.Windows.Forms.DateTimePicker();
-            this.dtpEndCompanyQuantityProduction = new System.Windows.Forms.DateTimePicker();
-            this.btnCompanyQuantityProduction = new System.Windows.Forms.Button();
             this.CompanyHoursProductionDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -135,6 +122,30 @@ namespace HarvestManagerSystem.view
             this.dtpStartCompanyHoursProduction = new System.Windows.Forms.DateTimePicker();
             this.dtpEndCompanyHoursProduction = new System.Windows.Forms.DateTimePicker();
             this.btnCompanyHoursProduction = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.comboBoxCompanyQuantityProduction = new System.Windows.Forms.ComboBox();
+            this.dtpStartCompanyQuantityProduction = new System.Windows.Forms.DateTimePicker();
+            this.dtpEndCompanyQuantityProduction = new System.Windows.Forms.DateTimePicker();
+            this.btnCompanyQuantityProduction = new System.Windows.Forms.Button();
+            this.CompanyQuantityProductionDataGridView = new System.Windows.Forms.DataGridView();
+            this.HQProductionIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQHQProductionDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQProductionSupplierNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQProductionFarmNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQProductionProductNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQProductionProductCodeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQProductionTotalQuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQProductionProductPriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQProductionTotalEmployeeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQProductionPaymentCompanyColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQProductionTotalMinutesColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQProductionTypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQProductionSupplierColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQProductionFarmIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQProductionFarmColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQProductionProductColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HQProductionProductDetailColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoursPaymentColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RapportTabControl.SuspendLayout();
             this.CompanyTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CompanyRapportDataGridView)).BeginInit();
@@ -143,9 +154,9 @@ namespace HarvestManagerSystem.view
             this.EmployeeQauntityTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeQuantityRapport)).BeginInit();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CompanyHoursProductionDataGridView)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CompanyQuantityProductionDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CompanyHoursProductionDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // RapportTabControl
@@ -761,146 +772,6 @@ namespace HarvestManagerSystem.view
             this.tabPage1.Text = "Company Hours Production";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.CompanyQuantityProductionDataGridView);
-            this.tabPage2.Controls.Add(this.comboBoxCompanyQuantityProduction);
-            this.tabPage2.Controls.Add(this.dtpStartCompanyQuantityProduction);
-            this.tabPage2.Controls.Add(this.dtpEndCompanyQuantityProduction);
-            this.tabPage2.Controls.Add(this.btnCompanyQuantityProduction);
-            this.tabPage2.Location = new System.Drawing.Point(4, 24);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1013, 569);
-            this.tabPage2.TabIndex = 4;
-            this.tabPage2.Text = "Company Quantity Production";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // CompanyQuantityProductionDataGridView
-            // 
-            this.CompanyQuantityProductionDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.CompanyQuantityProductionDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8,
-            this.dataGridViewTextBoxColumn9,
-            this.dataGridViewTextBoxColumn10,
-            this.dataGridViewTextBoxColumn11});
-            this.CompanyQuantityProductionDataGridView.Location = new System.Drawing.Point(24, 82);
-            this.CompanyQuantityProductionDataGridView.Name = "CompanyQuantityProductionDataGridView";
-            this.CompanyQuantityProductionDataGridView.RowTemplate.Height = 25;
-            this.CompanyQuantityProductionDataGridView.Size = new System.Drawing.Size(964, 449);
-            this.CompanyQuantityProductionDataGridView.TabIndex = 5;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Supplier";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Supplier";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 120;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 120;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "HarvestDate";
-            this.dataGridViewTextBoxColumn2.HeaderText = "HarvestDate";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Employee";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Employee";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 120;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 120;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Farm";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Farm";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Product";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Product";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "Type";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Type";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "GoodQuantity";
-            this.dataGridViewTextBoxColumn7.HeaderText = "GoodQuantity";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "Price";
-            this.dataGridViewTextBoxColumn8.HeaderText = "Price";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.Width = 80;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "Payment";
-            this.dataGridViewTextBoxColumn9.HeaderText = "Payment";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "AllQuantity";
-            this.dataGridViewTextBoxColumn10.HeaderText = "AllQuantity";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "BadQuantity";
-            this.dataGridViewTextBoxColumn11.HeaderText = "BadQuantity";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.Visible = false;
-            // 
-            // comboBoxCompanyQuantityProduction
-            // 
-            this.comboBoxCompanyQuantityProduction.FormattingEnabled = true;
-            this.comboBoxCompanyQuantityProduction.Location = new System.Drawing.Point(32, 37);
-            this.comboBoxCompanyQuantityProduction.Name = "comboBoxCompanyQuantityProduction";
-            this.comboBoxCompanyQuantityProduction.Size = new System.Drawing.Size(198, 23);
-            this.comboBoxCompanyQuantityProduction.TabIndex = 6;
-            // 
-            // dtpStartCompanyQuantityProduction
-            // 
-            this.dtpStartCompanyQuantityProduction.Location = new System.Drawing.Point(278, 37);
-            this.dtpStartCompanyQuantityProduction.Name = "dtpStartCompanyQuantityProduction";
-            this.dtpStartCompanyQuantityProduction.Size = new System.Drawing.Size(200, 23);
-            this.dtpStartCompanyQuantityProduction.TabIndex = 7;
-            // 
-            // dtpEndCompanyQuantityProduction
-            // 
-            this.dtpEndCompanyQuantityProduction.Location = new System.Drawing.Point(520, 37);
-            this.dtpEndCompanyQuantityProduction.Name = "dtpEndCompanyQuantityProduction";
-            this.dtpEndCompanyQuantityProduction.Size = new System.Drawing.Size(200, 23);
-            this.dtpEndCompanyQuantityProduction.TabIndex = 8;
-            // 
-            // btnCompanyQuantityProduction
-            // 
-            this.btnCompanyQuantityProduction.Location = new System.Drawing.Point(779, 39);
-            this.btnCompanyQuantityProduction.Name = "btnCompanyQuantityProduction";
-            this.btnCompanyQuantityProduction.Size = new System.Drawing.Size(117, 23);
-            this.btnCompanyQuantityProduction.TabIndex = 9;
-            this.btnCompanyQuantityProduction.Text = "Search";
-            this.btnCompanyQuantityProduction.UseVisualStyleBackColor = true;
-            // 
             // CompanyHoursProductionDataGridView
             // 
             this.CompanyHoursProductionDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -1026,6 +897,263 @@ namespace HarvestManagerSystem.view
             this.btnCompanyHoursProduction.Text = "Search";
             this.btnCompanyHoursProduction.UseVisualStyleBackColor = true;
             // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.CompanyQuantityProductionDataGridView);
+            this.tabPage2.Controls.Add(this.comboBoxCompanyQuantityProduction);
+            this.tabPage2.Controls.Add(this.dtpStartCompanyQuantityProduction);
+            this.tabPage2.Controls.Add(this.dtpEndCompanyQuantityProduction);
+            this.tabPage2.Controls.Add(this.btnCompanyQuantityProduction);
+            this.tabPage2.Location = new System.Drawing.Point(4, 24);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1013, 569);
+            this.tabPage2.TabIndex = 4;
+            this.tabPage2.Text = "Company Quantity Production";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxCompanyQuantityProduction
+            // 
+            this.comboBoxCompanyQuantityProduction.FormattingEnabled = true;
+            this.comboBoxCompanyQuantityProduction.Location = new System.Drawing.Point(15, 15);
+            this.comboBoxCompanyQuantityProduction.Name = "comboBoxCompanyQuantityProduction";
+            this.comboBoxCompanyQuantityProduction.Size = new System.Drawing.Size(198, 23);
+            this.comboBoxCompanyQuantityProduction.TabIndex = 6;
+            // 
+            // dtpStartCompanyQuantityProduction
+            // 
+            this.dtpStartCompanyQuantityProduction.Location = new System.Drawing.Point(278, 15);
+            this.dtpStartCompanyQuantityProduction.Name = "dtpStartCompanyQuantityProduction";
+            this.dtpStartCompanyQuantityProduction.Size = new System.Drawing.Size(200, 23);
+            this.dtpStartCompanyQuantityProduction.TabIndex = 7;
+            // 
+            // dtpEndCompanyQuantityProduction
+            // 
+            this.dtpEndCompanyQuantityProduction.Location = new System.Drawing.Point(521, 15);
+            this.dtpEndCompanyQuantityProduction.Name = "dtpEndCompanyQuantityProduction";
+            this.dtpEndCompanyQuantityProduction.Size = new System.Drawing.Size(200, 23);
+            this.dtpEndCompanyQuantityProduction.TabIndex = 8;
+            // 
+            // btnCompanyQuantityProduction
+            // 
+            this.btnCompanyQuantityProduction.Location = new System.Drawing.Point(788, 17);
+            this.btnCompanyQuantityProduction.Name = "btnCompanyQuantityProduction";
+            this.btnCompanyQuantityProduction.Size = new System.Drawing.Size(117, 23);
+            this.btnCompanyQuantityProduction.TabIndex = 9;
+            this.btnCompanyQuantityProduction.Text = "Search";
+            this.btnCompanyQuantityProduction.UseVisualStyleBackColor = true;
+            // 
+            // CompanyQuantityProductionDataGridView
+            // 
+            this.CompanyQuantityProductionDataGridView.AllowUserToAddRows = false;
+            this.CompanyQuantityProductionDataGridView.AllowUserToDeleteRows = false;
+            this.CompanyQuantityProductionDataGridView.AllowUserToOrderColumns = true;
+            this.CompanyQuantityProductionDataGridView.AllowUserToResizeColumns = false;
+            this.CompanyQuantityProductionDataGridView.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            this.CompanyQuantityProductionDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.CompanyQuantityProductionDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.CompanyQuantityProductionDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.CompanyQuantityProductionDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.CompanyQuantityProductionDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.CompanyQuantityProductionDataGridView.ColumnHeadersHeight = 34;
+            this.CompanyQuantityProductionDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.CompanyQuantityProductionDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.HQProductionIdColumn,
+            this.HQHQProductionDateColumn,
+            this.HQProductionSupplierNameColumn,
+            this.HQProductionFarmNameColumn,
+            this.HQProductionProductNameColumn,
+            this.HQProductionProductCodeColumn,
+            this.HQProductionTotalQuantityColumn,
+            this.HQProductionProductPriceColumn,
+            this.HQProductionTotalEmployeeColumn,
+            this.HQProductionPaymentCompanyColumn,
+            this.HQProductionTotalMinutesColumn,
+            this.HQProductionTypeColumn,
+            this.HQProductionSupplierColumn,
+            this.HQProductionFarmIdColumn,
+            this.HQProductionFarmColumn,
+            this.HQProductionProductColumn,
+            this.HQProductionProductDetailColumn,
+            this.HoursPaymentColumn});
+            this.CompanyQuantityProductionDataGridView.EnableHeadersVisualStyles = false;
+            this.CompanyQuantityProductionDataGridView.Location = new System.Drawing.Point(15, 46);
+            this.CompanyQuantityProductionDataGridView.MultiSelect = false;
+            this.CompanyQuantityProductionDataGridView.Name = "CompanyQuantityProductionDataGridView";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(234)))), ((int)(((byte)(246)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.CompanyQuantityProductionDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.CompanyQuantityProductionDataGridView.RowHeadersVisible = false;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(233)))), ((int)(((byte)(217)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.CompanyQuantityProductionDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.CompanyQuantityProductionDataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CompanyQuantityProductionDataGridView.RowTemplate.Height = 25;
+            this.CompanyQuantityProductionDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.CompanyQuantityProductionDataGridView.Size = new System.Drawing.Size(995, 520);
+            this.CompanyQuantityProductionDataGridView.TabIndex = 19;
+            // 
+            // HQProductionIdColumn
+            // 
+            this.HQProductionIdColumn.DataPropertyName = "ProductionID";
+            this.HQProductionIdColumn.HeaderText = "ID";
+            this.HQProductionIdColumn.Name = "HQProductionIdColumn";
+            this.HQProductionIdColumn.ReadOnly = true;
+            this.HQProductionIdColumn.Visible = false;
+            // 
+            // HQHQProductionDateColumn
+            // 
+            this.HQHQProductionDateColumn.DataPropertyName = "ProductionDate";
+            this.HQHQProductionDateColumn.HeaderText = "Date";
+            this.HQHQProductionDateColumn.MinimumWidth = 100;
+            this.HQHQProductionDateColumn.Name = "HQHQProductionDateColumn";
+            this.HQHQProductionDateColumn.ReadOnly = true;
+            // 
+            // HQProductionSupplierNameColumn
+            // 
+            this.HQProductionSupplierNameColumn.DataPropertyName = "SupplierName";
+            this.HQProductionSupplierNameColumn.HeaderText = "Fournisseur";
+            this.HQProductionSupplierNameColumn.MinimumWidth = 160;
+            this.HQProductionSupplierNameColumn.Name = "HQProductionSupplierNameColumn";
+            this.HQProductionSupplierNameColumn.ReadOnly = true;
+            this.HQProductionSupplierNameColumn.Width = 200;
+            // 
+            // HQProductionFarmNameColumn
+            // 
+            this.HQProductionFarmNameColumn.DataPropertyName = "FarmName";
+            this.HQProductionFarmNameColumn.HeaderText = "Champ";
+            this.HQProductionFarmNameColumn.MinimumWidth = 160;
+            this.HQProductionFarmNameColumn.Name = "HQProductionFarmNameColumn";
+            this.HQProductionFarmNameColumn.ReadOnly = true;
+            this.HQProductionFarmNameColumn.Width = 160;
+            // 
+            // HQProductionProductNameColumn
+            // 
+            this.HQProductionProductNameColumn.DataPropertyName = "ProductName";
+            this.HQProductionProductNameColumn.HeaderText = "Produit";
+            this.HQProductionProductNameColumn.MinimumWidth = 120;
+            this.HQProductionProductNameColumn.Name = "HQProductionProductNameColumn";
+            this.HQProductionProductNameColumn.ReadOnly = true;
+            this.HQProductionProductNameColumn.Width = 120;
+            // 
+            // HQProductionProductCodeColumn
+            // 
+            this.HQProductionProductCodeColumn.DataPropertyName = "ProductType";
+            this.HQProductionProductCodeColumn.HeaderText = "Type";
+            this.HQProductionProductCodeColumn.MinimumWidth = 120;
+            this.HQProductionProductCodeColumn.Name = "HQProductionProductCodeColumn";
+            this.HQProductionProductCodeColumn.ReadOnly = true;
+            this.HQProductionProductCodeColumn.Width = 120;
+            // 
+            // HQProductionTotalQuantityColumn
+            // 
+            this.HQProductionTotalQuantityColumn.DataPropertyName = "TotalQuantity";
+            this.HQProductionTotalQuantityColumn.HeaderText = "Quantity";
+            this.HQProductionTotalQuantityColumn.Name = "HQProductionTotalQuantityColumn";
+            this.HQProductionTotalQuantityColumn.ReadOnly = true;
+            // 
+            // HQProductionProductPriceColumn
+            // 
+            this.HQProductionProductPriceColumn.DataPropertyName = "Price";
+            this.HQProductionProductPriceColumn.HeaderText = "Prix";
+            this.HQProductionProductPriceColumn.MinimumWidth = 70;
+            this.HQProductionProductPriceColumn.Name = "HQProductionProductPriceColumn";
+            this.HQProductionProductPriceColumn.ReadOnly = true;
+            // 
+            // HQProductionTotalEmployeeColumn
+            // 
+            this.HQProductionTotalEmployeeColumn.DataPropertyName = "TotalEmployee";
+            this.HQProductionTotalEmployeeColumn.HeaderText = "Emp.N";
+            this.HQProductionTotalEmployeeColumn.MinimumWidth = 60;
+            this.HQProductionTotalEmployeeColumn.Name = "HQProductionTotalEmployeeColumn";
+            this.HQProductionTotalEmployeeColumn.ReadOnly = true;
+            this.HQProductionTotalEmployeeColumn.Width = 70;
+            // 
+            // HQProductionPaymentCompanyColumn
+            // 
+            this.HQProductionPaymentCompanyColumn.DataPropertyName = "QuantityPayment";
+            this.HQProductionPaymentCompanyColumn.HeaderText = "Payment";
+            this.HQProductionPaymentCompanyColumn.Name = "HQProductionPaymentCompanyColumn";
+            this.HQProductionPaymentCompanyColumn.ReadOnly = true;
+            // 
+            // HQProductionTotalMinutesColumn
+            // 
+            this.HQProductionTotalMinutesColumn.DataPropertyName = "TotalMinutes";
+            this.HQProductionTotalMinutesColumn.HeaderText = "Minutes";
+            this.HQProductionTotalMinutesColumn.MinimumWidth = 80;
+            this.HQProductionTotalMinutesColumn.Name = "HQProductionTotalMinutesColumn";
+            this.HQProductionTotalMinutesColumn.ReadOnly = true;
+            this.HQProductionTotalMinutesColumn.Visible = false;
+            // 
+            // HQProductionTypeColumn
+            // 
+            this.HQProductionTypeColumn.DataPropertyName = "ProductionType";
+            this.HQProductionTypeColumn.HeaderText = "ProductionType";
+            this.HQProductionTypeColumn.Name = "HQProductionTypeColumn";
+            this.HQProductionTypeColumn.ReadOnly = true;
+            this.HQProductionTypeColumn.Visible = false;
+            // 
+            // HQProductionSupplierColumn
+            // 
+            this.HQProductionSupplierColumn.DataPropertyName = "Supplier";
+            this.HQProductionSupplierColumn.HeaderText = "Supplier";
+            this.HQProductionSupplierColumn.Name = "HQProductionSupplierColumn";
+            this.HQProductionSupplierColumn.Visible = false;
+            // 
+            // HQProductionFarmIdColumn
+            // 
+            this.HQProductionFarmIdColumn.DataPropertyName = "FarmId";
+            this.HQProductionFarmIdColumn.HeaderText = "FarmId";
+            this.HQProductionFarmIdColumn.Name = "HQProductionFarmIdColumn";
+            this.HQProductionFarmIdColumn.Visible = false;
+            // 
+            // HQProductionFarmColumn
+            // 
+            this.HQProductionFarmColumn.DataPropertyName = "Farm";
+            this.HQProductionFarmColumn.HeaderText = "Farm";
+            this.HQProductionFarmColumn.Name = "HQProductionFarmColumn";
+            this.HQProductionFarmColumn.Visible = false;
+            // 
+            // HQProductionProductColumn
+            // 
+            this.HQProductionProductColumn.DataPropertyName = "ProductId";
+            this.HQProductionProductColumn.HeaderText = "Product";
+            this.HQProductionProductColumn.Name = "HQProductionProductColumn";
+            this.HQProductionProductColumn.Visible = false;
+            // 
+            // HQProductionProductDetailColumn
+            // 
+            this.HQProductionProductDetailColumn.DataPropertyName = "ProductDetail";
+            this.HQProductionProductDetailColumn.HeaderText = "ProductDetail";
+            this.HQProductionProductDetailColumn.Name = "HQProductionProductDetailColumn";
+            this.HQProductionProductDetailColumn.Visible = false;
+            // 
+            // HoursPaymentColumn
+            // 
+            this.HoursPaymentColumn.DataPropertyName = "HoursPayment";
+            this.HoursPaymentColumn.HeaderText = "HoursPayment";
+            this.HoursPaymentColumn.Name = "HoursPaymentColumn";
+            this.HoursPaymentColumn.Visible = false;
+            // 
             // FormRapport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1048,9 +1176,9 @@ namespace HarvestManagerSystem.view
             this.EmployeeQauntityTabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeQuantityRapport)).EndInit();
             this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.CompanyHoursProductionDataGridView)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.CompanyQuantityProductionDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CompanyHoursProductionDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1148,21 +1276,28 @@ namespace HarvestManagerSystem.view
         private System.Windows.Forms.DateTimePicker dtpEndCompanyHoursProduction;
         private System.Windows.Forms.Button btnCompanyHoursProduction;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridView CompanyQuantityProductionDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.ComboBox comboBoxCompanyQuantityProduction;
         private System.Windows.Forms.DateTimePicker dtpStartCompanyQuantityProduction;
         private System.Windows.Forms.DateTimePicker dtpEndCompanyQuantityProduction;
         private System.Windows.Forms.Button btnCompanyQuantityProduction;
+        private System.Windows.Forms.DataGridView CompanyQuantityProductionDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQProductionIdColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQHQProductionDateColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQProductionSupplierNameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQProductionFarmNameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQProductionProductNameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQProductionProductCodeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQProductionTotalQuantityColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQProductionProductPriceColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQProductionTotalEmployeeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQProductionPaymentCompanyColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQProductionTotalMinutesColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQProductionTypeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQProductionSupplierColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQProductionFarmIdColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQProductionFarmColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQProductionProductColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HQProductionProductDetailColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoursPaymentColumn;
     }
 }

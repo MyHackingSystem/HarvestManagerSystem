@@ -331,5 +331,92 @@ namespace HarvestManagerSystem.database
             return list;
         }
 
+        //*******************************
+        //Search production data by date
+        //*******************************
+        public List<Production> searchHarvestQuantityProduction(DateTime fromDate, DateTime toDate, int type, int supplierId)
+        {
+            string select = "SELECT "
+        + ProductionDAO.TABLE_PRODUCTION + "." + ProductionDAO.COLUMN_PRODUCTION_ID + ", "
+        + ProductionDAO.TABLE_PRODUCTION + "." + ProductionDAO.COLUMN_PRODUCTION_TYPE + ", "
+        + ProductionDAO.TABLE_PRODUCTION + "." + ProductionDAO.COLUMN_PRODUCTION_DATE + ", "
+        + ProductionDAO.TABLE_PRODUCTION + "." + ProductionDAO.COLUMN_PRODUCTION_TOTAL_EMPLOYEES + ", "
+        + ProductionDAO.TABLE_PRODUCTION + "." + ProductionDAO.COLUMN_PRODUCTION_TOTAL_QUANTITY + ", "
+        + ProductionDAO.TABLE_PRODUCTION + "." + ProductionDAO.COLUMN_PRODUCTION_TOTAL_MINUTES + ", "
+        + ProductionDAO.TABLE_PRODUCTION + "." + ProductionDAO.COLUMN_PRODUCTION_PRICE + ", "
+        + SupplierDAO.TABLE_SUPPLIER + "." + SupplierDAO.COLUMN_SUPPLIER_ID + ", "
+        + SupplierDAO.TABLE_SUPPLIER + "." + SupplierDAO.COLUMN_SUPPLIER_NAME + ", "
+        + FarmDAO.TABLE_FARM + "." + FarmDAO.COLUMN_FARM_ID + ", "
+        + FarmDAO.TABLE_FARM + "." + FarmDAO.COLUMN_FARM_NAME + ", "
+        + ProductDAO.TABLE_PRODUCT + "." + ProductDAO.COLUMN_PRODUCT_ID + ", "
+        + ProductDAO.TABLE_PRODUCT + "." + ProductDAO.COLUMN_PRODUCT_NAME + ", "
+        + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_DETAIL_ID + ", "
+        + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_TYPE + " "
+        + " FROM " + ProductionDAO.TABLE_PRODUCTION
+        + " LEFT JOIN " + SupplierDAO.TABLE_SUPPLIER + " "
+        + " ON " + SupplierDAO.TABLE_SUPPLIER + "." + SupplierDAO.COLUMN_SUPPLIER_ID + " = " + ProductionDAO.TABLE_PRODUCTION + "." + ProductionDAO.COLUMN_PRODUCTION_SUPPLIER_ID
+        + " LEFT JOIN " + FarmDAO.TABLE_FARM + " "
+        + " ON " + FarmDAO.TABLE_FARM + "." + FarmDAO.COLUMN_FARM_ID + " = " + ProductionDAO.TABLE_PRODUCTION + "." + ProductionDAO.COLUMN_PRODUCTION_FARM_ID
+        + " LEFT JOIN " + ProductDAO.TABLE_PRODUCT + " "
+        + " ON " + ProductDAO.TABLE_PRODUCT + "." + ProductDAO.COLUMN_PRODUCT_ID + " = " + ProductionDAO.TABLE_PRODUCTION + "." + ProductionDAO.COLUMN_PRODUCTION_PRODUCT_ID
+        + " LEFT JOIN " + ProductDetailDAO.TABLE_PRODUCT_DETAIL + " "
+        + " ON " + ProductDetailDAO.TABLE_PRODUCT_DETAIL + "." + ProductDetailDAO.COLUMN_PRODUCT_DETAIL_ID + " = " + ProductionDAO.TABLE_PRODUCTION + "." + ProductionDAO.COLUMN_PRODUCTION_PRODUCT_DETAIL_ID
+        + " WHERE " + ProductionDAO.COLUMN_PRODUCTION_DATE
+        + " BETWEEN strftime('%Y-%m-%d %H:%M:%S', '" + fromDate.ToString("yyyy'-'MM'-'dd' 'HH':'mm':'ss") + "') AND strftime('%Y-%m-%d %H:%M:%S', '" + toDate.ToString("yyyy'-'MM'-'dd' 'HH':'mm':'ss") + "') "
+        + " AND " + ProductionDAO.COLUMN_PRODUCTION_TYPE + " != " + type
+        + " AND " + ProductionDAO.TABLE_PRODUCTION + "." + ProductionDAO.COLUMN_PRODUCTION_SUPPLIER_ID + " = " + supplierId
+        + " ORDER BY " + ProductionDAO.COLUMN_PRODUCTION_DATE + " DESC ;";
+
+            try
+            {
+                SQLiteCommand sQLiteCommand = new SQLiteCommand(select, mSQLiteConnection);
+                OpenConnection();
+                SQLiteDataReader result = sQLiteCommand.ExecuteReader();
+                return ProductionResultDataReader(result);
+            }
+            catch (SQLiteException e)
+            {
+                Console.WriteLine(e.StackTrace);
+                throw e;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+        }
+
+        //Help method to get data from SQLiteDataReader
+        private List<Production> ProductionResultDataReader(SQLiteDataReader result)
+        {
+            List<Production> list = new List<Production>();
+
+            if (result.HasRows)
+            {
+                while (result.Read())
+                {
+                    Production production = new Production();
+                    production.ProductionID = Convert.ToInt32((result[ProductionDAO.COLUMN_PRODUCTION_ID]).ToString());
+                    production.ProductionType = Convert.ToInt32((result[ProductionDAO.COLUMN_PRODUCTION_TYPE]).ToString());
+                    production.ProductionDate = (DateTime)result[ProductionDAO.COLUMN_PRODUCTION_DATE];
+                    production.TotalEmployee = Convert.ToInt32((result[ProductionDAO.COLUMN_PRODUCTION_TOTAL_EMPLOYEES]).ToString());
+                    production.TotalQuantity = Convert.ToDouble((result[ProductionDAO.COLUMN_PRODUCTION_TOTAL_QUANTITY]).ToString());
+                    production.TotalMinutes = Convert.ToDouble((result[ProductionDAO.COLUMN_PRODUCTION_TOTAL_MINUTES]).ToString());
+                    production.Price = Convert.ToDouble((result[ProductionDAO.COLUMN_PRODUCTION_PRICE]).ToString());
+                    production.Supplier.SupplierId = Convert.ToInt32((result[SupplierDAO.COLUMN_SUPPLIER_ID]).ToString());
+                    production.Supplier.SupplierName = (string)result[SupplierDAO.COLUMN_SUPPLIER_NAME];
+                    production.Farm.FarmId = Convert.ToInt32((result[FarmDAO.COLUMN_FARM_ID]).ToString());
+                    production.Farm.FarmName = (string)result[FarmDAO.COLUMN_FARM_NAME];
+                    production.Product.ProductId = Convert.ToInt32((result[ProductDAO.COLUMN_PRODUCT_ID]).ToString());
+                    production.Product.ProductName = (string)result[ProductDAO.COLUMN_PRODUCT_NAME];
+                    production.ProductDetail.ProductDetailId = Convert.ToInt32((result[ProductDetailDAO.COLUMN_PRODUCT_DETAIL_ID]).ToString());
+                    production.ProductDetail.ProductType = (string)result[ProductDetailDAO.COLUMN_PRODUCT_TYPE];
+                    list.Add(production);
+                }
+            }
+
+            return list;
+        }
+
     }
 }

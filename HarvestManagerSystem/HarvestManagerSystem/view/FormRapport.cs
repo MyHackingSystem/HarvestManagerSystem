@@ -15,37 +15,13 @@ namespace HarvestManagerSystem.view
     {
 
         private RapportDAO rapportDAO = RapportDAO.getInstance();
+        private ProductionDAO productionDAO = ProductionDAO.getInstance();
         private Dictionary<string, Supplier> mSupplierDictionary = new Dictionary<string, Supplier>();
         private Dictionary<string, Employee> mEmployeeDictionary = new Dictionary<string, Employee>();
 
-        private static FormRapport instance;
-
-        private FormRapport()
+        public FormRapport()
         {
             InitializeComponent();
-        }
-
-        public static FormRapport getInstance()
-        {
-            if (instance == null)
-            {
-                instance = new FormRapport();
-            }
-            return instance;
-        }
-
-        public void ShowForm()
-        {
-            if (instance != null)
-            {
-                instance.BringToFront();
-            }
-            else
-            {
-                instance = new FormRapport();
-
-            }
-            instance.Show();
         }
 
         private void FormRapport_Load(object sender, EventArgs e)
@@ -55,10 +31,9 @@ namespace HarvestManagerSystem.view
 
         private void FormRapport_FormClosed(object sender, FormClosedEventArgs e)
         {
-            instance = null;
         }
 
-        #region Company rapport
+        #region ******************************************** Company rapport ***********************************************************
 
         List<CompanyRapport> listQuantityProduction = new List<CompanyRapport>();
         void DisplayRapportCompanyData()
@@ -132,11 +107,7 @@ namespace HarvestManagerSystem.view
 
         #endregion
 
-
-
-
-
-        #region Employee Hours Rapport
+        #region ************************************ Employee Hours Rapport ****************************************************
 
         List<HoursEmployeeRapport> listEmployeeHoursProduction = new List<HoursEmployeeRapport>();
 
@@ -205,8 +176,6 @@ namespace HarvestManagerSystem.view
         }
 
         #endregion
-
-
 
         #region  ****************************************** Rapport Employee Quantity ***********************************************************
 
@@ -297,12 +266,63 @@ namespace HarvestManagerSystem.view
                 case 2:
                     DisplayRapportEmployeeQuantity();
                     break;
+                case 3:
+                    DisplayCompanyHoursProduction();
+                    break;
+                case 4:
+                    DisplayCompanyQuantityProduction();
+                    MessageBox.Show("Company Quantity Production");
+                    break;
                 default:
                     Console.WriteLine("nothing");
                     break;
             }
         }
 
+        #region ************************************  Display Company Quantity Production Rapport Code ***************************************
 
+        List<Production> listCompanyQuantityProduction = new List<Production>();
+
+        private void DisplayCompanyQuantityProduction()
+        {
+            dtpStartCompanyQuantityProduction.Value = DateTime.Now.AddDays(-29);
+            dtpEndCompanyQuantityProduction.Value = DateTime.Now.AddDays(1);
+            mSupplierDictionary = Common.SupplierNameList(comboBoxCompanyQuantityProduction);
+            int id = mSupplierDictionary.GetValueOrDefault(cmbCompanyRapportSearch.GetItemText(cmbCompanyRapportSearch.SelectedItem)).SupplierId;
+            UpdateDisplayHarvestQuantityData(dtpStartCompanyQuantityProduction.Value, dtpEndCompanyQuantityProduction.Value, id);
+        }
+
+        private void UpdateDisplayHarvestQuantityData(DateTime fromDate, DateTime toDate, int id)
+        {
+            listCompanyQuantityProduction.Clear();
+            try
+            {
+                listCompanyQuantityProduction = rapportDAO.searchHarvestQuantityProduction(dtpStartCompanyQuantityProduction.Value, dtpEndCompanyQuantityProduction.Value, 1, id);
+
+                if (listCompanyQuantityProduction.Count > 0)
+                {
+                    CompanyQuantityProductionDataGridView.DataSource = listCompanyQuantityProduction;
+                }
+                else
+                {
+                    CompanyQuantityProductionDataGridView.DataSource = new List<Production>();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("UpdateDisplayHarvestQuantityData called: " + ex.Message);
+            }
+            SortDisplayMasterQuantityColumnsIndex();
+        }
+
+        #endregion
+
+        #region ************************************  Display Company Hours Production Rapport Code ***************************************
+        private void DisplayCompanyHoursProduction()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

@@ -791,8 +791,8 @@ namespace HarvestManagerSystem
 
         private void RapportButton_Click(object sender, EventArgs e)
         {
-            FormRapport rapport = FormRapport.getInstance();
-            rapport.ShowForm();
+            FormRapport rapport = new FormRapport();
+            rapport.ShowDialog();
         }
 
         private void HarvestMS_FormClosed(object sender, FormClosedEventArgs e)
