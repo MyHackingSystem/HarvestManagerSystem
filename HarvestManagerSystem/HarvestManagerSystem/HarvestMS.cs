@@ -849,8 +849,6 @@ namespace HarvestManagerSystem
             formAddTransport.ShowDialog();
         }
 
-
-
         #endregion
 
         private void panelQuantityCompanyProduction_Paint(object sender, PaintEventArgs e)

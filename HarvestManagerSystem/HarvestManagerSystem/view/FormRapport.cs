@@ -16,6 +16,7 @@ namespace HarvestManagerSystem.view
 
         private RapportDAO rapportDAO = RapportDAO.getInstance();
         private ProductionDAO productionDAO = ProductionDAO.getInstance();
+        private SupplierDAO supplierDAO = SupplierDAO.getInstance();
         private Dictionary<string, Supplier> mSupplierDictionary = new Dictionary<string, Supplier>();
         private Dictionary<string, Employee> mEmployeeDictionary = new Dictionary<string, Employee>();
 
@@ -26,84 +27,36 @@ namespace HarvestManagerSystem.view
 
         private void FormRapport_Load(object sender, EventArgs e)
         {
-            DisplayRapportCompanyData();
+            DisplayRapportEmployeeHours();
         }
 
         private void FormRapport_FormClosed(object sender, FormClosedEventArgs e)
         {
         }
 
-        #region ******************************************** Company rapport ***********************************************************
+        #region ******************************************** Tab Control Selected Index ***********************************************************
 
-        List<CompanyRapport> listQuantityProduction = new List<CompanyRapport>();
-        void DisplayRapportCompanyData()
+        private void RapportTabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dtpStartCompanyRapportSearch.Value = DateTime.Now.AddDays(-29);
-            dtpEndCompanyRapportSearch.Value = DateTime.Now.AddDays(1);
-            mSupplierDictionary = Common.SupplierNameList(cmbCompanyRapportSearch);
-            int id = mSupplierDictionary.GetValueOrDefault(cmbCompanyRapportSearch.GetItemText(cmbCompanyRapportSearch.SelectedItem)).SupplierId;
-            UpdateRapportCompanyData(dtpStartCompanyRapportSearch.Value, dtpEndCompanyRapportSearch.Value, id);
-        }
-
-        private void UpdateRapportCompanyData(DateTime fromDate, DateTime toDate, int SupplierId)
-        {
-            listQuantityProduction.Clear();
-            try
+            switch (RapportTabControl.SelectedIndex)
             {
-                listQuantityProduction = rapportDAO.searchCompanyProduction(dtpStartCompanyRapportSearch.Value, dtpEndCompanyRapportSearch.Value, 1, SupplierId);
-                CompanyRapportDataGridView.DataSource = listQuantityProduction;
+                case 0:
+                    DisplayRapportEmployeeHours();
+                    break;
+                case 1:
+                    DisplayRapportEmployeeQuantity();
+                    break;
+                case 2:
+                    DisplayCompanyHoursProduction();
+                    break;
+                case 3:
+                    DisplayCompanyQuantityProduction();
+                    break;
+                default:
+                    Console.WriteLine("nothing");
+                    break;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("UpdateDisplayHarvestQuantityData called: " + ex.Message);
-            }
-            SortDisplayMasterQuantityColumnsIndex();
-            txtTotalPayment.Text = calculTotalPayment().ToString();
-            txtTotalQuantity.Text = calculTotalQuantity().ToString();
         }
-
-        private double calculTotalPayment()
-        {
-            double total = 0.0;
-            foreach (CompanyRapport cr in listQuantityProduction)
-            {
-                total += cr.Payment;
-            }
-            return total;
-        }
-
-        private double calculTotalQuantity()
-        {
-            double total = 0.0;
-            foreach (CompanyRapport cr in listQuantityProduction)
-            {
-                total += cr.AllQuantity;
-            }
-            return total;
-        }
-
-        private void btnCompanyRapportSearch_Click(object sender, EventArgs e)
-        {
-            int id = mSupplierDictionary.GetValueOrDefault(cmbCompanyRapportSearch.GetItemText(cmbCompanyRapportSearch.SelectedItem)).SupplierId;
-            UpdateRapportCompanyData(dtpStartCompanyRapportSearch.Value, dtpEndCompanyRapportSearch.Value, id);
-        }
-
-        private void SortDisplayMasterQuantityColumnsIndex()
-        {
-            
-            CompanyRapportDataGridView.Columns["SupplierColumn"].DisplayIndex = 0;
-            CompanyRapportDataGridView.Columns["HarvestDateColumn"].DisplayIndex = 1;
-            CompanyRapportDataGridView.Columns["EmployeeColumn"].DisplayIndex = 2;
-            CompanyRapportDataGridView.Columns["FarmColumn"].DisplayIndex = 3;
-            CompanyRapportDataGridView.Columns["ProductColumn"].DisplayIndex = 4;
-            CompanyRapportDataGridView.Columns["TypeColumn"].DisplayIndex = 5;
-            CompanyRapportDataGridView.Columns["GoodQuantityColumn"].DisplayIndex = 6;
-            CompanyRapportDataGridView.Columns["PriceColumn"].DisplayIndex = 7;
-            CompanyRapportDataGridView.Columns["PaymentColumn"].DisplayIndex = 8;
-            CompanyRapportDataGridView.Columns["PaymentColumn"].DisplayIndex = 9;
-            CompanyRapportDataGridView.Columns["BadQuantityColumn"].DisplayIndex = 10;
-        }
-
 
         #endregion
 
@@ -253,43 +206,30 @@ namespace HarvestManagerSystem.view
 
         #endregion
 
-        private void RapportTabControl_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            switch (RapportTabControl.SelectedIndex)
-            {
-                case 0:
-                    DisplayRapportCompanyData(); 
-                    break;
-                case 1:
-                    DisplayRapportEmployeeHours();
-                    break;
-                case 2:
-                    DisplayRapportEmployeeQuantity();
-                    break;
-                case 3:
-                    DisplayCompanyHoursProduction();
-                    break;
-                case 4:
-                    DisplayCompanyQuantityProduction();
-                    MessageBox.Show("Company Quantity Production");
-                    break;
-                default:
-                    Console.WriteLine("nothing");
-                    break;
-            }
-        }
-
         #region ************************************  Display Company Quantity Production Rapport Code ***************************************
 
         List<Production> listCompanyQuantityProduction = new List<Production>();
+        private Dictionary<string, Supplier> mSupplierQuantityDictionary = new Dictionary<string, Supplier>();
 
         private void DisplayCompanyQuantityProduction()
         {
             dtpStartCompanyQuantityProduction.Value = DateTime.Now.AddDays(-29);
             dtpEndCompanyQuantityProduction.Value = DateTime.Now.AddDays(1);
-            mSupplierDictionary = Common.SupplierNameList(comboBoxCompanyQuantityProduction);
-            int id = mSupplierDictionary.GetValueOrDefault(cmbCompanyRapportSearch.GetItemText(cmbCompanyRapportSearch.SelectedItem)).SupplierId;
+            SupplierNameQuantity();
+            int id = mSupplierQuantityDictionary.GetValueOrDefault(comboBoxCompanyQuantityProduction.GetItemText(comboBoxCompanyQuantityProduction.SelectedItem)).SupplierId;
             UpdateDisplayHarvestQuantityData(dtpStartCompanyQuantityProduction.Value, dtpEndCompanyQuantityProduction.Value, id);
+            ProductionTotalQuantityCharge();
+            ProductionRapportTotalQuantity();
+        }
+
+        private void ProductionRapportTotalQuantity()
+        {
+            txtCompanyRapportProductionTotalQuantity.Text = calculTotalQuantity().ToString();
+        }
+
+        private void ProductionTotalQuantityCharge()
+        {
+            txtCompanyRapportProductionTotalQuantityCharge.Text = calculTotalQuantityPayment().ToString();
         }
 
         private void UpdateDisplayHarvestQuantityData(DateTime fromDate, DateTime toDate, int id)
@@ -297,7 +237,7 @@ namespace HarvestManagerSystem.view
             listCompanyQuantityProduction.Clear();
             try
             {
-                listCompanyQuantityProduction = rapportDAO.searchHarvestQuantityProduction(dtpStartCompanyQuantityProduction.Value, dtpEndCompanyQuantityProduction.Value, 1, id);
+                listCompanyQuantityProduction = rapportDAO.searchHarvestQuantityProduction(fromDate, toDate, 1, id);
 
                 if (listCompanyQuantityProduction.Count > 0)
                 {
@@ -315,14 +255,192 @@ namespace HarvestManagerSystem.view
             SortDisplayMasterQuantityColumnsIndex();
         }
 
-        #endregion
-
-        #region ************************************  Display Company Hours Production Rapport Code ***************************************
-        private void DisplayCompanyHoursProduction()
+        private void btnCompanyQuantityProduction_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            int id = mSupplierQuantityDictionary.GetValueOrDefault(comboBoxCompanyQuantityProduction.GetItemText(comboBoxCompanyQuantityProduction.SelectedItem)).SupplierId;
+            UpdateDisplayHarvestQuantityData(dtpStartCompanyQuantityProduction.Value, dtpEndCompanyQuantityProduction.Value, id);
+            ProductionTotalQuantityCharge();
+            ProductionRapportTotalQuantity();
+        }
+
+        public void SupplierNameQuantity()
+        {
+            List<string> NamesList = new List<string>();
+            mSupplierQuantityDictionary.Clear();
+            try
+            {
+                mSupplierQuantityDictionary = supplierDAO.SupplierDictionary();
+                NamesList.AddRange(mSupplierQuantityDictionary.Keys);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            if (NamesList != null)
+            {
+                comboBoxCompanyQuantityProduction.DataSource = NamesList;
+            }
+        }
+
+        private double calculTotalQuantityPayment()
+        {
+            double total = 0.0;
+            foreach (Production p in listCompanyQuantityProduction)
+            {
+                total += p.QuantityPayment;
+            }
+            return total;
+        }
+
+        private double calculTotalQuantity()
+        {
+            double total = 0.0;
+            foreach (Production p in listCompanyQuantityProduction)
+            {
+                total += p.TotalQuantity;
+            }
+            return total;
+        }
+
+        private void SortDisplayMasterQuantityColumnsIndex()
+        {
+            CompanyQuantityProductionDataGridView.Columns["HQProductionIdColumn"].DisplayIndex = 0;
+            CompanyQuantityProductionDataGridView.Columns["HQHQProductionDateColumn"].DisplayIndex = 1;
+            CompanyQuantityProductionDataGridView.Columns["HQProductionSupplierNameColumn"].DisplayIndex = 2;
+            CompanyQuantityProductionDataGridView.Columns["HQProductionFarmNameColumn"].DisplayIndex = 3;
+            CompanyQuantityProductionDataGridView.Columns["HQProductionProductNameColumn"].DisplayIndex = 4;
+            CompanyQuantityProductionDataGridView.Columns["HQProductionProductCodeColumn"].DisplayIndex = 5;
+            CompanyQuantityProductionDataGridView.Columns["HQProductionTotalQuantityColumn"].DisplayIndex = 6;
+            CompanyQuantityProductionDataGridView.Columns["HQProductionProductPriceColumn"].DisplayIndex = 7;
+            CompanyQuantityProductionDataGridView.Columns["HQProductionTotalEmployeeColumn"].DisplayIndex = 8;
+            CompanyQuantityProductionDataGridView.Columns["HQProductionPaymentCompanyColumn"].DisplayIndex = 9;
+            CompanyQuantityProductionDataGridView.Columns["HQProductionTypeColumn"].DisplayIndex = 10;
         }
 
         #endregion
+
+        #region ************************************  Display Company Hours Production Rapport Code ***************************************
+
+        List<Production> listCompanyHoursProduction = new List<Production>();
+        private Dictionary<string, Supplier> mSupplierHoursDictionary = new Dictionary<string, Supplier>();
+
+        private void DisplayCompanyHoursProduction()
+        {
+            initDateTimePicker();
+            SupplierNameHours();
+            int supplierId = mSupplierHoursDictionary.GetValueOrDefault(comboBoxCompanyHoursProduction.GetItemText(comboBoxCompanyHoursProduction.SelectedItem)).SupplierId;
+            UpdateDisplayHarvestHoursData(dtpStartCompanyHoursProduction.Value, dtpEndCompanyHoursProduction.Value, supplierId);
+            ProductionTotalHoursCharge();
+            ProductionRapportTotalMinutes();
+        }
+
+        private void ProductionRapportTotalMinutes()
+        {
+            txtCompanyRapportProductionTotalMinutes.Text = calculTotalMinutes().ToString();
+        }
+
+        private void ProductionTotalHoursCharge()
+        {
+            txtCompanyRapportProductionTotalHoursCharge.Text = calculTotalHoursPayment().ToString();
+        }
+
+        private void initDateTimePicker()
+        {
+            dtpStartCompanyHoursProduction.Value = DateTime.Now.AddDays(-29);
+            dtpEndCompanyHoursProduction.Value = DateTime.Now.AddDays(1);
+        }
+
+        private void SupplierNameHours()
+        {
+            List<string> NamesList = new List<string>();
+            mSupplierHoursDictionary.Clear();
+            try
+            {
+                mSupplierHoursDictionary = supplierDAO.SupplierDictionary();
+                NamesList.AddRange(mSupplierHoursDictionary.Keys);
+                comboBoxCompanyHoursProduction.DataSource = NamesList;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+
+        private void UpdateDisplayHarvestHoursData(DateTime fromDate, DateTime toDate, int id)
+        {
+            listCompanyHoursProduction.Clear();
+            try
+            {
+                listCompanyHoursProduction = rapportDAO.searchHarvestHoursProduction(fromDate, toDate, 1, id);
+                if (listCompanyHoursProduction.Count > 0)
+                {
+                    CompanyHoursProductionDataGridView.DataSource = listCompanyHoursProduction;
+                }
+                else
+                {
+                    CompanyHoursProductionDataGridView.DataSource = new List<Production>();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Update Harvest Data called: " + ex.Message);
+            }
+
+            SortDisplayProductionHoursColumnsIndex();
+        }
+
+        private void btnCompanyHoursProduction_Click(object sender, EventArgs e)
+        {
+            int id = mSupplierHoursDictionary.GetValueOrDefault(comboBoxCompanyHoursProduction.GetItemText(comboBoxCompanyHoursProduction.SelectedItem)).SupplierId;
+            UpdateDisplayHarvestHoursData(dtpStartCompanyHoursProduction.Value, dtpEndCompanyHoursProduction.Value, id);
+            ProductionTotalHoursCharge();
+            ProductionRapportTotalMinutes();
+        }
+
+        private void SortDisplayProductionHoursColumnsIndex()
+        {
+            CompanyHoursProductionDataGridView.Columns["ProductionIDColumn"].DisplayIndex = 0;
+            CompanyHoursProductionDataGridView.Columns["ProductionDateColumn"].DisplayIndex = 1;
+            CompanyHoursProductionDataGridView.Columns["ProductionSupplierNameColumn"].DisplayIndex = 2;
+            CompanyHoursProductionDataGridView.Columns["ProductionFarmNameColumn"].DisplayIndex = 3;
+            CompanyHoursProductionDataGridView.Columns["ProductionProductNameColumn"].DisplayIndex = 4;
+            CompanyHoursProductionDataGridView.Columns["ProductionProductCodeColumn"].DisplayIndex = 5;
+            CompanyHoursProductionDataGridView.Columns["TotalQuantityColumn"].DisplayIndex = 6;
+            CompanyHoursProductionDataGridView.Columns["TotalMinutesColumn"].DisplayIndex = 7;
+            CompanyHoursProductionDataGridView.Columns["PriceCompanyHoursColumn"].DisplayIndex = 8;
+            CompanyHoursProductionDataGridView.Columns["PaymentCompanyColumn"].DisplayIndex = 9;
+            CompanyHoursProductionDataGridView.Columns["TotalEmployeeColumn"].DisplayIndex = 10;
+            CompanyHoursProductionDataGridView.Columns["ProductionTypeColumn"].DisplayIndex = 11;
+            CompanyHoursProductionDataGridView.Columns["ProductionSupplierColumn"].DisplayIndex = 11;
+            CompanyHoursProductionDataGridView.Columns["ProductionFarmColumn"].DisplayIndex = 13;
+            CompanyHoursProductionDataGridView.Columns["ProductionProductColumn"].DisplayIndex = 14;
+            CompanyHoursProductionDataGridView.Columns["ProductionProductDetailColumn"].DisplayIndex = 15;
+        }
+
+        private double calculTotalMinutes()
+        {
+            double total = 0.0;
+            foreach (Production p in listCompanyHoursProduction)
+            {
+                total += p.TotalMinutes;
+            }
+            return total;
+        }
+
+        private double calculTotalHoursPayment()
+        {
+            double total = 0.0;
+            foreach (Production p in listCompanyHoursProduction)
+            {
+                total += p.HoursPayment;
+            }
+            return total;
+        }
+
+        #endregion
+
+
+
+
     }
 }
