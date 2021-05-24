@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using HarvestManagerSystem.database;
 using HarvestManagerSystem.model;
+using HarvestManagerSystem.view;
 
 namespace HarvestManagerSystem
 {
@@ -53,8 +54,10 @@ namespace HarvestManagerSystem
 
             if (txtUser.Text == user.Name && txtPassword.Text == user.Passwword)
             {
-                HarvestMS harvestMS = new HarvestMS();
-                harvestMS.Show();
+                MainForm mainWindows = new MainForm(this);
+                mainWindows.Show();
+                //HarvestMS harvestMS = new HarvestMS();
+                //harvestMS.Show();
                 this.Hide();
             }
             else
