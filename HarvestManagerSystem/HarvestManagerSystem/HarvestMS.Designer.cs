@@ -281,6 +281,7 @@ namespace HarvestManagerSystem
             this.DeleteQuantityStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.RapportButton = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.tabProduction.SuspendLayout();
             this.tabPageQuantity.SuspendLayout();
             this.panelQuantityCompanyProduction.SuspendLayout();
@@ -2759,12 +2760,21 @@ namespace HarvestManagerSystem
             this.label4.TabIndex = 13;
             this.label4.Text = "Rapports";
             // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(1242, 613);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(33, 22);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "0.0.1";
+            // 
             // HarvestMS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1284, 661);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.RapportButton);
             this.Controls.Add(this.statusStripProgressbar);
@@ -3022,6 +3032,7 @@ namespace HarvestManagerSystem
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductionProductDetailColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn QuantityPaymentColumn;
         private System.Windows.Forms.Panel panelHoursEmployeeProduction;
+        private System.Windows.Forms.Label label6;
     }
 }
 

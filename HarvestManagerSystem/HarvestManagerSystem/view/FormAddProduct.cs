@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Windows.Forms;
 using HarvestManagerSystem.database;
 using HarvestManagerSystem.model;
@@ -82,8 +83,22 @@ namespace HarvestManagerSystem.view
 
             ProductDetail productDetail = new ProductDetail();
             productDetail.ProductType = ProductType.Text;
-            productDetail.PriceEmployee  = Convert.ToDouble(ProductPriceEmployee.Text);
-            productDetail.PriceCompany = Convert.ToDouble(ProductPriceCompany.Text);
+
+            double priceEmp;
+            double priceCom;
+            IFormatProvider provider = CultureInfo.CreateSpecificCulture("en-US");
+
+            if (Double.TryParse(ProductPriceEmployee.Text, NumberStyles.AllowDecimalPoint,
+                        provider, out priceEmp))
+            {
+                productDetail.PriceEmployee = priceEmp;
+            }
+            if (Double.TryParse(ProductPriceCompany.Text, NumberStyles.AllowDecimalPoint,
+                        provider, out priceCom))
+            {
+                productDetail.PriceCompany = priceCom;
+            }
+
             bool added = false;
             if (product != null)
             {
