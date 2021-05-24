@@ -10,16 +10,36 @@ namespace HarvestManagerSystem.view
 {
     public partial class MainForm : Form
     {
-        LoginForm loginForm;
+        private LoginForm loginForm;
+        private Form activeForm = null;
         public MainForm(LoginForm frm)
         {
             InitializeComponent();
             this.loginForm = frm;
         }
 
+        private void OpenChildForm(Form childForm)
+        {
+            if (activeForm != null) 
+                activeForm.Close();
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            pnlChildForm.Controls.Add(childForm);
+            pnlChildForm.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+        }
+
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            loginForm.Show();
+            loginForm.Close();
+        }
+
+        private void btnAddProduct_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormAddProduct(new HarvestMS()));
         }
     }
 }

@@ -33,20 +33,24 @@ namespace HarvestManagerSystem.view
             this.button3 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
+            this.btnAddProduct = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pnlAddTask = new System.Windows.Forms.Panel();
+            this.pnlSideMenu = new System.Windows.Forms.Panel();
             this.pnlLogo = new System.Windows.Forms.Panel();
             this.picBoxLogo = new System.Windows.Forms.PictureBox();
+            this.pnlChildForm = new System.Windows.Forms.Panel();
+            this.picBoxCenterMainForm = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            this.pnlAddTask.SuspendLayout();
+            this.pnlSideMenu.SuspendLayout();
             this.pnlLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxLogo)).BeginInit();
+            this.pnlChildForm.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxCenterMainForm)).BeginInit();
             this.SuspendLayout();
             // 
             // button2
@@ -75,7 +79,7 @@ namespace HarvestManagerSystem.view
             this.button8.Location = new System.Drawing.Point(0, 148);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(150, 32);
-            this.button8.TabIndex = 3;
+            this.button8.TabIndex = 5;
             this.button8.Text = "Fournisseur";
             this.button8.UseVisualStyleBackColor = true;
             // 
@@ -85,19 +89,20 @@ namespace HarvestManagerSystem.view
             this.button9.Location = new System.Drawing.Point(0, 180);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(150, 32);
-            this.button9.TabIndex = 4;
+            this.button9.TabIndex = 6;
             this.button9.Text = "Champ";
             this.button9.UseVisualStyleBackColor = true;
             // 
-            // button10
+            // btnAddProduct
             // 
-            this.button10.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button10.Location = new System.Drawing.Point(0, 212);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(150, 32);
-            this.button10.TabIndex = 5;
-            this.button10.Text = "Produit";
-            this.button10.UseVisualStyleBackColor = true;
+            this.btnAddProduct.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAddProduct.Location = new System.Drawing.Point(0, 212);
+            this.btnAddProduct.Name = "btnAddProduct";
+            this.btnAddProduct.Size = new System.Drawing.Size(150, 32);
+            this.btnAddProduct.TabIndex = 7;
+            this.btnAddProduct.Text = "Produit";
+            this.btnAddProduct.UseVisualStyleBackColor = true;
+            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
             // 
             // button11
             // 
@@ -105,7 +110,7 @@ namespace HarvestManagerSystem.view
             this.button11.Location = new System.Drawing.Point(0, 244);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(150, 32);
-            this.button11.TabIndex = 6;
+            this.button11.TabIndex = 8;
             this.button11.Text = "Crédit";
             this.button11.UseVisualStyleBackColor = true;
             // 
@@ -115,7 +120,7 @@ namespace HarvestManagerSystem.view
             this.button12.Location = new System.Drawing.Point(0, 276);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(150, 32);
-            this.button12.TabIndex = 7;
+            this.button12.TabIndex = 9;
             this.button12.Text = "Transport";
             this.button12.UseVisualStyleBackColor = true;
             // 
@@ -145,39 +150,41 @@ namespace HarvestManagerSystem.view
             this.button4.Location = new System.Drawing.Point(0, 308);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(150, 32);
-            this.button4.TabIndex = 6;
+            this.button4.TabIndex = 10;
             this.button4.Text = "Rapports";
             this.button4.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
+            this.panel1.AutoScroll = true;
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel1.Controls.Add(this.pnlAddTask);
+            this.panel1.Controls.Add(this.pnlSideMenu);
             this.panel1.Controls.Add(this.pnlLogo);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(858, 0);
+            this.panel1.Location = new System.Drawing.Point(1134, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(150, 729);
+            this.panel1.Size = new System.Drawing.Size(150, 661);
             this.panel1.TabIndex = 0;
             // 
-            // pnlAddTask
+            // pnlSideMenu
             // 
-            this.pnlAddTask.Controls.Add(this.button4);
-            this.pnlAddTask.Controls.Add(this.button12);
-            this.pnlAddTask.Controls.Add(this.button11);
-            this.pnlAddTask.Controls.Add(this.button10);
-            this.pnlAddTask.Controls.Add(this.button9);
-            this.pnlAddTask.Controls.Add(this.button8);
-            this.pnlAddTask.Controls.Add(this.button3);
-            this.pnlAddTask.Controls.Add(this.button2);
-            this.pnlAddTask.Controls.Add(this.button1);
-            this.pnlAddTask.Controls.Add(this.button5);
-            this.pnlAddTask.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlAddTask.Location = new System.Drawing.Point(0, 149);
-            this.pnlAddTask.Name = "pnlAddTask";
-            this.pnlAddTask.Padding = new System.Windows.Forms.Padding(0, 20, 0, 0);
-            this.pnlAddTask.Size = new System.Drawing.Size(150, 580);
-            this.pnlAddTask.TabIndex = 1;
+            this.pnlSideMenu.AutoScroll = true;
+            this.pnlSideMenu.Controls.Add(this.button4);
+            this.pnlSideMenu.Controls.Add(this.button12);
+            this.pnlSideMenu.Controls.Add(this.button11);
+            this.pnlSideMenu.Controls.Add(this.btnAddProduct);
+            this.pnlSideMenu.Controls.Add(this.button9);
+            this.pnlSideMenu.Controls.Add(this.button8);
+            this.pnlSideMenu.Controls.Add(this.button3);
+            this.pnlSideMenu.Controls.Add(this.button2);
+            this.pnlSideMenu.Controls.Add(this.button1);
+            this.pnlSideMenu.Controls.Add(this.button5);
+            this.pnlSideMenu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlSideMenu.Location = new System.Drawing.Point(0, 149);
+            this.pnlSideMenu.Name = "pnlSideMenu";
+            this.pnlSideMenu.Padding = new System.Windows.Forms.Padding(0, 20, 0, 0);
+            this.pnlSideMenu.Size = new System.Drawing.Size(150, 512);
+            this.pnlSideMenu.TabIndex = 1;
             // 
             // pnlLogo
             // 
@@ -199,28 +206,51 @@ namespace HarvestManagerSystem.view
             this.picBoxLogo.TabIndex = 0;
             this.picBoxLogo.TabStop = false;
             // 
+            // pnlChildForm
+            // 
+            this.pnlChildForm.Controls.Add(this.picBoxCenterMainForm);
+            this.pnlChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlChildForm.Location = new System.Drawing.Point(0, 0);
+            this.pnlChildForm.Name = "pnlChildForm";
+            this.pnlChildForm.Size = new System.Drawing.Size(1134, 661);
+            this.pnlChildForm.TabIndex = 1;
+            // 
+            // picBoxCenterMainForm
+            // 
+            this.picBoxCenterMainForm.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.picBoxCenterMainForm.Image = global::HarvestManagerSystem.Properties.Resources.Harvest;
+            this.picBoxCenterMainForm.Location = new System.Drawing.Point(335, 105);
+            this.picBoxCenterMainForm.Name = "picBoxCenterMainForm";
+            this.picBoxCenterMainForm.Size = new System.Drawing.Size(482, 445);
+            this.picBoxCenterMainForm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picBoxCenterMainForm.TabIndex = 0;
+            this.picBoxCenterMainForm.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.ClientSize = new System.Drawing.Size(1284, 661);
+            this.Controls.Add(this.pnlChildForm);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.panel1.ResumeLayout(false);
-            this.pnlAddTask.ResumeLayout(false);
+            this.pnlSideMenu.ResumeLayout(false);
             this.pnlLogo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picBoxLogo)).EndInit();
+            this.pnlChildForm.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxCenterMainForm)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button btnAddProduct;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button3;
@@ -230,8 +260,10 @@ namespace HarvestManagerSystem.view
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel pnlAddTask;
+        private System.Windows.Forms.Panel pnlSideMenu;
         private System.Windows.Forms.Panel pnlLogo;
         private System.Windows.Forms.PictureBox picBoxLogo;
+        private System.Windows.Forms.Panel pnlChildForm;
+        private System.Windows.Forms.PictureBox picBoxCenterMainForm;
     }
 }

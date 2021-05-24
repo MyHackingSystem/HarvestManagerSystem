@@ -14,6 +14,8 @@ namespace HarvestManagerSystem.view
         private ProductDetailDAO mProductDetailDAO = ProductDetailDAO.getInstance();
         private Dictionary<string, Product> mProductDictionary = new Dictionary<string, Product>();
 
+
+
         private HarvestMS harvestMS;
 
         public FormAddProduct(HarvestMS harvestMS)
@@ -31,7 +33,10 @@ namespace HarvestManagerSystem.view
         {
             ProductNameList();
             ProductNameComboBox.SelectedIndex = -1;
+            DisplayProductData();
         }
+
+        #region ********************************************* Add Product *****************************************************
 
         private void ProductNameList()
         {
@@ -60,7 +65,7 @@ namespace HarvestManagerSystem.view
                 return;
             }
             SaveProductData();
-            harvestMS.DisplayProductData();
+            DisplayProductData();
         }
 
         private bool CheckInput()
@@ -71,7 +76,6 @@ namespace HarvestManagerSystem.view
             prixCompanyErrorlabel.Visible = (ProductPriceCompany.Text == "") ? true : false;
             return nameProductErrorLabel.Visible || codeProductErrorLabel.Visible || prixEmployeeErrorlabel.Visible || prixCompanyErrorlabel.Visible;
         }
-
 
         private void SaveProductData()
         {
@@ -119,7 +123,6 @@ namespace HarvestManagerSystem.view
             }
         }
 
-
         private void btnReset_Click(object sender, EventArgs e)
         {
             wipeFields();
@@ -143,6 +146,88 @@ namespace HarvestManagerSystem.view
             {
                 e.Handled = true;
             }
+        }
+
+        #endregion
+
+        #region ********************************************* PRODUCT CODE **************************************************************************
+
+        List<Product> listProduct = new List<Product>();
+
+        public void DisplayProductData()
+        {
+            try
+            {
+                listProduct.Clear();
+                listProduct = mProductDAO.getData();
+                ProductDataGridView.DataSource = listProduct;
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+        }
+
+        private void ProductDataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            int i = ProductDataGridView.CurrentCell.RowIndex;
+            if (i < listProduct.Count && i != -1)
+            {
+                DisplayProductDetailData(listProduct[i]);
+            }
+        }
+
+        private void ProductDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            Product product = (Product)listProduct[e.RowIndex];
+            if (product == null)
+            {
+                return;
+            }
+            if (mProductDAO.UpdateData(product))
+            {
+                MessageBox.Show("les valeurs mises à jour.");
+            }
+        }
+
+        #endregion
+
+        #region ********************************************* PRODUCT DETAIL CODE *******************************************************************
+
+        List<ProductDetail> listProductDetail = new List<ProductDetail>();
+
+        private void DisplayProductDetailData(Product product)
+        {
+            try
+            {
+                listProductDetail.Clear();
+                listProductDetail = mProductDetailDAO.getData(product);
+                ProductDetailDataGridView.DataSource = listProductDetail;
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+        }
+
+        private void ProductDetailDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            ProductDetail item = (ProductDetail)listProductDetail[e.RowIndex];
+            if (item == null)
+            {
+                return;
+            }
+            if (mProductDetailDAO.UpdateData(item))
+            {
+                MessageBox.Show("les valeurs mises à jour.");
+            }
+        }
+
+        #endregion
+
+        private void btnCloseForm_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -29,6 +29,16 @@ namespace HarvestManagerSystem.view
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAddProduct));
             this.btnReset = new System.Windows.Forms.Button();
             this.handleSaveButton = new System.Windows.Forms.Button();
@@ -44,6 +54,24 @@ namespace HarvestManagerSystem.view
             this.codeProductErrorLabel = new System.Windows.Forms.Label();
             this.prixEmployeeErrorlabel = new System.Windows.Forms.Label();
             this.prixCompanyErrorlabel = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCloseForm = new System.Windows.Forms.Button();
+            this.pnlDisplayProducts = new System.Windows.Forms.Panel();
+            this.ProductDetailDataGridView = new System.Windows.Forms.DataGridView();
+            this.ProductDataGridView = new System.Windows.Forms.DataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.IdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductDetailId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductTypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductPriceEmployeeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductPriceCompanyColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1.SuspendLayout();
+            this.pnlDisplayProducts.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductDetailDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductDataGridView)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnReset
@@ -54,11 +82,11 @@ namespace HarvestManagerSystem.view
             this.btnReset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReset.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnReset.Location = new System.Drawing.Point(210, 451);
+            this.btnReset.Location = new System.Drawing.Point(136, 497);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(120, 30);
+            this.btnReset.Size = new System.Drawing.Size(90, 30);
             this.btnReset.TabIndex = 6;
-            this.btnReset.Text = "Reset";
+            this.btnReset.Text = "Vider";
             this.btnReset.UseVisualStyleBackColor = false;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
@@ -70,9 +98,9 @@ namespace HarvestManagerSystem.view
             this.handleSaveButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
             this.handleSaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.handleSaveButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.handleSaveButton.Location = new System.Drawing.Point(40, 451);
+            this.handleSaveButton.Location = new System.Drawing.Point(12, 497);
             this.handleSaveButton.Name = "handleSaveButton";
-            this.handleSaveButton.Size = new System.Drawing.Size(120, 30);
+            this.handleSaveButton.Size = new System.Drawing.Size(90, 30);
             this.handleSaveButton.TabIndex = 5;
             this.handleSaveButton.Text = "Ajouter";
             this.handleSaveButton.UseVisualStyleBackColor = false;
@@ -81,7 +109,7 @@ namespace HarvestManagerSystem.view
             // ProductPriceCompany
             // 
             this.ProductPriceCompany.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ProductPriceCompany.Location = new System.Drawing.Point(111, 331);
+            this.ProductPriceCompany.Location = new System.Drawing.Point(41, 408);
             this.ProductPriceCompany.Name = "ProductPriceCompany";
             this.ProductPriceCompany.Size = new System.Drawing.Size(160, 29);
             this.ProductPriceCompany.TabIndex = 4;
@@ -90,7 +118,7 @@ namespace HarvestManagerSystem.view
             // ProductPriceEmployee
             // 
             this.ProductPriceEmployee.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ProductPriceEmployee.Location = new System.Drawing.Point(111, 240);
+            this.ProductPriceEmployee.Location = new System.Drawing.Point(41, 317);
             this.ProductPriceEmployee.Name = "ProductPriceEmployee";
             this.ProductPriceEmployee.Size = new System.Drawing.Size(160, 29);
             this.ProductPriceEmployee.TabIndex = 3;
@@ -99,7 +127,7 @@ namespace HarvestManagerSystem.view
             // ProductType
             // 
             this.ProductType.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ProductType.Location = new System.Drawing.Point(109, 152);
+            this.ProductType.Location = new System.Drawing.Point(39, 229);
             this.ProductType.Name = "ProductType";
             this.ProductType.Size = new System.Drawing.Size(160, 29);
             this.ProductType.TabIndex = 2;
@@ -110,7 +138,7 @@ namespace HarvestManagerSystem.view
             this.ProductNameComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ProductNameComboBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ProductNameComboBox.FormattingEnabled = true;
-            this.ProductNameComboBox.Location = new System.Drawing.Point(108, 66);
+            this.ProductNameComboBox.Location = new System.Drawing.Point(38, 143);
             this.ProductNameComboBox.Name = "ProductNameComboBox";
             this.ProductNameComboBox.Size = new System.Drawing.Size(160, 29);
             this.ProductNameComboBox.TabIndex = 1;
@@ -120,7 +148,7 @@ namespace HarvestManagerSystem.view
             this.PriceCLabel.AutoSize = true;
             this.PriceCLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.PriceCLabel.ForeColor = System.Drawing.Color.FloralWhite;
-            this.PriceCLabel.Location = new System.Drawing.Point(111, 307);
+            this.PriceCLabel.Location = new System.Drawing.Point(41, 384);
             this.PriceCLabel.Name = "PriceCLabel";
             this.PriceCLabel.Size = new System.Drawing.Size(52, 21);
             this.PriceCLabel.TabIndex = 17;
@@ -131,7 +159,7 @@ namespace HarvestManagerSystem.view
             this.PriceELabel.AutoSize = true;
             this.PriceELabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.PriceELabel.ForeColor = System.Drawing.Color.FloralWhite;
-            this.PriceELabel.Location = new System.Drawing.Point(110, 216);
+            this.PriceELabel.Location = new System.Drawing.Point(40, 293);
             this.PriceELabel.Name = "PriceELabel";
             this.PriceELabel.Size = new System.Drawing.Size(50, 21);
             this.PriceELabel.TabIndex = 15;
@@ -142,7 +170,7 @@ namespace HarvestManagerSystem.view
             this.LblType.AutoSize = true;
             this.LblType.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblType.ForeColor = System.Drawing.Color.FloralWhite;
-            this.LblType.Location = new System.Drawing.Point(107, 127);
+            this.LblType.Location = new System.Drawing.Point(37, 204);
             this.LblType.Name = "LblType";
             this.LblType.Size = new System.Drawing.Size(45, 21);
             this.LblType.TabIndex = 13;
@@ -153,7 +181,7 @@ namespace HarvestManagerSystem.view
             this.ProductLabel.AutoSize = true;
             this.ProductLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ProductLabel.ForeColor = System.Drawing.Color.White;
-            this.ProductLabel.Location = new System.Drawing.Point(108, 41);
+            this.ProductLabel.Location = new System.Drawing.Point(38, 118);
             this.ProductLabel.Name = "ProductLabel";
             this.ProductLabel.Size = new System.Drawing.Size(64, 21);
             this.ProductLabel.TabIndex = 9;
@@ -164,7 +192,7 @@ namespace HarvestManagerSystem.view
             this.nameProductErrorLabel.AutoSize = true;
             this.nameProductErrorLabel.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.nameProductErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.nameProductErrorLabel.Location = new System.Drawing.Point(250, 41);
+            this.nameProductErrorLabel.Location = new System.Drawing.Point(180, 118);
             this.nameProductErrorLabel.Name = "nameProductErrorLabel";
             this.nameProductErrorLabel.Size = new System.Drawing.Size(28, 37);
             this.nameProductErrorLabel.TabIndex = 22;
@@ -176,7 +204,7 @@ namespace HarvestManagerSystem.view
             this.codeProductErrorLabel.AutoSize = true;
             this.codeProductErrorLabel.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.codeProductErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.codeProductErrorLabel.Location = new System.Drawing.Point(251, 127);
+            this.codeProductErrorLabel.Location = new System.Drawing.Point(181, 204);
             this.codeProductErrorLabel.Name = "codeProductErrorLabel";
             this.codeProductErrorLabel.Size = new System.Drawing.Size(28, 37);
             this.codeProductErrorLabel.TabIndex = 24;
@@ -188,7 +216,7 @@ namespace HarvestManagerSystem.view
             this.prixEmployeeErrorlabel.AutoSize = true;
             this.prixEmployeeErrorlabel.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.prixEmployeeErrorlabel.ForeColor = System.Drawing.Color.Red;
-            this.prixEmployeeErrorlabel.Location = new System.Drawing.Point(253, 216);
+            this.prixEmployeeErrorlabel.Location = new System.Drawing.Point(183, 293);
             this.prixEmployeeErrorlabel.Name = "prixEmployeeErrorlabel";
             this.prixEmployeeErrorlabel.Size = new System.Drawing.Size(28, 37);
             this.prixEmployeeErrorlabel.TabIndex = 25;
@@ -200,41 +228,288 @@ namespace HarvestManagerSystem.view
             this.prixCompanyErrorlabel.AutoSize = true;
             this.prixCompanyErrorlabel.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.prixCompanyErrorlabel.ForeColor = System.Drawing.Color.Red;
-            this.prixCompanyErrorlabel.Location = new System.Drawing.Point(250, 307);
+            this.prixCompanyErrorlabel.Location = new System.Drawing.Point(180, 384);
             this.prixCompanyErrorlabel.Name = "prixCompanyErrorlabel";
             this.prixCompanyErrorlabel.Size = new System.Drawing.Size(28, 37);
             this.prixCompanyErrorlabel.TabIndex = 26;
             this.prixCompanyErrorlabel.Text = "*";
             this.prixCompanyErrorlabel.Visible = false;
             // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btnCloseForm);
+            this.panel1.Controls.Add(this.btnReset);
+            this.panel1.Controls.Add(this.handleSaveButton);
+            this.panel1.Controls.Add(this.ProductPriceCompany);
+            this.panel1.Controls.Add(this.ProductPriceEmployee);
+            this.panel1.Controls.Add(this.ProductType);
+            this.panel1.Controls.Add(this.ProductNameComboBox);
+            this.panel1.Controls.Add(this.ProductLabel);
+            this.panel1.Controls.Add(this.PriceCLabel);
+            this.panel1.Controls.Add(this.LblType);
+            this.panel1.Controls.Add(this.PriceELabel);
+            this.panel1.Controls.Add(this.nameProductErrorLabel);
+            this.panel1.Controls.Add(this.codeProductErrorLabel);
+            this.panel1.Controls.Add(this.prixEmployeeErrorlabel);
+            this.panel1.Controls.Add(this.prixCompanyErrorlabel);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(253, 608);
+            this.panel1.TabIndex = 27;
+            // 
+            // btnCloseForm
+            // 
+            this.btnCloseForm.BackColor = System.Drawing.Color.White;
+            this.btnCloseForm.FlatAppearance.BorderSize = 0;
+            this.btnCloseForm.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnCloseForm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.btnCloseForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCloseForm.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnCloseForm.Location = new System.Drawing.Point(12, 12);
+            this.btnCloseForm.Name = "btnCloseForm";
+            this.btnCloseForm.Size = new System.Drawing.Size(31, 30);
+            this.btnCloseForm.TabIndex = 27;
+            this.btnCloseForm.Text = "X";
+            this.btnCloseForm.UseVisualStyleBackColor = false;
+            this.btnCloseForm.Click += new System.EventHandler(this.btnCloseForm_Click);
+            // 
+            // pnlDisplayProducts
+            // 
+            this.pnlDisplayProducts.AutoScroll = true;
+            this.pnlDisplayProducts.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlDisplayProducts.Controls.Add(this.ProductDetailDataGridView);
+            this.pnlDisplayProducts.Controls.Add(this.ProductDataGridView);
+            this.pnlDisplayProducts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlDisplayProducts.Location = new System.Drawing.Point(253, 0);
+            this.pnlDisplayProducts.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
+            this.pnlDisplayProducts.Name = "pnlDisplayProducts";
+            this.pnlDisplayProducts.Padding = new System.Windows.Forms.Padding(2, 0, 0, 0);
+            this.pnlDisplayProducts.Size = new System.Drawing.Size(744, 608);
+            this.pnlDisplayProducts.TabIndex = 28;
+            // 
+            // ProductDetailDataGridView
+            // 
+            this.ProductDetailDataGridView.AllowUserToAddRows = false;
+            this.ProductDetailDataGridView.AllowUserToDeleteRows = false;
+            this.ProductDetailDataGridView.AllowUserToOrderColumns = true;
+            this.ProductDetailDataGridView.AllowUserToResizeColumns = false;
+            this.ProductDetailDataGridView.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.ProductDetailDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.ProductDetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.ProductDetailDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ProductDetailDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.ProductDetailDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ProductDetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.ProductDetailDataGridView.ColumnHeadersHeight = 36;
+            this.ProductDetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.ProductDetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ProductDetailId,
+            this.ProductTypeColumn,
+            this.ProductPriceEmployeeColumn,
+            this.ProductPriceCompanyColumn,
+            this.dataGridViewTextBoxColumn1});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ProductDetailDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ProductDetailDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ProductDetailDataGridView.EnableHeadersVisualStyles = false;
+            this.ProductDetailDataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ProductDetailDataGridView.Location = new System.Drawing.Point(221, 0);
+            this.ProductDetailDataGridView.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
+            this.ProductDetailDataGridView.MultiSelect = false;
+            this.ProductDetailDataGridView.Name = "ProductDetailDataGridView";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightSkyBlue;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ProductDetailDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.ProductDetailDataGridView.RowHeadersVisible = false;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(233)))), ((int)(((byte)(217)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            this.ProductDetailDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.ProductDetailDataGridView.RowTemplate.Height = 30;
+            this.ProductDetailDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.ProductDetailDataGridView.Size = new System.Drawing.Size(519, 604);
+            this.ProductDetailDataGridView.TabIndex = 10;
+            this.ProductDetailDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductDetailDataGridView_CellEndEdit);
+            // 
+            // ProductDataGridView
+            // 
+            this.ProductDataGridView.AllowUserToAddRows = false;
+            this.ProductDataGridView.AllowUserToDeleteRows = false;
+            this.ProductDataGridView.AllowUserToOrderColumns = true;
+            this.ProductDataGridView.AllowUserToResizeColumns = false;
+            this.ProductDataGridView.AllowUserToResizeRows = false;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            this.ProductDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.ProductDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.ProductDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ProductDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.ProductDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ProductDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.ProductDataGridView.ColumnHeadersHeight = 36;
+            this.ProductDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.ProductDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IdColumn,
+            this.NameColumn});
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ProductDataGridView.DefaultCellStyle = dataGridViewCellStyle8;
+            this.ProductDataGridView.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ProductDataGridView.EnableHeadersVisualStyles = false;
+            this.ProductDataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ProductDataGridView.Location = new System.Drawing.Point(2, 0);
+            this.ProductDataGridView.Margin = new System.Windows.Forms.Padding(20, 3, 10, 3);
+            this.ProductDataGridView.Name = "ProductDataGridView";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.LightSkyBlue;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ProductDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.ProductDataGridView.RowHeadersVisible = false;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(233)))), ((int)(((byte)(217)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
+            this.ProductDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            this.ProductDataGridView.RowTemplate.Height = 25;
+            this.ProductDataGridView.Size = new System.Drawing.Size(219, 604);
+            this.ProductDataGridView.TabIndex = 9;
+            this.ProductDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductDataGridView_CellEndEdit);
+            this.ProductDataGridView.SelectionChanged += new System.EventHandler(this.ProductDataGridView_SelectionChanged);
+            // 
+            // panel2
+            // 
+            this.panel2.AutoScroll = true;
+            this.panel2.Controls.Add(this.pnlDisplayProducts);
+            this.panel2.Controls.Add(this.panel1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(5, 5);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(997, 608);
+            this.panel2.TabIndex = 29;
+            // 
+            // IdColumn
+            // 
+            this.IdColumn.DataPropertyName = "ProductId";
+            this.IdColumn.HeaderText = "Id";
+            this.IdColumn.Name = "IdColumn";
+            this.IdColumn.Visible = false;
+            // 
+            // NameColumn
+            // 
+            this.NameColumn.DataPropertyName = "ProductName";
+            this.NameColumn.HeaderText = "Product";
+            this.NameColumn.MinimumWidth = 200;
+            this.NameColumn.Name = "NameColumn";
+            // 
+            // ProductDetailId
+            // 
+            this.ProductDetailId.DataPropertyName = "ProductDetailId";
+            this.ProductDetailId.HeaderText = "ProductDetailId";
+            this.ProductDetailId.Name = "ProductDetailId";
+            this.ProductDetailId.Visible = false;
+            // 
+            // ProductTypeColumn
+            // 
+            this.ProductTypeColumn.DataPropertyName = "ProductType";
+            this.ProductTypeColumn.FillWeight = 369.5432F;
+            this.ProductTypeColumn.HeaderText = "Type";
+            this.ProductTypeColumn.MinimumWidth = 140;
+            this.ProductTypeColumn.Name = "ProductTypeColumn";
+            // 
+            // ProductPriceEmployeeColumn
+            // 
+            this.ProductPriceEmployeeColumn.DataPropertyName = "PriceEmployee";
+            this.ProductPriceEmployeeColumn.FillWeight = 2.143695F;
+            this.ProductPriceEmployeeColumn.HeaderText = "Prix.E";
+            this.ProductPriceEmployeeColumn.MinimumWidth = 120;
+            this.ProductPriceEmployeeColumn.Name = "ProductPriceEmployeeColumn";
+            // 
+            // ProductPriceCompanyColumn
+            // 
+            this.ProductPriceCompanyColumn.DataPropertyName = "PriceCompany";
+            this.ProductPriceCompanyColumn.FillWeight = 28.1496F;
+            this.ProductPriceCompanyColumn.HeaderText = "Prix.C";
+            this.ProductPriceCompanyColumn.MinimumWidth = 120;
+            this.ProductPriceCompanyColumn.Name = "ProductPriceCompanyColumn";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "ProductId";
+            this.dataGridViewTextBoxColumn1.HeaderText = "ProductId";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 100;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
             // FormAddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(384, 561);
-            this.Controls.Add(this.btnReset);
-            this.Controls.Add(this.handleSaveButton);
-            this.Controls.Add(this.ProductPriceCompany);
-            this.Controls.Add(this.ProductPriceEmployee);
-            this.Controls.Add(this.ProductType);
-            this.Controls.Add(this.ProductNameComboBox);
-            this.Controls.Add(this.PriceCLabel);
-            this.Controls.Add(this.PriceELabel);
-            this.Controls.Add(this.LblType);
-            this.Controls.Add(this.ProductLabel);
-            this.Controls.Add(this.nameProductErrorLabel);
-            this.Controls.Add(this.codeProductErrorLabel);
-            this.Controls.Add(this.prixEmployeeErrorlabel);
-            this.Controls.Add(this.prixCompanyErrorlabel);
+            this.ClientSize = new System.Drawing.Size(1007, 618);
+            this.Controls.Add(this.panel2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormAddProduct";
+            this.Padding = new System.Windows.Forms.Padding(5);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Product";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAddProduct_FormClosed);
             this.Load += new System.EventHandler(this.FormAddProduct_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.pnlDisplayProducts.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ProductDetailDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductDataGridView)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -254,5 +529,18 @@ namespace HarvestManagerSystem.view
         private System.Windows.Forms.Label codeProductErrorLabel;
         private System.Windows.Forms.Label prixEmployeeErrorlabel;
         private System.Windows.Forms.Label prixCompanyErrorlabel;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlDisplayProducts;
+        private System.Windows.Forms.DataGridView ProductDataGridView;
+        private System.Windows.Forms.DataGridView ProductDetailDataGridView;
+        private System.Windows.Forms.Button btnCloseForm;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductDetailId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductTypeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductPriceEmployeeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductPriceCompanyColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NameColumn;
     }
 }
