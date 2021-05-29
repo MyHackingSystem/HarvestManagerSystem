@@ -40,8 +40,8 @@ namespace HarvestManagerSystem.view
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAddProduct));
-            this.btnReset = new System.Windows.Forms.Button();
-            this.handleSaveButton = new System.Windows.Forms.Button();
+            this.btnClearReset = new System.Windows.Forms.Button();
+            this.btnSaveProductData = new System.Windows.Forms.Button();
             this.ProductPriceCompany = new System.Windows.Forms.TextBox();
             this.ProductPriceEmployee = new System.Windows.Forms.TextBox();
             this.ProductType = new System.Windows.Forms.TextBox();
@@ -56,12 +56,13 @@ namespace HarvestManagerSystem.view
             this.prixCompanyErrorlabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCloseForm = new System.Windows.Forms.Button();
+            this.btnDeleteProduct = new System.Windows.Forms.Button();
             this.pnlDisplayProducts = new System.Windows.Forms.Panel();
             this.ProductDetailDataGridView = new System.Windows.Forms.DataGridView();
             this.ProductDataGridView = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.IdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.ProductDetailId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductTypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductPriceEmployeeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,37 +75,37 @@ namespace HarvestManagerSystem.view
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnReset
+            // btnClearReset
             // 
-            this.btnReset.BackColor = System.Drawing.Color.DarkOrange;
-            this.btnReset.FlatAppearance.BorderSize = 0;
-            this.btnReset.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Moccasin;
-            this.btnReset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
-            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReset.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnReset.Location = new System.Drawing.Point(136, 497);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(90, 30);
-            this.btnReset.TabIndex = 6;
-            this.btnReset.Text = "Vider";
-            this.btnReset.UseVisualStyleBackColor = false;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            this.btnClearReset.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnClearReset.FlatAppearance.BorderSize = 0;
+            this.btnClearReset.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Moccasin;
+            this.btnClearReset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
+            this.btnClearReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClearReset.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnClearReset.Location = new System.Drawing.Point(142, 481);
+            this.btnClearReset.Name = "btnClearReset";
+            this.btnClearReset.Size = new System.Drawing.Size(90, 30);
+            this.btnClearReset.TabIndex = 6;
+            this.btnClearReset.Text = "Vider";
+            this.btnClearReset.UseVisualStyleBackColor = false;
+            this.btnClearReset.Click += new System.EventHandler(this.btnClearReset_Click);
             // 
-            // handleSaveButton
+            // btnSaveProductData
             // 
-            this.handleSaveButton.BackColor = System.Drawing.Color.DarkOrange;
-            this.handleSaveButton.FlatAppearance.BorderSize = 0;
-            this.handleSaveButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Moccasin;
-            this.handleSaveButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
-            this.handleSaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.handleSaveButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.handleSaveButton.Location = new System.Drawing.Point(12, 497);
-            this.handleSaveButton.Name = "handleSaveButton";
-            this.handleSaveButton.Size = new System.Drawing.Size(90, 30);
-            this.handleSaveButton.TabIndex = 5;
-            this.handleSaveButton.Text = "Ajouter";
-            this.handleSaveButton.UseVisualStyleBackColor = false;
-            this.handleSaveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            this.btnSaveProductData.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnSaveProductData.FlatAppearance.BorderSize = 0;
+            this.btnSaveProductData.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Moccasin;
+            this.btnSaveProductData.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
+            this.btnSaveProductData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSaveProductData.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnSaveProductData.Location = new System.Drawing.Point(12, 481);
+            this.btnSaveProductData.Name = "btnSaveProductData";
+            this.btnSaveProductData.Size = new System.Drawing.Size(90, 30);
+            this.btnSaveProductData.TabIndex = 5;
+            this.btnSaveProductData.Text = "Ajouter";
+            this.btnSaveProductData.UseVisualStyleBackColor = false;
+            this.btnSaveProductData.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // ProductPriceCompany
             // 
@@ -239,8 +240,9 @@ namespace HarvestManagerSystem.view
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.btnCloseForm);
-            this.panel1.Controls.Add(this.btnReset);
-            this.panel1.Controls.Add(this.handleSaveButton);
+            this.panel1.Controls.Add(this.btnClearReset);
+            this.panel1.Controls.Add(this.btnDeleteProduct);
+            this.panel1.Controls.Add(this.btnSaveProductData);
             this.panel1.Controls.Add(this.ProductPriceCompany);
             this.panel1.Controls.Add(this.ProductPriceEmployee);
             this.panel1.Controls.Add(this.ProductType);
@@ -274,6 +276,23 @@ namespace HarvestManagerSystem.view
             this.btnCloseForm.Text = "X";
             this.btnCloseForm.UseVisualStyleBackColor = false;
             this.btnCloseForm.Click += new System.EventHandler(this.btnCloseForm_Click);
+            // 
+            // btnDeleteProduct
+            // 
+            this.btnDeleteProduct.BackColor = System.Drawing.Color.OrangeRed;
+            this.btnDeleteProduct.FlatAppearance.BorderSize = 0;
+            this.btnDeleteProduct.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Moccasin;
+            this.btnDeleteProduct.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
+            this.btnDeleteProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteProduct.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnDeleteProduct.Location = new System.Drawing.Point(12, 543);
+            this.btnDeleteProduct.Name = "btnDeleteProduct";
+            this.btnDeleteProduct.Size = new System.Drawing.Size(220, 30);
+            this.btnDeleteProduct.TabIndex = 5;
+            this.btnDeleteProduct.Text = "Supprimer";
+            this.btnDeleteProduct.UseVisualStyleBackColor = false;
+            this.btnDeleteProduct.Visible = false;
+            this.btnDeleteProduct.Click += new System.EventHandler(this.btnDeleteProduct_Click);
             // 
             // pnlDisplayProducts
             // 
@@ -338,6 +357,7 @@ namespace HarvestManagerSystem.view
             this.ProductDetailDataGridView.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
             this.ProductDetailDataGridView.MultiSelect = false;
             this.ProductDetailDataGridView.Name = "ProductDetailDataGridView";
+            this.ProductDetailDataGridView.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightSkyBlue;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -358,6 +378,7 @@ namespace HarvestManagerSystem.view
             this.ProductDetailDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ProductDetailDataGridView.Size = new System.Drawing.Size(519, 604);
             this.ProductDetailDataGridView.TabIndex = 10;
+            this.ProductDetailDataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductDetailDataGridView_CellContentDoubleClick);
             this.ProductDetailDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductDetailDataGridView_CellEndEdit);
             // 
             // ProductDataGridView
@@ -402,7 +423,9 @@ namespace HarvestManagerSystem.view
             this.ProductDataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ProductDataGridView.Location = new System.Drawing.Point(2, 0);
             this.ProductDataGridView.Margin = new System.Windows.Forms.Padding(20, 3, 10, 3);
+            this.ProductDataGridView.MultiSelect = false;
             this.ProductDataGridView.Name = "ProductDataGridView";
+            this.ProductDataGridView.ReadOnly = true;
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle9.BackColor = System.Drawing.Color.LightSkyBlue;
             dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -419,10 +442,27 @@ namespace HarvestManagerSystem.view
             dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
             this.ProductDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.ProductDataGridView.RowTemplate.Height = 25;
+            this.ProductDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ProductDataGridView.Size = new System.Drawing.Size(219, 604);
             this.ProductDataGridView.TabIndex = 9;
-            this.ProductDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductDataGridView_CellEndEdit);
+            this.ProductDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductDataGridView_CellDoubleClick);
             this.ProductDataGridView.SelectionChanged += new System.EventHandler(this.ProductDataGridView_SelectionChanged);
+            // 
+            // IdColumn
+            // 
+            this.IdColumn.DataPropertyName = "ProductId";
+            this.IdColumn.HeaderText = "Id";
+            this.IdColumn.Name = "IdColumn";
+            this.IdColumn.ReadOnly = true;
+            this.IdColumn.Visible = false;
+            // 
+            // NameColumn
+            // 
+            this.NameColumn.DataPropertyName = "ProductName";
+            this.NameColumn.HeaderText = "Product";
+            this.NameColumn.MinimumWidth = 200;
+            this.NameColumn.Name = "NameColumn";
+            this.NameColumn.ReadOnly = true;
             // 
             // panel2
             // 
@@ -435,25 +475,12 @@ namespace HarvestManagerSystem.view
             this.panel2.Size = new System.Drawing.Size(997, 608);
             this.panel2.TabIndex = 29;
             // 
-            // IdColumn
-            // 
-            this.IdColumn.DataPropertyName = "ProductId";
-            this.IdColumn.HeaderText = "Id";
-            this.IdColumn.Name = "IdColumn";
-            this.IdColumn.Visible = false;
-            // 
-            // NameColumn
-            // 
-            this.NameColumn.DataPropertyName = "ProductName";
-            this.NameColumn.HeaderText = "Product";
-            this.NameColumn.MinimumWidth = 200;
-            this.NameColumn.Name = "NameColumn";
-            // 
             // ProductDetailId
             // 
             this.ProductDetailId.DataPropertyName = "ProductDetailId";
             this.ProductDetailId.HeaderText = "ProductDetailId";
             this.ProductDetailId.Name = "ProductDetailId";
+            this.ProductDetailId.ReadOnly = true;
             this.ProductDetailId.Visible = false;
             // 
             // ProductTypeColumn
@@ -463,6 +490,7 @@ namespace HarvestManagerSystem.view
             this.ProductTypeColumn.HeaderText = "Type";
             this.ProductTypeColumn.MinimumWidth = 140;
             this.ProductTypeColumn.Name = "ProductTypeColumn";
+            this.ProductTypeColumn.ReadOnly = true;
             // 
             // ProductPriceEmployeeColumn
             // 
@@ -471,6 +499,7 @@ namespace HarvestManagerSystem.view
             this.ProductPriceEmployeeColumn.HeaderText = "Prix.E";
             this.ProductPriceEmployeeColumn.MinimumWidth = 120;
             this.ProductPriceEmployeeColumn.Name = "ProductPriceEmployeeColumn";
+            this.ProductPriceEmployeeColumn.ReadOnly = true;
             // 
             // ProductPriceCompanyColumn
             // 
@@ -479,6 +508,7 @@ namespace HarvestManagerSystem.view
             this.ProductPriceCompanyColumn.HeaderText = "Prix.C";
             this.ProductPriceCompanyColumn.MinimumWidth = 120;
             this.ProductPriceCompanyColumn.Name = "ProductPriceCompanyColumn";
+            this.ProductPriceCompanyColumn.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -486,6 +516,7 @@ namespace HarvestManagerSystem.view
             this.dataGridViewTextBoxColumn1.HeaderText = "ProductId";
             this.dataGridViewTextBoxColumn1.MinimumWidth = 100;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             this.dataGridViewTextBoxColumn1.Visible = false;
             // 
             // FormAddProduct
@@ -515,8 +546,8 @@ namespace HarvestManagerSystem.view
 
         #endregion
 
-        private System.Windows.Forms.Button btnReset;
-        private System.Windows.Forms.Button handleSaveButton;
+        private System.Windows.Forms.Button btnClearReset;
+        private System.Windows.Forms.Button btnSaveProductData;
         private System.Windows.Forms.TextBox ProductPriceCompany;
         private System.Windows.Forms.TextBox ProductPriceEmployee;
         private System.Windows.Forms.TextBox ProductType;
@@ -535,12 +566,13 @@ namespace HarvestManagerSystem.view
         private System.Windows.Forms.DataGridView ProductDetailDataGridView;
         private System.Windows.Forms.Button btnCloseForm;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NameColumn;
+        private System.Windows.Forms.Button btnDeleteProduct;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductDetailId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductTypeColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductPriceEmployeeColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductPriceCompanyColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NameColumn;
     }
 }

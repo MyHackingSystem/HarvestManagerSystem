@@ -29,7 +29,6 @@ namespace HarvestManagerSystem.database
             return instance;
         }
 
-
         //*******************************
         //Update product data
         //*******************************
@@ -51,6 +50,29 @@ namespace HarvestManagerSystem.database
             {
                 MessageBox.Show("Product Not Updated: " + e.Message);
                 return false;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public void Update(Product product)
+        {
+            var updateStmt = "UPDATE " + TABLE_PRODUCT + " SET "
+                 + COLUMN_PRODUCT_NAME + " =@" + COLUMN_PRODUCT_NAME + " "
+                + " WHERE " + COLUMN_PRODUCT_ID + " = " + product.ProductId + " ";
+
+            try
+            {
+                SQLiteCommand sQLiteCommand = new SQLiteCommand(updateStmt, mSQLiteConnection);
+                OpenConnection();
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_PRODUCT_NAME, product.ProductName));
+                sQLiteCommand.ExecuteNonQuery();
+            }
+            catch (SQLiteException ex)
+            {
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -137,6 +159,7 @@ namespace HarvestManagerSystem.database
         {
             string updateStmt = "DELETE FROM " + TABLE_PRODUCT + " WHERE " + COLUMN_PRODUCT_ID + " = " + product.ProductId + " ";
 
+
             try
             {
                 SQLiteCommand sQLiteCommand = new SQLiteCommand(updateStmt, mSQLiteConnection);
@@ -148,6 +171,37 @@ namespace HarvestManagerSystem.database
             {
                 Console.WriteLine(e.Message);
                 return false;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public void Delete(Product product)
+        {
+            SQLiteTransaction transaction = null;
+            SQLiteCommand sQLiteCommand = null;
+
+            var deleteDetail = "DELETE FROM " + TABLE_PRODUCT + " WHERE " + COLUMN_PRODUCT_ID + " = " + product.ProductId + " ";
+            var deleteProduct = "DELETE FROM " + ProductDetailDAO.TABLE_PRODUCT_DETAIL + " WHERE " + ProductDetailDAO.COLUMN_FOREIGN_KEY_PRODUCT_ID + " = " + product.ProductId + " ";
+
+            try
+            {
+                OpenConnection();
+                transaction = mSQLiteConnection.BeginTransaction();
+
+                sQLiteCommand = new SQLiteCommand(deleteDetail, mSQLiteConnection);
+                sQLiteCommand.ExecuteNonQuery();
+
+                sQLiteCommand = new SQLiteCommand(deleteProduct, mSQLiteConnection);
+                sQLiteCommand.ExecuteNonQuery();
+
+                transaction.Commit();
+            }
+            catch (SQLiteException ex)
+            {
+                throw new Exception(ex.Message);
             }
             finally
             {
