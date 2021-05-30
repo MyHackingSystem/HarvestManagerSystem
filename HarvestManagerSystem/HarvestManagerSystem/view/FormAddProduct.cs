@@ -115,7 +115,7 @@ namespace HarvestManagerSystem.view
                 }
                 mProductDetail.Product.ProductId = mProduct.ProductId;
                 mProductDetail.Product.ProductName = mProduct.ProductName;
-                mProductDetailDAO.UpdateData(mProductDetail);
+                mProductDetailDAO.Update(mProductDetail);
                 MessageBox.Show("Product detail Updated", "Info", MessageBoxButtons.OK, MessageBoxIcon.None);
             }
             catch (Exception ex)
@@ -136,45 +136,42 @@ namespace HarvestManagerSystem.view
                 return;
             }
             Product product;
-            if (!mProductDictionary.TryGetValue(cmbxProductName.Text, out product))
-            {
-                MessageBox.Show("Add Product, No selection value.");
-            }
-
             ProductDetail productDetail = new ProductDetail();
             productDetail.ProductType = txtProductType.Text.Trim();
             double priceEmp; double priceCom;
             IFormatProvider provider = CultureInfo.CreateSpecificCulture("en-US");
 
-            if (Double.TryParse(txtProductPriceEmployee.Text, NumberStyles.AllowDecimalPoint,
-                        provider, out priceEmp))
+            if (Double.TryParse(txtProductPriceEmployee.Text, NumberStyles.AllowDecimalPoint, provider, out priceEmp))
             {
                 productDetail.PriceEmployee = priceEmp;
             }
-            if (Double.TryParse(txtProductPriceCompany.Text, NumberStyles.AllowDecimalPoint,
-                        provider, out priceCom))
+            if (Double.TryParse(txtProductPriceCompany.Text, NumberStyles.AllowDecimalPoint, provider, out priceCom))
             {
                 productDetail.PriceCompany = priceCom;
             }
 
-            bool added = false;
-            if (product != null)
+            try
             {
-                productDetail.Product.ProductId = product.ProductId;
-                productDetail.Product.ProductName = product.ProductName;
-                added = mProductDetailDAO.addData(productDetail);
+                if (mProductDictionary.TryGetValue(cmbxProductName.Text, out product))
+                {
+                    productDetail.Product.ProductId = product.ProductId;
+                    productDetail.Product.ProductName = product.ProductName;
+                    mProductDetailDAO.add(productDetail);
+                }
+                else
+                {
+                    productDetail.Product.ProductName = cmbxProductName.Text.Trim();
+                    mProductDetailDAO.addNewProduct(productDetail);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                productDetail.Product.ProductName = cmbxProductName.Text.Trim();
-                added = mProductDetailDAO.addNewProductDetail(productDetail);
+                MessageBox.Show("Product Not Added: " + ex.Message, "Info", MessageBoxButtons.OK, MessageBoxIcon.None);
+                return;
             }
-            if (added)
-            {
-                MessageBox.Show("Produit ajouté à la base de données");
-                ProductNameList();
-                ClearFields();
-            }
+            MessageBox.Show("Produit ajouté à la base de données");
+            ProductNameList();
+            ClearFields();
             DisplayProductData();
         }
 
@@ -264,7 +261,8 @@ namespace HarvestManagerSystem.view
             editProduct = false;
             ClearFields();
         }
-    private void ClearFields()
+
+        private void ClearFields()
         {
             cmbxProductName.SelectedIndex = -1;
             cmbxProductName.Text = "";
@@ -290,7 +288,7 @@ namespace HarvestManagerSystem.view
             try
             {
                 listProduct.Clear();
-                listProduct = mProductDAO.getData();
+                listProduct = mProductDAO.ProductList();
                 ProductDataGridView.DataSource = listProduct;
             }
             catch (Exception exc)
@@ -313,7 +311,7 @@ namespace HarvestManagerSystem.view
             try
             {
                 listProductDetail.Clear();
-                listProductDetail = mProductDetailDAO.getData(product);
+                listProductDetail = mProductDetailDAO.ProductDetailList(product);
                 ProductDetailDataGridView.DataSource = listProductDetail;
             }
             catch (Exception exc)

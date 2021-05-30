@@ -32,41 +32,6 @@ namespace HarvestManagerSystem.database
             return instance;
         }
 
-        //*******************************
-        //Update product data
-        //*******************************
-        internal bool UpdateData(ProductDetail productDetail)
-        {
-            string updateStmt = "UPDATE " + TABLE_PRODUCT_DETAIL + " SET "
-                 + COLUMN_PRODUCT_TYPE + " =@" + COLUMN_PRODUCT_TYPE + ", "
-                 + COLUMN_PRODUCT_PRICE_EMPLOYEE + " =@" + COLUMN_PRODUCT_PRICE_EMPLOYEE + ", "
-                 + COLUMN_PRODUCT_PRICE_COMPANY + " =@" + COLUMN_PRODUCT_PRICE_COMPANY + " "
-                 + " WHERE " + COLUMN_PRODUCT_DETAIL_ID + " = " + productDetail.ProductDetailId + " ";
-
-            try
-            {
-                SQLiteCommand sQLiteCommand = new SQLiteCommand(updateStmt, mSQLiteConnection);
-                OpenConnection();
-                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_PRODUCT_TYPE, productDetail.ProductType));
-                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_PRODUCT_PRICE_EMPLOYEE, productDetail.PriceEmployee));
-                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_PRODUCT_PRICE_COMPANY, productDetail.PriceCompany));
-                sQLiteCommand.ExecuteNonQuery();
-                return true;
-            }
-            catch (SQLiteException e)
-            {
-                MessageBox.Show("Error: " + e.Message);
-                return false;
-            }
-            finally
-            {
-                CloseConnection();
-            }
-        }
-
-        //*************************************************************
-        //Get productdetail as Dictionary by product type
-        //*************************************************************
         internal Dictionary<string, ProductDetail> ProductTypeDictionary(Product product)
         {
             Dictionary<string, ProductDetail> productDictionary = new Dictionary<string, ProductDetail>();
@@ -85,28 +50,27 @@ namespace HarvestManagerSystem.database
                     while (result.Read())
                     {
                         ProductDetail productDetail = new ProductDetail();
-                        productDetail.ProductDetailId = Convert.ToInt32((result[COLUMN_PRODUCT_DETAIL_ID]).ToString());
-                        productDetail.ProductType = (string)result[COLUMN_PRODUCT_TYPE];
-                        productDetail.PriceEmployee = Convert.ToDouble((result[COLUMN_PRODUCT_PRICE_EMPLOYEE]).ToString());
-                        productDetail.PriceCompany = Convert.ToDouble((result[COLUMN_PRODUCT_PRICE_COMPANY]).ToString());
-                        productDetail.Product.ProductId = Convert.ToInt32((result[COLUMN_FOREIGN_KEY_PRODUCT_ID]).ToString());
+                        productDetail.ProductDetailId = result.GetInt32(result.GetOrdinal(COLUMN_PRODUCT_DETAIL_ID));
+                        productDetail.ProductType = result.GetString(result.GetOrdinal(COLUMN_PRODUCT_TYPE));
+                        productDetail.PriceEmployee = result.GetDouble(result.GetOrdinal(COLUMN_PRODUCT_PRICE_EMPLOYEE));
+                        productDetail.PriceCompany = result.GetDouble(result.GetOrdinal(COLUMN_PRODUCT_PRICE_COMPANY));
+                        productDetail.Product.ProductId = result.GetInt32(result.GetOrdinal(COLUMN_FOREIGN_KEY_PRODUCT_ID));
                         productDictionary.Add(productDetail.ProductType, productDetail);
                     }
                 }
-                CloseConnection();
                 return productDictionary;
             }
-            catch (SQLiteException e)
+            catch (SQLiteException ex)
             {
-                MessageBox.Show("Error: " + e.Message);
-                return productDictionary;
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
             }
         }
 
-        //*******************************
-        //Get all product data
-        //*******************************
-        public List<ProductDetail> getData(Product product)
+        public List<ProductDetail> ProductDetailList(Product product)
         {
             List<ProductDetail> list = new List<ProductDetail>();
             string selectStmt = "SELECT * FROM " + TABLE_PRODUCT_DETAIL
@@ -123,62 +87,27 @@ namespace HarvestManagerSystem.database
                     while (result.Read())
                     {
                         ProductDetail productDetail = new ProductDetail();
-                        productDetail.ProductDetailId = Convert.ToInt32((result[COLUMN_PRODUCT_DETAIL_ID]).ToString());
-                        productDetail.ProductType = (string)result[COLUMN_PRODUCT_TYPE];
-                        productDetail.PriceEmployee = Convert.ToDouble((result[COLUMN_PRODUCT_PRICE_EMPLOYEE]).ToString());
-                        productDetail.PriceCompany = Convert.ToDouble((result[COLUMN_PRODUCT_PRICE_COMPANY]).ToString());
-                        productDetail.Product.ProductId = Convert.ToInt32((result[COLUMN_FOREIGN_KEY_PRODUCT_ID]).ToString());
+                        productDetail.ProductDetailId = result.GetInt32(result.GetOrdinal(COLUMN_PRODUCT_DETAIL_ID));
+                        productDetail.ProductType = result.GetString(result.GetOrdinal(COLUMN_PRODUCT_TYPE)); 
+                        productDetail.PriceEmployee = result.GetDouble(result.GetOrdinal(COLUMN_PRODUCT_PRICE_EMPLOYEE));
+                        productDetail.PriceCompany = result.GetDouble(result.GetOrdinal(COLUMN_PRODUCT_PRICE_COMPANY));
+                        productDetail.Product.ProductId = result.GetInt32(result.GetOrdinal(COLUMN_FOREIGN_KEY_PRODUCT_ID));
                         list.Add(productDetail);
                     }
                 }
-                CloseConnection();
                 return list;
             }
-            catch (SQLiteException e)
+            catch (SQLiteException ex)
             {
-                MessageBox.Show("Error: " + e.Message);
-                return list;
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
             }
         }
 
-        //*******************************
-        //Get all product data
-        //*******************************
-        public List<ProductDetail> getData()
-        {
-            List<ProductDetail> list = new List<ProductDetail>();
-            string selectStmt = "SELECT * FROM " + TABLE_PRODUCT_DETAIL
-                + " ORDER BY " + COLUMN_PRODUCT_TYPE + " ASC;";
-
-            try
-            {
-                SQLiteCommand sQLiteCommand = new SQLiteCommand(selectStmt, mSQLiteConnection);
-                OpenConnection();
-                SQLiteDataReader result = sQLiteCommand.ExecuteReader();
-                if (result.HasRows)
-                {
-                    while (result.Read())
-                    {
-                        ProductDetail productDetail = new ProductDetail();
-                        productDetail.ProductDetailId = Convert.ToInt32((result[COLUMN_PRODUCT_DETAIL_ID]).ToString());
-                        productDetail.ProductType = (string)result[COLUMN_PRODUCT_TYPE];
-                        productDetail.PriceEmployee = Convert.ToDouble((result[COLUMN_PRODUCT_PRICE_EMPLOYEE]).ToString());
-                        productDetail.PriceCompany = Convert.ToDouble((result[COLUMN_PRODUCT_PRICE_COMPANY]).ToString());
-                        productDetail.Product.ProductId = Convert.ToInt32((result[COLUMN_FOREIGN_KEY_PRODUCT_ID]).ToString());
-                        list.Add(productDetail);
-                    }
-                }
-                CloseConnection();
-                return list;
-            }
-            catch (SQLiteException e)
-            {
-                MessageBox.Show("Error: " + e.Message);
-                return list;
-            }
-        }
-
-        internal bool addNewProductDetail(ProductDetail productDetail)
+        public void addNewProduct(ProductDetail productDetail)
         {
             SQLiteTransaction transaction = null;
             SQLiteCommand sQLiteCommand = null;
@@ -218,12 +147,10 @@ namespace HarvestManagerSystem.database
                 sQLiteCommand.ExecuteNonQuery();
 
                 transaction.Commit();
-                return true;
             }
-            catch (SQLiteException e)
+            catch (SQLiteException ex)
             {
-                MessageBox.Show("Le produit n'est pas ajouté à la base de données, erreur: " + e.Message);
-                return false;
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -231,10 +158,7 @@ namespace HarvestManagerSystem.database
             }
         }
 
-        //*******************************
-        //Add new product data 
-        //*******************************
-        public bool addData(ProductDetail productDetail)
+        public void add(ProductDetail productDetail)
         {
             String insertStmt = "INSERT INTO " + TABLE_PRODUCT_DETAIL + " ("
                     + COLUMN_PRODUCT_TYPE + ", "
@@ -256,12 +180,10 @@ namespace HarvestManagerSystem.database
                 sQLiteCommand.Parameters.AddWithValue(COLUMN_PRODUCT_PRICE_COMPANY, productDetail.PriceCompany);
                 sQLiteCommand.Parameters.AddWithValue(COLUMN_FOREIGN_KEY_PRODUCT_ID, productDetail.Product.ProductId);
                 sQLiteCommand.ExecuteNonQuery();
-                return true;
             }
-            catch (SQLiteException e)
+            catch (SQLiteException ex)
             {
-                MessageBox.Show("Le produit n'est pas ajouté à la base de données, erreur: " + e.Message);
-                return false;
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -269,25 +191,26 @@ namespace HarvestManagerSystem.database
             }
         }
 
-
-        //*******************************
-        //Delete product data
-        //*******************************
-        public bool DeleteData(ProductDetail productDetail)
+        public void Update(ProductDetail productDetail)
         {
-            string deleteStmt = "DELETE FROM " + TABLE_PRODUCT_DETAIL + " WHERE " + COLUMN_PRODUCT_DETAIL_ID + " = " + productDetail.ProductDetailId + " ";
+            string updateStmt = "UPDATE " + TABLE_PRODUCT_DETAIL + " SET "
+                 + COLUMN_PRODUCT_TYPE + " =@" + COLUMN_PRODUCT_TYPE + ", "
+                 + COLUMN_PRODUCT_PRICE_EMPLOYEE + " =@" + COLUMN_PRODUCT_PRICE_EMPLOYEE + ", "
+                 + COLUMN_PRODUCT_PRICE_COMPANY + " =@" + COLUMN_PRODUCT_PRICE_COMPANY + " "
+                 + " WHERE " + COLUMN_PRODUCT_DETAIL_ID + " = " + productDetail.ProductDetailId + " ";
 
             try
             {
-                SQLiteCommand sQLiteCommand = new SQLiteCommand(deleteStmt, mSQLiteConnection);
+                SQLiteCommand sQLiteCommand = new SQLiteCommand(updateStmt, mSQLiteConnection);
                 OpenConnection();
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_PRODUCT_TYPE, productDetail.ProductType));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_PRODUCT_PRICE_EMPLOYEE, productDetail.PriceEmployee));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_PRODUCT_PRICE_COMPANY, productDetail.PriceCompany));
                 sQLiteCommand.ExecuteNonQuery();
-                return true;
             }
-            catch (SQLiteException e)
+            catch (SQLiteException ex)
             {
-                MessageBox.Show("Error: " + e.Message);
-                return false;
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -295,9 +218,6 @@ namespace HarvestManagerSystem.database
             }
         }
 
-        //*******************************
-        //Delete product data
-        //*******************************
         public void Delete(ProductDetail productDetail)
         {
             var deleteStmt = "DELETE FROM " + TABLE_PRODUCT_DETAIL + " WHERE " + COLUMN_PRODUCT_DETAIL_ID + " = " + productDetail.ProductDetailId + " ";
@@ -316,26 +236,6 @@ namespace HarvestManagerSystem.database
             {
                 CloseConnection();
             }
-        }
-
-        public void CreateTable()
-        {
-            string createStmt = "CREATE TABLE IF NOT EXISTS " + TABLE_PRODUCT_DETAIL
-                   + "(" + COLUMN_PRODUCT_DETAIL_ID + " INTEGER PRIMARY KEY, "
-                    + COLUMN_PRODUCT_TYPE + " TEXT NOT NULL UNIQUE, "
-                    + COLUMN_PRODUCT_PRICE_EMPLOYEE + " REAL NOT NULL DEFAULT 0, "
-                    + COLUMN_PRODUCT_PRICE_COMPANY + " REAL NOT NULL DEFAULT 0, "
-                    + COLUMN_FOREIGN_KEY_PRODUCT_ID + " INTEGER NOT NULL, "
-                    + " FOREIGN KEY (" + COLUMN_FOREIGN_KEY_PRODUCT_ID + ") REFERENCES " + ProductDAO.TABLE_PRODUCT + " (" + ProductDAO.COLUMN_PRODUCT_ID + ") "
-                    + ")";
-
-
-            SQLiteCommand sQLiteCommand = new SQLiteCommand(createStmt, mSQLiteConnection);
-            OpenConnection();
-            sQLiteCommand.ExecuteNonQuery();
-            CloseConnection();
-            MessageBox.Show("Create table");
-
         }
 
     }

@@ -29,34 +29,6 @@ namespace HarvestManagerSystem.database
             return instance;
         }
 
-        //*******************************
-        //Update product data
-        //*******************************
-        internal bool UpdateData(Product product)
-        {
-            String updateStmt = "UPDATE " + TABLE_PRODUCT + " SET "
-                 + COLUMN_PRODUCT_NAME + " =@" + COLUMN_PRODUCT_NAME + " "
-                + " WHERE " + COLUMN_PRODUCT_ID + " = " + product.ProductId + " ";
-
-            try
-            {
-                SQLiteCommand sQLiteCommand = new SQLiteCommand(updateStmt, mSQLiteConnection);
-                OpenConnection();
-                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_PRODUCT_NAME, product.ProductName));
-                sQLiteCommand.ExecuteNonQuery();
-                return true;
-            }
-            catch (SQLiteException e)
-            {
-                MessageBox.Show("Product Not Updated: " + e.Message);
-                return false;
-            }
-            finally
-            {
-                CloseConnection();
-            }
-        }
-
         public void Update(Product product)
         {
             var updateStmt = "UPDATE " + TABLE_PRODUCT + " SET "
@@ -80,9 +52,7 @@ namespace HarvestManagerSystem.database
             }
         }
 
-        //*************************************************************
-        //Get data product as Dictionary by product name
-        //*************************************************************
+
         internal Dictionary<string, Product> ProductDictionary()
         {
             Dictionary<string, Product> productDictionary = new Dictionary<string, Product>();
@@ -106,10 +76,9 @@ namespace HarvestManagerSystem.database
                 }
                 return productDictionary;
             }
-            catch (SQLiteException e)
+            catch (SQLiteException ex)
             {
-                Console.WriteLine(e.StackTrace);
-                return productDictionary;
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -117,10 +86,7 @@ namespace HarvestManagerSystem.database
             }
         }
 
-        //*******************************
-        //Get all product data
-        //*******************************
-        public List<Product> getData()
+        public List<Product> ProductList()
         {
             List<Product> list = new List<Product>();
             string selectStmt = "SELECT * FROM " + TABLE_PRODUCT + " ORDER BY " + COLUMN_PRODUCT_NAME + " ASC;";
@@ -135,42 +101,16 @@ namespace HarvestManagerSystem.database
                     while (result.Read())
                     {
                         Product product = new Product();
-                        product.ProductId = Convert.ToInt32((result[COLUMN_PRODUCT_ID]).ToString());
-                        product.ProductName = (string)result[COLUMN_PRODUCT_NAME];
-
+                        product.ProductId = result.GetInt32(result.GetOrdinal(COLUMN_PRODUCT_ID));
+                        product.ProductName = result.GetString(result.GetOrdinal(COLUMN_PRODUCT_NAME));
                         list.Add(product);
                     }
                 }
-                CloseConnection();
                 return list;
             }
-            catch (SQLiteException e)
+            catch (SQLiteException ex)
             {
-                Console.WriteLine(e.Message);
-                return list;
-            }
-        }
-
-
-        //*******************************
-        //Delete product data
-        //*******************************
-        public bool DeleteData(Product product)
-        {
-            string updateStmt = "DELETE FROM " + TABLE_PRODUCT + " WHERE " + COLUMN_PRODUCT_ID + " = " + product.ProductId + " ";
-
-
-            try
-            {
-                SQLiteCommand sQLiteCommand = new SQLiteCommand(updateStmt, mSQLiteConnection);
-                OpenConnection();
-                sQLiteCommand.ExecuteNonQuery();
-                return true;
-            }
-            catch (SQLiteException e)
-            {
-                Console.WriteLine(e.Message);
-                return false;
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -209,17 +149,5 @@ namespace HarvestManagerSystem.database
             }
         }
 
-        public void CreateTable()
-        {
-            string createStmt = "CREATE TABLE IF NOT EXISTS " + TABLE_PRODUCT
-                    + "(" + COLUMN_PRODUCT_ID + " INTEGER PRIMARY KEY, "
-                    + COLUMN_PRODUCT_NAME + " TEXT NOT NULL)";
-            SQLiteCommand sQLiteCommand = new SQLiteCommand(createStmt, mSQLiteConnection);
-            OpenConnection();
-            sQLiteCommand.ExecuteNonQuery();
-            CloseConnection();
-            MessageBox.Show("Create table");
-
-        }
     }
 }
