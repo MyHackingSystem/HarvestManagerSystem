@@ -71,3 +71,4 @@ E:\Projects\C_Sharp\Desktop\HarvestManagerSystem\HarvestManagerSystem\HarvestMan
 E:\Projects\C_Sharp\Desktop\HarvestManagerSystem\HarvestManagerSystem\HarvestManagerSystem\obj\Debug\netcoreapp3.1\HarvestManagerSystem.LoginForm.resources
 E:\Projects\C_Sharp\Desktop\HarvestManagerSystem\HarvestManagerSystem\HarvestManagerSystem\obj\Debug\netcoreapp3.1\HarvestManagerSystem.view.FormAddIndWork.resources
 E:\Projects\C_Sharp\Desktop\HarvestManagerSystem\HarvestManagerSystem\HarvestManagerSystem\obj\Debug\netcoreapp3.1\HarvestManagerSystem.csprojAssemblyReference.cache
+E:\Projects\C_Sharp\Desktop\HarvestManagerSystem\HarvestManagerSystem\HarvestManagerSystem\obj\Debug\netcoreapp3.1\HarvestManagerSystem.view.MainForm.resources
