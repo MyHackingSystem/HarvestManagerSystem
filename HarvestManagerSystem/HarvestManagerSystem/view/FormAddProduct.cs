@@ -9,7 +9,6 @@ namespace HarvestManagerSystem.view
 {
     public partial class FormAddProduct : Form
     {
-
         private ProductDAO mProductDAO = ProductDAO.getInstance();
         private ProductDetailDAO mProductDetailDAO = ProductDetailDAO.getInstance();
         private Dictionary<string, Product> mProductDictionary = new Dictionary<string, Product>();
@@ -20,23 +19,14 @@ namespace HarvestManagerSystem.view
         private List<Product> listProduct = new List<Product>();
         private List<ProductDetail> listProductDetail = new List<ProductDetail>();
 
-        private HarvestMS harvestMS;
-
-        public FormAddProduct(HarvestMS harvestMS)
+        public FormAddProduct()
         {
-            this.harvestMS = harvestMS;
             InitializeComponent();
-        }
-
-        private void FormAddProduct_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            ClearFields();
         }
 
         private void FormAddProduct_Load(object sender, EventArgs e)
         {
             ProductNameList();
-            ProductNameComboBox.SelectedIndex = -1;
             DisplayProductData();
         }
 
@@ -49,13 +39,15 @@ namespace HarvestManagerSystem.view
                 mProductDictionary = mProductDAO.ProductDictionary();
                 NamesList.AddRange(mProductDictionary.Keys);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine(e.Message);
+                MessageBox.Show("Error create names List: " + ex.Message, "Info", MessageBoxButtons.OK, MessageBoxIcon.None);
+                return;
             }
             if(NamesList != null)
             {
-                ProductNameComboBox.DataSource = NamesList;
+                cmbxProductName.DataSource = NamesList;
+                cmbxProductName.SelectedIndex = -1;
             }
         }
 
@@ -77,31 +69,63 @@ namespace HarvestManagerSystem.view
 
         private void EditProduct()
         {
-            if(ProductNameComboBox.Text == "")
+            if(cmbxProductName.Text == "")
             {
-                MessageBox.Show("Product name required");
+                MessageBox.Show("Vérifier les valeurs");
                 return;
             }
             try
             {
-                mProduct.ProductName = ProductNameComboBox.Text.Trim();
+                mProduct.ProductName = cmbxProductName.Text.Trim();
                 mProductDAO.Update(mProduct);
                 MessageBox.Show("Product Updated", "Info", MessageBoxButtons.OK, MessageBoxIcon.None);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Brand Not Updated: " + ex.Message, "Info", MessageBoxButtons.OK, MessageBoxIcon.None);
+                MessageBox.Show("Product Not Updated: " + ex.Message, "Info", MessageBoxButtons.OK, MessageBoxIcon.None);
                 return;
             }
             ProductNameList();
-            ProductNameComboBox.SelectedIndex = -1;
             DisplayProductData();
             ResetFields();
         }
 
         private void EditProductDetail()
         {
+            if (txtProductType.Text == "" || txtProductPriceEmployee.Text == "" || txtProductPriceCompany.Text == "")
+            {
+                MessageBox.Show("Vérifier les valeurs");
+                return;
+            }
+            try
+            {
+                mProductDetail.ProductType = txtProductType.Text.Trim();
+                double priceEmp; double priceCom;
+                IFormatProvider provider = CultureInfo.CreateSpecificCulture("en-US");
 
+                if (Double.TryParse(txtProductPriceEmployee.Text, NumberStyles.AllowDecimalPoint,
+                            provider, out priceEmp))
+                {
+                    mProductDetail.PriceEmployee = priceEmp;
+                }
+                if (Double.TryParse(txtProductPriceCompany.Text, NumberStyles.AllowDecimalPoint,
+                            provider, out priceCom))
+                {
+                    mProductDetail.PriceCompany = priceCom;
+                }
+                mProductDetail.Product.ProductId = mProduct.ProductId;
+                mProductDetail.Product.ProductName = mProduct.ProductName;
+                mProductDetailDAO.UpdateData(mProductDetail);
+                MessageBox.Show("Product detail Updated", "Info", MessageBoxButtons.OK, MessageBoxIcon.None);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Product Detail Not Updated: " + ex.Message, "Info", MessageBoxButtons.OK, MessageBoxIcon.None);
+                return;
+            }
+            ProductNameList();
+            DisplayProductData();
+            ResetFields();
         }
 
         private void AddProduct()
@@ -112,24 +136,22 @@ namespace HarvestManagerSystem.view
                 return;
             }
             Product product;
-            if (!mProductDictionary.TryGetValue(ProductNameComboBox.Text, out product))
+            if (!mProductDictionary.TryGetValue(cmbxProductName.Text, out product))
             {
-                Console.WriteLine("Pas de valeur de sélection");
+                MessageBox.Show("Add Product, No selection value.");
             }
 
             ProductDetail productDetail = new ProductDetail();
-            productDetail.ProductType = ProductType.Text;
-
-            double priceEmp;
-            double priceCom;
+            productDetail.ProductType = txtProductType.Text.Trim();
+            double priceEmp; double priceCom;
             IFormatProvider provider = CultureInfo.CreateSpecificCulture("en-US");
 
-            if (Double.TryParse(ProductPriceEmployee.Text, NumberStyles.AllowDecimalPoint,
+            if (Double.TryParse(txtProductPriceEmployee.Text, NumberStyles.AllowDecimalPoint,
                         provider, out priceEmp))
             {
                 productDetail.PriceEmployee = priceEmp;
             }
-            if (Double.TryParse(ProductPriceCompany.Text, NumberStyles.AllowDecimalPoint,
+            if (Double.TryParse(txtProductPriceCompany.Text, NumberStyles.AllowDecimalPoint,
                         provider, out priceCom))
             {
                 productDetail.PriceCompany = priceCom;
@@ -144,7 +166,7 @@ namespace HarvestManagerSystem.view
             }
             else
             {
-                productDetail.Product.ProductName = ProductNameComboBox.Text;
+                productDetail.Product.ProductName = cmbxProductName.Text.Trim();
                 added = mProductDetailDAO.addNewProductDetail(productDetail);
             }
             if (added)
@@ -158,10 +180,10 @@ namespace HarvestManagerSystem.view
 
         private bool CheckInput()
         {
-            nameProductErrorLabel.Visible = ProductNameComboBox.SelectedIndex == -1 && ProductNameComboBox.Text == "";
-            codeProductErrorLabel.Visible = (ProductType.Text == "") ? true : false;
-            prixEmployeeErrorlabel.Visible = (ProductPriceEmployee.Text == "") ? true : false;
-            prixCompanyErrorlabel.Visible = (ProductPriceCompany.Text == "") ? true : false;
+            nameProductErrorLabel.Visible = cmbxProductName.SelectedIndex == -1 && cmbxProductName.Text == "";
+            codeProductErrorLabel.Visible = (txtProductType.Text == "") ? true : false;
+            prixEmployeeErrorlabel.Visible = (txtProductPriceEmployee.Text == "") ? true : false;
+            prixCompanyErrorlabel.Visible = (txtProductPriceCompany.Text == "") ? true : false;
             return nameProductErrorLabel.Visible || codeProductErrorLabel.Visible || prixEmployeeErrorlabel.Visible || prixCompanyErrorlabel.Visible;
         }
 
@@ -185,14 +207,13 @@ namespace HarvestManagerSystem.view
             }
             else if (editProductDetail)
             {
-
+                DeleteProductDetail();
             }
-
         }
 
         private void DeleteProduct()
         {
-            if (ProductNameComboBox.Text == "")
+            if (cmbxProductName.Text == "" || mProduct.ProductId <= 0)
             {
                 MessageBox.Show("Select Product required");
                 return;
@@ -208,15 +229,35 @@ namespace HarvestManagerSystem.view
             }
             DisplayProductData();
             ProductNameList();
-            ProductNameComboBox.SelectedIndex = -1;
+            ResetFields();
+        }
+
+        private void DeleteProductDetail()
+        {
+            if (txtProductType.Text == "" || txtProductPriceEmployee.Text == "" || txtProductPriceCompany.Text == "" || mProductDetail.ProductDetailId <= 0)
+            {
+                MessageBox.Show("Vérifier les valeurs");
+                return;
+            }
+            try
+            {
+                mProductDetailDAO.Delete(mProductDetail);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
+            DisplayProductData();
+            ProductNameList();
             ResetFields();
         }
 
         private void ResetFields()
         {
-            ProductType.Enabled = true;
-            ProductPriceEmployee.Enabled = true;
-            ProductPriceCompany.Enabled = true;
+            txtProductType.Enabled = true;
+            txtProductPriceEmployee.Enabled = true;
+            txtProductPriceCompany.Enabled = true;
             btnSaveProductData.Text = "Ajouter";
             btnClearReset.Text = "Vider";
             btnDeleteProduct.Visible = false;
@@ -225,11 +266,11 @@ namespace HarvestManagerSystem.view
         }
     private void ClearFields()
         {
-            ProductNameComboBox.SelectedIndex = -1;
-            ProductNameComboBox.Text = "";
-            ProductType.Text = "";
-            ProductPriceEmployee.Text = "";
-            ProductPriceCompany.Text = "";
+            cmbxProductName.SelectedIndex = -1;
+            cmbxProductName.Text = "";
+            txtProductType.Text = "";
+            txtProductPriceEmployee.Text = "";
+            txtProductPriceCompany.Text = "";
         }
 
         private void ValidateNumberEntred(object sender, KeyPressEventArgs e)
@@ -243,7 +284,6 @@ namespace HarvestManagerSystem.view
                 e.Handled = true;
             }
         }
-
 
         public void DisplayProductData()
         {
@@ -268,23 +308,6 @@ namespace HarvestManagerSystem.view
             }
         }
 
-
-        private void ProductDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                mProduct = listProduct[e.RowIndex];
-                ProductNameComboBox.Text = mProduct.ProductName;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return;
-            }
-            EditMode(true, false);
-        }
-
-
         private void DisplayProductDetailData(Product product)
         {
             try
@@ -299,20 +322,22 @@ namespace HarvestManagerSystem.view
             }
         }
 
-        private void ProductDetailDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        private void ProductDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            ProductDetail item = (ProductDetail)listProductDetail[e.RowIndex];
-            if (item == null)
+            try
             {
+                mProduct = listProduct[e.RowIndex];
+                cmbxProductName.Text = mProduct.ProductName;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
                 return;
             }
-            if (mProductDetailDAO.UpdateData(item))
-            {
-                MessageBox.Show("les valeurs mises à jour.");
-            }
+            EditMode(true, false);
         }
 
-        private void ProductDetailDataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void ProductDetailDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
@@ -322,11 +347,10 @@ namespace HarvestManagerSystem.view
                 {
                     mProduct = listProduct[i];
                 }
-                ProductNameComboBox.Text = mProduct.ProductName;
-                ProductType.Text = mProductDetail.ProductType;
-                ProductPriceEmployee.Text = mProductDetail.PriceEmployee.ToString();
-                ProductPriceCompany.Text = mProductDetail.PriceCompany.ToString();
-
+                cmbxProductName.Text = mProduct.ProductName;
+                txtProductType.Text = mProductDetail.ProductType;
+                txtProductPriceEmployee.Text = mProductDetail.PriceEmployee.ToString();
+                txtProductPriceCompany.Text = mProductDetail.PriceCompany.ToString();
             }
             catch (Exception ex)
             {
@@ -340,10 +364,10 @@ namespace HarvestManagerSystem.view
         {
             editProduct = p;
             editProductDetail = d;
-            ProductNameComboBox.Enabled = editProduct;
-            ProductType.Enabled = editProductDetail;
-            ProductPriceEmployee.Enabled = editProductDetail;
-            ProductPriceCompany.Enabled = editProductDetail;
+            cmbxProductName.Enabled = editProduct;
+            txtProductType.Enabled = editProductDetail;
+            txtProductPriceEmployee.Enabled = editProductDetail;
+            txtProductPriceCompany.Enabled = editProductDetail;
             ShowEditMode();
         }
 

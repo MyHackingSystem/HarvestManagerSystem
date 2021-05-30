@@ -295,6 +295,29 @@ namespace HarvestManagerSystem.database
             }
         }
 
+        //*******************************
+        //Delete product data
+        //*******************************
+        public void Delete(ProductDetail productDetail)
+        {
+            var deleteStmt = "DELETE FROM " + TABLE_PRODUCT_DETAIL + " WHERE " + COLUMN_PRODUCT_DETAIL_ID + " = " + productDetail.ProductDetailId + " ";
+
+            try
+            {
+                SQLiteCommand sQLiteCommand = new SQLiteCommand(deleteStmt, mSQLiteConnection);
+                OpenConnection();
+                sQLiteCommand.ExecuteNonQuery();
+            }
+            catch (SQLiteException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
         public void CreateTable()
         {
             string createStmt = "CREATE TABLE IF NOT EXISTS " + TABLE_PRODUCT_DETAIL

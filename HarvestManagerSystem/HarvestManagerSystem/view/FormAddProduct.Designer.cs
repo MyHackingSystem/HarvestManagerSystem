@@ -42,10 +42,10 @@ namespace HarvestManagerSystem.view
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAddProduct));
             this.btnClearReset = new System.Windows.Forms.Button();
             this.btnSaveProductData = new System.Windows.Forms.Button();
-            this.ProductPriceCompany = new System.Windows.Forms.TextBox();
-            this.ProductPriceEmployee = new System.Windows.Forms.TextBox();
-            this.ProductType = new System.Windows.Forms.TextBox();
-            this.ProductNameComboBox = new System.Windows.Forms.ComboBox();
+            this.txtProductPriceCompany = new System.Windows.Forms.TextBox();
+            this.txtProductPriceEmployee = new System.Windows.Forms.TextBox();
+            this.txtProductType = new System.Windows.Forms.TextBox();
+            this.cmbxProductName = new System.Windows.Forms.ComboBox();
             this.PriceCLabel = new System.Windows.Forms.Label();
             this.PriceELabel = new System.Windows.Forms.Label();
             this.LblType = new System.Windows.Forms.Label();
@@ -59,15 +59,15 @@ namespace HarvestManagerSystem.view
             this.btnDeleteProduct = new System.Windows.Forms.Button();
             this.pnlDisplayProducts = new System.Windows.Forms.Panel();
             this.ProductDetailDataGridView = new System.Windows.Forms.DataGridView();
-            this.ProductDataGridView = new System.Windows.Forms.DataGridView();
-            this.IdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.ProductDetailId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductTypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductPriceEmployeeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductPriceCompanyColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductDataGridView = new System.Windows.Forms.DataGridView();
+            this.IdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.pnlDisplayProducts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProductDetailDataGridView)).BeginInit();
@@ -107,42 +107,42 @@ namespace HarvestManagerSystem.view
             this.btnSaveProductData.UseVisualStyleBackColor = false;
             this.btnSaveProductData.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-            // ProductPriceCompany
+            // txtProductPriceCompany
             // 
-            this.ProductPriceCompany.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ProductPriceCompany.Location = new System.Drawing.Point(41, 408);
-            this.ProductPriceCompany.Name = "ProductPriceCompany";
-            this.ProductPriceCompany.Size = new System.Drawing.Size(160, 29);
-            this.ProductPriceCompany.TabIndex = 4;
-            this.ProductPriceCompany.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
+            this.txtProductPriceCompany.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtProductPriceCompany.Location = new System.Drawing.Point(41, 408);
+            this.txtProductPriceCompany.Name = "txtProductPriceCompany";
+            this.txtProductPriceCompany.Size = new System.Drawing.Size(160, 29);
+            this.txtProductPriceCompany.TabIndex = 4;
+            this.txtProductPriceCompany.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
             // 
-            // ProductPriceEmployee
+            // txtProductPriceEmployee
             // 
-            this.ProductPriceEmployee.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ProductPriceEmployee.Location = new System.Drawing.Point(41, 317);
-            this.ProductPriceEmployee.Name = "ProductPriceEmployee";
-            this.ProductPriceEmployee.Size = new System.Drawing.Size(160, 29);
-            this.ProductPriceEmployee.TabIndex = 3;
-            this.ProductPriceEmployee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
+            this.txtProductPriceEmployee.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtProductPriceEmployee.Location = new System.Drawing.Point(41, 317);
+            this.txtProductPriceEmployee.Name = "txtProductPriceEmployee";
+            this.txtProductPriceEmployee.Size = new System.Drawing.Size(160, 29);
+            this.txtProductPriceEmployee.TabIndex = 3;
+            this.txtProductPriceEmployee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
             // 
-            // ProductType
+            // txtProductType
             // 
-            this.ProductType.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ProductType.Location = new System.Drawing.Point(39, 229);
-            this.ProductType.Name = "ProductType";
-            this.ProductType.Size = new System.Drawing.Size(160, 29);
-            this.ProductType.TabIndex = 2;
+            this.txtProductType.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtProductType.Location = new System.Drawing.Point(39, 229);
+            this.txtProductType.Name = "txtProductType";
+            this.txtProductType.Size = new System.Drawing.Size(160, 29);
+            this.txtProductType.TabIndex = 2;
             // 
-            // ProductNameComboBox
+            // cmbxProductName
             // 
-            this.ProductNameComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.ProductNameComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.ProductNameComboBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ProductNameComboBox.FormattingEnabled = true;
-            this.ProductNameComboBox.Location = new System.Drawing.Point(38, 143);
-            this.ProductNameComboBox.Name = "ProductNameComboBox";
-            this.ProductNameComboBox.Size = new System.Drawing.Size(160, 29);
-            this.ProductNameComboBox.TabIndex = 1;
+            this.cmbxProductName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbxProductName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbxProductName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cmbxProductName.FormattingEnabled = true;
+            this.cmbxProductName.Location = new System.Drawing.Point(38, 143);
+            this.cmbxProductName.Name = "cmbxProductName";
+            this.cmbxProductName.Size = new System.Drawing.Size(160, 29);
+            this.cmbxProductName.TabIndex = 1;
             // 
             // PriceCLabel
             // 
@@ -243,10 +243,10 @@ namespace HarvestManagerSystem.view
             this.panel1.Controls.Add(this.btnClearReset);
             this.panel1.Controls.Add(this.btnDeleteProduct);
             this.panel1.Controls.Add(this.btnSaveProductData);
-            this.panel1.Controls.Add(this.ProductPriceCompany);
-            this.panel1.Controls.Add(this.ProductPriceEmployee);
-            this.panel1.Controls.Add(this.ProductType);
-            this.panel1.Controls.Add(this.ProductNameComboBox);
+            this.panel1.Controls.Add(this.txtProductPriceCompany);
+            this.panel1.Controls.Add(this.txtProductPriceEmployee);
+            this.panel1.Controls.Add(this.txtProductType);
+            this.panel1.Controls.Add(this.cmbxProductName);
             this.panel1.Controls.Add(this.ProductLabel);
             this.panel1.Controls.Add(this.PriceCLabel);
             this.panel1.Controls.Add(this.LblType);
@@ -378,8 +378,51 @@ namespace HarvestManagerSystem.view
             this.ProductDetailDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ProductDetailDataGridView.Size = new System.Drawing.Size(519, 604);
             this.ProductDetailDataGridView.TabIndex = 10;
-            this.ProductDetailDataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductDetailDataGridView_CellContentDoubleClick);
-            this.ProductDetailDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductDetailDataGridView_CellEndEdit);
+            this.ProductDetailDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductDetailDataGridView_CellDoubleClick);
+            // 
+            // ProductDetailId
+            // 
+            this.ProductDetailId.DataPropertyName = "ProductDetailId";
+            this.ProductDetailId.HeaderText = "ProductDetailId";
+            this.ProductDetailId.Name = "ProductDetailId";
+            this.ProductDetailId.ReadOnly = true;
+            this.ProductDetailId.Visible = false;
+            // 
+            // ProductTypeColumn
+            // 
+            this.ProductTypeColumn.DataPropertyName = "ProductType";
+            this.ProductTypeColumn.FillWeight = 369.5432F;
+            this.ProductTypeColumn.HeaderText = "Type";
+            this.ProductTypeColumn.MinimumWidth = 140;
+            this.ProductTypeColumn.Name = "ProductTypeColumn";
+            this.ProductTypeColumn.ReadOnly = true;
+            // 
+            // ProductPriceEmployeeColumn
+            // 
+            this.ProductPriceEmployeeColumn.DataPropertyName = "PriceEmployee";
+            this.ProductPriceEmployeeColumn.FillWeight = 2.143695F;
+            this.ProductPriceEmployeeColumn.HeaderText = "Prix.E";
+            this.ProductPriceEmployeeColumn.MinimumWidth = 120;
+            this.ProductPriceEmployeeColumn.Name = "ProductPriceEmployeeColumn";
+            this.ProductPriceEmployeeColumn.ReadOnly = true;
+            // 
+            // ProductPriceCompanyColumn
+            // 
+            this.ProductPriceCompanyColumn.DataPropertyName = "PriceCompany";
+            this.ProductPriceCompanyColumn.FillWeight = 28.1496F;
+            this.ProductPriceCompanyColumn.HeaderText = "Prix.C";
+            this.ProductPriceCompanyColumn.MinimumWidth = 120;
+            this.ProductPriceCompanyColumn.Name = "ProductPriceCompanyColumn";
+            this.ProductPriceCompanyColumn.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "ProductId";
+            this.dataGridViewTextBoxColumn1.HeaderText = "ProductId";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 100;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
             // 
             // ProductDataGridView
             // 
@@ -475,50 +518,6 @@ namespace HarvestManagerSystem.view
             this.panel2.Size = new System.Drawing.Size(997, 608);
             this.panel2.TabIndex = 29;
             // 
-            // ProductDetailId
-            // 
-            this.ProductDetailId.DataPropertyName = "ProductDetailId";
-            this.ProductDetailId.HeaderText = "ProductDetailId";
-            this.ProductDetailId.Name = "ProductDetailId";
-            this.ProductDetailId.ReadOnly = true;
-            this.ProductDetailId.Visible = false;
-            // 
-            // ProductTypeColumn
-            // 
-            this.ProductTypeColumn.DataPropertyName = "ProductType";
-            this.ProductTypeColumn.FillWeight = 369.5432F;
-            this.ProductTypeColumn.HeaderText = "Type";
-            this.ProductTypeColumn.MinimumWidth = 140;
-            this.ProductTypeColumn.Name = "ProductTypeColumn";
-            this.ProductTypeColumn.ReadOnly = true;
-            // 
-            // ProductPriceEmployeeColumn
-            // 
-            this.ProductPriceEmployeeColumn.DataPropertyName = "PriceEmployee";
-            this.ProductPriceEmployeeColumn.FillWeight = 2.143695F;
-            this.ProductPriceEmployeeColumn.HeaderText = "Prix.E";
-            this.ProductPriceEmployeeColumn.MinimumWidth = 120;
-            this.ProductPriceEmployeeColumn.Name = "ProductPriceEmployeeColumn";
-            this.ProductPriceEmployeeColumn.ReadOnly = true;
-            // 
-            // ProductPriceCompanyColumn
-            // 
-            this.ProductPriceCompanyColumn.DataPropertyName = "PriceCompany";
-            this.ProductPriceCompanyColumn.FillWeight = 28.1496F;
-            this.ProductPriceCompanyColumn.HeaderText = "Prix.C";
-            this.ProductPriceCompanyColumn.MinimumWidth = 120;
-            this.ProductPriceCompanyColumn.Name = "ProductPriceCompanyColumn";
-            this.ProductPriceCompanyColumn.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "ProductId";
-            this.dataGridViewTextBoxColumn1.HeaderText = "ProductId";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 100;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
             // FormAddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -532,7 +531,7 @@ namespace HarvestManagerSystem.view
             this.Padding = new System.Windows.Forms.Padding(5);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Product";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAddProduct_FormClosed);
+            //this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAddProduct_FormClosed);
             this.Load += new System.EventHandler(this.FormAddProduct_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -548,10 +547,10 @@ namespace HarvestManagerSystem.view
 
         private System.Windows.Forms.Button btnClearReset;
         private System.Windows.Forms.Button btnSaveProductData;
-        private System.Windows.Forms.TextBox ProductPriceCompany;
-        private System.Windows.Forms.TextBox ProductPriceEmployee;
-        private System.Windows.Forms.TextBox ProductType;
-        private System.Windows.Forms.ComboBox ProductNameComboBox;
+        private System.Windows.Forms.TextBox txtProductPriceCompany;
+        private System.Windows.Forms.TextBox txtProductPriceEmployee;
+        private System.Windows.Forms.TextBox txtProductType;
+        private System.Windows.Forms.ComboBox cmbxProductName;
         private System.Windows.Forms.Label PriceCLabel;
         private System.Windows.Forms.Label PriceELabel;
         private System.Windows.Forms.Label LblType;
