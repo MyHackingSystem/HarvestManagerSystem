@@ -23,8 +23,6 @@ namespace HarvestManagerSystem
         SupplyDAO supplyDAO = SupplyDAO.getInstance();
         FarmDAO farmDAO = FarmDAO.getInstance();
         SeasonDAO seasonDAO = SeasonDAO.getInstance();
-        //ProductDAO productDAO = ProductDAO.getInstance();
-        //ProductDetailDAO productDetailDAO = ProductDetailDAO.getInstance();
         CreditDAO creditDAO = CreditDAO.getInstance();
         TransportDAO transportDAO = TransportDAO.getInstance();
         HarvestHoursDAO harvestHoursDAO = HarvestHoursDAO.getInstance();
@@ -63,7 +61,7 @@ namespace HarvestManagerSystem
                     DisplaySupplierData();
                     break;
                 case 5:
-                    DisplayFarmData();
+                    //DisplayFarmData();
                     break;
                 default:
                     Console.WriteLine("nothing");
@@ -538,8 +536,8 @@ namespace HarvestManagerSystem
         {
             try
             {
-                listFarm = farmDAO.getData();
-                FarmDataGridView.DataSource = listFarm;
+                //listFarm = farmDAO.FarmList();
+                //FarmDataGridView.DataSource = listFarm;
             }
             catch (Exception exc)
             {
@@ -560,7 +558,7 @@ namespace HarvestManagerSystem
         private void DisplaySeasonData(Farm farm)
         {
             listSeason.Clear();
-            listSeason = seasonDAO.getData(farm);
+            listSeason = seasonDAO.SeasonList(farm);
             SeasonDataGridView.DataSource = listSeason;
         }
 
@@ -571,23 +569,23 @@ namespace HarvestManagerSystem
             {
                 return;
             }
-            if (farmDAO.UpdateData(farm))
-            {
-                DisplayFarmData();
-            }
+            //if (farmDAO.Update(farm))
+            //{
+            //    DisplayFarmData();
+            //}
         }
 
         private void SeasonDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            Season season = (Season)listSeason[e.RowIndex];
-            if (season == null)
-            {
-                return;
-            }
-            if (seasonDAO.UpdateData(season))
-            {
-                DisplayFarmData();
-            }
+            //Season season = (Season)listSeason[e.RowIndex];
+            //if (season == null)
+            //{
+            //    return;
+            //}
+            //if (seasonDAO.UpdateData(season))
+            //{
+            //    DisplayFarmData();
+            //}
         }
 
         #endregion
@@ -743,8 +741,8 @@ namespace HarvestManagerSystem
 
         private void btnAddFarm_Click(object sender, EventArgs e)
         {
-            FormAddFarm formAddFarm = new FormAddFarm(this);
-            formAddFarm.ShowDialog();
+            //FormAddFarm formAddFarm = new FormAddFarm(this);
+            //formAddFarm.ShowDialog();
         }
 
         private void btnAddEmployee_Click(object sender, EventArgs e)

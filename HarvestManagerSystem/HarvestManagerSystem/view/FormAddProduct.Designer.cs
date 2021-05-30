@@ -263,7 +263,7 @@ namespace HarvestManagerSystem.view
             // 
             // btnCloseForm
             // 
-            this.btnCloseForm.BackColor = System.Drawing.Color.White;
+            this.btnCloseForm.BackColor = System.Drawing.Color.Red;
             this.btnCloseForm.FlatAppearance.BorderSize = 0;
             this.btnCloseForm.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnCloseForm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
@@ -271,7 +271,7 @@ namespace HarvestManagerSystem.view
             this.btnCloseForm.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnCloseForm.Location = new System.Drawing.Point(12, 12);
             this.btnCloseForm.Name = "btnCloseForm";
-            this.btnCloseForm.Size = new System.Drawing.Size(31, 30);
+            this.btnCloseForm.Size = new System.Drawing.Size(30, 30);
             this.btnCloseForm.TabIndex = 27;
             this.btnCloseForm.Text = "X";
             this.btnCloseForm.UseVisualStyleBackColor = false;
@@ -279,7 +279,7 @@ namespace HarvestManagerSystem.view
             // 
             // btnDeleteProduct
             // 
-            this.btnDeleteProduct.BackColor = System.Drawing.Color.OrangeRed;
+            this.btnDeleteProduct.BackColor = System.Drawing.Color.Red;
             this.btnDeleteProduct.FlatAppearance.BorderSize = 0;
             this.btnDeleteProduct.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Moccasin;
             this.btnDeleteProduct.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
@@ -374,7 +374,7 @@ namespace HarvestManagerSystem.view
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             this.ProductDetailDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.ProductDetailDataGridView.RowTemplate.Height = 30;
+            this.ProductDetailDataGridView.RowTemplate.Height = 25;
             this.ProductDetailDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ProductDetailDataGridView.Size = new System.Drawing.Size(519, 604);
             this.ProductDetailDataGridView.TabIndex = 10;
@@ -531,7 +531,6 @@ namespace HarvestManagerSystem.view
             this.Padding = new System.Windows.Forms.Padding(5);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Product";
-            //this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAddProduct_FormClosed);
             this.Load += new System.EventHandler(this.FormAddProduct_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
