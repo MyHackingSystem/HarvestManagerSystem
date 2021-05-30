@@ -23,9 +23,9 @@ namespace HarvestManagerSystem.view
 
         private HarvestMS harvestMS;
 
-        public FormAddSupplier(HarvestMS harvestMS)
+        public FormAddSupplier()
         {
-            this.harvestMS = harvestMS;
+            //this.harvestMS = harvestMS;
             InitializeComponent();
         }
 

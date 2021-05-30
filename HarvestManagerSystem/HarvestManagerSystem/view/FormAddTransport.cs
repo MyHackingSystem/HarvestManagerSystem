@@ -21,12 +21,10 @@ namespace HarvestManagerSystem.view
         private Dictionary<string, Farm> mFarmDictionary = new Dictionary<string, Farm>();
 
         private HarvestMS harvestMS;
-        private static FormAddTransport instance;
 
 
-        public FormAddTransport(HarvestMS harvestMS)
+        public FormAddTransport()
         {
-            this.harvestMS = harvestMS;
             InitializeComponent();
         }
 

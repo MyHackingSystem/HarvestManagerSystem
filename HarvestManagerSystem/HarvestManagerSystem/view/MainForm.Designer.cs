@@ -31,10 +31,10 @@ namespace HarvestManagerSystem.view
         {
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.btnAddSupplier = new System.Windows.Forms.Button();
             this.btnAddFarm = new System.Windows.Forms.Button();
             this.btnAddProduct = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
+            this.btnAddCredit = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -73,15 +73,16 @@ namespace HarvestManagerSystem.view
             this.button3.Text = "Employée";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // button8
+            // btnAddSupplier
             // 
-            this.button8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button8.Location = new System.Drawing.Point(0, 148);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(150, 32);
-            this.button8.TabIndex = 5;
-            this.button8.Text = "Fournisseur";
-            this.button8.UseVisualStyleBackColor = true;
+            this.btnAddSupplier.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAddSupplier.Location = new System.Drawing.Point(0, 148);
+            this.btnAddSupplier.Name = "btnAddSupplier";
+            this.btnAddSupplier.Size = new System.Drawing.Size(150, 32);
+            this.btnAddSupplier.TabIndex = 5;
+            this.btnAddSupplier.Text = "Fournisseur";
+            this.btnAddSupplier.UseVisualStyleBackColor = true;
+            this.btnAddSupplier.Click += new System.EventHandler(this.btnAddSupplier_Click);
             // 
             // btnAddFarm
             // 
@@ -105,15 +106,16 @@ namespace HarvestManagerSystem.view
             this.btnAddProduct.UseVisualStyleBackColor = true;
             this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
             // 
-            // button11
+            // btnAddCredit
             // 
-            this.button11.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button11.Location = new System.Drawing.Point(0, 244);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(150, 32);
-            this.button11.TabIndex = 8;
-            this.button11.Text = "Crédit";
-            this.button11.UseVisualStyleBackColor = true;
+            this.btnAddCredit.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAddCredit.Location = new System.Drawing.Point(0, 244);
+            this.btnAddCredit.Name = "btnAddCredit";
+            this.btnAddCredit.Size = new System.Drawing.Size(150, 32);
+            this.btnAddCredit.TabIndex = 8;
+            this.btnAddCredit.Text = "Crédit";
+            this.btnAddCredit.UseVisualStyleBackColor = true;
+            this.btnAddCredit.Click += new System.EventHandler(this.btnAddCredit_Click);
             // 
             // button12
             // 
@@ -172,10 +174,10 @@ namespace HarvestManagerSystem.view
             this.pnlSideMenu.AutoScroll = true;
             this.pnlSideMenu.Controls.Add(this.button4);
             this.pnlSideMenu.Controls.Add(this.button12);
-            this.pnlSideMenu.Controls.Add(this.button11);
+            this.pnlSideMenu.Controls.Add(this.btnAddCredit);
             this.pnlSideMenu.Controls.Add(this.btnAddProduct);
             this.pnlSideMenu.Controls.Add(this.btnAddFarm);
-            this.pnlSideMenu.Controls.Add(this.button8);
+            this.pnlSideMenu.Controls.Add(this.btnAddSupplier);
             this.pnlSideMenu.Controls.Add(this.button3);
             this.pnlSideMenu.Controls.Add(this.button2);
             this.pnlSideMenu.Controls.Add(this.button1);
@@ -251,10 +253,10 @@ namespace HarvestManagerSystem.view
         }
 
         #endregion
-        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button btnAddCredit;
         private System.Windows.Forms.Button btnAddProduct;
         private System.Windows.Forms.Button btnAddFarm;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button btnAddSupplier;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button12;
