@@ -23,65 +23,11 @@ namespace HarvestManagerSystem.database
         public static SeasonDAO getInstance()
         {
             if (instance == null)
-            {
                 instance = new SeasonDAO();
-            }
             return instance;
         }
 
-
-        public void CreateTable()
-        {
-            string createStmt = "CREATE TABLE IF NOT EXISTS " + TABLE_SEASON
-                   + "(" + COLUMN_SEASON_ID + " INTEGER PRIMARY KEY, "
-                    + COLUMN_SEASON_PLANTING_DATE + " DATE, "
-                    + COLUMN_SEASON_HARVEST_DATE + " DATE, "
-                    + COLUMN_FOREIGN_KEY_FARM_ID + " INTEGER NOT NULL, "
-                    + " FOREIGN KEY (" + COLUMN_FOREIGN_KEY_FARM_ID + ") REFERENCES " + FarmDAO.TABLE_FARM + " (" + FarmDAO.COLUMN_FARM_ID + ") "
-                    + ")";
-
-            SQLiteCommand sQLiteCommand = new SQLiteCommand(createStmt, mSQLiteConnection);
-            OpenConnection();
-            sQLiteCommand.ExecuteNonQuery();
-            CloseConnection();
-            MessageBox.Show("Create table");
-
-        }
-
-        //*******************************
-        //Update season data
-        //*******************************
-        internal bool UpdateData(Season season)
-        {
-            string updateStmt = "UPDATE " + TABLE_SEASON + " SET "
-                 + COLUMN_SEASON_PLANTING_DATE + " =@" + COLUMN_SEASON_PLANTING_DATE + ", "
-                 + COLUMN_SEASON_HARVEST_DATE + " =@" + COLUMN_SEASON_HARVEST_DATE + " "
-                 + " WHERE " + COLUMN_SEASON_ID + " = " + season.SeasonId + " ";
-
-            try
-            {
-                SQLiteCommand sQLiteCommand = new SQLiteCommand(updateStmt, mSQLiteConnection);
-                OpenConnection();
-                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_SEASON_PLANTING_DATE, season.SeasonPlantingDate));
-                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_SEASON_HARVEST_DATE, season.SeasonHarvestDate));
-                sQLiteCommand.ExecuteNonQuery();
-                return true;
-            }
-            catch (SQLiteException e)
-            {
-                Console.WriteLine(e.Message);
-                return false;
-            }
-            finally
-            {
-                CloseConnection();
-            }
-        }
-
-        //*******************************
-        //Get all season data by farm id
-        //*******************************
-        public List<Season> getData(Farm farm)
+        public List<Season> SeasonList(Farm farm)
         {
             List<Season> list = new List<Season>();
             string selectStmt = "SELECT * FROM " + TABLE_SEASON
@@ -107,10 +53,9 @@ namespace HarvestManagerSystem.database
                 }
                 return list;
             }
-            catch (SQLiteException e)
+            catch (SQLiteException ex)
             {
-                Console.WriteLine(e.StackTrace);
-                return list;
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -118,10 +63,7 @@ namespace HarvestManagerSystem.database
             }
         }
 
-        //*******************************
-        //Add new farm and season data 
-        //*******************************
-        internal bool addNewFarmSeason(Season season)
+        internal void addNewFarm(Season season)
         {
 
             SQLiteTransaction transaction = null;
@@ -164,28 +106,21 @@ namespace HarvestManagerSystem.database
                 sQLiteCommand.Parameters.AddWithValue(COLUMN_FOREIGN_KEY_FARM_ID, lastFarmRowId);
 
                 sQLiteCommand.ExecuteNonQuery();
-
                 transaction.Commit();
-                return true;
             }
-            catch (SQLiteException e)
+            catch (SQLiteException ex)
             {
-                MessageBox.Show("Les information n'est pas ajouté à la base de données, erreur: " + e.Message);
-                return false;
+                throw new Exception(ex.Message);
             }
             finally
             {
                 CloseConnection();
             }
-
         }
 
-        //*******************************
-        //Add new farm season data 
-        //*******************************
-        public bool addData(Season season)
+        public void Add(Season season)
         {
-            String insertStmt = "INSERT INTO " + TABLE_SEASON + " ("
+            var insertStmt = "INSERT INTO " + TABLE_SEASON + " ("
                     + COLUMN_SEASON_PLANTING_DATE + ", "
                     + COLUMN_SEASON_HARVEST_DATE + ", "
                     + COLUMN_FOREIGN_KEY_FARM_ID +
@@ -202,12 +137,10 @@ namespace HarvestManagerSystem.database
                 sQLiteCommand.Parameters.AddWithValue(COLUMN_SEASON_HARVEST_DATE, season.SeasonHarvestDate);
                 sQLiteCommand.Parameters.AddWithValue(COLUMN_FOREIGN_KEY_FARM_ID, season.Farm.FarmId);
                 sQLiteCommand.ExecuteNonQuery();
-                return true;
             }
-            catch (SQLiteException e)
+            catch (SQLiteException ex)
             {
-                Console.WriteLine(e.Message);
-                return false;
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -215,10 +148,32 @@ namespace HarvestManagerSystem.database
             }
         }
 
-        //*******************************
-        //Delete farm season
-        //*******************************
-        public bool DeleteData(Season season)
+        internal void Update(Season season)
+        {
+            string updateStmt = "UPDATE " + TABLE_SEASON + " SET "
+                 + COLUMN_SEASON_PLANTING_DATE + " =@" + COLUMN_SEASON_PLANTING_DATE + ", "
+                 + COLUMN_SEASON_HARVEST_DATE + " =@" + COLUMN_SEASON_HARVEST_DATE + " "
+                 + " WHERE " + COLUMN_SEASON_ID + " = " + season.SeasonId + " ";
+
+            try
+            {
+                SQLiteCommand sQLiteCommand = new SQLiteCommand(updateStmt, mSQLiteConnection);
+                OpenConnection();
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_SEASON_PLANTING_DATE, season.SeasonPlantingDate));
+                sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_SEASON_HARVEST_DATE, season.SeasonHarvestDate));
+                sQLiteCommand.ExecuteNonQuery();
+            }
+            catch (SQLiteException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public bool Delete(Season season)
         {
             String updateStmt = "DELETE FROM " + TABLE_SEASON + " WHERE " + COLUMN_SEASON_ID + " = " + season.SeasonId + " ";
 

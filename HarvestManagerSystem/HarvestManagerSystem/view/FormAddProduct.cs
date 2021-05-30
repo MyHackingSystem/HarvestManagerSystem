@@ -65,6 +65,9 @@ namespace HarvestManagerSystem.view
             {
                 AddProduct();
             }
+            ProductNameList();
+            DisplayProductData();
+            ResetFields();
         }
 
         private void EditProduct()
@@ -78,16 +81,13 @@ namespace HarvestManagerSystem.view
             {
                 mProduct.ProductName = cmbxProductName.Text.Trim();
                 mProductDAO.Update(mProduct);
-                MessageBox.Show("Product Updated", "Info", MessageBoxButtons.OK, MessageBoxIcon.None);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Product Not Updated: " + ex.Message, "Info", MessageBoxButtons.OK, MessageBoxIcon.None);
                 return;
             }
-            ProductNameList();
-            DisplayProductData();
-            ResetFields();
+            MessageBox.Show("Product Updated", "Info", MessageBoxButtons.OK, MessageBoxIcon.None);
         }
 
         private void EditProductDetail()
@@ -116,16 +116,13 @@ namespace HarvestManagerSystem.view
                 mProductDetail.Product.ProductId = mProduct.ProductId;
                 mProductDetail.Product.ProductName = mProduct.ProductName;
                 mProductDetailDAO.Update(mProductDetail);
-                MessageBox.Show("Product detail Updated", "Info", MessageBoxButtons.OK, MessageBoxIcon.None);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Product Detail Not Updated: " + ex.Message, "Info", MessageBoxButtons.OK, MessageBoxIcon.None);
                 return;
             }
-            ProductNameList();
-            DisplayProductData();
-            ResetFields();
+            MessageBox.Show("Product detail Updated", "Info", MessageBoxButtons.OK, MessageBoxIcon.None);
         }
 
         private void AddProduct()
@@ -170,9 +167,6 @@ namespace HarvestManagerSystem.view
                 return;
             }
             MessageBox.Show("Produit ajouté à la base de données");
-            ProductNameList();
-            ClearFields();
-            DisplayProductData();
         }
 
         private bool CheckInput()
@@ -198,14 +192,11 @@ namespace HarvestManagerSystem.view
 
         private void btnDeleteProduct_Click(object sender, EventArgs e)
         {
-            if (editProduct)
-            {
-                DeleteProduct();
-            }
-            else if (editProductDetail)
-            {
-                DeleteProductDetail();
-            }
+            if (editProduct){ DeleteProduct(); }
+            else if (editProductDetail){ DeleteProductDetail(); }
+            DisplayProductData();
+            ProductNameList();
+            ResetFields();
         }
 
         private void DeleteProduct()
@@ -215,18 +206,8 @@ namespace HarvestManagerSystem.view
                 MessageBox.Show("Select Product required");
                 return;
             }
-            try
-            {
-                mProductDAO.Delete(mProduct);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return;
-            }
-            DisplayProductData();
-            ProductNameList();
-            ResetFields();
+            try { mProductDAO.Delete(mProduct);}
+            catch (Exception ex){ MessageBox.Show(ex.Message); }
         }
 
         private void DeleteProductDetail()
@@ -236,18 +217,8 @@ namespace HarvestManagerSystem.view
                 MessageBox.Show("Vérifier les valeurs");
                 return;
             }
-            try
-            {
-                mProductDetailDAO.Delete(mProductDetail);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return;
-            }
-            DisplayProductData();
-            ProductNameList();
-            ResetFields();
+            try { mProductDetailDAO.Delete(mProductDetail);}
+            catch (Exception ex){ MessageBox.Show(ex.Message);}
         }
 
         private void ResetFields()
@@ -259,6 +230,7 @@ namespace HarvestManagerSystem.view
             btnClearReset.Text = "Vider";
             btnDeleteProduct.Visible = false;
             editProduct = false;
+            editProductDetail = false;
             ClearFields();
         }
 
@@ -380,6 +352,5 @@ namespace HarvestManagerSystem.view
         {
             this.Close();
         }
-
     }
 }

@@ -32,7 +32,7 @@ namespace HarvestManagerSystem.view
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
+            this.btnAddFarm = new System.Windows.Forms.Button();
             this.btnAddProduct = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
@@ -83,15 +83,16 @@ namespace HarvestManagerSystem.view
             this.button8.Text = "Fournisseur";
             this.button8.UseVisualStyleBackColor = true;
             // 
-            // button9
+            // btnAddFarm
             // 
-            this.button9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button9.Location = new System.Drawing.Point(0, 180);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(150, 32);
-            this.button9.TabIndex = 6;
-            this.button9.Text = "Champ";
-            this.button9.UseVisualStyleBackColor = true;
+            this.btnAddFarm.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAddFarm.Location = new System.Drawing.Point(0, 180);
+            this.btnAddFarm.Name = "btnAddFarm";
+            this.btnAddFarm.Size = new System.Drawing.Size(150, 32);
+            this.btnAddFarm.TabIndex = 6;
+            this.btnAddFarm.Text = "Champ";
+            this.btnAddFarm.UseVisualStyleBackColor = true;
+            this.btnAddFarm.Click += new System.EventHandler(this.btnAddFarm_Click);
             // 
             // btnAddProduct
             // 
@@ -173,7 +174,7 @@ namespace HarvestManagerSystem.view
             this.pnlSideMenu.Controls.Add(this.button12);
             this.pnlSideMenu.Controls.Add(this.button11);
             this.pnlSideMenu.Controls.Add(this.btnAddProduct);
-            this.pnlSideMenu.Controls.Add(this.button9);
+            this.pnlSideMenu.Controls.Add(this.btnAddFarm);
             this.pnlSideMenu.Controls.Add(this.button8);
             this.pnlSideMenu.Controls.Add(this.button3);
             this.pnlSideMenu.Controls.Add(this.button2);
@@ -252,7 +253,7 @@ namespace HarvestManagerSystem.view
         #endregion
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button btnAddProduct;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button btnAddFarm;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;

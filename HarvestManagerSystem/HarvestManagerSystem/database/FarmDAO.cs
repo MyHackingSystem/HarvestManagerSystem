@@ -8,7 +8,6 @@ namespace HarvestManagerSystem.database
 {
     class FarmDAO: DAO
     {
-
         public const string TABLE_FARM = "Farm";
         public const string COLUMN_FARM_ID = "FarmId";
         public const string COLUMN_FARM_NAME = "FarmName";
@@ -16,26 +15,18 @@ namespace HarvestManagerSystem.database
 
         private static FarmDAO instance = new FarmDAO();
 
-        private FarmDAO() : base()
-        {
-        }
+        private FarmDAO() : base(){}
 
         public static FarmDAO getInstance()
         {
             if (instance == null)
-            {
                 instance = new FarmDAO();
-            }
             return instance;
         }
 
-        //*************************************************************
-        //Get data farm as Dictionary by farm name
-        //*************************************************************
         internal Dictionary<string, Farm> FarmDictionary()
         {
             Dictionary<string, Farm> dictionary = new Dictionary<string, Farm>();
-
             var selectStmt = "SELECT * FROM " + TABLE_FARM + " ORDER BY " + COLUMN_FARM_NAME + " ASC;";
 
             try
@@ -47,21 +38,18 @@ namespace HarvestManagerSystem.database
                 {
                     while (result.Read())
                     {
-                        Farm farm = new Farm
-                        {
-                            FarmId = Convert.ToInt32((result[COLUMN_FARM_ID]).ToString()),
-                            FarmName = (string)result[COLUMN_FARM_NAME],
-                            FarmAddress = (string)result[COLUMN_FARM_ADDRESS]
-                        };
+                        Farm farm = new Farm();
+                        farm.FarmId = result.GetInt32(result.GetOrdinal(COLUMN_FARM_ID));
+                        farm.FarmName = result.GetString(result.GetOrdinal(COLUMN_FARM_NAME));
+                        farm.FarmAddress = result.GetString(result.GetOrdinal(COLUMN_FARM_ADDRESS));
                         dictionary.Add(farm.FarmName, farm);
                     }
                 }
                 return dictionary;
             }
-            catch (SQLiteException e)
+            catch (SQLiteException ex)
             {
-                Console.WriteLine(e.StackTrace);
-                return dictionary;
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -69,10 +57,7 @@ namespace HarvestManagerSystem.database
             }
         }
 
-        //*******************************
-        //Get all farm data
-        //*******************************
-        public List<Farm> getData()
+        public List<Farm> FarmList()
         {
             List<Farm> list = new List<Farm>();
             var selectStmt = "SELECT * FROM " + TABLE_FARM + " ORDER BY " + COLUMN_FARM_NAME + " ASC;";
@@ -86,21 +71,18 @@ namespace HarvestManagerSystem.database
                 {
                     while (result.Read())
                     {
-                        Farm farm = new Farm
-                        {
-                            FarmId = Convert.ToInt32((result[COLUMN_FARM_ID]).ToString()),
-                            FarmName = (string)result[COLUMN_FARM_NAME],
-                            FarmAddress = (string)result[COLUMN_FARM_ADDRESS]
-                        };
+                        Farm farm = new Farm();
+                        farm.FarmId = result.GetInt32(result.GetOrdinal(COLUMN_FARM_ID));
+                        farm.FarmName = result.GetString(result.GetOrdinal(COLUMN_FARM_NAME));
+                        farm.FarmAddress = result.GetString(result.GetOrdinal(COLUMN_FARM_ADDRESS));
                         list.Add(farm);
                     }
                 }
                 return list;
             }
-            catch (SQLiteException e)
+            catch (SQLiteException ex)
             {
-                Console.WriteLine(e.StackTrace);
-                return list;
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -108,10 +90,7 @@ namespace HarvestManagerSystem.database
             }
         }
 
-        //*******************************
-        //Delete farm data (hide)
-        //*******************************
-        public bool DeleteData(Farm farm)
+        public void Delete(Farm farm)
         {
             string updateStmt = "DELETE FROM " + TABLE_FARM + " WHERE " + COLUMN_FARM_ID + " = " + farm.FarmId + " ";
 
@@ -122,12 +101,10 @@ namespace HarvestManagerSystem.database
                 SQLiteCommand sQLiteCommand = new SQLiteCommand(updateStmt + ";" + deleteStmt, mSQLiteConnection);
                 OpenConnection();
                 sQLiteCommand.ExecuteNonQuery();
-                return true;
             }
-            catch (SQLiteException e)
+            catch (SQLiteException ex)
             {
-                Console.WriteLine(e.Message);
-                return false;
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -135,10 +112,7 @@ namespace HarvestManagerSystem.database
             }
         }
 
-        //*******************************
-        //Update farm data
-        //*******************************
-        internal bool UpdateData(Farm farm)
+        internal void Update(Farm farm)
         {
             string updateStmt = "UPDATE " + TABLE_FARM + " SET "
                  + COLUMN_FARM_NAME + " =@" + COLUMN_FARM_NAME + ", "
@@ -152,31 +126,15 @@ namespace HarvestManagerSystem.database
                 sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_FARM_NAME, farm.FarmName.ToUpper()));
                 sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_FARM_ADDRESS, farm.FarmAddress.ToUpper()));
                 sQLiteCommand.ExecuteNonQuery();
-                CloseConnection();
-                return true;
             }
-            catch (SQLiteException e)
+            catch (SQLiteException ex)
             {
-                Console.WriteLine(e.StackTrace);
-                return false;
+                throw new Exception(ex.Message);
             }
             finally
             {
                 CloseConnection();
             }
-        }
-
-        public void CreateTable()
-        {
-            String createStmt = "CREATE TABLE IF NOT EXISTS " + TABLE_FARM
-                    + "(" + COLUMN_FARM_ID + " INTEGER PRIMARY KEY, "
-                    + COLUMN_FARM_NAME + " TEXT NOT NULL, "
-                    + COLUMN_FARM_ADDRESS + " TEXT )";
-
-            SQLiteCommand sQLiteCommand = new SQLiteCommand(createStmt, mSQLiteConnection);
-            OpenConnection();
-            sQLiteCommand.ExecuteNonQuery();
-            CloseConnection();
         }
 
     }
