@@ -23,8 +23,8 @@ namespace HarvestManagerSystem
         SupplyDAO supplyDAO = SupplyDAO.getInstance();
         FarmDAO farmDAO = FarmDAO.getInstance();
         SeasonDAO seasonDAO = SeasonDAO.getInstance();
-        ProductDAO productDAO = ProductDAO.getInstance();
-        ProductDetailDAO productDetailDAO = ProductDetailDAO.getInstance();
+        //ProductDAO productDAO = ProductDAO.getInstance();
+        //ProductDetailDAO productDetailDAO = ProductDetailDAO.getInstance();
         CreditDAO creditDAO = CreditDAO.getInstance();
         TransportDAO transportDAO = TransportDAO.getInstance();
         HarvestHoursDAO harvestHoursDAO = HarvestHoursDAO.getInstance();
@@ -64,9 +64,6 @@ namespace HarvestManagerSystem
                     break;
                 case 5:
                     DisplayFarmData();
-                    break;
-                case 6:
-                    DisplayProductData();
                     break;
                 default:
                     Console.WriteLine("nothing");
@@ -595,81 +592,6 @@ namespace HarvestManagerSystem
 
         #endregion
 
-        #region ********************************************* PRODUCT CODE **************************************************************************
-
-        List<Product> listProduct = new List<Product>();
-
-        public void DisplayProductData()
-        {
-            try
-            {
-                listProduct.Clear();
-                listProduct = productDAO.getData();
-                ProductDataGridView.DataSource = listProduct;
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message);
-            }
-        }
-
-        private void ProductDataGridView_SelectionChanged(object sender, EventArgs e)
-        {
-            int i = ProductDataGridView.CurrentCell.RowIndex;
-            if (i < listProduct.Count && i != -1)
-            {
-                DisplayProductDetailData(listProduct[i]);
-            }
-        }
-
-        private void ProductDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            Product product = (Product)listProduct[e.RowIndex];
-            if (product == null)
-            {
-                return;
-            }
-            if (productDAO.UpdateData(product))
-            {
-                MessageBox.Show("les valeurs mises à jour.");
-            }
-        }
-
-        #endregion
-
-        #region ********************************************* PRODUCT DETAIL CODE *******************************************************************
-
-        List<ProductDetail> listProductDetail = new List<ProductDetail>();
-
-        private void DisplayProductDetailData(Product product)
-        {
-            try
-            {
-                listProductDetail.Clear();
-                listProductDetail = productDetailDAO.getData(product);
-                ProductDetailDataGridView.DataSource = listProductDetail;
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message);
-            }
-        }
-
-        private void ProductDetailDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            ProductDetail item = (ProductDetail)listProductDetail[e.RowIndex];
-            if (item == null)
-            {
-                return;
-            }
-            if (productDetailDAO.UpdateData(item))
-            {
-                MessageBox.Show("les valeurs mises à jour.");
-            }
-        }
-
-        #endregion
-
         #region ********************************************* Credit CODE ***************************************************************************
 
         List<Credit> listCredit = new List<Credit>();
@@ -829,12 +751,6 @@ namespace HarvestManagerSystem
         {
             FormAddEmployee formAddEmployee = new FormAddEmployee(this);
             formAddEmployee.ShowDialog();
-        }
-
-        private void btnAddProduct_Click(object sender, EventArgs e)
-        {
-            FormAddProduct formAddProduct = new FormAddProduct(this);
-            formAddProduct.ShowDialog();
         }
 
         private void btnAddCredit_Click(object sender, EventArgs e)

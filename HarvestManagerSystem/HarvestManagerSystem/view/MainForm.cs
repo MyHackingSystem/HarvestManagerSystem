@@ -39,7 +39,7 @@ namespace HarvestManagerSystem.view
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormAddProduct(new HarvestMS()));
+            OpenChildForm(new FormAddProduct());
         }
     }
 }
