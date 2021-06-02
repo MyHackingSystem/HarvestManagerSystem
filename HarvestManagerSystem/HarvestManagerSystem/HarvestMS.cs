@@ -21,8 +21,6 @@ namespace HarvestManagerSystem
         EmployeeDAO employeeDAO = EmployeeDAO.getInstance();
         SupplierDAO supplierDAO = SupplierDAO.getInstance();
         SupplyDAO supplyDAO = SupplyDAO.getInstance();
-        FarmDAO farmDAO = FarmDAO.getInstance();
-        SeasonDAO seasonDAO = SeasonDAO.getInstance();
         CreditDAO creditDAO = CreditDAO.getInstance();
         TransportDAO transportDAO = TransportDAO.getInstance();
         HarvestHoursDAO harvestHoursDAO = HarvestHoursDAO.getInstance();
@@ -56,12 +54,6 @@ namespace HarvestManagerSystem
                 case 3:
                     DisplayEmployeeData();
                     EndCotract();
-                    break;
-                case 4:
-                    DisplaySupplierData();
-                    break;
-                case 5:
-                    //DisplayFarmData();
                     break;
                 default:
                     Console.WriteLine("nothing");
@@ -457,139 +449,6 @@ namespace HarvestManagerSystem
 
         #endregion
 
-        #region ********************************************* SUPPLIER CODE *************************************************************************
-
-        List<Supplier> listSupplier = new List<Supplier>();
-        List<Supply> listSupply = new List<Supply>();
-
-        public void DisplaySupplierData()
-        {
-            try
-            {
-                listSupplier = supplierDAO.getData();
-                SupplierDataGridView.DataSource = listSupplier;
-            }
-            catch
-            {
-
-            }
-        }
-
-        private void SupplierDataGridView_SelectionChanged(object sender, EventArgs e)
-        {
-            int i = SupplierDataGridView.CurrentCell.RowIndex;
-            if (i < listSupplier.Count)
-            {
-                DisplaySupplyData(listSupplier[i]);
-            }
-
-        }
-
-        private void DisplaySupplyData(Supplier supplier)
-        {
-            try
-            {
-                listSupply = supplyDAO.getData(supplier);
-                SupplyDataGridView.DataSource = listSupply;
-            }
-            catch
-            {
-
-            }
-        }
-
-        private void SupplierDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            Supplier supplier = (Supplier)listSupplier[e.RowIndex];
-            if (supplier == null)
-            {
-                return;
-            }
-            if (supplierDAO.UpdateData(supplier))
-            {
-                DisplaySupplierData();
-            }
-        }
-
-        private void SupplyDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            Supply supply = (Supply)listSupply[e.RowIndex];
-            if (supply == null)
-            {
-                return;
-            }
-            if (supplyDAO.UpdateData(supply))
-            {
-                DisplaySupplierData();
-            }
-        }
-
-        #endregion
-
-        #region  ********************************************* FARM CODE *****************************************************************************
-
-        List<Farm> listFarm = new List<Farm>();
-
-        List<Season> listSeason = new List<Season>();
-
-        public void DisplayFarmData()
-        {
-            try
-            {
-                //listFarm = farmDAO.FarmList();
-                //FarmDataGridView.DataSource = listFarm;
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message);
-            }
-        }
-
-        private void FarmtDataGridView_SelectionChanged(object sender, EventArgs e)
-        {
-            int i = FarmDataGridView.CurrentCell.RowIndex;
-            if (i < listFarm.Count)
-            {
-                DisplaySeasonData(listFarm[i]);
-            }
-
-        }
-
-        private void DisplaySeasonData(Farm farm)
-        {
-            listSeason.Clear();
-            listSeason = seasonDAO.SeasonList(farm);
-            SeasonDataGridView.DataSource = listSeason;
-        }
-
-        private void FarmDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            Farm farm = (Farm)listFarm[e.RowIndex];
-            if (farm == null)
-            {
-                return;
-            }
-            //if (farmDAO.Update(farm))
-            //{
-            //    DisplayFarmData();
-            //}
-        }
-
-        private void SeasonDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            //Season season = (Season)listSeason[e.RowIndex];
-            //if (season == null)
-            //{
-            //    return;
-            //}
-            //if (seasonDAO.UpdateData(season))
-            //{
-            //    DisplayFarmData();
-            //}
-        }
-
-        #endregion
-
         #region ********************************************* Credit CODE ***************************************************************************
 
         List<Credit> listCredit = new List<Credit>();
@@ -616,7 +475,7 @@ namespace HarvestManagerSystem
             }
             if (creditDAO.UpdateData(item))
             {
-                DisplaySupplierData();
+                //DisplaySupplierData();
             }
         }
 
@@ -649,7 +508,7 @@ namespace HarvestManagerSystem
             }
             if (transportDAO.UpdateData(item))
             {
-                DisplaySupplierData();
+                //DisplaySupplierData();
             }
         }
 
@@ -722,45 +581,39 @@ namespace HarvestManagerSystem
 
         private void btnAddHarvestQuantity_Click(object sender, EventArgs e)
         {
-            FormAddQuantity formAddQuantity = new FormAddQuantity(this);
-            formAddQuantity.ShowDialog();
+            //FormAddQuantity formAddQuantity = new FormAddQuantity(this);
+            //formAddQuantity.ShowDialog();
         }
 
         private void btnAddHarvestHours_Click(object sender, EventArgs e)
         {
-            FormAddHours formAddHours = new FormAddHours(this);
-            formAddHours.ShowDialog();
+            //FormAddHours formAddHours = new FormAddHours(this);
+            //formAddHours.ShowDialog();
         }
 
         private void btnAddSupplier_Click(object sender, EventArgs e)
         {
-            FormAddSupplier formAddSupplier = new FormAddSupplier(this);
-            formAddSupplier.ShowDialog();
+           // FormAddSupplier formAddSupplier = new FormAddSupplier(this);
+            //formAddSupplier.ShowDialog();
 
-        }
-
-        private void btnAddFarm_Click(object sender, EventArgs e)
-        {
-            //FormAddFarm formAddFarm = new FormAddFarm(this);
-            //formAddFarm.ShowDialog();
         }
 
         private void btnAddEmployee_Click(object sender, EventArgs e)
         {
-            FormAddEmployee formAddEmployee = new FormAddEmployee(this);
-            formAddEmployee.ShowDialog();
+           // FormAddEmployee formAddEmployee = new FormAddEmployee(this);
+            //formAddEmployee.ShowDialog();
         }
 
         private void btnAddCredit_Click(object sender, EventArgs e)
         {
-            FormAddCredit formAddCredit = new FormAddCredit(this);
-            formAddCredit.ShowDialog();
+            //FormAddCredit formAddCredit = new FormAddCredit(this);
+            //formAddCredit.ShowDialog();
         }
 
         private void btnAddTransport_Click(object sender, EventArgs e)
         {
-            FormAddTransport formAddTransport = new FormAddTransport(this);
-            formAddTransport.ShowDialog();
+           // FormAddTransport formAddTransport = new FormAddTransport(this);
+            //formAddTransport.ShowDialog();
         }
 
         #endregion

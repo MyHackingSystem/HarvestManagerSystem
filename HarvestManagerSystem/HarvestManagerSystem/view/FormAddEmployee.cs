@@ -12,24 +12,49 @@ namespace HarvestManagerSystem.view
 {
     public partial class FormAddEmployee : Form
     {
-        EmployeeDAO emplouyeeDAO = EmployeeDAO.getInstance();
+        EmployeeDAO mEmployeeDAO = EmployeeDAO.getInstance();
 
-        private HarvestMS harvestMS;
-
-        public FormAddEmployee(HarvestMS harvestMS)
+        public FormAddEmployee()
         {
-            this.harvestMS = harvestMS;
             InitializeComponent();
         }
 
         private void FormAddEmployee_Load(object sender, EventArgs e)
         {
+            DisplayEmployeeData();
+            EndCotract();
+        }
 
+        List<Employee> listEmployee = new List<Employee>();
+
+        public void DisplayEmployeeData()
+        {
+            try
+            {
+                listEmployee = mEmployeeDAO.getData();
+                EmployeeDataGridView.DataSource = listEmployee;
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+        }
+
+        private void EndCotract()
+        {
+            txtListEmployeeCloseFire.Text = "";
+            foreach (Employee emp in listEmployee)
+            {
+                if (emp.FireDate.AddDays(-5) <= DateTime.Now.Date)
+                {
+                    txtListEmployeeCloseFire.Text += "* " + emp.FullName + Environment.NewLine;
+                }
+            }
         }
 
         private void FormAddEmployee_FormClosed(object sender, FormClosedEventArgs e)
         {
-            wipeFields();
+            ClearFields();
         }
 
         private void handleSaveButton_Click(object sender, EventArgs e)
@@ -39,7 +64,7 @@ namespace HarvestManagerSystem.view
                 return;
             }
             SaveEmployeedata();
-            harvestMS.DisplayEmployeeData();
+            DisplayEmployeeData();
         }
 
         private void SaveEmployeedata()
@@ -52,10 +77,10 @@ namespace HarvestManagerSystem.view
             employee.HireDate = fxHireDate.Value;
             employee.PermitDate = fxPermissionDate.Value;
 
-            if (emplouyeeDAO.addData(employee))
+            if (mEmployeeDAO.addData(employee))
             {
                 MessageBox.Show("Data Added");
-                wipeFields();
+                ClearFields();
             }
         }
 
@@ -78,10 +103,10 @@ namespace HarvestManagerSystem.view
 
         private void clearFieldsButton_Click(object sender, EventArgs e)
         {
-            wipeFields();
+            ClearFields();
         }
 
-        private void wipeFields()
+        private void ClearFields()
         {
             fxEmployeeStatus.Checked = false;
             fxFirstName.Text = "";

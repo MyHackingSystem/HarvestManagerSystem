@@ -15,7 +15,6 @@ namespace HarvestManagerSystem.database
         public const string COLUMN_SUPPLY_FRGN_KEY_FARM_ID = "FarmId";
         public const string COLUMN_SUPPLY_FRGN_KEY_PRODUCT_ID = "ProductId";
 
-
         private static SupplyDAO instance = new SupplyDAO();
 
         private SupplyDAO() : base() { }
@@ -23,16 +22,11 @@ namespace HarvestManagerSystem.database
         public static SupplyDAO getInstance()
         {
             if (instance == null)
-            {
                 instance = new SupplyDAO();
-            }
             return instance;
         }
 
-        //*******************************
-        //Get all farm data
-        //*******************************
-        public List<Supply> getData(Supplier supplier)
+        public List<Supply> ListSupply(Supplier supplier)
         {
             List<Supply> list = new List<Supply>();
 
@@ -64,22 +58,21 @@ namespace HarvestManagerSystem.database
                     while (result.Read())
                     {
                         Supply supply = new Supply();
-                        supply.SupplyId = Convert.ToInt32((result[COLUMN_SUPPLY_ID]).ToString());
-                        supply.Supplier.SupplierId = Convert.ToInt32((result[SupplierDAO.COLUMN_SUPPLIER_ID]).ToString());
-                        supply.Supplier.SupplierName = (string)result[SupplierDAO.COLUMN_SUPPLIER_NAME];
-                        supply.Farm.FarmId = Convert.ToInt32((result[FarmDAO.COLUMN_FARM_ID]).ToString());
-                        supply.Farm.FarmName = (string)result[FarmDAO.COLUMN_FARM_NAME];
-                        supply.Product.ProductId = Convert.ToInt32((result[ProductDAO.COLUMN_PRODUCT_ID]).ToString());
-                        supply.Product.ProductName = (string)result[ProductDAO.COLUMN_PRODUCT_NAME];
+                        supply.SupplyId = result.GetInt32(result.GetOrdinal(COLUMN_SUPPLY_ID)); 
+                        supply.Supplier.SupplierId = result.GetInt32(result.GetOrdinal(SupplierDAO.COLUMN_SUPPLIER_ID)); 
+                        supply.Supplier.SupplierName = result.GetString(result.GetOrdinal(SupplierDAO.COLUMN_SUPPLIER_NAME)); 
+                        supply.Farm.FarmId = result.GetInt32(result.GetOrdinal(FarmDAO.COLUMN_FARM_ID)); 
+                        supply.Farm.FarmName = result.GetString(result.GetOrdinal(FarmDAO.COLUMN_FARM_NAME)); 
+                        supply.Product.ProductId = result.GetInt32(result.GetOrdinal(ProductDAO.COLUMN_PRODUCT_ID)); 
+                        supply.Product.ProductName = result.GetString(result.GetOrdinal(ProductDAO.COLUMN_PRODUCT_NAME)); 
                         list.Add(supply);
                     }
                 }
                 return list;
             }
-            catch (SQLiteException e)
+            catch (SQLiteException ex)
             {
-                Console.WriteLine(e.StackTrace);
-                return list;
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -87,10 +80,7 @@ namespace HarvestManagerSystem.database
             }
         }
 
-        //*******************************
-        //Add new supply data 
-        //*******************************
-        public bool addData(Supply Supply)
+        public void Add(Supply Supply)
         {
             string insertStmt = "INSERT INTO " + TABLE_SUPPLY + " ("
                     + COLUMN_SUPPLY_FRGN_KEY_SUPPLIER_ID + ", "
@@ -109,12 +99,10 @@ namespace HarvestManagerSystem.database
                 sQLiteCommand.Parameters.AddWithValue(COLUMN_SUPPLY_FRGN_KEY_FARM_ID, Supply.Farm.FarmId);
                 sQLiteCommand.Parameters.AddWithValue(COLUMN_SUPPLY_FRGN_KEY_PRODUCT_ID, Supply.Product.ProductId);
                 sQLiteCommand.ExecuteNonQuery();
-                return true;
             }
-            catch (SQLiteException e)
+            catch (SQLiteException ex)
             {
-                Console.WriteLine(e.StackTrace);
-                return false;
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -122,24 +110,19 @@ namespace HarvestManagerSystem.database
             }
         }
 
-        //*******************************
-        //Delete Supply data (hide)
-        //*******************************
-        public bool DeleteData(Supply supply)
+        public void Delete(Supply supply)
         {
-            String updateStmt = "DELETE FROM " + TABLE_SUPPLY + " WHERE " + COLUMN_SUPPLY_ID + " = " + supply.SupplyId + " ;";
+            string deleteStmt = "DELETE FROM " + TABLE_SUPPLY + " WHERE " + COLUMN_SUPPLY_ID + " = " + supply.SupplyId + " ;";
 
             try
             {
-                SQLiteCommand sQLiteCommand = new SQLiteCommand(updateStmt, mSQLiteConnection);
+                SQLiteCommand sQLiteCommand = new SQLiteCommand(deleteStmt, mSQLiteConnection);
                 OpenConnection();
                 sQLiteCommand.ExecuteNonQuery();
-                return true;
             }
-            catch (SQLiteException e)
+            catch (SQLiteException ex)
             {
-                Console.WriteLine(e.Message);
-                return false;
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -147,12 +130,9 @@ namespace HarvestManagerSystem.database
             }
         }
 
-        //*******************************
-        //Update Supply data
-        //*******************************
-        internal bool UpdateData(Supply supply)
+        internal void Update(Supply supply)
         {
-            String updateStmt = "UPDATE " + TABLE_SUPPLY + " SET "
+            var updateStmt = "UPDATE " + TABLE_SUPPLY + " SET "
                  + COLUMN_SUPPLY_FRGN_KEY_SUPPLIER_ID + " =@" + COLUMN_SUPPLY_FRGN_KEY_SUPPLIER_ID + ", "
                  + COLUMN_SUPPLY_FRGN_KEY_FARM_ID + " =@" + COLUMN_SUPPLY_FRGN_KEY_FARM_ID + ", "
                  + COLUMN_SUPPLY_FRGN_KEY_PRODUCT_ID + " =@" + COLUMN_SUPPLY_FRGN_KEY_PRODUCT_ID + " "
@@ -167,99 +147,15 @@ namespace HarvestManagerSystem.database
                 sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_SUPPLY_FRGN_KEY_PRODUCT_ID, supply.Product.ProductId));
                 sQLiteCommand.ExecuteNonQuery();
                 CloseConnection();
-                return true;
             }
-            catch (SQLiteException e)
+            catch (SQLiteException ex)
             {
-                Console.WriteLine(e.StackTrace);
-                return false;
+                throw new Exception(ex.Message);
             }
             finally
             {
                 CloseConnection();
             }
-        }
-
-        //*******************************
-        //Add new Supplier data
-        //*******************************
-        internal bool addNewSupplierData(Supply supply)
-        {
-            SQLiteTransaction transaction = null;
-            SQLiteCommand sQLiteCommand = null;
-
-            string insertSupplier = "INSERT INTO " + SupplierDAO.TABLE_SUPPLIER + " ("
-                    + SupplierDAO.COLUMN_SUPPLIER_NAME + ", "
-                    + SupplierDAO.COLUMN_SUPPLIER_FIRSTNAME + ", "
-                    + SupplierDAO.COLUMN_SUPPLIER_LASTNAME + " "
-                    + ") VALUES ( "
-                    + "@" + SupplierDAO.COLUMN_SUPPLIER_NAME + ", "
-                    + "@" + SupplierDAO.COLUMN_SUPPLIER_FIRSTNAME + ", "
-                    + "@" + SupplierDAO.COLUMN_SUPPLIER_LASTNAME + " "
-                    + " )";
-
-            string insertSeason = "INSERT INTO " + TABLE_SUPPLY + " ("
-                    + COLUMN_SUPPLY_FRGN_KEY_SUPPLIER_ID + ", "
-                    + COLUMN_SUPPLY_FRGN_KEY_FARM_ID + ", "
-                    + COLUMN_SUPPLY_FRGN_KEY_PRODUCT_ID + " "
-                    + ") VALUES ( "
-                    + "@" + COLUMN_SUPPLY_FRGN_KEY_SUPPLIER_ID + ", "
-                    + "@" + COLUMN_SUPPLY_FRGN_KEY_FARM_ID + ", "
-                    + "@" + COLUMN_SUPPLY_FRGN_KEY_PRODUCT_ID + " "
-                    + " )";
-
-            try
-            {
-                OpenConnection();
-                transaction = mSQLiteConnection.BeginTransaction();
-
-                sQLiteCommand = new SQLiteCommand(insertSupplier, mSQLiteConnection);
-                sQLiteCommand.Parameters.AddWithValue(SupplierDAO.COLUMN_SUPPLIER_NAME, supply.Supplier.SupplierName);
-                sQLiteCommand.Parameters.AddWithValue(SupplierDAO.COLUMN_SUPPLIER_FIRSTNAME, supply.Supplier.SupplierFirstName);
-                sQLiteCommand.Parameters.AddWithValue(SupplierDAO.COLUMN_SUPPLIER_LASTNAME, supply.Supplier.SupplierLastName);
-                sQLiteCommand.ExecuteNonQuery();
-
-                long lastSupplierRowId;
-                lastSupplierRowId = mSQLiteConnection.LastInsertRowId;
-
-                sQLiteCommand = new SQLiteCommand(insertSeason, mSQLiteConnection);
-                sQLiteCommand.Parameters.AddWithValue(COLUMN_SUPPLY_FRGN_KEY_SUPPLIER_ID, lastSupplierRowId);
-                sQLiteCommand.Parameters.AddWithValue(COLUMN_SUPPLY_FRGN_KEY_FARM_ID, supply.Farm.FarmId);
-                sQLiteCommand.Parameters.AddWithValue(COLUMN_SUPPLY_FRGN_KEY_PRODUCT_ID, supply.Product.ProductId);
-
-                sQLiteCommand.ExecuteNonQuery();
-
-                transaction.Commit();
-                return true;
-            }
-            catch (SQLiteException e)
-            {
-                MessageBox.Show("Les information n'est pas ajouté à la base de données, erreur: " + e.Message);
-                return false;
-            }
-            finally
-            {
-                CloseConnection();
-            }
-        }
-
-
-        public void CreateTable()
-        {
-            string createStmt =  "CREATE TABLE IF NOT EXISTS " + TABLE_SUPPLY  + "("
-                    + COLUMN_SUPPLY_ID + " INTEGER PRIMARY KEY, "
-                    + COLUMN_SUPPLY_FRGN_KEY_SUPPLIER_ID + " INTEGER NOT NULL, "
-                    + COLUMN_SUPPLY_FRGN_KEY_FARM_ID + " INTEGER NOT NULL, "
-                    + COLUMN_SUPPLY_FRGN_KEY_PRODUCT_ID + " INTEGER NOT NULL, "
-                    + " FOREIGN KEY (" + COLUMN_SUPPLY_FRGN_KEY_SUPPLIER_ID + ") REFERENCES " + SupplierDAO.TABLE_SUPPLIER + " (" + SupplierDAO.COLUMN_SUPPLIER_ID + "), "
-                    + " FOREIGN KEY (" + COLUMN_SUPPLY_FRGN_KEY_FARM_ID + ") REFERENCES " + FarmDAO.TABLE_FARM + " (" + FarmDAO.COLUMN_FARM_ID + "), "
-                    + " FOREIGN KEY (" + COLUMN_SUPPLY_FRGN_KEY_PRODUCT_ID + ") REFERENCES " + ProductDAO.TABLE_PRODUCT + " (" + ProductDAO.COLUMN_PRODUCT_ID + ") "
-                    + ")";
-
-            SQLiteCommand sQLiteCommand = new SQLiteCommand(createStmt, mSQLiteConnection);
-            OpenConnection();
-            sQLiteCommand.ExecuteNonQuery();
-            CloseConnection();
         }
     }
 }

@@ -85,10 +85,10 @@ namespace HarvestManagerSystem.view
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Product Not Updated: " + ex.Message, "Info", MessageBoxButtons.OK, MessageBoxIcon.None);
+                MessageBox.Show("Data Not Updated: " + ex.Message, "Info", MessageBoxButtons.OK, MessageBoxIcon.None);
                 return;
             }
-            MessageBox.Show("Product Updated", "Info", MessageBoxButtons.OK, MessageBoxIcon.None);
+            MessageBox.Show("les informations sont mises à jour.", "Info", MessageBoxButtons.OK, MessageBoxIcon.None);
         }
 
         private void EditSeason()
@@ -106,10 +106,10 @@ namespace HarvestManagerSystem.view
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Product Detail Not Updated: " + ex.Message, "Info", MessageBoxButtons.OK, MessageBoxIcon.None);
+                MessageBox.Show("Data Not Updated: " + ex.Message, "Info", MessageBoxButtons.OK, MessageBoxIcon.None);
                 return;
             }
-            MessageBox.Show("Product detail Updated", "Info", MessageBoxButtons.OK, MessageBoxIcon.None);
+            MessageBox.Show("les informations sont mises à jour.", "Info", MessageBoxButtons.OK, MessageBoxIcon.None);
         }
 
         private void AddFarm()
@@ -141,10 +141,10 @@ namespace HarvestManagerSystem.view
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Product Not Added: " + ex.Message, "Info", MessageBoxButtons.OK, MessageBoxIcon.None);
+                MessageBox.Show("Data Not Added: " + ex.Message, "Info", MessageBoxButtons.OK, MessageBoxIcon.None);
                 return;
             }
-            MessageBox.Show("Produit ajouté à la base de données");
+            MessageBox.Show("Les information été ajouté à la base de données");
         }
 
         private bool CheckInput()
@@ -156,11 +156,15 @@ namespace HarvestManagerSystem.view
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (editFarm){ DeleteFarm(); }
-            else if (editSeason){ DeleteSeason(); }
-            DisplayFarmData();
-            FarmNameList();
-            ResetFields();
+            DialogResult dr = MessageBox.Show("Êtes-vous sûr de vouloir supprimer ces données", "Supprimer", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+            if (dr == DialogResult.Yes)
+            {
+                if (editFarm) { DeleteFarm(); }
+                else if (editSeason) { DeleteSeason(); }
+                DisplayFarmData();
+                FarmNameList();
+                ResetFields();
+            }
         }
 
         private void DeleteFarm()
@@ -192,9 +196,9 @@ namespace HarvestManagerSystem.view
                 listFarm = mFarmDAO.FarmList();
                 FarmDataGridView.DataSource = listFarm;
             }
-            catch (Exception exc)
+            catch (Exception ex)
             {
-                MessageBox.Show(exc.Message);
+                MessageBox.Show(ex.Message);
             }
         }
 

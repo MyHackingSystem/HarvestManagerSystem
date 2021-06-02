@@ -29,16 +29,16 @@ namespace HarvestManagerSystem.view
         /// </summary>
         private void InitializeComponent()
         {
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.btnAddHours = new System.Windows.Forms.Button();
+            this.btnAddEmployee = new System.Windows.Forms.Button();
+            this.btnAddSupplier = new System.Windows.Forms.Button();
             this.btnAddFarm = new System.Windows.Forms.Button();
             this.btnAddProduct = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
+            this.btnAddCredit = new System.Windows.Forms.Button();
+            this.btnAddTransport = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnDisplayRapport = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlSideMenu = new System.Windows.Forms.Panel();
             this.pnlLogo = new System.Windows.Forms.Panel();
@@ -53,35 +53,37 @@ namespace HarvestManagerSystem.view
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCenterMainForm)).BeginInit();
             this.SuspendLayout();
             // 
-            // button2
+            // btnAddHours
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.Location = new System.Drawing.Point(0, 84);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(150, 32);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Heures de récolte";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnAddHours.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAddHours.Location = new System.Drawing.Point(0, 84);
+            this.btnAddHours.Name = "btnAddHours";
+            this.btnAddHours.Size = new System.Drawing.Size(150, 32);
+            this.btnAddHours.TabIndex = 3;
+            this.btnAddHours.Text = "Heures de récolte";
+            this.btnAddHours.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnAddEmployee
             // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button3.Location = new System.Drawing.Point(0, 116);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(150, 32);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Employée";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnAddEmployee.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAddEmployee.Location = new System.Drawing.Point(0, 116);
+            this.btnAddEmployee.Name = "btnAddEmployee";
+            this.btnAddEmployee.Size = new System.Drawing.Size(150, 32);
+            this.btnAddEmployee.TabIndex = 4;
+            this.btnAddEmployee.Text = "Employée";
+            this.btnAddEmployee.UseVisualStyleBackColor = true;
+            this.btnAddEmployee.Click += new System.EventHandler(this.btnAddEmployee_Click);
             // 
-            // button8
+            // btnAddSupplier
             // 
-            this.button8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button8.Location = new System.Drawing.Point(0, 148);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(150, 32);
-            this.button8.TabIndex = 5;
-            this.button8.Text = "Fournisseur";
-            this.button8.UseVisualStyleBackColor = true;
+            this.btnAddSupplier.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAddSupplier.Location = new System.Drawing.Point(0, 148);
+            this.btnAddSupplier.Name = "btnAddSupplier";
+            this.btnAddSupplier.Size = new System.Drawing.Size(150, 32);
+            this.btnAddSupplier.TabIndex = 5;
+            this.btnAddSupplier.Text = "Fournisseur";
+            this.btnAddSupplier.UseVisualStyleBackColor = true;
+            this.btnAddSupplier.Click += new System.EventHandler(this.btnAddSupplier_Click);
             // 
             // btnAddFarm
             // 
@@ -105,25 +107,26 @@ namespace HarvestManagerSystem.view
             this.btnAddProduct.UseVisualStyleBackColor = true;
             this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
             // 
-            // button11
+            // btnAddCredit
             // 
-            this.button11.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button11.Location = new System.Drawing.Point(0, 244);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(150, 32);
-            this.button11.TabIndex = 8;
-            this.button11.Text = "Crédit";
-            this.button11.UseVisualStyleBackColor = true;
+            this.btnAddCredit.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAddCredit.Location = new System.Drawing.Point(0, 244);
+            this.btnAddCredit.Name = "btnAddCredit";
+            this.btnAddCredit.Size = new System.Drawing.Size(150, 32);
+            this.btnAddCredit.TabIndex = 8;
+            this.btnAddCredit.Text = "Crédit";
+            this.btnAddCredit.UseVisualStyleBackColor = true;
+            this.btnAddCredit.Click += new System.EventHandler(this.btnAddCredit_Click);
             // 
-            // button12
+            // btnAddTransport
             // 
-            this.button12.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button12.Location = new System.Drawing.Point(0, 276);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(150, 32);
-            this.button12.TabIndex = 9;
-            this.button12.Text = "Transport";
-            this.button12.UseVisualStyleBackColor = true;
+            this.btnAddTransport.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAddTransport.Location = new System.Drawing.Point(0, 276);
+            this.btnAddTransport.Name = "btnAddTransport";
+            this.btnAddTransport.Size = new System.Drawing.Size(150, 32);
+            this.btnAddTransport.TabIndex = 9;
+            this.btnAddTransport.Text = "Transport";
+            this.btnAddTransport.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -145,15 +148,15 @@ namespace HarvestManagerSystem.view
             this.button5.Text = "Individuel récolte";
             this.button5.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnDisplayRapport
             // 
-            this.button4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button4.Location = new System.Drawing.Point(0, 308);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(150, 32);
-            this.button4.TabIndex = 10;
-            this.button4.Text = "Rapports";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnDisplayRapport.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDisplayRapport.Location = new System.Drawing.Point(0, 308);
+            this.btnDisplayRapport.Name = "btnDisplayRapport";
+            this.btnDisplayRapport.Size = new System.Drawing.Size(150, 32);
+            this.btnDisplayRapport.TabIndex = 10;
+            this.btnDisplayRapport.Text = "Rapports";
+            this.btnDisplayRapport.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -170,14 +173,14 @@ namespace HarvestManagerSystem.view
             // pnlSideMenu
             // 
             this.pnlSideMenu.AutoScroll = true;
-            this.pnlSideMenu.Controls.Add(this.button4);
-            this.pnlSideMenu.Controls.Add(this.button12);
-            this.pnlSideMenu.Controls.Add(this.button11);
+            this.pnlSideMenu.Controls.Add(this.btnDisplayRapport);
+            this.pnlSideMenu.Controls.Add(this.btnAddTransport);
+            this.pnlSideMenu.Controls.Add(this.btnAddCredit);
             this.pnlSideMenu.Controls.Add(this.btnAddProduct);
             this.pnlSideMenu.Controls.Add(this.btnAddFarm);
-            this.pnlSideMenu.Controls.Add(this.button8);
-            this.pnlSideMenu.Controls.Add(this.button3);
-            this.pnlSideMenu.Controls.Add(this.button2);
+            this.pnlSideMenu.Controls.Add(this.btnAddSupplier);
+            this.pnlSideMenu.Controls.Add(this.btnAddEmployee);
+            this.pnlSideMenu.Controls.Add(this.btnAddHours);
             this.pnlSideMenu.Controls.Add(this.button1);
             this.pnlSideMenu.Controls.Add(this.button5);
             this.pnlSideMenu.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -251,16 +254,16 @@ namespace HarvestManagerSystem.view
         }
 
         #endregion
-        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button btnAddCredit;
         private System.Windows.Forms.Button btnAddProduct;
         private System.Windows.Forms.Button btnAddFarm;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button btnAddSupplier;
+        private System.Windows.Forms.Button btnAddEmployee;
+        private System.Windows.Forms.Button btnAddHours;
+        private System.Windows.Forms.Button btnAddTransport;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnDisplayRapport;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel pnlSideMenu;
         private System.Windows.Forms.Panel pnlLogo;

@@ -190,13 +190,18 @@ namespace HarvestManagerSystem.view
             }
         }
 
-        private void btnDeleteProduct_Click(object sender, EventArgs e)
+        private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (editProduct){ DeleteProduct(); }
-            else if (editProductDetail){ DeleteProductDetail(); }
-            DisplayProductData();
-            ProductNameList();
-            ResetFields();
+            DialogResult dr = MessageBox.Show("Êtes-vous sûr de vouloir supprimer ces données", "Supprimer", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+            if (dr == DialogResult.Yes)
+            {
+                if (editProduct) { DeleteProduct(); }
+                else if (editProductDetail) { DeleteProductDetail(); }
+                DisplayProductData();
+                ProductNameList();
+                ResetFields();
+            }
+
         }
 
         private void DeleteProduct()

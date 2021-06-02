@@ -17,9 +17,8 @@ namespace HarvestManagerSystem.view
 
         private HarvestMS harvestMS;
 
-        public FormAddCredit(HarvestMS harvestMS)
+        public FormAddCredit()
         {
-            this.harvestMS = harvestMS;
             InitializeComponent();
         }
 
