@@ -185,7 +185,6 @@ namespace HarvestManagerSystem.database
         public void Delete(Supplier supplier)
         {
             string deleteSupplierStmt = "DELETE FROM " + TABLE_SUPPLIER + " WHERE " + COLUMN_SUPPLIER_ID + " = " + supplier.SupplierId + " ";
-
             string deleteSupplyStmt = "DELETE FROM " + SupplyDAO.TABLE_SUPPLY + " WHERE " + SupplyDAO.COLUMN_SUPPLY_FRGN_KEY_SUPPLIER_ID + " = " + supplier.SupplierId + " ;";
 
             try

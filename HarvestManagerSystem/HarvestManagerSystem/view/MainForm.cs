@@ -56,5 +56,10 @@ namespace HarvestManagerSystem.view
         {
             OpenChildForm(new FormAddCredit());
         }
+
+        private void btnAddEmployee_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormAddEmployee());
+        }
     }
 }

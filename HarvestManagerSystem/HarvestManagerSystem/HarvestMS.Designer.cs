@@ -192,7 +192,6 @@ namespace HarvestManagerSystem
             this.employeeHireDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeeFireDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeePermissionDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPageSupplier = new System.Windows.Forms.TabPage();
             this.HoursContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.EditHoursStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteHoursStrip = new System.Windows.Forms.ToolStripMenuItem();
@@ -251,7 +250,6 @@ namespace HarvestManagerSystem
             this.tabProduction.Controls.Add(this.tabPageHours);
             this.tabProduction.Controls.Add(this.tabPageTransportCredit);
             this.tabProduction.Controls.Add(this.tabPageEmployee);
-            this.tabProduction.Controls.Add(this.tabPageSupplier);
             this.tabProduction.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.tabProduction.ItemSize = new System.Drawing.Size(200, 30);
             this.tabProduction.Location = new System.Drawing.Point(13, 35);
@@ -1796,16 +1794,6 @@ namespace HarvestManagerSystem
             this.employeePermissionDateColumn.HeaderText = "SCDZP";
             this.employeePermissionDateColumn.Name = "employeePermissionDateColumn";
             // 
-            // tabPageSupplier
-            // 
-            this.tabPageSupplier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tabPageSupplier.Location = new System.Drawing.Point(4, 34);
-            this.tabPageSupplier.Name = "tabPageSupplier";
-            this.tabPageSupplier.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSupplier.Size = new System.Drawing.Size(1121, 562);
-            this.tabPageSupplier.TabIndex = 4;
-            this.tabPageSupplier.Text = "Fournisseur";
-            // 
             // HoursContextMenuStrip
             // 
             this.HoursContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -2091,7 +2079,6 @@ namespace HarvestManagerSystem
         private System.Windows.Forms.TabPage tabPageHours;
         private System.Windows.Forms.TabPage tabPageTransportCredit;
         private System.Windows.Forms.TabPage tabPageEmployee;
-        private System.Windows.Forms.TabPage tabPageSupplier;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnAddHarvestQuantity;
         private System.Windows.Forms.Button btnAddHarvestHours;
