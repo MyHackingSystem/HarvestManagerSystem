@@ -294,7 +294,7 @@ namespace HarvestManagerSystem.view
             this.btnDeleteProduct.Text = "Supprimer";
             this.btnDeleteProduct.UseVisualStyleBackColor = false;
             this.btnDeleteProduct.Visible = false;
-            this.btnDeleteProduct.Click += new System.EventHandler(this.btnDeleteProduct_Click);
+            this.btnDeleteProduct.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // pnlDisplayProducts
             // 

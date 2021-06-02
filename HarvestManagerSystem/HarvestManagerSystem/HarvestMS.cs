@@ -55,9 +55,6 @@ namespace HarvestManagerSystem
                     DisplayEmployeeData();
                     EndCotract();
                     break;
-                case 4:
-                    DisplaySupplierData();
-                    break;
                 default:
                     Console.WriteLine("nothing");
                     break;
@@ -452,75 +449,6 @@ namespace HarvestManagerSystem
 
         #endregion
 
-        #region ********************************************* SUPPLIER CODE *************************************************************************
-
-        List<Supplier> listSupplier = new List<Supplier>();
-        List<Supply> listSupply = new List<Supply>();
-
-        public void DisplaySupplierData()
-        {
-            try
-            {
-                listSupplier = supplierDAO.getData();
-                SupplierDataGridView.DataSource = listSupplier;
-            }
-            catch
-            {
-
-            }
-        }
-
-        private void SupplierDataGridView_SelectionChanged(object sender, EventArgs e)
-        {
-            int i = SupplierDataGridView.CurrentCell.RowIndex;
-            if (i < listSupplier.Count)
-            {
-                DisplaySupplyData(listSupplier[i]);
-            }
-
-        }
-
-        private void DisplaySupplyData(Supplier supplier)
-        {
-            try
-            {
-                listSupply = supplyDAO.getData(supplier);
-                SupplyDataGridView.DataSource = listSupply;
-            }
-            catch
-            {
-
-            }
-        }
-
-        private void SupplierDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            Supplier supplier = (Supplier)listSupplier[e.RowIndex];
-            if (supplier == null)
-            {
-                return;
-            }
-            if (supplierDAO.UpdateData(supplier))
-            {
-                DisplaySupplierData();
-            }
-        }
-
-        private void SupplyDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            Supply supply = (Supply)listSupply[e.RowIndex];
-            if (supply == null)
-            {
-                return;
-            }
-            if (supplyDAO.UpdateData(supply))
-            {
-                DisplaySupplierData();
-            }
-        }
-
-        #endregion
-
         #region ********************************************* Credit CODE ***************************************************************************
 
         List<Credit> listCredit = new List<Credit>();
@@ -547,7 +475,7 @@ namespace HarvestManagerSystem
             }
             if (creditDAO.UpdateData(item))
             {
-                DisplaySupplierData();
+                //DisplaySupplierData();
             }
         }
 
@@ -580,7 +508,7 @@ namespace HarvestManagerSystem
             }
             if (transportDAO.UpdateData(item))
             {
-                DisplaySupplierData();
+                //DisplaySupplierData();
             }
         }
 

@@ -8,8 +8,6 @@ namespace HarvestManagerSystem.database
 {
     class SupplierDAO: DAO
     {
-
-
         public const string TABLE_SUPPLIER = "Supplier";
         public const string COLUMN_SUPPLIER_ID = "SupplierId";
         public const string COLUMN_SUPPLIER_NAME = "SupplierName";
@@ -23,15 +21,10 @@ namespace HarvestManagerSystem.database
         public static SupplierDAO getInstance()
         {
             if (instance == null)
-            {
                 instance = new SupplierDAO();
-            }
             return instance;
         }
 
-        //*************************************************************
-        //Get data farm as Dictionary by farm name
-        //*************************************************************
         internal Dictionary<string, Supplier> SupplierDictionary()
         {
             Dictionary<string, Supplier> dictionary = new Dictionary<string, Supplier>();
@@ -49,20 +42,19 @@ namespace HarvestManagerSystem.database
                     {
                         Supplier supplier = new Supplier()
                         {
-                            SupplierId = Convert.ToInt32((result[COLUMN_SUPPLIER_ID]).ToString()),
-                            SupplierName = (string)result[COLUMN_SUPPLIER_NAME],
-                            SupplierFirstName = (string)result[COLUMN_SUPPLIER_FIRSTNAME],
-                            SupplierLastName = (string)result[COLUMN_SUPPLIER_LASTNAME]
+                            SupplierId = result.GetInt32(result.GetOrdinal(COLUMN_SUPPLIER_ID)),
+                            SupplierName = result.GetString(result.GetOrdinal(COLUMN_SUPPLIER_NAME)),
+                            SupplierFirstName = result.GetString(result.GetOrdinal(COLUMN_SUPPLIER_FIRSTNAME)), 
+                            SupplierLastName = result.GetString(result.GetOrdinal(COLUMN_SUPPLIER_LASTNAME))
                         };
                         dictionary.Add(supplier.SupplierName, supplier);
                     }
                 }
                 return dictionary;
             }
-            catch (SQLiteException e)
+            catch (SQLiteException ex)
             {
-                Console.WriteLine(e.StackTrace);
-                return dictionary;
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -70,10 +62,7 @@ namespace HarvestManagerSystem.database
             }
         }
 
-        //*******************************
-        //Get all supplier data
-        //*******************************
-        public List<Supplier> getData()
+        public List<Supplier> ListSupplier()
         {
             List<Supplier> list = new List<Supplier>();
             var selectStmt = "SELECT * FROM " + TABLE_SUPPLIER + " ORDER BY " + COLUMN_SUPPLIER_NAME + " ASC;";
@@ -89,20 +78,19 @@ namespace HarvestManagerSystem.database
                     {
                         Supplier supplier = new Supplier()
                         {
-                            SupplierId = Convert.ToInt32((result[COLUMN_SUPPLIER_ID]).ToString()),
-                            SupplierName = (string)result[COLUMN_SUPPLIER_NAME],
-                            SupplierFirstName = (string)result[COLUMN_SUPPLIER_FIRSTNAME],
-                            SupplierLastName = (string)result[COLUMN_SUPPLIER_LASTNAME]
+                            SupplierId = result.GetInt32(result.GetOrdinal(COLUMN_SUPPLIER_ID)),
+                            SupplierName = result.GetString(result.GetOrdinal(COLUMN_SUPPLIER_NAME)),
+                            SupplierFirstName = result.GetString(result.GetOrdinal(COLUMN_SUPPLIER_FIRSTNAME)), 
+                            SupplierLastName = result.GetString(result.GetOrdinal(COLUMN_SUPPLIER_LASTNAME))
                         };
                         list.Add(supplier);
                     }
                 }
                 return list;
             }
-            catch (SQLiteException e)
+            catch (SQLiteException ex)
             {
-                Console.WriteLine(e.StackTrace);
-                return list;
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -110,34 +98,56 @@ namespace HarvestManagerSystem.database
             }
         }
 
-        //*******************************
-        //Add new supplier data 
-        //*******************************
-        public bool addData(Supplier supplier)
+        public void addNewSupplier(Supply supply)
         {
-            string insertStmt = "INSERT INTO " + TABLE_SUPPLIER + " ("
+            SQLiteTransaction transaction = null;
+            SQLiteCommand sQLiteCommand = null;
+
+            string insertSupplier = "INSERT INTO " + TABLE_SUPPLIER + " ("
                     + COLUMN_SUPPLIER_NAME + ", "
                     + COLUMN_SUPPLIER_FIRSTNAME + ", "
                     + COLUMN_SUPPLIER_LASTNAME + " "
-                    + " ) VALUES ( "
+                    + ") VALUES ( "
                     + "@" + COLUMN_SUPPLIER_NAME + ", "
                     + "@" + COLUMN_SUPPLIER_FIRSTNAME + ", "
-                    + "@" + COLUMN_SUPPLIER_LASTNAME + ","
+                    + "@" + COLUMN_SUPPLIER_LASTNAME + " "
                     + " )";
+
+            string insertSeason = "INSERT INTO " + SupplyDAO.TABLE_SUPPLY + " ("
+                    + SupplyDAO.COLUMN_SUPPLY_FRGN_KEY_SUPPLIER_ID + ", "
+                    + SupplyDAO.COLUMN_SUPPLY_FRGN_KEY_FARM_ID + ", "
+                    + SupplyDAO.COLUMN_SUPPLY_FRGN_KEY_PRODUCT_ID + " "
+                    + ") VALUES ( "
+                    + "@" + SupplyDAO.COLUMN_SUPPLY_FRGN_KEY_SUPPLIER_ID + ", "
+                    + "@" + SupplyDAO.COLUMN_SUPPLY_FRGN_KEY_FARM_ID + ", "
+                    + "@" + SupplyDAO.COLUMN_SUPPLY_FRGN_KEY_PRODUCT_ID + " "
+                    + " )";
+
             try
             {
-                SQLiteCommand sQLiteCommand = new SQLiteCommand(insertStmt, mSQLiteConnection);
                 OpenConnection();
-                sQLiteCommand.Parameters.AddWithValue(COLUMN_SUPPLIER_NAME, supplier.SupplierName);
-                sQLiteCommand.Parameters.AddWithValue(COLUMN_SUPPLIER_FIRSTNAME, supplier.SupplierFirstName);
-                sQLiteCommand.Parameters.AddWithValue(COLUMN_SUPPLIER_LASTNAME, supplier.SupplierLastName);
+                transaction = mSQLiteConnection.BeginTransaction();
+
+                sQLiteCommand = new SQLiteCommand(insertSupplier, mSQLiteConnection);
+                sQLiteCommand.Parameters.AddWithValue(COLUMN_SUPPLIER_NAME, supply.Supplier.SupplierName);
+                sQLiteCommand.Parameters.AddWithValue(COLUMN_SUPPLIER_FIRSTNAME, supply.Supplier.SupplierFirstName);
+                sQLiteCommand.Parameters.AddWithValue(COLUMN_SUPPLIER_LASTNAME, supply.Supplier.SupplierLastName);
                 sQLiteCommand.ExecuteNonQuery();
-                return true;
+
+                long lastSupplierRowId;
+                lastSupplierRowId = mSQLiteConnection.LastInsertRowId;
+
+                sQLiteCommand = new SQLiteCommand(insertSeason, mSQLiteConnection);
+                sQLiteCommand.Parameters.AddWithValue(SupplyDAO.COLUMN_SUPPLY_FRGN_KEY_SUPPLIER_ID, lastSupplierRowId);
+                sQLiteCommand.Parameters.AddWithValue(SupplyDAO.COLUMN_SUPPLY_FRGN_KEY_FARM_ID, supply.Farm.FarmId);
+                sQLiteCommand.Parameters.AddWithValue(SupplyDAO.COLUMN_SUPPLY_FRGN_KEY_PRODUCT_ID, supply.Product.ProductId);
+
+                sQLiteCommand.ExecuteNonQuery();
+                transaction.Commit();
             }
-            catch (SQLiteException e)
+            catch (SQLiteException ex)
             {
-                Console.WriteLine(e.StackTrace);
-                return false;
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -145,40 +155,9 @@ namespace HarvestManagerSystem.database
             }
         }
 
-        //*******************************
-        //Delete supplier data (hide)
-        //*******************************
-        public bool DeleteData(Supplier supplier)
+        internal void Update(Supplier supplier)
         {
-            string updateStmt = "DELETE FROM " + TABLE_SUPPLIER + " WHERE " + COLUMN_SUPPLIER_ID + " = " + supplier.SupplierId + " ";
-
-            string deleteStmt = "DELETE FROM " + SupplyDAO.TABLE_SUPPLY
-                + " WHERE " + SupplyDAO.COLUMN_SUPPLY_FRGN_KEY_SUPPLIER_ID + " = " + supplier.SupplierId + " ;";
-
-            try
-            {
-                SQLiteCommand sQLiteCommand = new SQLiteCommand(updateStmt + ";" + deleteStmt, mSQLiteConnection);
-                OpenConnection();
-                sQLiteCommand.ExecuteNonQuery();
-                return true;
-            }
-            catch (SQLiteException e)
-            {
-                Console.WriteLine(e.Message);
-                return false;
-            }
-            finally
-            {
-                CloseConnection();
-            }
-        }
-
-        //*******************************
-        //Update supplier data
-        //*******************************
-        internal bool UpdateData(Supplier supplier)
-        {
-            String updateStmt = "UPDATE " + TABLE_SUPPLIER + " SET "
+            var updateStmt = "UPDATE " + TABLE_SUPPLIER + " SET "
                  + COLUMN_SUPPLIER_NAME + " =@" + COLUMN_SUPPLIER_NAME + ", "
                  + COLUMN_SUPPLIER_FIRSTNAME + " =@" + COLUMN_SUPPLIER_FIRSTNAME + ", "
                  + COLUMN_SUPPLIER_LASTNAME + " =@" + COLUMN_SUPPLIER_LASTNAME + " "
@@ -192,12 +171,10 @@ namespace HarvestManagerSystem.database
                 sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_SUPPLIER_FIRSTNAME, supplier.SupplierFirstName.Trim().ToUpper()));
                 sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_SUPPLIER_LASTNAME, supplier.SupplierLastName.Trim().ToUpper()));
                 sQLiteCommand.ExecuteNonQuery();
-                return true;
             }
-            catch (SQLiteException e)
+            catch (SQLiteException ex)
             {
-                Console.WriteLine(e.StackTrace);
-                return false;
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -205,18 +182,26 @@ namespace HarvestManagerSystem.database
             }
         }
 
-        public void CreateTable()
+        public void Delete(Supplier supplier)
         {
-            String createStmt = "CREATE TABLE IF NOT EXISTS " + TABLE_SUPPLIER
-                    + "(" + COLUMN_SUPPLIER_ID + " INTEGER PRIMARY KEY, "
-                    + COLUMN_SUPPLIER_NAME + " TEXT NOT NULL, "
-                    + COLUMN_SUPPLIER_FIRSTNAME + " TEXT, "
-                    + COLUMN_SUPPLIER_LASTNAME + " TEXT)";
+            string deleteSupplierStmt = "DELETE FROM " + TABLE_SUPPLIER + " WHERE " + COLUMN_SUPPLIER_ID + " = " + supplier.SupplierId + " ";
 
-            SQLiteCommand sQLiteCommand = new SQLiteCommand(createStmt, mSQLiteConnection);
-            OpenConnection();
-            sQLiteCommand.ExecuteNonQuery();
-            CloseConnection();
+            string deleteSupplyStmt = "DELETE FROM " + SupplyDAO.TABLE_SUPPLY + " WHERE " + SupplyDAO.COLUMN_SUPPLY_FRGN_KEY_SUPPLIER_ID + " = " + supplier.SupplierId + " ;";
+
+            try
+            {
+                SQLiteCommand sQLiteCommand = new SQLiteCommand(deleteSupplierStmt + ";" + deleteSupplyStmt, mSQLiteConnection);
+                OpenConnection();
+                sQLiteCommand.ExecuteNonQuery();
+            }
+            catch (SQLiteException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
         }
 
     }
