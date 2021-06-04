@@ -38,34 +38,45 @@ namespace HarvestManagerSystem.view
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.UpdatePreferencesButton = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnUpdatePassword = new System.Windows.Forms.Button();
+            this.txtOldPassword = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtRepassword = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtPenaltyGeneral
             // 
-            this.txtPenaltyGeneral.Location = new System.Drawing.Point(191, 91);
+            this.txtPenaltyGeneral.Location = new System.Drawing.Point(192, 181);
             this.txtPenaltyGeneral.Name = "txtPenaltyGeneral";
-            this.txtPenaltyGeneral.Size = new System.Drawing.Size(100, 23);
+            this.txtPenaltyGeneral.Size = new System.Drawing.Size(142, 23);
             this.txtPenaltyGeneral.TabIndex = 0;
             // 
             // txtfxDamageGeneral
             // 
-            this.txtfxDamageGeneral.Location = new System.Drawing.Point(191, 142);
+            this.txtfxDamageGeneral.Location = new System.Drawing.Point(192, 232);
             this.txtfxDamageGeneral.Name = "txtfxDamageGeneral";
-            this.txtfxDamageGeneral.Size = new System.Drawing.Size(100, 23);
+            this.txtfxDamageGeneral.Size = new System.Drawing.Size(142, 23);
             this.txtfxDamageGeneral.TabIndex = 1;
             // 
             // txtHourPrice
             // 
-            this.txtHourPrice.Location = new System.Drawing.Point(191, 195);
+            this.txtHourPrice.Location = new System.Drawing.Point(192, 285);
             this.txtHourPrice.Name = "txtHourPrice";
-            this.txtHourPrice.Size = new System.Drawing.Size(100, 23);
+            this.txtHourPrice.Size = new System.Drawing.Size(142, 23);
             this.txtHourPrice.TabIndex = 2;
             // 
             // txtTransportPrice
             // 
-            this.txtTransportPrice.Location = new System.Drawing.Point(191, 246);
+            this.txtTransportPrice.Location = new System.Drawing.Point(192, 336);
             this.txtTransportPrice.Name = "txtTransportPrice";
-            this.txtTransportPrice.Size = new System.Drawing.Size(100, 23);
+            this.txtTransportPrice.Size = new System.Drawing.Size(142, 23);
             this.txtTransportPrice.TabIndex = 3;
             // 
             // label1
@@ -73,7 +84,7 @@ namespace HarvestManagerSystem.view
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(60, 97);
+            this.label1.Location = new System.Drawing.Point(61, 187);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(105, 17);
             this.label1.TabIndex = 4;
@@ -84,7 +95,7 @@ namespace HarvestManagerSystem.view
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(60, 150);
+            this.label2.Location = new System.Drawing.Point(61, 240);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(119, 17);
             this.label2.TabIndex = 5;
@@ -95,7 +106,7 @@ namespace HarvestManagerSystem.view
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(60, 198);
+            this.label3.Location = new System.Drawing.Point(61, 288);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 17);
             this.label3.TabIndex = 6;
@@ -106,7 +117,7 @@ namespace HarvestManagerSystem.view
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(60, 249);
+            this.label4.Location = new System.Drawing.Point(61, 339);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(95, 17);
             this.label4.TabIndex = 7;
@@ -115,7 +126,7 @@ namespace HarvestManagerSystem.view
             // UpdatePreferencesButton
             // 
             this.UpdatePreferencesButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.UpdatePreferencesButton.Location = new System.Drawing.Point(132, 345);
+            this.UpdatePreferencesButton.Location = new System.Drawing.Point(133, 435);
             this.UpdatePreferencesButton.Name = "UpdatePreferencesButton";
             this.UpdatePreferencesButton.Size = new System.Drawing.Size(92, 31);
             this.UpdatePreferencesButton.TabIndex = 8;
@@ -123,28 +134,122 @@ namespace HarvestManagerSystem.view
             this.UpdatePreferencesButton.UseVisualStyleBackColor = true;
             this.UpdatePreferencesButton.Click += new System.EventHandler(this.UpdatePreferencesButton_Click);
             // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.btnUpdatePassword);
+            this.panel1.Controls.Add(this.txtOldPassword);
+            this.panel1.Controls.Add(this.txtPassword);
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.txtRepassword);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Location = new System.Drawing.Point(462, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(471, 644);
+            this.panel1.TabIndex = 9;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(108, 216);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(91, 17);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Old Password";
+            // 
+            // btnUpdatePassword
+            // 
+            this.btnUpdatePassword.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnUpdatePassword.Location = new System.Drawing.Point(187, 404);
+            this.btnUpdatePassword.Name = "btnUpdatePassword";
+            this.btnUpdatePassword.Size = new System.Drawing.Size(92, 31);
+            this.btnUpdatePassword.TabIndex = 17;
+            this.btnUpdatePassword.Text = "Valider";
+            this.btnUpdatePassword.UseVisualStyleBackColor = true;
+            // 
+            // txtOldPassword
+            // 
+            this.txtOldPassword.Location = new System.Drawing.Point(232, 214);
+            this.txtOldPassword.Name = "txtOldPassword";
+            this.txtOldPassword.Size = new System.Drawing.Size(142, 23);
+            this.txtOldPassword.TabIndex = 9;
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Location = new System.Drawing.Point(232, 265);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(142, 23);
+            this.txtPassword.TabIndex = 10;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(79, 320);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(120, 17);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "New Re Password";
+            // 
+            // txtRepassword
+            // 
+            this.txtRepassword.Location = new System.Drawing.Point(232, 318);
+            this.txtRepassword.Name = "txtRepassword";
+            this.txtRepassword.Size = new System.Drawing.Size(142, 23);
+            this.txtRepassword.TabIndex = 11;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(100, 271);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(99, 17);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "New Password";
+            // 
+            // panel2
+            // 
+            this.panel2.AutoScroll = true;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.UpdatePreferencesButton);
+            this.panel2.Controls.Add(this.txtPenaltyGeneral);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.txtfxDamageGeneral);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.txtHourPrice);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.txtTransportPrice);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(462, 644);
+            this.panel2.TabIndex = 10;
+            // 
             // FormPreferences
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(384, 461);
-            this.Controls.Add(this.UpdatePreferencesButton);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtTransportPrice);
-            this.Controls.Add(this.txtHourPrice);
-            this.Controls.Add(this.txtfxDamageGeneral);
-            this.Controls.Add(this.txtPenaltyGeneral);
+            this.ClientSize = new System.Drawing.Size(933, 644);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Name = "FormPreferences";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Preferences";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormPreferences_FormClosed);
             this.Load += new System.EventHandler(this.FormPreferences_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -159,5 +264,14 @@ namespace HarvestManagerSystem.view
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button UpdatePreferencesButton;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnUpdatePassword;
+        private System.Windows.Forms.TextBox txtOldPassword;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtRepassword;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Panel panel2;
     }
 }

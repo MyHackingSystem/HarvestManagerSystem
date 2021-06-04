@@ -14,7 +14,6 @@ namespace HarvestManagerSystem.database
         public const string COLUMN_CREDIT_AMOUNT = "CreditAmount";
         public const string COLUMN_CREDIT_EMPLOYEE_ID = "EmployeeId";
 
-
         private static CreditDAO instance = new CreditDAO();
 
         private CreditDAO() : base() { }
@@ -22,16 +21,10 @@ namespace HarvestManagerSystem.database
         public static CreditDAO getInstance()
         {
             if (instance == null)
-            {
                 instance = new CreditDAO();
-            }
             return instance;
         }
 
-
-        //*******************************
-        //Get Credit data
-        //*******************************
         public List<Credit> getData()
         {
             List<Credit> list = new List<Credit>();
@@ -58,21 +51,20 @@ namespace HarvestManagerSystem.database
                     while (result.Read())
                     {
                         Credit credit = new Credit();
-                        credit.CreditId = Convert.ToInt32((result[COLUMN_CREDIT_ID]).ToString());
-                        credit.CreditDate = (DateTime)result[COLUMN_CREDIT_DATE];
-                        credit.CreditAmount = Convert.ToDouble((result[COLUMN_CREDIT_AMOUNT]).ToString());
-                        credit.Employee.EmployeeId = Convert.ToInt32((result[EmployeeDAO.COLUMN_EMPLOYEE_ID]).ToString());
-                        credit.Employee.FirstName = (string)result[EmployeeDAO.COLUMN_EMPLOYEE_FIRST_NAME];
-                        credit.Employee.LastName = (string)result[EmployeeDAO.COLUMN_EMPLOYEE_LAST_NAME];
+                        credit.CreditId = result.GetInt32(result.GetOrdinal(COLUMN_CREDIT_ID));
+                        credit.CreditDate = result.GetDateTime(result.GetOrdinal(COLUMN_CREDIT_DATE));
+                        credit.CreditAmount = result.GetDouble(result.GetOrdinal(COLUMN_CREDIT_AMOUNT));
+                        credit.Employee.EmployeeId = result.GetInt32(result.GetOrdinal(EmployeeDAO.COLUMN_EMPLOYEE_ID));
+                        credit.Employee.FirstName = result.GetString(result.GetOrdinal(EmployeeDAO.COLUMN_EMPLOYEE_FIRST_NAME));
+                        credit.Employee.LastName = result.GetString(result.GetOrdinal(EmployeeDAO.COLUMN_EMPLOYEE_LAST_NAME));
                         list.Add(credit);
                     }
                 }
                 return list;
             }
-            catch (SQLiteException e)
+            catch (SQLiteException ex)
             {
-                Console.WriteLine(e.StackTrace);
-                return list;
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -80,10 +72,7 @@ namespace HarvestManagerSystem.database
             }
         }
 
-        //*******************************
-        //Add new credit data 
-        //*******************************
-        public bool addData(Credit credit)
+        public bool Add(Credit credit)
         {
             string insertStmt = "INSERT INTO " + TABLE_CREDIT + " ("
                     + COLUMN_CREDIT_DATE + ", "
@@ -104,10 +93,9 @@ namespace HarvestManagerSystem.database
                 sQLiteCommand.ExecuteNonQuery();
                 return true;
             }
-            catch (SQLiteException e)
+            catch (SQLiteException ex)
             {
-                Console.WriteLine(e.StackTrace);
-                return false;
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -115,10 +103,8 @@ namespace HarvestManagerSystem.database
             }
         }
 
-        //*******************************
-        //Update credit data
-        //*******************************
-        internal bool UpdateData(Credit credit)
+
+        internal bool Update(Credit credit)
         {
             string updateStmt = "UPDATE " + TABLE_CREDIT + " SET "
                  + COLUMN_CREDIT_DATE + " =@" + COLUMN_CREDIT_DATE + ", "
@@ -134,10 +120,9 @@ namespace HarvestManagerSystem.database
                 sQLiteCommand.ExecuteNonQuery();
                 return true;
             }
-            catch (SQLiteException e)
+            catch (SQLiteException ex)
             {
-                Console.WriteLine(e.StackTrace);
-                return false;
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -145,10 +130,8 @@ namespace HarvestManagerSystem.database
             }
         }
 
-        //*******************************
-        //Delete credit data
-        //*******************************
-        public bool DeleteData(Credit credit)
+
+        public bool Delete(Credit credit)
         {
             string updateStmt = "UPDATE " + TABLE_CREDIT + " SET "
                  + COLUMN_CREDIT_AMOUNT + " = 0 "
@@ -161,32 +144,14 @@ namespace HarvestManagerSystem.database
                 sQLiteCommand.ExecuteNonQuery();
                 return true;
             }
-            catch (SQLiteException e)
+            catch (SQLiteException ex)
             {
-                Console.WriteLine(e.Message);
-                return false;
+                throw new Exception(ex.Message);
             }
             finally
             {
                 CloseConnection();
             }
         }
-
-        public void CreateTable()
-        {
-            string createStmt = "CREATE TABLE IF NOT EXISTS " + TABLE_CREDIT + "("
-                    + COLUMN_CREDIT_ID + " INTEGER PRIMARY KEY, "
-                    + COLUMN_CREDIT_DATE + " DATE NOT NULL, "
-                    + COLUMN_CREDIT_AMOUNT + " REAL NOT NULL DEFAULT 0, "
-                    + COLUMN_CREDIT_EMPLOYEE_ID + " INTEGER NOT NULL, "
-                    + " FOREIGN KEY (" + COLUMN_CREDIT_EMPLOYEE_ID + ") REFERENCES " + EmployeeDAO.TABLE_EMPLOYEE + " (" + EmployeeDAO.COLUMN_EMPLOYEE_ID + ") "
-                    + ")";
-
-            SQLiteCommand sQLiteCommand = new SQLiteCommand(createStmt, mSQLiteConnection);
-            OpenConnection();
-            sQLiteCommand.ExecuteNonQuery();
-            CloseConnection();
-        }
-
     }
 }

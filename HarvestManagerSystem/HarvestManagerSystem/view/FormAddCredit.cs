@@ -39,9 +39,9 @@ namespace HarvestManagerSystem.view
                 listCredit = mCreditDAO.getData();
                 CreditDataGridView.DataSource = listCredit;
             }
-            catch (Exception exc)
+            catch (Exception ex)
             {
-                MessageBox.Show(exc.Message);
+                MessageBox.Show(" Display Credit: " + ex.Message);
             }
         }
 
@@ -53,9 +53,9 @@ namespace HarvestManagerSystem.view
                 listTransport = mTransportDAO.getData();
                 TransportDataGridView.DataSource = listTransport;
             }
-            catch (Exception exc)
+            catch (Exception ex)
             {
-                MessageBox.Show(exc.Message);
+                MessageBox.Show(" Display Transport: " + ex.Message);
             }
         }
 
@@ -86,7 +86,7 @@ namespace HarvestManagerSystem.view
                 return;
             }
             SaveCreditData();
-            //harvestMS.DisplayCreditData();
+            DisplayCreditData();
         }
 
         private bool CheckInput()
@@ -122,7 +122,7 @@ namespace HarvestManagerSystem.view
             credit.Employee.LastName = employee.LastName;
             credit.CreditDate = CreditDatePicker.Value.Date;
             credit.CreditAmount = Convert.ToDouble(CreditAmountTextBox.Text);
-            if (mCreditDAO.addData(credit))
+            if (mCreditDAO.Add(credit))
             {
                 wipeFields();
                 MessageBox.Show("Added to database: ");

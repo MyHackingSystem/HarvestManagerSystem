@@ -17,34 +17,9 @@ namespace HarvestManagerSystem.view
         Preferences pref = new Preferences();
         PreferencesDAO preferencesDAO = PreferencesDAO.getInstance();
 
-        private static FormPreferences instance;
-
-        private FormPreferences()
+        public FormPreferences()
         {
             InitializeComponent();
-        }
-
-        public static FormPreferences getInstance()
-        {
-            if (instance == null)
-            {
-                instance = new FormPreferences();
-            }
-            return instance;
-        }
-
-        public void ShowForm()
-        {
-            if (instance != null)
-            {
-                instance.BringToFront();
-            }
-            else
-            {
-                instance = new FormPreferences();
-
-            }
-            instance.Show();
         }
 
         private void FormPreferences_Load(object sender, EventArgs e)
@@ -68,11 +43,6 @@ namespace HarvestManagerSystem.view
             txtHourPrice.Text = pref.HourPrice.ToString();
             txtTransportPrice.Text = pref.TransportPrice.ToString();
 
-        }
-
-        private void FormPreferences_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            instance = null;
         }
 
         private void UpdatePreferencesButton_Click(object sender, EventArgs e)
@@ -102,7 +72,6 @@ namespace HarvestManagerSystem.view
             {
                 MessageBox.Show("les valeurs n'ont pas été mises à jour ");
             }
-
 
         }
 

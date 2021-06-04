@@ -54,6 +54,8 @@ namespace HarvestManagerSystem.view
             this.btnDelete = new System.Windows.Forms.Button();
             this.pnlDisplayEmployee = new System.Windows.Forms.Panel();
             this.EmployeeDataGridView = new System.Windows.Forms.DataGridView();
+            this.pnlDisplayCloseFire = new System.Windows.Forms.Panel();
+            this.txtListEmployeeCloseFire = new System.Windows.Forms.TextBox();
             this.employeeStatusColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.employeeIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeeFullNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,8 +64,6 @@ namespace HarvestManagerSystem.view
             this.employeeHireDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeeFireDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeePermissionDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pnlDisplayCloseFire = new System.Windows.Forms.Panel();
-            this.txtListEmployeeCloseFire = new System.Windows.Forms.TextBox();
             this.pnlAddEmployee.SuspendLayout();
             this.pnlDisplayEmployee.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EmployeeDataGridView)).BeginInit();
@@ -340,6 +340,7 @@ namespace HarvestManagerSystem.view
             this.EmployeeDataGridView.Location = new System.Drawing.Point(0, 0);
             this.EmployeeDataGridView.MultiSelect = false;
             this.EmployeeDataGridView.Name = "EmployeeDataGridView";
+            this.EmployeeDataGridView.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightSkyBlue;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -362,65 +363,6 @@ namespace HarvestManagerSystem.view
             this.EmployeeDataGridView.TabIndex = 2;
             this.EmployeeDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EmployeeDataGridView_CellDoubleClick);
             // 
-            // employeeStatusColumn
-            // 
-            this.employeeStatusColumn.DataPropertyName = "EmployeeStatus";
-            this.employeeStatusColumn.HeaderText = "Etat";
-            this.employeeStatusColumn.MinimumWidth = 40;
-            this.employeeStatusColumn.Name = "employeeStatusColumn";
-            this.employeeStatusColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.employeeStatusColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // employeeIdColumn
-            // 
-            this.employeeIdColumn.DataPropertyName = "EmployeeId";
-            this.employeeIdColumn.HeaderText = "Id";
-            this.employeeIdColumn.MinimumWidth = 40;
-            this.employeeIdColumn.Name = "employeeIdColumn";
-            // 
-            // employeeFullNameColumn
-            // 
-            this.employeeFullNameColumn.DataPropertyName = "FullName";
-            this.employeeFullNameColumn.HeaderText = "Employée";
-            this.employeeFullNameColumn.MinimumWidth = 200;
-            this.employeeFullNameColumn.Name = "employeeFullNameColumn";
-            // 
-            // employeeFirstNameColumn
-            // 
-            this.employeeFirstNameColumn.DataPropertyName = "FirstName";
-            this.employeeFirstNameColumn.HeaderText = "Prénom";
-            this.employeeFirstNameColumn.MinimumWidth = 100;
-            this.employeeFirstNameColumn.Name = "employeeFirstNameColumn";
-            // 
-            // employeeLastNameColumn
-            // 
-            this.employeeLastNameColumn.DataPropertyName = "LastName";
-            this.employeeLastNameColumn.HeaderText = "Nom";
-            this.employeeLastNameColumn.MinimumWidth = 100;
-            this.employeeLastNameColumn.Name = "employeeLastNameColumn";
-            // 
-            // employeeHireDateColumn
-            // 
-            this.employeeHireDateColumn.DataPropertyName = "HireDate";
-            this.employeeHireDateColumn.HeaderText = "Debut CTR";
-            this.employeeHireDateColumn.MinimumWidth = 80;
-            this.employeeHireDateColumn.Name = "employeeHireDateColumn";
-            this.employeeHireDateColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // employeeFireDateColumn
-            // 
-            this.employeeFireDateColumn.DataPropertyName = "FireDate";
-            this.employeeFireDateColumn.HeaderText = "Fin CTR";
-            this.employeeFireDateColumn.MinimumWidth = 80;
-            this.employeeFireDateColumn.Name = "employeeFireDateColumn";
-            // 
-            // employeePermissionDateColumn
-            // 
-            this.employeePermissionDateColumn.DataPropertyName = "PermitDate";
-            this.employeePermissionDateColumn.HeaderText = "SCDZP";
-            this.employeePermissionDateColumn.MinimumWidth = 80;
-            this.employeePermissionDateColumn.Name = "employeePermissionDateColumn";
-            // 
             // pnlDisplayCloseFire
             // 
             this.pnlDisplayCloseFire.AutoScroll = true;
@@ -442,6 +384,73 @@ namespace HarvestManagerSystem.view
             this.txtListEmployeeCloseFire.Name = "txtListEmployeeCloseFire";
             this.txtListEmployeeCloseFire.Size = new System.Drawing.Size(195, 677);
             this.txtListEmployeeCloseFire.TabIndex = 3;
+            // 
+            // employeeStatusColumn
+            // 
+            this.employeeStatusColumn.DataPropertyName = "EmployeeStatus";
+            this.employeeStatusColumn.HeaderText = "Etat";
+            this.employeeStatusColumn.MinimumWidth = 40;
+            this.employeeStatusColumn.Name = "employeeStatusColumn";
+            this.employeeStatusColumn.ReadOnly = true;
+            this.employeeStatusColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.employeeStatusColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // employeeIdColumn
+            // 
+            this.employeeIdColumn.DataPropertyName = "EmployeeId";
+            this.employeeIdColumn.HeaderText = "Id";
+            this.employeeIdColumn.MinimumWidth = 40;
+            this.employeeIdColumn.Name = "employeeIdColumn";
+            this.employeeIdColumn.ReadOnly = true;
+            // 
+            // employeeFullNameColumn
+            // 
+            this.employeeFullNameColumn.DataPropertyName = "FullName";
+            this.employeeFullNameColumn.HeaderText = "Employée";
+            this.employeeFullNameColumn.MinimumWidth = 200;
+            this.employeeFullNameColumn.Name = "employeeFullNameColumn";
+            this.employeeFullNameColumn.ReadOnly = true;
+            // 
+            // employeeFirstNameColumn
+            // 
+            this.employeeFirstNameColumn.DataPropertyName = "FirstName";
+            this.employeeFirstNameColumn.HeaderText = "Prénom";
+            this.employeeFirstNameColumn.MinimumWidth = 100;
+            this.employeeFirstNameColumn.Name = "employeeFirstNameColumn";
+            this.employeeFirstNameColumn.ReadOnly = true;
+            // 
+            // employeeLastNameColumn
+            // 
+            this.employeeLastNameColumn.DataPropertyName = "LastName";
+            this.employeeLastNameColumn.HeaderText = "Nom";
+            this.employeeLastNameColumn.MinimumWidth = 100;
+            this.employeeLastNameColumn.Name = "employeeLastNameColumn";
+            this.employeeLastNameColumn.ReadOnly = true;
+            // 
+            // employeeHireDateColumn
+            // 
+            this.employeeHireDateColumn.DataPropertyName = "HireDate";
+            this.employeeHireDateColumn.HeaderText = "Debut CTR";
+            this.employeeHireDateColumn.MinimumWidth = 80;
+            this.employeeHireDateColumn.Name = "employeeHireDateColumn";
+            this.employeeHireDateColumn.ReadOnly = true;
+            this.employeeHireDateColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // employeeFireDateColumn
+            // 
+            this.employeeFireDateColumn.DataPropertyName = "FireDate";
+            this.employeeFireDateColumn.HeaderText = "Fin CTR";
+            this.employeeFireDateColumn.MinimumWidth = 80;
+            this.employeeFireDateColumn.Name = "employeeFireDateColumn";
+            this.employeeFireDateColumn.ReadOnly = true;
+            // 
+            // employeePermissionDateColumn
+            // 
+            this.employeePermissionDateColumn.DataPropertyName = "PermitDate";
+            this.employeePermissionDateColumn.HeaderText = "SCDZP";
+            this.employeePermissionDateColumn.MinimumWidth = 80;
+            this.employeePermissionDateColumn.Name = "employeePermissionDateColumn";
+            this.employeePermissionDateColumn.ReadOnly = true;
             // 
             // FormAddEmployee
             // 
