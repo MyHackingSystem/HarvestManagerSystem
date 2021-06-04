@@ -10,12 +10,12 @@ namespace HarvestManagerSystem.view
     public partial class FormAddCredit : Form
     {
 
-        private CreditDAO creditDAO = CreditDAO.getInstance();
-        private EmployeeDAO employeeDAO = EmployeeDAO.getInstance();
-
+        private CreditDAO mCreditDAO = CreditDAO.getInstance();
+        private EmployeeDAO mEmployeeDAO = EmployeeDAO.getInstance();
+        private TransportDAO mTransportDAO = TransportDAO.getInstance();
         private Dictionary<string, Employee> mEmployeeDictionary = new Dictionary<string, Employee>();
-
-        private HarvestMS harvestMS;
+        List<Credit> listCredit = new List<Credit>();
+        List<Transport> listTransport = new List<Transport>();
 
         public FormAddCredit()
         {
@@ -24,9 +24,39 @@ namespace HarvestManagerSystem.view
 
         private void FormAddCredit_Load(object sender, EventArgs e)
         {
-            EmployeeNameList();
-            CreditEmployeeComboBox.SelectedIndex = -1;
+            //EmployeeNameList();
+            //CreditEmployeeComboBox.SelectedIndex = -1;
+            DisplayCreditData();
+            DisplayTransportData();
+        }
 
+
+
+        public void DisplayCreditData()
+        {
+            try
+            {
+                listCredit = mCreditDAO.getData();
+                CreditDataGridView.DataSource = listCredit;
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+        }
+
+
+        public void DisplayTransportData()
+        {
+            try
+            {
+                listTransport = mTransportDAO.getData();
+                TransportDataGridView.DataSource = listTransport;
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
         }
 
         private void EmployeeNameList()
@@ -35,7 +65,7 @@ namespace HarvestManagerSystem.view
             mEmployeeDictionary.Clear();
             try
             {
-                mEmployeeDictionary = employeeDAO.EmployeeDictionary();
+                mEmployeeDictionary = mEmployeeDAO.EmployeeDictionary();
                 NamesList.AddRange(mEmployeeDictionary.Keys);
             }
             catch (Exception e)
@@ -56,7 +86,7 @@ namespace HarvestManagerSystem.view
                 return;
             }
             SaveCreditData();
-            harvestMS.DisplayCreditData();
+            //harvestMS.DisplayCreditData();
         }
 
         private bool CheckInput()
@@ -92,7 +122,7 @@ namespace HarvestManagerSystem.view
             credit.Employee.LastName = employee.LastName;
             credit.CreditDate = CreditDatePicker.Value.Date;
             credit.CreditAmount = Convert.ToDouble(CreditAmountTextBox.Text);
-            if (creditDAO.addData(credit))
+            if (mCreditDAO.addData(credit))
             {
                 wipeFields();
                 MessageBox.Show("Added to database: ");
@@ -115,7 +145,5 @@ namespace HarvestManagerSystem.view
             CreditEmployeeComboBox.SelectedIndex = -1;
             CreditAmountTextBox.Text = "";
         }
-
-
     }
 }

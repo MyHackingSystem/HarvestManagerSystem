@@ -35,11 +35,11 @@ namespace HarvestManagerSystem.view
 
         BindingSource bindingSourceHarvesterList = new System.Windows.Forms.BindingSource { DataSource = HarvesterList };
 
-        private HarvestMS harvestMS;
+        //private HarvestMS harvestMS;
 
-        public FormAddHours(HarvestMS harvestMS)
+        public FormAddHours()
         {
-            this.harvestMS = harvestMS;
+            //this.harvestMS = harvestMS;
             InitializeComponent();
         }
 
@@ -173,7 +173,7 @@ namespace HarvestManagerSystem.view
             else 
             { 
                 addProductionDataToDatabase();
-                harvestMS.RefreshHoursProductionTable();
+                //harvestMS.RefreshHoursProductionTable();
             }
         }
 
@@ -231,7 +231,7 @@ namespace HarvestManagerSystem.view
             {
                 MessageBox.Show("Not Update Production");
             }
-            harvestMS.RefreshHoursProductionTable();
+            //harvestMS.RefreshHoursProductionTable();
         
             isEditHarvestHours = false;
             this.Close();

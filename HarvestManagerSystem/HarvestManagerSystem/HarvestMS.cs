@@ -47,14 +47,6 @@ namespace HarvestManagerSystem
                 case 1:
                     DisplayHoursData();
                     break;
-                case 2:
-                    DisplayCreditData();
-                    DisplayTransportData();
-                    break;
-                case 3:
-                    DisplayEmployeeData();
-                    EndCotract();
-                    break;
                 default:
                     Console.WriteLine("nothing");
                     break;
@@ -160,15 +152,15 @@ namespace HarvestManagerSystem
 
         private void HandleEditQuantityTable()
         {
-            FormAddQuantity formAddQuantity = new FormAddQuantity(this);
-            Production production = (Production)listQuantityProduction[QuantityDataGridSelectedRowIndex];
-            if (production == null)
-            {
-                MessageBox.Show("Select Item");
-                return;
-            }
-            formAddQuantity.InflateUI(production);
-            formAddQuantity.ShowDialog();
+            //FormAddQuantity formAddQuantity = new FormAddQuantity(this);
+            //Production production = (Production)listQuantityProduction[QuantityDataGridSelectedRowIndex];
+            //if (production == null)
+            //{
+            //    MessageBox.Show("Select Item");
+            //    return;
+            //}
+            //formAddQuantity.InflateUI(production);
+            //formAddQuantity.ShowDialog();
         }
 
         private void HandleDeleteQuantityTable()
@@ -360,15 +352,15 @@ namespace HarvestManagerSystem
 
         private void HandleEditHoursTable()
         {
-            FormAddHours formAddHours = new FormAddHours(this);
-            Production production = (Production)listHoursProduction[HoursDataGridSelectedRowIndex];
-            if (production == null)
-            {
-                MessageBox.Show("Select Item");
-                return;
-            }
-            formAddHours.InflateUI(production);
-            formAddHours.ShowDialog();
+            //FormAddHours formAddHours = new FormAddHours(this);
+            //Production production = (Production)listHoursProduction[HoursDataGridSelectedRowIndex];
+            //if (production == null)
+            //{
+            //    MessageBox.Show("Select Item");
+            //    return;
+            //}
+            //formAddHours.InflateUI(production);
+            //formAddHours.ShowDialog();
         }
 
         private void HandleDeleteHoursTable()
@@ -449,116 +441,7 @@ namespace HarvestManagerSystem
 
         #endregion
 
-        #region ********************************************* Credit CODE ***************************************************************************
-
-        List<Credit> listCredit = new List<Credit>();
-
-        public void DisplayCreditData()
-        {
-            try
-            {
-                listCredit = creditDAO.getData();
-                CreditDataGridView.DataSource = listCredit;
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message);
-            }
-        }
-
-        private void CreditDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            Credit item = (Credit)listCredit[e.RowIndex];
-            if (item == null)
-            {
-                return;
-            }
-            if (creditDAO.UpdateData(item))
-            {
-                //DisplaySupplierData();
-            }
-        }
-
-
-        #endregion
-
-        #region ********************************************* TRANSPORT CODE ************************************************************************
-
-        List<Transport> listTransport = new List<Transport>();
-
-        public void DisplayTransportData()
-        {
-            try
-            {
-                listTransport = transportDAO.getData();
-                TransportDataGridView.DataSource = listTransport;
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message);
-            }
-        }
-
-        private void TransportDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            Transport item = (Transport)listTransport[e.RowIndex];
-            if (item == null)
-            {
-                return;
-            }
-            if (transportDAO.UpdateData(item))
-            {
-                //DisplaySupplierData();
-            }
-        }
-
-
-        #endregion
-
-        #region ********************************************* EMPLOYEE CODE *************************************************************************
-
-        List<Employee> listEmployee = new List<Employee>();
-
-        public void DisplayEmployeeData()
-        {
-            try
-            {
-                listEmployee = employeeDAO.getData();
-                EmployeeDataGridView.DataSource = listEmployee;
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message);
-            }
-        }
-
-        private void EmployeeDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            Employee employee = (Employee)listEmployee[e.RowIndex];
-            if (employee == null)
-            {
-                MessageBox.Show("Check values");
-                return;
-            }
-            if (employeeDAO.UpdateData(employee))
-            {
-                EndCotract();
-            }
-        }
-
-        private void EndCotract()
-        {
-            txtListEmployeeCloseFire.Text = "";
-            foreach (Employee emp in listEmployee)
-            {
-                if (emp.FireDate.AddDays(-5) <= DateTime.Now.Date)
-                {
-                    txtListEmployeeCloseFire.Text += "* " + emp.FullName + Environment.NewLine;
-                }
-            }
-        }
-
-        #endregion
+    
 
         #region ********************************************* Side Code *****************************************************************************
 
@@ -576,7 +459,7 @@ namespace HarvestManagerSystem
 
         private void HarvestMS_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+
         }
 
         private void btnAddHarvestQuantity_Click(object sender, EventArgs e)
