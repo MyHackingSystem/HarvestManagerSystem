@@ -441,66 +441,6 @@ namespace HarvestManagerSystem
 
         #endregion
 
-    
-
-        #region ********************************************* Side Code *****************************************************************************
-
-        private void AppLogo_Click(object sender, EventArgs e)
-        {
-            FormPreferences formPreferences = FormPreferences.getInstance();
-            formPreferences.ShowForm();
-        }
-
-        private void RapportButton_Click(object sender, EventArgs e)
-        {
-            FormRapport rapport = new FormRapport();
-            rapport.ShowDialog();
-        }
-
-        private void HarvestMS_FormClosed(object sender, FormClosedEventArgs e)
-        {
-
-        }
-
-        private void btnAddHarvestQuantity_Click(object sender, EventArgs e)
-        {
-            //FormAddQuantity formAddQuantity = new FormAddQuantity(this);
-            //formAddQuantity.ShowDialog();
-        }
-
-        private void btnAddHarvestHours_Click(object sender, EventArgs e)
-        {
-            //FormAddHours formAddHours = new FormAddHours(this);
-            //formAddHours.ShowDialog();
-        }
-
-        private void btnAddSupplier_Click(object sender, EventArgs e)
-        {
-           // FormAddSupplier formAddSupplier = new FormAddSupplier(this);
-            //formAddSupplier.ShowDialog();
-
-        }
-
-        private void btnAddEmployee_Click(object sender, EventArgs e)
-        {
-           // FormAddEmployee formAddEmployee = new FormAddEmployee(this);
-            //formAddEmployee.ShowDialog();
-        }
-
-        private void btnAddCredit_Click(object sender, EventArgs e)
-        {
-            //FormAddCredit formAddCredit = new FormAddCredit(this);
-            //formAddCredit.ShowDialog();
-        }
-
-        private void btnAddTransport_Click(object sender, EventArgs e)
-        {
-           // FormAddTransport formAddTransport = new FormAddTransport(this);
-            //formAddTransport.ShowDialog();
-        }
-
-        #endregion
-
         private void panelQuantityCompanyProduction_Paint(object sender, PaintEventArgs e)
         {
             ControlPaint.DrawBorder(e.Graphics, panelQuantityCompanyProduction.ClientRectangle,
@@ -535,6 +475,11 @@ Color.DimGray, 3, ButtonBorderStyle.Solid, // left
 Color.DimGray, 3, ButtonBorderStyle.Solid, // top
 Color.DimGray, 3, ButtonBorderStyle.Solid, // right
 Color.DimGray, 3, ButtonBorderStyle.Solid);// bottom
+        }
+
+        private void displayQuantityContextMenu_Opening(object sender, CancelEventArgs e)
+        {
+
         }
     }
 }

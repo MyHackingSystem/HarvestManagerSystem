@@ -81,19 +81,28 @@ namespace HarvestManagerSystem.view
 
         private void btnDisplayProduction_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new HarvestMS());
+
         }
 
         private void btnUpdateSetting_Click(object sender, EventArgs e)
         {
-            FormPreferences formPreferences = FormPreferences.getInstance();
-            formPreferences.ShowForm();
+            OpenChildForm(new FormPreferences());
         }
 
         private void btnCloseForm_Click(object sender, EventArgs e)
         {
             if (activeForm != null)
                 activeForm.Close();
+        }
+
+        private void btnDisplayProductionQuantity_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormDisplayProductionQuantity());
+        }
+
+        private void btnDisplayProductionHours_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormDisplayProductionHours());
         }
     }
 }

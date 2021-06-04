@@ -14,6 +14,12 @@
     <Compile Update="view\FormAddIndWork.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="view\FormDisplayProductionHours.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="view\FormDisplayProductionQuantity.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="view\FormPreferences.cs">
       <SubType>Form</SubType>
     </Compile>
