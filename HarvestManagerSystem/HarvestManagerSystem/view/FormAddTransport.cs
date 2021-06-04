@@ -20,8 +20,6 @@ namespace HarvestManagerSystem.view
         private Dictionary<string, Employee> mEmployeeDictionary = new Dictionary<string, Employee>();
         private Dictionary<string, Farm> mFarmDictionary = new Dictionary<string, Farm>();
 
-        private HarvestMS harvestMS;
-
 
         public FormAddTransport()
         {
@@ -85,7 +83,6 @@ namespace HarvestManagerSystem.view
                 return;
             }
             SaveTransportData();
-            harvestMS.DisplayTransportData();
         }
 
         private bool CheckInput()

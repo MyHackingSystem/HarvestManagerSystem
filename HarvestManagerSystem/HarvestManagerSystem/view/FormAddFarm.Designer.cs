@@ -53,20 +53,19 @@ namespace HarvestManagerSystem.view
             this.HarvestLabel = new System.Windows.Forms.Label();
             this.PlantationLabel = new System.Windows.Forms.Label();
             this.pnlAddFarm = new System.Windows.Forms.Panel();
-            this.btnCloseForm = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.pnlDisplayFarm = new System.Windows.Forms.Panel();
             this.panelDisplayFarm = new System.Windows.Forms.Panel();
             this.FarmDataGridView = new System.Windows.Forms.DataGridView();
-            this.FarmId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FarmName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlDisplaySeason = new System.Windows.Forms.Panel();
             this.SeasonDataGridView = new System.Windows.Forms.DataGridView();
             this.SeasonId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SeasonPlantingDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SeasonHarvestDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Farm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FarmId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FarmName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlAddFarm.SuspendLayout();
             this.pnlDisplayFarm.SuspendLayout();
             this.panelDisplayFarm.SuspendLayout();
@@ -222,7 +221,6 @@ namespace HarvestManagerSystem.view
             this.pnlAddFarm.Controls.Add(this.PlantationLabel);
             this.pnlAddFarm.Controls.Add(this.btnSave);
             this.pnlAddFarm.Controls.Add(this.AddressLabel);
-            this.pnlAddFarm.Controls.Add(this.btnCloseForm);
             this.pnlAddFarm.Controls.Add(this.btnDelete);
             this.pnlAddFarm.Controls.Add(this.btnClearReset);
             this.pnlAddFarm.Controls.Add(this.txtFarmAddress);
@@ -233,22 +231,6 @@ namespace HarvestManagerSystem.view
             this.pnlAddFarm.Name = "pnlAddFarm";
             this.pnlAddFarm.Size = new System.Drawing.Size(250, 618);
             this.pnlAddFarm.TabIndex = 39;
-            // 
-            // btnCloseForm
-            // 
-            this.btnCloseForm.BackColor = System.Drawing.Color.Red;
-            this.btnCloseForm.FlatAppearance.BorderSize = 0;
-            this.btnCloseForm.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Moccasin;
-            this.btnCloseForm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
-            this.btnCloseForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCloseForm.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCloseForm.Location = new System.Drawing.Point(12, 12);
-            this.btnCloseForm.Name = "btnCloseForm";
-            this.btnCloseForm.Size = new System.Drawing.Size(30, 30);
-            this.btnCloseForm.TabIndex = 6;
-            this.btnCloseForm.Text = "X";
-            this.btnCloseForm.UseVisualStyleBackColor = false;
-            this.btnCloseForm.Click += new System.EventHandler(this.btnCloseForm_Click);
             // 
             // btnDelete
             // 
@@ -302,7 +284,7 @@ namespace HarvestManagerSystem.view
             this.FarmDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.FarmDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.FarmDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.FarmDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.FarmDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.FarmDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
@@ -355,30 +337,6 @@ namespace HarvestManagerSystem.view
             this.FarmDataGridView.TabIndex = 3;
             this.FarmDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.FarmDataGridView_CellDoubleClick);
             this.FarmDataGridView.SelectionChanged += new System.EventHandler(this.FarmtDataGridView_SelectionChanged);
-            // 
-            // FarmId
-            // 
-            this.FarmId.DataPropertyName = "FarmId";
-            this.FarmId.HeaderText = "FarmId";
-            this.FarmId.Name = "FarmId";
-            this.FarmId.ReadOnly = true;
-            this.FarmId.Visible = false;
-            // 
-            // FarmName
-            // 
-            this.FarmName.DataPropertyName = "FarmName";
-            this.FarmName.HeaderText = "Champs";
-            this.FarmName.MinimumWidth = 200;
-            this.FarmName.Name = "FarmName";
-            this.FarmName.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "FarmAddress";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Adresse";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 300;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // pnlDisplaySeason
             // 
@@ -490,6 +448,30 @@ namespace HarvestManagerSystem.view
             this.Farm.ReadOnly = true;
             this.Farm.Visible = false;
             // 
+            // FarmId
+            // 
+            this.FarmId.DataPropertyName = "FarmId";
+            this.FarmId.HeaderText = "FarmId";
+            this.FarmId.Name = "FarmId";
+            this.FarmId.ReadOnly = true;
+            this.FarmId.Visible = false;
+            // 
+            // FarmName
+            // 
+            this.FarmName.DataPropertyName = "FarmName";
+            this.FarmName.HeaderText = "Champs";
+            this.FarmName.MinimumWidth = 200;
+            this.FarmName.Name = "FarmName";
+            this.FarmName.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "FarmAddress";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Adresse";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 260;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
             // FormAddFarm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -530,18 +512,17 @@ namespace HarvestManagerSystem.view
         private System.Windows.Forms.Label PlantationLabel;
         private System.Windows.Forms.Panel pnlAddFarm;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnCloseForm;
         private System.Windows.Forms.Panel pnlDisplayFarm;
         private System.Windows.Forms.Panel panelDisplayFarm;
         private System.Windows.Forms.Panel pnlDisplaySeason;
         private System.Windows.Forms.DataGridView SeasonDataGridView;
         private System.Windows.Forms.DataGridView FarmDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FarmId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FarmName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn SeasonId;
         private System.Windows.Forms.DataGridViewTextBoxColumn SeasonPlantingDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn SeasonHarvestDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Farm;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FarmId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FarmName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
     }
 }

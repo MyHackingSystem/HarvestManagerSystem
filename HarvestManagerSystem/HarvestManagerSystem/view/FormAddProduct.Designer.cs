@@ -29,16 +29,16 @@ namespace HarvestManagerSystem.view
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAddProduct));
             this.btnClearReset = new System.Windows.Forms.Button();
             this.btnSaveProductData = new System.Windows.Forms.Button();
@@ -55,24 +55,23 @@ namespace HarvestManagerSystem.view
             this.prixEmployeeErrorlabel = new System.Windows.Forms.Label();
             this.prixCompanyErrorlabel = new System.Windows.Forms.Label();
             this.pnlAddProduct = new System.Windows.Forms.Panel();
-            this.btnCloseForm = new System.Windows.Forms.Button();
             this.btnDeleteProduct = new System.Windows.Forms.Button();
             this.pnlDisplayProducts = new System.Windows.Forms.Panel();
+            this.ProductDataGridView = new System.Windows.Forms.DataGridView();
+            this.IdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductDetailDataGridView = new System.Windows.Forms.DataGridView();
             this.ProductDetailId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductTypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductPriceEmployeeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductPriceCompanyColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductDataGridView = new System.Windows.Forms.DataGridView();
-            this.IdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlAddProduct.SuspendLayout();
             this.pnlDisplayProducts.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ProductDetailDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductDetailDataGridView)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -241,7 +240,6 @@ namespace HarvestManagerSystem.view
             // pnlAddProduct
             // 
             this.pnlAddProduct.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlAddProduct.Controls.Add(this.btnCloseForm);
             this.pnlAddProduct.Controls.Add(this.btnClearReset);
             this.pnlAddProduct.Controls.Add(this.btnDeleteProduct);
             this.pnlAddProduct.Controls.Add(this.btnSaveProductData);
@@ -262,22 +260,6 @@ namespace HarvestManagerSystem.view
             this.pnlAddProduct.Name = "pnlAddProduct";
             this.pnlAddProduct.Size = new System.Drawing.Size(253, 618);
             this.pnlAddProduct.TabIndex = 27;
-            // 
-            // btnCloseForm
-            // 
-            this.btnCloseForm.BackColor = System.Drawing.Color.Red;
-            this.btnCloseForm.FlatAppearance.BorderSize = 0;
-            this.btnCloseForm.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnCloseForm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
-            this.btnCloseForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCloseForm.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCloseForm.Location = new System.Drawing.Point(12, 12);
-            this.btnCloseForm.Name = "btnCloseForm";
-            this.btnCloseForm.Size = new System.Drawing.Size(30, 30);
-            this.btnCloseForm.TabIndex = 27;
-            this.btnCloseForm.Text = "X";
-            this.btnCloseForm.UseVisualStyleBackColor = false;
-            this.btnCloseForm.Click += new System.EventHandler(this.btnCloseForm_Click);
             // 
             // btnDeleteProduct
             // 
@@ -307,6 +289,88 @@ namespace HarvestManagerSystem.view
             this.pnlDisplayProducts.Padding = new System.Windows.Forms.Padding(2, 0, 0, 0);
             this.pnlDisplayProducts.Size = new System.Drawing.Size(237, 618);
             this.pnlDisplayProducts.TabIndex = 28;
+            // 
+            // ProductDataGridView
+            // 
+            this.ProductDataGridView.AllowUserToAddRows = false;
+            this.ProductDataGridView.AllowUserToDeleteRows = false;
+            this.ProductDataGridView.AllowUserToOrderColumns = true;
+            this.ProductDataGridView.AllowUserToResizeColumns = false;
+            this.ProductDataGridView.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.ProductDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.ProductDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.ProductDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ProductDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.ProductDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ProductDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.ProductDataGridView.ColumnHeadersHeight = 36;
+            this.ProductDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.ProductDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IdColumn,
+            this.NameColumn});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ProductDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ProductDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ProductDataGridView.EnableHeadersVisualStyles = false;
+            this.ProductDataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ProductDataGridView.Location = new System.Drawing.Point(2, 0);
+            this.ProductDataGridView.MultiSelect = false;
+            this.ProductDataGridView.Name = "ProductDataGridView";
+            this.ProductDataGridView.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightSkyBlue;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ProductDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.ProductDataGridView.RowHeadersVisible = false;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(233)))), ((int)(((byte)(217)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            this.ProductDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.ProductDataGridView.RowTemplate.Height = 25;
+            this.ProductDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.ProductDataGridView.Size = new System.Drawing.Size(231, 614);
+            this.ProductDataGridView.TabIndex = 9;
+            this.ProductDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductDataGridView_CellDoubleClick);
+            this.ProductDataGridView.SelectionChanged += new System.EventHandler(this.ProductDataGridView_SelectionChanged);
+            // 
+            // IdColumn
+            // 
+            this.IdColumn.DataPropertyName = "ProductId";
+            this.IdColumn.HeaderText = "Id";
+            this.IdColumn.Name = "IdColumn";
+            this.IdColumn.ReadOnly = true;
+            this.IdColumn.Visible = false;
+            // 
+            // NameColumn
+            // 
+            this.NameColumn.DataPropertyName = "ProductName";
+            this.NameColumn.HeaderText = "Product";
+            this.NameColumn.MinimumWidth = 200;
+            this.NameColumn.Name = "NameColumn";
+            this.NameColumn.ReadOnly = true;
             // 
             // ProductDetailDataGridView
             // 
@@ -423,88 +487,6 @@ namespace HarvestManagerSystem.view
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
             this.dataGridViewTextBoxColumn1.Visible = false;
             // 
-            // ProductDataGridView
-            // 
-            this.ProductDataGridView.AllowUserToAddRows = false;
-            this.ProductDataGridView.AllowUserToDeleteRows = false;
-            this.ProductDataGridView.AllowUserToOrderColumns = true;
-            this.ProductDataGridView.AllowUserToResizeColumns = false;
-            this.ProductDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            this.ProductDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.ProductDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.ProductDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ProductDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ProductDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ProductDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.ProductDataGridView.ColumnHeadersHeight = 36;
-            this.ProductDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.ProductDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IdColumn,
-            this.NameColumn});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ProductDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ProductDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ProductDataGridView.EnableHeadersVisualStyles = false;
-            this.ProductDataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ProductDataGridView.Location = new System.Drawing.Point(2, 0);
-            this.ProductDataGridView.MultiSelect = false;
-            this.ProductDataGridView.Name = "ProductDataGridView";
-            this.ProductDataGridView.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightSkyBlue;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ProductDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.ProductDataGridView.RowHeadersVisible = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(233)))), ((int)(((byte)(217)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
-            this.ProductDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.ProductDataGridView.RowTemplate.Height = 25;
-            this.ProductDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ProductDataGridView.Size = new System.Drawing.Size(231, 614);
-            this.ProductDataGridView.TabIndex = 9;
-            this.ProductDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductDataGridView_CellDoubleClick);
-            this.ProductDataGridView.SelectionChanged += new System.EventHandler(this.ProductDataGridView_SelectionChanged);
-            // 
-            // IdColumn
-            // 
-            this.IdColumn.DataPropertyName = "ProductId";
-            this.IdColumn.HeaderText = "Id";
-            this.IdColumn.Name = "IdColumn";
-            this.IdColumn.ReadOnly = true;
-            this.IdColumn.Visible = false;
-            // 
-            // NameColumn
-            // 
-            this.NameColumn.DataPropertyName = "ProductName";
-            this.NameColumn.HeaderText = "Product";
-            this.NameColumn.MinimumWidth = 200;
-            this.NameColumn.Name = "NameColumn";
-            this.NameColumn.ReadOnly = true;
-            // 
             // panel2
             // 
             this.panel2.AutoScroll = true;
@@ -543,8 +525,8 @@ namespace HarvestManagerSystem.view
             this.pnlAddProduct.ResumeLayout(false);
             this.pnlAddProduct.PerformLayout();
             this.pnlDisplayProducts.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ProductDetailDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductDetailDataGridView)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -571,7 +553,6 @@ namespace HarvestManagerSystem.view
         private System.Windows.Forms.Panel pnlDisplayProducts;
         private System.Windows.Forms.DataGridView ProductDataGridView;
         private System.Windows.Forms.DataGridView ProductDetailDataGridView;
-        private System.Windows.Forms.Button btnCloseForm;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameColumn;

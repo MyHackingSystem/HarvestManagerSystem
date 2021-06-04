@@ -58,7 +58,6 @@ namespace HarvestManagerSystem.view
             this.productSupplierErrorLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.btnCloseForm = new System.Windows.Forms.Button();
             this.pnlDisplaySupply = new System.Windows.Forms.Panel();
             this.SupplyDataGridView = new System.Windows.Forms.DataGridView();
             this.SupplyId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -278,7 +277,6 @@ namespace HarvestManagerSystem.view
             // panel1
             // 
             this.panel1.Controls.Add(this.btnDelete);
-            this.panel1.Controls.Add(this.btnCloseForm);
             this.panel1.Controls.Add(this.SupplierLabel);
             this.panel1.Controls.Add(this.cmbxProductSupplier);
             this.panel1.Controls.Add(this.productSupplierLabel);
@@ -318,22 +316,6 @@ namespace HarvestManagerSystem.view
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Visible = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnCloseForm
-            // 
-            this.btnCloseForm.BackColor = System.Drawing.Color.Red;
-            this.btnCloseForm.FlatAppearance.BorderSize = 0;
-            this.btnCloseForm.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Moccasin;
-            this.btnCloseForm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
-            this.btnCloseForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCloseForm.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCloseForm.Location = new System.Drawing.Point(12, 12);
-            this.btnCloseForm.Name = "btnCloseForm";
-            this.btnCloseForm.Size = new System.Drawing.Size(30, 30);
-            this.btnCloseForm.TabIndex = 53;
-            this.btnCloseForm.Text = "X";
-            this.btnCloseForm.UseVisualStyleBackColor = false;
-            this.btnCloseForm.Click += new System.EventHandler(this.btnCloseForm_Click);
             // 
             // pnlDisplaySupply
             // 
@@ -446,6 +428,7 @@ namespace HarvestManagerSystem.view
             // 
             // pnlDisplaySupplier
             // 
+            this.pnlDisplaySupplier.AutoScroll = true;
             this.pnlDisplaySupplier.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlDisplaySupplier.Controls.Add(this.SupplierDataGridView);
             this.pnlDisplaySupplier.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -597,7 +580,6 @@ namespace HarvestManagerSystem.view
         private System.Windows.Forms.Label productSupplierLabel;
         private System.Windows.Forms.Label productSupplierErrorLabel;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnCloseForm;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Panel pnlDisplaySupply;
         private System.Windows.Forms.Panel pnlDisplaySupplier;

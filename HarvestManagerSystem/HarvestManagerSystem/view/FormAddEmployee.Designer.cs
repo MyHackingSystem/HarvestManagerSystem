@@ -35,14 +35,14 @@ namespace HarvestManagerSystem.view
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAddEmployee));
-            this.fxEmployeeStatus = new System.Windows.Forms.CheckBox();
+            this.chackEmployeeStatus = new System.Windows.Forms.CheckBox();
             this.btnClearReset = new System.Windows.Forms.Button();
-            this.fxPermissionDate = new System.Windows.Forms.DateTimePicker();
-            this.fxFireDate = new System.Windows.Forms.DateTimePicker();
-            this.fxHireDate = new System.Windows.Forms.DateTimePicker();
+            this.datePermissionDate = new System.Windows.Forms.DateTimePicker();
+            this.dateFireDate = new System.Windows.Forms.DateTimePicker();
+            this.dateHireDate = new System.Windows.Forms.DateTimePicker();
             this.btnSave = new System.Windows.Forms.Button();
-            this.fxLastName = new System.Windows.Forms.TextBox();
-            this.fxFirstName = new System.Windows.Forms.TextBox();
+            this.txtLastName = new System.Windows.Forms.TextBox();
+            this.txtFirstName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -52,7 +52,6 @@ namespace HarvestManagerSystem.view
             this.lastNameErrorLabel = new System.Windows.Forms.Label();
             this.pnlAddEmployee = new System.Windows.Forms.Panel();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.btnCloseForm = new System.Windows.Forms.Button();
             this.pnlDisplayEmployee = new System.Windows.Forms.Panel();
             this.EmployeeDataGridView = new System.Windows.Forms.DataGridView();
             this.employeeStatusColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -71,17 +70,17 @@ namespace HarvestManagerSystem.view
             this.pnlDisplayCloseFire.SuspendLayout();
             this.SuspendLayout();
             // 
-            // fxEmployeeStatus
+            // chackEmployeeStatus
             // 
-            this.fxEmployeeStatus.AutoSize = true;
-            this.fxEmployeeStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.fxEmployeeStatus.ForeColor = System.Drawing.Color.White;
-            this.fxEmployeeStatus.Location = new System.Drawing.Point(39, 412);
-            this.fxEmployeeStatus.Name = "fxEmployeeStatus";
-            this.fxEmployeeStatus.Size = new System.Drawing.Size(55, 25);
-            this.fxEmployeeStatus.TabIndex = 6;
-            this.fxEmployeeStatus.Text = "Etat";
-            this.fxEmployeeStatus.UseVisualStyleBackColor = true;
+            this.chackEmployeeStatus.AutoSize = true;
+            this.chackEmployeeStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.chackEmployeeStatus.ForeColor = System.Drawing.Color.White;
+            this.chackEmployeeStatus.Location = new System.Drawing.Point(39, 412);
+            this.chackEmployeeStatus.Name = "chackEmployeeStatus";
+            this.chackEmployeeStatus.Size = new System.Drawing.Size(55, 25);
+            this.chackEmployeeStatus.TabIndex = 6;
+            this.chackEmployeeStatus.Text = "Etat";
+            this.chackEmployeeStatus.UseVisualStyleBackColor = true;
             // 
             // btnClearReset
             // 
@@ -91,34 +90,37 @@ namespace HarvestManagerSystem.view
             this.btnClearReset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
             this.btnClearReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearReset.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnClearReset.Location = new System.Drawing.Point(138, 474);
+            this.btnClearReset.Location = new System.Drawing.Point(118, 474);
             this.btnClearReset.Name = "btnClearReset";
             this.btnClearReset.Size = new System.Drawing.Size(90, 30);
             this.btnClearReset.TabIndex = 8;
             this.btnClearReset.Text = "Reset";
             this.btnClearReset.UseVisualStyleBackColor = false;
-            this.btnClearReset.Click += new System.EventHandler(this.clearFieldsButton_Click);
+            this.btnClearReset.Click += new System.EventHandler(this.btnClearReset_Click);
             // 
-            // fxPermissionDate
+            // datePermissionDate
             // 
-            this.fxPermissionDate.Location = new System.Drawing.Point(39, 366);
-            this.fxPermissionDate.Name = "fxPermissionDate";
-            this.fxPermissionDate.Size = new System.Drawing.Size(160, 23);
-            this.fxPermissionDate.TabIndex = 5;
+            this.datePermissionDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.datePermissionDate.Location = new System.Drawing.Point(39, 366);
+            this.datePermissionDate.Name = "datePermissionDate";
+            this.datePermissionDate.Size = new System.Drawing.Size(160, 23);
+            this.datePermissionDate.TabIndex = 5;
             // 
-            // fxFireDate
+            // dateFireDate
             // 
-            this.fxFireDate.Location = new System.Drawing.Point(39, 299);
-            this.fxFireDate.Name = "fxFireDate";
-            this.fxFireDate.Size = new System.Drawing.Size(160, 23);
-            this.fxFireDate.TabIndex = 4;
+            this.dateFireDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateFireDate.Location = new System.Drawing.Point(39, 299);
+            this.dateFireDate.Name = "dateFireDate";
+            this.dateFireDate.Size = new System.Drawing.Size(160, 23);
+            this.dateFireDate.TabIndex = 4;
             // 
-            // fxHireDate
+            // dateHireDate
             // 
-            this.fxHireDate.Location = new System.Drawing.Point(39, 234);
-            this.fxHireDate.Name = "fxHireDate";
-            this.fxHireDate.Size = new System.Drawing.Size(160, 23);
-            this.fxHireDate.TabIndex = 3;
+            this.dateHireDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateHireDate.Location = new System.Drawing.Point(39, 234);
+            this.dateHireDate.Name = "dateHireDate";
+            this.dateHireDate.Size = new System.Drawing.Size(160, 23);
+            this.dateHireDate.TabIndex = 3;
             // 
             // btnSave
             // 
@@ -134,27 +136,27 @@ namespace HarvestManagerSystem.view
             this.btnSave.TabIndex = 7;
             this.btnSave.Text = "Ajouter";
             this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.handleSaveButton_Click);
+            this.btnSave.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-            // fxLastName
+            // txtLastName
             // 
-            this.fxLastName.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.fxLastName.Location = new System.Drawing.Point(39, 168);
-            this.fxLastName.MaxLength = 30;
-            this.fxLastName.Name = "fxLastName";
-            this.fxLastName.Size = new System.Drawing.Size(160, 23);
-            this.fxLastName.TabIndex = 2;
-            this.fxLastName.TextChanged += new System.EventHandler(this.fxLastName_TextChanged);
+            this.txtLastName.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.txtLastName.Location = new System.Drawing.Point(39, 168);
+            this.txtLastName.MaxLength = 30;
+            this.txtLastName.Name = "txtLastName";
+            this.txtLastName.Size = new System.Drawing.Size(160, 23);
+            this.txtLastName.TabIndex = 2;
+            this.txtLastName.TextChanged += new System.EventHandler(this.fxLastName_TextChanged);
             // 
-            // fxFirstName
+            // txtFirstName
             // 
-            this.fxFirstName.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.fxFirstName.Location = new System.Drawing.Point(39, 108);
-            this.fxFirstName.MaxLength = 30;
-            this.fxFirstName.Name = "fxFirstName";
-            this.fxFirstName.Size = new System.Drawing.Size(160, 23);
-            this.fxFirstName.TabIndex = 1;
-            this.fxFirstName.TextChanged += new System.EventHandler(this.fxFirstName_TextChanged);
+            this.txtFirstName.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.txtFirstName.Location = new System.Drawing.Point(39, 108);
+            this.txtFirstName.MaxLength = 30;
+            this.txtFirstName.Name = "txtFirstName";
+            this.txtFirstName.Size = new System.Drawing.Size(160, 23);
+            this.txtFirstName.TabIndex = 1;
+            this.txtFirstName.TextChanged += new System.EventHandler(this.fxFirstName_TextChanged);
             // 
             // label3
             // 
@@ -239,26 +241,25 @@ namespace HarvestManagerSystem.view
             // 
             this.pnlAddEmployee.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlAddEmployee.Controls.Add(this.btnDelete);
-            this.pnlAddEmployee.Controls.Add(this.btnCloseForm);
             this.pnlAddEmployee.Controls.Add(this.labelFirstName);
-            this.pnlAddEmployee.Controls.Add(this.fxEmployeeStatus);
+            this.pnlAddEmployee.Controls.Add(this.chackEmployeeStatus);
             this.pnlAddEmployee.Controls.Add(this.btnClearReset);
-            this.pnlAddEmployee.Controls.Add(this.fxPermissionDate);
+            this.pnlAddEmployee.Controls.Add(this.datePermissionDate);
             this.pnlAddEmployee.Controls.Add(this.labelLastName);
-            this.pnlAddEmployee.Controls.Add(this.fxFireDate);
+            this.pnlAddEmployee.Controls.Add(this.dateFireDate);
             this.pnlAddEmployee.Controls.Add(this.label1);
-            this.pnlAddEmployee.Controls.Add(this.fxHireDate);
+            this.pnlAddEmployee.Controls.Add(this.dateHireDate);
             this.pnlAddEmployee.Controls.Add(this.label2);
             this.pnlAddEmployee.Controls.Add(this.btnSave);
             this.pnlAddEmployee.Controls.Add(this.label3);
-            this.pnlAddEmployee.Controls.Add(this.fxLastName);
-            this.pnlAddEmployee.Controls.Add(this.fxFirstName);
+            this.pnlAddEmployee.Controls.Add(this.txtLastName);
+            this.pnlAddEmployee.Controls.Add(this.txtFirstName);
             this.pnlAddEmployee.Controls.Add(this.firstNameErrorLabel);
             this.pnlAddEmployee.Controls.Add(this.lastNameErrorLabel);
             this.pnlAddEmployee.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlAddEmployee.Location = new System.Drawing.Point(0, 0);
             this.pnlAddEmployee.Name = "pnlAddEmployee";
-            this.pnlAddEmployee.Size = new System.Drawing.Size(249, 681);
+            this.pnlAddEmployee.Size = new System.Drawing.Size(245, 681);
             this.pnlAddEmployee.TabIndex = 33;
             // 
             // btnDelete
@@ -271,26 +272,12 @@ namespace HarvestManagerSystem.view
             this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnDelete.Location = new System.Drawing.Point(16, 546);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(212, 30);
+            this.btnDelete.Size = new System.Drawing.Size(192, 30);
             this.btnDelete.TabIndex = 55;
             this.btnDelete.Text = "Supprimer";
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Visible = false;
-            // 
-            // btnCloseForm
-            // 
-            this.btnCloseForm.BackColor = System.Drawing.Color.Red;
-            this.btnCloseForm.FlatAppearance.BorderSize = 0;
-            this.btnCloseForm.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Moccasin;
-            this.btnCloseForm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
-            this.btnCloseForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCloseForm.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCloseForm.Location = new System.Drawing.Point(16, 12);
-            this.btnCloseForm.Name = "btnCloseForm";
-            this.btnCloseForm.Size = new System.Drawing.Size(30, 30);
-            this.btnCloseForm.TabIndex = 54;
-            this.btnCloseForm.Text = "X";
-            this.btnCloseForm.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // pnlDisplayEmployee
             // 
@@ -298,9 +285,9 @@ namespace HarvestManagerSystem.view
             this.pnlDisplayEmployee.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlDisplayEmployee.Controls.Add(this.EmployeeDataGridView);
             this.pnlDisplayEmployee.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlDisplayEmployee.Location = new System.Drawing.Point(249, 0);
+            this.pnlDisplayEmployee.Location = new System.Drawing.Point(245, 0);
             this.pnlDisplayEmployee.Name = "pnlDisplayEmployee";
-            this.pnlDisplayEmployee.Size = new System.Drawing.Size(1042, 681);
+            this.pnlDisplayEmployee.Size = new System.Drawing.Size(847, 681);
             this.pnlDisplayEmployee.TabIndex = 34;
             // 
             // EmployeeDataGridView
@@ -315,6 +302,7 @@ namespace HarvestManagerSystem.view
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
             this.EmployeeDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.EmployeeDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.EmployeeDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.EmployeeDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.EmployeeDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
@@ -346,6 +334,7 @@ namespace HarvestManagerSystem.view
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.EmployeeDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
+            this.EmployeeDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.EmployeeDataGridView.EnableHeadersVisualStyles = false;
             this.EmployeeDataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.EmployeeDataGridView.Location = new System.Drawing.Point(0, 0);
@@ -369,8 +358,9 @@ namespace HarvestManagerSystem.view
             this.EmployeeDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.EmployeeDataGridView.RowTemplate.Height = 25;
             this.EmployeeDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.EmployeeDataGridView.Size = new System.Drawing.Size(1038, 536);
+            this.EmployeeDataGridView.Size = new System.Drawing.Size(843, 677);
             this.EmployeeDataGridView.TabIndex = 2;
+            this.EmployeeDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EmployeeDataGridView_CellDoubleClick);
             // 
             // employeeStatusColumn
             // 
@@ -380,7 +370,6 @@ namespace HarvestManagerSystem.view
             this.employeeStatusColumn.Name = "employeeStatusColumn";
             this.employeeStatusColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.employeeStatusColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.employeeStatusColumn.Width = 40;
             // 
             // employeeIdColumn
             // 
@@ -388,8 +377,6 @@ namespace HarvestManagerSystem.view
             this.employeeIdColumn.HeaderText = "Id";
             this.employeeIdColumn.MinimumWidth = 40;
             this.employeeIdColumn.Name = "employeeIdColumn";
-            this.employeeIdColumn.ReadOnly = true;
-            this.employeeIdColumn.Width = 40;
             // 
             // employeeFullNameColumn
             // 
@@ -397,8 +384,6 @@ namespace HarvestManagerSystem.view
             this.employeeFullNameColumn.HeaderText = "Employée";
             this.employeeFullNameColumn.MinimumWidth = 200;
             this.employeeFullNameColumn.Name = "employeeFullNameColumn";
-            this.employeeFullNameColumn.ReadOnly = true;
-            this.employeeFullNameColumn.Width = 200;
             // 
             // employeeFirstNameColumn
             // 
@@ -406,8 +391,6 @@ namespace HarvestManagerSystem.view
             this.employeeFirstNameColumn.HeaderText = "Prénom";
             this.employeeFirstNameColumn.MinimumWidth = 100;
             this.employeeFirstNameColumn.Name = "employeeFirstNameColumn";
-            this.employeeFirstNameColumn.ReadOnly = true;
-            this.employeeFirstNameColumn.Width = 120;
             // 
             // employeeLastNameColumn
             // 
@@ -415,8 +398,6 @@ namespace HarvestManagerSystem.view
             this.employeeLastNameColumn.HeaderText = "Nom";
             this.employeeLastNameColumn.MinimumWidth = 100;
             this.employeeLastNameColumn.Name = "employeeLastNameColumn";
-            this.employeeLastNameColumn.ReadOnly = true;
-            this.employeeLastNameColumn.Width = 120;
             // 
             // employeeHireDateColumn
             // 
@@ -424,7 +405,6 @@ namespace HarvestManagerSystem.view
             this.employeeHireDateColumn.HeaderText = "Debut CTR";
             this.employeeHireDateColumn.MinimumWidth = 80;
             this.employeeHireDateColumn.Name = "employeeHireDateColumn";
-            this.employeeHireDateColumn.ReadOnly = true;
             this.employeeHireDateColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // employeeFireDateColumn
@@ -433,7 +413,6 @@ namespace HarvestManagerSystem.view
             this.employeeFireDateColumn.HeaderText = "Fin CTR";
             this.employeeFireDateColumn.MinimumWidth = 80;
             this.employeeFireDateColumn.Name = "employeeFireDateColumn";
-            this.employeeFireDateColumn.ReadOnly = true;
             // 
             // employeePermissionDateColumn
             // 
@@ -441,7 +420,6 @@ namespace HarvestManagerSystem.view
             this.employeePermissionDateColumn.HeaderText = "SCDZP";
             this.employeePermissionDateColumn.MinimumWidth = 80;
             this.employeePermissionDateColumn.Name = "employeePermissionDateColumn";
-            this.employeePermissionDateColumn.ReadOnly = true;
             // 
             // pnlDisplayCloseFire
             // 
@@ -449,9 +427,9 @@ namespace HarvestManagerSystem.view
             this.pnlDisplayCloseFire.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlDisplayCloseFire.Controls.Add(this.txtListEmployeeCloseFire);
             this.pnlDisplayCloseFire.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlDisplayCloseFire.Location = new System.Drawing.Point(1071, 0);
+            this.pnlDisplayCloseFire.Location = new System.Drawing.Point(1092, 0);
             this.pnlDisplayCloseFire.Name = "pnlDisplayCloseFire";
-            this.pnlDisplayCloseFire.Size = new System.Drawing.Size(220, 681);
+            this.pnlDisplayCloseFire.Size = new System.Drawing.Size(199, 681);
             this.pnlDisplayCloseFire.TabIndex = 35;
             // 
             // txtListEmployeeCloseFire
@@ -462,7 +440,7 @@ namespace HarvestManagerSystem.view
             this.txtListEmployeeCloseFire.Location = new System.Drawing.Point(0, 0);
             this.txtListEmployeeCloseFire.Multiline = true;
             this.txtListEmployeeCloseFire.Name = "txtListEmployeeCloseFire";
-            this.txtListEmployeeCloseFire.Size = new System.Drawing.Size(216, 677);
+            this.txtListEmployeeCloseFire.Size = new System.Drawing.Size(195, 677);
             this.txtListEmployeeCloseFire.TabIndex = 3;
             // 
             // FormAddEmployee
@@ -472,14 +450,13 @@ namespace HarvestManagerSystem.view
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1291, 681);
-            this.Controls.Add(this.pnlDisplayCloseFire);
             this.Controls.Add(this.pnlDisplayEmployee);
+            this.Controls.Add(this.pnlDisplayCloseFire);
             this.Controls.Add(this.pnlAddEmployee);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormAddEmployee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormAddEmployee";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAddEmployee_FormClosed);
             this.Load += new System.EventHandler(this.FormAddEmployee_Load);
             this.pnlAddEmployee.ResumeLayout(false);
             this.pnlAddEmployee.PerformLayout();
@@ -493,14 +470,14 @@ namespace HarvestManagerSystem.view
 
         #endregion
 
-        private System.Windows.Forms.CheckBox fxEmployeeStatus;
+        private System.Windows.Forms.CheckBox chackEmployeeStatus;
         private System.Windows.Forms.Button btnClearReset;
-        private System.Windows.Forms.DateTimePicker fxPermissionDate;
-        private System.Windows.Forms.DateTimePicker fxFireDate;
-        private System.Windows.Forms.DateTimePicker fxHireDate;
+        private System.Windows.Forms.DateTimePicker datePermissionDate;
+        private System.Windows.Forms.DateTimePicker dateFireDate;
+        private System.Windows.Forms.DateTimePicker dateHireDate;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.TextBox fxLastName;
-        private System.Windows.Forms.TextBox fxFirstName;
+        private System.Windows.Forms.TextBox txtLastName;
+        private System.Windows.Forms.TextBox txtFirstName;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -510,7 +487,6 @@ namespace HarvestManagerSystem.view
         private System.Windows.Forms.Label firstNameErrorLabel;
         private System.Windows.Forms.Label lastNameErrorLabel;
         private System.Windows.Forms.Panel pnlAddEmployee;
-        private System.Windows.Forms.Button btnCloseForm;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Panel pnlDisplayEmployee;
         private System.Windows.Forms.DataGridView EmployeeDataGridView;

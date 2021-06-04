@@ -313,11 +313,6 @@ namespace HarvestManagerSystem.view
             cmbxProductSupplier.Text = "";
         }
 
-        private void btnCloseForm_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void SupplierDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try

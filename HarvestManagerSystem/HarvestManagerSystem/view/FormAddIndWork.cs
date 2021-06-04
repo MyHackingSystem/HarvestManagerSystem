@@ -225,7 +225,7 @@ namespace HarvestManagerSystem.view
 
             try
             {
-                selected = employeeDAO.getData();
+                selected = employeeDAO.ListEmployee();
             }
             catch (Exception ex)
             {

@@ -61,5 +61,39 @@ namespace HarvestManagerSystem.view
         {
             OpenChildForm(new FormAddEmployee());
         }
+
+        private void btnAddHarvestQuantity_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAddHarvestHours_Click(object sender, EventArgs e)
+        {
+            FormAddHours formAddHours = new FormAddHours();
+            formAddHours.ShowDialog();
+        }
+
+        private void btnAddHarvestByGroup_Click(object sender, EventArgs e)
+        {
+            FormAddQuantity formAddQuantity = new FormAddQuantity();
+            formAddQuantity.ShowDialog();
+        }
+
+        private void btnDisplayProduction_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new HarvestMS());
+        }
+
+        private void btnUpdateSetting_Click(object sender, EventArgs e)
+        {
+            FormPreferences formPreferences = FormPreferences.getInstance();
+            formPreferences.ShowForm();
+        }
+
+        private void btnCloseForm_Click(object sender, EventArgs e)
+        {
+            if (activeForm != null)
+                activeForm.Close();
+        }
     }
 }

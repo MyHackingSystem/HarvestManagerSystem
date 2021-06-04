@@ -31,12 +31,12 @@ namespace HarvestManagerSystem.view
 
         BindingSource bindingSourceHarvesterList = new BindingSource { DataSource = HarvesterList };
 
-        private HarvestMS harvestMS;
+        //private HarvestMS harvestMS;
 
-        public FormAddQuantity(HarvestMS harvestMS)
+        public FormAddQuantity()
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
-            this.harvestMS = harvestMS;
+            //this.harvestMS = harvestMS;
             InitializeComponent();
         }
 
@@ -223,7 +223,7 @@ namespace HarvestManagerSystem.view
             {
                 addProductionDataToDatabase();
             }
-            harvestMS.RefreshQuantityProductionTable();
+            //harvestMS.RefreshQuantityProductionTable();
         }
 
         private bool checkApplyButtonInput()
