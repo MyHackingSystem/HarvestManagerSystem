@@ -731,6 +731,12 @@ namespace HarvestManagerSystem.view
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductionProductDetailColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn QuantityPaymentColumn;
         private System.Windows.Forms.DataGridView detailsHoursDataGridView;
+        private System.Windows.Forms.ContextMenuStrip HoursContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem EditHoursStrip;
+        private System.Windows.Forms.ToolStripMenuItem DeleteHoursStrip;
+        private System.Windows.Forms.ContextMenuStrip QuantityContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem EditQuantityStrip;
+        private System.Windows.Forms.ToolStripMenuItem DeleteQuantityStrip;
         private System.Windows.Forms.DataGridViewTextBoxColumn HarvestHoursIDColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn HarvestDateColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoursEmployeeNameColumn;
@@ -756,11 +762,5 @@ namespace HarvestManagerSystem.view
         private System.Windows.Forms.DataGridViewTextBoxColumn EndMorningColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn StartNoonColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn EndNoonColumn;
-        private System.Windows.Forms.ContextMenuStrip HoursContextMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem EditHoursStrip;
-        private System.Windows.Forms.ToolStripMenuItem DeleteHoursStrip;
-        private System.Windows.Forms.ContextMenuStrip QuantityContextMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem EditQuantityStrip;
-        private System.Windows.Forms.ToolStripMenuItem DeleteQuantityStrip;
     }
 }

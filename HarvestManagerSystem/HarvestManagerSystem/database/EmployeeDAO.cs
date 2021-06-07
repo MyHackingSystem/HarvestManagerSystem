@@ -185,7 +185,7 @@ namespace HarvestManagerSystem.database
             }
         }
 
-        public bool Delete(Employee employee)
+        public void Delete(Employee employee)
         {
             var updateStmt = "DELETE FROM " + TABLE_EMPLOYEE + " WHERE " + COLUMN_EMPLOYEE_ID + " = " + employee.EmployeeId + " ";
 
@@ -194,12 +194,10 @@ namespace HarvestManagerSystem.database
                 SQLiteCommand sQLiteCommand = new SQLiteCommand(updateStmt, mSQLiteConnection);
                 OpenConnection();
                 sQLiteCommand.ExecuteNonQuery();
-                return true;
             }
-            catch (SQLiteException e)
+            catch (SQLiteException ex)
             {
-                Console.WriteLine(e.Message);
-                return false;
+                throw new Exception(ex.Message);
             }
             finally
             {

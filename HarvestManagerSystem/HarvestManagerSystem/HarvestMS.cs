@@ -53,16 +53,7 @@ namespace HarvestManagerSystem
             }
         }
 
-        #region ********************************************* Individual CODE ***********************************************************************
 
-        private void btnAddIndividualHarvest_Click(object sender, EventArgs e)
-        {
-            FormAddIndWork formAddIndWork = new FormAddIndWork(this);
-            formAddIndWork.ShowDialog();
-        }
-
-
-        #endregion
 
         #region ********************************************* QUANTITY CODE *************************************************************************
 

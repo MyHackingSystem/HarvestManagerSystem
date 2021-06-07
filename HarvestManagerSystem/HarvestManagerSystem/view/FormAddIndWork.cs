@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using HarvestManagerSystem.database;
 using HarvestManagerSystem.model;
@@ -32,10 +29,10 @@ namespace HarvestManagerSystem.view
 
         private HarvestMS harvestMS;
 
-        public FormAddIndWork(HarvestMS harvestMS)
+        public FormAddIndWork()
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
-            this.harvestMS = harvestMS;
+            //this.harvestMS = harvestMS;
             InitializeComponent();
         }
 
@@ -209,11 +206,11 @@ namespace HarvestManagerSystem.view
             {
                 MessageBox.Show(ex.Message);
             }
-            if (!validateListEmployee(importedList))
-            {
-                MessageBox.Show("la liste des employés sélectionnés n'est pas la même que la liste importée");
-                return;
-            }
+            //if (!validateListEmployee(importedList))
+            //{
+            //    MessageBox.Show("la liste des employés sélectionnés n'est pas la même que la liste importée");
+            //    return;
+            //}
             loadDGVData();
         }
 

@@ -72,7 +72,7 @@ namespace HarvestManagerSystem.database
             }
         }
 
-        public bool Add(Credit credit)
+        public void Add(Credit credit)
         {
             string insertStmt = "INSERT INTO " + TABLE_CREDIT + " ("
                     + COLUMN_CREDIT_DATE + ", "
@@ -91,7 +91,6 @@ namespace HarvestManagerSystem.database
                 sQLiteCommand.Parameters.AddWithValue(COLUMN_CREDIT_AMOUNT, credit.CreditAmount);
                 sQLiteCommand.Parameters.AddWithValue(COLUMN_CREDIT_EMPLOYEE_ID, credit.Employee.EmployeeId);
                 sQLiteCommand.ExecuteNonQuery();
-                return true;
             }
             catch (SQLiteException ex)
             {
@@ -104,7 +103,7 @@ namespace HarvestManagerSystem.database
         }
 
 
-        internal bool Update(Credit credit)
+        internal void Update(Credit credit)
         {
             string updateStmt = "UPDATE " + TABLE_CREDIT + " SET "
                  + COLUMN_CREDIT_DATE + " =@" + COLUMN_CREDIT_DATE + ", "
@@ -118,7 +117,6 @@ namespace HarvestManagerSystem.database
                 sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_CREDIT_DATE, credit.CreditDate));
                 sQLiteCommand.Parameters.Add(new SQLiteParameter(COLUMN_CREDIT_AMOUNT, credit.CreditAmount));
                 sQLiteCommand.ExecuteNonQuery();
-                return true;
             }
             catch (SQLiteException ex)
             {
@@ -130,8 +128,7 @@ namespace HarvestManagerSystem.database
             }
         }
 
-
-        public bool Delete(Credit credit)
+        public void Delete(Credit credit)
         {
             string updateStmt = "UPDATE " + TABLE_CREDIT + " SET "
                  + COLUMN_CREDIT_AMOUNT + " = 0 "
@@ -142,7 +139,6 @@ namespace HarvestManagerSystem.database
                 SQLiteCommand sQLiteCommand = new SQLiteCommand(updateStmt, mSQLiteConnection);
                 OpenConnection();
                 sQLiteCommand.ExecuteNonQuery();
-                return true;
             }
             catch (SQLiteException ex)
             {

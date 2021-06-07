@@ -42,7 +42,7 @@ namespace HarvestManagerSystem.view
             this.label5 = new System.Windows.Forms.Label();
             this.btnUpdatePassword = new System.Windows.Forms.Button();
             this.txtOldPassword = new System.Windows.Forms.TextBox();
-            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.txtNewPassword = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtRepassword = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -126,9 +126,9 @@ namespace HarvestManagerSystem.view
             // UpdatePreferencesButton
             // 
             this.UpdatePreferencesButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.UpdatePreferencesButton.Location = new System.Drawing.Point(133, 435);
+            this.UpdatePreferencesButton.Location = new System.Drawing.Point(159, 408);
             this.UpdatePreferencesButton.Name = "UpdatePreferencesButton";
-            this.UpdatePreferencesButton.Size = new System.Drawing.Size(92, 31);
+            this.UpdatePreferencesButton.Size = new System.Drawing.Size(120, 35);
             this.UpdatePreferencesButton.TabIndex = 8;
             this.UpdatePreferencesButton.Text = "Valider";
             this.UpdatePreferencesButton.UseVisualStyleBackColor = true;
@@ -140,7 +140,7 @@ namespace HarvestManagerSystem.view
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.btnUpdatePassword);
             this.panel1.Controls.Add(this.txtOldPassword);
-            this.panel1.Controls.Add(this.txtPassword);
+            this.panel1.Controls.Add(this.txtNewPassword);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.txtRepassword);
             this.panel1.Controls.Add(this.label8);
@@ -155,64 +155,71 @@ namespace HarvestManagerSystem.view
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(108, 216);
+            this.label5.Location = new System.Drawing.Point(76, 220);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(91, 17);
+            this.label5.Size = new System.Drawing.Size(131, 17);
             this.label5.TabIndex = 13;
-            this.label5.Text = "Old Password";
+            this.label5.Text = "Ancien mot de passe";
             // 
             // btnUpdatePassword
             // 
             this.btnUpdatePassword.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnUpdatePassword.Location = new System.Drawing.Point(187, 404);
+            this.btnUpdatePassword.Location = new System.Drawing.Point(170, 408);
             this.btnUpdatePassword.Name = "btnUpdatePassword";
-            this.btnUpdatePassword.Size = new System.Drawing.Size(92, 31);
+            this.btnUpdatePassword.Size = new System.Drawing.Size(120, 35);
             this.btnUpdatePassword.TabIndex = 17;
             this.btnUpdatePassword.Text = "Valider";
             this.btnUpdatePassword.UseVisualStyleBackColor = true;
+            this.btnUpdatePassword.Click += new System.EventHandler(this.btnUpdatePassword_Click);
             // 
             // txtOldPassword
             // 
             this.txtOldPassword.Location = new System.Drawing.Point(232, 214);
             this.txtOldPassword.Name = "txtOldPassword";
+            this.txtOldPassword.PasswordChar = '*';
             this.txtOldPassword.Size = new System.Drawing.Size(142, 23);
             this.txtOldPassword.TabIndex = 9;
+            this.txtOldPassword.UseSystemPasswordChar = true;
             // 
-            // txtPassword
+            // txtNewPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(232, 265);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(142, 23);
-            this.txtPassword.TabIndex = 10;
+            this.txtNewPassword.Location = new System.Drawing.Point(232, 265);
+            this.txtNewPassword.Name = "txtNewPassword";
+            this.txtNewPassword.PasswordChar = '*';
+            this.txtNewPassword.Size = new System.Drawing.Size(142, 23);
+            this.txtNewPassword.TabIndex = 10;
+            this.txtNewPassword.UseSystemPasswordChar = true;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(79, 320);
+            this.label7.Location = new System.Drawing.Point(43, 324);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(120, 17);
+            this.label7.Size = new System.Drawing.Size(164, 17);
             this.label7.TabIndex = 15;
-            this.label7.Text = "New Re Password";
+            this.label7.Text = "Confirmez le mot de passe";
             // 
             // txtRepassword
             // 
             this.txtRepassword.Location = new System.Drawing.Point(232, 318);
             this.txtRepassword.Name = "txtRepassword";
+            this.txtRepassword.PasswordChar = '*';
             this.txtRepassword.Size = new System.Drawing.Size(142, 23);
             this.txtRepassword.TabIndex = 11;
+            this.txtRepassword.UseSystemPasswordChar = true;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(100, 271);
+            this.label8.Location = new System.Drawing.Point(65, 271);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(99, 17);
+            this.label8.Size = new System.Drawing.Size(142, 17);
             this.label8.TabIndex = 14;
-            this.label8.Text = "New Password";
+            this.label8.Text = "Nouveau mot de passe";
             // 
             // panel2
             // 
@@ -268,7 +275,7 @@ namespace HarvestManagerSystem.view
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnUpdatePassword;
         private System.Windows.Forms.TextBox txtOldPassword;
-        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.TextBox txtNewPassword;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtRepassword;
         private System.Windows.Forms.Label label8;

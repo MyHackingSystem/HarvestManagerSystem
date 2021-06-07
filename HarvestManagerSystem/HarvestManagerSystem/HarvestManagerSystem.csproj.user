@@ -20,6 +20,9 @@
     <Compile Update="view\FormDisplayProductionQuantity.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="view\FormHarvestCarrot.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="view\FormPreferences.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -21,16 +21,9 @@ namespace HarvestManagerSystem.database
         public static PreferencesDAO getInstance()
         {
             if (instance == null)
-            {
                 instance = new PreferencesDAO();
-            }
             return instance;
         }
-
-
-        //***********************************
-        //Get Preferences
-        //***********************************
 
         public Preferences getPreferences()
         {
@@ -46,11 +39,10 @@ namespace HarvestManagerSystem.database
                 {
                     while (result.Read())
                     {
-                        pref.PenaltyGeneral = Convert.ToDouble((result[COLUMN_PREFERENCE_PENALTY_GENERAL]).ToString());
-                        pref.DamageGeneral = Convert.ToDouble((result[COLUMN_PREFERENCE_DAMAGE_GENERAL]).ToString());
-                        pref.HourPrice = Convert.ToDouble((result[COLUMN_PREFERENCE_HOUR_PRICE]).ToString());
-                        pref.TransportPrice = Convert.ToDouble((result[COLUMN_PREFERENCE_TRANSPORT_PRICE]).ToString());
-
+                        pref.PenaltyGeneral = result.GetDouble(result.GetOrdinal(COLUMN_PREFERENCE_PENALTY_GENERAL));
+                        pref.DamageGeneral = result.GetDouble(result.GetOrdinal(COLUMN_PREFERENCE_DAMAGE_GENERAL));
+                        pref.HourPrice = result.GetDouble(result.GetOrdinal(COLUMN_PREFERENCE_HOUR_PRICE));
+                        pref.TransportPrice = result.GetDouble(result.GetOrdinal(COLUMN_PREFERENCE_TRANSPORT_PRICE));
                     }
                 }
                 return pref;
@@ -66,10 +58,6 @@ namespace HarvestManagerSystem.database
             }
         }
 
-
-        //***********************************
-        //Edit Preferences
-        //***********************************
         public bool editPreferences(Preferences pref)
         {
             string updateStmt = "UPDATE " + TABLE_PREFERENCE + " SET "
@@ -77,7 +65,6 @@ namespace HarvestManagerSystem.database
                  + COLUMN_PREFERENCE_DAMAGE_GENERAL + " =@" + COLUMN_PREFERENCE_DAMAGE_GENERAL + ", "
                  + COLUMN_PREFERENCE_HOUR_PRICE + " =@" + COLUMN_PREFERENCE_HOUR_PRICE + ", "
                  + COLUMN_PREFERENCE_TRANSPORT_PRICE + " =@" + COLUMN_PREFERENCE_TRANSPORT_PRICE + " ";
-
             try
             {
                 SQLiteCommand sQLiteCommand = new SQLiteCommand(updateStmt, mSQLiteConnection);
@@ -89,22 +76,15 @@ namespace HarvestManagerSystem.database
                 sQLiteCommand.ExecuteNonQuery();
                 return true;
             }
-            catch (SQLiteException e)
+            catch (SQLiteException ex)
             {
-                Console.WriteLine(e.StackTrace);
-                return false;
+                throw new Exception(ex.Message);
             }
             finally
             {
                 CloseConnection();
             }
         }
-
-
-
-        //***********************************
-        //Get Preferences
-        //***********************************
 
         public Account getLogin()
         {
@@ -126,10 +106,9 @@ namespace HarvestManagerSystem.database
                 }
                 return user;
             }
-            catch (SQLiteException e)
+            catch (SQLiteException ex)
             {
-                Console.WriteLine(e.StackTrace);
-                throw e;
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -137,15 +116,25 @@ namespace HarvestManagerSystem.database
             }
         }
 
-        /*
-         
-        CREATE TABLE "Preferences" (
-	"PenaltyGeneral"	REAL DEFAULT 0,
-	"DamageGeneral"	REAL DEFAULT 0,
-	"HourPrice"	REAL DEFAULT 0,
-	"TransportPrice"	NUMERIC DEFAULT 0
-);
+        public void UpdatePassword(string password)
+        {
+            string updateStmt = "UPDATE Login SET Password ='" + password + "'  WHERE ID=1";
 
-         * */
+            try
+            {
+                SQLiteCommand sQLiteCommand = new SQLiteCommand(updateStmt, mSQLiteConnection);
+                OpenConnection();
+                sQLiteCommand.ExecuteNonQuery();
+            }
+            catch (SQLiteException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
     }
 }

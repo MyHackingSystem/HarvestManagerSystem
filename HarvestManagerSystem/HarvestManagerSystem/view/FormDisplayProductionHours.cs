@@ -66,7 +66,7 @@ namespace HarvestManagerSystem.view
             {
                 if (masterHoursDataGridView.CurrentRow.Index < listHoursProduction.Count && masterHoursDataGridView.CurrentRow.Index >= 0)
                 {
-                    DisplayDetailHoursData(listHoursProduction[masterHoursDataGridView.CurrentRow.Index]);
+                   DisplayDetailHoursData(listHoursProduction[masterHoursDataGridView.CurrentRow.Index]);
                 }
             }
             catch (Exception ex)
@@ -80,13 +80,13 @@ namespace HarvestManagerSystem.view
             listHarvestHours.Clear();
             try
             {
-                listHarvestHours = harvestHoursDAO.HarvestHoursByProduction(production);
+                //listHarvestHours = harvestHoursDAO.HarvestHoursByProduction(production);
+                //detailsHoursDataGridView.DataSource = listHarvestHours;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Display Detail Data called: " + ex.Message);
             }
-            detailsHoursDataGridView.DataSource = listHarvestHours;
             SortDisplayDetailsHoursColumnsIndex();
         }
 

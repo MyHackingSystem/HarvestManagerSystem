@@ -34,15 +34,10 @@ namespace HarvestManagerSystem.database
         public static HarvestHoursDAO getInstance()
         {
             if (instance == null)
-            {
                 instance = new HarvestHoursDAO();
-            }
             return instance;
         }
 
-        //*******************************
-        //Add production data
-        //*******************************
         public bool addHoursWork(HarvestHours harvestHours)
         {
             SQLiteTransaction transaction = null;
@@ -151,9 +146,6 @@ namespace HarvestManagerSystem.database
             }
         }
 
-        //*******************************
-        //Get Hours data by production id
-        //*******************************
         public List<HarvestHours> HarvestHoursByProduction(Production production)
         {
             string selectStmt = "SELECT "
@@ -302,12 +294,6 @@ namespace HarvestManagerSystem.database
             }
         }
 
-
-
-
-        //*******************************
-        //Add new HarvestHours data 
-        //*******************************
         public bool addData(HarvestHours harvestHours)
         {
             string insertStmt = "INSERT INTO " + TABLE_HOURS + " ("
@@ -367,13 +353,10 @@ namespace HarvestManagerSystem.database
             }
         }
 
-        //*******************************
-        //Get Add Hours data
-        //*******************************
         public List<HarvestHours> HarvestersData()
         {
             List<HarvestHours> list = new List<HarvestHours>();
-            String selectStmt = "SELECT "
+            string selectStmt = "SELECT "
                 + EmployeeDAO.TABLE_EMPLOYEE + "." + EmployeeDAO.COLUMN_EMPLOYEE_ID + ", "
                 + EmployeeDAO.TABLE_EMPLOYEE + "." + EmployeeDAO.COLUMN_EMPLOYEE_FIRST_NAME + ", "
                 + EmployeeDAO.TABLE_EMPLOYEE + "." + EmployeeDAO.COLUMN_EMPLOYEE_LAST_NAME + " "
@@ -391,9 +374,9 @@ namespace HarvestManagerSystem.database
                     while (result.Read())
                     {
                         HarvestHours harvestHours = new HarvestHours();
-                        harvestHours.Employee.EmployeeId = Convert.ToInt32((result[EmployeeDAO.COLUMN_EMPLOYEE_ID]).ToString());
-                        harvestHours.Employee.FirstName = (string)result[EmployeeDAO.COLUMN_EMPLOYEE_FIRST_NAME];
-                        harvestHours.Employee.LastName = (string)result[EmployeeDAO.COLUMN_EMPLOYEE_LAST_NAME];
+                        harvestHours.Employee.EmployeeId = result.GetInt32(result.GetOrdinal(EmployeeDAO.COLUMN_EMPLOYEE_ID));
+                        harvestHours.Employee.FirstName = result.GetString(result.GetOrdinal(EmployeeDAO.COLUMN_EMPLOYEE_FIRST_NAME));
+                        harvestHours.Employee.LastName = result.GetString(result.GetOrdinal(EmployeeDAO.COLUMN_EMPLOYEE_LAST_NAME));
                         list.Add(harvestHours);
                     }
                 }
@@ -451,9 +434,6 @@ namespace HarvestManagerSystem.database
         }
 
 
-        //*******************************
-        //Get Hours data by production id
-        //*******************************
         public List<HarvestHours> HarvestHoursData()
         {
             string selectStmt = "SELECT "
@@ -507,10 +487,9 @@ namespace HarvestManagerSystem.database
                 SQLiteDataReader result = sQLiteCommand.ExecuteReader();
                 return getHarvestHoursFromResultSet(result);
             }
-            catch (SQLiteException e)
+            catch (SQLiteException ex)
             {
-                Console.WriteLine(e.StackTrace);
-                throw e;
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -526,35 +505,34 @@ namespace HarvestManagerSystem.database
                 while (result.Read())
                 {
                     HarvestHours harvestHours = new HarvestHours();
-                    harvestHours.HarvestHoursID = Convert.ToInt32((result[COLUMN_HOURS_ID]).ToString());
-                    harvestHours.HarvestDate = (DateTime)result[COLUMN_HOURS_DATE];
-                    harvestHours.StartMorning = (DateTime)result[COLUMN_HOURS_SM];
-                    harvestHours.EndMorning = (DateTime)result[COLUMN_HOURS_EM];
-                    harvestHours.StartNoon = (DateTime)result[COLUMN_HOURS_SN];
-                    harvestHours.EndNoon = (DateTime)result[COLUMN_HOURS_EN];
-                    harvestHours.HourPrice = Convert.ToDouble((result[COLUMN_HOURS_PRICE]).ToString());
-                    harvestHours.Remarque = Convert.ToString(result[COLUMN_HOURS_REMARQUE]);
-                    harvestHours.EmployeeType = Convert.ToInt32((result[COLUMN_HOURS_EMPLOYEE_TYPE]).ToString());
-                    harvestHours.Employee.EmployeeId = Convert.ToInt32((result[EmployeeDAO.COLUMN_EMPLOYEE_ID]).ToString());
-                    harvestHours.Employee.FirstName = (string)result[EmployeeDAO.COLUMN_EMPLOYEE_FIRST_NAME];
-                    harvestHours.Employee.LastName = (string)result[EmployeeDAO.COLUMN_EMPLOYEE_LAST_NAME];
-                    harvestHours.Transport.TransportId = Convert.ToInt32((result[TransportDAO.COLUMN_TRANSPORT_ID]).ToString());
-                    harvestHours.Transport.TransportAmount = Convert.ToDouble((result[TransportDAO.COLUMN_TRANSPORT_AMOUNT]).ToString());
-                    harvestHours.Credit.CreditId = Convert.ToInt32((result[CreditDAO.COLUMN_CREDIT_ID]).ToString());
-                    harvestHours.Credit.CreditAmount = Convert.ToDouble((result[CreditDAO.COLUMN_CREDIT_AMOUNT]).ToString());
-                    harvestHours.Production.ProductionID = Convert.ToInt32((result[ProductionDAO.COLUMN_PRODUCTION_ID]).ToString());
-                    harvestHours.Production.Supplier.SupplierId = Convert.ToInt32((result[SupplierDAO.COLUMN_SUPPLIER_ID]).ToString());
-                    harvestHours.Production.Supplier.SupplierName = (string)result[SupplierDAO.COLUMN_SUPPLIER_NAME];
-                    harvestHours.Production.Farm.FarmId = Convert.ToInt32((result[FarmDAO.COLUMN_FARM_ID]).ToString());
-                    harvestHours.Production.Farm.FarmName = (string)result[FarmDAO.COLUMN_FARM_NAME];
-                    harvestHours.Production.Product.ProductId = Convert.ToInt32((result[ProductDAO.COLUMN_PRODUCT_ID]).ToString());
-                    harvestHours.Production.Product.ProductName = (string)result[ProductDAO.COLUMN_PRODUCT_NAME];
-                    harvestHours.Production.ProductDetail.ProductDetailId = Convert.ToInt32((result[ProductDetailDAO.COLUMN_PRODUCT_DETAIL_ID]).ToString());
-                    harvestHours.Production.ProductDetail.ProductType = (string)result[ProductDetailDAO.COLUMN_PRODUCT_TYPE];
+                    harvestHours.HarvestHoursID = result.GetInt32(result.GetOrdinal(COLUMN_HOURS_ID));
+                    harvestHours.HarvestDate = result.GetDateTime(result.GetOrdinal(COLUMN_HOURS_DATE));
+                    harvestHours.StartMorning = result.GetDateTime(result.GetOrdinal(COLUMN_HOURS_SM));
+                    harvestHours.EndMorning = result.GetDateTime(result.GetOrdinal(COLUMN_HOURS_EM));
+                    harvestHours.StartNoon = result.GetDateTime(result.GetOrdinal(COLUMN_HOURS_SN));
+                    harvestHours.EndNoon = result.GetDateTime(result.GetOrdinal(COLUMN_HOURS_EN));
+                    harvestHours.HourPrice = result.GetDouble(result.GetOrdinal(COLUMN_HOURS_PRICE));
+                    harvestHours.Remarque = result.GetString(result.GetOrdinal(COLUMN_HOURS_REMARQUE));
+                    harvestHours.EmployeeType = result.GetInt32(result.GetOrdinal(COLUMN_HOURS_EMPLOYEE_TYPE));
+                    harvestHours.Employee.EmployeeId = result.GetInt32(result.GetOrdinal(EmployeeDAO.COLUMN_EMPLOYEE_ID));
+                    harvestHours.Employee.FirstName = result.GetString(result.GetOrdinal(EmployeeDAO.COLUMN_EMPLOYEE_FIRST_NAME));
+                    harvestHours.Employee.LastName = result.GetString(result.GetOrdinal(EmployeeDAO.COLUMN_EMPLOYEE_LAST_NAME));
+                    harvestHours.Transport.TransportId = result.GetInt32(result.GetOrdinal(TransportDAO.COLUMN_TRANSPORT_ID));
+                    harvestHours.Transport.TransportAmount = result.GetDouble(result.GetOrdinal(TransportDAO.COLUMN_TRANSPORT_AMOUNT));
+                    harvestHours.Credit.CreditId = result.GetInt32(result.GetOrdinal(CreditDAO.COLUMN_CREDIT_ID));
+                    harvestHours.Credit.CreditAmount = result.GetDouble(result.GetOrdinal(CreditDAO.COLUMN_CREDIT_AMOUNT));
+                    harvestHours.Production.ProductionID = result.GetInt32(result.GetOrdinal(ProductionDAO.COLUMN_PRODUCTION_ID));
+                    harvestHours.Production.Supplier.SupplierId = result.GetInt32(result.GetOrdinal(SupplierDAO.COLUMN_SUPPLIER_ID));
+                    harvestHours.Production.Supplier.SupplierName = result.GetString(result.GetOrdinal(SupplierDAO.COLUMN_SUPPLIER_NAME));
+                    harvestHours.Production.Farm.FarmId = result.GetInt32(result.GetOrdinal(FarmDAO.COLUMN_FARM_ID));
+                    harvestHours.Production.Farm.FarmName = result.GetString(result.GetOrdinal(FarmDAO.COLUMN_FARM_NAME));
+                    harvestHours.Production.Product.ProductId = result.GetInt32(result.GetOrdinal(ProductDAO.COLUMN_PRODUCT_ID));
+                    harvestHours.Production.Product.ProductName = result.GetString(result.GetOrdinal(ProductDAO.COLUMN_PRODUCT_NAME));
+                    harvestHours.Production.ProductDetail.ProductDetailId = result.GetInt32(result.GetOrdinal(ProductDetailDAO.COLUMN_PRODUCT_DETAIL_ID));
+                    harvestHours.Production.ProductDetail.ProductType = result.GetString(result.GetOrdinal(ProductDetailDAO.COLUMN_PRODUCT_TYPE));
                     list.Add(harvestHours);
                 }
             }
-
             return list;
         }
 
@@ -562,7 +540,7 @@ namespace HarvestManagerSystem.database
         {
 
             string selectproduct = "SELECT "
-           + TABLE_HOURS + "." + COLUMN_HOURS_ID + ", "
+            + TABLE_HOURS + "." + COLUMN_HOURS_ID + ", "
                 + TABLE_HOURS + "." + COLUMN_HOURS_DATE + ", "
                 + TABLE_HOURS + "." + COLUMN_HOURS_SM + ", "
                 + TABLE_HOURS + "." + COLUMN_HOURS_EM + ", "

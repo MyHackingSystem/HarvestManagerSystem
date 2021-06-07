@@ -15,7 +15,8 @@ namespace HarvestManagerSystem.view
     public partial class FormPreferences : Form
     {
         Preferences pref = new Preferences();
-        PreferencesDAO preferencesDAO = PreferencesDAO.getInstance();
+        PreferencesDAO mPreferencesDAO = PreferencesDAO.getInstance();
+        Account admin = new Account();
 
         public FormPreferences()
         {
@@ -32,7 +33,8 @@ namespace HarvestManagerSystem.view
             
             try
             {
-                pref = preferencesDAO.getPreferences();
+                pref = mPreferencesDAO.getPreferences();
+                admin = mPreferencesDAO.getLogin();
             }
             catch (Exception ex)
             {
@@ -42,7 +44,6 @@ namespace HarvestManagerSystem.view
             txtfxDamageGeneral.Text = pref.DamageGeneral.ToString();
             txtHourPrice.Text = pref.HourPrice.ToString();
             txtTransportPrice.Text = pref.TransportPrice.ToString();
-
         }
 
         private void UpdatePreferencesButton_Click(object sender, EventArgs e)
@@ -64,16 +65,54 @@ namespace HarvestManagerSystem.view
             pref.HourPrice = Convert.ToDouble(txtHourPrice.Text);
             pref.TransportPrice = Convert.ToDouble(txtTransportPrice.Text);
 
-            if (preferencesDAO.editPreferences(pref))
+            if (mPreferencesDAO.editPreferences(pref))
             {
-                MessageBox.Show("les valeurs ont été mises à jour ");
+                MessageBox.Show("les valeurs ont été mises à jour.");
             }
             else
             {
-                MessageBox.Show("les valeurs n'ont pas été mises à jour ");
+                MessageBox.Show("les valeurs n'ont pas été mises à jour.");
             }
 
         }
 
+        private void btnUpdatePassword_Click(object sender, EventArgs e)
+        {
+            if(txtOldPassword.Text == "" || txtNewPassword.Text == "" || txtRepassword.Text == "")
+            {
+                MessageBox.Show("Vérifier les valeurs.");
+                return;
+            }
+            if(txtOldPassword.Text != admin.Passwword)
+            {
+                MessageBox.Show("Ancien mot de passe incorrect.");
+                return;
+            }
+            if (txtNewPassword.Text != txtRepassword.Text)
+            {
+                MessageBox.Show("Les mots de passe que vous avez entrés ne correspondent pas.");
+                return;
+            }
+
+            try
+            {
+                mPreferencesDAO.UpdatePassword(txtNewPassword.Text);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("les valeurs n'ont pas été mises à jour. " + ex.Message);
+                return;
+            }
+            initFields();
+            MessageBox.Show("les valeurs ont été mises à jour.");
+            ClearPassword();
+        }
+
+        private void ClearPassword()
+        {
+            txtOldPassword.Text = "";
+            txtNewPassword.Text = "";
+            txtRepassword.Text = "";
+        }
     }
 }
