@@ -32,7 +32,6 @@ namespace HarvestManagerSystem.database
                  + COLUMN_CARROT_EMPLOYEE_PRICE + " =@" + COLUMN_CARROT_EMPLOYEE_PRICE + ", "
                  + COLUMN_CARROT_COMPANY_PRICE + " =@" + COLUMN_CARROT_COMPANY_PRICE + " "
                  + " WHERE " + COLUMN_CARROT_ID + " = " + carrot.ProductId + " ";
-
             try
             {
                 SQLiteCommand sQLiteCommand = new SQLiteCommand(updateStmt, mSQLiteConnection);

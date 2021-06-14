@@ -26,9 +26,7 @@ namespace HarvestManagerSystem.database
         public static ProductDetailDAO getInstance()
         {
             if (instance == null)
-            {
                 instance = new ProductDetailDAO();
-            }
             return instance;
         }
 

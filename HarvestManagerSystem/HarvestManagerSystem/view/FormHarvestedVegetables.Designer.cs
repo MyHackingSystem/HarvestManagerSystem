@@ -32,60 +32,41 @@ namespace HarvestManagerSystem.view
             this.pnlContainer = new System.Windows.Forms.Panel();
             this.pnlOtherVegetables = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.textBox22 = new System.Windows.Forms.TextBox();
+            this.btnValidateWatermelonInput = new System.Windows.Forms.Button();
+            this.txtWaterMelonPriceC = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.textBox23 = new System.Windows.Forms.TextBox();
-            this.textBox24 = new System.Windows.Forms.TextBox();
+            this.txtWaterMelonPriceE = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.textBox19 = new System.Windows.Forms.TextBox();
+            this.btnValidateLongTurnipInput = new System.Windows.Forms.Button();
+            this.txtLongTurnipPriceC = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox20 = new System.Windows.Forms.TextBox();
-            this.textBox21 = new System.Windows.Forms.TextBox();
+            this.txtLongTurnipPriceE = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pnlRoundTurnip = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.btnValidateRoundTurnipInput = new System.Windows.Forms.Button();
+            this.txtRoundTurnipPriceC = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox17 = new System.Windows.Forms.TextBox();
-            this.textBox18 = new System.Windows.Forms.TextBox();
+            this.txtRoundTurnipPriceE = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pnlCarrotAperto = new System.Windows.Forms.Panel();
+            this.pnlCarrot = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.radioTunnel = new System.Windows.Forms.RadioButton();
             this.radioOpen = new System.Windows.Forms.RadioButton();
-            this.txtCarrotPriceCompany4 = new System.Windows.Forms.TextBox();
-            this.txtCarrotPriceEmployee4 = new System.Windows.Forms.TextBox();
-            this.txtCarrotCode4 = new System.Windows.Forms.TextBox();
-            this.txtCarrotPriceCompany5 = new System.Windows.Forms.TextBox();
-            this.txtCarrotPriceEmployee5 = new System.Windows.Forms.TextBox();
-            this.txtCarrotCode5 = new System.Windows.Forms.TextBox();
-            this.txtCarrotPriceCompany1 = new System.Windows.Forms.TextBox();
-            this.txtCarrotPriceEmployee1 = new System.Windows.Forms.TextBox();
-            this.txtCarrotCode1 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtCarrotPriceCompany2 = new System.Windows.Forms.TextBox();
-            this.txtCarrotPriceEmployee2 = new System.Windows.Forms.TextBox();
-            this.txtCarrotCode2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.CarrotPicture = new System.Windows.Forms.PictureBox();
             this.btnValidateCarrotInput = new System.Windows.Forms.Button();
-            this.txtCarrotPriceCompany3 = new System.Windows.Forms.TextBox();
-            this.txtCarrotPriceEmployee3 = new System.Windows.Forms.TextBox();
-            this.txtCarrotCode3 = new System.Windows.Forms.TextBox();
             this.pnlContainer.SuspendLayout();
             this.pnlOtherVegetables.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -94,7 +75,7 @@ namespace HarvestManagerSystem.view
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.pnlRoundTurnip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.pnlCarrotAperto.SuspendLayout();
+            this.pnlCarrot.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CarrotPicture)).BeginInit();
             this.SuspendLayout();
@@ -104,7 +85,7 @@ namespace HarvestManagerSystem.view
             this.pnlContainer.AutoScroll = true;
             this.pnlContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.pnlContainer.Controls.Add(this.pnlOtherVegetables);
-            this.pnlContainer.Controls.Add(this.pnlCarrotAperto);
+            this.pnlContainer.Controls.Add(this.pnlCarrot);
             this.pnlContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContainer.Location = new System.Drawing.Point(0, 0);
             this.pnlContainer.Name = "pnlContainer";
@@ -127,11 +108,10 @@ namespace HarvestManagerSystem.view
             // 
             this.panel2.AutoScroll = true;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.button4);
-            this.panel2.Controls.Add(this.textBox22);
+            this.panel2.Controls.Add(this.btnValidateWatermelonInput);
+            this.panel2.Controls.Add(this.txtWaterMelonPriceC);
             this.panel2.Controls.Add(this.label17);
-            this.panel2.Controls.Add(this.textBox23);
-            this.panel2.Controls.Add(this.textBox24);
+            this.panel2.Controls.Add(this.txtWaterMelonPriceE);
             this.panel2.Controls.Add(this.label18);
             this.panel2.Controls.Add(this.label19);
             this.panel2.Controls.Add(this.label20);
@@ -142,29 +122,30 @@ namespace HarvestManagerSystem.view
             this.panel2.Size = new System.Drawing.Size(610, 238);
             this.panel2.TabIndex = 5;
             // 
-            // button4
+            // btnValidateWatermelonInput
             // 
-            this.button4.BackColor = System.Drawing.Color.DarkOrange;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Moccasin;
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button4.Location = new System.Drawing.Point(138, 118);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(276, 30);
-            this.button4.TabIndex = 60;
-            this.button4.Text = "Valider";
-            this.button4.UseVisualStyleBackColor = false;
+            this.btnValidateWatermelonInput.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnValidateWatermelonInput.FlatAppearance.BorderSize = 0;
+            this.btnValidateWatermelonInput.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Moccasin;
+            this.btnValidateWatermelonInput.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
+            this.btnValidateWatermelonInput.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnValidateWatermelonInput.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnValidateWatermelonInput.Location = new System.Drawing.Point(138, 118);
+            this.btnValidateWatermelonInput.Name = "btnValidateWatermelonInput";
+            this.btnValidateWatermelonInput.Size = new System.Drawing.Size(276, 30);
+            this.btnValidateWatermelonInput.TabIndex = 21;
+            this.btnValidateWatermelonInput.Text = "Valider";
+            this.btnValidateWatermelonInput.UseVisualStyleBackColor = false;
+            this.btnValidateWatermelonInput.Click += new System.EventHandler(this.btnValidateWatermelonInput_Click);
             // 
-            // textBox22
+            // txtWaterMelonPriceC
             // 
-            this.textBox22.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox22.Location = new System.Drawing.Point(335, 72);
-            this.textBox22.Name = "textBox22";
-            this.textBox22.Size = new System.Drawing.Size(80, 29);
-            this.textBox22.TabIndex = 56;
-            this.textBox22.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
+            this.txtWaterMelonPriceC.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtWaterMelonPriceC.Location = new System.Drawing.Point(335, 72);
+            this.txtWaterMelonPriceC.Name = "txtWaterMelonPriceC";
+            this.txtWaterMelonPriceC.Size = new System.Drawing.Size(80, 29);
+            this.txtWaterMelonPriceC.TabIndex = 20;
+            this.txtWaterMelonPriceC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
             // 
             // label17
             // 
@@ -173,27 +154,18 @@ namespace HarvestManagerSystem.view
             this.label17.ForeColor = System.Drawing.Color.White;
             this.label17.Location = new System.Drawing.Point(23, 12);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(109, 24);
+            this.label17.Size = new System.Drawing.Size(113, 24);
             this.label17.TabIndex = 53;
-            this.label17.Text = "Navet Rond";
+            this.label17.Text = "Watermelon";
             // 
-            // textBox23
+            // txtWaterMelonPriceE
             // 
-            this.textBox23.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox23.Location = new System.Drawing.Point(249, 72);
-            this.textBox23.Name = "textBox23";
-            this.textBox23.Size = new System.Drawing.Size(80, 29);
-            this.textBox23.TabIndex = 55;
-            this.textBox23.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
-            // 
-            // textBox24
-            // 
-            this.textBox24.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox24.Location = new System.Drawing.Point(138, 72);
-            this.textBox24.Name = "textBox24";
-            this.textBox24.ReadOnly = true;
-            this.textBox24.Size = new System.Drawing.Size(105, 29);
-            this.textBox24.TabIndex = 54;
+            this.txtWaterMelonPriceE.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtWaterMelonPriceE.Location = new System.Drawing.Point(249, 72);
+            this.txtWaterMelonPriceE.Name = "txtWaterMelonPriceE";
+            this.txtWaterMelonPriceE.Size = new System.Drawing.Size(80, 29);
+            this.txtWaterMelonPriceE.TabIndex = 19;
+            this.txtWaterMelonPriceE.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
             // 
             // label18
             // 
@@ -211,11 +183,11 @@ namespace HarvestManagerSystem.view
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label19.ForeColor = System.Drawing.Color.FloralWhite;
-            this.label19.Location = new System.Drawing.Point(138, 48);
+            this.label19.Location = new System.Drawing.Point(138, 75);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(49, 21);
+            this.label19.Size = new System.Drawing.Size(72, 21);
             this.label19.TabIndex = 57;
-            this.label19.Text = "Code:";
+            this.label19.Text = "Pastèque";
             // 
             // label20
             // 
@@ -242,11 +214,10 @@ namespace HarvestManagerSystem.view
             // 
             this.panel1.AutoScroll = true;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.textBox19);
+            this.panel1.Controls.Add(this.btnValidateLongTurnipInput);
+            this.panel1.Controls.Add(this.txtLongTurnipPriceC);
             this.panel1.Controls.Add(this.label13);
-            this.panel1.Controls.Add(this.textBox20);
-            this.panel1.Controls.Add(this.textBox21);
+            this.panel1.Controls.Add(this.txtLongTurnipPriceE);
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.label16);
@@ -257,29 +228,30 @@ namespace HarvestManagerSystem.view
             this.panel1.Size = new System.Drawing.Size(610, 238);
             this.panel1.TabIndex = 4;
             // 
-            // button3
+            // btnValidateLongTurnipInput
             // 
-            this.button3.BackColor = System.Drawing.Color.DarkOrange;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Moccasin;
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button3.Location = new System.Drawing.Point(138, 118);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(276, 30);
-            this.button3.TabIndex = 60;
-            this.button3.Text = "Valider";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnValidateLongTurnipInput.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnValidateLongTurnipInput.FlatAppearance.BorderSize = 0;
+            this.btnValidateLongTurnipInput.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Moccasin;
+            this.btnValidateLongTurnipInput.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
+            this.btnValidateLongTurnipInput.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnValidateLongTurnipInput.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnValidateLongTurnipInput.Location = new System.Drawing.Point(138, 118);
+            this.btnValidateLongTurnipInput.Name = "btnValidateLongTurnipInput";
+            this.btnValidateLongTurnipInput.Size = new System.Drawing.Size(276, 30);
+            this.btnValidateLongTurnipInput.TabIndex = 18;
+            this.btnValidateLongTurnipInput.Text = "Valider";
+            this.btnValidateLongTurnipInput.UseVisualStyleBackColor = false;
+            this.btnValidateLongTurnipInput.Click += new System.EventHandler(this.btnValidateLongTurnipInput_Click);
             // 
-            // textBox19
+            // txtLongTurnipPriceC
             // 
-            this.textBox19.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox19.Location = new System.Drawing.Point(335, 72);
-            this.textBox19.Name = "textBox19";
-            this.textBox19.Size = new System.Drawing.Size(80, 29);
-            this.textBox19.TabIndex = 56;
-            this.textBox19.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
+            this.txtLongTurnipPriceC.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtLongTurnipPriceC.Location = new System.Drawing.Point(335, 72);
+            this.txtLongTurnipPriceC.Name = "txtLongTurnipPriceC";
+            this.txtLongTurnipPriceC.Size = new System.Drawing.Size(80, 29);
+            this.txtLongTurnipPriceC.TabIndex = 17;
+            this.txtLongTurnipPriceC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
             // 
             // label13
             // 
@@ -292,23 +264,14 @@ namespace HarvestManagerSystem.view
             this.label13.TabIndex = 53;
             this.label13.Text = "Navet Long";
             // 
-            // textBox20
+            // txtLongTurnipPriceE
             // 
-            this.textBox20.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox20.Location = new System.Drawing.Point(249, 72);
-            this.textBox20.Name = "textBox20";
-            this.textBox20.Size = new System.Drawing.Size(80, 29);
-            this.textBox20.TabIndex = 55;
-            this.textBox20.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
-            // 
-            // textBox21
-            // 
-            this.textBox21.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox21.Location = new System.Drawing.Point(138, 72);
-            this.textBox21.Name = "textBox21";
-            this.textBox21.ReadOnly = true;
-            this.textBox21.Size = new System.Drawing.Size(105, 29);
-            this.textBox21.TabIndex = 54;
+            this.txtLongTurnipPriceE.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtLongTurnipPriceE.Location = new System.Drawing.Point(249, 72);
+            this.txtLongTurnipPriceE.Name = "txtLongTurnipPriceE";
+            this.txtLongTurnipPriceE.Size = new System.Drawing.Size(80, 29);
+            this.txtLongTurnipPriceE.TabIndex = 16;
+            this.txtLongTurnipPriceE.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
             // 
             // label14
             // 
@@ -326,11 +289,11 @@ namespace HarvestManagerSystem.view
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label15.ForeColor = System.Drawing.Color.FloralWhite;
-            this.label15.Location = new System.Drawing.Point(138, 48);
+            this.label15.Location = new System.Drawing.Point(138, 75);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(49, 21);
+            this.label15.Size = new System.Drawing.Size(90, 21);
             this.label15.TabIndex = 57;
-            this.label15.Text = "Code:";
+            this.label15.Text = "Navet Long";
             // 
             // label16
             // 
@@ -357,11 +320,10 @@ namespace HarvestManagerSystem.view
             // 
             this.pnlRoundTurnip.AutoScroll = true;
             this.pnlRoundTurnip.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlRoundTurnip.Controls.Add(this.button2);
-            this.pnlRoundTurnip.Controls.Add(this.textBox16);
+            this.pnlRoundTurnip.Controls.Add(this.btnValidateRoundTurnipInput);
+            this.pnlRoundTurnip.Controls.Add(this.txtRoundTurnipPriceC);
             this.pnlRoundTurnip.Controls.Add(this.label12);
-            this.pnlRoundTurnip.Controls.Add(this.textBox17);
-            this.pnlRoundTurnip.Controls.Add(this.textBox18);
+            this.pnlRoundTurnip.Controls.Add(this.txtRoundTurnipPriceE);
             this.pnlRoundTurnip.Controls.Add(this.label9);
             this.pnlRoundTurnip.Controls.Add(this.label10);
             this.pnlRoundTurnip.Controls.Add(this.label11);
@@ -372,29 +334,30 @@ namespace HarvestManagerSystem.view
             this.pnlRoundTurnip.Size = new System.Drawing.Size(610, 232);
             this.pnlRoundTurnip.TabIndex = 0;
             // 
-            // button2
+            // btnValidateRoundTurnipInput
             // 
-            this.button2.BackColor = System.Drawing.Color.DarkOrange;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Moccasin;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(138, 118);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(276, 30);
-            this.button2.TabIndex = 60;
-            this.button2.Text = "Valider";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnValidateRoundTurnipInput.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnValidateRoundTurnipInput.FlatAppearance.BorderSize = 0;
+            this.btnValidateRoundTurnipInput.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Moccasin;
+            this.btnValidateRoundTurnipInput.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
+            this.btnValidateRoundTurnipInput.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnValidateRoundTurnipInput.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnValidateRoundTurnipInput.Location = new System.Drawing.Point(138, 118);
+            this.btnValidateRoundTurnipInput.Name = "btnValidateRoundTurnipInput";
+            this.btnValidateRoundTurnipInput.Size = new System.Drawing.Size(276, 30);
+            this.btnValidateRoundTurnipInput.TabIndex = 15;
+            this.btnValidateRoundTurnipInput.Text = "Valider";
+            this.btnValidateRoundTurnipInput.UseVisualStyleBackColor = false;
+            this.btnValidateRoundTurnipInput.Click += new System.EventHandler(this.btnValidateRoundTurnipInput_Click);
             // 
-            // textBox16
+            // txtRoundTurnipPriceC
             // 
-            this.textBox16.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox16.Location = new System.Drawing.Point(335, 72);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(80, 29);
-            this.textBox16.TabIndex = 56;
-            this.textBox16.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
+            this.txtRoundTurnipPriceC.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtRoundTurnipPriceC.Location = new System.Drawing.Point(335, 72);
+            this.txtRoundTurnipPriceC.Name = "txtRoundTurnipPriceC";
+            this.txtRoundTurnipPriceC.Size = new System.Drawing.Size(80, 29);
+            this.txtRoundTurnipPriceC.TabIndex = 14;
+            this.txtRoundTurnipPriceC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
             // 
             // label12
             // 
@@ -407,23 +370,14 @@ namespace HarvestManagerSystem.view
             this.label12.TabIndex = 53;
             this.label12.Text = "Navet Rond";
             // 
-            // textBox17
+            // txtRoundTurnipPriceE
             // 
-            this.textBox17.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox17.Location = new System.Drawing.Point(249, 72);
-            this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new System.Drawing.Size(80, 29);
-            this.textBox17.TabIndex = 55;
-            this.textBox17.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
-            // 
-            // textBox18
-            // 
-            this.textBox18.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox18.Location = new System.Drawing.Point(138, 72);
-            this.textBox18.Name = "textBox18";
-            this.textBox18.ReadOnly = true;
-            this.textBox18.Size = new System.Drawing.Size(105, 29);
-            this.textBox18.TabIndex = 54;
+            this.txtRoundTurnipPriceE.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtRoundTurnipPriceE.Location = new System.Drawing.Point(249, 72);
+            this.txtRoundTurnipPriceE.Name = "txtRoundTurnipPriceE";
+            this.txtRoundTurnipPriceE.Size = new System.Drawing.Size(80, 29);
+            this.txtRoundTurnipPriceE.TabIndex = 13;
+            this.txtRoundTurnipPriceE.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
             // 
             // label9
             // 
@@ -441,11 +395,11 @@ namespace HarvestManagerSystem.view
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label10.ForeColor = System.Drawing.Color.FloralWhite;
-            this.label10.Location = new System.Drawing.Point(138, 48);
+            this.label10.Location = new System.Drawing.Point(138, 75);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(49, 21);
+            this.label10.Size = new System.Drawing.Size(92, 21);
             this.label10.TabIndex = 57;
-            this.label10.Text = "Code:";
+            this.label10.Text = "Navet Rond";
             // 
             // label11
             // 
@@ -468,37 +422,21 @@ namespace HarvestManagerSystem.view
             this.pictureBox2.TabIndex = 52;
             this.pictureBox2.TabStop = false;
             // 
-            // pnlCarrotAperto
+            // pnlCarrot
             // 
-            this.pnlCarrotAperto.AutoScroll = true;
-            this.pnlCarrotAperto.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlCarrotAperto.Controls.Add(this.panel3);
-            this.pnlCarrotAperto.Controls.Add(this.txtCarrotPriceCompany4);
-            this.pnlCarrotAperto.Controls.Add(this.txtCarrotPriceEmployee4);
-            this.pnlCarrotAperto.Controls.Add(this.txtCarrotCode4);
-            this.pnlCarrotAperto.Controls.Add(this.txtCarrotPriceCompany5);
-            this.pnlCarrotAperto.Controls.Add(this.txtCarrotPriceEmployee5);
-            this.pnlCarrotAperto.Controls.Add(this.txtCarrotCode5);
-            this.pnlCarrotAperto.Controls.Add(this.txtCarrotPriceCompany1);
-            this.pnlCarrotAperto.Controls.Add(this.txtCarrotPriceEmployee1);
-            this.pnlCarrotAperto.Controls.Add(this.txtCarrotCode1);
-            this.pnlCarrotAperto.Controls.Add(this.label5);
-            this.pnlCarrotAperto.Controls.Add(this.label6);
-            this.pnlCarrotAperto.Controls.Add(this.label7);
-            this.pnlCarrotAperto.Controls.Add(this.txtCarrotPriceCompany2);
-            this.pnlCarrotAperto.Controls.Add(this.txtCarrotPriceEmployee2);
-            this.pnlCarrotAperto.Controls.Add(this.txtCarrotCode2);
-            this.pnlCarrotAperto.Controls.Add(this.label1);
-            this.pnlCarrotAperto.Controls.Add(this.CarrotPicture);
-            this.pnlCarrotAperto.Controls.Add(this.btnValidateCarrotInput);
-            this.pnlCarrotAperto.Controls.Add(this.txtCarrotPriceCompany3);
-            this.pnlCarrotAperto.Controls.Add(this.txtCarrotPriceEmployee3);
-            this.pnlCarrotAperto.Controls.Add(this.txtCarrotCode3);
-            this.pnlCarrotAperto.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlCarrotAperto.Location = new System.Drawing.Point(0, 0);
-            this.pnlCarrotAperto.Name = "pnlCarrotAperto";
-            this.pnlCarrotAperto.Size = new System.Drawing.Size(445, 708);
-            this.pnlCarrotAperto.TabIndex = 2;
+            this.pnlCarrot.AutoScroll = true;
+            this.pnlCarrot.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlCarrot.Controls.Add(this.panel3);
+            this.pnlCarrot.Controls.Add(this.label5);
+            this.pnlCarrot.Controls.Add(this.label7);
+            this.pnlCarrot.Controls.Add(this.label1);
+            this.pnlCarrot.Controls.Add(this.CarrotPicture);
+            this.pnlCarrot.Controls.Add(this.btnValidateCarrotInput);
+            this.pnlCarrot.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlCarrot.Location = new System.Drawing.Point(0, 0);
+            this.pnlCarrot.Name = "pnlCarrot";
+            this.pnlCarrot.Size = new System.Drawing.Size(445, 708);
+            this.pnlCarrot.TabIndex = 2;
             // 
             // panel3
             // 
@@ -537,146 +475,27 @@ namespace HarvestManagerSystem.view
             this.radioOpen.UseVisualStyleBackColor = true;
             this.radioOpen.CheckedChanged += new System.EventHandler(this.radioOpen_CheckedChanged);
             // 
-            // txtCarrotPriceCompany4
-            // 
-            this.txtCarrotPriceCompany4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtCarrotPriceCompany4.Location = new System.Drawing.Point(263, 463);
-            this.txtCarrotPriceCompany4.Name = "txtCarrotPriceCompany4";
-            this.txtCarrotPriceCompany4.Size = new System.Drawing.Size(80, 29);
-            this.txtCarrotPriceCompany4.TabIndex = 57;
-            this.txtCarrotPriceCompany4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
-            // 
-            // txtCarrotPriceEmployee4
-            // 
-            this.txtCarrotPriceEmployee4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtCarrotPriceEmployee4.Location = new System.Drawing.Point(177, 463);
-            this.txtCarrotPriceEmployee4.Name = "txtCarrotPriceEmployee4";
-            this.txtCarrotPriceEmployee4.Size = new System.Drawing.Size(80, 29);
-            this.txtCarrotPriceEmployee4.TabIndex = 56;
-            this.txtCarrotPriceEmployee4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
-            // 
-            // txtCarrotCode4
-            // 
-            this.txtCarrotCode4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtCarrotCode4.Location = new System.Drawing.Point(66, 463);
-            this.txtCarrotCode4.Name = "txtCarrotCode4";
-            this.txtCarrotCode4.ReadOnly = true;
-            this.txtCarrotCode4.Size = new System.Drawing.Size(105, 29);
-            this.txtCarrotCode4.TabIndex = 55;
-            // 
-            // txtCarrotPriceCompany5
-            // 
-            this.txtCarrotPriceCompany5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtCarrotPriceCompany5.Location = new System.Drawing.Point(263, 526);
-            this.txtCarrotPriceCompany5.Name = "txtCarrotPriceCompany5";
-            this.txtCarrotPriceCompany5.Size = new System.Drawing.Size(80, 29);
-            this.txtCarrotPriceCompany5.TabIndex = 54;
-            this.txtCarrotPriceCompany5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
-            // 
-            // txtCarrotPriceEmployee5
-            // 
-            this.txtCarrotPriceEmployee5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtCarrotPriceEmployee5.Location = new System.Drawing.Point(177, 526);
-            this.txtCarrotPriceEmployee5.Name = "txtCarrotPriceEmployee5";
-            this.txtCarrotPriceEmployee5.Size = new System.Drawing.Size(80, 29);
-            this.txtCarrotPriceEmployee5.TabIndex = 53;
-            this.txtCarrotPriceEmployee5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
-            // 
-            // txtCarrotCode5
-            // 
-            this.txtCarrotCode5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtCarrotCode5.Location = new System.Drawing.Point(66, 526);
-            this.txtCarrotCode5.Name = "txtCarrotCode5";
-            this.txtCarrotCode5.ReadOnly = true;
-            this.txtCarrotCode5.Size = new System.Drawing.Size(105, 29);
-            this.txtCarrotCode5.TabIndex = 52;
-            // 
-            // txtCarrotPriceCompany1
-            // 
-            this.txtCarrotPriceCompany1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtCarrotPriceCompany1.Location = new System.Drawing.Point(263, 271);
-            this.txtCarrotPriceCompany1.Name = "txtCarrotPriceCompany1";
-            this.txtCarrotPriceCompany1.Size = new System.Drawing.Size(80, 29);
-            this.txtCarrotPriceCompany1.TabIndex = 48;
-            this.txtCarrotPriceCompany1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
-            // 
-            // txtCarrotPriceEmployee1
-            // 
-            this.txtCarrotPriceEmployee1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtCarrotPriceEmployee1.Location = new System.Drawing.Point(177, 271);
-            this.txtCarrotPriceEmployee1.Name = "txtCarrotPriceEmployee1";
-            this.txtCarrotPriceEmployee1.Size = new System.Drawing.Size(80, 29);
-            this.txtCarrotPriceEmployee1.TabIndex = 47;
-            this.txtCarrotPriceEmployee1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
-            // 
-            // txtCarrotCode1
-            // 
-            this.txtCarrotCode1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtCarrotCode1.Location = new System.Drawing.Point(66, 271);
-            this.txtCarrotCode1.Name = "txtCarrotCode1";
-            this.txtCarrotCode1.ReadOnly = true;
-            this.txtCarrotCode1.Size = new System.Drawing.Size(105, 29);
-            this.txtCarrotCode1.TabIndex = 46;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.Color.FloralWhite;
-            this.label5.Location = new System.Drawing.Point(263, 247);
+            this.label5.Location = new System.Drawing.Point(300, 247);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(52, 21);
             this.label5.TabIndex = 51;
             this.label5.Text = "Prix.C:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.ForeColor = System.Drawing.Color.FloralWhite;
-            this.label6.Location = new System.Drawing.Point(66, 247);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 21);
-            this.label6.TabIndex = 49;
-            this.label6.Text = "Code:";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label7.ForeColor = System.Drawing.Color.FloralWhite;
-            this.label7.Location = new System.Drawing.Point(177, 249);
+            this.label7.Location = new System.Drawing.Point(200, 249);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(50, 21);
             this.label7.TabIndex = 50;
             this.label7.Text = "Prix.E:";
-            // 
-            // txtCarrotPriceCompany2
-            // 
-            this.txtCarrotPriceCompany2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtCarrotPriceCompany2.Location = new System.Drawing.Point(263, 337);
-            this.txtCarrotPriceCompany2.Name = "txtCarrotPriceCompany2";
-            this.txtCarrotPriceCompany2.Size = new System.Drawing.Size(80, 29);
-            this.txtCarrotPriceCompany2.TabIndex = 42;
-            this.txtCarrotPriceCompany2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
-            // 
-            // txtCarrotPriceEmployee2
-            // 
-            this.txtCarrotPriceEmployee2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtCarrotPriceEmployee2.Location = new System.Drawing.Point(177, 337);
-            this.txtCarrotPriceEmployee2.Name = "txtCarrotPriceEmployee2";
-            this.txtCarrotPriceEmployee2.Size = new System.Drawing.Size(80, 29);
-            this.txtCarrotPriceEmployee2.TabIndex = 41;
-            this.txtCarrotPriceEmployee2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
-            // 
-            // txtCarrotCode2
-            // 
-            this.txtCarrotCode2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtCarrotCode2.Location = new System.Drawing.Point(66, 337);
-            this.txtCarrotCode2.Name = "txtCarrotCode2";
-            this.txtCarrotCode2.ReadOnly = true;
-            this.txtCarrotCode2.Size = new System.Drawing.Size(105, 29);
-            this.txtCarrotCode2.TabIndex = 40;
             // 
             // label1
             // 
@@ -709,38 +528,11 @@ namespace HarvestManagerSystem.view
             this.btnValidateCarrotInput.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnValidateCarrotInput.Location = new System.Drawing.Point(67, 593);
             this.btnValidateCarrotInput.Name = "btnValidateCarrotInput";
-            this.btnValidateCarrotInput.Size = new System.Drawing.Size(276, 30);
-            this.btnValidateCarrotInput.TabIndex = 32;
+            this.btnValidateCarrotInput.Size = new System.Drawing.Size(306, 30);
+            this.btnValidateCarrotInput.TabIndex = 11;
             this.btnValidateCarrotInput.Text = "Valider";
             this.btnValidateCarrotInput.UseVisualStyleBackColor = false;
             this.btnValidateCarrotInput.Click += new System.EventHandler(this.btnValidateCarrotInput_Click);
-            // 
-            // txtCarrotPriceCompany3
-            // 
-            this.txtCarrotPriceCompany3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtCarrotPriceCompany3.Location = new System.Drawing.Point(263, 401);
-            this.txtCarrotPriceCompany3.Name = "txtCarrotPriceCompany3";
-            this.txtCarrotPriceCompany3.Size = new System.Drawing.Size(80, 29);
-            this.txtCarrotPriceCompany3.TabIndex = 30;
-            this.txtCarrotPriceCompany3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
-            // 
-            // txtCarrotPriceEmployee3
-            // 
-            this.txtCarrotPriceEmployee3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtCarrotPriceEmployee3.Location = new System.Drawing.Point(177, 401);
-            this.txtCarrotPriceEmployee3.Name = "txtCarrotPriceEmployee3";
-            this.txtCarrotPriceEmployee3.Size = new System.Drawing.Size(80, 29);
-            this.txtCarrotPriceEmployee3.TabIndex = 29;
-            this.txtCarrotPriceEmployee3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
-            // 
-            // txtCarrotCode3
-            // 
-            this.txtCarrotCode3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtCarrotCode3.Location = new System.Drawing.Point(66, 401);
-            this.txtCarrotCode3.Name = "txtCarrotCode3";
-            this.txtCarrotCode3.ReadOnly = true;
-            this.txtCarrotCode3.Size = new System.Drawing.Size(105, 29);
-            this.txtCarrotCode3.TabIndex = 28;
             // 
             // FormHarvestedVegetables
             // 
@@ -763,8 +555,8 @@ namespace HarvestManagerSystem.view
             this.pnlRoundTurnip.ResumeLayout(false);
             this.pnlRoundTurnip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.pnlCarrotAperto.ResumeLayout(false);
-            this.pnlCarrotAperto.PerformLayout();
+            this.pnlCarrot.ResumeLayout(false);
+            this.pnlCarrot.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CarrotPicture)).EndInit();
@@ -775,55 +567,36 @@ namespace HarvestManagerSystem.view
         #endregion
 
         private System.Windows.Forms.Panel pnlContainer;
-        private System.Windows.Forms.Panel pnlCarrotAperto;
+        private System.Windows.Forms.Panel pnlCarrot;
         private System.Windows.Forms.Panel pnlOtherVegetables;
         private System.Windows.Forms.Button btnValidateCarrotInput;
-        private System.Windows.Forms.TextBox txtCarrotPriceCompany3;
-        private System.Windows.Forms.TextBox txtCarrotPriceEmployee3;
-        private System.Windows.Forms.TextBox txtCarrotCode3;
         private System.Windows.Forms.PictureBox CarrotPicture;
-        private System.Windows.Forms.TextBox txtCarrotPriceCompany4;
-        private System.Windows.Forms.TextBox txtCarrotPriceEmployee4;
-        private System.Windows.Forms.TextBox txtCarrotCode4;
-        private System.Windows.Forms.TextBox txtCarrotPriceCompany5;
-        private System.Windows.Forms.TextBox txtCarrotPriceEmployee5;
-        private System.Windows.Forms.TextBox txtCarrotCode5;
-        private System.Windows.Forms.TextBox txtCarrotPriceCompany1;
-        private System.Windows.Forms.TextBox txtCarrotPriceEmployee1;
-        private System.Windows.Forms.TextBox txtCarrotCode1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtCarrotPriceCompany2;
-        private System.Windows.Forms.TextBox txtCarrotPriceEmployee2;
-        private System.Windows.Forms.TextBox txtCarrotCode2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel pnlRoundTurnip;
-        private System.Windows.Forms.TextBox textBox16;
-        private System.Windows.Forms.TextBox textBox17;
-        private System.Windows.Forms.TextBox textBox18;
+        private System.Windows.Forms.TextBox txtRoundTurnipPriceC;
+        private System.Windows.Forms.TextBox txtRoundTurnipPriceE;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnValidateRoundTurnipInput;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox22;
+        private System.Windows.Forms.Button btnValidateWatermelonInput;
+        private System.Windows.Forms.TextBox txtWaterMelonPriceC;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox textBox23;
-        private System.Windows.Forms.TextBox textBox24;
+        private System.Windows.Forms.TextBox txtWaterMelonPriceE;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox19;
+        private System.Windows.Forms.Button btnValidateLongTurnipInput;
+        private System.Windows.Forms.TextBox txtLongTurnipPriceC;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox20;
-        private System.Windows.Forms.TextBox textBox21;
+        private System.Windows.Forms.TextBox txtLongTurnipPriceE;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;

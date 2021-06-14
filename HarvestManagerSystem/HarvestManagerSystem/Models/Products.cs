@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HarvestManagerSystem.Models
 {
-    class Vegetables
+    class Products
     {
         private int productId;
         private string productName;
