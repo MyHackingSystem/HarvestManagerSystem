@@ -71,3 +71,7 @@ E:\Projects\C_Sharp\Desktop\HarvestManagerSystem\HarvestManagerSystem\HarvestMan
 E:\Projects\C_Sharp\Desktop\HarvestManagerSystem\HarvestManagerSystem\HarvestManagerSystem\obj\Release\netcoreapp3.1\HarvestManagerSystem.genruntimeconfig.cache
 E:\Projects\C_Sharp\Desktop\HarvestManagerSystem\HarvestManagerSystem\HarvestManagerSystem\obj\Release\netcoreapp3.1\HarvestManagerSystem.LoginForm.resources
 E:\Projects\C_Sharp\Desktop\HarvestManagerSystem\HarvestManagerSystem\HarvestManagerSystem\obj\Release\netcoreapp3.1\HarvestManagerSystem.view.FormAddIndWork.resources
+E:\Projects\C_Sharp\Desktop\HarvestManagerSystem\HarvestManagerSystem\HarvestManagerSystem\obj\Release\netcoreapp3.1\HarvestManagerSystem.view.FormDisplayProductionHours.resources
+E:\Projects\C_Sharp\Desktop\HarvestManagerSystem\HarvestManagerSystem\HarvestManagerSystem\obj\Release\netcoreapp3.1\HarvestManagerSystem.view.FormDisplayProductionQuantity.resources
+E:\Projects\C_Sharp\Desktop\HarvestManagerSystem\HarvestManagerSystem\HarvestManagerSystem\obj\Release\netcoreapp3.1\HarvestManagerSystem.view.MainForm.resources
+E:\Projects\C_Sharp\Desktop\HarvestManagerSystem\HarvestManagerSystem\HarvestManagerSystem\obj\Release\netcoreapp3.1\HarvestManagerSystem.view.FormHarvestCarrot.resources

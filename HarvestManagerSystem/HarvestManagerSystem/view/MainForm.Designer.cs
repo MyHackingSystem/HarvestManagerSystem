@@ -35,7 +35,6 @@ namespace HarvestManagerSystem.view
             this.btnAddFarm = new System.Windows.Forms.Button();
             this.btnAddProduct = new System.Windows.Forms.Button();
             this.btnAddCredit = new System.Windows.Forms.Button();
-            this.btnDisplayProduction = new System.Windows.Forms.Button();
             this.btnAddHarvestByGroup = new System.Windows.Forms.Button();
             this.btnAddHarvestByIndividual = new System.Windows.Forms.Button();
             this.btnUpdateSetting = new System.Windows.Forms.Button();
@@ -48,6 +47,7 @@ namespace HarvestManagerSystem.view
             this.picBoxCenterMainForm = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pnlTopMenu = new System.Windows.Forms.Panel();
+            this.btnDisplayIndividualWork = new System.Windows.Forms.Button();
             this.btnDisplayProductionHours = new System.Windows.Forms.Button();
             this.btnDisplayProductionQuantity = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -111,7 +111,7 @@ namespace HarvestManagerSystem.view
             this.btnAddProduct.Name = "btnAddProduct";
             this.btnAddProduct.Size = new System.Drawing.Size(146, 32);
             this.btnAddProduct.TabIndex = 7;
-            this.btnAddProduct.Text = "Produit";
+            this.btnAddProduct.Text = "Légumes récoltés";
             this.btnAddProduct.UseVisualStyleBackColor = true;
             this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
             // 
@@ -125,16 +125,6 @@ namespace HarvestManagerSystem.view
             this.btnAddCredit.Text = "Crédit / Transport";
             this.btnAddCredit.UseVisualStyleBackColor = true;
             this.btnAddCredit.Click += new System.EventHandler(this.btnAddCredit_Click);
-            // 
-            // btnDisplayProduction
-            // 
-            this.btnDisplayProduction.Location = new System.Drawing.Point(0, 341);
-            this.btnDisplayProduction.Name = "btnDisplayProduction";
-            this.btnDisplayProduction.Size = new System.Drawing.Size(146, 32);
-            this.btnDisplayProduction.TabIndex = 9;
-            this.btnDisplayProduction.Text = "Production";
-            this.btnDisplayProduction.UseVisualStyleBackColor = true;
-            this.btnDisplayProduction.Click += new System.EventHandler(this.btnDisplayProduction_Click);
             // 
             // btnAddHarvestByGroup
             // 
@@ -160,7 +150,8 @@ namespace HarvestManagerSystem.view
             // 
             // btnUpdateSetting
             // 
-            this.btnUpdateSetting.Location = new System.Drawing.Point(0, 403);
+            this.btnUpdateSetting.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnUpdateSetting.Location = new System.Drawing.Point(0, 259);
             this.btnUpdateSetting.Name = "btnUpdateSetting";
             this.btnUpdateSetting.Size = new System.Drawing.Size(146, 32);
             this.btnUpdateSetting.TabIndex = 10;
@@ -186,7 +177,6 @@ namespace HarvestManagerSystem.view
             this.pnlSideMenu.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlSideMenu.Controls.Add(this.btnCloseForm);
             this.pnlSideMenu.Controls.Add(this.btnUpdateSetting);
-            this.pnlSideMenu.Controls.Add(this.btnDisplayProduction);
             this.pnlSideMenu.Controls.Add(this.btnAddCredit);
             this.pnlSideMenu.Controls.Add(this.btnAddProduct);
             this.pnlSideMenu.Controls.Add(this.btnAddFarm);
@@ -274,6 +264,7 @@ namespace HarvestManagerSystem.view
             // pnlTopMenu
             // 
             this.pnlTopMenu.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlTopMenu.Controls.Add(this.btnDisplayIndividualWork);
             this.pnlTopMenu.Controls.Add(this.btnDisplayProductionHours);
             this.pnlTopMenu.Controls.Add(this.btnDisplayProductionQuantity);
             this.pnlTopMenu.Dock = System.Windows.Forms.DockStyle.Top;
@@ -281,6 +272,16 @@ namespace HarvestManagerSystem.view
             this.pnlTopMenu.Name = "pnlTopMenu";
             this.pnlTopMenu.Size = new System.Drawing.Size(1134, 40);
             this.pnlTopMenu.TabIndex = 2;
+            // 
+            // btnDisplayIndividualWork
+            // 
+            this.btnDisplayIndividualWork.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnDisplayIndividualWork.Location = new System.Drawing.Point(292, 0);
+            this.btnDisplayIndividualWork.Name = "btnDisplayIndividualWork";
+            this.btnDisplayIndividualWork.Size = new System.Drawing.Size(146, 36);
+            this.btnDisplayIndividualWork.TabIndex = 12;
+            this.btnDisplayIndividualWork.Text = "Ind";
+            this.btnDisplayIndividualWork.UseVisualStyleBackColor = true;
             // 
             // btnDisplayProductionHours
             // 
@@ -336,7 +337,6 @@ namespace HarvestManagerSystem.view
         private System.Windows.Forms.Button btnAddSupplier;
         private System.Windows.Forms.Button btnAddEmployee;
         private System.Windows.Forms.Button btnAddHarvestHours;
-        private System.Windows.Forms.Button btnDisplayProduction;
         private System.Windows.Forms.Button btnAddHarvestByGroup;
         private System.Windows.Forms.Button btnAddHarvestByIndividual;
         private System.Windows.Forms.Button btnUpdateSetting;
@@ -351,5 +351,6 @@ namespace HarvestManagerSystem.view
         private System.Windows.Forms.Button btnCloseForm;
         private System.Windows.Forms.Button btnDisplayProductionQuantity;
         private System.Windows.Forms.Button btnDisplayProductionHours;
+        private System.Windows.Forms.Button btnDisplayIndividualWork;
     }
 }

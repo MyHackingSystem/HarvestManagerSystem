@@ -108,7 +108,7 @@ namespace HarvestManagerSystem.view
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Une erreur est survenue, essayez de cliquer à nouveau sur le bouton de validation ");
+                MessageBox.Show("Une erreur est survenue, essayez de cliquer à nouveau sur le bouton de validation " + ex.Message);
                 return;
             }
 

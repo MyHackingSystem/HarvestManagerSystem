@@ -24,13 +24,9 @@ namespace HarvestManagerSystem.view
 
         private void FormAddCredit_Load(object sender, EventArgs e)
         {
-            //EmployeeNameList();
-            //CreditEmployeeComboBox.SelectedIndex = -1;
             DisplayCreditData();
             DisplayTransportData();
         }
-
-
 
         public void DisplayCreditData()
         {
@@ -44,7 +40,6 @@ namespace HarvestManagerSystem.view
                 MessageBox.Show(" Display Credit: " + ex.Message);
             }
         }
-
 
         public void DisplayTransportData()
         {
@@ -122,23 +117,24 @@ namespace HarvestManagerSystem.view
             credit.Employee.LastName = employee.LastName;
             credit.CreditDate = CreditDatePicker.Value.Date;
             credit.CreditAmount = Convert.ToDouble(CreditAmountTextBox.Text);
-            if (mCreditDAO.Add(credit))
+            try
             {
-                wipeFields();
-                MessageBox.Show("Added to database: ");
+                mCreditDAO.Add(credit);
             }
-            else
+            catch(Exception ex)
             {
-                MessageBox.Show("Not added to database: ");
+                MessageBox.Show(ex.Message);
+                return;
             }
+            ClearFields();
         }
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            wipeFields();
+            ClearFields();
         }
 
-        private void wipeFields()
+        private void ClearFields()
         {
             EmployeeNameList();
             CreditDatePicker.Value = DateTime.Now;

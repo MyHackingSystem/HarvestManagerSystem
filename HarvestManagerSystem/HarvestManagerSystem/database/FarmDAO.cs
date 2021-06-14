@@ -112,7 +112,7 @@ namespace HarvestManagerSystem.database
             }
         }
 
-        internal void Update(Farm farm)
+        public void Update(Farm farm)
         {
             string updateStmt = "UPDATE " + TABLE_FARM + " SET "
                  + COLUMN_FARM_NAME + " =@" + COLUMN_FARM_NAME + ", "

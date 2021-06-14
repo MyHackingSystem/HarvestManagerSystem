@@ -39,7 +39,8 @@ namespace HarvestManagerSystem.view
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormAddProduct());
+            //OpenChildForm(new FormAddProduct());
+            OpenChildForm(new FormHarvestedVegetables());
         }
 
         private void btnAddFarm_Click(object sender, EventArgs e)
@@ -64,7 +65,11 @@ namespace HarvestManagerSystem.view
 
         private void btnAddHarvestQuantity_Click(object sender, EventArgs e)
         {
+            //FormHarvestCarrot form = new FormHarvestCarrot();
+            //form.ShowDialog();
 
+            FormAddIndWork form = new FormAddIndWork();
+            form.ShowDialog();
         }
 
         private void btnAddHarvestHours_Click(object sender, EventArgs e)
@@ -77,11 +82,6 @@ namespace HarvestManagerSystem.view
         {
             FormAddQuantity formAddQuantity = new FormAddQuantity();
             formAddQuantity.ShowDialog();
-        }
-
-        private void btnDisplayProduction_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnUpdateSetting_Click(object sender, EventArgs e)
