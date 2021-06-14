@@ -39,7 +39,8 @@ namespace HarvestManagerSystem.view
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormAddProduct());
+            //OpenChildForm(new FormAddProduct());
+            OpenChildForm(new FormHarvestedVegetables());
         }
 
         private void btnAddFarm_Click(object sender, EventArgs e)
