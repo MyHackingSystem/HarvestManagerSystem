@@ -8,12 +8,12 @@ namespace HarvestManagerSystem.Models
     {
         private int productId;
         private string productName;
-        private double priceEmployee;
-        private double priceCompany;
+        private double employeePrice;
+        private double companyPrice;
 
         public int ProductId { get => productId; set => productId = value; }
         public string ProductName { get => productName; set => productName = value; }
-        public double PriceEmployee { get => priceEmployee; set => priceEmployee = value; }
-        public double PriceCompany { get => priceCompany; set => priceCompany = value; }
+        public double EmployeePrice { get => employeePrice; set => employeePrice = value; }
+        public double CompanyPrice { get => companyPrice; set => companyPrice = value; }
     }
 }

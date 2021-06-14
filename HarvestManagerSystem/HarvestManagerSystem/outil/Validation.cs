@@ -22,6 +22,18 @@ namespace HarvestManagerSystem.outil
 {
     class Validation
     {
+        public static void ValidateNumberEntred(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= '0' && e.KeyChar <= '9') || e.KeyChar == 8 || e.KeyChar == 46)
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
         public static bool isNumeric(string txt)
         {
             Regex regex = new Regex(@"^[0-9]+\.?[0-9]*$");

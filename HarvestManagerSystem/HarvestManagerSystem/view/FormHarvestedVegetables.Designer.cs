@@ -63,8 +63,8 @@ namespace HarvestManagerSystem.view
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pnlCarrotAperto = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioTunnel = new System.Windows.Forms.RadioButton();
+            this.radioOpen = new System.Windows.Forms.RadioButton();
             this.txtCarrotPriceCompany4 = new System.Windows.Forms.TextBox();
             this.txtCarrotPriceEmployee4 = new System.Windows.Forms.TextBox();
             this.txtCarrotCode4 = new System.Windows.Forms.TextBox();
@@ -164,6 +164,7 @@ namespace HarvestManagerSystem.view
             this.textBox22.Name = "textBox22";
             this.textBox22.Size = new System.Drawing.Size(80, 29);
             this.textBox22.TabIndex = 56;
+            this.textBox22.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
             // 
             // label17
             // 
@@ -183,12 +184,14 @@ namespace HarvestManagerSystem.view
             this.textBox23.Name = "textBox23";
             this.textBox23.Size = new System.Drawing.Size(80, 29);
             this.textBox23.TabIndex = 55;
+            this.textBox23.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
             // 
             // textBox24
             // 
             this.textBox24.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBox24.Location = new System.Drawing.Point(138, 72);
             this.textBox24.Name = "textBox24";
+            this.textBox24.ReadOnly = true;
             this.textBox24.Size = new System.Drawing.Size(105, 29);
             this.textBox24.TabIndex = 54;
             // 
@@ -276,6 +279,7 @@ namespace HarvestManagerSystem.view
             this.textBox19.Name = "textBox19";
             this.textBox19.Size = new System.Drawing.Size(80, 29);
             this.textBox19.TabIndex = 56;
+            this.textBox19.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
             // 
             // label13
             // 
@@ -295,12 +299,14 @@ namespace HarvestManagerSystem.view
             this.textBox20.Name = "textBox20";
             this.textBox20.Size = new System.Drawing.Size(80, 29);
             this.textBox20.TabIndex = 55;
+            this.textBox20.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
             // 
             // textBox21
             // 
             this.textBox21.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBox21.Location = new System.Drawing.Point(138, 72);
             this.textBox21.Name = "textBox21";
+            this.textBox21.ReadOnly = true;
             this.textBox21.Size = new System.Drawing.Size(105, 29);
             this.textBox21.TabIndex = 54;
             // 
@@ -388,6 +394,7 @@ namespace HarvestManagerSystem.view
             this.textBox16.Name = "textBox16";
             this.textBox16.Size = new System.Drawing.Size(80, 29);
             this.textBox16.TabIndex = 56;
+            this.textBox16.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
             // 
             // label12
             // 
@@ -407,12 +414,14 @@ namespace HarvestManagerSystem.view
             this.textBox17.Name = "textBox17";
             this.textBox17.Size = new System.Drawing.Size(80, 29);
             this.textBox17.TabIndex = 55;
+            this.textBox17.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
             // 
             // textBox18
             // 
             this.textBox18.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBox18.Location = new System.Drawing.Point(138, 72);
             this.textBox18.Name = "textBox18";
+            this.textBox18.ReadOnly = true;
             this.textBox18.Size = new System.Drawing.Size(105, 29);
             this.textBox18.TabIndex = 54;
             // 
@@ -493,38 +502,40 @@ namespace HarvestManagerSystem.view
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.radioButton1);
-            this.panel3.Controls.Add(this.radioButton2);
+            this.panel3.Controls.Add(this.radioTunnel);
+            this.panel3.Controls.Add(this.radioOpen);
             this.panel3.Location = new System.Drawing.Point(90, 190);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(225, 40);
             this.panel3.TabIndex = 59;
             // 
-            // radioButton1
+            // radioTunnel
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.radioButton1.ForeColor = System.Drawing.Color.White;
-            this.radioButton1.Location = new System.Drawing.Point(12, 11);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(81, 23);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "TUNNEL";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioTunnel.AutoSize = true;
+            this.radioTunnel.Checked = true;
+            this.radioTunnel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.radioTunnel.ForeColor = System.Drawing.Color.White;
+            this.radioTunnel.Location = new System.Drawing.Point(12, 11);
+            this.radioTunnel.Name = "radioTunnel";
+            this.radioTunnel.Size = new System.Drawing.Size(81, 23);
+            this.radioTunnel.TabIndex = 0;
+            this.radioTunnel.TabStop = true;
+            this.radioTunnel.Text = "TUNNEL";
+            this.radioTunnel.UseVisualStyleBackColor = true;
+            this.radioTunnel.CheckedChanged += new System.EventHandler(this.radioTunnel_CheckedChanged);
             // 
-            // radioButton2
+            // radioOpen
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.radioButton2.ForeColor = System.Drawing.Color.White;
-            this.radioButton2.Location = new System.Drawing.Point(120, 11);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(80, 23);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "APERTO";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioOpen.AutoSize = true;
+            this.radioOpen.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.radioOpen.ForeColor = System.Drawing.Color.White;
+            this.radioOpen.Location = new System.Drawing.Point(120, 11);
+            this.radioOpen.Name = "radioOpen";
+            this.radioOpen.Size = new System.Drawing.Size(80, 23);
+            this.radioOpen.TabIndex = 1;
+            this.radioOpen.Text = "APERTO";
+            this.radioOpen.UseVisualStyleBackColor = true;
+            this.radioOpen.CheckedChanged += new System.EventHandler(this.radioOpen_CheckedChanged);
             // 
             // txtCarrotPriceCompany4
             // 
@@ -533,6 +544,7 @@ namespace HarvestManagerSystem.view
             this.txtCarrotPriceCompany4.Name = "txtCarrotPriceCompany4";
             this.txtCarrotPriceCompany4.Size = new System.Drawing.Size(80, 29);
             this.txtCarrotPriceCompany4.TabIndex = 57;
+            this.txtCarrotPriceCompany4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
             // 
             // txtCarrotPriceEmployee4
             // 
@@ -541,12 +553,14 @@ namespace HarvestManagerSystem.view
             this.txtCarrotPriceEmployee4.Name = "txtCarrotPriceEmployee4";
             this.txtCarrotPriceEmployee4.Size = new System.Drawing.Size(80, 29);
             this.txtCarrotPriceEmployee4.TabIndex = 56;
+            this.txtCarrotPriceEmployee4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
             // 
             // txtCarrotCode4
             // 
             this.txtCarrotCode4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtCarrotCode4.Location = new System.Drawing.Point(66, 463);
             this.txtCarrotCode4.Name = "txtCarrotCode4";
+            this.txtCarrotCode4.ReadOnly = true;
             this.txtCarrotCode4.Size = new System.Drawing.Size(105, 29);
             this.txtCarrotCode4.TabIndex = 55;
             // 
@@ -557,6 +571,7 @@ namespace HarvestManagerSystem.view
             this.txtCarrotPriceCompany5.Name = "txtCarrotPriceCompany5";
             this.txtCarrotPriceCompany5.Size = new System.Drawing.Size(80, 29);
             this.txtCarrotPriceCompany5.TabIndex = 54;
+            this.txtCarrotPriceCompany5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
             // 
             // txtCarrotPriceEmployee5
             // 
@@ -565,12 +580,14 @@ namespace HarvestManagerSystem.view
             this.txtCarrotPriceEmployee5.Name = "txtCarrotPriceEmployee5";
             this.txtCarrotPriceEmployee5.Size = new System.Drawing.Size(80, 29);
             this.txtCarrotPriceEmployee5.TabIndex = 53;
+            this.txtCarrotPriceEmployee5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
             // 
             // txtCarrotCode5
             // 
             this.txtCarrotCode5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtCarrotCode5.Location = new System.Drawing.Point(66, 526);
             this.txtCarrotCode5.Name = "txtCarrotCode5";
+            this.txtCarrotCode5.ReadOnly = true;
             this.txtCarrotCode5.Size = new System.Drawing.Size(105, 29);
             this.txtCarrotCode5.TabIndex = 52;
             // 
@@ -581,6 +598,7 @@ namespace HarvestManagerSystem.view
             this.txtCarrotPriceCompany1.Name = "txtCarrotPriceCompany1";
             this.txtCarrotPriceCompany1.Size = new System.Drawing.Size(80, 29);
             this.txtCarrotPriceCompany1.TabIndex = 48;
+            this.txtCarrotPriceCompany1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
             // 
             // txtCarrotPriceEmployee1
             // 
@@ -589,12 +607,14 @@ namespace HarvestManagerSystem.view
             this.txtCarrotPriceEmployee1.Name = "txtCarrotPriceEmployee1";
             this.txtCarrotPriceEmployee1.Size = new System.Drawing.Size(80, 29);
             this.txtCarrotPriceEmployee1.TabIndex = 47;
+            this.txtCarrotPriceEmployee1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
             // 
             // txtCarrotCode1
             // 
             this.txtCarrotCode1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtCarrotCode1.Location = new System.Drawing.Point(66, 271);
             this.txtCarrotCode1.Name = "txtCarrotCode1";
+            this.txtCarrotCode1.ReadOnly = true;
             this.txtCarrotCode1.Size = new System.Drawing.Size(105, 29);
             this.txtCarrotCode1.TabIndex = 46;
             // 
@@ -638,6 +658,7 @@ namespace HarvestManagerSystem.view
             this.txtCarrotPriceCompany2.Name = "txtCarrotPriceCompany2";
             this.txtCarrotPriceCompany2.Size = new System.Drawing.Size(80, 29);
             this.txtCarrotPriceCompany2.TabIndex = 42;
+            this.txtCarrotPriceCompany2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
             // 
             // txtCarrotPriceEmployee2
             // 
@@ -646,12 +667,14 @@ namespace HarvestManagerSystem.view
             this.txtCarrotPriceEmployee2.Name = "txtCarrotPriceEmployee2";
             this.txtCarrotPriceEmployee2.Size = new System.Drawing.Size(80, 29);
             this.txtCarrotPriceEmployee2.TabIndex = 41;
+            this.txtCarrotPriceEmployee2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
             // 
             // txtCarrotCode2
             // 
             this.txtCarrotCode2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtCarrotCode2.Location = new System.Drawing.Point(66, 337);
             this.txtCarrotCode2.Name = "txtCarrotCode2";
+            this.txtCarrotCode2.ReadOnly = true;
             this.txtCarrotCode2.Size = new System.Drawing.Size(105, 29);
             this.txtCarrotCode2.TabIndex = 40;
             // 
@@ -662,9 +685,9 @@ namespace HarvestManagerSystem.view
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(22, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(136, 24);
+            this.label1.Size = new System.Drawing.Size(73, 24);
             this.label1.TabIndex = 39;
-            this.label1.Text = "Carotte Aperto";
+            this.label1.Text = "Carotte";
             // 
             // CarrotPicture
             // 
@@ -699,6 +722,7 @@ namespace HarvestManagerSystem.view
             this.txtCarrotPriceCompany3.Name = "txtCarrotPriceCompany3";
             this.txtCarrotPriceCompany3.Size = new System.Drawing.Size(80, 29);
             this.txtCarrotPriceCompany3.TabIndex = 30;
+            this.txtCarrotPriceCompany3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
             // 
             // txtCarrotPriceEmployee3
             // 
@@ -707,12 +731,14 @@ namespace HarvestManagerSystem.view
             this.txtCarrotPriceEmployee3.Name = "txtCarrotPriceEmployee3";
             this.txtCarrotPriceEmployee3.Size = new System.Drawing.Size(80, 29);
             this.txtCarrotPriceEmployee3.TabIndex = 29;
+            this.txtCarrotPriceEmployee3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateNumberEntred);
             // 
             // txtCarrotCode3
             // 
             this.txtCarrotCode3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtCarrotCode3.Location = new System.Drawing.Point(66, 401);
             this.txtCarrotCode3.Name = "txtCarrotCode3";
+            this.txtCarrotCode3.ReadOnly = true;
             this.txtCarrotCode3.Size = new System.Drawing.Size(105, 29);
             this.txtCarrotCode3.TabIndex = 28;
             // 
@@ -803,7 +829,7 @@ namespace HarvestManagerSystem.view
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioTunnel;
+        private System.Windows.Forms.RadioButton radioOpen;
     }
 }
