@@ -1,6 +1,6 @@
 # Harvest Manager System
 
-## Coding and designing the application using C#, this application helps the manager keep track of daily production and employee status in a harvest company.
+## This application helps the manager keep track of daily production and employee status in a harvest company.
 
 
 ![01](https://github.com/user-attachments/assets/c6999643-e074-42d0-9a1a-cde6438b4fc5)
